@@ -1,0 +1,32 @@
+
+```mermaid
+graph TD
+
+c(Part I Basic Concepts)
+c0(Population dynamics)
+c1(Exponential growth)
+c2(Disease dynamics)
+c2.1(Transmission rates)
+c2.2(Susceptibility)
+c3(Dynamic models of disease: SIR)
+c3.0(Examples)
+c3.1(Model: transmission)
+c3.2(Model: susceptibility)
+c4.1(Data: transmission rates)
+c4.2(Data: susceptibility)
+c4.3(Data: intervention success)
+
+
+a(Part II More Advanced Application of concepts)
+
+c --> c0
+c0 --> c1 
+c1 -- Importance --> c2
+c2 --> c2.1 & c2.2 -->c3
+c3 -->c3.0
+
+a-->c3.1 & c3.2
+c3.1<-->c4.1
+c3.2<-->c4.2
+c4.1 & c4.2-->c4.3 
+```
