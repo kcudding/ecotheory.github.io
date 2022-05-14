@@ -30,12 +30,13 @@ p.caption {
 <style>#margins2 > p {margin-top: -50px;} </style>
 <style>
 p.comment {
-background-color: #DBDBDB;
+background-color: #F2D4D7;
 padding: 10px;
 border: 1px solid black;
 margin-left: 25px;
 border-radius: 5px;
 font-style: italic;
+color: black;
 }
 
 </style>
@@ -141,17 +142,27 @@ knitr::include_graphics("euclidIBM.png")
 ```
 ## Characteristics of models 
 - trade off precision, generality and realism (Levins 1966).
-- is not possible to include all details of a system and still have a useful tool (e.g., a one-to-one scale map of a city may include all details but is useless as a guide to finding your hotel)
+- a model is more specific than a theory
+- is not possible to include all details of a system and still have a useful tool (e.g., a one-to-one scale map of a city may include all details but is useless as a guide to finding your hotel), so models are of course not the same as reality (even really complex ones)
 
 <font size="4"><p class="comment">"We actually made a map of the country, on the scale of a mile to the mile!"</br>"Have you used it much?" I enquired.</br>"It has never been spread out, yet," said Mein Herr,<br> "the farmers objected: they said it would cover the whole country, and shut out the sunlight! So we now use the country itself, as its own map, and I assure you it does nearly as well.<br/><br/>
 Lewis Carroll - The Complete Illustrated Works. Gramercy Books, New York (1982)</font>
 </p>
 
-- therefore, models are always false in some aspects of their representation theory or data
+## Main characteristic of models {.flexbox .vcenter} 
 
-## Complexity is not necessarily better
- 
+-models are always false in some aspects of their representation theory or data
+<br/><br/><br/>
+<div align="center">
+<font size="7">Theory $\neq$ Model $\neq$ Reality </font></div>
+
+
+## Complex models are not necessarily better: Math and computation
+- "if we put more details in, it will be a better reflection of reality"
 - think about the map example: complexity is not necessarily helpful for explanation
+- complexity is also a bugbear for exploring model assumptions <br/>(e.g., Valle et al. (2009) found that alternate modeling assumptions in the forest stand simulation model SYMFOR can account for 66–97% of the variancein predicted stand dynamics. Authors note that it may be very difficult to do the same analysis for exceedingly complex models).
+
+## Complex models are not necessarily better: Data
 - complexity is not necessarily helpful for prediction either
 
 
@@ -162,44 +173,47 @@ Lewis Carroll - The Complete Illustrated Works. Gramercy Books, New York (1982)<
     John von Neumann
 </p></font>
 
-- don't be impressed impressed when a complex model fits a data set well. With enough parameters, you can fit any data set
+- don't be impressed when a complex model fits a data set well. With enough parameters, you can fit any data set
 </div>
 
 <div style="float: right; width: 50%;">
-```{r p4, echo=FALSE, fig.align = 'center', fig.cap="Mayer et al. 2010", out.width = '65%'}
+```{r p4, echo=FALSE, fig.align = 'center',  out.width = '65%'}
 knitr::include_graphics("elephant.jpeg")
 ```
-</div>
+<font size="2"><div align="center">[Mayer et al. (2010)](https://doi.org/10.1007/s10530-021-02645-x)</div></font>`</div>
 
 ## Overfitting
 - but it fits right?? 
-- No not really Overfitting occurs when data-driven model tries to cover all the data points  in the dataset
-- as a result, the model starts caching noise and inaccurate values present in the dataset, and all these factors reduce the efficiency and accuracy of the model
+- no not really: overfitting occurs when data-driven model tries to cover all the data points  in the dataset
+- as a result, the model starts caching noise and inaccuracies present in the dataset
+- when your model fits your data perfectly, it is unlikely to fit new data well
 
-```{r p3, echo=FALSE,fig.align = 'center',fig.cap="Lever et al. 2016", out.width = '80%'}
+```{r p3, echo=FALSE,fig.align = 'center', out.width = '80%'}
 knitr::include_graphics("overfit.jpg")
 
 ```
+<font size="2"><div align="center">[Lever et al. (2016)](https://www.nature.com/articles/nmeth.3968)</div></font>
 
 
-
-<span style="color:red">$\rightarrow$</span>Complex models $\neq$ accurate prediction
-
+# <span style="color:red">$\rightarrow$</span>Complex models $\neq$ accurate prediction
 
 
+## Simplicity is not necessarily better: Data
+- "if we make it simple, we will capture general principles/effects"
+- for data-driven models, underfit happens when your model is not complicated enough
+- underfitting introduces bias, such that there is systematic deviation from the true underlying estimator
 
-## Simplicity is not necessarily better
+## Simplicity is not necessarily better: Math and computation
 
--  Simple models $\neq$  reality/truth <br>
-  (fish stocks environmental variation?) 
+- for mechanistic models, simplified descriptions may omit important contingencies
+- may also omit time-varying variables, signficiant effects of environmental stochasticity etc
+- mathematical or computational models may also have signficant analysis/implementation issues and no mechanism, in which case the simplicity is self-defeating
 
-<font size="7"><span style="color:red">$\rightarrow$</span> Model $\neq$ reality</font>
+<font size="4"><p class="comment">“There are two ways of doing calculations in theoretical physics”, he said. <br/>“One way, and this is the way I prefer, is to have a clear physical picture of the process that you are calculating. The other way is to have a precise and self-consistent mathematical formalism. You have neither.” <br/><br/>Enrico Fermi speaking to Freeman Dyson about pseudoscalar meson theory </p></font>
 
-## Characteristics of models 
+<font size="2"><div align="center">[Dyson (2004)](https://www.nature.com/articles/427297a)</div></font>
 
-
-<font size="7"><span style="color:red">$\rightarrow$</span> Theory $\neq$ Model $\neq$ Reality </font>
-
+# <span style="color:red">$\rightarrow$</span>Simple models $\neq$ general principles
 
 ## Why do we need models then?
 
@@ -207,14 +221,31 @@ knitr::include_graphics("overfit.jpg")
 2. Prediction
 
 
-while we attempt to make do without it, 
-both of these functions require mechanism  
+while we attempt to make do without it, both of these functions require mechanism (also called process), particularly for<br/><br/>
+<div align="center">
+<span style="color:red"><font size="7">Prediction under novel conditions</font></span></div>
+<br/>
+<color:black>which absolutely requires mechanism
 
-## All models can include phenomological or mechanistic components or both
 
-Valle et al. (2009) found that alternate modelingassumptions in the forest stand simulation modelSYMFOR can account for 66–97%of the variancein predicted stand dynamics. While the authorswere able to complete this comparison ofdiffering models formulations for SYMFOR, theynote that it may be very difficult to do the samefor exceedingly complex models.
 
 # The role of mechanism in modelling
+
+## What is mechanism?
+- "a natural or established process by which something takes place or is brought about" <br/>OED
+- answers the "how" question
+- explains the patterns in data by identifying the cause
+
+a "mechanistic model", because it includes priori knowledge of ecological processes (rather than patterns)
+
+- e.g., 
+
+## All models can include phenomological or mechanistic components or both
+- and in general it is a spectrum rather than a dichotmy
+
+- particularly true for models at large scale, we will often code small-scale mechanisms as phenomenlogical components (i.e., when modelling forest stand dynamics, we will not include a mechanistic description of photosynthesis and evapotranspiration)
+
+
 
 ## Data-driven models by themselves, are generally not mechanistic <br>
 - I'm including here standard statistical models (both frequentist and Bayesian), as well as machine learning models
@@ -242,7 +273,7 @@ Predators negatively impact their prey
 
 Without mechanism, we can't answer these questions, and that's a problem, since if we get the answer wrong, we might take an action that has the opposite of the desired effect
 
-## Mathmatical models and mechanism
+## Math is not magic: Mathmatical models are not necessarily mechanistic
 
 - starting from $\frac{dN}{dt}=f(N)-g(N,P)$ is no different than starting from $y_i=\beta_0 + f(x_i)+\epsilon$ in terms of mechanism
 
@@ -611,17 +642,13 @@ include_graphics("https://imgs.xkcd.com/comics/how_it_works.png")
 
 
 ## Acknowledgements
-We thank Luwen Chang and Matthew Zhou for their amazing learning curves, and subsequent help coding up the modules. The eCampusOntario grant also funded several students to evaluate an early version of the materials. Lina Aragon Baquero, Lauren Banks, Madison Brook, Jacob Burbank, Nicole Gauvreau and Aranksha Dilip Thakor provided valuable feedback.
 
-The Git and GitHub module builds upon workshop materials that were originally developed with Chris Grandin (DFO), who AME also thanks for assistance with the module.
 
 
 ## Funding
 
-The Quantitative Biology in Life Science Graduate Programs workshop from which this work arose which was supported by funding from the Burroughs Wellcome Fund, from National Science Foundation Award DBI-1300426 for NIMBioS, with additional support from the University of Tennessee. The Workshop arose from a partnership between NIMBioS and the Southeast Center for Mathematics and Biology (SCMB). 
+The Quinite project is funded by the Department of Fisheries and Oceans Canada. The Hines Emerald dragonfly project was funded by NSERC and Faculty of Science, University of Waterloo
 
-
-Support for the development of online training materials comes from the Government of Ontario through a grant from eCampusOntario, and the support of Fisheries and Oceans Canada and the Faculty of Science, University of Waterloo (https://www.quantitative-biology.ca)
 
 ## Other references
 <font size="1">Bandura A. 1997. Self-self Efficacy: The Exercise of Control. Freeman, New York.</font>
@@ -640,17 +667,4 @@ Support for the development of online training materials comes from the Governme
 - I'm still proofreading
 - always want your feedback (https://www.quantitative-biology.ca/index.html#feedback)
 
-
-## Why
-
-```{r, test, dev='png'}
-plot(1)
-```
-
-## Second slide
-
-![](`r knitr::fig_chunk('test', 'png')`)
-
-##
-<dev class="centered">
 
