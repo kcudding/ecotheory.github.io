@@ -41,7 +41,17 @@ color: black;
 
 </style>
 
+<style>
+/* Your other css */
 
+.section .reveal .state-background {
+    background: url(environmental_modelling.jpg);
+    background-position: center top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+}
+</style>
 
 ```{r setup, include=FALSE}
 library(knitr)
@@ -52,7 +62,7 @@ body {line-height: .8;}
 h2 {margin-bottom: -50px;}
 ```
 ## Co-authors
-Laura Bell, Warren Currie, Stephi Sobek-Swant, John Drake, Wonhyo Lee & Madison Brook 
+Laura Bell, Warren Currie (DFO), Stephi Sobek-Swant (rare reserve), John Drake, Wonhyo Lee & Madison Brook (DFO)
 
 ## Plan 
   + Epistemology: a brief and idiosyncratic overview
@@ -64,13 +74,7 @@ Laura Bell, Warren Currie, Stephi Sobek-Swant, John Drake, Wonhyo Lee & Madison 
  
 
 # Epistemology: How do we gain knowledge?
-<div class="notes">
-This is my *note*.
 
-- It can contain markdown
-- like this list
-
-</div>
 
 
 
@@ -148,8 +152,11 @@ Lewis Carroll - The Complete Illustrated Works. Gramercy Books, New York (1982)<
 </p>
 
 ## Main characteristic of models {.flexbox .vcenter} 
-
+<div class="notes">
 -models are always false in some aspects of their representation theory or data
+
+</div>
+
 <br/><br/><br/>
 <div align="center">
 <font size="7">Theory $\neq$ Model $\neq$ Reality </font></div>
@@ -206,11 +213,13 @@ knitr::include_graphics("overfit.jpg")
 - Occam's razor: "entities should not be multiplied beyond necessity"
 - simplified descriptions may omit important contingencies
 - may also omit time-varying variables, significant effects of environmental stochasticity etc
-- may have significant analysis/implementation issues and no mechanism, in which case the simplicity is self-defeating
-
 <font size="4"><p class="comment">“There are two ways of doing calculations in theoretical physics”, he said. <br/>“One way, and this is the way I prefer, is to have a clear physical picture of the process that you are calculating. The other way is to have a precise and self-consistent mathematical formalism. You have neither.” <br/><br/>Enrico Fermi speaking to Freeman Dyson about pseudoscalar meson theory </p></font>
 
 <font size="2"><div align="center">[Dyson (2004)](https://www.nature.com/articles/427297a)</div></font>
+
+- may have significant analysis/implementation issues and no mechanism, in which case the simplicity is self-defeating
+
+
 
 # <span style="color:red">$\rightarrow$</span>Simple models $\neq$ general principles
 
@@ -262,7 +271,7 @@ gradient.rect(xleft = 0.2, xright = 5, ybottom = 0, ytop = .055, col=color.gradi
 text(0.6, 0.16, "mechanistic", cex=2.3)
 text(4.5, 0.16, "phenomenological", cex=2.3)
 ```
-- particularly true for models at large scale, we will often code small-scale mechanisms as phenomenological components<br/> (i.e., when modelling forest stand dynamics, we will not include a mechanistic description of photosynthesis and evapotranspiration)
+- particularly true for models at large scale, we will often code small-scale mechanisms as phenomenological components<br/><br/> (i.e., when modelling forest stand dynamics, we will not include a mechanistic description of photosynthesis and evapotranspiration)
 
 ## Data-driven models, used by themselves, are generally phenomenological
 
@@ -286,34 +295,40 @@ knitr::include_graphics(c("extrapolate.png","https://imgs.xkcd.com/comics/extrap
 - as a result, one can come to erroneous conclusions
 
 
-## Mechanistic models are required for prediction to novel conditions
+## Strong claim: Mechanistic models are required for prediction to novel conditions
 
 - because these models are based on causal mechanisms rather than correlation, our confidence in extrapolating beyond known data is enhanced 
 - that said, there is always uncertainty about how an ecological process will interact with novel conditions
 
 
-## Models without mechanism provide no useful explanations or generalizations
+## Strong claim: Models without mechanism provide no useful explanations or generalizations
 
 - others disagree
-
+<br/>
 <font size="5"><p class="comment">"While mechanistic models provide the causality missing from machine learning approaches, their oversimplified assumptions and extremely specific nature prohibit the universal predictions achievable by machine learning." <br/><br/>[Baker et al. (2018). Mechanistic models versus machine learning, a fight worth fighting for the biological community? Biology Letters, 14(5), 20170660](https://doi.org/10.1098/rsbl.2017.0660)</p></font>
 
 
 ## The problem of induction and data-driven models
 
-- truth does not flow from the specific to the universal 
-"All swans in Austria in 1680" does not logically entail
-"All swans are white"
+- truth does not flow from the specific to the universal <font size="4">
+     - "All swans in Austria in 1680" <br/>
+does not logically entail
+     - "All swans are white"
 
-- nor does "All swans are white in Western Europe in 1300", "All swans are white in western Europe in 1301", ....." entail "All swans are white"
-
-- Hume (1739) pointed out that no matter how many specific statements we observe, we are never justified in reasoning to a universal statement
-- and, in fact, the discovery of actual black swans in 1697 showed that this was the case. It is logically invalid to ever reason from a specific statement to a universal statement.
+- nor does 
+    - "All swans are white in Western Europe in 1300", 
+    - "All swans are white in western Europe in 1301", 
+    - ....." <br/>
+entail 
+    - "All swans are white"
+</font>    
+- no matter how many specific statements we observe, we are never justified in reasoning to a universal statement Hume (1739)
+- discovery of actual black swans in 1697 
 
 ## Induction and scientific knowledge
 
-- Popper claimed to have refuted the idea that induction provides a foundation for knowledge ([Popper, Karl, and David Miller. A Proof of the Impossibility of Inductive Probability. Nature 302, no. 5910 (1983): 687–88.
-](https://doi.org/10.1038/302687a0)
+- Popper claimed to have refuted the idea that induction provides a foundation for knowledge <font size="4">([Popper, Karl, and David Miller. A Proof of the Impossibility of Inductive Probability. Nature 302, no. 5910 (1983): 687–88.
+](https://doi.org/10.1038/302687a0)</font>
 
 - given the success of machine learning, does this mean Popper was wrong that induction is a refuted theory?
 
@@ -388,8 +403,8 @@ graph TD
 ## Remember mechanistic models have specific domains of application 
 
 - once the mechanism is specified, the model can predict expected behaviour for given conditions, even when data for those particular conditions do not exist
-- do note though that the model has a particular domain of application <br/>(e.g., "this is a two-species model! it might work okay for agricultural fields, but it will screw up in highly connected communities")
-- on the other hand, when you are aware of the assumptions of the model, you can make guesses regarding the applicability outside of this domain <br/>(e.g., "true, but the interaction strength between these two species is really large compared to everything else") 
+- do note though that the model has a particular domain of application <br/><span style="color:blue">(e.g., "this is a two-species model! it might work okay for agricultural fields, but it will screw up in highly connected communities")</span>
+- on the other hand, when you are aware of the assumptions of the model, you can make guesses regarding the applicability outside of this domain <br/><span style="color:blue">(e.g., "true, but the interaction strength between these two species is really large compared to everything else")</span> 
 
 # So, how do we use models more effectively?
 
@@ -398,17 +413,19 @@ graph TD
 - more generally, mathematical and computational models often tend to appeal to classifications rather than mechanism
 
 - a common example is pairwise species interactions such as "predator-prey model",</br>
-(e.g.,Lotka-Volterra pred-prey model ($\frac{dN}{dt}=rN-aNP$))
+(e.g., Lotka-Volterra pred-prey model $\frac{dN}{dt}=rN-aNP$)
 
 - "predator-prey" model supposes there is a class of predator-prey interactions that have general properties across species, systems and time that are related to the outcome of the interaction (-/+)
 
 ## Suggestion 1: Expend more effort on mechanism and less on outcome classification 
 
-- I claim that these "classification" models have dubious explanatory and predictive value outside of the exemplar systems in which they were generated
+- "classification" models have dubious explanatory and predictive value outside of the exemplar systems in which they were generated
+
+- instead of using classifications of outcomes, we should to focus on incorporating mechanisms, which **may** generalize across species, systems and time 
 
 - for example, while specialist predators may always eat their prey, the net effect of this pairwise species interactions is not fixed
 
-- instead of using classifications of outcomes, we should to focus on incorporating mechanisms, which **may** generalize across species, systems and time 
+
 
 # case study: predators that benefit their prey
 
@@ -417,7 +434,7 @@ graph TD
 - intuition: we should remove they crayfish because predator-prey models predict decreases in prey population from predation 
 
 <div style="float: left; width: 40%;">
-<font size="5">e.g., Invasive rusty crayfish eat endangered Hine's emerald dragonfly larvae (-ve), but dig burrows that the larvae use for shelter (+ve) ([Pintor and Soluk 2006](https://doi.org/10.1016/j.biocon.2006.01.021) ) 
+<font size="5">Invasive rusty crayfish eat endangered Hine's emerald dragonfly larvae (-ve), but dig burrows that the larvae use for shelter (+ve) ([Pintor and Soluk 2006](https://doi.org/10.1016/j.biocon.2006.01.021) ) 
 
 </font>
 
@@ -430,7 +447,9 @@ include_graphics("hinescrayfish.png")
 
 
 ## Model of an engineering predator
-- if we assume that burrows benefit larvae survival rate by protecting then from drought, and make the same assumption for the predator crayfish we have
+- assume that burrows benefit larvae survival rate by protecting them from drought 
+- make the same assumption for the predator crayfish
+- to obtain
 
 $$
 \begin{aligned}
@@ -442,7 +461,9 @@ $$
 
 ## Model of an engineering predator
 
-If we further assume that burrows decay quickly in the absence of their owner, we find that, somewhat counterintuitively, the engineering predator can have a beneficial impact on its prey, and increase the equilibrium density if $a_1m>c_0k$
+- further assume that burrows decay quickly in the absence of their owner
+- find that the engineering predator can have a beneficial impact on its prey,
+- increase the equilibrium density if $a_1m>c_0k$
 
 ```{r, out.width = "60%",fig.align = 'center'}
 include_graphics("eepredtime.png")
@@ -450,13 +471,20 @@ include_graphics("eepredtime.png")
 
 ## Test the model of an engineering predator
 
-In the lab (burrowing nematodes and E.coli), we do find a positive impact of predators on prey under stressful environmental conditions on the surface of the agar (and neutral impacts under benign conditions)
+- test in model system (burrowing nematodes and E.coli)
+- find a positive impact of predators on prey under stressful environmental conditions on the surface of the agar
+- and neutral impacts under benign conditions
 
 
 ```{r, out.width = "50%",fig.align = 'center'}
 include_graphics("laura.jpg")
 ```
 <font size="2"><div align="center">[Bell and Cuddington 2019](https://doi.org/10.1002/ece3.5324)</font>
+
+## Lessons for using models in the engineering predator project
+
+- one of the real benefits of using mechanistic models is that they can make predictions you may not expect
+- relying on outcome classifications to both understand and design models precludes uderstanding all the outcomes of mechanism
 
 ## Suggestion 2: We need to understand and make better use of mechanistic model predictions
 - we have had a history of relying on the asymptotic predictions of mechanistic models in tests and predictions (Cuddington 2001)
@@ -644,7 +672,7 @@ include_graphics("hogweed.png")
 1. Entropy: the model is calibrated to find the distribution that is most spread out, or closest to uniform throughout the study region.
 
 2. Constraints: the rules that constrain the predicted distribution. These rules are based on the values of the environmental variables (called features) of the locations where the species has been observed. 
-
+<br/><br/><font size="4">[Phillips SJ, Anderson RP, Schapire RE (2006) Maximum entropy modeling of species geographic distributions. Ecol Modell 190(3–4):231–259.]( https://doi-org.proxy.lib.uwaterloo.ca/10.1016/j.ecolmodel.2005.03.026)</font>
 </div>
 <div style="float: right; width: 20%;">
 
