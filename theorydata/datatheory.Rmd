@@ -123,14 +123,14 @@ prey populations $\frac{dN}{dt}=f(N)-g(N,P)$</br></font>
 
 - computational (e.g., IBM)
 
-
+<br/>
+<br/>
 <p class="forceBreak"></p>
     
-    
-    
+
 <font size="4"> "predators can positively impact prey"</font>
-<br/>
-<br/>
+
+
 ```{r pressure, echo=FALSE, fig.align = 'left', fig.cap="Bell & Cuddington 2018", out.width = '35%'}
 knitr::include_graphics("laurawormscropped.jpg")
 ```
@@ -138,7 +138,8 @@ knitr::include_graphics("laurawormscropped.jpg")
 
 
  $E(y_i)=β_0+f(x_i)+\epsilon$ 
-<br/><br/>
+
+
 
 
 ```{r p2, echo=FALSE, fig.align = 'left', fig.cap="Cuddington & Yodzis 1999", out.width = '25%'}

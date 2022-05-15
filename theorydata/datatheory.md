@@ -120,14 +120,14 @@ prey populations $\frac{dN}{dt}=f(N)-g(N,P)$</br></font>
 
 - computational (e.g., IBM)
 
-
+<br/>
+<br/>
 <p class="forceBreak"></p>
     
-    
-    
+
 <font size="4"> "predators can positively impact prey"</font>
-<br/>
-<br/>
+
+
 <div class="figure" style="text-align: left">
 <img src="laurawormscropped.jpg" alt="Bell &amp; Cuddington 2018" width="35%" />
 <p class="caption">Bell & Cuddington 2018</p>
@@ -136,7 +136,8 @@ prey populations $\frac{dN}{dt}=f(N)-g(N,P)$</br></font>
 
 
  $E(y_i)=β_0+f(x_i)+\epsilon$ 
-<br/><br/>
+
+
 
 
 <div class="figure" style="text-align: left">
@@ -329,8 +330,8 @@ entail
 
 
 ```{=html}
-<div id="htmlwidget-13660a33f9c7d3fdf0c4" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-13660a33f9c7d3fdf0c4">{"x":{"diagram":"\ngraph TD\n  A(observe pattern)\n  B(theorize)\n  Q(generate models)\n  C(models predictions)\n  D(machine learning)\n  E(test model 1)\n  G(test model 2)\n  H(test model 3)\n  F(modify/reject theory/model)\n  I(accept theory)\n  J(GAM)\n  K(GLMM)\n  A-->B\n  D-->A\n  B-->Q\n  Q-->C\n  D-->E\n  C-->E\n  C-->G\n  C-->H\n  J-->G\n  K-->H\n  E-->|Reject| F\n  G-->|Reject|F\n  H-->|accept|I\n  F-->B\n style D fill:#FADADD\n style B fill:#B6E6E6;\n style C fill:#B6E6E6;\n style F fill:#B6E6E6;\n style I fill:#B6E6E6;\n style J fill:#FADADD\n style K fill:#FADADD\n class 0 style_main_node;\n    class A1,B1,C1 style_sub_node;\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4bfa58f32e1da99b6907" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4bfa58f32e1da99b6907">{"x":{"diagram":"\ngraph TD\n  A(observe pattern)\n  B(theorize)\n  Q(generate models)\n  C(models predictions)\n  D(machine learning)\n  E(test model 1)\n  G(test model 2)\n  H(test model 3)\n  F(modify/reject theory/model)\n  I(accept theory)\n  J(GAM)\n  K(GLMM)\n  A-->B\n  D-->A\n  B-->Q\n  Q-->C\n  D-->E\n  C-->E\n  C-->G\n  C-->H\n  J-->G\n  K-->H\n  E-->|Reject| F\n  G-->|Reject|F\n  H-->|accept|I\n  F-->B\n style D fill:#FADADD\n style B fill:#B6E6E6;\n style C fill:#B6E6E6;\n style F fill:#B6E6E6;\n style I fill:#B6E6E6;\n style J fill:#FADADD\n style K fill:#FADADD\n class 0 style_main_node;\n    class A1,B1,C1 style_sub_node;\n"},"evals":[],"jsHooks":[]}</script>
 ```
 ## Math is not magic (sadly): Mathematical models are not necessarily mechanistic
 
