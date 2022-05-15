@@ -10,7 +10,7 @@ output:
 ---
 title: 'What are models for and <br>can we use them more effectively?'
 
-author: "Kim Cuddington (https://ecotheory.ca)"
+author: "Kim Cuddington (https://ecotheory.ca) <br/>University of Waterloo"
 date: "16/05/2022"
 output: 
   ioslides_presentation: 
@@ -41,7 +41,17 @@ color: black;
 
 </style>
 
+<style>
+/* Your other css */
 
+.section .reveal .state-background {
+    background: url(environmental_modelling.jpg);
+    background-position: center top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+}
+</style>
 
 
 <style type="text/css">
@@ -49,25 +59,21 @@ body {line-height: .8;}
 h2 {margin-bottom: -50px;}
 </style>
 ## Co-authors
-Laura Bell, Warren Currie, Stephi Sobek-Swant, John Drake, Wonhyo Lee & Madison Brook 
+Laura Bell, Warren Currie (DFO), Stephi Sobek-Swant (rare reserve), John Drake, Wonhyo Lee & Madison Brook (DFO)
 
-## Plan 
-  + Epistemology: a brief and idiosyncratic overview
-  + Mechanism and novel conditions
-  + How can we use models more effectively
-    - Focus on mechanism: Predators that benefit their prey (Hine's Emerald dragonfly) 
-    - Understand all the model predictions: Regime shifts or transients (Bay of Quinte)
-    - Move between mechanistic and data-driven models: NA range prediction for Giant Hogweed
+## Today
+[ecotheory.ca/theorydata/datatheory.html](ecotheory.ca/theorydata/datatheory.html)
+
+1. Epistemology: a brief and idiosyncratic overview
+2. Mechanism and novel conditions
+3. How can we use models more effectively
+    - <span style="color:#8b0000; font-weight: bold">Focus on mechanism:</span> Predators that benefit their prey (Hine's Emerald dragonfly) 
+   - <span style="color:#8b0000; font-weight: bold">Understand all the model predictions:</span> Regime shifts or transients (Bay of Quinte)
+   - <span style="color:#8b0000; font-weight: bold">Move between mechanistic and data-driven models:</span> Machine learning to suggest mechanism for range limitation (Giant Hogweed)
  
 
 # Epistemology: How do we gain knowledge?
-<div class="notes">
-This is my *note*.
 
-- It can contain markdown
-- like this list
-
-</div>
 
 
 
@@ -75,13 +81,13 @@ This is my *note*.
 - reality
 - data: a biased subset of reality
 - opinion: what we believe about reality
-
-<span style="color:red">$\rightarrow$<bold>Science</bold></span>: an attitude linking belief and data, whereby we do not, 
+<br/><br/>
+<span style="color:#8b0000; font-weight: bold">$\rightarrow$<bold>Science</bold></span>: an attitude linking belief and data, whereby we do not, 
 at least in principle, maintain beliefs that are not supported by data 
 
 ## Scientific Theory
 - We may refer to beliefs supported by data, or which at least
-do not always contradict data, as **theories**
+do not always contradict data, as <span style="font-weight: bold">theories</span>
 
 - We will like theories to have a few other properties such as: 
     - logical consistency
@@ -95,7 +101,7 @@ do not always contradict data, as **theories**
     - embodies some of our beliefs about reality <font size="5"><br>e.g., predators negatively impact 
 prey populations $\frac{dN}{dt}=f(N)-g(N,P)$</br></font>
     - mimics some aspect of data <font size="5"><br>e.g., linear regression $y_i=\beta_0+\beta_1x_i+\epsilon$</br></font>
-    - combines these two components (e.g., makes a statement about the expected pattern of data in light of theory)<font size="5"><br>predator consumption rate can be described as a type II functional response: $\frac{g(N,P)}{P}=\frac{aN}{N+N_0}$</font> 
+    - combines these two components (e.g., makes a statement about the expected pattern of data in light of theory<font size="5"><br>predator consumption rate can be described as a type II functional response: $\frac{g(N,P)}{P}=\frac{aN}{N+N_0}$</font> )
 
 ## Types of models  {.columns-2}
 
@@ -147,8 +153,11 @@ Lewis Carroll - The Complete Illustrated Works. Gramercy Books, New York (1982)<
 </p>
 
 ## Main characteristic of models {.flexbox .vcenter} 
-
+<div class="notes">
 -models are always false in some aspects of their representation theory or data
+
+</div>
+
 <br/><br/><br/>
 <div align="center">
 <font size="7">Theory $\neq$ Model $\neq$ Reality </font></div>
@@ -200,11 +209,13 @@ Lewis Carroll - The Complete Illustrated Works. Gramercy Books, New York (1982)<
 - Occam's razor: "entities should not be multiplied beyond necessity"
 - simplified descriptions may omit important contingencies
 - may also omit time-varying variables, significant effects of environmental stochasticity etc
-- may have significant analysis/implementation issues and no mechanism, in which case the simplicity is self-defeating
-
 <font size="4"><p class="comment">“There are two ways of doing calculations in theoretical physics”, he said. <br/>“One way, and this is the way I prefer, is to have a clear physical picture of the process that you are calculating. The other way is to have a precise and self-consistent mathematical formalism. You have neither.” <br/><br/>Enrico Fermi speaking to Freeman Dyson about pseudoscalar meson theory </p></font>
 
 <font size="2"><div align="center">[Dyson (2004)](https://www.nature.com/articles/427297a)</div></font>
+
+- may have significant analysis/implementation issues and no mechanism, in which case the simplicity is self-defeating
+
+
 
 # <span style="color:red">$\rightarrow$</span>Simple models $\neq$ general principles
 
@@ -216,7 +227,7 @@ Lewis Carroll - The Complete Illustrated Works. Gramercy Books, New York (1982)<
 
 while we attempt to make do without it, both of these functions require mechanism (also called process), particularly for<br/><br/>
 <div align="center">
-<span style="color:red"><font size="7">Prediction under novel conditions</font></span></div>
+<span style="color:#8b0000; font-weight: bold"><font size="7">Prediction under novel conditions</font></span></div>
 <br/>
 <color:black>which absolutely requires mechanism
 
@@ -245,7 +256,7 @@ while we attempt to make do without it, both of these functions require mechanis
 ## All models can include phenomenological or mechanistic components or both
 - and in general it is a spectrum rather than a dichotomy
 <img src="datatheory_files/figure-html/unnamed-chunk-2-1.png" width="60%" />
-- particularly true for models at large scale, we will often code small-scale mechanisms as phenomenological components<br/> (i.e., when modelling forest stand dynamics, we will not include a mechanistic description of photosynthesis and evapotranspiration)
+- particularly true for models at large scale, we will often code small-scale mechanisms as phenomenological components<br/><br/> (i.e., when modelling forest stand dynamics, we will not include a mechanistic description of photosynthesis and evapotranspiration)
 
 ## Data-driven models, used by themselves, are generally phenomenological
 
@@ -266,34 +277,40 @@ while we attempt to make do without it, both of these functions require mechanis
 - as a result, one can come to erroneous conclusions
 
 
-## Mechanistic models are required for prediction to novel conditions
+## Strong claim: Mechanistic models are required for prediction to novel conditions
 
 - because these models are based on causal mechanisms rather than correlation, our confidence in extrapolating beyond known data is enhanced 
 - that said, there is always uncertainty about how an ecological process will interact with novel conditions
 
 
-## Models without mechanism provide no useful explanations or generalizations
+## Strong claim: Models without mechanism provide no useful explanations or generalizations
 
 - others disagree
-
+<br/><br/><br/><br/>
 <font size="5"><p class="comment">"While mechanistic models provide the causality missing from machine learning approaches, their oversimplified assumptions and extremely specific nature prohibit the universal predictions achievable by machine learning." <br/><br/>[Baker et al. (2018). Mechanistic models versus machine learning, a fight worth fighting for the biological community? Biology Letters, 14(5), 20170660](https://doi.org/10.1098/rsbl.2017.0660)</p></font>
 
 
 ## The problem of induction and data-driven models
 
-- truth does not flow from the specific to the universal 
-"All swans in Austria in 1680" does not logically entail
-"All swans are white"
+- truth does not flow from the specific to the universal <font size="4">
+     - "All swans are white in Austria in 1680" <br/>
+does not logically entail
+     - "All swans are white"
 
-- nor does "All swans are white in Western Europe in 1300", "All swans are white in western Europe in 1301", ....." entail "All swans are white"
-
-- Hume (1739) pointed out that no matter how many specific statements we observe, we are never justified in reasoning to a universal statement
-- and, in fact, the discovery of actual black swans in 1697 showed that this was the case. It is logically invalid to ever reason from a specific statement to a universal statement.
+- nor does 
+    - "All swans are white in Western Europe in 1300", 
+    - "All swans are white in western Europe in 1301", 
+    - ....." <br/>
+entail 
+    - "All swans are white"
+</font>    
+- no matter how many specific statements we observe, we are never justified in reasoning to a universal statement (Hume 1739)
+- discovery of actual black swans in 1697 
 
 ## Induction and scientific knowledge
 
-- Popper claimed to have refuted the idea that induction provides a foundation for knowledge ([Popper, Karl, and David Miller. A Proof of the Impossibility of Inductive Probability. Nature 302, no. 5910 (1983): 687–88.
-](https://doi.org/10.1038/302687a0)
+- Popper claimed to have refuted the idea that induction provides a foundation for knowledge <font size="4">([Popper, Karl, and David Miller. A Proof of the Impossibility of Inductive Probability. Nature 302, no. 5910 (1983): 687–88.
+](https://doi.org/10.1038/302687a0))</font>
 
 - given the success of machine learning, does this mean Popper was wrong that induction is a refuted theory?
 
@@ -304,7 +321,7 @@ while we attempt to make do without it, both of these functions require mechanis
 
 
 ## Models without mechanism provide no explanations and no "universal" generalizations
-- the "universal predictions" found by data-driven models may not be helpful since they do not include novel conditions, and are therefore not necessarily "universal"
+- the "universal predictions" found by data-driven models may not be helpful since they do not include novel conditions
 - we can try to use these patterns to predict the future, but we will not be able to explain why our predictions failed or succeeded
 - such patterns can be fodder for hypothesizing about mechanism, but they are the START rather than the CONCLUSION of scientific inquiry
  
@@ -312,12 +329,12 @@ while we attempt to make do without it, both of these functions require mechanis
 
 
 ```{=html}
-<div id="htmlwidget-a63eb8e27d4c0c68957b" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a63eb8e27d4c0c68957b">{"x":{"diagram":"\ngraph TD\n  A(observe pattern)\n  B(theorize)\n  Q(generate models)\n  C(models predictions)\n  D(machine learning)\n  E(test model 1)\n  G(test model 2)\n  H(test model 3)\n  F(modify/reject theory/model)\n  I(accept theory)\n  \n  A-->B\n  D-->A\n  B-->Q\n  Q-->C\n  D-->E\n  C-->E\n  C-->G\n  C-->H\n  E-->|Reject| F\n  G-->|Reject|F\n  H-->|accept|I\n  F-->B\n style D fill:#FADADD\n style B fill:#B6E6E6;\n style C fill:#B6E6E6;\n style F fill:#B6E6E6;\n style I fill:#B6E6E6;\n \n class 0 style_main_node;\n    class A1,B1,C1 style_sub_node;\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-13660a33f9c7d3fdf0c4" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-13660a33f9c7d3fdf0c4">{"x":{"diagram":"\ngraph TD\n  A(observe pattern)\n  B(theorize)\n  Q(generate models)\n  C(models predictions)\n  D(machine learning)\n  E(test model 1)\n  G(test model 2)\n  H(test model 3)\n  F(modify/reject theory/model)\n  I(accept theory)\n  J(GAM)\n  K(GLMM)\n  A-->B\n  D-->A\n  B-->Q\n  Q-->C\n  D-->E\n  C-->E\n  C-->G\n  C-->H\n  J-->G\n  K-->H\n  E-->|Reject| F\n  G-->|Reject|F\n  H-->|accept|I\n  F-->B\n style D fill:#FADADD\n style B fill:#B6E6E6;\n style C fill:#B6E6E6;\n style F fill:#B6E6E6;\n style I fill:#B6E6E6;\n style J fill:#FADADD\n style K fill:#FADADD\n class 0 style_main_node;\n    class A1,B1,C1 style_sub_node;\n"},"evals":[],"jsHooks":[]}</script>
 ```
 ## Math is not magic (sadly): Mathematical models are not necessarily mechanistic
 
-- starting from <font size="4">$\frac{dN}{dt}=f(N)-g(N,P)$</font> is no different than starting from <font size="4">$y_i=\beta_0 + f(x_i)+\epsilon$</font> in terms of mechanism
+- starting from <font size="5">$\frac{dN}{dt}=f(N)-g(N,P)$</font> is no different than starting from <font size="5">$y_i=\beta_0 + f(x_i)+\epsilon$</font> in terms of mechanism
 
 - we need an explanation or idea about how the predators negatively impact prey population growth rate (what is g(N,P)?)
 
@@ -325,6 +342,7 @@ while we attempt to make do without it, both of these functions require mechanis
 
 - we can leave g(N,P) to be a mere description of pattern, 
 - or we can examine natural data closely, devise experiments, or reason logically to develop ideas about mechanism that inform the function
+<br/><br/><br/>
 
 <font size="5"><p class="comment">"the characteristics of any specific example of a complex process can be determined by the action and interaction of a number of discrete components"<br/>
 (Holling 1959a,b, 1966)</p></font>
@@ -332,36 +350,38 @@ while we attempt to make do without it, both of these functions require mechanis
 ## Remember mechanistic models have specific domains of application 
 
 - once the mechanism is specified, the model can predict expected behaviour for given conditions, even when data for those particular conditions do not exist
-- do note though that the model has a particular domain of application <br/>(e.g., "this is a two-species model! it might work okay for agricultural fields, but it will screw up in highly connected communities")
-- on the other hand, when you are aware of the assumptions of the model, you can make guesses regarding the applicability outside of this domain <br/>(e.g., "true, but the interaction strength between these two species is really large compared to everything else") 
+- do note though that the model has a particular domain of application <br/><span style="color:#8b0000">(e.g., "this is a two-species model! it might work okay for agricultural fields, but it will screw up in highly connected communities")</span>
+- on the other hand, when you are aware of the assumptions of the model, you can make guesses regarding the applicability outside of this domain <br/><span style="color:#8b0000">(e.g., "true, but the interaction strength between these two species is really large compared to everything else")</span> 
 
 # So, how do we use models more effectively?
 
 ## Suggestion 1: Expend more effort on mechanism and less on outcome classification 
 
-- more generally, mathematical and computational models often tend to appeal to classifications rather than mechanism
+- selection/creation of mathematical and computational models often tends to appeal to classifications rather than mechanism
 
 - a common example is pairwise species interactions such as "predator-prey model",</br>
-(e.g.,Lotka-Volterra pred-prey model ($\frac{dN}{dt}=rN-aNP$))
+(e.g., Lotka-Volterra pred-prey model $\frac{dN}{dt}=rN-aNP$)
 
 - "predator-prey" model supposes there is a class of predator-prey interactions that have general properties across species, systems and time that are related to the outcome of the interaction (-/+)
 
 ## Suggestion 1: Expend more effort on mechanism and less on outcome classification 
 
-- I claim that these "classification" models have dubious explanatory and predictive value outside of the exemplar systems in which they were generated
+- "classification" models have dubious explanatory and predictive value outside of the exemplar systems in which they were generated
+
+- instead of using classifications of outcomes, we should to focus on incorporating mechanisms, which <span style="font-weight: bold">**may**</span> generalize across species, systems and time 
 
 - for example, while specialist predators may always eat their prey, the net effect of this pairwise species interactions is not fixed
 
-- instead of using classifications of outcomes, we should to focus on incorporating mechanisms, which **may** generalize across species, systems and time 
+
 
 # case study: predators that benefit their prey
 
 ## Rusty crayfish and endangered Hine's emerald dragonfly
 
-- intuition: we should remove they crayfish because predator-prey models predict decreases in prey population from predation 
-
+- intuition: we should remove the crayfish because predator-prey models predict decreases in prey density from predation 
+<br/><br/>
 <div style="float: left; width: 40%;">
-<font size="5">e.g., Invasive rusty crayfish eat endangered Hine's emerald dragonfly larvae (-ve), but dig burrows that the larvae use for shelter (+ve) ([Pintor and Soluk 2006](https://doi.org/10.1016/j.biocon.2006.01.021) ) 
+<font size="5">Invasive rusty crayfish eat endangered Hine's emerald dragonfly larvae (-ve), but also dig burrows that the larvae use for shelter (+ve) ([Pintor and Soluk 2006](https://doi.org/10.1016/j.biocon.2006.01.021) ) 
 
 </font>
 
@@ -372,34 +392,45 @@ while we attempt to make do without it, both of these functions require mechanis
 
 
 ## Model of an engineering predator
-- if we assume that burrows benefit larvae survival rate by protecting then from drought, and make the same assumption for the predator crayfish we have
+- assume that burrows benefit larvae survival rate by protecting them from drought 
+- make the same assumption for the predator crayfish
+- to obtain
 
 $$
 \begin{aligned}
 &\frac{dN}{dt}=N((a_0+a_1E)-(b_0)N-(c_0)P) \\
 &\frac{dP}{dt}=P((f_0+f_1E)-(g_0)P+(h_0)N) \\
-&\frac{dE}{dt}=-k(E)+mP,
+&\frac{dE}{dt}=-k(E)+mP
 \end{aligned}
 $$
 
 ## Model of an engineering predator
 
-If we further assume that burrows decay quickly in the absence of their owner, we find that, somewhat counterintuitively, the engineering predator can have a beneficial impact on its prey, and increase the equilibrium density if $a_1m>c_0k$
+- further assume that burrows decay quickly in the absence of their owner
+- find that the engineering predator can have a beneficial impact on its prey,
+- increase the equilibrium density if $a_1m>c_0k$
 
 <img src="eepredtime.png" width="60%" style="display: block; margin: auto;" />
 
 ## Test the model of an engineering predator
 
-In the lab (burrowing nematodes and E.coli), we do find a positive impact of predators on prey under stressful environmental conditions on the surface of the agar (and neutral impacts under benign conditions)
+- test in model system (burrowing nematodes and <span style="font-style: italic">E.coli</span>)
+- find a positive impact of predators on prey under stressful environmental conditions on the surface of the agar
+- and neutral impacts under benign conditions
 
 
 <img src="laura.jpg" width="50%" style="display: block; margin: auto;" />
 <font size="2"><div align="center">[Bell and Cuddington 2019](https://doi.org/10.1002/ece3.5324)</font>
 
+## Lessons for using models in the engineering predator project
+
+1. one of the real benefits of using mechanistic models is that they can make predictions you may not expect
+2. relying on outcome classifications to both understand and design models precludes understanding all the outcomes of mechanism
+
 ## Suggestion 2: We need to understand and make better use of mechanistic model predictions
-- we have had a history of relying on the asymptotic predictions of mechanistic models in tests and predictions (Cuddington 2001)
-- transient behaviour is common and important (Hastings et al, 2018, Francis et al. 2021)
-- interactions of model behaviour with time-varying parameters and stochasticity also common and important (Hastings et al. 2022, Laubmeier et al. 2021)
+- we have had a history of relying on the asymptotic predictions of mechanistic models in tests and predictions ([Cuddington 2001](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.1065.7465&rep=rep1&type=pdf))
+- transient behaviour is common and important ( [Hastings et al. 2018](https://pubmed.ncbi.nlm.nih.gov/30190378/), [Francis et al. 2021](https://doi.org/10.1038/s41559-020-01365-0))
+- interactions of model behaviour with time-varying parameters and stochasticity is also common and important ([Hastings et al. 2022](https://doi.org/10.1098/rsif.2021.0257), [Laubmeier et al. 2021](https://doi.org/10.1016/j.tree.2020.08.006))
 
 
 # case study: regime shifts in the Bay of Quinte
@@ -561,7 +592,7 @@ In the lab (burrowing nematodes and E.coli), we do find a positive impact of pre
 1. Entropy: the model is calibrated to find the distribution that is most spread out, or closest to uniform throughout the study region.
 
 2. Constraints: the rules that constrain the predicted distribution. These rules are based on the values of the environmental variables (called features) of the locations where the species has been observed. 
-
+<br/><br/><font size="4">[Phillips SJ, Anderson RP, Schapire RE (2006) Maximum entropy modeling of species geographic distributions. Ecol Modell 190(3–4):231–259.]( https://doi-org.proxy.lib.uwaterloo.ca/10.1016/j.ecolmodel.2005.03.026)</font>
 </div>
 <div style="float: right; width: 20%;">
 
@@ -572,17 +603,26 @@ In the lab (burrowing nematodes and E.coli), we do find a positive impact of pre
 
 - use experimental data to suggest candidate predictors: may require cold stratification, refer moist sites
 
-- initial Maxent model to find strong candidates and eliminate correlated predictors (normally we would leave these in and assume that the penalization would take are of correlation)
+- initial Maxent model to find strong candidates and eliminate correlated predictors (normally we would leave these in and assume that the penalization would take care of overfitting)
 
 <img src="tblehogweed.png" width="100%" style="display: block; margin: auto;" />
 <font size="2"><div align="center">[Cuddington et al. 2022](https://doi.org/10.1007/s10530-021-02645-x)</div></font>`
 
-## Develop data-driven models, with an eye to mechanism
-- constraint Maxent functions to forms that mimic standard ecothermic relationships (again, these are data-based)
+## Constrain Maxent for mechanism {#margins}
+
+<div style="float: left; width: 60%">
+- constraint Maxent to functions that mimic standard ectothermic relationships (data)
 - train on a global dataset, test in inside and outside of training data range
+</div>
+<div style="float: right; width: 40%">
+<img src="thermal.jpg" width="90%" style="display: block; margin: auto;" />
+<font size="2"><div align="center">[Madueño 2016](https://doi.org/10.13140/RG.2.1.1494.2322)</div></font>`
+</div>
 
 
-<img src="hogweedmap.png" width="80%" style="display: block; margin: auto;" />
+
+
+<img src="hogweedmap.png" width="70%" style="display: block; margin: auto;" />
 <font size="2"><div align="center">[Cuddington et al. 2022](https://doi.org/10.1007/s10530-021-02645-x)</div></font>`
 
 
@@ -592,12 +632,19 @@ In the lab (burrowing nematodes and E.coli), we do find a positive impact of pre
 <img src="modelshogweed.png" width="80%" style="display: block; margin: auto;" />
 <font size="2"><div align="center">[Cuddington et al. (2022)](https://doi.org/10.1007/s10530-021-02645-x)</div></font>`
 
-## Lessons from the Giant Hogweed Maxent mode
-- we can use data-driven modelling to identify mechanism
-     - requirements for cold seed stratification temperatures to break dormancy
-    - with development delays above this range 
-- this use of a data-driven model does require constraints, previous experiment, and some logical connections
+## Lessons from the Giant Hogweed Maxent study
+1. we can use data-driven modelling to identify mechanism
+    - requirements for cold seed stratification temperatures to break dormancy
+    - with moisture requirements? 
+2.  this use of a data-driven model does require constraints, previous experiment, and some logical connections
 
+## Conclusion
+
+Let's use models more effectively by:
+
+- <span style="color:#8b0000; font-weight: bold">Focussing on mechanism</span> 
+- <span style="color:#8b0000; font-weight: bold">Understanding all the model predictions</span> 
+- <span style="color:#8b0000; font-weight: bold">Moving between mechanistic and data-driven models</span>
 
 ## Open Science
 
@@ -609,6 +656,8 @@ https:/github.com/kcudding/theorydata
 
 <img src="https://imgs.xkcd.com/comics/how_it_works.png" width="60%" style="display: block; margin: auto;" />
 <font size="2"><div align="center">https://xkcd.com/385/ </div></font>
+
+
 
 ## Funding
 
