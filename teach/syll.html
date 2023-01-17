@@ -1,0 +1,728 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+  <title>out</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+</head>
+<body>
+
+    
+    <div class="container mt-5">
+      <div class="row">
+            <div class="col-12">
+
+      
+      <p><strong>BIOL 652</strong> <strong>Advanced Ecology Winter Term
+2023</strong></p>
+<p><strong>Time and place</strong>: TBD</p>
+<p><strong>Instructor</strong>: Dr. Kim Cuddington, B2 241, 888-4567
+ext. 33669, e-mail: <a href="mailto:kcudding@uwaterloo.ca"
+class="email">kcudding@uwaterloo.ca</a></p>
+<p><strong>Course description</strong></p>
+<p>We will survey the field of ecology starting with background in
+individual, population, community, evolutionary and ecosystem ecology.
+We will simultaneously examine new developments in selected areas
+dependent on student interest.</p>
+<p>Winter 2023: Topic of interest is population modelling with an
+emphasis on stage-structured models</p>
+<p><strong>Course learning objectives:</strong></p>
+<p>Content objectives</p>
+<ol type="1">
+<li><p>List and explain major concepts in one area of ecology,</p></li>
+<li><p>Explain major new developments in one area of ecology</p></li>
+</ol>
+<p>Skill objectives</p>
+<ol start="3" type="1">
+<li><p>Develop writing skills</p></li>
+<li><p>Develop mathematical, statistical and computation skills
+necessary for population modelling</p></li>
+<li><p>Learn how to provide open science documentation for population
+modelling</p></li>
+</ol>
+<p><strong>Course structure</strong></p>
+<p>Level 1 Introduction to modelling and simple unstructured models,
+including the role of stochasticity</p>
+<p>Level 2 Introduction and application of simple structured population
+models (matrix models), ), including stochasticity</p>
+<p>Level 3 Integral projection models for structured population
+modelling, including stochasticity</p>
+<p>Level 4 Transients and reactivity in structured population models</p>
+<p><strong>Student assessment</strong>:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 18%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Type</strong></th>
+<th><strong>Weight</strong></th>
+<th><strong>Date</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OER presentation - lead</td>
+<td>15%</td>
+<td>Sign up: Jan 18, Feb 8, Mar 8, Mar 29</td>
+</tr>
+<tr class="even">
+<td>OER outline - lead</td>
+<td>5%</td>
+<td>Sign up: Jan 25, Feb 14, Mar 15, Apr 5</td>
+</tr>
+<tr class="odd">
+<td>OER presentation - supporting</td>
+<td>3@ 5%</td>
+<td>Jan 25/Feb 1, Feb 15/Mar 1, Mar 15/22, Apr 5</td>
+</tr>
+<tr class="even">
+<td>OER materials - lead</td>
+<td>10%</td>
+<td>Sign up: Feb 1, Mar 1, Mar 22, Apr 12,</td>
+</tr>
+<tr class="odd">
+<td>OER materials - supporting</td>
+<td>3@ 5%</td>
+<td>Feb 1, Mar 1, Mar 22, Apr 12</td>
+</tr>
+<tr class="even">
+<td>Quantitative exercises</td>
+<td>4@ 10%</td>
+<td>Feb 8, Mar 8, Mar 29, Apr 20</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Description of Graded Assessments</strong></p>
+<p><strong>OER presentation - lead:</strong> An oral presentation to the
+class providing an overview of the topic area including some materials
+that will be included in the OER project, identification of key papers,
+and selection of recent paper, overview of R resources for the topic,
+bibliography). Format is a 50 min lecture appropriate to a
+4<sup>th</sup> year undergraduate or 1<sup>st</sup> graduate course,
+followed by a paper discussion, and ideas for the class contribution to
+the OER product</p>
+<p><strong>OER presentation - supporting:</strong> An oral presentation
+to the class providing an overview of the topic area including some
+materials that will be included in the OER project, identification of
+key papers, and selection of recent paper, overview of R resources for
+the topic, bibliography). Format is a 20 min lecture appropriate to a
+4<sup>th</sup> year undergraduate or 1<sup>st</sup> graduate course,
+followed by a paper discussion, and ideas for the class contribution to
+the OER product</p>
+<p><strong>OER outline - lead:</strong> Each student will submit a
+written outline of the OER presentation that can be incorporated in the
+course OER materials (.md or .rmd format). This material will cover
+major concepts in the area (~2 pages), a classical reading (~1 page),
+and a new reading (~1page), R resources and a bibliography. References
+must be supplied as required, and the document must compile without
+errors. Maximum of 2 pages in .pdf format (500 words) due 17:00, 1 weeks
+after the initial presentation.</p>
+<p><strong>OER materials - lead:</strong> Each student will combine
+supporting and original materials in a teaching unit (.md or .rmd
+format). This material will cover major concepts in the area (~2 pages),
+a classical reading and a new reading, R resources and a bibliography.
+References must be supplied as required, and the document must compile
+without errors. Maximum of 5 pages in .pdf format (1500 words) due
+17:00, 2 weeks after the initial presentation. Final grade for this
+section will be related to the quality of all submitted materials
+(including those created by the supporting team), but the lead will have
+the opportunity to both provide feedback to supporting members, and to
+revise the materials themselves in accordance with instructor
+feedback.</p>
+<p><strong>OER materials - supporting:</strong> Each student will submit
+written materials for each of the 3 remaining OER sections as requested
+by the project lead (.md or .rmd format). This material may cover major
+concepts in the area, readings, mathematics or programming, and R
+resources. References must be supplied as required, and document must
+compile without errors. Should be about 2 pages in .pdf format due
+17:00, 2 weeks after the initial presentation. Supporting members will
+have the opportunity to revise the materials based on feedback from the
+lead and instructor.</p>
+<p><strong>Quantitative exercises:</strong> Exercises will graded on a
+pass/fail basis with opportunity for revision. Exercises may
+include<strong>:</strong></p>
+<ol type="1">
+<li>Short answer questions asking students to identify and clearly
+explain concepts and theories in ecology</li>
+</ol>
+<blockquote>
+<p><em>A satisfactory score is achieved if: 1. All calculations are
+correct, 2. All statistics are interpreted correctly, 3. All short
+answers are grammatically correct, 4. All answers are broadly correct
+(specific details may be wrong, but broad/important concepts must be
+right)</em></p>
+</blockquote>
+<ol start="2" type="1">
+<li>A demonstration of the students’ ability to formulate and analyze
+statistical and mathematical models</li>
+</ol>
+<blockquote>
+<p><em>A satisfactory score is achieved if: 1. All calculations are
+correct, 2. All statistics are interpreted correctly, 3. All methods
+correctly implemented, and 4. the analysis of mathematical models is
+correctly interpreted.</em></p>
+</blockquote>
+<ol start="3" type="1">
+<li>A demonstration of the student’s ability to use the R programming
+environment to prepare data sets, test hypotheses, construct and analyze
+mathematical models, compare model predictions to data, and document
+their activities so that the research is reproducible</li>
+</ol>
+<blockquote>
+<p><em>A satisfactory score is achieved if: 1. The code runs, 2. The
+coding is reproducible, 3. All calculations are correct, 4. All
+statistics and models are interpreted correctly</em></p>
+</blockquote>
+<ol start="4" type="1">
+<li>For level 4 only, part marks will be used rather than
+pass/fail.</li>
+</ol>
+<p><strong>Illness</strong></p>
+<p>Since the course is structured so that students assess and comment on
+the work of others, illness that prevents on time presentations or
+delivery of is particularly disruptive. If you believe illness will
+prevent you from completing your duties, please inform the instructor AS
+SOON AS POSSIBLE in order for us to make alternate arrangements. Illness
+that prevents completing of assignments or presentations must be
+documented with a verification of illness form from the university
+medical center indicating SEVERE incapacitation on the day of the
+presentation or the day before an assignment is due.</p>
+<p>If for any reason a student misses a presentation, <strong><u>the
+weight of the presentation will be added to the materials submission for
+the level</u></strong>. If for any reason a student misses the deadline
+for materials, a new due date will be assigned, and all students
+affected will have related their due dates adjusted. If for any reason a
+student misses a submission of a quantitative exercise, the
+<strong><u>the weight of that exercise will be automatically added to to
+the next exercise</u></strong>. Since the course is structured so that
+students assess and comment on the work of others, it will often be
+necessary</p>
+<p><strong>Academic integrity</strong></p>
+<p>In order to maintain a culture of academic integrity, members of the
+University of Waterloo community are expected to promote honesty, trust,
+fairness, respect and responsibility.</p>
+<p>Students are expected to know what constitutes academic integrity, to
+avoid committing academic offenses, and to take responsibility for their
+actions. Students who are unsure whether an action constitutes an
+offense, or who need help in learning how to avoid offenses (e.g.,
+plagiarism, cheating) or about ‘rules’ for group work/collaboration
+should seek guidance from the course instructor, academic advisor, or
+the Associate Dean of Science for Undergraduate Studies. For information
+on categories of offenses and types of penalties, students should refer
+to Policy #71, Student Discipline. For information on typical penalties,
+students should check Guidelines for the Assessment of Penalties.</p>
+<p>If you need help in learning what constitutes an academic offence;
+how to avoid offences such as plagiarism, cheating, and unauthorized
+resubmission of work; how to follow appropriate rules with respect to
+“group work” and collaboration; or if you need clarification of aspects
+of the discipline policy, ask your course instructor for guidance. Other
+resources regarding the discipline policy are your academic advisor and
+the Undergraduate Associate Dean.</p>
+<p>Excessive co-operation or collaboration in this course includes but
+is not limited to:</p>
+<ul>
+<li><p><strong>Copying assessment material from another student and
+presenting it as your own work</strong></p></li>
+<li><p>Re-creating assignments questions and answers without the express
+permission of the course instructor</p></li>
+<li><p>Obtaining, distributing or receiving unauthorized academic
+material without the express consent of the course instructor</p></li>
+<li><p>Sharing unauthorized course-related materials via hard-copy,
+email, social media or LEARN</p></li>
+<li><p>Using LEARN email lists to sell or distribute unauthorized
+academic material.</p></li>
+</ul>
+<p><strong><u>Please note I recommend a grade of 0% (F) when I have
+evidence of academic dishonesty.</u></strong></p>
+<p><strong><br />
+Student grievances and appeals</strong></p>
+<p>Students, who believe that a decision affecting some aspect of their
+university life has been unfair or unreasonable, may have grounds for
+initiating a grievance. Students should read Policy #70, Student
+Petitions and Grievances, Section 4. When in doubt, students must
+contact the department’s/school’s administrative assistant who will
+provide further assistance.</p>
+<p>A decision or penalty imposed under <a
+href="https://uwaterloo.ca/secretariat/policies-procedures-guidelines/policy-33-procedures-resolving-complaints-ethical-misconduct">Policy
+33 (Ethical Behavior),</a> <a
+href="https://uwaterloo.ca/secretariat/policies-procedures-guidelines/policy-70">Policy
+#70 (Student Petitions and Grievances)</a> or <a
+href="https://uwaterloo.ca/secretariat/policies-procedures-guidelines/policy-71">Policy
+#71 (Student Discipline)</a> may be appealed, if there is a ground.
+Students who believe they have a ground for an appeal should refer to <a
+href="file:///Users/Kim/kim/teach/Policy%20#72%20(Student%20Appeals)">Policy
+#72 (Student Appeals)</a>.</p>
+<p><strong>Student accommodation</strong></p>
+<p>If students require academic accommodations to lessen the impact of
+their disability, they should register with <a
+href="https://uwaterloo.ca/accessability-services/">AccessAbility
+Services</a> at the beginning of each academic term.</p>
+<p><strong><br />
+Tentative Course Schedule:</strong> The course lecture plan and the
+schedule of due dates given above will be followed as closely as
+possible, but some changes may occur.</p>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+<col style="width: 26%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>
+<strong>Suggested timeline</strong>
+</td>
+<td>
+<strong>Topics</strong>
+</td>
+<td>
+<strong>Assessment due dates</strong>
+</td>
+<td>
+<strong>%</strong>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+1
+</p>
+<p>
+(Jan 9-13)
+</p>
+</td>
+<td>
+Class structure, introduction to modelling, formulating simple models
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+2
+</p>
+<p>
+(Jan 16-20)
+</p>
+</td>
+<td>
+UNSTRUCTURED: Simple models of population dynamics and stochasticity (Ch
+5)
+</td>
+<td>
+OER L1 – lead presentation
+</td>
+<td>
+Lead presentation:15
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+3
+</p>
+<p>
+(Jan 23-27)
+</p>
+</td>
+<td>
+UNSTRUCTURED: Simple models of population dynamics: density-dependent
+population models (Ch 5)
+</td>
+<td>
+<p>
+OER L1 outline -lead contribution
+</p>
+<p>
+OER L1 – supporting present
+</p>
+</td>
+<td>
+Lead outline: 5
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+4
+</p>
+<p>
+(Jan 30-Feb 3)
+</p>
+</td>
+<td>
+UNSTRUCTURED: Comparing models to data (Ch 6)
+</td>
+<td>
+<p>
+OER L1– supporting materials
+</p>
+<p>
+OER L1 – supporting present
+</p>
+<p>
+OER L1 – lead materials
+</p>
+</td>
+<td>
+<p>
+Supporting materials: 5
+</p>
+<p>
+Supporting presentation: 5
+</p>
+<p>
+Lead materials: 10
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+5
+</p>
+<p>
+(Feb 6-10)
+</p>
+</td>
+<td>
+MATRIX: More detailed population models (Ch 7)
+</td>
+<td>
+<p>
+OER L1 review/revise<br /> OER L1 exercise
+</p>
+<p>
+OER L2 – lead presentation
+</p>
+</td>
+<td>
+<p>
+Increases with revision (both OER and exercise)
+</p>
+<p>
+Exercise: 10
+</p>
+<p>
+Lead presentation:15
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+6
+</p>
+<p>
+(Feb 13-17)
+</p>
+</td>
+<td>
+MATRIX: Predictions with more detailed models (Ch 7)
+</td>
+<td>
+<p>
+OER L2 outline -lead contribution
+</p>
+<p>
+OER L2 – supporting present
+</p>
+</td>
+<td>
+Lead outline: 5
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+7
+</p>
+<p>
+(Feb 27-Mar 3)
+</p>
+</td>
+<td>
+MATRIX: Applications of matrix models (Ch 7) VPA and stochasticity
+</td>
+<td>
+<p>
+OER L2 – supporting present
+</p>
+<p>
+OER L2– supporting materials
+</p>
+<p>
+OER L2 – lead materials
+</p>
+</td>
+<td>
+<p>
+Supporting materials: 5
+</p>
+<p>
+Supporting presentation: 5<br /> Lead materials: 10
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+8
+</p>
+<p>
+(Mar 6-10)
+</p>
+</td>
+<td>
+IPM: Intro to integral projection models
+</td>
+<td>
+<p>
+OER L2 review/revise
+</p>
+<p>
+OER L2 exercise
+</p>
+<p>
+OER L3 – lead presentation
+</p>
+</td>
+<td>
+<p>
+Increases with revision (both OER and exercise)
+</p>
+<p>
+Exercise: 10
+</p>
+<p>
+Lead presentation:15
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+9
+</p>
+<p>
+(Mar 13-18)
+</p>
+</td>
+<td>
+IPM: Parameterizing integral projection models
+</td>
+<td>
+<p>
+OER L3 outline -lead contribution
+</p>
+<p>
+OER L3 – supporting present
+</p>
+</td>
+<td>
+Lead outline: 5
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+10
+</p>
+<p>
+(Mar 20-24)
+</p>
+</td>
+<td>
+IPM: lack of data
+</td>
+<td>
+<p>
+OER L3 – supporting present
+</p>
+<p>
+OER L3– supporting materials
+</p>
+<p>
+OER L3 – lead materials
+</p>
+</td>
+<td>
+<p>
+Supporting materials: 5
+</p>
+<p>
+Supporting presentation: 5
+</p>
+<p>
+Lead materials: 10
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+11
+</p>
+<p>
+(Mar 27-31)
+</p>
+</td>
+<td>
+Transient dynamics of structured models
+</td>
+<td>
+<p>
+OER L3 - review/revise
+</p>
+<p>
+OER L3 exercise
+</p>
+<p>
+OER L4 – lead presentation
+</p>
+</td>
+<td>
+<p>
+Increases with revision (both OER and exercise)
+</p>
+<p>
+Exercise: 10
+</p>
+<p>
+Lead presentation:15
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+12
+</p>
+<p>
+(Apr 3-7)
+</p>
+</td>
+<td>
+Transient dynamics of structured models
+</td>
+<td>
+<p>
+OER L4 outline -lead contribution
+</p>
+<p>
+OER L4 – supporting present
+</p>
+</td>
+<td>
+Lead outline: 5
+</td>
+</tr>
+<tr class="even">
+<td>
+Apr 12
+</td>
+<td>
+</td>
+<td>
+<p>
+OER L4 – supporting present
+</p>
+<p>
+OER L4 – supporting materials
+</p>
+<p>
+OER L4 – lead materials
+</p>
+</td>
+<td>
+<p>
+Supporting materials: 5
+</p>
+<p>
+Supporting presentation: 5
+</p>
+<p>
+Lead materials: 10
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+Apr 20
+</td>
+<td>
+</td>
+<td>
+<p>
+OER L4 - review/revise
+</p>
+<p>
+OER L4 exercise
+</p>
+</td>
+<td>
+<p>
+Increases with revision (both OER and exercise)
+</p>
+<p>
+Exercise: 10
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
