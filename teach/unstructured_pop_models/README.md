@@ -1,1 +1,1 @@
-[unstructured_population_models](htmlpreview.github.io/?https://raw.githubusercontent.com/kcudding.github.io/teach/unstructured_pop_models/unstruct_pop_models.html) 
+[unstructured_population_models](htmlpreview.github.io/?https://github.com/kcudding/kcudding.github.io/blob/39691f3e27fd030b4f4c9ad292682f690afcd840/teach/unstructured_pop_models/unstruct_pop_models.html) 
