@@ -1,0 +1,341 @@
+---
+title: "unstruct_pop_models"
+date: '2023-01-18'
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,always_allow_html = TRUE, tidy.opts=list(width.cutoff=60), tidy=TRUE)
+```
+
+# **Draft Outline - Module 1: Unstructured Population Models**
+
+## Introduction
+
+This module covers the most simple models to predict the dynamics of populations, such as **exponential models**. Next, **stochasticity**, or random effects, is approached as affecting population dynamics. Lastly, **density-dependency** is introduced as a phenomena that takes place when the amount of individuals present in a given population interferes with the growth rate of that population.  
+
+### What is a population model?
+
+Mathematical equations (eg., exponential and logistic) which represent patterns of growth, reduction, or stabilization of a given population
+
+### Basic types of population models
+
+* **Unstructured population model**: Considers all individuals as the same when counting them
+
+* **Structured population model**: Individuals are categorized and then counted
+
+* **Density-dependence**: In more simple population models, the amount of individuals present at a given time do not interfere with reproduction success (density-independence)
+
+
+## Simple models of population dynamics
+
+### Biological examples
+
+In some scenarios, we can disregard resource availability, interactions between species, and influence of relocation of individuals
+
+* Experimental settings
+
+* First stages of invasion
+
+* Management of species in risk of extinction
+
+### Mathematical representation of population growth patterns
+
+* Total population considers:
+* Births
+* Deaths
+* Relocations (immigrations and emmigrations)
+
+* Mathematical representation:
+$$N(tomorrow) = N(today) + B - D + I - E$$
+
+Where:
+N(tomorrow): number of individuals in the future (also called "abundance")
+N(today): present number of individuals
+B: births
+D: deaths
+I: immigration
+E: emmigration
+
+
+### Geometric growth
+
+#### What is geometric growth?
+
+* Simple singled-cell organisms have reproduction processes which result in geometric growth: 1 cell divides resulting in 2 cells, 2 cells divide resulting in 4, etc.
+
+![Population growth in laboratory conditions (Vandermeer, J., 2010)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/parameciumpop.jpg) 
+
+* Multiplicative process dependent on certain rate of change and current population size
+
+* Different than arithmetic growth, which is based on a certain amount being added or subtracted at each time step 
+
+
+#### Mathematical equation to predict future population size
+
+$$N_{(t+1)}=N_{t}(b_{t}-d_{t})$$
+
+Where:
+N(t+1): number of individuals in the future
+Nt: number of individuals at time t
+bt: births at time t
+dt: deaths at time t
+
+
+#### Differentiating between geometric and exponential growth
+
+* Both represent growth based on fixed rate
+
+* Change in population size depend on current population size and rate of change
+
+* Geometric growth: discrete time scale
+
+Examples: annual plants or insects with a single generation per year, variable Nt can be disregarded (population starts from scratch at each time period) 
+
+* Exponential growth: continuous time scale
+
+Examples:
+
+
+#### Lambda: geometric growth rate
+
+Lambda (lambda): rate of population change in units of time (abundance in the next time step is a proportion of the current abundance)
+
+* lambda = 1: stationary (no changes in population growth)
+
+* lambda > 1: population is growing
+
+* lambda < 1: population is shrinking
+
+
+#### Lambda and proportional population changes
+```{r}
+lambda=1.45
+
+#We can calculate how much a population will change in the next time step (eg., next year):
+percentage_of_change=(lambda-1)*100
+percentage_of_change
+```
+
+
+#### Lambda for calculating future population size
+
+* The abundance of a population depends on the current population and on the lambda rate
+
+$$N_{t+1}=N_{t}\lambda$$
+
+Where:
+N(t+1): population size in the future time
+Nt: current population size
+lambda: lambda growth rate (discrete or geometric)
+
+
+#### Obtaining lambda from population sizes at different time points
+
+* Rearranging this last equation, we have:
+
+$$\lambda=N_{t+1}/N_{t}$$
+
+* Exercise using an annual plant
+
+```{r}
+# We take note of the population growth of a given annual plant at different time periods:
+week1 <- 74
+week0 <- 35
+
+# Applying the equation above we get the lambda growth rate over the first week period:
+lambda <- week1/week0
+lambda
+```
+
+
+#### Simplifying the future population growth calculation
+
+* For several time steps with growth occurring at the same lambda rate, lambda would be continuously multiplied by itself, so we have:
+
+$$N_{t}=N_{0}\lambda^t$$ 
+
+#### Missing data for certain time periods: Average lambda calculation
+
+* When we do not have data for calculating all lambda over several time periods, we can rearrange the equation we just saw and consider the latest time period available and the first time period:
+
+$$\lambda=(N_{t}/N_{0})^{1/t}$$  
+
+```{r}
+# Here are population numbers for a given plant species at week 2 and week 0:
+week2 <- 173
+week0 <- 35
+
+# The average weekly lambda is:
+lambda <- (week2/week0)^(1/2)
+lambda
+```
+
+
+### Exponential growth
+
+#### What is exponential growth
+
+* Continuous time scale
+
+* Also called as **instantaneous per capita growth rate**
+
+* For species which do not reproduce seasonally (without a periodicity)
+
+* To compare populations with different intervals of growth
+
+* Calculus: derivatives are used to calculate very small changes in abundance over time
+
+$$dN/dt=rN$$  
+
+
+#### Abundance over time in a logarithmic scale
+
+#### r (instantaneous per capita growth rate)
+
+#### Converting between lambda and r
+
+#### When to use **lambda** or **r**
+ 
+#### Doubling time
+
+#### Exercise using duckweeds
+
+* Practice calculating population growth and growth rate with duckweed laboratory data
+
+Duckweed example: in our lab, we work with a group of aquatic plants commonly called duckweeds. Due to their fast and asexual growth, they are good model species for population ecology studies. Duckweed population growth can be calculated in a number of ways, such as counting individual fronds (leaf like shape) or measuring the dry weight of specimens.
+
+![Populations of duckweeds (L. minor) collected in a University of Waterloo stormwater pond](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/duckweed1.png) 
+
+
+## Stochasticity
+
+### Why does population abundance fluctuate?
+
+### Deterministic versus stochastict factors
+
+### Demographic stochasticity
+
+### Environmental stochasticity
+
+### Stochastic effects to population growth rates
+
+#### Arithmetric and geometric means
+
+#### Temporal autocorrelation
+
+### Predicting stochastic population growth
+
+#### Exponential growth with observation error only
+
+#### Exponential growth with process noise only
+
+#### Process noise and observation error occurring simultaneously
+
+## Density-dependency
+
+### Continuous logistic growth
+
+####  Negative density dependence
+
+##### "K": carrying capacity
+
+##### Logistic growth model
+
+##### Recruitment (or yield)
+
+##### Tipping point (or inflection point)
+
+#### Chaos
+
+#### Positive density dependence
+
+##### Allee effect
+
+* Occurs at very low population sizes (growth rate is reduced when population is too small; eg., cooperation between individuals)
+
+##### Weak and strong Allee effects
+
+### Discrete logistic growth
+
+#### Discrete logistic equation
+
+### Comparing continuous and discrete logistic growth
+
+* Positive or negative effects resulting from a given population are felt by the next generation (time-lag in comparison with continuous models, which are based in very small time steps and simultaneous demographic events)
+
+### Theta-Ricker model
+
+* As large populations increase in size, growth rates reduce (term theta is added to represent this)
+
+### Concave and convex density dependences
+
+* Per capita rates are non linear functions (either convex or concave)
+
+## Comparing models to data
+
+### Model selection
+
+#### Least-squares regression, R-Squared
+
+#### Likelihood
+
+##### Maximum likelihood estimate
+
+### Model complexity
+
+### Criteria for selecting models
+
+#### Akaike information criteria (AIC)
+
+### Example or exercise
+![Thermal performance models for a duckweed species and AIC model assessment](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/tpc_aic.png)
+
+
+## R resources 
+
+### Packages 
+
+#### deSolve: contains solvers (function "ode")
+
+* integrals: eg., integral of the exponential growth equation
+* ordinary differential equations (ODE): eg., logistic growth 
+
+#### clogistic
+
+* logistic growth equation
+
+#### AICcmodavg
+
+* model evaluation using Akaike information criteria
+
+#### Stan
+
+* https://peter-stewart.github.io/blog/classic-ecological-models-exponential-logistic-growth/
+
+### Functions
+
+#### for Loop
+
+#### plot
+
+#### sapply 
+
+#### customized function
+
+
+## References
+Dyer, R. (2009). Biological data analysis using R (Doctoral dissertation, Ph. D thesis. Department of Biology, Center for the Study of Biological Complexity, Virginia Commonwealth Univ).
+
+Mills, L.S. (2012). Conservation of Wildlife Populations: Demography, Genetics, and Management. Wiley- Blackwell.
+
+Stevens, M.H. (2009). A Primer of Ecology with R. Springer.
+
+Vandermeer, J. (2010) How Populations Grow: The Exponential and Logistic Equations. Nature Education Knowledge 3(10):15
