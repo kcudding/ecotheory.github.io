@@ -43,8 +43,8 @@ results
 
 ```
 ##       10 tosses 100 tosses 10,000 tosses
-## heads         6         61          5033
-## tails         4         39          4967
+## heads         7         54          5061
+## tails         3         46          4939
 ```
 - *Example 2*: The expected sex ratio for a newborn is 50:50. When there 3 new births, we cannot have 50% males and 50% females. Unbalanced sex ratio will influence future birth rate, especially in a small population. Similarly, a death rate of 0.2 does not mean after a year an animal is 0.8 alive--it either survives or dies. When the population size is large, we may use the product of the total populatiom and a mean birth/death rate to estimate the number of births/deaths. However, such estimation is not accurate when the population size is small.
 
@@ -77,15 +77,13 @@ lambda[lambda==0] <- 0.55
 # lambda is a 100-by-16 matrix
 # each row represents a possible population change in 16 years
 outcome <- N0*apply(lambda, 1, prod)
-boxplot(outcome, outline = FALSE)
+par(mfrow=c(1,2))
+boxplot(outcome, main = "Boxplot with outliers", 
+        ylab = "Final population size")
+boxplot(outcome, outline = FALSE, main = "Boxplot without outliers")
 ```
 
 ![](unstructured-stochasticity_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
-
-```r
-# we removed outliers to get a better idea of the interquartile range
-# and the median
-```
 
 - *Conversion between $\lambda$ and $r$*: Recall that $r=\ln\lambda$, so $$\ln(\lambda_1\lambda_2\cdots\lambda_k)=\ln\lambda_1+\ln\lambda_2+\cdots+\ln\lambda_k=r_1+r_2+\cdots+r_k,$$ which gives $$\ln(\lambda_1\lambda_2\cdots\lambda_k)^{1/k}=\frac{1}{k}\ln(\lambda_1\lambda_2\cdots\lambda_k)=\frac{1}{k}(r_1+r_2+\cdots+r_k),$$and thus $$\ln\lambda_G=r_A.$$
 - *Variation around $\lambda$*: Increasing the variance of the growth rates ($\sigma_\lambda^2$) makes the geometric mean growth rate less than the arithmetic mean. Let $\lambda_t=\lambda_A+\epsilon_t$, where $\epsilon_t$ is the deviation of $\lambda_t$ from the arithmetic mean $\lambda_A$ with zero mean. Using Taylor expansion, one could obtain $$\begin{aligned}\ln\lambda_t & =\ln\lambda_A+\ln(1+\epsilon_t/\lambda_A)\\~ & =\ln\lambda_A+

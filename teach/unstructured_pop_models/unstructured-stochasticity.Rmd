@@ -71,9 +71,10 @@ lambda[lambda==0] <- 0.55
 # lambda is a 100-by-16 matrix
 # each row represents a possible population change in 16 years
 outcome <- N0*apply(lambda, 1, prod)
-boxplot(outcome, outline = FALSE)
-# we removed outliers to get a better idea of the interquartile range
-# and the median
+par(mfrow=c(1,2))
+boxplot(outcome, main = "Boxplot with outliers", 
+        ylab = "Final population size")
+boxplot(outcome, outline = FALSE, main = "Boxplot without outliers")
 ```
 
 - *Conversion between $\lambda$ and $r$*: Recall that $r=\ln\lambda$, so $$\ln(\lambda_1\lambda_2\cdots\lambda_k)=\ln\lambda_1+\ln\lambda_2+\cdots+\ln\lambda_k=r_1+r_2+\cdots+r_k,$$ which gives $$\ln(\lambda_1\lambda_2\cdots\lambda_k)^{1/k}=\frac{1}{k}\ln(\lambda_1\lambda_2\cdots\lambda_k)=\frac{1}{k}(r_1+r_2+\cdots+r_k),$$and thus $$\ln\lambda_G=r_A.$$
