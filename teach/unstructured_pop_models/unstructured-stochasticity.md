@@ -38,6 +38,7 @@
 ### Estimating population growth rates
 #### Process error
 Process error results from variation in true population size due to biotic or abiotic processes (Ahrestani *et al*., 2013).
+
 - Environmental and demographic stochasticity are examples of process errors
 - When only process error exists, the population at each time $t$, $N_t$, is known and accurate. The growth rate $\lambda_t$ is a random variable. For example, a geometric model with only process error can be described as $$\begin{aligned}N_{t+1} & =\lambda_tN_t,\\\lambda_t & \sim\mathcal{N}(\bar\lambda,\sigma_p^2),\end{aligned}$$where $\lambda_t$ follows a normal distribution with mean $\bar\lambda$ and variance $\sigma_p^2$.
 - Since the population at each time $t$, $N_t$, is known and accurate, we can calculate the estimated growth rate using geometric mean $$\hat\lambda=\left(\prod_{i=1}^t\frac{N_{i}}{N_{i-1}}\right)^{\frac{1}{t}},$$or equivalently, $$\hat r=\frac{1}{t}\sum_{i=1}^t\ln\frac{N_i}{N_{i-1}}.$$
@@ -45,6 +46,7 @@ Process error results from variation in true population size due to biotic or ab
 
 #### Observation error
 Observation error results from variation in the methodology used to obtain the population size (Ahrestani *et al*., 2013).
+
 - Examples of observation error include difficulty in counting animals, which might due to lack of technical expertise, insufficient funding, etc.
 - When only observation error exists, the growth rate is accurate. A possible geometric model with only observation error can be described as$$\begin{aligned}\ln N_t & =\ln N_0+rt+\eta_t,\\\eta_t & \sim\mathcal{N}(0,\sigma_o^2),\end{aligned}$$where $\eta_t$ follows a normal distribution with mean 0 and variance $\sigma_o^2$. Here we ignore the subscript of $r$ as we assume the growth rate is some constant. We could also convert the above equation to $$N_{t+1}=\lambda^tN_te^{\eta_t},$$where $e^{\eta_t}>0$ so that the population is always non-negative.
 - The equation $\ln N_t=\ln N_0+rt+\eta_t$ is in the form of a linear model in which $\ln N_t$ is the response variable and $t$ is the predictor variable. Using simple linear regression, the slope of the fitted function is the estimated $r$. Moreover, the $y$-intercept is the estimated $\ln N_0$.
@@ -63,7 +65,11 @@ Shoemaker, L. G., Sullivan, L. L., Donohue, I., Cabral, J. S., Williams, R. J
 
 ### References
 Lande, R., Engen, S. and Saether, B. (2003) *Stochastic Population Dynamics in Ecology and Conservation*, Oxford Series in Ecology and Evolution.
+
 Mills, L. S. (2007) *Conservation of Wildlife Populations: Demography, Genetics, and Management*, Wiley-Blackwell Publishing.
-Case, T. (2000) *An Illustrated Guide to Theoretical Ecology*, Oxford University Press
+
+Case, T. (2000) *An Illustrated Guide to Theoretical Ecology*, Oxford University Press.
+
 Ahrestani, F., Hebblewhite, M. and Post, E. (2013) The importance of observation versus process error in analyses of global ungulate populations. *Sci Rep*, **3**:3125.
+
 Beverton, R. and Holt, S. J. (1957) *On the Dynamics of Exploited Fish Populations*. Ministry of Agriculture, Fisheries and Food, London, UK.
