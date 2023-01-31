@@ -12,7 +12,9 @@ output:
     keep_md: yes
 ---
 
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,always_allow_html = TRUE, tidy.opts=list(width.cutoff=60), tidy=TRUE)
+```
 
 # Module 1: Unstructured Population Models
 ## Section 3: Population dynamics and stochasticity
@@ -27,8 +29,7 @@ output:
 - Only significant in small populations
 - *Example* 1: Flipping a coin 10,000 times, one will get approximately 5,000 times heads; flipping the same coin 100 times, there could be some deviations from the expected 50:50; flipping the same coin 10 times, it is not suprising that one only gets 2 heads. The probability of getting head is approaching 0.5 as the number of trials increases.
 
-
-```r
+```{r}
 # toss a coin
 toss10 <- sample(c(0,1), size = 10, prob = c(0.5,0.5), replace = TRUE)
 toss100 <- sample(c(0,1), size = 100, prob = c(0.5,0.5), replace = TRUE)
@@ -39,12 +40,6 @@ results <- data.frame(c(sum(toss10), 10-sum(toss10)),
 colnames(results) <- c("10 tosses", "100 tosses", "10,000 tosses")
 rownames(results) <- c("heads", "tails")
 results
-```
-
-```
-##       10 tosses 100 tosses 10,000 tosses
-## heads         6         61          5033
-## tails         4         39          4967
 ```
 - *Example 2*: The expected sex ratio for a newborn is 50:50. When there 3 new births, we cannot have 50% males and 50% females. Unbalanced sex ratio will influence future birth rate, especially in a small population. Similarly, a death rate of 0.2 does not mean after a year an animal is 0.8 alive--it either survives or dies. When the population size is large, we may use the product of the total populatiom and a mean birth/death rate to estimate the number of births/deaths. However, such estimation is not accurate when the population size is small.
 
@@ -68,8 +63,7 @@ results
 - Let $\lambda_A$ and $\lambda_G$ denote the arithmetic and geometric mean, respectively, $$\lambda_A=\frac{1}{k}\sum_{i=1}^k\lambda_i,$$$$\lambda_G=\left(\prod_{i=1}^k\lambda_i\right)^{\frac{1}{k}}.$$
 - *Example*: Consider $N_{t}=\lambda_tN_{t-1}$, where $N_t$ is the population at time $t$, and during each time interval $(t-1,t)$ the growth rate is $\lambda_t$. Assume $\lambda_t=1.55$ or $\lambda_t=0.55$ with the same probability. Assuming that the population grows at a constant arithmetic mean rate $\lambda_A=(1.55+0.55)/2=1.05$, the population at $t=16$ is $$N_{16}=1.05^{16}N_0=2.18N_0.$$Instead, if we assume that the growth rate alternated between $1.55$ and $0.55$, the population at $t=16$ becomes $$N_{16}=1.55^8\times0.55^8N_0=[(1.55\times0.55)^{1/2}]^{16}N_0=0.28N_0,$$which indicates that the variation in population growth leads to a likely decline for the population, even though the (arithmetic) average growth rate is larger than 1 (Mills, 2007). Here, the geometric mean growth rate is $\lambda_G=(1.55\times0.55)^{1/2}\approx 0.9233$.
 
-
-```r
+```{r}
 N0 <- 1
 lambda <- matrix(rbinom(1600, 1, 0.5), ncol = 16)
 lambda[lambda==1] <- 1.55
@@ -78,11 +72,6 @@ lambda[lambda==0] <- 0.55
 # each row represents a possible population change in 16 years
 outcome <- N0*apply(lambda, 1, prod)
 boxplot(outcome, outline = FALSE)
-```
-
-![](unstructured-stochasticity_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
-
-```r
 # we removed outliers to get a better idea of the interquartile range
 # and the median
 ```
