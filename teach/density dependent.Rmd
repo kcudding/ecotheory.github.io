@@ -1,0 +1,494 @@
+---
+title: "Density Dependent Population"
+author: "Eddie"
+date: '2023-01-31'
+output:
+  html_document: 
+    toc: yes
+    number_sections: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+    keep_md: no
+bibliography: dd_bibliography.bib
+nocite: '@*'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,always_allow_html = TRUE, tidy.opts=list(width.cutoff=60), tidy=TRUE)
+```
+
+# **Module 1: Unstructured Population Models**
+
+## Density-dependence
+
+Density-dependent population models are used to describe population dynamics in which the growth or decline of a population is influenced by the population's own density.
+
+### Continuous logistic growth
+
+A population growth model may be defined as continuous population growth model if the individuals of a population show continuous breeding season. 
+
+####  Negative density dependence
+
+* The previously discussed scenario where population growth is unregulated does not always happen in reality. In fact, in a population that has already been established, resources begin to become scarce, and competition starts to play a role. As a result, the population growth will be regulate by increasing density. This is called **negative density dependence**.
+
+* Increasing population size gives rise to:
+
+  + shortages in food or other limiting resources
+
+  + greater intraspecific aggression
+
+  + increased predation risks
+  
+  + greater risks of disease outbreak
+
+* Negative density dependence decreases population growth at high density and increases it at low density.
+
+
+<!-- include the graph for exponential and logistic growth -->
+```{r, echo=FALSE}
+par(mfrow=c(2,2))
+
+# Exponential growth
+curve(0.18*x^0, from=0, to=60000,
+      xlab = "Population size", ylab = "Per-capita growth rate",
+      main = "(a) Exponential growth with r = 0.18")
+
+curve(exp(0.18*x), from=0, to=60,
+      xlab = "Time", ylab = "Population size")
+
+
+# Logistic growth
+curve(-0.00036*x+0.18, from=0, to=500,
+      xlab = "Population size", ylab = "Per-capita growth rate",
+      main = "(b) Logistic growth with r = 0.18, K = 500")
+
+curve(500/(1+((500-2)/2)*exp(-0.18*x)), from=0, to=60,
+      xlab = "Time", ylab = "Population size")
+
+
+```
+Figure 1.1. The constrast between exponential and logistic growth. In expoential growth, the per capita growth rate stays constant. In logistic growth, the per capita growth rate decreases with population density. (adapted from Mills, 2013)
+
+
+##### "K": carrying capacity
+
+* **Definition**: Population density at which per capita growth rate is zero
+
+* **Note**: Do not think of carrying capacity as the maximum population size observed. A population can exceed K temporarily.
+
+The carrying capacity is considered to be an equilibrium becasue when population density is greater than K mortality exceeds reproduction and the population will decrease to K; when density is less than K reproduction exceeds mortality and the population increases toward K.
+
+(*insert the duckweed example on carrying capacity*)
+
+With all these concepts, now we should look at the logistic population model.
+
+##### Logistic growth model
+
+Recall that with exponential growth, per capita growth rate is:
+
+$$ r = \frac{dN}{dtN} $$
+
+Of all the ways that the per capita growth rate could decrease with increasing population density, We consider the simplest scenario that this relationship is linear. Now we have:
+
+$$ \frac{dN}{dtN} = r_0(1-\frac{N}{K})$$
+
+where $1-\frac{N}{K}$ describes the negative effect increasing population density have on the per capita growth rate.
+
+
+Re-arrange the above equation and we have the **continuous logistic growth model**:
+
+$$ \frac{dN}{dt} = r \frac{K-N}{K} N $$
+
+* $dN/dt$: The net number of new individuals in a population over a unit of time (also called recruitment or yield)
+
+* $r$: Intrinsic growth rate
+
+* $N$: Population size
+
+* $K$: Carrying capacity
+
+* $K-N$: How many more individuals can be added to the population before it hits carrying capacity
+
+* $K-N/K$: The fraction of the carrying capacity that has not yet been “used up"
+
+
+##### Maximum sustained yield
+
+The **maximum sustained yield** is achieved at $N=K/2$, when the recruitment ($dN/dt$) of new individuals is maximized.
+
+* At low population density, although growth is essentially exponential, the small number of breeders means that few individuals are born so that the overall $dN/dt$ is small.
+
+* At high population density (near $K$), $dN/dt$ is also small because negative density dependence is reducing the per capita growth rate.
+
+```{r, echo=FALSE}
+pop.growth.rate <- expression(r * N * (1 - alpha * N))
+
+r <- 0.18; alpha <- 1/500; N <- 0:500
+plot(N, eval(pop.growth.rate), type = "l", ylim = c(-3, 25),
+     xlab = "Population size (N)", ylab = "Population Growth Rate(dN/dt)")
+
+N <- 250
+points(N, eval(pop.growth.rate), cex = 1.5)
+text(N, eval(pop.growth.rate),
+     "Maximum population growth rate at N = K/2",
+     pos = 4, cex = 0.8)
+```
+Figure 1.2. Recruitment for a population growing with logistic growth ($r=0.18$) and a carrying capacity of 500. Recruitment is maximized when $N=K/2$.
+
+
+#### Stability
+
+The **stability** of a system is a measure of how much it tends to stay the same, in spite of external disturbances or changes in the state of the system.
+
+To find the equilibrium point of a logistic growth model, consider the following example (figure below):
+
+* We have a population that has a carrying capacity $K=500$ and intrinsic growth rate $r=0.18$.
+
+* When the population growth rate $dN/dt$, which is zero at equilibrium, becomes positive or negative in response to a small change in N. If this change results in a shrinking of that change back towards the equilibrium, that demonstrates stability. On the other hand, if this change results in
+growth and a bigger step, that demonstrates instability.
+
+```{r, echo=FALSE}
+## Stability:
+pop.growth.rate <- expression(r * N * (1 - alpha * N))
+r <- 0.18; alpha <- 1/500; N <- 0:600
+
+plot(N, eval(pop.growth.rate), type = "l",
+     xlab = "Population size (N)", ylab = "Population Growth Rate (dN/dt)")
+abline(h = 0)
+legend("topright", "r=1", lty = 1)
+
+# Add points
+N <- c(0, 100, 250, 500, 550)
+points(N, eval(pop.growth.rate), cex = 1.5)
+text(N, eval(pop.growth.rate), letters[1:5], adj = c(0.5, 2))
+
+# Add arrows
+arrows(100, 2, 470, 2, length = 0.1, lwd = 2)
+arrows(580, -2, 530, -2, length = 0.1, lwd = 2)
+```
+Figure 1.3. Population growth rate, $dN=dt$, as a function of $N$. Data points are chosen arbitrarily for analysis. Arrows pointing to the stable equilibrium point at carrying capacity. (Code for graph adapted from Stevens, 2009)
+
+* When the population number is at 100 (point b) or 200 (point c), the population will grow, moving along the x-axis, until population growth rate slows so much that it comes to rest where $N=K=500$.
+
+* When the population number is at 550 (point e), $dN/dt$ is negative, so $N$ shrinks back down to $N=K=500$.
+
+* When population number is at 0 (point a) or 500 (point d), the population growth rate is at zero so that the density will not change.
+
+From the above analysis, we can conclude that: A logistic population growth model is a system with stability, and carrying capacity $K$ is the stable equilibrium point. Any disturbance may cause the population size $N$ to deviate from it.
+
+
+### Discrete logistic growth
+
+For many populations, reproduction and mortality occur at very particular periods of the year (in discrete intervals of time).
+
+#### Discrete logistic equation
+
+To model discrete logistic population growth, we start from recalling our model of geometric growth for a single time step:
+
+$$ N_{t+1} = \lambda N_t$$
+
+We can decompose $\lambda$ into two parts to illustrate that this year's population density $N_t+1$ is equal to the previous year's population, $N_t$, plus a proportional change, $r_dN_t$:
+
+$$N_{t+1} = \lambda N_t = N_t(1+r_d) = N_t+r_dN_t$$
+
+Now we can try to incorporate density-dependence into that proportional change $r_dN_t$. We use $\alpha$ to represent this negative effect on population growth. As a result, $r_d(1- \alpha N_t)$ becomes the new per capita growth increment rate.
+
+And our population growth equation becomes:
+
+$$N_{t+1} = N_t+r_d(1- \alpha N_t)N_t$$
+
+A common alternative representation uses $1/ \alpha$ symbolized as K, the carrying capacity. And we have an equation that describes **discrete logistic growth**:
+
+$$ N_{t+1} = N_t+r_d(1- \frac{N_t}{K})N_t = N_t+r(1-\frac {N_t}{K})N_t $$
+
+* From the equation, we can see that the population abundance at time $t+1$ depend on the abundance at time t. This time lag makes sense for many populations, where birth and death rates respond to the population's density at some time in the past, instead of current density.
+
+
+#### Chaos
+
+Populations growing with absolutely no stochasticity could show dynamics that bounce, or cycle, or become entirely unpredictable.
+
+<br>
+Let's look at the following example:
+
+We have a population that has an initial population density of $N=10$, and carrying capacity $K=100$, with different values of $r$, we can see very different population growth trajectories.
+
+```{r, echo=FALSE}
+# Define dlogistic:
+dlogistic <- function(alpha = 0.01, rd = 1, N0 = 2, t = 15) {
+  N < c(N0, numeric(t))
+  for (i in 1:t) N[i + 1] <- {
+    N[i] + rd * N[i] * (1 - alpha * N[i])
+  }
+  return(N)
+}
+
+# Initial conditions
+t <- 50
+N <- 10
+par(mfrow=c(2,3))
+
+# Graph the chaos dynamics
+for (rd.v in c(0.18, 1.5, 2.2, 2.5, 2.9)) {
+  Ns <- data.frame(sapply(rd.v, function(r) dlogistic(rd = r, t = t)))
+  matplot(0:t, Ns, type = "l", col = 1,
+          xlab="Time Step", ylab="Population Size")
+}
+```
+Figure 1.4. Chaotic dynamics arise from deterministic discrete logistic growth (adapted from Mills, 2013).
+
+When $r$ is close to zero, we have a steady simple asymptotic approach to K (figure a). As $r$ increases, we see the population overshoot the carrying capacity and exhibit **damped oscillations** (figure b). At $r=2.2$, we see a stable limit cycle of two points (figure c). As $r$ increases further, the number of points increases to a four-point limit cycle (e.g., at $r=2.5$, figure d), then an eight-point cycle, a 16-point limit cycle, and so on. As rd increases further, however, stable limit cycles shift into
+chaos (figure e).
+
+<br>
+**Chaos** is a non-repeating, deterministic fluctuating trajectory, that is bounded, and sensitive to initial conditions.
+
+How does chaos happen?
+
+* The discrete logistic model has a built in delay, or time lag, of one time step, because the growth increment makes a single leap of one time step. Therefore, the negative effects of the actions of individuals (e.g., resource consumption) are felt by the offspring of those individuals, rather than the individuals themselves.
+
+* Note that chaos is different from stochasticity or randomness. If you start with exactly the same initial conditions under chaotic dynamics, you will get exactly the same population trajectories every time.
+
+Chaos is **very sensitive to initial conditions**. Slightly changing the initial population number $N_0$ would result in very distinct results.
+
+* Here we start with two populations that have initial size of 10 and 11 (all other parameters remain the same). As shown on the graph below, we see completely different trajectories for population growth.
+
+```{r, echo=FALSE}
+t <- 50
+rd.v = 2.9
+par(mfrow=c(1,2))
+
+for (N in c(10,11)) {
+  Ns <- data.frame(sapply(rd.v, function(r) dlogistic(rd = r, t = t)))
+  matplot(0:t, Ns, type = "l", col = 1,
+          xlab="Time Step", ylab="Population Size")
+}
+```
+Figure 1.5. Chaotic dynamics with different initial conditions (adapted from Mills, 2012).
+
+**Bifurcation Graph:**
+We can also demonstrate the chaotic dynamics using a bifurcation plot, which examines $N$ as a function of $r_d$. As $r_d$ increases the number of $N$ will continue to double, growing geometrically. Eventually, we reach a point when there becomes an infinite number of unique points.
+
+```{r, echo=FALSE}
+num.rd <- 201; t <- 400
+rd.s <- seq(1, 3, length = num.rd)
+
+tmp <- sapply(rd.s, function(r) dlogistic(rd = r, N0 = 99, t = t))
+
+tmp.s <- stack(as.data.frame(tmp))
+names(tmp.s) <- c("N", "Old.Column.ID")
+tmp.s$rd <- rep(rd.s, each = t + 1)
+tmp.s$time <- rep(0:t, num.rd)
+
+N.bif <- subset(tmp.s, time > 0.5 * t)
+plot(N ~ rd, data = N.bif, pch = ".", xlab = quote("r"["d"]))
+```
+Figure 1.6 Illustration of the long term dynamics of discrete logistic population growth. (Stevens, 2009)
+
+**Biological significance of Chaos in population growth:**
+
+* Chaos brings more complexity into predicting population growth, especially for species with relatively large $r_d$ value. For example, for temperate-zone insects in particular, even if the natural world was 100 % predictable, the population dynamics could still in some circumstances be indistinguishable from chaos. (Mays, 1975)
+
+
+### Other types of density denpendent population models
+
+The linear decline in per-capital growth rate with density modeled above is not necessarily general. In fact, most species exhibit **nonlinear** declines in growth rate under negative density dependence.
+
+#### Concave and convex density dependences
+
+* **Concave density dependence**: Per-capita population growth rate declines rapidly at low density, and then falttens out as carrying capacity is approached. This could happen due to resource preemption, where a small of  individuals at low population density sequester large amounts of resources, causing subsequent population growth to slow down. For example, larger tropical seagrass arriving at sites would preempy available space to prevent subsequent individuals from competing for these resources. (Moreira-Saporiti et al., 2021)
+
+* **Convex density dependence**: Per-capita population growth rate exhibit strong density dependence only near K. This could be related to territoriality. For example, Dickcissel (*Spiza americana*) need a minimum territory size of approximately 0.9 acres. If male density is greater than this, some males will be forced into territories that contain less suitable vegetation and they are found to be less active in finding mates and building nests. As a result, the per capita growth rate will decline more rapidly compared to before. (Zimmerman, 1971)
+
+#### Theta-Ricker model
+
+A varity of alternative equations exist to model concave or convex relationships. A simple model we introduce here is the Theta-Ricker model. By varying $\theta$, we can change the linear density dependence of the simple logistic model to curvi-linear density dependence.
+
+$$ N_{t+1} = N_t e^{r_0[1-(N_t/K)^\theta]} $$
+
+* The effects of $\theta$ on density dependence also control the shape of relation between growth rate and population size. (Figure 1.7)
+
+```{r, echo=FALSE, warning=FALSE}
+## Theta-Ricker:
+
+# Here we make a function that we can use with ode,
+# the numerical integration function.
+thetalogistic <- function(times, y, parms) {
+  n <- y[1]
+  with(as.list(parms), {
+  dN.dt <- r * n * (1 - (alpha * n)^theta)
+  return(list(c(dN.dt)))
+  })
+}
+
+
+# Per capita growth rate vs population size
+r <- 0.75; alpha <- 0.01; theta <- c(0.25, 0.5, 1, 2, 4)
+N <- 0:110
+theta.out <- sapply(theta, function(th) {
+  1 - (alpha * N)^th
+})
+
+matplot(N, theta.out, type = "l", col = 1:5, ylim = c(0,1.2),
+        xlab = "Population size", ylab = "Per captia growth rate")
+legend("topright", legend = paste("theta =", c(4, 2, 1, 0.5, 0.25)),
+       lty = 5:1, bty = "n", col = 1:5)
+```
+Figure 1.7. Per capital growth rate vs. population size with different theta value.
+
+* When $\theta$ > 1, this weakens density dependence at low N, so the population grows faster than logistic, all else being equal (concave). When $\theta$ < 1, this strengthens density dependence at low N, causing the population to grow more slowly than logistic, all else being equal (convex). (Figure 1.8)
+
+```{r echo=FALSE, warning=FALSE}
+# Population size vs time
+library("deSolve")
+prms <- c(r <- 0.75, alpha <- 0.01, theta = 1)
+t.s <- seq(0.1,40, by = 0.1)
+thetaN <- sapply(theta, function(th) {
+  prms["theta"] <- th
+  ode(y = 1, t.s, thetalogistic, prms)[, 2]
+})
+
+matplot(t.s, thetaN, type = "l", col = 1:5, ylim = c(0,110),
+        xlab = "Time", ylab = "Population size")
+legend("bottomright", legend = paste("theta =", c(4, 2, 1, 0.5, 0.25)),
+       lty = 5:1, bty = "n", col = 1:5)
+
+```
+Figure 1.8. Population size vs. time with different theta value.
+
+
+#### Positive density dependence
+
+In many cases, cooperation or facilitation leads to mutually positive interactions among members of a population.
+
+**Positive density dependence** occurs when vital rates or population increase as density increases.
+
+##### Allee effect
+
+Allee initially noticed that goldfish grew faster in water which had previously contained other goldfish, than in water that had not. He further experimented with a number of different species and showed that larger group size or some degree of crowding may stimulate reproduction,prolong survival in adverse conditions (through resistance to desiccation or by social thermoregulation) and enhance protection from toxic reagents. (Allee & Bowen, 1932)
+
+
+**Allee effect**:
+
+*  Demonstrates that there is a positive correlation between population density and individual fitness.
+
+* Occurs at very low population sizes (growth rate is reduced when population is too small).
+
+![African wilddog in packs hunting (by flowcomm from flickr, Attribution (CC BY 2.0))](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/african_w_dog.jpg)
+
+
+**Example**: 
+
+* African wild dog usually live in a pack of 6 - 20 individuals
+
+* Increasing pack size can:
+
+  + increase the likelihood of a successful kill in a given hunt
+  
+  + better predator defense
+  
+  + help babysit pups (packs with 10 or more adults raised three times as many yearlings compared to packs with 9 or fewer adults)
+  
+
+To plot population growth rate as a function of abundance:
+
+$$ \frac{dN}{dt} = rN(\frac{N-a}{K})(1-\frac{N}{K})$$
+where a is the critical point of the population, below which the population growth rate (or recruitment) becomes negative, and the population is driven towards extinction.
+
+
+##### Weak and strong Allee effects
+
+* **Weak Allee effects**: A weak Allee effect is where the population growth rate is small but positive for small N. The population does not contain a critical population size or density under which the growth rate becomes negative. 
+
+* **Strong Allee effects**: A strong Allee effect describes a population that can grow at intermediate population densities but declines when the number of organisms is either too small or too large.
+
+* **Allee effect population threshold**: A population size below which the per capita growth rate is negative and the population declines towards extinction. Populations that are subject to Allee effects can collapse and become extinct if their population size falls below the critical threshold.
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2))
+# Define the dN/dt function
+alleeLog <- function(N, K, a, r) {
+  dNdt = r * N * (1 - N / K)*((N - a) / K)
+}
+
+# Population growth rate vs. abundance
+N <- 0:500; r <- 0.18
+no_effect <- c(sapply(N, function(N) {
+  alleeLog(N, K = 500, a = N-500, r)
+}))
+
+weak_effect <- c(sapply(N, function(N) {
+  alleeLog(N, K = 500, a = -50, r)
+}))
+
+strong_effect <- c(sapply(N, function(N) {
+  alleeLog(N, K = 500, a = 50, r)
+}))
+
+# plot the dataframe
+population_growth <- data.frame(no_effect, weak_effect, strong_effect)
+matplot(N, population_growth, type = "l", col = c("#1B9E77","#D95F02","#7570B3"),
+        xlab = "Population density", ylab = "Population growth rate")
+abline(h = 0)
+
+# Per capita growth rate vs. abundance
+no_effect_p <- c(sapply(N, function(N) {
+  alleeLog(N, K = 500, a = N-500, r)/N
+}))
+
+weak_effect_p <- c(sapply(N, function(N) {
+  alleeLog(N, K = 500, a = -50, r)/N
+}))
+
+strong_effect_p <- c(sapply(N, function(N) {
+  alleeLog(N, K = 500, a = 50, r)/N
+}))
+
+# plot the dataframe
+population_growth_p <- data.frame(no_effect_p, weak_effect_p, strong_effect_p)
+matplot(N, population_growth_p, type = "l", col = c("#1B9E77","#D95F02","#7570B3"),
+        xlab = "Population density", ylab = "Per capita growth rate")
+abline(h = 0, v = 0)
+```
+Figure 1.9. No allee effects (green line), weak allee effects (read line), and strong allee affects (blue line, $a=50$) acting on a population that has an intrinsic population growth rate $r=0.18$ and carrying capacity $K=500$.
+
+
+##### Stability in Allee effects
+
+From previous sections we learned that carrying capacity $K$ is a stable equilibrium point in a negative density-dependent logistic growth model (no allee effects). The results will stay the same when we introduce allee effects into our population (strong or weak).
+
+However, when allee effects are strong, a critical size occurs where the growth function $dN/dt$ intersects the horizontal line at zero. This is an unstable equilibrium. Populations with abundance greater than this value will increase to carrying capacity; populations with abundance less than this value will decline to extinction.
+
+
+### Paper Discussion: 
+
+
+![](images/paper_discuss.png)
+
+#### **Knowledge gap** leading to the current research:
+
+* Unsure what is the underlining density-dependence mechanism in wild brown trout.
+
+* Unclear to what extent the release of domesticated brown trout will induce density-dependent effects on wild brown trout populations.
+
+
+#### Snapshot of the study:
+
+* Density can affect growth in both underyearlings and older brown trout. These effects were very similar regardless of what treatment groups these competitors belong to (whether they are wild or hatchery-reared).
+
+* Wild resident brown trout showed restricted movement in small streams; while hatchery trout tended to move more when introduced into the wild.
+
+* Wild resident brown trout showed an prior residence advantage over hatchery-reared brown trout. Hatchery-reared brown trout ate less and were less efficient in consuming novel prey, despite their larger body size. These differences disappeared after a few weeks in the wild.
+
+#### Conclusions:
+
+* Competition originating from increasing population density is not only limited to underyearlings brown trout. Density-dependent growth is the main density-dependent response in yearling trout.
+
+* Stocking of hatchery fish can exert similar negative density effects on wild individuals if released into the wild.
+
+![Wild brown trout (from flicker by U.S.Fish and Wildlife Service (Public Domain Work))](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/brown_trout.jpg)
+
+
+## References:
+
