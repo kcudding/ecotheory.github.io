@@ -11,10 +11,9 @@ fontsize:  10 pt
 
 2. Intro to likelihood
 	1. Difference between probability and likelihood
-	2. maximum likelihood 
-	3. example with coin toss?
-	4. Least squares and max like are the same for normal distribution: example with regression
-	5. ??How does likelihood differ from R2?
+	3. example with mean (should I use coin toss instead)?
+	4. 	maximum likelihood 
+	5. Least squares and max like are the same for normal distribution: example with regression
 
 3. Model comparison with AIC
 	1. Comparing 3 different models with max like
@@ -146,6 +145,7 @@ mean.likes =
   sapply(means,function(y) sum(dnorm(x=X,m
   =y,sd=2, log=T)))
 ```
+
 ![Likelihood of the model of a normal distribution with sd=2 and a range of means](maxlikemean.jpeg){ width=50% }
 
 ### Maximum log likelihood
@@ -171,7 +171,7 @@ mlest=optim(par=c(0,1/100,1),normL)
 
 	 
 ### Linear regression and maximum likelihood
-- if we have normally distributed errors with known variance, we will get the same result for linear least squares or max likelihood regression fits
+- if we have normally distributed errors with known variance, we will get the same result for linear least squares or max likelihood regression fits (show example here?)
 
 ## 3. Model comparison
 ![Fits of the three different density-dependent models to data from Harrison 1991](3modelfits.jpeg){ width=80% }
@@ -241,13 +241,15 @@ mlest=optim(par=c(0,1/100,1),normL)
 
 $AIC=-2ln(m|y, \theta) +2k$
 
--  takes into account BOTH model fit and parsimony
+- Akaike 1973
 - goodness-of-fit: where y is the data set and $\theta$ the maximum- likelihood parameter estimate (But can also use residual sum of squares)
 - penalty for model complexity number of adjustable model parameters k
-- Used to compare models,value has no meaning on its own
-- Akaike 1973
+- there's stuff about where the size of the penalty is derived from ... include this?
 
-- another advantage of using information criterion statistics to compare models is that they do not assume (as do likelihood ratio tests, for example) that the models are nested (i.e. that one model can be converted to another by setting one or more parameters equal to 0 or 1; for example, the theta logistic model and the Allee  effect model are not nested 
+### (Dis)Advantages of AIC
+- takes into account BOTH model fit and parsimony
+- Used to compare models, value has no meaning on its own
+- does not assume (as do likelihood ratio tests, for example) that the models are nested (i.e. that one model can be converted to another by setting one or more parameters equal to 0 or 1; for example, the theta logistic model and the Allee  effect model are not nested 
 
 ### Comparing our 3 models with AIC
 
@@ -257,7 +259,9 @@ $AIC=-2ln(m|y, \theta) +2k$
 | **logistic**       | 3                    | -37.8    | **81.6** |
 | theta-logistic | 4                    | -37.1    | 82.2  |
 
-
+- models that differ by more than two units would be considered different 
+- logistic is our choice here
+- more stuff on interpretation here?
 ### References
 Akaike, H. (1973). Information theory and an extention of the maximum likelihood principle. In _2nd Inter. Symp. on information Theory_. Akademiai Kiado.
 
