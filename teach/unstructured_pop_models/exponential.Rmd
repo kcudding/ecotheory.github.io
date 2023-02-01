@@ -21,11 +21,13 @@ knitr::opts_chunk$set(echo = TRUE,always_allow_html = TRUE, tidy.opts=list(width
 
 ## Introduction
 
-This module covers the most simple models to predict the dynamics of populations, such as **exponential models**. Next, **stochasticity**, or random effects, is approached as affecting population dynamics. Lastly, **density-dependency** is introduced as a phenomena that takes place when the amount of individuals present in a given population interferes with the growth rate of that population.  
+This module covers the most simple models to predict the dynamics of populations, such as **exponential models**. Next, **stochasticity**, or random effects, is approached as affecting population dynamics. Then, **density-dependency** is introduced as a phenomena that takes place when the amount of individuals present in a given population interferes with the growth rate of that population. Lastly, you will learn techniques to compare models to data and perform **model assessment**.   
 
 ## Learning outcomes
 
-* Acquire practical knowledge to independently run a model using their own data based on provided theory and codes.
+* Develop practical skills to independently run a model using their own data based on provided theory and codes
+* Assess the results of population models to analyze a problem of their interest
+* Distinguish and compare several models and select the most appropriate model according to life histories and data available 
 
 ### What is a population model?
 
@@ -47,7 +49,7 @@ A population model consists of mathematical equations (eg., exponential and logi
 
 In 1798, Thomas Malthus published *An Essay on the Principle of Population* (Malthus, 1798). This work distinguished arithmetic and geometric growth, with human populations characterized by a geometric (or exponential; the difference between them will be covered soon) growth while food resources were restricted to an arithmetic pattern of growth.
 
-![Thomas Malthus (Wikimedia Commons, 2020)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/malthus.png) 
+![Thomas Malthus by Elhuyar Fundazioa (https://commons.wikimedia.org/wiki/File:Malthus.png), Creative Commons License CC-BY-SA-3.0](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/malthus.png) 
 
 Let's plot an illustration to differentiate both types of growth:
 ```{r}
@@ -74,18 +76,20 @@ Now let's see when simple models such as the exponential growth model are used i
 
 ![Duckweeds in the field (left) and in lab conditions (right); left: *Spirodela polyrhiza* (larger fronds) and (probably) *Lemna minor*; right: *Landoltia punctata*](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/duckweed_bio_example.png) 
 
-* **Spread stage of invasion**: Following the introduction of an invasive species, its spread is enabled by an exponential population growth (Shigesada & Kawasaki, 1997) due to the availability of resources and/or absence of natural enemies. Spotted knapweeds, for example, were accidentally introduced to North America in the 1980s with agricultural seeds and soil discarded from ship ballast from Eurasia. This species is considered problematic because it quickly replaces livestock pasture and reduces biodiversity in affected sites (Minnesota Department of Agriculture, 2023). A modelling study considering the life history of knapweeds found that exponential growth during the spread stage of invading populations lasts for about 2 years (Jacobs & Sheley, 1998). Thus, exponential models are useful for modelling the behaviour of invasive species in specific invasion stages. 
+* **Expanding invasive species**: Following the introduction of an invasive species, its spread is enabled by an exponential population growth (Shigesada & Kawasaki, 1997) due to the availability of resources and/or absence of natural enemies. Spotted knapweeds, for example, were accidentally introduced to North America in the 1980s with agricultural seeds and soil discarded from ship ballast from Eurasia. This species is considered problematic because it quickly replaces livestock pasture and reduces biodiversity in affected sites (Minnesota Department of Agriculture, 2023). A modelling study considering the life history of knapweeds found that exponential growth following the introduction of invading populations can be observed for about 2 years (Jacobs & Sheley, 1998). Thus, exponential models are useful for modelling the behaviour of invading species. 
 
-![Knapweed (Wikimedia Commons, 2021)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/knapweed.jpg) 
+![Common knapweed (*Centaurea nigra*) by Kate Jewell (https://commons.wikimedia.org/wiki/File:Common_knapweed_%28Centaurea_nigra%29_-_geograph.org.uk_-_492672.jpg), Creative Commons License CC-BY-SA-2.0](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/knapweed.jpg)
 
-* **Management of species at risk of extinction**: Well-managed species will have little limitation to growth due to abundant resources and small population sizes, resulting in exponential growth rates.
+* **Management of species at risk of extinction**: Well-managed species will have little limitation to growth due to abundant resources and small population sizes, resulting in exponential growth rates. This was observed following management strategies to recover endangered crane populations in both North America and Japan. Whooping cranes (*Grus americana*) are the largest North American birds which became severely endangered with a population of 21 birds in 1952, as well as the red-crowned crane of Hokkaido (*Grus japonensis*) in Japan, with 33 individuals at this same year. Since then, management efforts such as federal protection and creating wildlife refuges ensured an exponential growth to bird populations, achieving 506 North American cranes and 1,900 Japanese cranes in 2020. The much faster rate at which Japanese cranes are growing is attributed to an additional management strategy consisting of artificially feeding birds during periods of food scarcity which was not implemented in North America (Gronewold, 2021).
+
+![Endangered cranes: Whooping crane to the left and red-crowned crane to the right, by  CheepShot (https://commons.wikimedia.org/wiki/File:Whooping_Crane_%283873713594%29.jpg), Creative Commons License CC-BY-2.0, and Peter Batty (https://www.flickr.com/photos/ebatty/50772105027), Creative Commons License CC BY-NC-SA 2.0 ](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/cranes.png)
 
 ### Mathematical representation of population growth patterns
 
 * Total population considers:
-* Births
-* Deaths
-* Relocations (immigrations and emmigrations)
+* Births (B)
+* Deaths (D)
+* Relocations (immigrations [I] and emigrations [E])
 
 * Mathematical representation:
 $$N(tomorrow) = N(today) + B - D + I - E$$ 
@@ -96,7 +100,7 @@ N(today): present number of individuals
 B: births
 D: deaths
 I: immigration
-E: emmigration
+E: emigration
 
 
 ### Geometric growth
@@ -107,13 +111,15 @@ Geometric growth is a multiplicative process. Simple singled-cell organisms have
 
 #### Mathematical equation to predict future population sizes
 
+If we assume that the number of births and and deaths is proportional to the current population size, and our population is isolated, we can write:
+
 $$N_{(t+1)}=N_{t}(b_{t}-d_{t})$$
 
 Where:
 N(t+1): number of individuals in the future
 Nt: number of individuals at time t
-bt: births at time t
-dt: deaths at time t
+bt: per capita birth rate
+dt: per capita death rate
 
 #### Working with generation times: Net reproductive rate
 
@@ -139,19 +145,27 @@ Nfuture
 
 Thus, for calculating population sizes at any generation, we have: 
 
-$$N_{(t)}=N_{0}*(R_0)^t$$
+$$N_{t}=N_{0}*(R_0)^t$$
 
-#### From generation time to calendar time: Lambda geometric growth rate
+#### From generation time to calendar time: Lambda ($\lambda$) geometric growth rate
 
-Lambda (lambda) is the rate of population change in units of time. The abundance in the next time step is a proportion of the current abundance. 
+If we assume birth rates and death rates are constant through time, we are left with:
 
-* lambda = 1: stationary (no changes in population growth)
+$$N_{t+1}=N_{t}*(b-d)$$
 
-* lambda 1: population is growing
+We can rename this net rate, $\lambda$, to obtain 
 
-* lambda < 1: population is shrinking
+$$N_{t+1}=N_{t}*\lambda$$
 
-#### Lambda and proportional population changes
+Lambda ($\lambda$) is the rate of population change in units of time. The abundance in the next time step is a proportion of the current abundance. 
+
+* $\lambda$ = 1: stationary (no changes in population growth)
+
+* $\lambda$ 1: population is growing
+
+* $\lambda$ < 1: population is shrinking
+
+#### $\lambda$ and proportional population changes
 ```{r}
 lambda=1.45
 
@@ -160,18 +174,18 @@ percentage_of_change=(lambda-1)*100
 percentage_of_change
 ```
 
-#### Lambda for calculating future population size
+#### $\lambda$ for calculating future population size
 
-The abundance of a population depends on the current population and on the lambda rate:
+The abundance of a population depends on the current population and on the $\lambda$ rate:
 
 $$N_{t+1}=N_{t}\lambda$$
 
 Where:
 N(t+1): population size in the future time
 Nt: current population size
-lambda: lambda growth rate (discrete or geometric)
+$\lambda$: lambda growth rate (discrete or geometric)
 
-#### Obtaining lambda from population sizes at different time points
+#### Obtaining $\lambda$ from population sizes at different time points
 
 Rearranging this last equation, we have:
 
@@ -184,37 +198,37 @@ $$\lambda=N_{t+1}/N_{t}$$
 week1 <- 74
 week0 <- 35
 
-# Applying the equation above we get the lambda growth rate over the first week period:
+# Applying the equation above we get the $\lambda$ growth rate over the first week period:
 lambda <- week1/week0
 lambda
 ```
 
 #### Simplifying the future population growth calculation
 
-For several time steps with growth occurring at the same lambda rate, lambda would be continuously multiplied by itself (in the same fashion as R0), so we have:
+For several time steps with growth occurring at the same $\lambda$ rate, $\lambda$ would be continuously multiplied by itself (in the same fashion as R0), so we have:
 
 $$N_{t}=N_{0}\lambda^t$$ 
 
-#### Missing data for certain time periods: Average lambda calculation
+#### Missing data for certain time periods: Average $\lambda$ calculation
 
-When we do not have data for calculating all lambda over several time periods, we can rearrange the equation we just saw and consider the latest time period available and the first time period:
+When we do not have data for calculating all $\lambda$ over several time periods, we can rearrange the equation we just saw and consider the latest time period available and the first time period:
 
 $$\lambda=(N_{t}/N_{0})^{1/t}$$  
 
 ```{r}
-# Here are population numbers for a given plant species at week 2 and week 0:
-week2 <- 173
-week0 <- 35
+# Here are population numbers for a given plant species at year 2 and year 0:
+year2 <- 173
+year0 <- 35
 
-# The average weekly lambda is:
-lambda <- (week2/week0)^(1/2)
+# The average weekly $\lambda$ is:
+lambda <- (year2/year0)^(1/2)
 ```
 
 ### Exponential growth
 
 #### What is exponential growth
 
-For populations which do not reproduce seasonally, an irrestricted growth can be projected using the exponential growth model. Instead of the lambda rate, the **instantaneous per capita growth rate (r)** is used to represent a constant percentage increase over a continuous time scale. This rate is also useful to compare populations with different intervals of growth.
+For populations which do not reproduce seasonally, an irrestricted growth can be projected using the exponential growth model. Instead of the $\lambda$ rate, the **instantaneous per capita growth rate (r)** is used to represent a constant percentage increase over a continuous time scale. This rate is also useful to compare populations with different intervals of growth.
 
 #### How to calculate the exponential growth rate
 
@@ -231,38 +245,39 @@ r = per capita growth rate
 
 If represented in a logarithmic scale, the curve line becomes a straight line, and the slope of the line corresponds to r.
 
-#### Converting between lambda and r
+#### Converting between $\lambda$ and r
 
-The natural logarithm of lambda corresponds to r:
+The natural logarithm of $\lambda$ corresponds to r:
 
 $$r=ln\lambda$$ 
 or
 
 $$\lambda=e^r$$ 
 
-While lambda values greater than 1 represent growing populations, r values greater than 0 correspond to population increases in size.
+While $\lambda$ values greater than 1 represent growing populations, r values greater than 0 correspond to population increases in size.
 
 #### Example using duckweeds
 
 In our lab, we work with a group of aquatic plants commonly called duckweeds. Due to their fast and asexual growth, they are good model species for population ecology studies. Duckweed population growth can be calculated in a number of ways, such as counting individual fronds (leaf like shape) or measuring the dry weight of specimens. Try to count how many individuals are found in each date in the picture below. Any round-shaped protuberance can be considered as a separate individual.
 
-![Populations of duckweeds (L. minor) grown in laboratory conditions and optimal temperature](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/duckweed_pop.png) 
+![Populations of duckweeds (*Lemna minor*) grown in laboratory conditions and optimal temperature](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/duckweed_pop2.png) 
 
 ```{r}
 # Let's create a dataframe using the duckweed population counts we have just obtained from the picture above:
-duckweed <- data.frame(day=(c(18,20,23)),pop_size=(c(9,13,24)))
+duckweed <- data.frame(day=(c(18,20,23,25,27,30)),pop_size=(c(9,12,23,45,68,103)))
 
-# Now, let's calculate the average daily lambda:
-lambda <- (duckweed[3, "pop_size"]/duckweed[1, "pop_size"])^(1/(duckweed[3, "day"]-duckweed[1, "day"]))
+# Now, let's calculate the average daily $\lambda$:
+lambda <- (duckweed[6, "pop_size"]/duckweed[1, "pop_size"])^(1/(duckweed[6, "day"]-duckweed[1, "day"]))
+```
 
-paste ("The average daily lambda is", format(round(lambda, 2), nsmall = 2))
+The average daily lambda is `r format(round(lambda, 2), nsmall = 2)`.
 
+```{r}
 # And the r
 r<-log(lambda)
-paste ("The intrinsic rate of increase is", format(round(r, 2), nsmall = 2))
-paste ("This means that our duckweed populations are growing at an average daily rate of", format(round((r - as.integer(r))*100, 2), nsmall = 2),"%")
-
 ```
+
+The intrinsic rate of increase is `r format(round(r, 2), nsmall = 2)`. This means that our duckweed populations are growing at an average daily rate of `r format(round((r - as.integer(r))*100, 2), nsmall = 2)`%.
 
 ```{r}
 # And here we simulate the growth of duckweeds over a 40-day period
@@ -275,7 +290,7 @@ matplot(t, cont.mat, type = "l", col = 1,
 
 #### Simplifying the exponential growth calculation
 
-Due to the ability to replace lambda for r and vice-versa, we have:
+Due to the ability to replace $\lambda$ for r and vice-versa, we have:
 
 $$N_{t}=N_{0}e^{rt}$$ 
 
@@ -286,8 +301,9 @@ $$t_{double}=0.69/r$$
 ```{r}
 # We can use this equation to calculate the doubling time for our experimental duckweeds:
 double <- 0.69/r
-paste ("The doubling time for our duckweeds is", format(round(double, 2), nsmall = 2),"days.")  
 ```
+
+The doubling time for our duckweeds is `r format(round(double, 2), nsmall = 2)` days.  
 
 #### Paper discussion and exponential modelling illustration: invasive hippos in Colombia
 
@@ -303,24 +319,25 @@ Shurin, J. B., Aranguren-Riaño, N., Duque Negro, D., Echeverri Lopez, D., Jones
 
 * Following Scobar's death, the then abandoned animals started spreading in the region, going from 4 to 65 individuals in 25 years
 
-* Hyppos are considered as ecosystem engineers because they modify ecosystems by grazing on land and defecating in water bodies, thereby fertilizing aquatic systems
+* Hippos are considered as ecosystem engineers because they modify ecosystems by grazing on land and defecating in water bodies, thereby fertilizing aquatic systems
 
 * The growth of this invasive population appears to be in an exponential phase, with numbers achieving thousands in the following decades if no control measures are taken or without density-dependent regulation (to be introduced in the following module)
 
-* This study analyzed aquatic and terrestrial areas populated by hyppos to conclude that this invasive species is substantially changing the environment by relocating nutrients from the soil to the water, resulting in cyanobacteria blooms. Continued unrestricted hippo population growth can then lead to water resource damage.
+* This study analyzed aquatic and terrestrial areas populated by hippos to conclude that this invasive species is substantially changing the environment by relocating nutrients from the soil to the water, resulting in cyanobacteria blooms. Continued unrestricted hippo population growth can then lead to water resource damage.
 
 * Constrains to management: Actions to manage this invasive species are complicated by the social-ecological mismatch between the scientific consensus on the ecosystem threats posed by this invasion and the public perception of the presence of hippos as being positive (eg., animal being used for touristic purposes)
 
-![Pablo Escobar's hippos in Colombia (NBC News, 2014)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/hippo2.png) 
+![Grazing hippos by 	Bernard Dupont (https://commons.wikimedia.org/wiki/File:Hippo_%28Hippopotamus_amphibius%29_emaciated_specimen_grazing_on_Sabie_riverbank_..._%2833321050795%29.jpg), Creative Commons License CC-BY-SA-2.0](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unstructured_pop_models/hippo2.jpg)
 
 ##### Calculating the population growth of invasive hippos
 
 ```{r}
-# First, let's create a data frame containing dates and respective population counts as in Shurin (2020). We added 2 additional records obtained from news outlets:
+# First, let's create a data frame containing dates and respective population counts as in Shurin (2020). We added additional records obtained from news outlets:
 hippo <- data.frame(year=c(1993, 2009, 2014, 2019, 2022),pop_size=(c(4, 28, 60, 65, 133)))
 
-# source for 2014: https://www.bbc.com/news/magazine-27905743
-# source for 2009: https://www.nytimes.com/2009/09/11/world/americas/11hippo.html
+# source for 2014: Kremer (2014)
+# source for 2009: Romero (2009)
+# source for 2022: Varona (2022)
 
 plot(hippo$year, hippo$pop_size, type="o", pch=15, col="red", 
      main="Invasive hippo population growth over time in Colombia", 
@@ -328,18 +345,18 @@ plot(hippo$year, hippo$pop_size, type="o", pch=15, col="red",
 ```
 
 ```{r}
-# Now, let's calculate the average yearly lambda:
+# Now, let's calculate the average yearly $\lambda$:
 lambda <- (hippo[5, "pop_size"]/hippo[1, "pop_size"])^(1/(hippo[5, "year"]-hippo[1, "year"]))
-
-paste ("The average yearly lambda is", format(round(lambda, 2), nsmall = 2))
 ```
+
+The average yearly lambda is `r format(round(lambda, 2), nsmall = 2)`.
 
 ```{r}
-# By taking the natural logarithm, we convert lambda to r
+# By taking the natural logarithm, we convert $\lambda$ to r
 r<-log(lambda)
-paste ("The intrinsic rate of increase is", format(round(r, 2), nsmall = 2))
-paste ("This means that this invasive hippo population is growing at an average yearly rate of", format(round((r - as.integer(r))*100, 2), nsmall = 2),"%")
 ```
+
+The intrinsic rate of increase is `r format(round(r, 2), nsmall = 2)`. This means that this invasive hippo population is growing at an average yearly rate of `r format(round((r - as.integer(r))*100, 2), nsmall = 2)`"%.
 
 ```{r}
 # To predict population sizes, we first set our initial population size
@@ -368,43 +385,43 @@ legend(1995, 1300, legend=c("Observed data", "Model predictions"),
        col=c("red", "black"), cex=0.8, lty= c(NA,1), pch=c(15,NA))
 ```
 
-##### Key discussion items from hippo invasion paper
+##### Hippo invasion in Colombia: take-aways and future developments
 
-* Hippos are active in their megafauna ecosystem engineer role in Colombia in a similar manner as in their African native range.
+* The research found an annual per capita growth rate of 0.11 x yr^-1 for invasive hippos, which is comparable to population growth rates in the native range and indicates a potential for quick spread of this invasive species in the next decades. The lack of predators in both native and invasive ranges (Sinclair, Mduma, & Brashares, 2003; Castelblanco-Martínez et al., 2021) is a key factor enabling uncontrolled hippo population growth.
 
-* Hippos move organic matter from terrestrial to aquatic ecosystems in Colombia. This was demonstrated by isotopic study which detected heavy carbon characteristic of terrestrial plants in water bodies populated by hippos.
-
-* These invaded aquatic systems also have more dissolved oxygen and cyanobacteria blooms. Thus, water quality is compromised, with risk of eutrophication and fish mortality.
-
-* Some water quality indicators were similar across invaded and non-invaded lakes. This is likely due to agricultural practices and pasture. Seasonal variation and high precipitation may also affect the study results.
-
-* The research found an annual per capita growth rate of 0.11 x yr^-1 for invasive hippos, which is comparable to population growth rates in the native range and indicates a potential for quick spread of this invasive species in the next decades.
-
-* Management strategies are recommended to control hippo growing populations. Authors discussed social complications when implementing control measures, but did not specify potential management actions to be taken.
-
-* This study did not mention some important life history traits when projecting population growth. For example, the population structure of hippos appears to be an important factor when predicting future invasion scenarios, as other specialists have noted: "Half of those hippos are calves and juveniles, implying their reproductive rate will increase in the next three years" (Varona, 2022). You will learn about structured population models in the upcoming modules.
+* As a next step, refining population growth studies to include **stage structure** and **age at maturity** could help identifying useful management strategies, as there may be life history traits which are more relevant to population growth than others. For example, the population structure of hippos appears to be an important factor when predicting future invasion scenarios, as "half of those hippos are calves and juveniles, implying their reproductive rate will increase in the next three years" (Varona, 2022). You will learn about structured population models in the upcoming modules.
 
 ## References
+Castelblanco-Martínez, D. N., Moreno-Arias, R. A., Velasco, J. A., Moreno-Bernal, J. W., Restrepo, S., Noguera-Urbano, E. A., ... & Jiménez, G. (2021). A hippo in the room: Predicting the persistence and dispersion of an invasive mega-vertebrate in Colombia, South America. *Biological Conservation, 253*, 108923.
+
 Dyer, R. (2009). Biological data analysis using R (Doctoral dissertation, Ph. D thesis. Department of Biology, Center for the Study of Biological Complexity, Virginia Commonwealth Univ).
 
-File:Common knapweed (Centaurea nigra) - geograph.org.uk - 492672.jpg. (2021, February 23). Wikimedia Commons, the free media repository. Retrieved 17:45, January 20, 2023 from https://commons.wikimedia.org/w/index.php?title=File:Common_knapweed_(Centaurea_nigra)_-_geograph.org.uk_-_492672.jpg&oldid=535393847.
+File:Common knapweed (Centaurea nigra) - geograph.org.uk - 492672.jpg. (2021, February 23). Wikimedia Commons, the free media repository. https://commons.wikimedia.org/w/index.php?title=File:Common_knapweed_(Centaurea_nigra)_-_geograph.org.uk_-_492672.jpg&oldid=535393847.
 
-File:Malthus.png. (2020, September 20). Wikimedia Commons, the free media repository. Retrieved 14:41, January 20, 2023 from https://commons.wikimedia.org/w/index.php?title=File:Malthus.png&oldid=465719566.
+File:Malthus.png. (2020, September 20). Wikimedia Commons, the free media repository.  https://commons.wikimedia.org/w/index.php?title=File:Malthus.png&oldid=465719566.
+
+Gronewold, N. (2021). Comparative Conservation Strategy Efficacy for Grus japonensis and Grus americana: A Post-Policy Implementation Assessment. *Journal of International Wildlife Law & Policy, 24*(3-4), 224-250.
 
 Jacobs, J. S., & Sheley, R. L. (1998). Observation: life history of spotted knapweed. *Rangeland Ecology & Management/Journal of Range Management Archives, 51*(6), 665-673.
+
+Kremer, W. (2014, June 25). Pablo Escobar's hippos: A growing problem. *BBC News*. https://www.bbc.com/news/magazine-27905743 
 
 Malthus, T. R. (1798). *An essay on the principle of population*. The Works of Thomas Robert Malthus, London, Pickering & Chatto Publishers, 1, 1-139.
 
 Mills, L.S. (2012). *Conservation of wildlife populations*: Demography, genetics, and management. Wiley- Blackwell.
 
-NBCUniversal News Group. (2014, July 1). Pablo Escobar's hippos are running wild in Colombia. *NBCNews.com*. Retrieved January 23, 2023, from https://www.nbcnews.com/news/latin-america/pablo-escobars-hippos-are-running-wild-colombia-n145446 
+NBCUniversal News Group. (2014, July 1). Pablo Escobar's hippos are running wild in Colombia. *NBCNews.com*.  https://www.nbcnews.com/news/latin-america/pablo-escobars-hippos-are-running-wild-colombia-n145446 
+
+Romero, S. (2009, September 10). Colombia confronts drug lord's legacy: Hippos. *The New York Times*. https://www.nytimes.com/2009/09/11/world/americas/11hippo.html 
 
 Shigesada, N. & Kawasaki, K. (1997) Biological Invasions: Theory and Practice (Oxford Univ. Press, Oxford).
 
 Shurin, J. B., Aranguren-Riaño, N., Duque Negro, D., Echeverri Lopez, D., Jones, N. T., Laverde‐R, O., ... & Pedroza Ramos, A. (2020). Ecosystem effects of the world’s largest invasive animal. *Ecology, 101*(5), e02991.
 
-Spotted knapweed. (2023). Minnesota Department of Agriculture. Retrieved January 20, 2023, from https://www.mda.state.mn.us/plants/pestmanagement/weedcontrol/noxiouslist/spottedknapweed 
+Sinclair, A. R., Mduma, S., & Brashares, J. S. (2003). Patterns of predation in a diverse predator–prey system. *Nature, 425*(6955), 288-290.
+
+Spotted knapweed. (2023). Minnesota Department of Agriculture. https://www.mda.state.mn.us/plants/pestmanagement/weedcontrol/noxiouslist/spottedknapweed 
 
 Stevens, M.H. (2009). *A primer of ecology with R*. Springer.
 
-Varona , A. O. (2022, November 18). Hippos in Colombia: What to do with them? | Graduate and Postdoctoral Studies | *Rice University*. Retrieved January 23, 2023, from https://graduate.rice.edu/news/current-news/hippos-colombia-what-do-them 
+Varona , A. O. (2022, November 18). Hippos in Colombia: What to do with them? | Graduate and Postdoctoral Studies | *Rice University*. https://graduate.rice.edu/news/current-news/hippos-colombia-what-do-them 
