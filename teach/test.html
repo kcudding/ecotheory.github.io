@@ -42,9 +42,8 @@
   
     <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
     <meta name="generator" content="pandoc" />
-  <meta name="author" content="Debora, Eddie, Zitao and Kim" />
-  <meta name="date" content="2023-02-03" />
-  <title>BIOL 652 Structured Population Models</title>
+  <meta name="author" content="Kim Cuddington" />
+  <title>Model Selection</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
   <style type="text/css">
@@ -122,120 +121,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">BIOL 652 Structured Population
-Models</span>
+        <span class="doc-title">Model Selection</span>
         <ul class="nav pull-right doc-info">
-                    <li><p class="navbar-text">Debora, Eddie, Zitao and
-Kim</p></li>
-                              <li><p class="navbar-text">2023-02-03</p></li>
+                    <li><p class="navbar-text">Kim Cuddington</p></li>
+                              <li><p class="navbar-text">01.02.23</p></li>
                   </ul>
       </div>
     </div>
   </div>
   <div class="container">
       <div class="row">
-            <div id="TOC" class="col-sm-7 col-lg-3">
-        <div class="well toc">
-
-        <ul>
-        <li><a href="#module-1-unstructured-population-models"
-        id="toc-module-1-unstructured-population-models"><strong>Module
-        1: Unstructured Population Models</strong></a>
-        <ul>
-        <li><a href="#introduction"
-        id="toc-introduction">Introduction</a></li>
-        <li><a href="#learning-outcomes"
-        id="toc-learning-outcomes">Learning outcomes</a>
-        <ul>
-        <li><a href="#what-is-a-population-model"
-        id="toc-what-is-a-population-model">What is a population
-        model?</a></li>
-        <li><a href="#basic-types-of-population-models"
-        id="toc-basic-types-of-population-models">Basic types of
-        population models</a></li>
-        </ul></li>
-        <li><a href="#simple-models-of-population-dynamics"
-        id="toc-simple-models-of-population-dynamics">Simple models of
-        population dynamics</a>
-        <ul>
-        <li><a href="#historical-facts"
-        id="toc-historical-facts">Historical facts</a></li>
-        <li><a
-        href="#when-are-simple-population-models-used-in-biological-analyses"
-        id="toc-when-are-simple-population-models-used-in-biological-analyses">When
-        are simple population models used in biological
-        analyses?</a></li>
-        <li><a
-        href="#mathematical-representation-of-population-growth-patterns"
-        id="toc-mathematical-representation-of-population-growth-patterns">Mathematical
-        representation of population growth patterns</a></li>
-        <li><a href="#geometric-growth"
-        id="toc-geometric-growth">Geometric growth</a></li>
-        <li><a href="#exponential-growth"
-        id="toc-exponential-growth">Exponential growth</a></li>
-        </ul></li>
-        <li><a href="#references"
-        id="toc-references">References</a></li>
-        <li><a href="#density-dependence"
-        id="toc-density-dependence">Density-dependence</a>
-        <ul>
-        <li><a href="#continuous-logistic-growth"
-        id="toc-continuous-logistic-growth">Continuous logistic
-        growth</a></li>
-        <li><a href="#discrete-logistic-growth"
-        id="toc-discrete-logistic-growth">Discrete logistic
-        growth</a></li>
-        <li><a
-        href="#other-types-of-density-denpendent-population-models"
-        id="toc-other-types-of-density-denpendent-population-models">Other
-        types of density denpendent population models</a></li>
-        <li><a href="#paper-discussion" id="toc-paper-discussion">Paper
-        Discussion:</a></li>
-        </ul></li>
-        <li><a href="#references-1"
-        id="toc-references-1">References:</a></li>
-        <li><a href="#population-dynamics-and-stochasticity"
-        id="toc-population-dynamics-and-stochasticity">Population
-        dynamics and stochasticity</a>
-        <ul>
-        <li><a href="#deterministic-vs.-stochastic-factors"
-        id="toc-deterministic-vs.-stochastic-factors">Deterministic
-        vs. stochastic factors</a></li>
-        <li><a href="#basic-forms-of-stochasticity-and-definitions"
-        id="toc-basic-forms-of-stochasticity-and-definitions">Basic
-        forms of stochasticity and definitions</a></li>
-        <li><a href="#implications-of-variation-in-population-growth"
-        id="toc-implications-of-variation-in-population-growth">Implications
-        of variation in population growth</a></li>
-        <li><a href="#stochastic-effects-to-population-growth-rates"
-        id="toc-stochastic-effects-to-population-growth-rates">Stochastic
-        effects to population growth rates</a></li>
-        <li><a href="#estimating-population-growth-rates"
-        id="toc-estimating-population-growth-rates">Estimating
-        population growth rates</a></li>
-        <li><a href="#paper-discussion-1"
-        id="toc-paper-discussion-1">Paper discussion</a></li>
-        <li><a href="#references-2"
-        id="toc-references-2">References</a></li>
-        </ul></li>
-        <li><a
-        href="#model-selection-how-do-we-tell-which-model-to-use-for-our-data"
-        id="toc-model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
-        Selection: How do we tell which model to use for our data?</a>
-        <ul>
-        <li><a href="#likelihood"
-        id="toc-likelihood">Likelihood</a></li>
-        <li><a href="#model-comparison" id="toc-model-comparison">Model
-        comparison</a></li>
-        <li><a href="#references-3"
-        id="toc-references-3">References</a></li>
-        </ul></li>
-        </ul></li>
-        </ul>
-
-        </div>
-      </div>
-            <div class="col-9">
+            <div class="col-12">
 
       
       <h1 id="module-1-unstructured-population-models"><strong>Module 1:
@@ -799,6 +695,8 @@ Springer.</p>
 with them? | Graduate and Postdoctoral Studies | <em>Rice
 University</em>.
 https://graduate.rice.edu/news/current-news/hippos-colombia-what-do-them</p>
+<h1 id="module-1-unstructured-population-models-1"><strong>Module 1:
+Unstructured Population Models</strong></h1>
 <h2 id="density-dependence">Density-dependence</h2>
 <p>Density-dependent population models are used to describe population
 dynamics in which the growth or decline of a population is influenced by
@@ -1232,8 +1130,10 @@ alt="Wild brown trout (flicker by U.S.Fish and Wildlife Service, Public Domain M
 Wildlife Service, Public Domain Mark 1.0)</figcaption>
 </figure>
 <h2 id="references-1">References:</h2>
-<h2 id="population-dynamics-and-stochasticity">Population dynamics and
-stochasticity</h2>
+<h1 id="module-1-unstructured-population-models-2">Module 1:
+Unstructured Population Models</h1>
+<h2 id="section-3-population-dynamics-and-stochasticity">Section 3:
+Population dynamics and stochasticity</h2>
 <h3 id="deterministic-vs.-stochastic-factors">Deterministic
 vs. stochastic factors</h3>
 <ul>
@@ -1506,9 +1406,8 @@ Evolution.</p>
 <p>Mills, L. S. (2007) <em>Conservation of Wildlife Populations:
 Demography, Genetics, and Management</em>, Wiley-Blackwell
 Publishing.</p>
-<h2
-id="model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
-Selection: How do we tell which model to use for our data?</h2>
+<h2 id="how-do-we-tell-which-model-to-use-for-our-data">1. How do we
+tell which model to use for our data?</h2>
 <p>We have introduced several models to describe how population size may
 change over time. If we have several candidate models and no <em>a
 priori</em> reason to assume one is better than the others, we can use
@@ -1523,8 +1422,8 @@ alt="Examples of functions that describe the effects of different types density 
 effects of different types density dependence on per capita growth
 rates</figcaption>
 </figure>
-<h4 id="example-model-selection-with-the-bay-checkerspot-data">Example:
-Model selection with the Bay Checkerspot data</h4>
+<h3 id="example-model-selection-with-the-bay-checkerspot-data">Example:
+Model selection with the Bay Checkerspot data</h3>
 <p>Let’s use some data from Harrison’s (1991) famous paper testing
 whether there were multiple populations or a single population of the
 Bay Checkerspot butterfly. In order to test her hypotheses, Dr. Harrison
@@ -1548,43 +1447,11 @@ alt="Fitting least squares linear regression to per capita growth rates" />
 <figcaption aria-hidden="true">Fitting least squares linear regression
 to per capita growth rates</figcaption>
 </figure>
-<table>
-<caption>Least squares regression of <span class="math inline">\(ln
-\lambda = intercept - slope*females\)</span></caption>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 15%" />
-<col style="width: 29%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">Estimate</th>
-<th style="text-align: right;">Std. Error</th>
-<th style="text-align: right;">t value</th>
-<th style="text-align: right;"><span class="math inline">\(Pr(&gt;\lvert
-t \rvert)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">0.52</td>
-<td style="text-align: right;">0.32</td>
-<td style="text-align: right;">1.63</td>
-<td style="text-align: right;">0.12</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">slope</td>
-<td style="text-align: right;">-0.00076</td>
-<td style="text-align: right;">0.00038</td>
-<td style="text-align: right;">-2.00</td>
-<td style="text-align: right;">0.057</td>
-</tr>
-</tbody>
-</table>
+<p>Table: Least squares regression of <span class="math inline">\(ln
+\lambda = intercept - slope*females\)</span> | | Estimate| Std. Error| t
+value| <span class="math inline">\(Pr(&gt;\lvert t \rvert)\)</span>|
+|:————|———-:|———-:|———:|——————:| |(Intercept) | 0.52| 0.32| 1.63| 0.12|
+|slope | -0.00076| 0.00038| -2.00| 0.057|</p>
 <p>While the results seem suggestive, it is important to realize what
 this regression does and does not do. The linear regression is a test of
 the hypothesis that the slope is equal to zero. That is we are testing
@@ -1598,7 +1465,7 @@ hypothesis. Moreover, we need to remember that even if we did reject
 this null hypothesis, that does not mean that we accept one of the other
 models! For example, a significant linear regression would not tell us
 if we should use a logistic or theta-logistic model.</p>
-<h3 id="likelihood">Likelihood</h3>
+<h2 id="likelihood">2. Likelihood</h2>
 <p>In order to determine which model best fits our data, instead of
 using null hypothesis testing, we need to compare the performance of
 several different models. That is, we need to look at the problem in the
@@ -1620,7 +1487,7 @@ underlying processes. We can write this as:</p>
 <p><span class="math display">\[L (model|data), \]</span></p>
 <p>which is read as the “likelihood of the model given the collected
 data” (see Edwards 1974).</p>
-<h4 id="probability-and-likelihood">Probability and Likelihood</h4>
+<h3 id="probability-and-likelihood">Probability and Likelihood</h3>
 <p>The likelihood of a given model is proportional to the probability of
 obtaining the data given the model. <span class="math display">\[L
 (model|data) = c * P(data|model), \]</span> but is not itself a
@@ -1640,9 +1507,9 @@ we have:</p>
 g(x_i|model),\]</span></p>
 <p>where <span class="math inline">\(g(x_i|model)\)</span> is the
 appropriate probability density function.</p>
-<h4
+<h3
 id="example-use-likelihood-to-find-mean-and-variance-of-data">Example:
-use likelihood to find mean and variance of data</h4>
+use likelihood to find mean and variance of data</h3>
 <p>Let’s try this out for a simple problem. We have been given a set of
 data, and we wish to determine if the data came from a normal
 distribution with a given mean (5) and variance (4). In this case then,
@@ -1681,8 +1548,8 @@ computer rounding errors.</p>
 &gt; like2
 [1] -25.25877</code></pre>
 <p>A mean of 5 is the most likely.</p>
-<h4 id="maximum-likelihood-estimate-mle">Maximum likelihood estimate
-(MLE)</h4>
+<h3 id="maximum-likelihood-estimate-mle">Maximum likelihood estimate
+(MLE)</h3>
 <p>Of course, a mean of 5 and 6 aren’t the only possibilities, Let’s
 look at a range of potential values for the mean.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#varying the mean</span></span>
@@ -1723,9 +1590,9 @@ distribution. In this case, we think <span class="math inline">\(\mu
 <img src="likesurf.jpeg" style="width:60.0%" alt="Likelihood surface" />
 <figcaption aria-hidden="true">Likelihood surface</figcaption>
 </figure>
-<h4
+<h3
 id="finding-the-maximum-likelihood-is-an-optimization-problem">Finding
-the maximum likelihood is an optimization problem</h4>
+the maximum likelihood is an optimization problem</h3>
 <p>The reason for using the <em>negative</em> of the log likelihood is
 all about convenience. We don’t want to have to plot out likelihood
 surfaces for every problem, and in fact, it will be tricky to do for
@@ -1748,7 +1615,7 @@ to find the best mean and variance for our data.</p>
 more precision, and tells us that the maximum likelihood (minimum
 negative log-likelihood) is found for parameter values of $= 4.0, =
 2.4.</p>
-<h3 id="model-comparison">Model comparison</h3>
+<h2 id="model-comparison">3. Model comparison</h2>
 <p>Let’s go back to our original problem with the Harrison data (1991),
 and use maximum likelihood to find the best parameter values for each
 model, and then compare their likelihood.</p>
@@ -1829,38 +1696,11 @@ density-dependent models to data from Harrison 1991</figcaption>
 [1] 35.22501</code></pre>
 <p>and we can compare these, to see that the lowest negative
 log-likelihood is found for the theta-logistic.</p>
-<table>
-<caption>Negative log-likelihood values for three candidate population
-models applied to Harrison’s (1991) Bay Checkerspot data</caption>
-<thead>
-<tr class="header">
-<th>model</th>
-<th># parameters</th>
-<th>- ln <span class="math inline">\(L_{max}\)</span></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>exponential</td>
-<td>2</td>
-<td>37.237</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>logistic</td>
-<td>3</td>
-<td>35.225</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>theta-logistic</td>
-<td>4</td>
-<td>35.174</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>Table: Negative log-likelihood values for three candidate population
+models applied to Harrison’s (1991) Bay Checkerspot data | model | #
+parameters | - ln <span class="math inline">\(L_{max}\)</span> | |
+|—————-|———————-|———-|—| | exponential | 2 | 37.237 | | | logistic | 3 |
+35.225 | | | theta-logistic | 4 | 35.174 | |</p>
 <p>So perhaps we should select the theta-logistic model? After all it
 <strong>does</strong> have the greatest likelihood. However, there is
 another point to consider. The theta-logistic model has four paramters
@@ -1872,7 +1712,7 @@ explains all the variance?</p>
 <p>More generally, is a model with more parameters, functions, entities,
 etc. more likely to be “true”? Where we use the word “true” as more
 explanatory, accurate, predictive, representative of reality?</p>
-<h4 id="overfitting">Overfitting</h4>
+<h3 id="overfitting">Overfitting</h3>
 <p>We have a conundrum here. If we use goodness of fit as our only
 criteria for model selection, then we will always choose the most
 complex model. Unfortunately, really complex and flexible models are
@@ -1888,8 +1728,8 @@ alt="Kelam,Creative Commons CC BY-NC-SA 4.0 license, via Wikimedia Commons" />
 href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative
 Commons CC BY-NC-SA 4.0 license</a>, via Wikimedia Commons</figcaption>
 </figure>
-<h4 id="overfitting-example">Overfitting example?</h4>
-<h4 id="parsimony">Parsimony</h4>
+<h3 id="overfitting-example">Overfitting example?</h3>
+<h3 id="parsimony">Parsimony</h3>
 <blockquote>
 <p>“Do not multiply entities without necessity.” -William of Ockham -
 choose the model with the fewest assumptions</p>
@@ -1904,8 +1744,8 @@ href="https://undsci.berkeley.edu/">www.understandingscience.org</a> <a
 href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative
 Commons CC BY-NC-SA 4.0 license</a>.</figcaption>
 </figure>
-<h4 id="model-selection-using-parsimony">Model selection using
-parsimony</h4>
+<h3 id="model-selection-using-parsimony">Model selection using
+parsimony</h3>
 <ul>
 <li>Information criterion statistics combine the maximum log likelihood
 for a model with the number of parameters it include to provide a
@@ -1920,15 +1760,15 @@ lead to a better fit to the data, but at the cost of less precision in
 the estimate of each parameter and incorporation of spurious patterns
 from the data</p></li>
 </ul>
-<h4 id="model-selection-criteria">Model selection criteria</h4>
+<h3 id="model-selection-criteria">Model selection criteria</h3>
 <ul>
 <li><p>•  Goodness of fit (e.g., R2 , distribution of
 residuals)</p></li>
 <li><p>•  Likelihood (ML)</p></li>
 <li><p>•  Parsimony (number of parameters)</p></li>
 </ul>
-<h4 id="akaike-information-criteria-aic">Akaike information criteria
-(AIC)</h4>
+<h3 id="akaike-information-criteria-aic">Akaike information criteria
+(AIC)</h3>
 <p><span class="math inline">\(AIC=-2ln(m|y, \theta) +2k\)</span></p>
 <ul>
 <li>Akaike 1973</li>
@@ -1940,7 +1780,7 @@ k</li>
 <li>there’s stuff about where the size of the penalty is derived from …
 include this?</li>
 </ul>
-<h4 id="disadvantages-of-aic">(Dis)Advantages of AIC</h4>
+<h3 id="disadvantages-of-aic">(Dis)Advantages of AIC</h3>
 <ul>
 <li>takes into account BOTH model fit and parsimony</li>
 <li>Used to compare models, value has no meaning on its own</li>
@@ -1949,8 +1789,8 @@ models are nested (i.e. that one model can be converted to another by
 setting one or more parameters equal to 0 or 1; for example, the theta
 logistic model and the Allee effect model are not nested</li>
 </ul>
-<h4 id="comparing-our-3-models-with-aic">Comparing our 3 models with
-AIC</h4>
+<h3 id="comparing-our-3-models-with-aic">Comparing our 3 models with
+AIC</h3>
 <table>
 <thead>
 <tr class="header">
@@ -1985,12 +1825,11 @@ AIC</h4>
 <li>models that differ by more than two units would be considered
 different</li>
 <li>logistic is our choice here</li>
-<li>more stuff on interpretation here?</li>
+<li>more stuff on interpretation here? ### References Akaike, H. (1973).
+Information theory and an extention of the maximum likelihood principle.
+In <em>2nd Inter. Symp. on information Theory</em>. Akademiai
+Kiado.</li>
 </ul>
-<h3 id="references-3">References</h3>
-<p>Akaike, H. (1973). Information theory and an extention of the maximum
-likelihood principle. In <em>2nd Inter. Symp. on information
-Theory</em>. Akademiai Kiado.</p>
 <p>Edwards, A. W. (1974). The history of likelihood. <em>International
 Statistical Review/Revue Internationale de Statistique</em>, 9-15.</p>
 <p>Harrison, S. (1991). Local extinction in a metapopulation context: an

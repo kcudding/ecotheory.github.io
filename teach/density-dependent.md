@@ -1,22 +1,4 @@
----
-title: "Density Dependent Population"
-author: "Eddie"
-date: '2023-01-31'
-output:
-  html_document: 
-    toc: yes
-    number_sections: yes
-    toc_float:
-      collapsed: no
-      smooth_scroll: no
-    keep_md: yes
-bibliography: dd_bibliography.bib
-nocite: '@*'
----
 
-
-
-# **Module 1: Unstructured Population Models**
 
 ## Density-dependence
 

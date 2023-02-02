@@ -1,6 +1,6 @@
 ---
-title: "unstruct_pop_models"
-author: "Debora"
+title: "BIOL 652 Structured Population Models"
+author: "Debora, Eddie, Zitao and Kim"
 date: "2023-02-03"
 output:
   html_document:
