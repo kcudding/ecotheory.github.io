@@ -134,7 +134,9 @@ $$N_{(t+1)}=N_{t}*R_0$$
 
 
 ```r
-# Let's practice: considering that an initial population of 100 individuals and a net reproductive rate of 1.5, what will be the total population size in 4 generations?
+# Let's practice: considering that an initial population of 100 individuals and a net 
+# reproductive rate of 1.5, what will be the total population size 
+# in 4 generations?
 
 Ninitial <- 1000
 R0 <- 1.2
@@ -178,7 +180,6 @@ lambda=1.45
 
 #We can calculate how much a population will change in the next time step (eg., next year):
 percentage_of_change=(lambda-1)*100
-percentage_of_change
 ```
 
 ```
@@ -209,7 +210,7 @@ $$\lambda=N_{t+1}/N_{t}$$
 year1 <- 74
 year0 <- 35
 
-# Applying the equation above we get the $\lambda$ growth rate over the first year period:
+# Applying the equation above we get the lambda growth rate over the first year period:
 lambda <- year1/year0
 lambda
 ```
@@ -236,7 +237,7 @@ $$\lambda=(N_{t}/N_{0})^{1/t}$$
 year2 <- 173
 year0 <- 35
 
-# The average weekly $\lambda$ is:
+# The average yearly lambda is:
 lambda <- (year2/year0)^(1/2)
 ```
 
@@ -274,13 +275,14 @@ While $\lambda$ values greater than 1 represent growing populations, r values gr
 
 #### Example using duckweeds
 
-In our lab, we work with a group of aquatic plants commonly called duckweeds. Due to their fast and asexual growth, they are good model species for population ecology studies. Duckweed population growth can be calculated in a number of ways, such as counting individual fronds (leaf like shape) or measuring the dry weight of specimens. Try to count how many individuals are found in each date in the picture below. Any round-shaped protuberance can be considered as a separate individual.
+Remember our duckweeds? Due to their fast and asexual growth, they are good model species for population ecology studies. Duckweed population growth can be calculated in a number of ways, such as counting individual fronds (leaf like shape) or measuring the dry weight of specimens. Try to count how many individuals are found in each date in the picture below. Any round-shaped protuberance can be considered as a separate individual.
 
 ![Populations of duckweeds (*Lemna minor*) grown in laboratory conditions and optimal temperature](https://raw.github.com/kcudding/kcudding.github.io/main/teach/duckweed_pop2.png) 
 
 
 ```r
-# Let's create a dataframe using the duckweed population counts we have just obtained from the picture above:
+# Let's create a dataframe using the duckweed population counts we have just obtained 
+# from the picture above:
 duckweed <- data.frame(day=(c(1,3,5,7,9,11)),pop_size=(c(9,12,23,45,68,103)))
 
 # Now, let's calculate the average daily $\lambda$:
@@ -319,7 +321,7 @@ Due to the ability to replace $\lambda$ for r and vice-versa, we have:
 $$N_{t}=N_{0}e^{rt}$$ 
 
 #### Doubling time
-If we need to know how much time it would take for a population to achieve twice as much its initial size, we replace N(final)/N(initial) with 2 in our exponential growth equation. We would then take the natural logarithm from both sides of the equation to solve, resulting in:
+If we need to know how much time it would take for a population to achieve twice as much its initial size, we replace N(final)/N(initial) with 2 in our exponential growth equation. We then take the natural logarithm from both sides of the equation to solve, resulting in:
 
 $$t_{double}=0.69/r$$
 
@@ -350,7 +352,7 @@ Shurin, J. B., Aranguren-Riaño, N., Duque Negro, D., Echeverri Lopez, D., Jones
 
 * This study analyzed aquatic and terrestrial areas populated by hippos to conclude that this invasive species is substantially changing the environment by relocating nutrients from the soil to the water, resulting in cyanobacteria blooms. Continued unrestricted hippo population growth can then lead to water resource damage.
 
-* Constrains to management: Actions to manage this invasive species are complicated by the social-ecological mismatch between the scientific consensus on the ecosystem threats posed by this invasion and the public perception of the presence of hippos as being positive (eg., animal being used for touristic purposes)
+* Constrains to management: Actions to manage this invasive species are complicated by the social-ecological mismatch between the scientific consensus on the ecosystem threats posed by this invasion and the public perception of the presence of hippos as being positive (eg., animal used for touristic purposes)
 
 ![© Bernard Dupont, Grazing hippos, https://commons.wikimedia.org/wiki/File:Hippo_%28Hippopotamus_amphibius%29_emaciated_specimen_grazing_on_Sabie_riverbank_..._%2833321050795%29.jpg, [Creative Commons CC-BY-SA-2.0 license](https://creativecommons.org/licenses/by-sa/2.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/hippo2.jpg)
 
@@ -358,7 +360,8 @@ Shurin, J. B., Aranguren-Riaño, N., Duque Negro, D., Echeverri Lopez, D., Jones
 
 
 ```r
-# First, let's create a data frame containing dates and respective population counts as in Shurin (2020). We added additional records obtained from news outlets:
+# First, let's create a data frame containing dates and respective population counts 
+# as in Shurin (2020). We added additional records obtained from news outlets:
 hippo <- data.frame(year=c(1993, 2009, 2014, 2019, 2022),pop_size=(c(4, 28, 60, 65, 133)))
 
 # source for 2014: Kremer (2014)
@@ -393,13 +396,15 @@ The intrinsic rate of increase is 0.12. This means that this invasive hippo popu
 # To predict population sizes, we first set our initial population size
 initial<-hippo$pop_size[1]
 
-# And we create an empty vector in which we will later include population sizes for the next 50 years
+# And we create an empty vector in which we will later include population sizes for the 
+# next 50 years
 pred.pop.expon<-vector("numeric", 50)
 
 # Our modelling starts with initially observed population sizes
 pred.pop.expon[1]<-initial
 
-# And we add a function to calculate population sizes according to our previously estimated growth rates
+# And we add a function to calculate population sizes according to our previously 
+# estimated growth rates
 for(i in 2:50){
   pred.pop.expon[i]<-pred.pop.expon[i-1]*lambda
   }
