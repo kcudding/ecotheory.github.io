@@ -14,9 +14,8 @@ date: "2023-01-27"
 ### Basic forms of stochasticity and definitions
 #### Demographic stochasticity
 
-**Demographic stochasticity** refers to chance events of individual mortality and reproduction (inevitable deviation in mean birth and death rates) (Lande *et al*., 2003). 
+**Demographic stochasticity** refers to chance events of individual mortality and reproduction, such as inevitable deviation in mean birth and death rates (Lande *et al*., 2003). Demographic stochasticity is only significant in small populations, and we will explain this in three examples.
 
-- Only significant in small populations
 - *Example* 1: Flipping a coin 10,000 times, one will get approximately 5,000 times heads; flipping the same coin 100 times, there could be some deviations from the expected 50:50; flipping the same coin 10 times, it is not suprising that one only gets 2 heads. The probability of getting head is approaching 0.5 as the number of trials increases. Let's do some experiments with R:
 
 ```r
@@ -47,9 +46,8 @@ results
 
 #### Environmental stochasticity
 
-**Environmental stochasticity** often refers to temporal fluctuations in the probability of mortality and reproduction (unpredictable catastrophes) (Lande *et al*., 2003)
+**Environmental stochasticity** often refers to temporal fluctuations in the probability of mortality and reproduction (Lande *et al*., 2003), which is often driven directly or indirectly by weather (e.g. unpredictable catastrophes).
 
-- Often driven directly or indirectly by weather
 - *Example 1*: Climate factors have a strong influence on the ecology of red deer on Rum (Albon *et al*., 1987). Real-world data between 1971 and 1991 has shown that the changes in red deer population size correlates strongly with annual rainfall (Benton *et al*., 1995).
 
 ![Figure: © Charles J. Sharp, [Red deer (_Cervus elaphus_)](https://commons.wikimedia.org/wiki/File:Red_deer_(Cervus_elaphus)_young_stag.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)](young_red_deer.jpg)
@@ -70,14 +68,16 @@ results
 To answer the question why population size tends to shrink because of stochasticity, we need to understand two important concepts--arithmetic and geometric means.
 
 #### Arithmetic mean vs. geometric mean
-- Let $\lambda_A$ and $\lambda_G$ denote the arithmetic and geometric mean, respectively. We have the following definitions:
-	$$\lambda_A=\frac{1}{k}\sum_{i=1}^k\lambda_i,$$
-	$$\lambda_G=\left(\prod_{i=1}^k\lambda_i\right)^{\frac{1}{k}}.$$
+
+Let $\lambda_A$ and $\lambda_G$ denote the arithmetic and geometric mean, respectively. We have the following definitions:
+$$\lambda_A=\frac{1}{k}\sum_{i=1}^k\lambda_i,$$
+$$\lambda_G=\left(\prod_{i=1}^k\lambda_i\right)^{\frac{1}{k}}.$$
+
 - *Example*: Consider $N_{t}=\lambda_tN_{t-1}$, where $N_t$ is the population at time $t$, and during each time interval $(t-1,t)$ the growth rate is $\lambda_t$. Assume $\lambda_t=1.55$ or $\lambda_t=0.55$ with the same probability. Assuming that the population grows at a constant arithmetic mean rate $\lambda_A=(1.55+0.55)/2=1.05$, the population at $t=16$ is
-	$$N_{16}=1.05^{16}N_0=2.18N_0.$$
-	Instead, if we assume that the growth rate alternated between $1.55$ and $0.55$, the population at $t=16$ becomes
-	$$N_{16}=1.55^8\times0.55^8N_0=[(1.55\times0.55)^{1/2}]^{16}N_0=0.28N_0,$$
-	which indicates that the variation in population growth leads to a likely decline for the population, even though the (arithmetic) average growth rate is larger than 1 (Mills, 2007). In fact, the geometric mean growth rate is $\lambda_G=(1.55\times0.55)^{1/2}\approx 0.9233$. Here we simulate 100 possible population changes during a time period of 16 years. From the left boxplot we can see that only 4 of them (circles) end up with a relatively large population, while the majority stay quite small. We remove the outliers (extreme cases) and plot the right boxplot, where we can see that most of the populations actually shrink, and the median (bald horizontal line) is a bit less than 0.3, which is consistent with the above calculation.
+$$N_{16}=1.05^{16}N_0=2.18N_0.$$
+Instead, if we assume that the growth rate alternated between $1.55$ and $0.55$, the population at $t=16$ becomes
+$$N_{16}=1.55^8\times0.55^8N_0=[(1.55\times0.55)^{1/2}]^{16}N_0=0.28N_0,$$
+which indicates that the variation in population growth leads to a likely decline for the population, even though the (arithmetic) average growth rate is larger than 1 (Mills, 2007). In fact, the geometric mean growth rate is $\lambda_G=(1.55\times0.55)^{1/2}\approx 0.9233$. Here we simulate 100 possible population changes during a time period of 16 years. From the left boxplot we can see that only 4 of them (circles) end up with a relatively large population, while the majority stay quite small. We remove the outliers (extreme cases) and plot the right boxplot, where we can see that most of the populations actually shrink, and the median (bald horizontal line) is a bit less than 0.3, which is consistent with the above calculation.
 
 ```r
 # Initialize
@@ -98,25 +98,27 @@ boxplot(outcome, outline = FALSE, main = "Boxplot without outliers")
 
 ![Figure: Boxplots of final population sizes. (left) All outcomes; (right) outcomes with outliers (extreme cases) ignored](popsize_boxplot.png){width=80%}
 
-- *Conversion between $\lambda$ and $r$*: It would be helpful to know the relationship between the arithmetic mean of $r$ and the geometric mean of $\lambda$. Recall that $r=\ln\lambda$, so
-	$$\ln(\lambda_1\lambda_2\cdots\lambda_k)=\ln\lambda_1+\ln\lambda_2+\cdots+\ln\lambda_k=r_1+r_2+\cdots+r_k,$$
-	which gives
-	$$\ln(\lambda_1\lambda_2\cdots\lambda_k)^{1/k}=\frac{1}{k}\ln(\lambda_1\lambda_2\cdots\lambda_k)=\frac{1}{k}(r_1+r_2+\cdots+r_k),$$
-	and thus
-	$$\ln\lambda_G=r_A.$$
-- *Variation around $\lambda$*: An interesting but less intuitive fact is that when fixing the arithmetic mean of growth rates, highly variable growth rates will more likely result in a smaller final population. In other words, increasing the variance of the growth rates ($\sigma_\lambda^2$) makes the geometric mean growth rate less than the arithmetic mean. Let $\lambda_t=\lambda_A+\epsilon_t$, where $\epsilon_t$ is the deviation of $\lambda_t$ from the arithmetic mean $\lambda_A$ with zero mean. Using the Taylor expansion of $\ln(1+x)$, one could obtain
-	$$\begin{aligned}\ln\lambda_t & =\ln\lambda_A+\ln(1+\epsilon_t/\lambda_A)\\~ & =\ln\lambda_A+
+It would be helpful to know the conversion between the arithmetic mean of $r$ and the geometric mean of $\lambda$. Recall that $r=\ln\lambda$, so
+$$\ln(\lambda_1\lambda_2\cdots\lambda_k)=\ln\lambda_1+\ln\lambda_2+\cdots+\ln\lambda_k=r_1+r_2+\cdots+r_k,$$
+which gives
+$$\ln(\lambda_1\lambda_2\cdots\lambda_k)^{1/k}=\frac{1}{k}\ln(\lambda_1\lambda_2\cdots\lambda_k)=\frac{1}{k}(r_1+r_2+\cdots+r_k),$$
+and thus
+$$\ln\lambda_G=r_A.$$
+
+An interesting but less intuitive fact is that when fixing the arithmetic mean of growth rates, highly variable growth rates will more likely result in a smaller final population. In other words, increasing the variance of the growth rates ($\sigma_\lambda^2$) makes the geometric mean growth rate less than the arithmetic mean. Let $\lambda_t=\lambda_A+\epsilon_t$, where $\epsilon_t$ is the deviation of $\lambda_t$ from the arithmetic mean $\lambda_A$ with zero mean. Using the Taylor expansion of $\ln(1+x)$, one could obtain
+$$\begin{aligned}\ln\lambda_t & =\ln\lambda_A+\ln(1+\epsilon_t/\lambda_A)\\~ & =\ln\lambda_A+
 		\epsilon_t/\lambda_A-(\epsilon_t/\lambda_A)^2/2+O(\epsilon_t^3),\end{aligned}$$
-	where $O(\epsilon_t^3)$ denotes the higher order terms. Hence, taking the expectation of both sides gives
-	$$r_A=E(\ln\lambda_t)\cong\ln\lambda_A-\frac{E[(\lambda_t-\lambda_A)^2]}{2\lambda_A^2}=\ln\lambda_A-\frac{\sigma_\lambda^2}{2\lambda_A^2},$$
-	which further gives
-	$$\lambda_G\cong\exp\left(\ln\lambda_A-\frac{\sigma_\lambda^2}{2\lambda_A^2}\right).$$
-	In fact, the geometric mean is **always no larger** than the arithmetic mean (and they are equal if and only if every term is the same).
+where $O(\epsilon_t^3)$ denotes the higher order terms. Hence, taking the expectation of both sides gives
+$$r_A=E(\ln\lambda_t)\cong\ln\lambda_A-\frac{E[(\lambda_t-\lambda_A)^2]}{2\lambda_A^2}=\ln\lambda_A-\frac{\sigma_\lambda^2}{2\lambda_A^2},$$
+which further gives
+$$\lambda_G\cong\exp\left(\ln\lambda_A-\frac{\sigma_\lambda^2}{2\lambda_A^2}\right).$$
+In fact, the geometric mean is **always no larger** than the arithmetic mean (and they are equal if and only if every term is the same).
 
 #### Temporal autocorrelation
-- Above examples assume that $r_t$ does not depend on previous growth rates, nor will it influence subsequent growth rates. The autocorrelation describes the relationship between $r_t$ and $r_{t+\tau}$, its value at a time lag $\tau$. One way to incorporate teporal autocorrelation is to:
-	$$r_{t+\tau}=r_A+\rho(r_{t}-r_A)+\epsilon_{t+\tau},$$
-	where $\rho$ is the coefficient of lag-$\tau$ autocorrelation, and $\epsilon_t\sim N(0,\sigma_\epsilon^2)$ is white noise with zero mean and constant variance. An example would be the case $\tau=1$ (lag-1 autocorrelation), where $r_{t+1}=r_A+\rho(r_t-r_A)+\epsilon_{t+1}$. When $\rho=0$, $r_{t+1}=r_A+\epsilon_{t+1}$ and there is no temporal autocorrelation. Here we present examples of exponential growth rates with zero autocorrelation and positive lag-1 autocorrelation.
+
+Above examples assume that $r_t$ does not depend on previous growth rates, nor will it influence subsequent growth rates. The autocorrelation describes the relationship between $r_t$ and $r_{t+\tau}$, its value at a time lag $\tau$. One way to incorporate teporal autocorrelation is to:
+$$r_{t+\tau}=r_A+\rho(r_{t}-r_A)+\epsilon_{t+\tau},$$
+where $\rho$ is the coefficient of lag-$\tau$ autocorrelation, and $\epsilon_t\sim N(0,\sigma_\epsilon^2)$ is white noise with zero mean and constant variance. An example would be the case $\tau=1$ (lag-1 autocorrelation), where $r_{t+1}=r_A+\rho(r_t-r_A)+\epsilon_{t+1}$. When $\rho=0$, $r_{t+1}=r_A+\epsilon_{t+1}$ and there is no temporal autocorrelation. Here we present examples of exponential growth rates with zero autocorrelation and positive lag-1 autocorrelation.
 
 ```r
 # We assume that the mean exponential growth rate r_A = 0.3,
@@ -163,21 +165,23 @@ Now we move on to an important section, where we try to estimate the growth rate
 
 #### Process error
 
-**Process error** results from variation in true population size due to biotic or abiotic processes (Ahrestani *et al*., 2013).
+**Process error** results from variation in true population size due to biotic or abiotic processes (Ahrestani *et al*., 2013). Environmental and demographic stochasticities are examples of process errors.
 
-- Environmental and demographic stochasticity are examples of process errors
-- When only process error exists, the population at each time $t$, $N_t$, is known and accurate. The growth rate $\lambda_t$ is a random variable. For example, a geometric model with only process error can be described as
-	$$\begin{aligned}N_{t+1} & =\lambda_tN_t,\\\lambda_t & \sim N(\bar\lambda,\sigma_p^2),\end{aligned}$$
-	where $\lambda_t$ follows a normal distribution with mean $\bar\lambda$ and variance $\sigma_p^2$.
-- Since the population at each time $t$, $N_t$, is known and accurate, we can calculate the estimated growth rate using geometric mean
-	$$\hat\lambda=\left(\prod_{i=1}^t\frac{N_{i}}{N_{i-1}}\right)^{\frac{1}{t}},$$
-	or equivalently,
-	$$\hat r=\frac{1}{t}\sum_{i=1}^t\ln\frac{N_i}{N_{i-1}}.$$
-- We can notice that the estimated growth rate is only related to the initial and the final population size, as all the terms between them can be cancelled out. In other words,
-	$$\hat\lambda=\left(\frac{N_t}{N_0}\right)^{\frac{1}{t}}$$
-	and
-	$$\hat r=\frac{\ln N_t-\ln N_0}{t}.$$
-	Here is a toy example: Suppose we observe the following number of fish in a lake during the first 8 years. Assuming a geometric model, what is the average growth rate?
+When only process error exists, the population at each time $t$, $N_t$, is known and accurate. The growth rate $\lambda_t$ is a random variable. For example, a geometric model with only process error can be described as
+$$\begin{aligned}N_{t+1} & =\lambda_tN_t,\\\lambda_t & \sim N(\bar\lambda,\sigma_p^2),\end{aligned}$$
+where $\lambda_t$ follows a normal distribution with mean $\bar\lambda$ and variance $\sigma_p^2$.
+
+Since the population at each time $t$, $N_t$, is known and accurate, we can calculate the estimated growth rate using geometric mean
+$$\hat\lambda=\left(\prod_{i=1}^t\frac{N_{i}}{N_{i-1}}\right)^{\frac{1}{t}},$$
+or equivalently,
+$$\hat r=\frac{1}{t}\sum_{i=1}^t\ln\frac{N_i}{N_{i-1}}.$$
+
+We can notice that the estimated growth rate is only related to the initial and the final population size, as all the terms between them can be cancelled out. In other words,
+$$\hat\lambda=\left(\frac{N_t}{N_0}\right)^{\frac{1}{t}}$$
+and
+$$\hat r=\frac{\ln N_t-\ln N_0}{t}.$$
+
+Here is a toy example: suppose we observe the following number of fish in a lake during the first 8 years. Assuming a geometric model, what is the average growth rate?
 	
 ```r
 # Create a dataframe
@@ -208,15 +212,15 @@ legend(x = 'topleft', legend = c('data', 'prediction'), col = c('blue', 'red'), 
 
 #### Observation error
 
-**Observation error** results from variation in the methodology used to obtain the population size (Ahrestani *et al*., 2013).
+**Observation error** results from variation in the methodology used to obtain the population size (Ahrestani *et al*., 2013). Examples of observation error include difficulty in counting animals, which might due to lack of technical expertise, insufficient funding, etc.
 
-- Examples of observation error include difficulty in counting animals, which might due to lack of technical expertise, insufficient funding, etc.
-- When only observation error exists, the growth rate is accurate. A possible geometric model with only observation error can be described as
-	$$\begin{aligned}\ln N_t & =\ln N_0+rt+\eta_t,\\\eta_t & \sim N(0,\sigma_o^2),\end{aligned}$$
-	where $\eta_t$ follows a normal distribution with mean 0 and variance $\sigma_o^2$. Here we ignore the subscript of $r$ as we assume the growth rate is some constant. We could also convert the above equation to
-	$$N_{t+1}=\lambda^tN_te^{\eta_t},$$
-	where $e^{\eta_t}>0$ so that the population is always non-negative.
-- The equation $\ln N_t=\ln N_0+rt+\eta_t$ is in the form of a linear model in which $\ln N_t$ is the response variable and $t$ is the predictor variable. Using simple linear regression, the slope of the fitted function is the estimated $r$. Moreover, the $y$-intercept is the estimated $\ln N_0$. Here we provide another toy example with the same data as the previous example on process error:
+When only observation error exists, the growth rate is accurate. A possible geometric model with only observation error can be described as
+$$\begin{aligned}\ln N_t & =\ln N_0+rt+\eta_t,\\\eta_t & \sim N(0,\sigma_o^2),\end{aligned}$$
+where $\eta_t$ follows a normal distribution with mean 0 and variance $\sigma_o^2$. Here we ignore the subscript of $r$ as we assume the growth rate is some constant. We could also convert the above equation to
+$$N_{t+1}=\lambda^tN_te^{\eta_t},$$
+where $e^{\eta_t}>0$ so that the population is always non-negative.
+
+The equation $\ln N_t=\ln N_0+rt+\eta_t$ is in the form of a linear model in which $\ln N_t$ is the response variable and $t$ is the predictor variable. Using simple linear regression, the slope of the fitted function is the estimated $r$. Moreover, the $y$-intercept is the estimated $\ln N_0$. Here we provide another toy example with the same data as the previous example on process error:
 
 ```r
 # Create a dataframe, and calculate the log-transformed population sizes
