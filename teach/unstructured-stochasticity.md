@@ -52,7 +52,7 @@ results
 - Often driven directly or indirectly by weather
 - *Example 1*: Climate factors have a strong influence on the ecology of red deer on Rum (Albon *et al*., 1987). Real-world data between 1971 and 1991 has shown that the changes in red deer population size correlates strongly with annual rainfall (Benton *et al*., 1995).
 
-![Figure: © Charles J. Sharp, [Red deer (_Cervus elaphus_)](https://commons.wikimedia.org/wiki/File:Red_deer_(Cervus_elaphus)_young_stag.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)](red_deer.jpg)
+![Figure: © Charles J. Sharp, [Red deer (_Cervus elaphus_)](https://commons.wikimedia.org/wiki/File:Red_deer_(Cervus_elaphus)_young_stag.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)](young_red_deer.jpg)
 
 - *Example 2*: Cold-blooded insects like mosquitoes thrive in hot and humid weather, which results in the seasonality of many vector-borne diseases, such as malaria and dengue. There are massive research on modelling the mosquito population dynamics and how they affect the transmission of those diseases. An example would be Beck-Johnson *et al*. (2013).
 
