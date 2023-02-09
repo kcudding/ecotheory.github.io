@@ -198,7 +198,7 @@ legend("top", legend=c("exponential", "logistic","theta-logistic" ),
        col=c(1,2,4), lty=1, lwd=2, bty="n")
 ```
 
-![Fits of the three different density-dependent models to data from Harrison 1991](3modelfits.jpeg){ width=80% }
+![Fits of the three different models to data from Harrison 1991](3modelfits.jpeg){ width=80% }
 
 For each model, we have an estimate of likelihood  (e.g, 
 
@@ -208,84 +208,79 @@ and we can compare these, to see that the lowest negative log-likelihood is foun
 
 Table: Negative log-likelihood values for three candidate population models applied to Harrison's (1991) Bay Checkerspot data 
 
-| model          | # parameters | - ln $L_{max}$ |   |
-|----------------|----------------------|----------|---|
-| exponential    | 2                    | 37.237    |   |
-| logistic       | 3                    | 35.225    |   |
-| theta-logistic | 4                    | 35.174    |   |
+| model          | # parameters | - ln $L_{max}$ | 
+|----------------|----------------------|----------|
+| exponential    | 2                    | 37.237    | 
+| logistic       | 3                    | 35.225    | 
+| theta-logistic | 4                    | 35.174    | 
 
-So perhaps we should select the theta-logistic model? After all it **does** have the greatest likelihood. However, there is another point to consider. The theta-logistic model has four paramters (r,k, $\theta, and \sigma, the variance of the normal distribution of errors), while the logstic model has 3.  We note that if a model has n data points and n parameters (one for each data point), then the residual variance will be ZERO. Would a model with n parameters then be a better model, since it explains all the variance?
+So perhaps we should select the theta-logistic model? After all it **does** have the greatest likelihood. However, there is another point to consider. The theta-logistic model has four parameters (r,k, $\theta, and \sigma, the variance of the normal distribution of errors), while the logistic model has 3.  We note that if a model has n data points and n parameters (one for each data point), then the residual variance will be ZERO. Would a model with n parameters then be a better model, since it explains all the variance?
 
 More generally, is a model with more parameters, functions, entities, etc. more likely to be “true”? Where we use the word "true" as more explanatory, accurate, predictive, representative of reality?
 
 #### Overfitting
-We have a conundrum here. If we use goodness of fit as our only criteria for model selection, then we will always choose the most complex model. Unfortunately, really complex and flexible models are more likely to be mislead by errors and noise. 
+We have a conundrum here. If we use goodness of fit as our only criteria for model selection, then we will always choose the most complex model. Unfortunately, really complex and flexible models are more likely to be mislead by errors and noise. For example, compare the fit of a highly flexible curve with a linear fit. The flexible curve fits every point, but some of this variance is just noise or error.
 
->“with four parameters I can fit an elephant, and with five I can make him wiggle his trunk.”
->- John von Neumann
-
-![Kelam,[Creative Commons CC BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/), via Wikimedia Commons](FermiNeumannElephant.gif){ width=40% }
-
-
-#### Overfitting example?
+![Overfitting example where the more flexible curve explains every point (Ghiles) [Creative Commons CC BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/), via Wikimedia Commons](Overfitted_Data.png){ width=60% }
 
 #### Parsimony
+In order to avoid overfitting data, the principle of parsimony is often used to select between models. This idea has been expressed by many philosophers, perhaps the most famous statement:
+
 >"Do not multiply entities without necessity."
 >-William of Ockham
-- choose the model with the fewest assumptions 
 
-![© University of California Museum of Paleontology, Understanding Science, [www.understandingscience.org](https://undsci.berkeley.edu/) [Creative Commons CC BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/). ](69126_evo_resources_resource_image_36_original.gif){ width=80% }
+expresses the concept best. We should choose the the model with the fewest assumptions. For example, given a unique colour trait found in two different bird species, if they were closely related it would make more sense to assume that the trait had evolved once rather than twice (see Figure below)
+
+![© University of California Museum of Paleontology, Understanding Science, [www.understandingscience.org](https://undsci.berkeley.edu/) [Creative Commons CC BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/). ](69126_evo_resources_resource_image_36_original.gif){ width=60% }
 
 
 #### Model selection using parsimony
--   Information criterion statistics combine the maximum log likelihood for a model with the number of parameters it include to provide a measure of “support”
-    
+To incorporate the idea of parsimony in our model selection, we will use Information criterion statistics. These statistics combine the maximum log likelihood for a model with the number of parameters, as a measure of the complexity of the model. Then we can compare the statistics for various candidate models. We use these statistics to decide if a given model has more "support" than another.  
 
-“Support” is higher for:
-
--   •  models with higher likelihoods, and
-    
--   •  models with fewer parameters
-    
-    More complex models are penalized because more parameters will always lead to a better fit to the data, but at the cost of less precision in the estimate of each parameter and incorporation of spurious patterns from the data
+Support is higher for models with higher likelihoods, and models with fewer parameters. More complex models are penalized because more parameters will always lead to a better fit to the data, but at the cost of less precision in the estimate of each parameter and incorporation of spurious patterns from the data
 	
-#### Model selection criteria
-
--   •  Goodness of fit (e.g., R2 , distribution of residuals)
-    
--   •  Likelihood (ML)
-    
--   •  Parsimony (number of parameters)
-
 #### Akaike information criteria (AIC)
 
-$AIC=-2ln(m|y, \theta) +2k$
+One commonly used information criteria statistic is the Akaike information criteria (AIC) (Akaike 1973). Goodness of fit is usually determined by the maximum log-likelihood parameter estimate $\theta$ for a model with a given dataset, $y$, but we can also use residual sum of squares. In fact the R function **AIC()** can be used on a given model fit with the **lm()** function to calculate this quantity. There is a penalty for model complexity given as the number of adjustable model parameters,  $k$. So we have: 
 
-- Akaike 1973
-- goodness-of-fit: where y is the data set and $\theta$ the maximum- likelihood parameter estimate (But can also use residual sum of squares)
-- penalty for model complexity number of adjustable model parameters k
-- there's stuff about where the size of the penalty is derived from ... include this?
+$$AIC=-2ln(m|y, \theta) +2k$$
 
-#### (Dis)Advantages of AIC
-- takes into account BOTH model fit and parsimony
-- Used to compare models, value has no meaning on its own
-- does not assume (as do likelihood ratio tests, for example) that the models are nested (i.e. that one model can be converted to another by setting one or more parameters equal to 0 or 1; for example, the theta logistic model and the Allee  effect model are not nested 
+Its easy to remember that when comparing models, we are always looking for the lowest value of the AIC metric, since the complexity penalty makes the AIC *larger*. You can see examples of using this metric with ecological data in Anderson et al. (2000). 
+
+AIC has the advantage of taking into account BOTH model fit and parsimony. However, unlike some metrics for model evaluation (e.g., $R^2$), the AIC value has no meaning on its own. It can only be used to compare models. It does have some advantages over other strategies of model comparison such as the likelihood ratio test,  since we can compare very different models using the same metric. In comparison, the likelihood ratio tests assumes that the models are nested (i.e. that one model can be converted to another by setting one or more parameters equal to 0 or 1; for example, the theta logistic model and logistic model are nested) 
 
 #### Comparing our 3 models with AIC
 
-| model          | # parameters | ln $L_{max}$ | AIC  |
-|----------------|----------------------|----------|---|
-| exponential    | 2                    | -41.3    | 86.5  |
-| **logistic**       | 3                    | -37.8    | **81.6** |
-| theta-logistic | 4                    | -37.1    | 82.2  |
+Let's use this metric to compare our three models fit to the Harrison (1991) data. 
 
-- models that differ by more than two units would be considered different 
-- logistic is our choice here
-- more stuff on interpretation here?
+| model          | # parameters | -ln $L_{max}$ | AIC  | AICc |
+|----------------|--------------|----------|---|---|
+| exponential    | 2            | 37.237    | 78.5 | 79.0|
+| **logistic**   | 3            | 35.225   | **76.4** | 77.6|
+| theta-logistic | 4            | 35.174   | 78.3  | 80.5|
+
+In general, AIC values for models that are different by more than 2 units are interpreted as having importantly different predictive performance (Anderson et al. 2000). In this case, we might select the logistic model as it has the lowest AIC, but it is still within two units of the theta-logistic model. However we do note that for small sample sizes, a correction is recommended when the number of data points, n, divided by the number of parameters, is small:  $n/k<40$ (Burnham & Anderson,  2004): $AIC_c=-2ln L +2k+\frac{2k(k+1)}{n-k-1}$, which in this case would indicate the exponential model and the logistic had the same support.
+
+Finally, when the AIC differences are very small, the raw values cannot tell us much about the extent to which the data support one model over another. To look at this more closely we can calculate the **Akaike weights**. For each model, we find the differences in AIC with respect to the AIC of the best candidate model as: $\Delta_i(AIC)=AIC_i- min(AIC)$.  We can then obtain an estimate of the relative likelihood of each model $M_i$ by the transform:  $L(M_i|data)\propto exp (- \frac {1}{2} \Delta_i(AIC))$ where $\propto$ stands for “is proportional to.” Then,  the relative model likelihoods are divided by the sum of the likelihoods of all models to obtain Akaike weights, $w_i (AIC)$ (e.g., Burnham & Anderson, 2001), as: $$w_i (AIC) = \frac {exp (- \frac {1}{2} \Delta_i(AIC))}{\sum exp (\frac{1}{2}\Delta_k(AIC) )}$$. 
+
+
+| model          | # parameters | -ln $L_{max}$ | AIC  | w(AIC) |)
+|----------------|--------------|----------|---|----|
+| exponential    | 2            | 37.237    | 78.5  |0.21| 
+| **logistic**   | 3            | 35.225   | **76.4** |**0.57**|
+| theta-logistic | 4            | 35.174   | 78.3  | 0.22|
+
+Since these weights sum to 1, they can be interpreted as the probability that a given model is the best one, given the data and the set  of candidate models (e.g., Burnham & Anderson, 2001).  Thus, the strength of evidence in favor of one model over the other is obtained by dividing their Akaike weights. So comparing the logistic model and theta-logistic we have $$\frac {w_{Log}}{w_{Theta}}=\frac {.57}{.22}=2.6,$$ indicating that the logistic model is about 2.6 times more likely than the next best model.
 
 ### References
 Akaike, H. (1973). Information theory and an extention of the maximum likelihood principle. In _2nd Inter. Symp. on information Theory_. Akademiai Kiado.
 
-Edwards, A. W. (1974). The history of likelihood. _International Statistical Review/Revue Internationale de Statistique_, 9-15.
+Anderson, D. R., Burnham, K. P., & Thompson, W. L. (2000). Null hypothesis testing: problems, prevalence, and an alternative. _The Journal of Wildlife Management_,_64_, 912-923.
 
-Harrison, S. (1991). Local extinction in a metapopulation context: an empirical evaluation. _Biological journal of the Linnean Society_, _42_(1-2), 73-88.
+Anderson, D., & Burnham, K. (2004). Model selection and multi-model inference. _Second edition_. NY: Springer-Verlag.
+
+Burnham, K. P., & Anderson, D. R. (2001). Kullback-Leibler information as a basis for strong inference in ecological studies. _Wildlife Research_, _28_(2), 111-119.
+
+Edwards, A. W. (1974). The history of likelihood. _International Statistical Review/Revue Internationale de Statistique_,_42_, 9-15.
+
+Harrison, S. (1991). Local extinction in a metapopulation context: an empirical evaluation. _Biological Journal of the Linnean Society_, _42_(1-2), 73-88.

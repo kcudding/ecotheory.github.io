@@ -1,12 +1,5 @@
----
-title: "Unstructured Stochasticity"
-author: "Zitao He"
-date: "2023-01-27"
----
 
-
-# Module 1: Unstructured Population Models
-## Chapter 3: Population dynamics and stochasticity
+## Population dynamics and stochasticity
 ### Deterministic vs. stochastic factors
 - **Deterministic factors** are predictable, such as predation, competition, etc.
 - **Stochastic factors** are unpredictable
