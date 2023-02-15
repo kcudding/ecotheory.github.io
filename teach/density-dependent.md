@@ -290,5 +290,21 @@ However, when allee effects are strong, a critical size occurs where the growth 
 ![Wild brown trout (flicker by U.S.Fish and Wildlife Service, Public Domain Mark 1.0)](brown_trout.jpg)
 
 
-## References:
+### References:
+Allee, W. C., & Bowen, E. (1932). Studies in animal aggregations: Mass protection against colloidal silver among goldfishes. *The Journal of Experimental Zoology 61* (2), 185–207. https://doi.org/10.1002/jez.1400610202.
 
+Bohlin, T., Sundström, L., Johnsson, J., Höjesjö, J., & Pettersson, J. (2002). Density-dependent growth in brown trout: Effects of introducing wild and hatchery fish. *Journal of Animal Ecology 71*(4), 683–92. https://doi.org/10.1046/j.1365-2656.2002.00631.x.
+
+Courchamp, F., Luděk, B., & Gascoigne, J. (2008). *Allee effects in ecology and conservation*. Oxford Biology. Oxford; Oxford University Press.
+
+Drake, J., & Kramer, A. (2011). Allee effects. *Nature Education Knowledge*. https://www.nature.com/scitable/knowledge/library/allee-effects-19699394/.
+
+May, Robert M. (1975). Biological populations obeying difference equations: stable points, stable cycles, and chaos. *Journal of Theoretical Biology 51*(2), 511–24. https://doi.org/10.1016/0022-5193(75)90078-8.
+
+Mills, L. S. (2013). Conservation of wildlife populations: demography, genetics, and management. 2nd ed. Chichester, West Sussex; Wiley-Blackwell.
+
+Moreira-Saporiti, A., Bejarano, S., Viana, I., Belshe, E., Mtolera M., & Teichberg, M. (2021). Local victory: Assessing interspecific competition in seagrass from a trait-based perspective. *Frontiers in Plant Science 12*, 709257–57. https://doi.org/10.3389/fpls.2021.709257.
+
+Stevens, M., Henry H. (2009). *A primer of ecology with R*. Use R! Dordrecht: Springer.
+
+Zimmerman, John L. (1971). The territory and its density dependent effect in *Spiza americana*. *The Auk 88*(3), 591–612.
