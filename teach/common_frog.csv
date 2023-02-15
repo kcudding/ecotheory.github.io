@@ -1,0 +1,4 @@
+Stages,Survival,Transition,Reproduction
+Pre-juvenile,0,0.019,0
+Juvenile,0.25,0.08,52
+Adult,0.43,0,279.5
