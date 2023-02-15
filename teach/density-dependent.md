@@ -200,38 +200,38 @@ Figure 1.7. Per capital growth rate vs. population size with different theta val
 * When $\theta$ > 1, this weakens density dependence at low N, so the population grows faster than logistic, all else being equal (concave). When $\theta$ < 1, this strengthens density dependence at low N, causing the population to grow more slowly than logistic, all else being equal (convex). (Figure 1.8)
 
 ![](density-dependent_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
-Figure 1.8. Population size vs. time with different theta value.
+Figure 1.8. Population size vs. time with different theta value
 
 
 #### Positive density dependence
 
-In many cases, cooperation or facilitation leads to mutually positive interactions among members of a population.
+In many cases, cooperation or facilitation leads to mutually positive interactions among members of a population
 
-**Positive density dependence** occurs when vital rates or population increase as density increases.
+**Positive density dependence** occurs when vital rates or populations increase as density increases
 
 ##### Allee effect
 
-Allee initially noticed that goldfish grew faster in water which had previously contained other goldfish, than in water that had not. He further experimented with a number of different species and showed that larger group size or some degree of crowding may stimulate reproduction,prolong survival in adverse conditions (through resistance to desiccation or by social thermoregulation) and enhance protection from toxic reagents. (Allee & Bowen, 1932)
+Allee initially noticed that goldfish grew faster in water which had previously contained other goldfish, than in water that had not contained them. He further experimented with a number of different species and showed that larger group size or some degree of crowding may stimulate reproduction, prolong survival in adverse conditions (through resistance to desiccation or by social thermoregulation), and enhance protection from toxic reagents (Allee & Bowen, 1932).
 
 
-**Allee effect**:
+**The Allee effect**
 
-*  Demonstrates that there is a positive correlation between population density and individual fitness.
+* Demonstrates that there is a positive correlation between population density and individual fitness
 
-* Occurs at very low population sizes (growth rate is reduced when population is too small).
+* Occurs at very low population sizes (growth rate is reduced when population is too small)
 
-![African wilddog in packs hunting (flickr, CC Attribution 2.0 Generic)](african_w_dog.jpg)
+![(author name), African wilddogs hunting in packs, Creative Commons CC BY 2.0 license)](african_w_dog.jpg)
 
 
 **Example**: 
 
-* African wild dog usually live in a pack of 6 - 20 individuals
+* African wild dogs usually live in a pack of 6-20 individuals
 
 * Increasing pack size can:
 
   + increase the likelihood of a successful kill in a given hunt
   
-  + better predator defense
+  + provide a better predator defense
   
   + help babysit pups (packs with 10 or more adults raised three times as many yearlings compared to packs with 9 or fewer adults)
   
@@ -244,14 +244,14 @@ where a is the critical point of the population, below which the population grow
 
 ##### Weak and strong Allee effects
 
-* **Weak Allee effects**: A weak Allee effect is where the population growth rate is small but positive for small N. The population does not contain a critical population size or density under which the growth rate becomes negative. 
+* **Weak Allee effects**: A weak Allee effect is where the population growth rate is small but positive for small N. The population does not contain a critical population size or density under which the growth rate becomes negative
 
-* **Strong Allee effects**: A strong Allee effect describes a population that can grow at intermediate population densities but declines when the number of organisms is either too small or too large.
+* **Strong Allee effects**: A strong Allee effect describes a population that can grow at intermediate population densities but declines when the number of organisms is either too small or too large
 
-* **Allee effect population threshold**: A population size below which the per capita growth rate is negative and the population declines towards extinction. Populations that are subject to Allee effects can collapse and become extinct if their population size falls below the critical threshold.
+* **Allee effect population threshold**: A population size below which the per capita growth rate is negative and the population declines towards extinction. Populations that are subject to Allee effects can collapse and become extinct if their population size falls below the critical threshold
 
-![](density-dependent_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
-Figure 1.9. No allee effects (green line), weak allee effects (read line), and strong allee affects (blue line, $a=50$) acting on a population that has an intrinsic population growth rate $r=0.18$ and carrying capacity $K=500$.
+![](density-dependent_files/figure-html/unnamed-chunk-9-1.png)<!-- -->  
+Figure 1.9. No allee effects (green line), weak allee effects (read line), and strong allee affects (blue line, $a=50$) acting on a population that has an intrinsic population growth rate $r=0.18$ and carrying capacity $K=500$
 
 
 ##### Stability in Allee effects
@@ -261,33 +261,34 @@ From previous sections we learned that carrying capacity $K$ is a stable equilib
 However, when allee effects are strong, a critical size occurs where the growth function $dN/dt$ intersects the horizontal line at zero. This is an unstable equilibrium. Populations with abundance greater than this value will increase to carrying capacity; populations with abundance less than this value will decline to extinction.
 
 
-### Paper Discussion: 
+### Illustration of current application: research paper review
+
+Title: Density-dependent growth in brown trout: Effects of introducing wild and hatchery fish (Bohlin et al., 2002).
 
 
-![](paper_discuss.png)
+#### Research questions
 
-#### **Knowledge gap** leading to the current research:
+* What is the underlining density-dependence mechanism in wild brown trout?
 
-* Unsure what is the underlining density-dependence mechanism in wild brown trout.
-
-* Unclear to what extent the release of domesticated brown trout will induce density-dependent effects on wild brown trout populations.
+* To what extent will the release of domesticated brown trout induce density-dependent effects on wild brown trout populations?
 
 
-#### Snapshot of the study:
+#### Research snapshot
 
-* Density can affect growth in both underyearlings and older brown trout. These effects were very similar regardless of what treatment groups these competitors belong to (whether they are wild or hatchery-reared).
+* Density can affect growth in both underyearlings and older brown trout. These effects were very similar regardless of what treatment groups these competitors belong to (whether they are wild or hatchery-reared)
 
-* Wild resident brown trout showed restricted movement in small streams; while hatchery trout tended to move more when introduced into the wild.
+* Wild resident brown trout showed restricted movement in small streams; while hatchery trout tended to move more when introduced into the wild
 
-* Wild resident brown trout showed an prior residence advantage over hatchery-reared brown trout. Hatchery-reared brown trout ate less and were less efficient in consuming novel prey, despite their larger body size. These differences disappeared after a few weeks in the wild.
+* Wild resident brown trout showed an prior residence advantage over hatchery-reared brown trout. Hatchery-reared brown trout ate less and were less efficient in consuming novel prey, despite their larger body size. These differences disappeared after a few weeks in the wild
 
-#### Conclusions:
 
-* Competition originating from increasing population density is not only limited to underyearlings brown trout. Density-dependent growth is the main density-dependent response in yearling trout.
+#### Conclusions
 
-* Stocking of hatchery fish can exert similar negative density effects on wild individuals if released into the wild.
+* Competition originating from increasing population density is not only limited to underyearlings brown trout. Density-dependent growth is the main density-dependent response in yearling trout
 
-![Wild brown trout (flicker by U.S.Fish and Wildlife Service, Public Domain Mark 1.0)](brown_trout.jpg)
+* Stocking of hatchery fish can exert similar negative density effects on wild individuals if released into the wild
+
+![U.S.Fish and Wildlife Service, Wild brown trout, Public Domain Mark 1.0](brown_trout.jpg)
 
 
 ### References:
@@ -301,10 +302,10 @@ Drake, J., & Kramer, A. (2011). Allee effects. *Nature Education Knowledge*. htt
 
 May, Robert M. (1975). Biological populations obeying difference equations: stable points, stable cycles, and chaos. *Journal of Theoretical Biology 51*(2), 511–24. https://doi.org/10.1016/0022-5193(75)90078-8.
 
-Mills, L. S. (2013). Conservation of wildlife populations: demography, genetics, and management. 2nd ed. Chichester, West Sussex; Wiley-Blackwell.
+Mills, L. S. (2013). *Conservation of wildlife populations: demography, genetics, and management*. 2nd ed. Chichester, West Sussex; Wiley-Blackwell.
 
 Moreira-Saporiti, A., Bejarano, S., Viana, I., Belshe, E., Mtolera M., & Teichberg, M. (2021). Local victory: Assessing interspecific competition in seagrass from a trait-based perspective. *Frontiers in Plant Science 12*, 709257–57. https://doi.org/10.3389/fpls.2021.709257.
 
-Stevens, M., Henry H. (2009). *A primer of ecology with R*. Use R! Dordrecht: Springer.
+Stevens, M., Henry H. (2009). *A primer of ecology with R. Use R!* Dordrecht: Springer.
 
 Zimmerman, John L. (1971). The territory and its density dependent effect in *Spiza americana*. *The Auk 88*(3), 591–612.
