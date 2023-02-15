@@ -1,7 +1,7 @@
 ---
-title: "Outline"
+title: "Structured Population Models Outline"
 author: "Eddie Wu"
-date: '2023-02-02'
+date: '2023-02-15'
 output:
   html_document: 
     toc: yes
@@ -20,41 +20,40 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Learning outcomes
 
+1. Distinguish age and stage structure, and understand how they can be applied in more complicated population models.
+
+2. Develop the skills to create a projection matrix of vital rates. Project the matrix through time to predict future population dynamics. Being able to interperate the results of a structured population model.
+
+3. Being able to read the population trajectories of structured population model predictions. Understand what is stable stage/age distribution and transient dynamics. 
+
+4. Understand what is sensitivity and elasticity. Develop the skills to conduct sensitivity and elasticity analysis.
+
+5. Understand how stochasticity can be applied to structured population models.
+
 
 # Structured population models
 
-## Introduction to population structure
-
-So far, we have limited our prediction of wild populations by assuming that all individuals in a population are identical. However, many plants and animals have demonstrated distinct age or stage structure in their populations. In fact, ecologists care about these particular parts of a population as much as they do the population as a whole. To truly understand and predict population growth, we cannot avoid discussing the dynamics of these particular ages and stages.
+## Introduction to population structures
 
 ### Age and stage structure
 
-In the same population, individuals can have markedly different dynamics depending on their age.
+#### Age structure
+#### Stage structure
+#### Size structure
 
-* Coulson et al. (2001) found that individual susceptibility to changing environmental conditions differs between Soay sheep of different ages. Young and old individuals are more severely affected by adverse weather conditions than adults of prime reproductive age.
-
-* insert images of soay sheep
-
-
-While for many species, differences in vital rates in wild populations often depend on developmental or morphological stages, rather than ages.
-
-* provide the common frog example
+* explain with real-life biology examples
 
 
 ### Life tables
 
 A **life table** is a record of survival and reproductive rates in a population, broken out by age, size, or developmental stage.
 
-* insert the example from mountain sheep
+* common frog example (Biek et al., 2001)
+
+#### Different Methods for conducting life tables
 
 
 ### Life history stage diagram
-
-We can use a life stage diagram to represent the dynamics in a population.
-
-* Consider the following example for common frog: 
-
-* This diagram can be converted to a population matrix.
 
 ```{r, echo=FALSE, warning=FALSE}
 # Plot the matrix:
@@ -83,20 +82,6 @@ Juvenile -> Juvenile [label = '0.25']
 
 ### Use matrix to represent population dynamics
 
-Compared to life tables and life history diagrams, population matrices are more versatile and practical tools for presenting how structure affects wildlife population dynamics.
-
-A handy way to decipher the biological meaning of any matrix element is to label the rows and columns of the matrix with the consecutive stages of the target organism. Each element gives the transition from the current column number to the current row number.
-
-* For example, $a_{i,j}$ represents the number of individuals contributed on average by each individual in class j this year to class i next year.
-
-Consider the following matrix, common frog has three stages, pre-juvenile, juvenile, and adult. The time step is 1 year.
-
-* The first row ($a_{1,2} = 52, a_{1,3} = 279.5$) represents reproduction from each stage to the next year.
-
-* The diagonal ($a_{2,2} = 0.25, a_{3,3} = 0.43$) represents the proportion of individuals in a stage that will survive and still be in the same stage next year.
-
-* The sub-diagonal ($a_{2,1} = 0.019, a_{3,2} = 0.08$) represents the proportion surviving and advancing to the next stage.
-
 ```{r, echo=FALSE}
 # Create a matrix
 X <- matrix(0, nrow=3, ncol=3,
@@ -113,23 +98,21 @@ X
 ```
 Anatomy of a female-based projection matrix for common fog (adapted from Biek et al., 2002)
 
+#### Lefkovitch Matrix - for stage structure (Lefkovitch, 1965)
 
-#### Lefko-vitch Matrix - for stage structure
-
-* Animals can remain in some stages for multiple time steps.
-
-#### Leslie Matrix - for age structure
+#### Leslie Matrix - for age structure (Leslie, 1945) (Leslie, 1948)
 
 
 ## Structured population models
 
 ### Project the matrix
 
-Once the matrix model is filled with vital rates it can be projected through time, keeping track of both total population size and numbers of individuals in each stage.
-
 To determine the population size vector next year $n(t+1)$, multiply the matrix $M$ of vital rates by the vector of individuals at current time $n(t)$:
 
 $$n(t+1) = M*n(t)$$
+**Example calculation**
+
+* Use the common frog example from Biek et al., 2001
 
 
 ### Stable age distribution (SSD)
@@ -138,18 +121,7 @@ Any wildlife population with a particular set of constant vital rates can achiev
 
 * Demonstrate using a matrix population calculation example
 
-
-### Transient dynamics
-
-A population with a stage distribution different from that expected at SSD will experience **transient dynamics** until it settles down to the asymptotic growth rate at SSD.
-
-
-### Population inertia
-
-#### Population momentum
-(read Koons et al., 2007)
-
-#### Reproductive value
+### Reproductive Value
 
 
 ## Sensitivities and Elasticities
@@ -164,7 +136,16 @@ A population with a stage distribution different from that expected at SSD will 
 
 Elasticity of matrix element $a_{i,j}$ = (sensitivity of $a_{i,j}$)$\frac{a_{i,j}}{\lambda}$
 
-### Component sensitivity and elasticity
+### Component sensitivity and elasticity    
+
+
+## Transient dynamics
+
+A population with a stage distribution different from that expected at SSD will experience **transient dynamics** until it settles down to the asymptotic growth rate at SSD.
+
+### Population inertia
+#### Population momentum
+(read Koons et al., 2007)
 
 
 ## Stochasticity in age and stage-structured populations
@@ -173,6 +154,7 @@ Elasticity of matrix element $a_{i,j}$ = (sensitivity of $a_{i,j}$)$\frac{a_{i,j
 
 ### Environmental stochasticity
 ### Demographic stochasiticity
+### Applying density-dependence in strucutured population models
 
 
 ## Paper discussion
