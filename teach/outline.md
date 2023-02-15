@@ -134,7 +134,7 @@ A population with a stage distribution different from that expected at SSD will 
 
 ### Classical paper of the topic
 
-![](images/classical_reading.png)
+![](classical_reading.png)
 
 #### Knowledge gaps
 
@@ -163,7 +163,7 @@ A population with a stage distribution different from that expected at SSD will 
 
 ### Latest paper of the topic
 
-![](images/latest_reading.png)
+![]（latest_reading.png)
 
 #### Knowledge gaps
 
@@ -180,7 +180,7 @@ A population with a stage distribution different from that expected at SSD will 
 * Field-collected Burbot fish samples. Obtained and calculated vital rates.
 
 * A female-based Leslie matrix.
-![Brauer et al., 2018](images/matrix.png)
+![Brauer et al., 2018](matrix.png)
 
 #### Discussions:
 
