@@ -1,7 +1,7 @@
 ---
 title: "Structured Population Models Outline"
 author: "Eddie Wu"
-date: '2023-02-02'
+date: '2023-02-15'
 output:
   html_document: 
     toc: yes
@@ -22,7 +22,7 @@ nocite: '@*'
 
 2. Develop the skills to create a projection matrix of vital rates. Project the matrix through time to predict future population dynamics. Being able to interperate the results of a structured population model.
 
-3. Be able to read the population trajectories of structured population model predictions. Understand what is stable stage/age distribution and transient dynamics. 
+3. Being able to read the population trajectories of structured population model predictions. Understand what is stable stage/age distribution and transient dynamics. 
 
 4. Understand what is sensitivity and elasticity. Develop the skills to conduct sensitivity and elasticity analysis.
 
@@ -55,8 +55,8 @@ A **life table** is a record of survival and reproductive rates in a population,
 
 
 ```{=html}
-<div id="htmlwidget-097c1dfb34bb27816dae" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-097c1dfb34bb27816dae">{"x":{"diagram":"digraph {\n\ngraph[layout = dot, rankdir = LR]\n\nPrejuvenile\nJuvenile\nAdult\n\nPrejuvenile -> Juvenile [label = \"0.019\"]\nJuvenile -> Adult [label = \"0.08\"]\n\nAdult -> Prejuvenile [label = \"279.50\", style = dashed]\nJuvenile -> Prejuvenile [label = \"52.00\", style = dashed]\n\nAdult -> Adult [label = \"0.43\"]\nJuvenile -> Juvenile [label = \"0.25\"]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-be6fffa7702b4274172c" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be6fffa7702b4274172c">{"x":{"diagram":"digraph {\n\ngraph[layout = dot, rankdir = LR]\n\nPrejuvenile\nJuvenile\nAdult\n\nPrejuvenile -> Juvenile [label = \"0.019\"]\nJuvenile -> Adult [label = \"0.08\"]\n\nAdult -> Prejuvenile [label = \"279.50\", style = dashed]\nJuvenile -> Prejuvenile [label = \"52.00\", style = dashed]\n\nAdult -> Adult [label = \"0.43\"]\nJuvenile -> Juvenile [label = \"0.25\"]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
@@ -163,7 +163,7 @@ A population with a stage distribution different from that expected at SSD will 
 
 ### Latest paper of the topic
 
-![]（latest_reading.png)
+![](latest_reading.png)
 
 #### Knowledge gaps
 
