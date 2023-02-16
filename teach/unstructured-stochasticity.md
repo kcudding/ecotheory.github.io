@@ -42,9 +42,9 @@ results
 
 **Environmental stochasticity** often refers to temporal fluctuations in the probability of mortality and reproduction (Lande et al., 2003), which is often driven directly or indirectly by weather (e.g. unpredictable catastrophes).
 
-- *Example 1*: Climate factors have a strong influence on the ecology of red deer on Rum (Albon et al., 1987). Real-world data between 1971 and 1991 has shown that the changes in red deer population size correlates strongly with annual rainfall (Benton et al., 1995)
+- *Example 1*: Climate factors have a strong influence on the ecology of red deer in Scotland (Albon et al., 1987). Real-world data between 1971 and 1991 has shown that the changes in red deer population size correlates strongly with annual rainfall (Benton et al., 1995)
 
-![Figure: © Charles J. Sharp, [Red deer (_Cervus elaphus_)](https://commons.wikimedia.org/wiki/File:Red_deer_(Cervus_elaphus)_young_stag.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)](young_red_deer.jpg)
+![© Charles J. Sharp, [Red deer (_Cervus elaphus_)](https://commons.wikimedia.org/wiki/File:Red_deer_(Cervus_elaphus)_young_stag.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)](young_red_deer.jpg)
 
 - *Example 2*: Cold-blooded insects like mosquitoes thrive in hot and humid weather, which results in the seasonality of many vector-borne diseases, such as malaria and dengue. There is massive research on modelling the mosquito population dynamics and how they affect the transmission of those diseases. For an example, refer to Beck-Johnson et al. (2013)
 
@@ -108,11 +108,11 @@ where $O(\epsilon_t^3)$ denotes the higher order terms. Hence, taking the expect
 $$r_A=E(\ln\lambda_t)\cong\ln\lambda_A-\frac{E[(\lambda_t-\lambda_A)^2]}{2\lambda_A^2}=\ln\lambda_A-\frac{\sigma_\lambda^2}{2\lambda_A^2},$$
 which further gives
 $$\lambda_G\cong\exp\left(\ln\lambda_A-\frac{\sigma_\lambda^2}{2\lambda_A^2}\right).$$
-In fact, the geometric mean is **always no larger** than the arithmetic mean (and they are equal if and only if every term is the same).
+In fact, the geometric mean is **never larger** than the arithmetic mean (and they are equal if and only if every term is the same).
 
 #### Temporal autocorrelation
 
-Above examples assume that $r_t$ does not depend on previous growth rates, nor will it influence subsequent growth rates. The autocorrelation describes the relationship between $r_t$ and $r_{t+\tau}$, its value at a time lag $\tau$. One way to incorporate teporal autocorrelation is to:
+The examples above assume that $r_t$ does not depend on previous growth rates, nor will it influence subsequent growth rates. The autocorrelation describes the relationship between $r_t$ and $r_{t+\tau}$, its value at a time lag $\tau$. One way to incorporate temporal autocorrelation is to:
 $$r_{t+\tau}=r_A+\rho(r_{t}-r_A)+\epsilon_{t+\tau},$$
 where $\rho$ is the coefficient of lag-$\tau$ autocorrelation, and $\epsilon_t\sim N(0,\sigma_\epsilon^2)$ is white noise with zero mean and constant variance. An example would be the case $\tau=1$ (lag-1 autocorrelation), where $r_{t+1}=r_A+\rho(r_t-r_A)+\epsilon_{t+1}$. When $\rho=0$, $r_{t+1}=r_A+\epsilon_{t+1}$ and there is no temporal autocorrelation. Here we present examples of exponential growth rates with zero autocorrelation and positive lag-1 autocorrelation.
 
@@ -153,11 +153,11 @@ legend(x = "bottomright", legend = c('rho = 0', 'rho = 0.2', 'rho = 0.5', 'rho =
        col = 1:4, lty = c(1,2,2,2))
 ```
 
-![Figure: Plots of exponential growth rates with different levels of positive lag-1 autocorrelation](autocorrelation.png){width=80%}
+![Exponential growth rates with different levels of positive lag-1 autocorrelation](autocorrelation.png){width=80%}
 
 ### Estimating population growth rates
 
-Now we move on to an important section, where we try to estimate the growth rate from data, assuming some very simple model. But first, let's talk about different types of errors we might encounter.
+Now we move on to an important section, where we try to estimate the growth rate from data, assuming some very simple models. But first, let's talk about different types of errors we might encounter.
 
 #### Process error
 
@@ -204,7 +204,7 @@ lines(N$year, N$pred, col = 'red', lty = 2)
 legend(x = 'topleft', legend = c('data', 'prediction'), col = c('blue', 'red'), lty = c(1, 2))
 ```
 
-![Figure: Plots of data and the predicted population growth using a geometric model, when considering process error only](process_error_example.png){width=80%}
+![Population data and predicted population growth using a geometric model, when considering process error only](process_error_example.png){width=80%}
 
 #### Observation error
 
@@ -216,7 +216,7 @@ where $\eta_t$ follows a normal distribution with mean 0 and variance $\sigma_o^
 $$N_{t+1}=\lambda^tN_te^{\eta_t},$$
 where $e^{\eta_t}>0$ so that the population is always non-negative.
 
-The equation $\ln N_t=\ln N_0+rt+\eta_t$ is in the form of a linear model in which $\ln N_t$ is the response variable and $t$ is the predictor variable. Using simple linear regression, the slope of the fitted function is the estimated $r$. Moreover, the $y$-intercept is the estimated $\ln N_0$. Here we provide another toy example with the same data as the previous example on process error:
+The equation $\ln N_t=\ln N_0+rt+\eta_t$ is in the form of a linear model in which $\ln N_t$ is the response variable and $t$ is the predictor variable. Using a simple linear regression, the slope of the fitted function is the estimated $r$. Moreover, the $y$-intercept is the estimated $\ln N_0$. Here we provide another toy example with the same data as the previous example on process error:
 
 ```r
 # Create a dataframe, and calculate the log-transformed population sizes
@@ -238,10 +238,11 @@ abline(lm1, col = 'red', lty = 2)
 legend(x = 'topleft', legend = c('data', 'prediction'), col = c('blue', 'red'), lty = c(1, 2))
 ```
 
-![Figure: Plots of data and the predicted population growth using a geometric model, when considering observation error only](observation_error_example.png){width=80%}
+![Population data and the predicted population growth using a geometric model, when considering observation error only](observation_error_example.png){width=80%}
 
-### Paper discussion
-Drever, M. C., Clark, R. G., Derksen, C., Slattery, S. M., Toose, P. and Nudds, T. D. (2012) Population vulnerability to climate change linked to timing of breeding in boreal ducks, _Global Change Biology_, **18**:480--492.
+### Illustration of current application
+
+Population vulnerability to climate change linked to timing of breeding in boreal ducks (Drever et al., 2012). 
 
 ![© Nrik Kiran, [Mallard (_Anas platyrhynchos_)](https://commons.wikimedia.org/wiki/File:Mallard_(Anas_platyrhynchos)_02.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)](mallard.jpg){height=300 width=450}
 ![© Judy Gallagher, [American Wigeon (_Anas americana_)](https://commons.wikimedia.org/wiki/File:American_Wigeon_-_Anas_americana,_Oakley_Street,_Cambridge,_Maryland.jpg), [Creative Commons  CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/)](american_wigeon.jpg){height=300 width=450}
@@ -249,33 +250,41 @@ Drever, M. C., Clark, R. G., Derksen, C., Slattery, S. M., Toose, P. and Nudds, 
 ![© MPF, [Greater Scaup (_Aythya marila_)](https://commons.wikimedia.org/wiki/File:2017-03-24_Aythya_marila,_male,_Killingworth_Lake,_Northumberland_18.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)](scaup.jpg){height=300 width=450}
 ![© Andy Reago & Chrissy McClarren, [Surf scoter (_Melanitta perspicillata_)](https://commons.wikimedia.org/wiki/File:Surf_Scoters_in_the_fog_(43836307370).jpg), [Creative Commons  CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/)](scoter.jpg){height=300 width=450}
 
-Figures: (top left) © Nrik Kiran, [Mallard (_Anas platyrhynchos_)](https://commons.wikimedia.org/wiki/File:Mallard_(Anas_platyrhynchos)_02.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/); (top right) © Judy Gallagher, [American Wigeon (_Anas americana_)](https://commons.wikimedia.org/wiki/File:American_Wigeon_-_Anas_americana,_Oakley_Street,_Cambridge,_Maryland.jpg), [Creative Commons  CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/); (bottom left) © MPF, [Greater Scaup (_Aythya marila_)](https://commons.wikimedia.org/wiki/File:2017-03-24_Aythya_marila,_male,_Killingworth_Lake,_Northumberland_18.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/); (bottom right) © Andy Reago & Chrissy McClarren, [Surf scoter (_Melanitta perspicillata_)](https://commons.wikimedia.org/wiki/File:Surf_Scoters_in_the_fog_(43836307370).jpg), [Creative Commons  CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/)
+(top left) © Nrik Kiran, [Mallard (_Anas platyrhynchos_)](https://commons.wikimedia.org/wiki/File:Mallard_(Anas_platyrhynchos)_02.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/); (top right) © Judy Gallagher, [American Wigeon (_Anas americana_)](https://commons.wikimedia.org/wiki/File:American_Wigeon_-_Anas_americana,_Oakley_Street,_Cambridge,_Maryland.jpg), [Creative Commons  CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/); (bottom left) © MPF, [Greater Scaup (_Aythya marila_)](https://commons.wikimedia.org/wiki/File:2017-03-24_Aythya_marila,_male,_Killingworth_Lake,_Northumberland_18.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/); (bottom right) © Andy Reago & Chrissy McClarren, [Surf scoter (_Melanitta perspicillata_)](https://commons.wikimedia.org/wiki/File:Surf_Scoters_in_the_fog_(43836307370).jpg), [Creative Commons  CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/)
 
 
 #### Snapshot of the study
-- Ducks are perfect test objects because they exhibit diverse breeding strategies.
-- The authors examined how snow cover duration affected population dynamics of duck species breeding in the western boreal forest of North America, 1973--2007.
-- Four species of ducks (mallard, American wigeon, scaup and scoter) were studied. Study areas (Alberta, Saskatchewan, Manitoba, Northwest Territories, Yukon and Alaska) were further divided into different survey strata.
-- Four models were developed based on the existence of variations in (a) density dependence, and/or (b) effect of snow cover duration over different strata.
-- The effect of snow cover duration on population dynamics tended to be consistent across stratam but differed by species.
-	- For mallard, neither density dependence nor effect of snow cover duration varied among strata.
-	- For American wigeon, the effect of density dependence varied strongly among strata, while the effect of snow cover varied weakly.
-	- For fixed-window species (scaup and scoter), the effect of density dependence varied among strata, but the effect of snow cover were similar among strata.
-- Population fluctuations of scaups and scoters were positively linked to spring snow cover duration. Duck densities were higher after springs with longer snow cover duration. Similar but weaker effect of snow cover duration were observed in American wigeon populations. Mallard population dynamics were negatively associated with spring snow cover duration.
+
+- Ducks are perfect test objects because they exhibit diverse breeding strategies
+
+- The authors examined how snow cover duration affected population dynamics of duck species breeding in the western boreal forest of North America, 1973-2007
+
+- Four species of ducks (mallard, American wigeon, scaup and scoter) were studied. Study areas (Alberta, Saskatchewan, Manitoba, Northwest Territories, Yukon and Alaska) were further divided into different survey strata
+ 
+- Four models were developed based on the existence of variations in (a) density dependence, and/or (b) effect of snow cover duration over different strata
+
+- The effect of snow cover duration on population dynamics tended to be consistent across strata but differed by species
+	- For mallard, neither density dependence nor effect of snow cover duration varied among strata
+	- For American wigeon, the effect of density dependence varied strongly among strata, while the effect of snow cover varied weakly
+	- For fixed-window species (scaup and scoter), the effect of density dependence varied among strata, but the effect of snow cover were similar among strata
+	
+- Population fluctuations of scaups and scoters were positively linked to spring snow cover duration. Duck densities were higher after springs with longer snow cover duration. Similar but weaker effects of snow cover duration were observed in American wigeon populations. Mallard population dynamics were negatively associated with spring snow cover duration
 
 ### References
-Ahrestani, F., Hebblewhite, M. and Post, E. (2013) The importance of observation versus process error in analyses of global ungulate populations. *Sci Rep*, **3**:3125.
+Ahrestani, F., Hebblewhite, M. and Post, E. (2013). The importance of observation versus process error in analyses of global ungulate populations. *Sci Rep 3*, 3125.
 
-Albon, S. D., Clutton-Brock, T. H. and Guinness, F. E. (1987) Early development and population dynamics in red deer. II. Density-independent effects and cohort variation, *J. Anim. Ecol.*, **56**: 69--81.
+Albon, S. D., Clutton-Brock, T. H. and Guinness, F. E. (1987). Early development and population dynamics in red deer. II. Density-independent effects and cohort variation, *J. Anim. Ecol. 56*, 69-81.
 
-Beck-Johnson, L. M., Nelson, W. A., Paaijmans, K. P., Read, A. F., Thomas, M. B. and Bjonstad, O. N. (2013) The Effect of Temperature on Anopheles Mosquito Population Dynamics and the Potential for Malaria Transmission. *PLoS ONE*, **8**(11):e79276.
+Beck-Johnson, L. M., Nelson, W. A., Paaijmans, K. P., Read, A. F., Thomas, M. B. and Bjonstad, O. N. (2013). The effect of temperature on *Anopheles mosquito* population dynamics and the potential for malaria transmission. *PLoS ONE 8*(11), e79276.
 
-Benton, T. G., Grant, A. and Clutton-Brock, T. H. (1995) Does environmental stochasticity matter? Analysis of red deer life-histories on Rum, *Evolutionary Ecology*, **9**:559--574.
+Benton, T. G., Grant, A. and Clutton-Brock, T. H. (1995). Does environmental stochasticity matter? Analysis of red deer life-histories on Rum, *Evolutionary Ecology 9*, 559-574.
 
-Beverton, R. and Holt, S. J. (1957) *On the Dynamics of Exploited Fish Populations*. Ministry of Agriculture, Fisheries and Food, London, UK.
+Beverton, R. and Holt, S. J. (1957). *On the dynamics of exploited fish populations*. Ministry of Agriculture, Fisheries and Food, London, UK.
 
-Case, T. (2000) *An Illustrated Guide to Theoretical Ecology*, Oxford University Press.
+Case, T. (2000). *An illustrated guide to theoretical ecology*, Oxford University Press.
 
-Lande, R., Engen, S. and Saether, B. (2003) *Stochastic Population Dynamics in Ecology and Conservation*, Oxford Series in Ecology and Evolution.
+Drever, M. C., Clark, R. G., Derksen, C., Slattery, S. M., Toose, P. and Nudds, T. D. (2012). Population vulnerability to climate change linked to timing of breeding in boreal ducks, *Global Change Biology 18*, 480-492.
 
-Mills, L. S. (2007) *Conservation of Wildlife Populations: Demography, Genetics, and Management*, Wiley-Blackwell Publishing.
+Lande, R., Engen, S. and Saether, B. (2003). *Stochastic population dynamics in ecology and conservation*. Oxford Series in Ecology and Evolution.
+
+Mills, L. S. (2007) *Conservation of wildlife populations: Demography, genetics, and management*, Wiley-Blackwell Publishing.
