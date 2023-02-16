@@ -214,7 +214,7 @@ Table: Negative log-likelihood values for three candidate population models appl
 | logistic       | 3                    | 35.225    | 
 | theta-logistic | 4                    | 35.174    | 
 
-So perhaps we should select the theta-logistic model? After all it **does** have the greatest likelihood. However, there is another point to consider. The theta-logistic model has four parameters (r, k, $\theta\, and $\sigma\, the variance of the normal distribution of errors), while the logistic model has 3.  We note that if a model has n data points and n parameters (one for each data point), then the residual variance will be ZERO. Would a model with n parameters then be a better model, since it explains all the variance?
+So perhaps we should select the theta-logistic model? After all it **does** have the greatest likelihood. However, there is another point to consider. The theta-logistic model has four parameters (r, k, $\theta\$, and $\sigma\$, the variance of the normal distribution of errors), while the logistic model has 3.  We note that if a model has n data points and n parameters (one for each data point), then the residual variance will be ZERO. Would a model with n parameters then be a better model, since it explains all the variance?
 
 More generally, is a model with more parameters, functions, entities, etc. more likely to be “true”? Where we use the word "true" as more explanatory, accurate, predictive, representative of reality?
 
