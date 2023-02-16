@@ -1,6 +1,6 @@
 
 
-## Density-dependence
+## Density dependence
 
 Density-dependent population models are used to describe population dynamics in which the growth or decline of a population is influenced by the population's own density.
 
@@ -120,7 +120,7 @@ We can decompose $\lambda$ into two parts to illustrate that this year's populat
 
 $$N_{t+1} = \lambda N_t = N_t(1+r_d) = N_t+r_dN_t$$
 
-Now we can try to incorporate density-dependence into that proportional change $r_dN_t$. We use $\alpha$ to represent this negative effect on population growth. As a result, $r_d(1- \alpha N_t)$ becomes the new per capita growth increment rate.
+Now we can try to incorporate density dependence into that proportional change $r_dN_t$. We use $\alpha$ to represent this negative effect on population growth. As a result, $r_d(1- \alpha N_t)$ becomes the new per capita growth increment rate.
 
 And our population growth equation becomes:
 
@@ -254,7 +254,7 @@ No allee effects (green line), weak allee effects (red line), and strong allee a
 
 ##### Stability in Allee effects
 
-From previous sections we learned that carrying capacity $K$ is a stable equilibrium point in a negative density-dependent logistic growth model (no allee effects). The results will stay the same when we introduce allee effects into our population (strong or weak).
+From previous sections we learned that carrying capacity $K$ is a stable equilibrium point in a negative density-dependent logistic growth model (no Allee effects). The results will stay the same when we introduce allee effects into our population (strong or weak).
 
 However, when allee effects are strong, a critical size occurs where the growth function $dN/dt$ intersects the horizontal line at zero. This is an unstable equilibrium. Populations with abundance greater than this value will increase to carrying capacity; populations with abundance less than this value will decline to extinction.
 
@@ -266,7 +266,7 @@ Title: Density-dependent growth in brown trout: Effects of introducing wild and 
 
 #### Research questions
 
-* What is the underlining density-dependence mechanism in wild brown trout?
+* What is the underlining density dependence mechanism in wild brown trout?
 
 * To what extent will the release of domesticated brown trout induce density-dependent effects on wild brown trout populations?
 
