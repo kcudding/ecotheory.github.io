@@ -218,7 +218,7 @@ Allee initially noticed that goldfish grew faster in waters which had previously
 
 * Occurs at very low population sizes (growth rate is reduced when population is too small)
 
-![(author name), African wilddogs hunting in packs (link to figure), Creative Commons CC BY 2.0 license)](african_w_dog.jpg)
+![© (author name), African wilddogs hunting in packs (link to figure), Creative Commons CC BY 2.0 license)](african_w_dog.jpg)
 
 
 **Example**
@@ -249,7 +249,7 @@ where a is the critical point of the population, below which the population grow
 * **Allee effect population threshold**: A population size below which the per capita growth rate is negative and the population declines towards extinction. Populations that are subject to Allee effects can collapse and become extinct if their population size falls below the critical threshold
 
 ![](density-dependent_files/figure-html/unnamed-chunk-9-1.png)<!-- -->  
-No allee effects (green line), weak allee effects (red line), and strong allee affects (blue line, $a=50$) acting on a population that has an intrinsic population growth rate $r=0.18$ and carrying capacity $K=500$
+No Allee effects (green line), weak Allee effects (red line), and strong Allee affects (blue line, $a=50$) acting on a population that has an intrinsic population growth rate $r=0.18$ and carrying capacity $K=500$
 
 
 ##### Stability in Allee effects
@@ -286,7 +286,7 @@ Title: Density-dependent growth in brown trout: Effects of introducing wild and 
 
 * Stocking of hatchery fish can exert similar negative density effects on wild individuals if released into the wild
 
-![U.S.Fish and Wildlife Service, Wild brown trout, Public Domain Mark 1.0](brown_trout.jpg)
+![U.S.Fish and Wildlife Service, Wild brown trout (link to image), Public Domain Mark 1.0](brown_trout.jpg)
 
 
 ### References:
