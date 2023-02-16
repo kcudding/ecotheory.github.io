@@ -47,7 +47,7 @@ A population model consists of mathematical equations (eg., exponential and logi
 
 In 1798, Thomas Malthus published *An Essay on the Principle of Population* (Malthus, 1798). This work distinguished arithmetic and geometric growth, with human populations characterized by a geometric (or exponential; the difference between them will be covered soon) growth while food resources were restricted to an arithmetic pattern of growth.
 
-![© Elhuyar Fundazioa, Thomas Malthus, https://commons.wikimedia.org/wiki/File:Malthus.png, [Creative Commons  CC-BY-SA-3.0 license](https://creativecommons.org/licenses/by-sa/3.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/malthus.png) 
+![© Elhuyar Fundazioa, [Thomas Malthus](https://commons.wikimedia.org/wiki/File:Malthus.png), [Creative Commons  CC-BY-SA-3.0 license](https://creativecommons.org/licenses/by-sa/3.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/malthus.png) 
 
 Let's plot an illustration to differentiate both types of growth:
 
@@ -79,11 +79,11 @@ Now let's see when simple models such as the exponential growth model are used i
 
 * **Expanding invasive species**: Following the introduction of an invasive species, its spread is enabled by an exponential population growth (Shigesada & Kawasaki, 1997) due to the availability of resources and/or absence of natural enemies. Spotted knapweeds (*Centaurea nigra*), for example, were accidentally introduced to North America in the 1980s with agricultural seeds and soil discarded from ship ballast from Eurasia. This species is considered problematic because it quickly replaces livestock pasture and reduces biodiversity in affected sites (Minnesota Department of Agriculture, 2023). A modelling study considering the life history of knapweeds found that exponential growth following the introduction of invading populations can be observed for about 2 years (Jacobs & Sheley, 1998). Thus, exponential models are useful for modelling the behaviour of invading species. 
 
-![© Kate Jewell, Common knapweed,  (https://commons.wikimedia.org/wiki/File:Common_knapweed_%28Centaurea_nigra%29_-_geograph.org.uk_-_492672.jpg), [Creative Commons CC-BY-SA-2.0 license](https://creativecommons.org/licenses/by-sa/2.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/knapweed.jpg)
+![© Kate Jewell, [Common knapweed](https://commons.wikimedia.org/wiki/File:Common_knapweed_%28Centaurea_nigra%29_-_geograph.org.uk_-_492672.jpg), [Creative Commons CC-BY-SA-2.0 license](https://creativecommons.org/licenses/by-sa/2.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/knapweed.jpg)
 
 * **Management of species at risk of extinction**: Well-managed species will have little limitation to growth due to abundant resources and small population sizes, resulting in exponential growth rates. This was observed following management strategies to recover endangered crane populations in both North America and Japan. Whooping cranes (*Grus americana*) are the largest North American birds which became severely endangered with a population of 21 birds in 1952, as well as the red-crowned crane of Hokkaido (*Grus japonensis*) in Japan, with 33 individuals at this same year. Since then, management efforts such as federal protection and creating wildlife refuges ensured an exponential growth of bird populations, which by 2020 achieved 506 individuals in North America and 1,900 in Japan. The much faster rate at which Japanese cranes are growing is attributed to an additional management strategy consisting of artificially feeding birds during periods of food scarcity which was not implemented in North America (Gronewold, 2021).
 
-![(left) © CheepShot, Whooping Crane, https://commons.wikimedia.org/wiki/File:Whooping_Crane_%283873713594%29.jpg, [Creative Commons CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/); (right) © Peter Batty, Red-crowned cranes calling, https://www.flickr.com/photos/ebatty/50772105027, [Creative Commons CC BY-NC-SA 2.0 license](https://creativecommons.org/licenses/by-nc-sa/2.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/cranes.png)
+![(left) © CheepShot, [Whooping Crane](https://commons.wikimedia.org/wiki/File:Whooping_Crane_%283873713594%29.jpg), [Creative Commons CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/); (right) © Peter Batty, [Red-crowned cranes calling](https://www.flickr.com/photos/ebatty/50772105027), [Creative Commons CC BY-NC-SA 2.0 license](https://creativecommons.org/licenses/by-nc-sa/2.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/cranes.png)
 
 ### Mathematical representation of population growth patterns
 
@@ -332,11 +332,10 @@ double <- 0.69/r
 
 The doubling time for our duckweeds is 2.83 days.  
 
-#### Paper discussion and exponential modelling illustration: invasive hippos in Colombia
+#### Illustration of current application
 
-Shurin, J. B., Aranguren-Riaño, N., Duque Negro, D., Echeverri Lopez, D., Jones, N. T., Laverde‐R, O., ... & Pedroza Ramos, A. (2020). Ecosystem effects of the world’s largest invasive animal. *Ecology, 101*(5), e02991.
+Ecosystem effects of the world’s largest invasive animal (Shurin et al., 2020). This research paper discusses population dynamics of invasive hippos in Colombia.
 
-![Research about hippo invasion in Colombia](https://raw.github.com/kcudding/kcudding.github.io/main/teach/hippo1.png) 
 
 ##### Snapshot of the study
 
@@ -354,7 +353,7 @@ Shurin, J. B., Aranguren-Riaño, N., Duque Negro, D., Echeverri Lopez, D., Jones
 
 * Constrains to management: Actions to manage this invasive species are complicated by the social-ecological mismatch between the scientific consensus on the ecosystem threats posed by this invasion and the public perception of the presence of hippos as being positive (eg., animal used for touristic purposes)
 
-![© Bernard Dupont, Grazing hippos, https://commons.wikimedia.org/wiki/File:Hippo_%28Hippopotamus_amphibius%29_emaciated_specimen_grazing_on_Sabie_riverbank_..._%2833321050795%29.jpg, [Creative Commons CC-BY-SA-2.0 license](https://creativecommons.org/licenses/by-sa/2.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/hippo2.jpg)
+![© Bernard Dupont, [Grazing hippos](https://commons.wikimedia.org/wiki/File:Hippo_%28Hippopotamus_amphibius%29_emaciated_specimen_grazing_on_Sabie_riverbank_..._%2833321050795%29.jpg), [Creative Commons CC-BY-SA-2.0 license](https://creativecommons.org/licenses/by-sa/2.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/hippo2.jpg)
 
 ##### Calculating the population growth of invasive hippos
 
@@ -425,7 +424,7 @@ legend(1995, 1300, legend=c("Observed data", "Model predictions"),
 
 ##### Hippo invasion in Colombia: take-aways and future developments
 
-* The research found an annual per capita growth rate of 0.11 x yr^-1 for invasive hippos, which is comparable to population growth rates in the native range and indicates a potential for quick spread of this invasive species in the next decades. The lack of predators in both native and invasive ranges (Sinclair, Mduma, & Brashares, 2003; Castelblanco-Martínez et al., 2021) is a key factor enabling uncontrolled hippo population growth.
+* The research found an annual per capita growth rate of 0.11 x yr^-1 for invasive hippos, which is comparable to population growth rates in the native range and indicates a potential for quick spread of this invasive species in the next decades. The growth rate we obtained above is slightly different because we took into account additional recent demography records. The lack of predators in both native and invasive ranges (Sinclair, Mduma, & Brashares, 2003; Castelblanco-Martínez et al., 2021) is a key factor enabling uncontrolled hippo population growth.
 
 * As a next step, refining population growth studies to include **stage structure** and **age at maturity** could help identifying useful management strategies, as there may be life history traits which are more relevant to population growth than others. For example, the population structure of hippos appears to be an important factor when predicting future invasion scenarios, as "half of those hippos are calves and juveniles, implying their reproductive rate will increase in the next three years" (Varona, 2022). You will learn about structured population models in the upcoming modules.
 
@@ -433,10 +432,6 @@ legend(1995, 1300, legend=c("Observed data", "Model predictions"),
 Castelblanco-Martínez, D. N., Moreno-Arias, R. A., Velasco, J. A., Moreno-Bernal, J. W., Restrepo, S., Noguera-Urbano, E. A., ... & Jiménez, G. (2021). A hippo in the room: Predicting the persistence and dispersion of an invasive mega-vertebrate in Colombia, South America. *Biological Conservation, 253*, 108923.
 
 Dyer, R. (2009). Biological data analysis using R (Doctoral dissertation, Ph. D thesis. Department of Biology, Center for the Study of Biological Complexity, Virginia Commonwealth Univ).
-
-File:Common knapweed (Centaurea nigra) - geograph.org.uk - 492672.jpg. (2021, February 23). Wikimedia Commons, the free media repository. https://commons.wikimedia.org/w/index.php?title=File:Common_knapweed_(Centaurea_nigra)_-_geograph.org.uk_-_492672.jpg&oldid=535393847.
-
-File:Malthus.png. (2020, September 20). Wikimedia Commons, the free media repository.  https://commons.wikimedia.org/w/index.php?title=File:Malthus.png&oldid=465719566.
 
 Gronewold, N. (2021). Comparative Conservation Strategy Efficacy for Grus japonensis and Grus americana: A Post-Policy Implementation Assessment. *Journal of International Wildlife Law & Policy, 24*(3-4), 224-250.
 
