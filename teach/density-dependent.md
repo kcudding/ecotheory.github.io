@@ -10,7 +10,7 @@ A population growth model may be defined as continuous population growth model i
 
 ####  Negative density dependence
 
-* The previously discussed scenario where population growth is unregulated does not always happen in reality. In fact, in a population that has already been established, resources begin to become scarce, and competition starts to play a role. As a result, the population growth will be regulate by increasing density. This is called **negative density dependence**.
+* The previously discussed scenario where population growth is unregulated does not always happen in reality. In fact, in a population that has already been established, resources begin to become scarce, and competition starts to play a role. As a result, the population growth will be regulated by increasing density. This is called **negative density dependence**.
 
 * Increasing population size gives rise to:
 
@@ -22,11 +22,10 @@ A population growth model may be defined as continuous population growth model i
   
   + greater risks of disease outbreak
 
-* Negative density dependence decreases population growth at high density and increases it at low density.
+* Negative density dependence decreases population growth at high density and increases it at low density
 
 
-<!-- include the graph for exponential and logistic growth -->
-![](density-dependent_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+![](density-dependent_files/figure-html/unnamed-chunk-1-1.png)<!-- -->  
 Figure 1.1. The constrast between exponential and logistic growth. In expoential growth, the per capita growth rate stays constant. In logistic growth, the per capita growth rate decreases with population density. (adapted from Mills, 2013)
 
 
@@ -36,7 +35,7 @@ Figure 1.1. The constrast between exponential and logistic growth. In expoential
 
 * **Note**: Do not think of carrying capacity as the maximum population size observed. A population can exceed K temporarily.
 
-The carrying capacity is considered to be an equilibrium becasue when population density is greater than K mortality exceeds reproduction and the population will decrease to K; when density is less than K reproduction exceeds mortality and the population increases toward K.
+The carrying capacity is considered to be an equilibrium. This equilibrium happens because, when population density is greater than K, mortality exceeds reproduction and the population will decrease to K; when density is less than K, reproduction exceeds mortality and the population increases toward K.
 
 (*insert the duckweed example on carrying capacity*)
 
@@ -48,11 +47,11 @@ Recall that with exponential growth, per capita growth rate is:
 
 $$ r = \frac{dN}{dtN} $$
 
-Of all the ways that the per capita growth rate could decrease with increasing population density, We consider the simplest scenario that this relationship is linear. Now we have:
+Of all the ways that the per capita growth rate could decrease with increasing population density, we consider the simplest scenario in which this relationship is linear. Now we have:
 
 $$ \frac{dN}{dtN} = r_0(1-\frac{N}{K})$$
 
-where $1-\frac{N}{K}$ describes the negative effect increasing population density have on the per capita growth rate.
+where $1-\frac{N}{K}$ describes the negative effects an increasing population density has on the per capita growth rate.
 
 
 Re-arrange the above equation and we have the **continuous logistic growth model**:
