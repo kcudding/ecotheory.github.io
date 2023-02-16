@@ -7,7 +7,7 @@
 ### Basic forms of stochasticity and definitions
 #### Demographic stochasticity
 
-**Demographic stochasticity** refers to chance events of individual mortality and reproduction, such as inevitable deviation in mean birth and death rates (Lande *et al*., 2003). Demographic stochasticity is only significant in small populations, and we will explain this in three examples.
+**Demographic stochasticity** refers to chance events of individual mortality and reproduction, such as inevitable deviation in mean birth and death rates (Lande et al., 2003). Demographic stochasticity is only significant in small populations, and we will explain this in three examples.
 
 - *Example* 1: Flipping a coin 10,000 times, one will get approximately 5,000 times heads; flipping the same coin 100 times, there could be some deviations from the expected 50:50; flipping the same coin 10 times, it is not suprising that one only gets 2 heads. The probability of getting head is approaching 0.5 as the number of trials increases. Let's do some experiments with R:
 
@@ -34,31 +34,34 @@ results
 ## heads         7         52          5051
 ## tails         3         48          4949
 ```
-- *Example 2*: The expected sex ratio for a newborn is 50:50. When there are 3 new births, we cannot have 50% males and 50% females. Unbalanced sex ratio will influence future birth rate, especially in a small population. 
-- *Example 3*: A death rate of 0.2 does not mean after a year an animal is 0.8 alive--it either survives or dies. When the population size is large, we may use the product of the total populatiom and a mean birth/death rate to estimate the number of births/deaths. However, such estimation is not accurate when the population size is small. (A difference of 2 deaths might not seem to be a big issue in a population of size 1000, but will be significant in a population of size 20.)
+- *Example 2*: The expected sex ratio for a newborn is 50:50. When there are 3 new births, we cannot have 50% males and 50% females. Unbalanced sex ratio will influence future birth rate, especially in a small population
+
+- *Example 3*: A death rate of 0.2 does not mean after a year an animal is 0.8 alive--it either survives or dies. When the population size is large, we may use the product of the total populatiom and a mean birth/death rate to estimate the number of births/deaths. However, such estimation is not accurate when the population size is small (a difference of two deaths might not seem to be a big issue in a population of size 1000, but will be significant in a population of size 20)
 
 #### Environmental stochasticity
 
-**Environmental stochasticity** often refers to temporal fluctuations in the probability of mortality and reproduction (Lande *et al*., 2003), which is often driven directly or indirectly by weather (e.g. unpredictable catastrophes).
+**Environmental stochasticity** often refers to temporal fluctuations in the probability of mortality and reproduction (Lande et al., 2003), which is often driven directly or indirectly by weather (e.g. unpredictable catastrophes).
 
-- *Example 1*: Climate factors have a strong influence on the ecology of red deer on Rum (Albon *et al*., 1987). Real-world data between 1971 and 1991 has shown that the changes in red deer population size correlates strongly with annual rainfall (Benton *et al*., 1995).
+- *Example 1*: Climate factors have a strong influence on the ecology of red deer on Rum (Albon et al., 1987). Real-world data between 1971 and 1991 has shown that the changes in red deer population size correlates strongly with annual rainfall (Benton et al., 1995)
 
 ![Figure: © Charles J. Sharp, [Red deer (_Cervus elaphus_)](https://commons.wikimedia.org/wiki/File:Red_deer_(Cervus_elaphus)_young_stag.jpg), [Creative Commons  CC-BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)](young_red_deer.jpg)
 
-- *Example 2*: Cold-blooded insects like mosquitoes thrive in hot and humid weather, which results in the seasonality of many vector-borne diseases, such as malaria and dengue. There are massive research on modelling the mosquito population dynamics and how they affect the transmission of those diseases. An example would be Beck-Johnson *et al*. (2013).
+- *Example 2*: Cold-blooded insects like mosquitoes thrive in hot and humid weather, which results in the seasonality of many vector-borne diseases, such as malaria and dengue. There is massive research on modelling the mosquito population dynamics and how they affect the transmission of those diseases. For an example, refer to Beck-Johnson et al. (2013)
 
 
 #### Sampling error
 
-**Sampling error** (or sampling variance) is the measurement error in estimates of population size or density. Some researchers categorized it as a basic form of stochasticity (Lande *et al*., 2003), while some distinguished it from deterministic and stochastic factors (Mills, 2007).
+**Sampling error** (or sampling variance) is the measurement error in estimates of population size or density. Some researchers categorized it as a basic form of stochasticity (Lande et al., 2003), while some distinguished it from deterministic and stochastic factors (Mills, 2007).
 
 ### Implications of variation in population growth
-- An obvious outcome is that future population size outcomes become more uncertain and more variable.
-- A less intuitive outcome is that the likelihood of any particular population size at time $t$ in the future becomes more skewed. (Specifically, most populations being relatively small, with a tiny fraction being huge.) We will discuss it soon.
+
+- An obvious outcome is that future population size outcomes become more uncertain and more variable
+
+- A less intuitive outcome is that the likelihood of any particular population size at time $t$ in the future becomes more skewed. Specifically, most populations being relatively small, with a tiny fraction being huge. We will discuss this in more detail soon...
 
 ### Stochastic effects to population growth rates
 
-To answer the question why population size tends to shrink because of stochasticity, we need to understand two important concepts--arithmetic and geometric means.
+To answer the question whether population size shrinks as a result of stochasticity, we need to understand two important concepts: arithmetic and geometric means.
 
 #### Arithmetic mean vs. geometric mean
 
@@ -89,7 +92,7 @@ boxplot(outcome, main = "Boxplot with outliers",
 boxplot(outcome, outline = FALSE, main = "Boxplot without outliers")
 ```
 
-![Figure: Boxplots of final population sizes. (left) All outcomes; (right) outcomes with outliers (extreme cases) ignored](popsize_boxplot.png){width=80%}
+![Boxplots of final population sizes. (left) All outcomes; (right) outcomes with outliers (extreme cases) ignored](popsize_boxplot.png){width=80%}
 
 It would be helpful to know the conversion between the arithmetic mean of $r$ and the geometric mean of $\lambda$. Recall that $r=\ln\lambda$, so
 $$\ln(\lambda_1\lambda_2\cdots\lambda_k)=\ln\lambda_1+\ln\lambda_2+\cdots+\ln\lambda_k=r_1+r_2+\cdots+r_k,$$
