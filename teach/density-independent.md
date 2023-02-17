@@ -306,7 +306,7 @@ N0 <- duckweed$pop_size[1]; t <- 1:40
 cont.mat <- sapply(r, function(ri) N0 * exp(ri * t))
 matplot(t, cont.mat, type = "l", col = 1, 
         main="Exponential model projecting duckweed population growth", 
-     xlab="Days", ylab="Population size (number of individuals)")
+     xlab="days", ylab="population size (number of individuals)")
 points(duckweed$day, duckweed$pop_size,pch=15,col="red")
 legend(1995, 1300, legend=c("Observed data", "Model predictions"),
        col=c("red", "black"), cex=0.8, lty= c(NA,1), pch=c(15,NA))
@@ -369,7 +369,7 @@ hippo <- data.frame(year=c(1993, 2009, 2014, 2019, 2022),pop_size=(c(4, 28, 60, 
 
 plot(hippo$year, hippo$pop_size, type="o", pch=15, col="red", 
      main="Invasive hippo population growth over time in Colombia", 
-     xlab="Years", ylab="Population size (number of individuals)")
+     xlab="years", ylab="population size (number of individuals)")
 ```
 
 ![](density-independent_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
@@ -414,9 +414,9 @@ hippo.model <- data.frame(year=c(1993:(1993+49)),pop_size=pred.pop.expon)
 # And plotting predicitons and observed data
 plot(hippo.model$year, hippo.model$pop_size,type="l",
      main="Exponential growth model of invasive hippos in Colombia", 
-     xlab="Years", ylab="Population size (number of individuals)")
+     xlab="years", ylab="population size (number of individuals)")
 points(hippo$year, hippo$pop_size,pch=15,col="red")
-legend(1995, 1300, legend=c("Observed data", "Model predictions"),
+legend(1995, 1300, legend=c("oObserved data", "Model predictions"),
        col=c("red", "black"), cex=0.8, lty= c(NA,1), pch=c(15,NA))
 ```
 
