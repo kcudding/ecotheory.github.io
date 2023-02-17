@@ -56,8 +56,8 @@ Let's plot an illustration to differentiate both types of growth:
 x <- runif(50,2,8)
 
 # Plot hypothetical exponential and linear growth patterns
-plot(x,exp(x), lty=1, col = "blue", main="Hypothetical example of exponential versus arithmetic growth", xlab="Time", 
-     ylab="Population or resources")
+plot(x,exp(x), lty=1, col = "blue", main="Hypothetical example of exponential versus arithmetic growth", xlab="time", 
+     ylab="population or resources")
 points(x,50+(40*x),col="red")
 legend(2.2, 2400, legend=c("Exponential population growth", "Arithmetic growth of resources available"),
        col=c("blue", "red"), cex=0.8, pch=c(21,1))
@@ -71,7 +71,7 @@ legend(2.2, 2400, legend=c("Exponential population growth", "Arithmetic growth o
 
 ### When are simple population models used in biological analyses?
 
-Now let's see when simple models such as the exponential growth model are used in biology. In some situations, we can disregard factors which limit the growth of populations, such as resource availability, interactions between species, and relocation of individuals. Here are some examples:
+Now let's see when simple models such as the exponential growth model are used in biology. Are there real situations where an uncontrolled growth can be understood through such models? In some situations, we can disregard factors which limit the growth of populations, such as resource availability, interactions between species, and relocation of individuals. Here are some examples:
 
 * **Experimental settings**: In lab conditions, we remove as many factors as possible which could potentially interfere with the growth of our model species, so that we can focus on understanding the effects of our selected explanatory variables during experiments. In our lab, we work with duckweeds, a group of small aquatic plant species. In the photos below, you can see the difference between natural and lab conditions. In lab settings, duckweeds can achieve unlimited growth which can be modelled by exponential growth models. This is because a single species is selected and sterilized, eliminating potential sources of disease and all of the competition naturally seen between duckweed species (different sizes of fronds - leaf-like shapes - represent different duckweed species), and with other species, such as algae. In labs, other factors are also controlled to provide optimal conditions, such as light, nutrition, and temperature.
 
@@ -363,8 +363,8 @@ Ecosystem effects of the world’s largest invasive animal (Shurin et al., 2020)
 # as in Shurin (2020). We added additional records obtained from news outlets:
 hippo <- data.frame(year=c(1993, 2009, 2014, 2019, 2022),pop_size=(c(4, 28, 60, 65, 133)))
 
-# source for 2014: Kremer (2014)
 # source for 2009: Romero (2009)
+# source for 2014: Kremer (2014)
 # source for 2022: Varona (2022)
 
 plot(hippo$year, hippo$pop_size, type="o", pch=15, col="red", 
@@ -421,6 +421,8 @@ legend(1995, 1300, legend=c("Observed data", "Model predictions"),
 ```
 
 ![](density-independent_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+
+This illustration demonstrates the utility of the exponential growth model for studying invading populations. Why do you think hippos are showing this uncontrolled growth?
 
 ##### Hippo invasion in Colombia: take-aways and future developments
 
