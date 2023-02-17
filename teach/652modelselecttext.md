@@ -169,7 +169,7 @@ normReg = function(par) {
           y.pred = par[1] + par[2]*females
           -sum(dnorm(log(percap),mean=y.pred,sd=sqrt(par[3]),log=T)) }
 
-mle.normReg=optim(par=c(0,1/100,1),normReg) #par argument is the starting search values for 
+mle.normReg=optim(par=c(0,1/100,1),normReg) #par argument is the starting search values
 
 # plot data and model predictions at mle
 plot(log(percap)~females, type="p", pch=16, lwd=1.5, bty="l", cex.lab=1.2,
