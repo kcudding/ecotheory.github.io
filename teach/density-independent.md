@@ -457,6 +457,6 @@ Sinclair, A. R., Mduma, S., & Brashares, J. S. (2003). Patterns of predation in 
 
 Spotted knapweed. (2023). Minnesota Department of Agriculture. https://www.mda.state.mn.us/plants/pestmanagement/weedcontrol/noxiouslist/spottedknapweed 
 
-Stevens, M.H. (2009). *A primer of ecology with R*. Springer.
+Stevens, M.H. (2009). *A primer of ecology with R*. Springer. 
 
 Varona , A. O. (2022, November 18). Hippos in Colombia: What to do with them? | Graduate and Postdoctoral Studies | *Rice University*. https://graduate.rice.edu/news/current-news/hippos-colombia-what-do-them 
