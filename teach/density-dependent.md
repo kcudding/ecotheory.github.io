@@ -4,13 +4,9 @@
 
 Density-dependent population models are used to describe population dynamics in which the growth or decline of a population is influenced by the population's own density.
 
-### Continuous logistic growth
+###  Negative density dependence
 
-A population growth model may be defined as continuous population growth model if the individuals of a population show continuous breeding season. 
-
-####  Negative density dependence
-
-* The previously discussed scenario where population growth is unregulated does not always happen in reality. In fact, in a population that has already been established, resources begin to become scarce, and competition starts to play a role. As a result, the population growth will be regulated by increasing density. This is called **negative density dependence**.
+In a population that has already been established, resources begin to become scarce, and competition starts to play a role. As a result, the population growth will be negatively affected by increasing density. This is called **negative density dependence**.
 
 * Increasing population size gives rise to:
 
@@ -31,7 +27,7 @@ The constrast between exponential and logistic growth. In expoential growth, the
 
 ##### "K": carrying capacity
 
-* **Definition**: Population density at which per capita growth rate is zero
+The maximum per capita growth rate, $r$, occurs when population density is zero, and decreases until it finally reaches zero. The population density at which the per capita growth rate is zero, K, is sometimes called the carrying capacity.
 
 * **Note**: Do not think of carrying capacity as the maximum population size observed. A population can exceed K temporarily.
 
