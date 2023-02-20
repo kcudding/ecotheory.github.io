@@ -135,24 +135,24 @@ Chaos brings more complexity into predicting population growth, especially for s
 
 ### Other types of density denpendent population models
 
-The linear decline in per-capital growth rate with density modeled above is not necessarily general. In fact, most species exhibit **nonlinear** declines in growth rate under negative density dependence.
+The linear decline in per capita growth rate with density modeled above is not necessarily general. In fact, most species exhibit **nonlinear** declines in growth rate under negative density dependence.
 
 #### Concave and convex density dependences
 
-* **Concave density dependence**: Per-capita population growth rate declines rapidly at low density, and then flattens out as carrying capacity is approached. This could happen due to resource preemption, where a small of individuals at low population density sequester large amounts of resources, causing subsequent population growth to slow down. For example, larger tropical seagrass arriving at sites would preempy available space to prevent subsequent individuals from competing for these resources (Moreira-Saporiti et al., 2021)
+* **Concave density dependence**: Per capita population growth rate declines rapidly at low density, and then flattens out as carrying capacity is approached. This could happen due to resource preemption, where a small of individuals at low population density sequester large amounts of resources, causing subsequent population growth to slow down. For example, larger tropical seagrass arriving at sites would preempy available space to prevent subsequent individuals from competing for these resources (Moreira-Saporiti et al., 2021)
 
-* **Convex density dependence**: Per-capita population growth rate exhibit strong density dependence only near K. This could be related to territoriality. For example, dickcissel birds (*Spiza americana*) need a minimum territory size of approximately 0.9 acres. If male density is greater than this, some males will be forced into territories that contain less suitable vegetation and they are found to be less active in finding mates and building nests. As a result, the per capita growth rate will decline more rapidly compared to before (Zimmerman, 1971)
+* **Convex density dependence**: Per capita population growth rate exhibits strong density dependence only near K. This could be related to territoriality. For example, dickcissel birds (*Spiza americana*) need a minimum territory size of approximately 0.9 acres. If male density is greater than this, some males will be forced into territories that contain less suitable vegetation and they are found to be less active in finding mates and building nests. As a result, the per capita growth rate will decline more rapidly compared to before (Zimmerman, 1971)
 
 #### Theta-Ricker model
 
-A varity of alternative equations exist to model concave or convex relationships. A simple model we introduce here is the Theta-Ricker model. By varying $\theta$, we can change the linear density dependence of the simple logistic model to curvi-linear density dependence.
+The most common way to model non-linear density dependent population growth is the Theta-Ricker model. By varying $\theta$, we can change the linear density dependence of the simple logistic model to curvi-linear density dependence.
 
 $$ N_{t+1} = N_t e^{r_0[1-(N_t/K)^\theta]} $$
 
-* The effects of $\theta$ on density dependence also control the shape of relation between growth rate and population size, as seen in the following figure:
+* The effects of $\theta$ on density dependence  control the shape of relation between growth rate and population size, as seen in the following figure:
 
 ![](density-dependent_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
-Per capital growth rate vs. population size with different theta values
+Per capita growth rate vs. population size with different theta values
 
 * When $\theta$>1, this weakens density dependence at low N, so the population grows faster than logistic, all else being equal (concave). When $\theta$<1, this strengthens density dependence at low N, causing the population to grow more slowly than logistic, all else being equal (convex):
 
@@ -168,17 +168,11 @@ In many cases, cooperation or facilitation leads to mutually positive interactio
 
 ##### Allee effect
 
-Allee initially noticed that goldfish grew faster in waters which had previously contained other goldfish, than in waters that had not contained them. He further experimented with a number of different species and showed that larger group size or some degree of crowding may stimulate reproduction, prolong survival in adverse conditions (through resistance to desiccation or by social thermoregulation), and enhance protection from toxic reagents (Allee & Bowen, 1932).
+Allee & Bowen (1932) initially noticed that goldfish grew faster in waters which had previously contained other goldfish, than in waters that had not contained them. He further experimented with a number of different species and showed that larger group size or some degree of crowding may stimulate reproduction, prolong survival in adverse conditions (through resistance to desiccation or by social thermoregulation), and enhance protection from toxic reagents.
 
+The Allee effect occurs when there is a positive correlation between population density and individual fitness
 
-**The Allee effect**
-
-* Demonstrates that there is a positive correlation between population density and individual fitness
-
-* Occurs at very low population sizes (growth rate is reduced when population is too small)
-
-![© (author name), African wilddogs hunting in packs (link to figure), Creative Commons CC BY 2.0 license)](african_w_dog.jpg)
-
+![© flowcomm, African wilddogs hunting in packs ([link to figure](https://live.staticflickr.com/5117/13949089869_e175469efc_b.jpg), Creative Commons CC BY 2.0 license)](african_w_dog.jpg)
 
 **Example**
 
@@ -191,13 +185,6 @@ Allee initially noticed that goldfish grew faster in waters which had previously
   + provide a better predator defense
   
   + help babysit pups (packs with 10 or more adults raised three times as many yearlings compared to packs with 9 or fewer adults)
-  
-
-To plot population growth rate as a function of abundance:
-
-$$ \frac{dN}{dt} = rN(\frac{N-a}{K})(1-\frac{N}{K})$$
-where a is the critical point of the population, below which the population growth rate (or recruitment) becomes negative, and the population is driven towards extinction.
-
 
 ##### Weak and strong Allee effects
 
@@ -211,11 +198,17 @@ where a is the critical point of the population, below which the population grow
 No Allee effects (green line), weak Allee effects (red line), and strong Allee affects (blue line, $a=50$) acting on a population that has an intrinsic population growth rate $r=0.18$ and carrying capacity $K=500$
 
 
+To plot population growth rate as a function of abundance:
+
+$$ \frac{dN}{dt} = rN(\frac{N}{a}-1)(1-\frac{N}{K})$$
+where a is the critical point of the population, below which the population growth rate (or recruitment) becomes negative, and the population is driven towards extinction.
+
+
 ##### Stability in Allee effects
 
-From previous sections we learned that carrying capacity $K$ is a stable equilibrium point in a negative density-dependent logistic growth model (no Allee effects). The results will stay the same when we introduce allee effects into our population (strong or weak).
+From previous sections we learned that carrying capacity $K$ is a stable equilibrium point in a negative density-dependent logistic growth model (no Allee effects). 
 
-However, when allee effects are strong, a critical size occurs where the growth function $dN/dt$ intersects the horizontal line at zero. This is an unstable equilibrium. Populations with abundance greater than this value will increase to carrying capacity; populations with abundance less than this value will decline to extinction.
+For a population model with a strong Allee effect. It has two stable and one unstable equilibria point. The stable point is when population size equals $N=0$ or carrying capacity $N=K$. The single unstable equalibrium point lies at $N=A$, where $A$ is the critical population size.
 
 
 ### Illustration of current application: research paper review
