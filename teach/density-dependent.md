@@ -22,7 +22,7 @@ In a population that has already been established, resources begin to become sca
 
 
 ![](density-dependent_files/figure-html/unnamed-chunk-1-1.png)<!-- -->  
-The constrast between exponential and logistic growth. In expoential growth, the per capita growth rate stays constant. In logistic growth, the per capita growth rate decreases with population density (adapted from Mills, 2013)
+The constrast between exponential with a constant per capita growth rate of $r=0.18$, and logistic growth with an initial per capita growth rate of $r=0.18$, $K=500$. In logistic growth, the per capita growth rate decreases with population size (adapted from Mills, 2013)
 
 
 ##### "K": carrying capacity
@@ -31,11 +31,8 @@ The maximum per capita growth rate, $r$, occurs when population density is zero,
 
 * **Note**: Do not think of carrying capacity as the maximum population size observed. A population can exceed K temporarily.
 
-The carrying capacity is considered to be an equilibrium. This equilibrium happens because, when population density is greater than K, mortality exceeds reproduction and the population will decrease to K; when density is less than K, reproduction exceeds mortality and the population increases toward K.
-
-(*insert the duckweed example on carrying capacity*)
-
 With all these concepts, now we should look at the logistic population model.
+
 
 ##### Logistic growth model
 
@@ -45,7 +42,7 @@ $$ r = \frac{dN}{dtN} $$
 
 Of all the ways that the per capita growth rate could decrease with increasing population density, we consider the simplest scenario in which this relationship is linear. Now we have:
 
-$$ \frac{dN}{dtN} = r_0(1-\frac{N}{K})$$
+$$ \frac{dN}{dtN} = r(1-\frac{N}{K})$$
 
 where $1-\frac{N}{K}$ describes the negative effects an increasing population density has on the per capita growth rate.
 
@@ -53,30 +50,6 @@ where $1-\frac{N}{K}$ describes the negative effects an increasing population de
 Re-arrange the above equation and we have the **continuous logistic growth model**:
 
 $$ \frac{dN}{dt} = r \frac{K-N}{K} N $$
-
-* $dN/dt$: The net number of new individuals in a population over a unit of time (also called recruitment or yield)
-
-* $r$: Intrinsic growth rate
-
-* $N$: Population size
-
-* $K$: Carrying capacity
-
-* $K-N$: How many more individuals can be added to the population before it hits carrying capacity
-
-* $K-N/K$: The fraction of the carrying capacity that has not yet been “used up"
-
-
-##### Maximum sustained yield
-
-The **maximum sustained yield** is achieved at $N=K/2$, when the recruitment ($dN/dt$) of new individuals is maximized.
-
-* At low population density, although growth is essentially exponential, the small number of breeders means that few individuals are born so that the overall $dN/dt$ is small
-
-* At high population density (near $K$), $dN/dt$ is also small because negative density dependence is reducing the per capita growth rate
-
-![](density-dependent_files/figure-html/unnamed-chunk-2-1.png)<!-- -->  
-Recruitment for a population growing with logistic growth ($r=0.18$) and a carrying capacity of 500. Recruitment is maximized when $N=K/2$.
 
 
 #### Stability
