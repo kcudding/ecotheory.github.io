@@ -103,16 +103,20 @@ Let's look at the following example:
 We have a population that has an initial population density of $N=10$, and carrying capacity $K=100$. With different values of $r$, we can see very different population growth trajectories.
 
 ![](density-dependent_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
-Chaotic dynamics arise from deterministic discrete logistic growth (adapted from Mills, 2013)
+Population growth with an initial population density of $N=10$, carrying capacity $K=100$. With different values of per capita growth rate $r$, the population growth trajectories are very different.
 
-When $r$ is close to zero, we have a steady simple asymptotic approach to K (Fig. a). As $r$ increases, we see the population overshoot the carrying capacity and exhibit **damped oscillations** (Fig. b). At $r=2.2$, we see a stable limit cycle of two points (Fig. c). As $r$ increases further, the number of points increases to a four-point limit cycle (e.g., at $r=2.5$, Fig. d), then an eight-point cycle, a 16-point limit cycle, and so on. As rd increases further, however, stable limit cycles shift into chaos (Fig. e).
+When $r$ is close to zero, we have a steady simple asymptotic approach to K (Fig. a). As $r$ increases, we see the population overshoot the carrying capacity and exhibit **damped oscillations** (Fig. b). At $r=2.2$, we see a stable limit cycle of two points (Fig. c). As $r$ increases further, the number of points increases to a four-point limit cycle (e.g., at $r=2.5$, Fig. d), then an eight-point cycle, a 16-point limit cycle, and so on. As $r$ increases further, however, stable limit cycles shift into chaos (Fig. e).
+
+**Bifurcation Graph**
+We can also demonstrate the chaotic dynamics using a bifurcation plot, which examines $N$ as a function of $r$. As $r$ increases the number of $N$ will continue to double, growing geometrically. Eventually, we reach a point when there becomes an infinite number of unique points.
+
+![](density-dependent_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+Long term dynamics of discrete logistic population growth, with an initial population density of $N=10$, and carrying capacity $K=100$. (Stevens, 2009)
 
 <br>
 **Chaos** is a non-repeating, deterministic fluctuating trajectory, that is bounded, and sensitive to initial conditions.
 
-How does chaos happen?
-
-* The discrete logistic model has a built in delay, or time lag, of one time step, because the growth increment makes a single leap of one time step. Therefore, the negative effects of the actions of individuals (e.g., resource consumption) are felt by the offspring of those individuals, rather than the individuals themselves
+How does chaos happen? The discrete logistic model has a built in delay, or time lag, of one time step, because the growth increment makes a single leap of one time step. This time delay in population response results in chaos dynamics.
 
 * Note that chaos is different from stochasticity or randomness. If you start with exactly the same initial conditions under chaotic dynamics, you will get exactly the same population trajectories every time
 
@@ -121,13 +125,8 @@ Chaos is **very sensitive to initial conditions**. Slightly changing the initial
 * Here we start with two populations that have initial size of 10 and 11 (all other parameters remain the same). As shown on the graph below, we see completely different trajectories for population growth.
 
 ![](density-dependent_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
-Chaotic dynamics with different initial conditions (adapted from Mills, 2012).
+Chaotic dynamics with different initial conditions. Black solid line demonstrates the population trajectory for a population that has an initial size of 10; red dotted line demonstrates the population trajectory for a population that has an initial size of 11.
 
-**Bifurcation Graph**
-We can also demonstrate the chaotic dynamics using a bifurcation plot, which examines $N$ as a function of $r_d$. As $r_d$ increases the number of $N$ will continue to double, growing geometrically. Eventually, we reach a point when there becomes an infinite number of unique points.
-
-![](density-dependent_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
-Figure 1.6 Illustration of the long term dynamics of discrete logistic population growth. (Stevens, 2009)
 
 **Biological significance of chaos in population growth**
 
