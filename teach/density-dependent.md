@@ -54,28 +54,21 @@ $$ \frac{dN}{dt} = r \frac{K-N}{K} N $$
 
 #### Stability
 
-The **stability** of a system is a measure of how much it tends to stay the same, in spite of external disturbances or changes in the state of the system.
+The **stability** of a system is a measure of how much it tends to stay the same, in spite of external disturbances or changes in the state of the system. A logistic population growth model is a system with stability, and carrying capacity $K$ is the stable equilibrium point. Population size above $K$ will decrease to $K$; while population size below $K$ will increase to $K$.
 
-To find the equilibrium point of a logistic growth model, consider the following example (figure below):
+Consider a logistic growth model with a carrying capacity $K=500$ and per capita growth rate $r=0.18$:
 
-* We have a population that has a carrying capacity $K=500$ and intrinsic growth rate $r=0.18$.
+* When the population number is at 100 (point b) or 200 (point c), the population will grow, moving along the x-axis, until population growth rate slows so much that it comes to rest where $N=K=500$.
 
-* When the population growth rate $dN/dt$, which is zero at equilibrium, becomes positive or negative in response to a small change in N. If this change results in a shrinking of that change back towards the equilibrium, that demonstrates stability. On the other hand, if this change results in
-growth and a bigger step, that demonstrates instability.
+* When the population number is at 550 (point e), $dN/dt$ is negative, so $N$ shrinks back down to $N=K=500$.
+
+* When population number is at 0 (point a) or 500 (point d), the population growth rate is at zero so that the density will not change.
 
 ![](density-dependent_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
-Population growth rate, $dN=dt$, as a function of $N$. Data points are chosen arbitrarily for analysis. Arrows are pointing to the stable equilibrium point at carrying capacity (adapted from Stevens, 2009)
-
-* When the population number is at 100 (point b) or 200 (point c), the population will grow, moving along the x-axis, until population growth rate slows so much that it comes to rest where $N=K=500$
-
-* When the population number is at 550 (point e), $dN/dt$ is negative, so $N$ shrinks back down to $N=K=500$
-
-* When population number is at 0 (point a) or 500 (point d), the population growth rate is at zero so that the density will not change
-
-From the above analysis, we can conclude that: A logistic population growth model is a system with stability, and carrying capacity $K$ is the stable equilibrium point. Any disturbance may cause the population size $N$ to deviate from it.
+Population growth rate, $dN=dt$, as a function of $N$. Arrows are pointing to the stable equilibrium point at carrying capacity (adapted from Stevens, 2009)
 
 
-### Discrete logistic growth
+### Discrete time logistic growth
 
 For many populations, reproduction and mortality occur at very particular periods of the year (in discrete intervals of time).
 
@@ -89,17 +82,15 @@ We can decompose $\lambda$ into two parts to illustrate that this year's populat
 
 $$N_{t+1} = \lambda N_t = N_t(1+r_d) = N_t+r_dN_t$$
 
-Now we can try to incorporate density dependence into that proportional change $r_dN_t$. We use $\alpha$ to represent this negative effect on population growth. As a result, $r_d(1- \alpha N_t)$ becomes the new per capita growth increment rate.
+Now we can try to incorporate density dependence into that proportional change $r_dN_t$. We use $1/K$ to represent this negative effect on population growth. As a result, $r_d(1- \frac{N_t}{K})$ becomes the new per capita growth increment rate.
 
-And our population growth equation becomes:
+And we have an equation that describes **discrete logistic growth**:
 
-$$N_{t+1} = N_t+r_d(1- \alpha N_t)N_t$$
+$$N_{t+1} = N_t+r_d(1- \frac{N_t}{K})N_t = N_t+r(1-\frac {N_t}{K})N_t$$
 
-A common alternative representation uses $1/ \alpha$ symbolized as K, the carrying capacity. And we have an equation that describes **discrete logistic growth**:
+where $K$ is the carrying capacity.
 
-$$ N_{t+1} = N_t+r_d(1- \frac{N_t}{K})N_t = N_t+r(1-\frac {N_t}{K})N_t $$
-
-* From the equation, we can see that the population abundance at time $t+1$ depend on the abundance at time t. This time lag makes sense for many populations, where birth and death rates respond to the population's density at some time in the past, instead of current density.
+From the equation, we can see that the population abundance at time $t+1$ depend on the abundance at time t. This time lag makes sense for many populations, where birth and death rates respond to the population's density at some time in the past, instead of current density.
 
 
 #### Chaos
