@@ -104,13 +104,6 @@ for (i in 2:20) {
   pos3[i] <- r[i,'zero'] + 0.8*(pos3[i-1] - rA)
 }
 r$pos3 <- pos3
-
-# Plot the results
-matplot(r[2:5], type = "b", pch=1, col = 1:4,
-        main = 'Exponential growth rates with different lag-1 autocorrelation coefficients',
-        xlab = 'Year', ylab = 'Exponential growth rate', lty = c(1,2,2,2))
-legend(x = "bottomright", legend = c('rho = 0', 'rho = 0.2', 'rho = 0.5', 'rho = 0.8'),
-       col = 1:4, lty = c(1,2,2,2))
 ```
 
 ![](autocorrelation.jpeg)
@@ -154,14 +147,6 @@ lambda_avg <- prod(lambda)^(1/8)
 
 # Calculate the theoretical population size, assuming geometric growth
 N$pred <- 100*lambda_avg^N$year
-
-# Plot the results
-plot(N$year, N$size, pch = 19, col = 'blue',
-     main = 'Population growth with process error only',
-     xlab = 'year', ylab = 'population size')
-lines(N$year, N$pred, col = 'red', lty = 2)
-legend(x = 'topleft', legend = c('data', 'prediction'),
-       col = c('blue', 'red'), lty = c(NA, 2), cex = 0.8, pch = c(16,NA))
 ```
 
 ![](process_error_example.jpeg)
@@ -189,14 +174,6 @@ lm1 <- lm(log~year, data = N)
 # After running the regression, we obtain the following coefficients:
 # (Intercept) 4.40771
 # year        0.26756
-
-# Plot the results
-plot(N$year, N$log, pch = 19, col = 'blue',
-     main = 'Population growth with observation error only',
-     xlab = 'year', ylab = 'log-transformed size')
-abline(lm1, col = 'red', lty = 2)
-legend(x = 'topleft', legend = c('data', 'prediction'),
-       col = c('blue', 'red'), lty = c(NA, 2), cex = 0.8, pch = c(16,NA))
 ```
 
 ![](observation_error_example.jpeg)
