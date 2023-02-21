@@ -5,13 +5,13 @@ We have introduced several models to describe how population size may change ove
 ![Examples of functions that describe the effects of different types density dependence on per capita growth rates ](densdepfunc.png){width=80%}
 
 #### Example: Model selection with the Bay Checkerspot data
-Let's use some data from Harrison's (1991) famous paper testing whether there were multiple populations or a single population of the Bay Checkerspot butterfly. In order to test her hypotheses, Dr. Harrison used 20 years of mark recapture data that was used to estimate the number of female butterflies in each year.
+Let's use some data from Harrison's (1991) famous paper testing whether there were multiple populations or a single population of the Bay Checkerspot butterfly. 
 
-![Estimated number of female Bay Checkerspot butterflies from mark recapture data (data from Harrison at al. 1991)](baycheckertime.jpeg){ width=50% } 
-![Wikipedia Commons [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)](630px-Bay_Checkerspot_f2.jpg){ width=30% }
+![Wikipedia Commons [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)](630px-Bay_Checkerspot_f2.jpg){ width=50% }
 
-Figure (side by side figs not showing captions?): Data from Harrison (1991). Image Wikipedia Commons (CC BY-SA 3.0)
+In order to test her hypotheses, Dr. Harrison used 20 years of mark recapture data that was used to estimate the number of female butterflies in each year.
 
+![Estimated number of female Bay Checkerspot butterflies from mark recapture data (data from Harrison at al. 1991)](baycheckertime.jpeg)
 
 We can use this data to calculate the annual population growth rate $\lambda$ as $N_{t+1}/N_{t}$. If we use least squares regression to predict the natural logarithm of estimated annual growth rates from the number of females, we find some indication there is a negative slope, even if we remove a large outlier. 
 
@@ -55,7 +55,8 @@ Let's try this out for a simple problem. We have been given a set of data, and w
 
 ``` R   		
 X = c(0,4,5,7,8,2,2,4,4)
-# the probability density function of the normal distribution for a given mean and variance
+# the probability density function of the normal 
+# distribution for a given mean and variance
 # is given by **dnorm()**
 like1=prod(dnorm(X,mean=5,sd=2))
 ```
@@ -124,7 +125,9 @@ normL = function(par) {
   }
           
 mlest=optim(par=c(1,1),normL) 
-#par argument is the starting search values for par[1], and par[2], so our function is the same as before, just written in a way that we can use it with optim()
+#par argument is the starting search values for par[1], 
+# and par[2], so our function is the same as before, 
+# just written in a way that we can use it with optim()
 mlest$par
 mlest$value
 ```
@@ -137,15 +140,20 @@ Let's go back to our original problem with the Harrison data (1991), and use max
 Just like we did for find the mean and variance of a set of data, we can find the slope and intercept of a linear regression model, this time, by setting the expected value of each observation using the equation for a line, with normally distributed errors, where our x is the number of female Bay Checkerspot butterflies, and y is the per capita growth rate.
 
 ``` R
-percap=c(0.229,1.125,3.889,1.143,2.125,1.000,1.882,0.320,2.785,0.278,9.187,0.316,0.986,3.208,3.973,0.254,1.130,1.094,6.566,0.570,1.790,0.080,0.552,1.190)
+percap=c(0.229,1.125,3.889,1.143,2.125,1.000,1.882,
+		0.320,2.785,0.278,9.187,0.316,0.986,3.208,3.973,
+		0.254,1.130,1.094,6.566,0.570,1.790,0.080,0.552,1.190)
 
-females=c(175,40,45,175,200,425,425,800,256,713,198,1819,575,567,1819,852,216,244,267,1753,999,1788,143,79)
+females=c(175,40,45,175,200,425,425,800,256,713,
+		  198,1819,575,567,1819,852,216,244,267,
+		  1753,999,1788,143,79)
 
 normReg = function(par) {
           y.pred = par[1] + par[2]*females
           -sum(dnorm(log(percap),mean=y.pred,sd=sqrt(par[3]),log=T)) }
 
-mlest=optim(par=c(0,1/100,1),normReg) #par argument is the starting search values for par[1:3] 
+mlest=optim(par=c(0,1/100,1),normReg) 
+#par argument is the starting search values for par[1:3] 
 ```
 	> mlest$par[1:2]
 	[1]  0.5244783529 -0.0007595998
@@ -161,27 +169,34 @@ Logistic model: $log(N_{t+1}/N_t)=r(1-N_t/K)$
 Theta logistic model: $log(N_{t+1}/N_t)=r(1-(N_t/K)^\theta)$
 
 ``` R
-percap=c(0.229,1.125, 3.889,1.143,2.125, 1.000,1.882,0.320,2.785, 0.278,9.187,0.316,0.986,3.208,3.973,0.254,1.130,1.094,6.566, 0.570, 1.790,0.080,0.552,1.190)
+percap=c(0.229,1.125, 3.889,1.143,2.125, 1.000,1.882,0.320,2.785,
+		 0.278,9.187,0.316,0.986,3.208,3.973,0.254,1.130,1.094,
+		 6.566, 0.570, 1.790,0.080,0.552,1.190)
 
-females=c(175,40,45,175,200,425,425,800,256,713,198,1819,575,567,1819,852,  216,244,267,1753,999,1788,143,79)
+females=c(175,40,45,175,200,425,425,800,256,713,198,1819,575,
+		  567,1819,852,  216,244,267,1753,999,1788,143,79)
 
 # function for logistic model with normally distributed errors
 normReg = function(par) {
           y.pred = par[1] + par[2]*females
           -sum(dnorm(log(percap),mean=y.pred,sd=sqrt(par[3]),log=T)) }
 
-mle.normReg=optim(par=c(0,1/100,1),normReg) #par argument is the starting search values
+mle.normReg=optim(par=c(0,1/100,1),normReg) 
+#par argument is the starting search values
 
 # plot data and model predictions at mle
-plot(log(percap)~females, type="p", pch=16, lwd=1.5, bty="l", cex.lab=1.2,
+plot(log(percap)~females, type="p", pch=16, lwd=1.5, bty="l", 
+	 cex.lab=1.2,
      ylab=expression(ln~lambda),las=1,
      xlab="number of females")
 abline(a=mle.normReg$par[1], b=mle.normReg$par[2],col="red")
 
 # function for density independent model
 normDI = function(par) {
-          -sum(dnorm(log(percap),mean=mean(log(percap)),sd=sqrt(par[2]),log=T)) }
-mle.normDI=optim(par=c(1/100,1),normC) #par argument is the starting search values 
+          -sum(dnorm(log(percap),mean=mean(log(percap)),
+					 sd=sqrt(par[2]),log=T)) }
+mle.normDI=optim(par=c(1/100,1),normC) 
+#par argument is the starting search values 
 
 # plot predictions
 abline(h=mle.normDI$par[1],lwd=1.5 )
@@ -190,7 +205,8 @@ abline(h=mle.normDI$par[1],lwd=1.5 )
 normTh = function(par) {
           y.pred = par[1] + par[2]*(females)^par[4]
           -sum(dnorm(log(percap),mean=y.pred,sd=sqrt(par[3]),log=T)) }
-mle.normTh=optim(par=c(0,1/100,1,1),normTh) #par argument is the starting search values 
+mle.normTh=optim(par=c(0,1/100,1,1),normTh) 
+#par argument is the starting search values 
 
 # plot predictions and legend
 curve(mle.normTh$par[1]+mle.normTh$par[2]*(x)^mle.normTh$par[4], from=0, 
@@ -215,7 +231,7 @@ Table: Negative log-likelihood values for three candidate population models appl
 | logistic       | 3                    | 35.225    | 
 | theta-logistic | 4                    | 35.174    | 
 
-So perhaps we should select the theta-logistic model? After all it **does** have the greatest likelihood. However, there is another point to consider. The theta-logistic model has four parameters (r, k, $\theta\$, and $\sigma\$, the variance of the normal distribution of errors), while the logistic model has 3.  We note that if a model has n data points and n parameters (one for each data point), then the residual variance will be ZERO. Would a model with n parameters then be a better model, since it explains all the variance?
+So perhaps we should select the theta-logistic model? After all it **does** have the greatest likelihood. However, there is another point to consider. The theta-logistic model has four parameters (r, k, $\theta$, and $\sigma$, the variance of the normal distribution of errors), while the logistic model has 3.  We note that if a model has n data points and n parameters (one for each data point), then the residual variance will be ZERO. Would a model with n parameters then be a better model, since it explains all the variance?
 
 More generally, is a model with more parameters, functions, entities, etc. more likely to be “true”? Where we use the word "true" as more explanatory, accurate, predictive, representative of reality?
 

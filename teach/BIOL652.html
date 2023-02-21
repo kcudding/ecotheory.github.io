@@ -1614,15 +1614,24 @@ rates</figcaption>
 Model selection with the Bay Checkerspot data</h4>
 <p>Let’s use some data from Harrison’s (1991) famous paper testing
 whether there were multiple populations or a single population of the
-Bay Checkerspot butterfly. In order to test her hypotheses, Dr. Harrison
-used 20 years of mark recapture data that was used to estimate the
-number of female butterflies in each year.</p>
-<p><img src="baycheckertime.jpeg" style="width:50.0%"
+Bay Checkerspot butterfly.</p>
+<figure>
+<img src="630px-Bay_Checkerspot_f2.jpg" style="width:50.0%"
+alt="Wikipedia Commons CC BY-SA 3.0" />
+<figcaption aria-hidden="true">Wikipedia Commons <a
+href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA
+3.0</a></figcaption>
+</figure>
+<p>In order to test her hypotheses, Dr. Harrison used 20 years of mark
+recapture data that was used to estimate the number of female
+butterflies in each year.</p>
+<figure>
+<img src="baycheckertime.jpeg"
 alt="Estimated number of female Bay Checkerspot butterflies from mark recapture data (data from Harrison at al. 1991)" />
-<img src="630px-Bay_Checkerspot_f2.jpg" style="width:30.0%"
-alt="Wikipedia Commons CC BY-SA 3.0" /></p>
-<p>Figure (side by side figs not showing captions?): Data from Harrison
-(1991). Image Wikipedia Commons (CC BY-SA 3.0)</p>
+<figcaption aria-hidden="true">Estimated number of female Bay
+Checkerspot butterflies from mark recapture data (data from Harrison at
+al. 1991)</figcaption>
+</figure>
 <p>We can use this data to calculate the annual population growth rate
 <span class="math inline">\(\lambda\)</span> as <span
 class="math inline">\(N_{t+1}/N_{t}\)</span>. If we use least squares
@@ -1737,9 +1746,10 @@ our model is simply the normal distribution. We assume independent
 observations, so likelihood is the product of their individual
 probabilities as given by the probability density function.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the probability density function of the normal distribution for a given mean and variance</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># is given by **dnorm()**</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>like1<span class="ot">=</span><span class="fu">prod</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">5</span>,<span class="at">sd=</span><span class="dv">2</span>))</span></code></pre></div>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the probability density function of the normal </span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution for a given mean and variance</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># is given by **dnorm()**</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>like1<span class="ot">=</span><span class="fu">prod</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">5</span>,<span class="at">sd=</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code> &gt; like1
 [1] 3.133277e-10</code></pre>
 <p>Of course, the value we calculate is not very informative, we need to
@@ -1828,9 +1838,11 @@ to find the best mean and variance for our data.</p>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>          </span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>mlest<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),normL) </span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#par argument is the starting search values for par[1], and par[2], so our function is the same as before, just written in a way that we can use it with optim()</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>mlest<span class="sc">$</span>par</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>mlest<span class="sc">$</span>value</span></code></pre></div>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#par argument is the starting search values for par[1], </span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># and par[2], so our function is the same as before, </span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># just written in a way that we can use it with optim()</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>mlest<span class="sc">$</span>par</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>mlest<span class="sc">$</span>value</span></code></pre></div>
 <p>We can see that the <strong>optim()</strong> function gives a bit
 more precision, and tells us that the maximum likelihood (minimum
 negative log-likelihood) is found for parameter values of <span
@@ -1846,15 +1858,20 @@ time, by setting the expected value of each observation using the
 equation for a line, with normally distributed errors, where our x is
 the number of female Bay Checkerspot butterflies, and y is the per
 capita growth rate.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>,<span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>,<span class="fl">1.000</span>,<span class="fl">1.882</span>,<span class="fl">0.320</span>,<span class="fl">2.785</span>,<span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,<span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,<span class="fl">6.566</span>,<span class="fl">0.570</span>,<span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>females<span class="ot">=</span><span class="fu">c</span>(<span class="dv">175</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">175</span>,<span class="dv">200</span>,<span class="dv">425</span>,<span class="dv">425</span>,<span class="dv">800</span>,<span class="dv">256</span>,<span class="dv">713</span>,<span class="dv">198</span>,<span class="dv">1819</span>,<span class="dv">575</span>,<span class="dv">567</span>,<span class="dv">1819</span>,<span class="dv">852</span>,<span class="dv">216</span>,<span class="dv">244</span>,<span class="dv">267</span>,<span class="dv">1753</span>,<span class="dv">999</span>,<span class="dv">1788</span>,<span class="dv">143</span>,<span class="dv">79</span>)</span>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>,<span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>,<span class="fl">1.000</span>,<span class="fl">1.882</span>,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.320</span>,<span class="fl">2.785</span>,<span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,<span class="fl">6.566</span>,<span class="fl">0.570</span>,<span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>normReg <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>females</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>females<span class="ot">=</span><span class="fu">c</span>(<span class="dv">175</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">175</span>,<span class="dv">200</span>,<span class="dv">425</span>,<span class="dv">425</span>,<span class="dv">800</span>,<span class="dv">256</span>,<span class="dv">713</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>          <span class="dv">198</span>,<span class="dv">1819</span>,<span class="dv">575</span>,<span class="dv">567</span>,<span class="dv">1819</span>,<span class="dv">852</span>,<span class="dv">216</span>,<span class="dv">244</span>,<span class="dv">267</span>,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>          <span class="dv">1753</span>,<span class="dv">999</span>,<span class="dv">1788</span>,<span class="dv">143</span>,<span class="dv">79</span>)</span>
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>mlest<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normReg) <span class="co">#par argument is the starting search values for par[1:3] </span></span></code></pre></div>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>normReg <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>females</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>mlest<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normReg) </span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="co">#par argument is the starting search values for par[1:3] </span></span></code></pre></div>
 <pre><code>&gt; mlest$par[1:2]
 [1]  0.5244783529 -0.0007595998</code></pre>
 <p>Reassuringly, we find that our estimates intercept (par[1]) and slope
@@ -1870,42 +1887,50 @@ class="math inline">\(log(N_{t+1}/N_t)=r\)</span></p>
 class="math inline">\(log(N_{t+1}/N_t)=r(1-N_t/K)\)</span></p>
 <p>Theta logistic model: <span
 class="math inline">\(log(N_{t+1}/N_t)=r(1-(N_t/K)^\theta)\)</span></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>, <span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>, <span class="fl">1.000</span>,<span class="fl">1.882</span>,<span class="fl">0.320</span>,<span class="fl">2.785</span>, <span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,<span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,<span class="fl">6.566</span>, <span class="fl">0.570</span>, <span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>females<span class="ot">=</span><span class="fu">c</span>(<span class="dv">175</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">175</span>,<span class="dv">200</span>,<span class="dv">425</span>,<span class="dv">425</span>,<span class="dv">800</span>,<span class="dv">256</span>,<span class="dv">713</span>,<span class="dv">198</span>,<span class="dv">1819</span>,<span class="dv">575</span>,<span class="dv">567</span>,<span class="dv">1819</span>,<span class="dv">852</span>,  <span class="dv">216</span>,<span class="dv">244</span>,<span class="dv">267</span>,<span class="dv">1753</span>,<span class="dv">999</span>,<span class="dv">1788</span>,<span class="dv">143</span>,<span class="dv">79</span>)</span>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>, <span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>, <span class="fl">1.000</span>,<span class="fl">1.882</span>,<span class="fl">0.320</span>,<span class="fl">2.785</span>,</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>         <span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,<span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>         <span class="fl">6.566</span>, <span class="fl">0.570</span>, <span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># function for logistic model with normally distributed errors</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>normReg <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>females</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>mle.normReg<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normReg) <span class="co">#par argument is the starting search values</span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot data and model predictions at mle</span></span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(percap)<span class="sc">~</span>females, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="fu">expression</span>(ln<span class="sc">~</span>lambda),<span class="at">las=</span><span class="dv">1</span>,</span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;number of females&quot;</span>)</span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mle.normReg<span class="sc">$</span>par[<span class="dv">1</span>], <span class="at">b=</span>mle.normReg<span class="sc">$</span>par[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="co"># function for density independent model</span></span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>normDI <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span><span class="fu">mean</span>(<span class="fu">log</span>(percap)),<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">2</span>]),<span class="at">log=</span>T)) }</span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>mle.normDI<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normC) <span class="co">#par argument is the starting search values </span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>females<span class="ot">=</span><span class="fu">c</span>(<span class="dv">175</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">175</span>,<span class="dv">200</span>,<span class="dv">425</span>,<span class="dv">425</span>,<span class="dv">800</span>,<span class="dv">256</span>,<span class="dv">713</span>,<span class="dv">198</span>,<span class="dv">1819</span>,<span class="dv">575</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>          <span class="dv">567</span>,<span class="dv">1819</span>,<span class="dv">852</span>,  <span class="dv">216</span>,<span class="dv">244</span>,<span class="dv">267</span>,<span class="dv">1753</span>,<span class="dv">999</span>,<span class="dv">1788</span>,<span class="dv">143</span>,<span class="dv">79</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># function for logistic model with normally distributed errors</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>normReg <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>females</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>mle.normReg<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normReg) </span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co">#par argument is the starting search values</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="co"># plot data and model predictions at mle</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(percap)<span class="sc">~</span>females, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, </span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="fu">expression</span>(ln<span class="sc">~</span>lambda),<span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;number of females&quot;</span>)</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mle.normReg<span class="sc">$</span>par[<span class="dv">1</span>], <span class="at">b=</span>mle.normReg<span class="sc">$</span>par[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="co"># plot predictions</span></span>
-<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>mle.normDI<span class="sc">$</span>par[<span class="dv">1</span>],<span class="at">lwd=</span><span class="fl">1.5</span> )</span>
-<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="co"># function for theta-logistic model</span></span>
-<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>normTh <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
-<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>(females)<span class="sc">^</span>par[<span class="dv">4</span>]</span>
-<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
-<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>mle.normTh<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">1</span>),normTh) <span class="co">#par argument is the starting search values </span></span>
-<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a><span class="co"># plot predictions and legend</span></span>
-<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(mle.normTh<span class="sc">$</span>par[<span class="dv">1</span>]<span class="sc">+</span>mle.normTh<span class="sc">$</span>par[<span class="dv">2</span>]<span class="sc">*</span>(x)<span class="sc">^</span>mle.normTh<span class="sc">$</span>par[<span class="dv">4</span>], <span class="at">from=</span><span class="dv">0</span>, </span>
-<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">to=</span><span class="dv">4000</span>,<span class="at">add=</span>T, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;top&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;exponential&quot;</span>, <span class="st">&quot;logistic&quot;</span>,<span class="st">&quot;theta-logistic&quot;</span> ),</span>
-<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="co"># function for density independent model</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>normDI <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span><span class="fu">mean</span>(<span class="fu">log</span>(percap)),</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">2</span>]),<span class="at">log=</span>T)) }</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>mle.normDI<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normC) </span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a><span class="co">#par argument is the starting search values </span></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a><span class="co"># plot predictions</span></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>mle.normDI<span class="sc">$</span>par[<span class="dv">1</span>],<span class="at">lwd=</span><span class="fl">1.5</span> )</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a><span class="co"># function for theta-logistic model</span></span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>normTh <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>(females)<span class="sc">^</span>par[<span class="dv">4</span>]</span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>mle.normTh<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">1</span>),normTh) </span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a><span class="co">#par argument is the starting search values </span></span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a><span class="co"># plot predictions and legend</span></span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(mle.normTh<span class="sc">$</span>par[<span class="dv">1</span>]<span class="sc">+</span>mle.normTh<span class="sc">$</span>par[<span class="dv">2</span>]<span class="sc">*</span>(x)<span class="sc">^</span>mle.normTh<span class="sc">$</span>par[<span class="dv">4</span>], <span class="at">from=</span><span class="dv">0</span>, </span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">to=</span><span class="dv">4000</span>,<span class="at">add=</span>T, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;top&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;exponential&quot;</span>, <span class="st">&quot;logistic&quot;</span>,<span class="st">&quot;theta-logistic&quot;</span> ),</span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 <figure>
 <img src="3modelfits.jpeg" style="width:80.0%"
 alt="Fits of the three different models to data from Harrison, 1991" />
@@ -1948,11 +1973,12 @@ models applied to Harrison’s (1991) Bay Checkerspot data</caption>
 <p>So perhaps we should select the theta-logistic model? After all it
 <strong>does</strong> have the greatest likelihood. However, there is
 another point to consider. The theta-logistic model has four parameters
-(r, k, $$, and $$, the variance of the normal distribution of errors),
-while the logistic model has 3. We note that if a model has n data
-points and n parameters (one for each data point), then the residual
-variance will be ZERO. Would a model with n parameters then be a better
-model, since it explains all the variance?</p>
+(r, k, <span class="math inline">\(\theta\)</span>, and <span
+class="math inline">\(\sigma\)</span>, the variance of the normal
+distribution of errors), while the logistic model has 3. We note that if
+a model has n data points and n parameters (one for each data point),
+then the residual variance will be ZERO. Would a model with n parameters
+then be a better model, since it explains all the variance?</p>
 <p>More generally, is a model with more parameters, functions, entities,
 etc. more likely to be “true”? Where we use the word “true” as more
 explanatory, accurate, predictive, representative of reality?</p>
