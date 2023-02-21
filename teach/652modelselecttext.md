@@ -7,10 +7,11 @@ We have introduced several models to describe how population size may change ove
 #### Example: Model selection with the Bay Checkerspot data
 Let's use some data from Harrison's (1991) famous paper testing whether there were multiple populations or a single population of the Bay Checkerspot butterfly. In order to test her hypotheses, Dr. Harrison used 20 years of mark recapture data that was used to estimate the number of female butterflies in each year.
 
-![Estimated number of female Bay Checkerspot butterflies from mark recapture data (Harrison at al. 1991)](baycheckertime.jpeg){ width=50% } 
-![Wikipedia Commons (CC BY-SA 3.0)](630px-Bay_Checkerspot_f2.jpg){ width=30% }
+![Estimated number of female Bay Checkerspot butterflies from mark recapture data (data from Harrison at al. 1991)](baycheckertime.jpeg){ width=50% } 
+![Wikipedia Commons [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)](630px-Bay_Checkerspot_f2.jpg){ width=30% }
 
-Figure: Data from Harrison (1991). Image Wikipedia Commons (CC BY-SA 3.0)
+Figure (side by side figs not showing captions?): Data from Harrison (1991). Image Wikipedia Commons (CC BY-SA 3.0)
+
 
 We can use this data to calculate the annual population growth rate $\lambda$ as $N_{t+1}/N_{t}$. If we use least squares regression to predict the natural logarithm of estimated annual growth rates from the number of females, we find some indication there is a negative slope, even if we remove a large outlier. 
 
