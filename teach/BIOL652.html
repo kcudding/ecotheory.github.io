@@ -1,244 +1,331 @@
-<!doctype html>
-<html >
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!--[if lt IE 9]>
-                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-        <![endif]-->
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Content-Style-Type" content="text/css" />
-
-    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
-
-    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
-
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
-    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
-    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
-    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
-    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
-    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
-    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-    <!-- <script src="script.js"></script> -->
-    <!-- <script src="jquery.sticky-kit.js "></script> -->
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
-
-    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
-  
-    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
-    <meta name="generator" content="pandoc" />
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Debora, Eddie, Zitao and Kim" />
-  <meta name="date" content="2023-02-03" />
+  <meta name="dcterms.date" content="2023-02-03" />
   <title>BIOL 652 Structured Population Models</title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
-  <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <script
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
   type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-
-    
-    <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
-    <div class="navbar-inner container-fluid">
-      <div class="container">
-        <span class="doc-title">BIOL 652 Structured Population
-Models</span>
-        <ul class="nav pull-right doc-info">
-                    <li><p class="navbar-text">Debora, Eddie, Zitao and
-Kim</p></li>
-                              <li><p class="navbar-text">2023-02-03</p></li>
-                  </ul>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-      <div class="row">
-            <div id="TOC" class="col-sm-7 col-lg-3">
-        <div class="well toc">
-
-        <ul>
-        <li><a href="#module-1-unstructured-population-models"
-        id="toc-module-1-unstructured-population-models"><strong>Module
-        1: Unstructured Population Models</strong></a>
-        <ul>
-        <li><a href="#introduction"
-        id="toc-introduction">Introduction</a></li>
-        <li><a href="#learning-outcomes"
-        id="toc-learning-outcomes">Learning outcomes</a>
-        <ul>
-        <li><a href="#what-is-a-population-model"
-        id="toc-what-is-a-population-model">What is a population
-        model?</a></li>
-        <li><a href="#basic-types-of-population-models"
-        id="toc-basic-types-of-population-models">Basic types of
-        population models</a></li>
-        </ul></li>
-        <li><a href="#simple-models-of-population-dynamics"
-        id="toc-simple-models-of-population-dynamics">Simple models of
-        population dynamics</a>
-        <ul>
-        <li><a href="#historical-facts"
-        id="toc-historical-facts">Historical facts</a></li>
-        <li><a
-        href="#when-are-simple-population-models-used-in-biological-analyses"
-        id="toc-when-are-simple-population-models-used-in-biological-analyses">When
-        are simple population models used in biological
-        analyses?</a></li>
-        <li><a
-        href="#mathematical-representation-of-population-growth-patterns"
-        id="toc-mathematical-representation-of-population-growth-patterns">Mathematical
-        representation of population growth patterns</a></li>
-        <li><a href="#geometric-growth"
-        id="toc-geometric-growth">Geometric growth</a></li>
-        <li><a href="#exponential-growth"
-        id="toc-exponential-growth">Exponential growth</a></li>
-        </ul></li>
-        <li><a href="#references"
-        id="toc-references">References</a></li>
-        <li><a href="#density-dependence"
-        id="toc-density-dependence">Density-dependence</a>
-        <ul>
-        <li><a href="#continuous-logistic-growth"
-        id="toc-continuous-logistic-growth">Continuous logistic
-        growth</a></li>
-        <li><a href="#discrete-logistic-growth"
-        id="toc-discrete-logistic-growth">Discrete logistic
-        growth</a></li>
-        <li><a
-        href="#other-types-of-density-denpendent-population-models"
-        id="toc-other-types-of-density-denpendent-population-models">Other
-        types of density denpendent population models</a></li>
-        <li><a href="#paper-discussion" id="toc-paper-discussion">Paper
-        Discussion:</a></li>
-        </ul></li>
-        <li><a href="#references-1"
-        id="toc-references-1">References:</a></li>
-        <li><a href="#population-dynamics-and-stochasticity"
-        id="toc-population-dynamics-and-stochasticity">Population
-        dynamics and stochasticity</a>
-        <ul>
-        <li><a href="#deterministic-vs.-stochastic-factors"
-        id="toc-deterministic-vs.-stochastic-factors">Deterministic
-        vs. stochastic factors</a></li>
-        <li><a href="#basic-forms-of-stochasticity-and-definitions"
-        id="toc-basic-forms-of-stochasticity-and-definitions">Basic
-        forms of stochasticity and definitions</a></li>
-        <li><a href="#implications-of-variation-in-population-growth"
-        id="toc-implications-of-variation-in-population-growth">Implications
-        of variation in population growth</a></li>
-        <li><a href="#stochastic-effects-to-population-growth-rates"
-        id="toc-stochastic-effects-to-population-growth-rates">Stochastic
-        effects to population growth rates</a></li>
-        <li><a href="#estimating-population-growth-rates"
-        id="toc-estimating-population-growth-rates">Estimating
-        population growth rates</a></li>
-        <li><a href="#paper-discussion-1"
-        id="toc-paper-discussion-1">Paper discussion</a></li>
-        <li><a href="#references-2"
-        id="toc-references-2">References</a></li>
-        </ul></li>
-        <li><a
-        href="#model-selection-how-do-we-tell-which-model-to-use-for-our-data"
-        id="toc-model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
-        Selection: How do we tell which model to use for our data?</a>
-        <ul>
-        <li><a href="#likelihood"
-        id="toc-likelihood">Likelihood</a></li>
-        <li><a href="#model-comparison" id="toc-model-comparison">Model
-        comparison</a></li>
-        <li><a href="#references-3"
-        id="toc-references-3">References</a></li>
-        </ul></li>
-        </ul></li>
-        </ul>
-
-        </div>
-      </div>
-            <div class="col-9">
-
-      
-      <h1 id="module-1-unstructured-population-models"><strong>Module 1:
+<header id="title-block-header">
+<h1 class="title">BIOL 652 Structured Population Models</h1>
+<p class="author">Debora, Eddie, Zitao and Kim</p>
+<p class="date">2023-02-03</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#module-1-unstructured-population-models"
+id="toc-module-1-unstructured-population-models"><strong>Module 1:
+Unstructured Population Models</strong></a>
+<ul>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#learning-outcomes" id="toc-learning-outcomes">Learning
+outcomes</a>
+<ul>
+<li><a href="#what-is-a-population-model"
+id="toc-what-is-a-population-model">What is a population model?</a></li>
+<li><a href="#basic-types-of-population-models"
+id="toc-basic-types-of-population-models">Basic types of population
+models</a></li>
+</ul></li>
+<li><a href="#simple-models-of-population-dynamics"
+id="toc-simple-models-of-population-dynamics">Simple models of
+population dynamics</a>
+<ul>
+<li><a href="#historical-facts" id="toc-historical-facts">Historical
+facts</a></li>
+<li><a
+href="#when-are-simple-population-models-used-in-biological-analyses"
+id="toc-when-are-simple-population-models-used-in-biological-analyses">When
+are simple population models used in biological analyses?</a></li>
+<li><a href="#mathematical-representation-of-population-growth-patterns"
+id="toc-mathematical-representation-of-population-growth-patterns">Mathematical
+representation of population growth patterns</a></li>
+<li><a href="#geometric-growth" id="toc-geometric-growth">Geometric
+growth</a></li>
+<li><a href="#exponential-growth"
+id="toc-exponential-growth">Exponential growth</a></li>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul></li>
+<li><a href="#density-dependence" id="toc-density-dependence">Density
+dependence</a>
+<ul>
+<li><a href="#negative-density-dependence"
+id="toc-negative-density-dependence">Negative density
+dependence</a></li>
+<li><a href="#discrete-time-logistic-growth"
+id="toc-discrete-time-logistic-growth">Discrete time logistic
+growth</a></li>
+<li><a href="#other-types-of-density-denpendent-population-models"
+id="toc-other-types-of-density-denpendent-population-models">Other types
+of density denpendent population models</a></li>
+<li><a href="#illustration-of-current-application-research-paper-review"
+id="toc-illustration-of-current-application-research-paper-review">Illustration
+of current application: research paper review</a></li>
+<li><a href="#references-1" id="toc-references-1">References:</a></li>
+</ul></li>
+<li><a href="#population-dynamics-and-stochasticity"
+id="toc-population-dynamics-and-stochasticity">Population dynamics and
+stochasticity</a>
+<ul>
+<li><a href="#deterministic-vs.-stochastic-factors"
+id="toc-deterministic-vs.-stochastic-factors">Deterministic
+vs. stochastic factors</a></li>
+<li><a href="#basic-forms-of-stochasticity-and-definitions"
+id="toc-basic-forms-of-stochasticity-and-definitions">Basic forms of
+stochasticity and definitions</a></li>
+<li><a href="#implications-of-variation-in-population-growth"
+id="toc-implications-of-variation-in-population-growth">Implications of
+variation in population growth</a></li>
+<li><a href="#stochastic-effects-to-population-growth-rates"
+id="toc-stochastic-effects-to-population-growth-rates">Stochastic
+effects to population growth rates</a></li>
+<li><a href="#estimating-population-growth-rates"
+id="toc-estimating-population-growth-rates">Estimating population growth
+rates</a></li>
+<li><a href="#illustration-of-current-application-1"
+id="toc-illustration-of-current-application-1">Illustration of current
+application</a></li>
+<li><a href="#references-2" id="toc-references-2">References</a></li>
+</ul></li>
+<li><a
+href="#model-selection-how-do-we-tell-which-model-to-use-for-our-data"
+id="toc-model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
+Selection: How do we tell which model to use for our data?</a>
+<ul>
+<li><a href="#likelihood" id="toc-likelihood">Likelihood</a></li>
+<li><a href="#model-comparison" id="toc-model-comparison">Model
+comparison</a></li>
+<li><a href="#references-3" id="toc-references-3">References</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="module-1-unstructured-population-models"><strong>Module 1:
 Unstructured Population Models</strong></h1>
 <h2 id="introduction">Introduction</h2>
 <p>This module covers the most simple models to predict the dynamics of
@@ -291,9 +378,10 @@ growth.</p>
 <figure>
 <img
 src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/malthus.png"
-alt="© Elhuyar Fundazioa, Thomas Malthus, https://commons.wikimedia.org/wiki/File:Malthus.png, Creative Commons CC-BY-SA-3.0 license" />
-<figcaption aria-hidden="true">© Elhuyar Fundazioa, Thomas Malthus,
-https://commons.wikimedia.org/wiki/File:Malthus.png, <a
+alt="© Elhuyar Fundazioa, Thomas Malthus, Creative Commons CC-BY-SA-3.0 license" />
+<figcaption aria-hidden="true">© Elhuyar Fundazioa, <a
+href="https://commons.wikimedia.org/wiki/File:Malthus.png">Thomas
+Malthus</a>, <a
 href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
 CC-BY-SA-3.0 license</a></figcaption>
 </figure>
@@ -302,8 +390,8 @@ CC-BY-SA-3.0 license</a></figcaption>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">50</span>,<span class="dv">2</span>,<span class="dv">8</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot hypothetical exponential and linear growth patterns</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,<span class="fu">exp</span>(x), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main=</span><span class="st">&quot;Hypothetical example of exponential versus arithmetic growth&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Time&quot;</span>, </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Population or resources&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,<span class="fu">exp</span>(x), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main=</span><span class="st">&quot;Hypothetical example of exponential versus arithmetic growth&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;time&quot;</span>, </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;population or resources&quot;</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(x,<span class="dv">50</span><span class="sc">+</span>(<span class="dv">40</span><span class="sc">*</span>x),<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="fl">2.2</span>, <span class="dv">2400</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;Exponential population growth&quot;</span>, <span class="st">&quot;Arithmetic growth of resources available&quot;</span>),</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>, <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">1</span>))</span></code></pre></div>
@@ -322,10 +410,11 @@ at all time steps.</p></li>
 id="when-are-simple-population-models-used-in-biological-analyses">When
 are simple population models used in biological analyses?</h3>
 <p>Now let’s see when simple models such as the exponential growth model
-are used in biology. In some situations, we can disregard factors which
-limit the growth of populations, such as resource availability,
-interactions between species, and relocation of individuals. Here are
-some examples:</p>
+are used in biology. Are there real situations where an uncontrolled
+growth can be understood through such models? In some situations, we can
+disregard factors which limit the growth of populations, such as
+resource availability, interactions between species, and relocation of
+individuals. Here are some examples:</p>
 <ul>
 <li><strong>Experimental settings</strong>: In lab conditions, we remove
 as many factors as possible which could potentially interfere with the
@@ -370,11 +459,12 @@ behaviour of invading species.</li>
 <figure>
 <img
 src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/knapweed.jpg"
-alt="© Kate Jewell, Common knapweed, (https://commons.wikimedia.org/wiki/File:Common_knapweed_%28Centaurea_nigra%29_-geograph.org.uk-_492672.jpg), Creative Commons CC-BY-SA-2.0 license" />
-<figcaption aria-hidden="true">© Kate Jewell, Common knapweed,
-(https://commons.wikimedia.org/wiki/File:Common_knapweed_%28Centaurea_nigra%29_-<em>geograph.org.uk</em>-_492672.jpg),
-<a href="https://creativecommons.org/licenses/by-sa/2.0/">Creative
-Commons CC-BY-SA-2.0 license</a></figcaption>
+alt="© Kate Jewell, Common knapweed, Creative Commons CC-BY-SA-2.0 license" />
+<figcaption aria-hidden="true">© Kate Jewell, <a
+href="https://commons.wikimedia.org/wiki/File:Common_knapweed_%28Centaurea_nigra%29_-_geograph.org.uk_-_492672.jpg">Common
+knapweed</a>, <a
+href="https://creativecommons.org/licenses/by-sa/2.0/">Creative Commons
+CC-BY-SA-2.0 license</a></figcaption>
 </figure>
 <ul>
 <li><strong>Management of species at risk of extinction</strong>:
@@ -397,12 +487,14 @@ implemented in North America (Gronewold, 2021).</li>
 <figure>
 <img
 src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/cranes.png"
-alt="(left) © CheepShot, Whooping Crane, https://commons.wikimedia.org/wiki/File:Whooping_Crane_%283873713594%29.jpg, Creative Commons CC-BY-2.0 license; (right) © Peter Batty, Red-crowned cranes calling, https://www.flickr.com/photos/ebatty/50772105027, Creative Commons CC BY-NC-SA 2.0 license" />
-<figcaption aria-hidden="true">(left) © CheepShot, Whooping Crane,
-https://commons.wikimedia.org/wiki/File:Whooping_Crane_%283873713594%29.jpg,
-<a href="https://creativecommons.org/licenses/by/2.0/">Creative Commons
-CC-BY-2.0 license</a>; (right) © Peter Batty, Red-crowned cranes
-calling, https://www.flickr.com/photos/ebatty/50772105027, <a
+alt="(left) © CheepShot, Whooping Crane, Creative Commons CC-BY-2.0 license; (right) © Peter Batty, Red-crowned cranes calling, Creative Commons CC BY-NC-SA 2.0 license" />
+<figcaption aria-hidden="true">(left) © CheepShot, <a
+href="https://commons.wikimedia.org/wiki/File:Whooping_Crane_%283873713594%29.jpg">Whooping
+Crane</a>, <a
+href="https://creativecommons.org/licenses/by/2.0/">Creative Commons
+CC-BY-2.0 license</a>; (right) © Peter Batty, <a
+href="https://www.flickr.com/photos/ebatty/50772105027">Red-crowned
+cranes calling</a>, <a
 href="https://creativecommons.org/licenses/by-nc-sa/2.0/">Creative
 Commons CC BY-NC-SA 2.0 license</a></figcaption>
 </figure>
@@ -604,7 +696,7 @@ populations are growing at an average daily rate of 24.38%.</p>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>cont.mat <span class="ot">&lt;-</span> <span class="fu">sapply</span>(r, <span class="cf">function</span>(ri) N0 <span class="sc">*</span> <span class="fu">exp</span>(ri <span class="sc">*</span> t))</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(t, cont.mat, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="dv">1</span>, </span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">&quot;Exponential model projecting duckweed population growth&quot;</span>, </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Days&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Population size (number of individuals)&quot;</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;days&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;population size (number of individuals)&quot;</span>)</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(duckweed<span class="sc">$</span>day, duckweed<span class="sc">$</span>pop_size,<span class="at">pch=</span><span class="dv">15</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">1995</span>, <span class="dv">1300</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;Observed data&quot;</span>, <span class="st">&quot;Model predictions&quot;</span>),</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>, <span class="at">lty=</span> <span class="fu">c</span>(<span class="cn">NA</span>,<span class="dv">1</span>), <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">15</span>,<span class="cn">NA</span>))</span></code></pre></div>
@@ -625,21 +717,11 @@ logarithm from both sides of the equation to solve, resulting in:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can use this equation to calculate the doubling time for our experimental duckweeds:</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>double <span class="ot">&lt;-</span> <span class="fl">0.69</span><span class="sc">/</span>r</span></code></pre></div>
 <p>The doubling time for our duckweeds is 2.83 days.</p>
-<h4
-id="paper-discussion-and-exponential-modelling-illustration-invasive-hippos-in-colombia">Paper
-discussion and exponential modelling illustration: invasive hippos in
-Colombia</h4>
-<p>Shurin, J. B., Aranguren-Riaño, N., Duque Negro, D., Echeverri Lopez,
-D., Jones, N. T., Laverde‐R, O., … &amp; Pedroza Ramos, A. (2020).
-Ecosystem effects of the world’s largest invasive animal. <em>Ecology,
-101</em>(5), e02991.</p>
-<figure>
-<img
-src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/hippo1.png"
-alt="Research about hippo invasion in Colombia" />
-<figcaption aria-hidden="true">Research about hippo invasion in
-Colombia</figcaption>
-</figure>
+<h4 id="illustration-of-current-application">Illustration of current
+application</h4>
+<p>Ecosystem effects of the world’s largest invasive animal (Shurin et
+al., 2020). This research paper discusses population dynamics of
+invasive hippos in Colombia.</p>
 <h5 id="snapshot-of-the-study">Snapshot of the study</h5>
 <ul>
 <li><p>An invasive population of hippopotamus (<em>Hippopotamus
@@ -670,11 +752,12 @@ for touristic purposes)</p></li>
 <figure>
 <img
 src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/hippo2.jpg"
-alt="© Bernard Dupont, Grazing hippos, https://commons.wikimedia.org/wiki/File:Hippo_%28Hippopotamus_amphibius%29_emaciated_specimen_grazing_on_Sabie_riverbank_…_%2833321050795%29.jpg, Creative Commons CC-BY-SA-2.0 license" />
-<figcaption aria-hidden="true">© Bernard Dupont, Grazing hippos,
-https://commons.wikimedia.org/wiki/File:Hippo_%28Hippopotamus_amphibius%29_emaciated_specimen_grazing_on_Sabie_riverbank_…_%2833321050795%29.jpg,
-<a href="https://creativecommons.org/licenses/by-sa/2.0/">Creative
-Commons CC-BY-SA-2.0 license</a></figcaption>
+alt="© Bernard Dupont, Grazing hippos, Creative Commons CC-BY-SA-2.0 license" />
+<figcaption aria-hidden="true">© Bernard Dupont, <a
+href="https://commons.wikimedia.org/wiki/File:Hippo_%28Hippopotamus_amphibius%29_emaciated_specimen_grazing_on_Sabie_riverbank_..._%2833321050795%29.jpg">Grazing
+hippos</a>, <a
+href="https://creativecommons.org/licenses/by-sa/2.0/">Creative Commons
+CC-BY-SA-2.0 license</a></figcaption>
 </figure>
 <h5
 id="calculating-the-population-growth-of-invasive-hippos">Calculating
@@ -683,13 +766,13 @@ the population growth of invasive hippos</h5>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># as in Shurin (2020). We added additional records obtained from news outlets:</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>hippo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year=</span><span class="fu">c</span>(<span class="dv">1993</span>, <span class="dv">2009</span>, <span class="dv">2014</span>, <span class="dv">2019</span>, <span class="dv">2022</span>),<span class="at">pop_size=</span>(<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">28</span>, <span class="dv">60</span>, <span class="dv">65</span>, <span class="dv">133</span>)))</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># source for 2014: Kremer (2014)</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># source for 2009: Romero (2009)</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># source for 2009: Romero (2009)</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># source for 2014: Kremer (2014)</span></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># source for 2022: Varona (2022)</span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hippo<span class="sc">$</span>year, hippo<span class="sc">$</span>pop_size, <span class="at">type=</span><span class="st">&quot;o&quot;</span>, <span class="at">pch=</span><span class="dv">15</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, </span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Invasive hippo population growth over time in Colombia&quot;</span>, </span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Years&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Population size (number of individuals)&quot;</span>)</span></code></pre></div>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;years&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;population size (number of individuals)&quot;</span>)</span></code></pre></div>
 <p><img
 src="density-independent_files/figure-html/unnamed-chunk-10-1.png" /><!-- --></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, let&#39;s calculate the average yearly $\lambda$:</span></span>
@@ -721,12 +804,15 @@ hippo population is growing at an average yearly rate of 12.08”%.</p>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># And plotting predicitons and observed data</span></span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hippo.model<span class="sc">$</span>year, hippo.model<span class="sc">$</span>pop_size,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
 <span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Exponential growth model of invasive hippos in Colombia&quot;</span>, </span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Years&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Population size (number of individuals)&quot;</span>)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;years&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;population size (number of individuals)&quot;</span>)</span>
 <span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(hippo<span class="sc">$</span>year, hippo<span class="sc">$</span>pop_size,<span class="at">pch=</span><span class="dv">15</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">1995</span>, <span class="dv">1300</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;Observed data&quot;</span>, <span class="st">&quot;Model predictions&quot;</span>),</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">1995</span>, <span class="dv">1300</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;oObserved data&quot;</span>, <span class="st">&quot;Model predictions&quot;</span>),</span>
 <span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>, <span class="at">lty=</span> <span class="fu">c</span>(<span class="cn">NA</span>,<span class="dv">1</span>), <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">15</span>,<span class="cn">NA</span>))</span></code></pre></div>
 <p><img
 src="density-independent_files/figure-html/unnamed-chunk-13-1.png" /><!-- --></p>
+<p>This illustration demonstrates the utility of the exponential growth
+model for studying invading populations. Why do you think hippos are
+showing this uncontrolled growth?</p>
 <h5
 id="hippo-invasion-in-colombia-take-aways-and-future-developments">Hippo
 invasion in Colombia: take-aways and future developments</h5>
@@ -734,8 +820,10 @@ invasion in Colombia: take-aways and future developments</h5>
 <li><p>The research found an annual per capita growth rate of 0.11 x
 yr^-1 for invasive hippos, which is comparable to population growth
 rates in the native range and indicates a potential for quick spread of
-this invasive species in the next decades. The lack of predators in both
-native and invasive ranges (Sinclair, Mduma, &amp; Brashares, 2003;
+this invasive species in the next decades. The growth rate we obtained
+above is slightly different because we took into account additional
+recent demography records. The lack of predators in both native and
+invasive ranges (Sinclair, Mduma, &amp; Brashares, 2003;
 Castelblanco-Martínez et al., 2021) is a key factor enabling
 uncontrolled hippo population growth.</p></li>
 <li><p>As a next step, refining population growth studies to include
@@ -748,7 +836,7 @@ those hippos are calves and juveniles, implying their reproductive rate
 will increase in the next three years” (Varona, 2022). You will learn
 about structured population models in the upcoming modules.</p></li>
 </ul>
-<h2 id="references">References</h2>
+<h3 id="references">References</h3>
 <p>Castelblanco-Martínez, D. N., Moreno-Arias, R. A., Velasco, J. A.,
 Moreno-Bernal, J. W., Restrepo, S., Noguera-Urbano, E. A., … &amp;
 Jiménez, G. (2021). A hippo in the room: Predicting the persistence and
@@ -757,13 +845,6 @@ dispersion of an invasive mega-vertebrate in Colombia, South America.
 <p>Dyer, R. (2009). Biological data analysis using R (Doctoral
 dissertation, Ph. D thesis. Department of Biology, Center for the Study
 of Biological Complexity, Virginia Commonwealth Univ).</p>
-<p>File:Common knapweed (Centaurea nigra) - geograph.org.uk -
-492672.jpg. (2021, February 23). Wikimedia Commons, the free media
-repository.
-https://commons.wikimedia.org/w/index.php?title=File:Common_knapweed_(Centaurea_nigra)_-<em>geograph.org.uk</em>-_492672.jpg&amp;oldid=535393847.</p>
-<p>File:Malthus.png. (2020, September 20). Wikimedia Commons, the free
-media repository.
-https://commons.wikimedia.org/w/index.php?title=File:Malthus.png&amp;oldid=465719566.</p>
 <p>Gronewold, N. (2021). Comparative Conservation Strategy Efficacy for
 Grus japonensis and Grus americana: A Post-Policy Implementation
 Assessment. <em>Journal of International Wildlife Law &amp; Policy,
@@ -802,22 +883,16 @@ Springer.</p>
 with them? | Graduate and Postdoctoral Studies | <em>Rice
 University</em>.
 https://graduate.rice.edu/news/current-news/hippos-colombia-what-do-them</p>
-<h2 id="density-dependence">Density-dependence</h2>
+<h2 id="density-dependence">Density dependence</h2>
 <p>Density-dependent population models are used to describe population
 dynamics in which the growth or decline of a population is influenced by
 the population’s own density.</p>
-<h3 id="continuous-logistic-growth">Continuous logistic growth</h3>
-<p>A population growth model may be defined as continuous population
-growth model if the individuals of a population show continuous breeding
-season.</p>
-<h4 id="negative-density-dependence">Negative density dependence</h4>
+<h3 id="negative-density-dependence">Negative density dependence</h3>
+<p>In a population that has already been established, resources begin to
+become scarce, and competition starts to play a role. As a result, the
+population growth will be negatively affected by increasing density.
+This is called <strong>negative density dependence</strong>.</p>
 <ul>
-<li><p>The previously discussed scenario where population growth is
-unregulated does not always happen in reality. In fact, in a population
-that has already been established, resources begin to become scarce, and
-competition starts to play a role. As a result, the population growth
-will be regulate by increasing density. This is called <strong>negative
-density dependence</strong>.</p></li>
 <li><p>Increasing population size gives rise to:</p>
 <ul>
 <li><p>shortages in food or other limiting resources</p></li>
@@ -826,107 +901,58 @@ density dependence</strong>.</p></li>
 <li><p>greater risks of disease outbreak</p></li>
 </ul></li>
 <li><p>Negative density dependence decreases population growth at high
-density and increases it at low density.</p></li>
+density and increases it at low density</p></li>
 </ul>
-<!-- include the graph for exponential and logistic growth -->
 <p><img
-src="density-dependent_files/figure-html/unnamed-chunk-1-1.png" /><!-- -->
-Figure 1.1. The constrast between exponential and logistic growth. In
-expoential growth, the per capita growth rate stays constant. In
-logistic growth, the per capita growth rate decreases with population
-density. (adapted from Mills, 2013)</p>
+src="density-dependent_files/figure-html/unnamed-chunk-1-1.png" /><!-- --><br />
+The constrast between exponential with a constant per capita growth rate
+of <span class="math inline">\(r=0.18\)</span>, and logistic growth with
+an initial per capita growth rate of <span
+class="math inline">\(r=0.18\)</span>, <span
+class="math inline">\(K=500\)</span>. In logistic growth, the per capita
+growth rate decreases with population size (adapted from Mills,
+2013)</p>
 <h5 id="k-carrying-capacity">“K”: carrying capacity</h5>
+<p>The maximum per capita growth rate, <span
+class="math inline">\(r\)</span>, occurs when population density is
+zero, and decreases until it finally reaches zero. The population
+density at which the per capita growth rate is zero, K, is sometimes
+called the carrying capacity.</p>
 <ul>
-<li><p><strong>Definition</strong>: Population density at which per
-capita growth rate is zero</p></li>
-<li><p><strong>Note</strong>: Do not think of carrying capacity as the
+<li><strong>Note</strong>: Do not think of carrying capacity as the
 maximum population size observed. A population can exceed K
-temporarily.</p></li>
+temporarily.</li>
 </ul>
-<p>The carrying capacity is considered to be an equilibrium becasue when
-population density is greater than K mortality exceeds reproduction and
-the population will decrease to K; when density is less than K
-reproduction exceeds mortality and the population increases toward
-K.</p>
-<p>(<em>insert the duckweed example on carrying capacity</em>)</p>
 <p>With all these concepts, now we should look at the logistic
 population model.</p>
 <h5 id="logistic-growth-model">Logistic growth model</h5>
 <p>Recall that with exponential growth, per capita growth rate is:</p>
 <p><span class="math display">\[ r = \frac{dN}{dtN} \]</span></p>
 <p>Of all the ways that the per capita growth rate could decrease with
-increasing population density, We consider the simplest scenario that
-this relationship is linear. Now we have:</p>
+increasing population density, we consider the simplest scenario in
+which this relationship is linear. Now we have:</p>
 <p><span class="math display">\[ \frac{dN}{dtN} =
-r_0(1-\frac{N}{K})\]</span></p>
+r(1-\frac{N}{K})\]</span></p>
 <p>where <span class="math inline">\(1-\frac{N}{K}\)</span> describes
-the negative effect increasing population density have on the per capita
-growth rate.</p>
+the negative effects an increasing population density has on the per
+capita growth rate.</p>
 <p>Re-arrange the above equation and we have the <strong>continuous
 logistic growth model</strong>:</p>
 <p><span class="math display">\[ \frac{dN}{dt} = r \frac{K-N}{K} N
 \]</span></p>
-<ul>
-<li><p><span class="math inline">\(dN/dt\)</span>: The net number of new
-individuals in a population over a unit of time (also called recruitment
-or yield)</p></li>
-<li><p><span class="math inline">\(r\)</span>: Intrinsic growth
-rate</p></li>
-<li><p><span class="math inline">\(N\)</span>: Population size</p></li>
-<li><p><span class="math inline">\(K\)</span>: Carrying
-capacity</p></li>
-<li><p><span class="math inline">\(K-N\)</span>: How many more
-individuals can be added to the population before it hits carrying
-capacity</p></li>
-<li><p><span class="math inline">\(K-N/K\)</span>: The fraction of the
-carrying capacity that has not yet been “used up”</p></li>
-</ul>
-<h5 id="maximum-sustained-yield">Maximum sustained yield</h5>
-<p>The <strong>maximum sustained yield</strong> is achieved at <span
-class="math inline">\(N=K/2\)</span>, when the recruitment (<span
-class="math inline">\(dN/dt\)</span>) of new individuals is
-maximized.</p>
-<ul>
-<li><p>At low population density, although growth is essentially
-exponential, the small number of breeders means that few individuals are
-born so that the overall <span class="math inline">\(dN/dt\)</span> is
-small.</p></li>
-<li><p>At high population density (near <span
-class="math inline">\(K\)</span>), <span
-class="math inline">\(dN/dt\)</span> is also small because negative
-density dependence is reducing the per capita growth rate.</p></li>
-</ul>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-2-1.png" /><!-- -->
-Figure 1.2. Recruitment for a population growing with logistic growth
-(<span class="math inline">\(r=0.18\)</span>) and a carrying capacity of
-500. Recruitment is maximized when <span
-class="math inline">\(N=K/2\)</span>.</p>
 <h4 id="stability">Stability</h4>
 <p>The <strong>stability</strong> of a system is a measure of how much
 it tends to stay the same, in spite of external disturbances or changes
-in the state of the system.</p>
-<p>To find the equilibrium point of a logistic growth model, consider
-the following example (figure below):</p>
-<ul>
-<li><p>We have a population that has a carrying capacity <span
-class="math inline">\(K=500\)</span> and intrinsic growth rate <span
-class="math inline">\(r=0.18\)</span>.</p></li>
-<li><p>When the population growth rate <span
-class="math inline">\(dN/dt\)</span>, which is zero at equilibrium,
-becomes positive or negative in response to a small change in N. If this
-change results in a shrinking of that change back towards the
-equilibrium, that demonstrates stability. On the other hand, if this
-change results in growth and a bigger step, that demonstrates
-instability.</p></li>
-</ul>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-3-1.png" /><!-- -->
-Figure 1.3. Population growth rate, <span
-class="math inline">\(dN=dt\)</span>, as a function of <span
-class="math inline">\(N\)</span>. Data points are chosen arbitrarily for
-analysis. Arrows pointing to the stable equilibrium point at carrying
-capacity. (Code for graph adapted from Stevens, 2009)</p>
+in the state of the system. A logistic population growth model is a
+system with stability, and carrying capacity <span
+class="math inline">\(K\)</span> is the stable equilibrium point.
+Population size above <span class="math inline">\(K\)</span> will
+decrease to <span class="math inline">\(K\)</span>; while population
+size below <span class="math inline">\(K\)</span> will increase to <span
+class="math inline">\(K\)</span>.</p>
+<p>Consider a logistic growth model with a carrying capacity <span
+class="math inline">\(K=500\)</span> and per capita growth rate <span
+class="math inline">\(r=0.18\)</span>:</p>
 <ul>
 <li><p>When the population number is at 100 (point b) or 200 (point c),
 the population will grow, moving along the x-axis, until population
@@ -940,12 +966,14 @@ class="math inline">\(N=K=500\)</span>.</p></li>
 population growth rate is at zero so that the density will not
 change.</p></li>
 </ul>
-<p>From the above analysis, we can conclude that: A logistic population
-growth model is a system with stability, and carrying capacity <span
-class="math inline">\(K\)</span> is the stable equilibrium point. Any
-disturbance may cause the population size <span
-class="math inline">\(N\)</span> to deviate from it.</p>
-<h3 id="discrete-logistic-growth">Discrete logistic growth</h3>
+<p><img
+src="density-dependent_files/figure-html/unnamed-chunk-3-1.png" /><!-- -->
+Population growth rate, <span class="math inline">\(dN=dt\)</span>, as a
+function of <span class="math inline">\(N\)</span>. Arrows are pointing
+to the stable equilibrium point at carrying capacity (adapted from
+Stevens, 2009)</p>
+<h3 id="discrete-time-logistic-growth">Discrete time logistic
+growth</h3>
 <p>For many populations, reproduction and mortality occur at very
 particular periods of the year (in discrete intervals of time).</p>
 <h4 id="discrete-logistic-equation">Discrete logistic equation</h4>
@@ -959,66 +987,77 @@ population, <span class="math inline">\(N_t\)</span>, plus a
 proportional change, <span class="math inline">\(r_dN_t\)</span>:</p>
 <p><span class="math display">\[N_{t+1} = \lambda N_t = N_t(1+r_d) =
 N_t+r_dN_t\]</span></p>
-<p>Now we can try to incorporate density-dependence into that
+<p>Now we can try to incorporate density dependence into that
 proportional change <span class="math inline">\(r_dN_t\)</span>. We use
-<span class="math inline">\(\alpha\)</span> to represent this negative
+<span class="math inline">\(1/K\)</span> to represent this negative
 effect on population growth. As a result, <span
-class="math inline">\(r_d(1- \alpha N_t)\)</span> becomes the new per
+class="math inline">\(r_d(1- \frac{N_t}{K})\)</span> becomes the new per
 capita growth increment rate.</p>
-<p>And our population growth equation becomes:</p>
-<p><span class="math display">\[N_{t+1} = N_t+r_d(1- \alpha
-N_t)N_t\]</span></p>
-<p>A common alternative representation uses <span
-class="math inline">\(1/ \alpha\)</span> symbolized as K, the carrying
-capacity. And we have an equation that describes <strong>discrete
-logistic growth</strong>:</p>
-<p><span class="math display">\[ N_{t+1} = N_t+r_d(1- \frac{N_t}{K})N_t
-= N_t+r(1-\frac {N_t}{K})N_t \]</span></p>
-<ul>
-<li>From the equation, we can see that the population abundance at time
+<p>And we have an equation that describes <strong>discrete logistic
+growth</strong>:</p>
+<p><span class="math display">\[N_{t+1} = N_t+r_d(1- \frac{N_t}{K})N_t =
+N_t+r(1-\frac {N_t}{K})N_t\]</span></p>
+<p>where <span class="math inline">\(K\)</span> is the carrying
+capacity.</p>
+<p>From the equation, we can see that the population abundance at time
 <span class="math inline">\(t+1\)</span> depend on the abundance at time
 t. This time lag makes sense for many populations, where birth and death
 rates respond to the population’s density at some time in the past,
-instead of current density.</li>
-</ul>
+instead of current density.</p>
 <h4 id="chaos">Chaos</h4>
 <p>Populations growing with absolutely no stochasticity could show
 dynamics that bounce, or cycle, or become entirely unpredictable.</p>
 <p><br> Let’s look at the following example:</p>
 <p>We have a population that has an initial population density of <span
 class="math inline">\(N=10\)</span>, and carrying capacity <span
-class="math inline">\(K=100\)</span>, with different values of <span
+class="math inline">\(K=100\)</span>. With different values of <span
 class="math inline">\(r\)</span>, we can see very different population
 growth trajectories.</p>
 <p><img
 src="density-dependent_files/figure-html/unnamed-chunk-4-1.png" /><!-- -->
-Figure 1.4. Chaotic dynamics arise from deterministic discrete logistic
-growth (adapted from Mills, 2013).</p>
+Population growth with an initial population density of <span
+class="math inline">\(N=10\)</span>, carrying capacity <span
+class="math inline">\(K=100\)</span>. With different values of per
+capita growth rate <span class="math inline">\(r\)</span>, the
+population growth trajectories are very different.</p>
 <p>When <span class="math inline">\(r\)</span> is close to zero, we have
-a steady simple asymptotic approach to K (figure a). As <span
+a steady simple asymptotic approach to K (Fig. a). As <span
 class="math inline">\(r\)</span> increases, we see the population
 overshoot the carrying capacity and exhibit <strong>damped
-oscillations</strong> (figure b). At <span
+oscillations</strong> (Fig. b). At <span
 class="math inline">\(r=2.2\)</span>, we see a stable limit cycle of two
-points (figure c). As <span class="math inline">\(r\)</span> increases
+points (Fig. c). As <span class="math inline">\(r\)</span> increases
 further, the number of points increases to a four-point limit cycle
-(e.g., at <span class="math inline">\(r=2.5\)</span>, figure d), then an
-eight-point cycle, a 16-point limit cycle, and so on. As rd increases
-further, however, stable limit cycles shift into chaos (figure e).</p>
+(e.g., at <span class="math inline">\(r=2.5\)</span>, Fig. d), then an
+eight-point cycle, a 16-point limit cycle, and so on. As <span
+class="math inline">\(r\)</span> increases further, however, stable
+limit cycles shift into chaos (Fig. e).</p>
+<p><strong>Bifurcation Graph</strong> We can also demonstrate the
+chaotic dynamics using a bifurcation plot, which examines <span
+class="math inline">\(N\)</span> as a function of <span
+class="math inline">\(r\)</span>. As <span
+class="math inline">\(r\)</span> increases the number of <span
+class="math inline">\(N\)</span> will continue to double, growing
+geometrically. Eventually, we reach a point when there becomes an
+infinite number of unique points.</p>
+<p><img
+src="density-dependent_files/figure-html/unnamed-chunk-6-1.png" /><!-- -->
+Long term dynamics of discrete logistic population growth, with an
+initial population density of <span class="math inline">\(N=10\)</span>,
+and carrying capacity <span class="math inline">\(K=100\)</span>.
+(Stevens, 2009)</p>
 <p><br> <strong>Chaos</strong> is a non-repeating, deterministic
 fluctuating trajectory, that is bounded, and sensitive to initial
 conditions.</p>
-<p>How does chaos happen?</p>
+<p>How does chaos happen? The discrete logistic model has a built in
+delay, or time lag, of one time step, because the growth increment makes
+a single leap of one time step. This time delay in population response
+results in chaos dynamics.</p>
 <ul>
-<li><p>The discrete logistic model has a built in delay, or time lag, of
-one time step, because the growth increment makes a single leap of one
-time step. Therefore, the negative effects of the actions of individuals
-(e.g., resource consumption) are felt by the offspring of those
-individuals, rather than the individuals themselves.</p></li>
-<li><p>Note that chaos is different from stochasticity or randomness. If
+<li>Note that chaos is different from stochasticity or randomness. If
 you start with exactly the same initial conditions under chaotic
 dynamics, you will get exactly the same population trajectories every
-time.</p></li>
+time</li>
 </ul>
 <p>Chaos is <strong>very sensitive to initial conditions</strong>.
 Slightly changing the initial population number <span
@@ -1031,210 +1070,225 @@ we see completely different trajectories for population growth.</li>
 </ul>
 <p><img
 src="density-dependent_files/figure-html/unnamed-chunk-5-1.png" /><!-- -->
-Figure 1.5. Chaotic dynamics with different initial conditions (adapted
-from Mills, 2012).</p>
-<p><strong>Bifurcation Graph:</strong> We can also demonstrate the
-chaotic dynamics using a bifurcation plot, which examines <span
-class="math inline">\(N\)</span> as a function of <span
-class="math inline">\(r_d\)</span>. As <span
-class="math inline">\(r_d\)</span> increases the number of <span
-class="math inline">\(N\)</span> will continue to double, growing
-geometrically. Eventually, we reach a point when there becomes an
-infinite number of unique points.</p>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-6-1.png" /><!-- -->
-Figure 1.6 Illustration of the long term dynamics of discrete logistic
-population growth. (Stevens, 2009)</p>
-<p><strong>Biological significance of Chaos in population
-growth:</strong></p>
-<ul>
-<li>Chaos brings more complexity into predicting population growth,
+Chaotic dynamics with different initial conditions. Black solid line
+demonstrates the population trajectory for a population that has an
+initial size of 10; red dotted line demonstrates the population
+trajectory for a population that has an initial size of 11.</p>
+<p><strong>Biological significance of chaos in population
+growth</strong></p>
+<p>Chaos brings more complexity into predicting population growth,
 especially for species with relatively large <span
 class="math inline">\(r_d\)</span> value. For example, for
 temperate-zone insects in particular, even if the natural world was 100
 % predictable, the population dynamics could still in some circumstances
-be indistinguishable from chaos. (Mays, 1975)</li>
-</ul>
+be indistinguishable from chaos (Mays, 1975).</p>
 <h3 id="other-types-of-density-denpendent-population-models">Other types
 of density denpendent population models</h3>
-<p>The linear decline in per-capital growth rate with density modeled
+<p>The linear decline in per capita growth rate with density modeled
 above is not necessarily general. In fact, most species exhibit
 <strong>nonlinear</strong> declines in growth rate under negative
 density dependence.</p>
 <h4 id="concave-and-convex-density-dependences">Concave and convex
 density dependences</h4>
 <ul>
-<li><p><strong>Concave density dependence</strong>: Per-capita
+<li><p><strong>Concave density dependence</strong>: Per capita
 population growth rate declines rapidly at low density, and then
-falttens out as carrying capacity is approached. This could happen due
+flattens out as carrying capacity is approached. This could happen due
 to resource preemption, where a small of individuals at low population
 density sequester large amounts of resources, causing subsequent
 population growth to slow down. For example, larger tropical seagrass
 arriving at sites would preempy available space to prevent subsequent
-individuals from competing for these resources. (Moreira-Saporiti et
-al., 2021)</p></li>
-<li><p><strong>Convex density dependence</strong>: Per-capita population
-growth rate exhibit strong density dependence only near K. This could be
-related to territoriality. For example, Dickcissel (<em>Spiza
+individuals from competing for these resources (Moreira-Saporiti et al.,
+2021)</p></li>
+<li><p><strong>Convex density dependence</strong>: Per capita population
+growth rate exhibits strong density dependence only near K. This could
+be related to territoriality. For example, dickcissel birds (<em>Spiza
 americana</em>) need a minimum territory size of approximately 0.9
 acres. If male density is greater than this, some males will be forced
 into territories that contain less suitable vegetation and they are
 found to be less active in finding mates and building nests. As a
 result, the per capita growth rate will decline more rapidly compared to
-before. (Zimmerman, 1971)</p></li>
+before (Zimmerman, 1971)</p></li>
 </ul>
 <h4 id="theta-ricker-model">Theta-Ricker model</h4>
-<p>A varity of alternative equations exist to model concave or convex
-relationships. A simple model we introduce here is the Theta-Ricker
-model. By varying <span class="math inline">\(\theta\)</span>, we can
-change the linear density dependence of the simple logistic model to
-curvi-linear density dependence.</p>
+<p>The most common way to model non-linear density dependent population
+growth is the Theta-Ricker model. By varying <span
+class="math inline">\(\theta\)</span>, we can change the linear density
+dependence of the simple logistic model to curvi-linear density
+dependence.</p>
 <p><span class="math display">\[ N_{t+1} = N_t e^{r_0[1-(N_t/K)^\theta]}
 \]</span></p>
 <ul>
 <li>The effects of <span class="math inline">\(\theta\)</span> on
-density dependence also control the shape of relation between growth
-rate and population size. (Figure 1.7)</li>
+density dependence control the shape of relation between growth rate and
+population size, as seen in the following figure:</li>
 </ul>
 <p><img
 src="density-dependent_files/figure-html/unnamed-chunk-7-1.png" /><!-- -->
-Figure 1.7. Per capital growth rate vs. population size with different
-theta value.</p>
+Per capita growth rate vs. population size with different theta
+values</p>
 <ul>
-<li>When <span class="math inline">\(\theta\)</span> &gt; 1, this
-weakens density dependence at low N, so the population grows faster than
+<li>When <span class="math inline">\(\theta\)</span>&gt;1, this weakens
+density dependence at low N, so the population grows faster than
 logistic, all else being equal (concave). When <span
-class="math inline">\(\theta\)</span> &lt; 1, this strengthens density
+class="math inline">\(\theta\)</span>&lt;1, this strengthens density
 dependence at low N, causing the population to grow more slowly than
-logistic, all else being equal (convex). (Figure 1.8)</li>
+logistic, all else being equal (convex):</li>
 </ul>
 <p><img
 src="density-dependent_files/figure-html/unnamed-chunk-8-1.png" /><!-- -->
-Figure 1.8. Population size vs. time with different theta value.</p>
+Population size vs. time with different theta values</p>
 <h4 id="positive-density-dependence">Positive density dependence</h4>
 <p>In many cases, cooperation or facilitation leads to mutually positive
-interactions among members of a population.</p>
+interactions among members of a population</p>
 <p><strong>Positive density dependence</strong> occurs when vital rates
-or population increase as density increases.</p>
+or populations increase as density increases</p>
 <h5 id="allee-effect">Allee effect</h5>
-<p>Allee initially noticed that goldfish grew faster in water which had
-previously contained other goldfish, than in water that had not. He
-further experimented with a number of different species and showed that
-larger group size or some degree of crowding may stimulate
-reproduction,prolong survival in adverse conditions (through resistance
-to desiccation or by social thermoregulation) and enhance protection
-from toxic reagents. (Allee &amp; Bowen, 1932)</p>
-<p><strong>Allee effect</strong>:</p>
-<ul>
-<li><p>Demonstrates that there is a positive correlation between
-population density and individual fitness.</p></li>
-<li><p>Occurs at very low population sizes (growth rate is reduced when
-population is too small).</p></li>
-</ul>
+<p>Allee &amp; Bowen (1932) initially noticed that goldfish grew faster
+in waters which had previously contained other goldfish, than in waters
+that had not contained them. He further experimented with a number of
+different species and showed that larger group size or some degree of
+crowding may stimulate reproduction, prolong survival in adverse
+conditions (through resistance to desiccation or by social
+thermoregulation), and enhance protection from toxic reagents.</p>
+<p>The Allee effect occurs when there is a positive correlation between
+population density and individual fitness</p>
 <figure>
 <img src="african_w_dog.jpg"
-alt="African wilddog in packs hunting (flickr, CC Attribution 2.0 Generic)" />
-<figcaption aria-hidden="true">African wilddog in packs hunting (flickr,
-CC Attribution 2.0 Generic)</figcaption>
+alt="© flowcomm, African wilddogs hunting in packs (https://live.staticflickr.com/5117/13949089869_e175469efc_b.jpg), Creative Commons CC BY 2.0 license" />
+<figcaption aria-hidden="true">© flowcomm, African wilddogs hunting in
+packs (https://live.staticflickr.com/5117/13949089869_e175469efc_b.jpg),
+Creative Commons CC BY 2.0 license</figcaption>
 </figure>
-<p><strong>Example</strong>:</p>
+<p><strong>Example</strong></p>
 <ul>
-<li><p>African wild dog usually live in a pack of 6 - 20
+<li><p>African wild dogs usually live in a pack of 6-20
 individuals</p></li>
 <li><p>Increasing pack size can:</p>
 <ul>
 <li><p>increase the likelihood of a successful kill in a given
 hunt</p></li>
-<li><p>better predator defense</p></li>
+<li><p>provide a better predator defense</p></li>
 <li><p>help babysit pups (packs with 10 or more adults raised three
 times as many yearlings compared to packs with 9 or fewer
 adults)</p></li>
 </ul></li>
 </ul>
-<p>To plot population growth rate as a function of abundance:</p>
-<p><span class="math display">\[ \frac{dN}{dt} =
-rN(\frac{N-a}{K})(1-\frac{N}{K})\]</span> where a is the critical point
-of the population, below which the population growth rate (or
-recruitment) becomes negative, and the population is driven towards
-extinction.</p>
 <h5 id="weak-and-strong-allee-effects">Weak and strong Allee
 effects</h5>
 <ul>
 <li><p><strong>Weak Allee effects</strong>: A weak Allee effect is where
 the population growth rate is small but positive for small N. The
 population does not contain a critical population size or density under
-which the growth rate becomes negative.</p></li>
+which the growth rate becomes negative</p></li>
 <li><p><strong>Strong Allee effects</strong>: A strong Allee effect
 describes a population that can grow at intermediate population
 densities but declines when the number of organisms is either too small
-or too large.</p></li>
+or too large</p></li>
 <li><p><strong>Allee effect population threshold</strong>: A population
 size below which the per capita growth rate is negative and the
 population declines towards extinction. Populations that are subject to
 Allee effects can collapse and become extinct if their population size
-falls below the critical threshold.</p></li>
+falls below the critical threshold</p></li>
 </ul>
 <p><img
-src="density-dependent_files/figure-html/unnamed-chunk-9-1.png" /><!-- -->
-Figure 1.9. No allee effects (green line), weak allee effects (read
-line), and strong allee affects (blue line, <span
-class="math inline">\(a=50\)</span>) acting on a population that has an
-intrinsic population growth rate <span
-class="math inline">\(r=0.18\)</span> and carrying capacity <span
-class="math inline">\(K=500\)</span>.</p>
+src="density-dependent_files/figure-html/unnamed-chunk-9-1.png" /><!-- --><br />
+No Allee effects (green line), weak Allee effects (red line), and strong
+Allee affects (blue line, <span class="math inline">\(a=50\)</span>)
+acting on a population that has an intrinsic population growth rate
+<span class="math inline">\(r=0.18\)</span> and carrying capacity <span
+class="math inline">\(K=500\)</span></p>
+<p>To plot population growth rate as a function of abundance:</p>
+<p><span class="math display">\[ \frac{dN}{dt} =
+rN(\frac{N}{a}-1)(1-\frac{N}{K})\]</span> where a is the critical point
+of the population, below which the population growth rate (or
+recruitment) becomes negative, and the population is driven towards
+extinction.</p>
 <h5 id="stability-in-allee-effects">Stability in Allee effects</h5>
 <p>From previous sections we learned that carrying capacity <span
 class="math inline">\(K\)</span> is a stable equilibrium point in a
-negative density-dependent logistic growth model (no allee effects). The
-results will stay the same when we introduce allee effects into our
-population (strong or weak).</p>
-<p>However, when allee effects are strong, a critical size occurs where
-the growth function <span class="math inline">\(dN/dt\)</span>
-intersects the horizontal line at zero. This is an unstable equilibrium.
-Populations with abundance greater than this value will increase to
-carrying capacity; populations with abundance less than this value will
-decline to extinction.</p>
-<h3 id="paper-discussion">Paper Discussion:</h3>
-<p><img src="paper_discuss.png" /></p>
-<h4 id="knowledge-gap-leading-to-the-current-research"><strong>Knowledge
-gap</strong> leading to the current research:</h4>
+negative density-dependent logistic growth model (no Allee effects).</p>
+<p>For a population model with a strong Allee effect. It has two stable
+and one unstable equilibria point. The stable point is when population
+size equals <span class="math inline">\(N=0\)</span> or carrying
+capacity <span class="math inline">\(N=K\)</span>. The single unstable
+equalibrium point lies at <span class="math inline">\(N=A\)</span>,
+where <span class="math inline">\(A\)</span> is the critical population
+size.</p>
+<h3
+id="illustration-of-current-application-research-paper-review">Illustration
+of current application: research paper review</h3>
+<p>Title: Density-dependent growth in brown trout: Effects of
+introducing wild and hatchery fish (Bohlin et al., 2002).</p>
+<h4 id="research-questions">Research questions</h4>
 <ul>
-<li><p>Unsure what is the underlining density-dependence mechanism in
-wild brown trout.</p></li>
-<li><p>Unclear to what extent the release of domesticated brown trout
-will induce density-dependent effects on wild brown trout
-populations.</p></li>
+<li><p>What is the underlining density dependence mechanism in wild
+brown trout?</p></li>
+<li><p>To what extent will the release of domesticated brown trout
+induce density-dependent effects on wild brown trout
+populations?</p></li>
 </ul>
-<h4 id="snapshot-of-the-study-1">Snapshot of the study:</h4>
+<h4 id="research-snapshot">Research snapshot</h4>
 <ul>
 <li><p>Density can affect growth in both underyearlings and older brown
 trout. These effects were very similar regardless of what treatment
 groups these competitors belong to (whether they are wild or
-hatchery-reared).</p></li>
+hatchery-reared)</p></li>
 <li><p>Wild resident brown trout showed restricted movement in small
 streams; while hatchery trout tended to move more when introduced into
-the wild.</p></li>
+the wild</p></li>
 <li><p>Wild resident brown trout showed an prior residence advantage
 over hatchery-reared brown trout. Hatchery-reared brown trout ate less
 and were less efficient in consuming novel prey, despite their larger
 body size. These differences disappeared after a few weeks in the
-wild.</p></li>
+wild</p></li>
 </ul>
-<h4 id="conclusions">Conclusions:</h4>
+<h4 id="conclusions">Conclusions</h4>
 <ul>
 <li><p>Competition originating from increasing population density is not
 only limited to underyearlings brown trout. Density-dependent growth is
-the main density-dependent response in yearling trout.</p></li>
+the main density-dependent response in yearling trout</p></li>
 <li><p>Stocking of hatchery fish can exert similar negative density
-effects on wild individuals if released into the wild.</p></li>
+effects on wild individuals if released into the wild</p></li>
 </ul>
 <figure>
 <img src="brown_trout.jpg"
-alt="Wild brown trout (flicker by U.S.Fish and Wildlife Service, Public Domain Mark 1.0)" />
-<figcaption aria-hidden="true">Wild brown trout (flicker by U.S.Fish and
-Wildlife Service, Public Domain Mark 1.0)</figcaption>
+alt="U.S.Fish and Wildlife Service, Wild brown trout (link to image), Public Domain Mark 1.0" />
+<figcaption aria-hidden="true">U.S.Fish and Wildlife Service, Wild brown
+trout (link to image), Public Domain Mark 1.0</figcaption>
 </figure>
-<h2 id="references-1">References:</h2>
+<h3 id="references-1">References:</h3>
+<p>Allee, W. C., &amp; Bowen, E. (1932). Studies in animal aggregations:
+Mass protection against colloidal silver among goldfishes. <em>The
+Journal of Experimental Zoology 61</em> (2), 185–207.
+https://doi.org/10.1002/jez.1400610202.</p>
+<p>Bohlin, T., Sundström, L., Johnsson, J., Höjesjö, J., &amp;
+Pettersson, J. (2002). Density-dependent growth in brown trout: Effects
+of introducing wild and hatchery fish. <em>Journal of Animal Ecology
+71</em>(4), 683–92.
+https://doi.org/10.1046/j.1365-2656.2002.00631.x.</p>
+<p>Courchamp, F., Luděk, B., &amp; Gascoigne, J. (2008). <em>Allee
+effects in ecology and conservation</em>. Oxford Biology. Oxford; Oxford
+University Press.</p>
+<p>Drake, J., &amp; Kramer, A. (2011). Allee effects. <em>Nature
+Education Knowledge</em>.
+https://www.nature.com/scitable/knowledge/library/allee-effects-19699394/.</p>
+<p>May, Robert M. (1975). Biological populations obeying difference
+equations: stable points, stable cycles, and chaos. <em>Journal of
+Theoretical Biology 51</em>(2), 511–24.
+https://doi.org/10.1016/0022-5193(75)90078-8.</p>
+<p>Mills, L. S. (2013). <em>Conservation of wildlife populations:
+demography, genetics, and management</em>. 2nd ed. Chichester, West
+Sussex; Wiley-Blackwell.</p>
+<p>Moreira-Saporiti, A., Bejarano, S., Viana, I., Belshe, E., Mtolera
+M., &amp; Teichberg, M. (2021). Local victory: Assessing interspecific
+competition in seagrass from a trait-based perspective. <em>Frontiers in
+Plant Science 12</em>, 709257–57.
+https://doi.org/10.3389/fpls.2021.709257.</p>
+<p>Stevens, M., Henry H. (2009). <em>A primer of ecology with R. Use
+R!</em> Dordrecht: Springer.</p>
+<p>Zimmerman, John L. (1971). The territory and its density dependent
+effect in <em>Spiza americana</em>. <em>The Auk 88</em>(3), 591–612.</p>
 <h2 id="population-dynamics-and-stochasticity">Population dynamics and
 stochasticity</h2>
 <h3 id="deterministic-vs.-stochastic-factors">Deterministic
@@ -1249,7 +1303,7 @@ stochasticity and definitions</h3>
 <h4 id="demographic-stochasticity">Demographic stochasticity</h4>
 <p><strong>Demographic stochasticity</strong> refers to chance events of
 individual mortality and reproduction, such as inevitable deviation in
-mean birth and death rates (Lande <em>et al</em>., 2003). Demographic
+mean birth and death rates (Lande et al., 2003). Demographic
 stochasticity is only significant in small populations, and we will
 explain this in three examples.</p>
 <ul>
@@ -1279,34 +1333,34 @@ increases. Let’s do some experiments with R:</li>
 ## heads         7         52          5051
 ## tails         3         48          4949</code></pre>
 <ul>
-<li><em>Example 2</em>: The expected sex ratio for a newborn is 50:50.
-When there are 3 new births, we cannot have 50% males and 50% females.
-Unbalanced sex ratio will influence future birth rate, especially in a
-small population.</li>
-<li><em>Example 3</em>: A death rate of 0.2 does not mean after a year
-an animal is 0.8 alive–it either survives or dies. When the population
-size is large, we may use the product of the total populatiom and a mean
-birth/death rate to estimate the number of births/deaths. However, such
-estimation is not accurate when the population size is small. (A
-difference of 2 deaths might not seem to be a big issue in a population
-of size 1000, but will be significant in a population of size 20.)</li>
+<li><p><em>Example 2</em>: The expected sex ratio for a newborn is
+50:50. When there are 3 new births, we cannot have 50% males and 50%
+females. Unbalanced sex ratio will influence future birth rate,
+especially in a small population</p></li>
+<li><p><em>Example 3</em>: A death rate of 0.2 does not mean after a
+year an animal is 0.8 alive–it either survives or dies. When the
+population size is large, we may use the product of the total populatiom
+and a mean birth/death rate to estimate the number of births/deaths.
+However, such estimation is not accurate when the population size is
+small (a difference of two deaths might not seem to be a big issue in a
+population of size 1000, but will be significant in a population of size
+20)</p></li>
 </ul>
 <h4 id="environmental-stochasticity">Environmental stochasticity</h4>
 <p><strong>Environmental stochasticity</strong> often refers to temporal
-fluctuations in the probability of mortality and reproduction (Lande
-<em>et al</em>., 2003), which is often driven directly or indirectly by
-weather (e.g. unpredictable catastrophes).</p>
+fluctuations in the probability of mortality and reproduction (Lande et
+al., 2003), which is often driven directly or indirectly by weather
+(e.g. unpredictable catastrophes).</p>
 <ul>
 <li><em>Example 1</em>: Climate factors have a strong influence on the
-ecology of red deer on Rum (Albon <em>et al</em>., 1987). Real-world
-data between 1971 and 1991 has shown that the changes in red deer
-population size correlates strongly with annual rainfall (Benton <em>et
-al</em>., 1995).</li>
+ecology of red deer in Scotland (Albon et al., 1987). Real-world data
+between 1971 and 1991 has shown that the changes in red deer population
+size correlates strongly with annual rainfall (Benton et al., 1995)</li>
 </ul>
 <figure>
 <img src="young_red_deer.jpg"
-alt="Figure: © Charles J. Sharp, Red deer (Cervus elaphus), Creative Commons CC-BY-SA-4.0 license" />
-<figcaption aria-hidden="true">Figure: © Charles J. Sharp, <a
+alt="© Charles J. Sharp, Red deer (Cervus elaphus), Creative Commons CC-BY-SA-4.0 license" />
+<figcaption aria-hidden="true">© Charles J. Sharp, <a
 href="https://commons.wikimedia.org/wiki/File:Red_deer_(Cervus_elaphus)_young_stag.jpg">Red
 deer (<em>Cervus elaphus</em>)</a>, <a
 href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
@@ -1315,32 +1369,32 @@ CC-BY-SA-4.0 license</a></figcaption>
 <ul>
 <li><em>Example 2</em>: Cold-blooded insects like mosquitoes thrive in
 hot and humid weather, which results in the seasonality of many
-vector-borne diseases, such as malaria and dengue. There are massive
+vector-borne diseases, such as malaria and dengue. There is massive
 research on modelling the mosquito population dynamics and how they
-affect the transmission of those diseases. An example would be
-Beck-Johnson <em>et al</em>. (2013).</li>
+affect the transmission of those diseases. For an example, refer to
+Beck-Johnson et al. (2013)</li>
 </ul>
 <h4 id="sampling-error">Sampling error</h4>
 <p><strong>Sampling error</strong> (or sampling variance) is the
 measurement error in estimates of population size or density. Some
-researchers categorized it as a basic form of stochasticity (Lande
-<em>et al</em>., 2003), while some distinguished it from deterministic
-and stochastic factors (Mills, 2007).</p>
+researchers categorized it as a basic form of stochasticity (Lande et
+al., 2003), while some distinguished it from deterministic and
+stochastic factors (Mills, 2007).</p>
 <h3 id="implications-of-variation-in-population-growth">Implications of
 variation in population growth</h3>
 <ul>
-<li>An obvious outcome is that future population size outcomes become
-more uncertain and more variable.</li>
-<li>A less intuitive outcome is that the likelihood of any particular
+<li><p>An obvious outcome is that future population size outcomes become
+more uncertain and more variable</p></li>
+<li><p>A less intuitive outcome is that the likelihood of any particular
 population size at time <span class="math inline">\(t\)</span> in the
-future becomes more skewed. (Specifically, most populations being
-relatively small, with a tiny fraction being huge.) We will discuss it
-soon.</li>
+future becomes more skewed. Specifically, most populations being
+relatively small, with a tiny fraction being huge. We will discuss this
+in more detail soon…</p></li>
 </ul>
 <h3 id="stochastic-effects-to-population-growth-rates">Stochastic
 effects to population growth rates</h3>
-<p>To answer the question why population size tends to shrink because of
-stochasticity, we need to understand two important concepts–arithmetic
+<p>To answer the question whether population size shrinks as a result of
+stochasticity, we need to understand two important concepts: arithmetic
 and geometric means.</p>
 <h4 id="arithmetic-mean-vs.-geometric-mean">Arithmetic mean
 vs. geometric mean</h4>
@@ -1397,10 +1451,10 @@ than 0.3, which is consistent with the above calculation.</li>
 <span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(outcome, <span class="at">outline =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">&quot;Boxplot without outliers&quot;</span>)</span></code></pre></div>
 <figure>
 <img src="popsize_boxplot.png" style="width:80.0%"
-alt="Figure: Boxplots of final population sizes. (left) All outcomes; (right) outcomes with outliers (extreme cases) ignored" />
-<figcaption aria-hidden="true">Figure: Boxplots of final population
-sizes. (left) All outcomes; (right) outcomes with outliers (extreme
-cases) ignored</figcaption>
+alt="Boxplots of final population sizes. (left) All outcomes; (right) outcomes with outliers (extreme cases) ignored" />
+<figcaption aria-hidden="true">Boxplots of final population sizes.
+(left) All outcomes; (right) outcomes with outliers (extreme cases)
+ignored</figcaption>
 </figure>
 <p>It would be helpful to know the conversion between the arithmetic
 mean of <span class="math inline">\(r\)</span> and the geometric mean of
@@ -1430,16 +1484,17 @@ higher order terms. Hence, taking the expectation of both sides gives
 class="math display">\[r_A=E(\ln\lambda_t)\cong\ln\lambda_A-\frac{E[(\lambda_t-\lambda_A)^2]}{2\lambda_A^2}=\ln\lambda_A-\frac{\sigma_\lambda^2}{2\lambda_A^2},\]</span>
 which further gives <span
 class="math display">\[\lambda_G\cong\exp\left(\ln\lambda_A-\frac{\sigma_\lambda^2}{2\lambda_A^2}\right).\]</span>
-In fact, the geometric mean is <strong>always no larger</strong> than
-the arithmetic mean (and they are equal if and only if every term is the
+In fact, the geometric mean is <strong>never larger</strong> than the
+arithmetic mean (and they are equal if and only if every term is the
 same).</p>
 <h4 id="temporal-autocorrelation">Temporal autocorrelation</h4>
-<p>Above examples assume that <span class="math inline">\(r_t\)</span>
-does not depend on previous growth rates, nor will it influence
-subsequent growth rates. The autocorrelation describes the relationship
-between <span class="math inline">\(r_t\)</span> and <span
+<p>The examples above assume that <span
+class="math inline">\(r_t\)</span> does not depend on previous growth
+rates, nor will it influence subsequent growth rates. The
+autocorrelation describes the relationship between <span
+class="math inline">\(r_t\)</span> and <span
 class="math inline">\(r_{t+\tau}\)</span>, its value at a time lag <span
-class="math inline">\(\tau\)</span>. One way to incorporate teporal
+class="math inline">\(\tau\)</span>. One way to incorporate temporal
 autocorrelation is to: <span
 class="math display">\[r_{t+\tau}=r_A+\rho(r_{t}-r_A)+\epsilon_{t+\tau},\]</span>
 where <span class="math inline">\(\rho\)</span> is the coefficient of
@@ -1488,15 +1543,15 @@ autocorrelation.</p>
 <span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span></code></pre></div>
 <figure>
 <img src="autocorrelation.png" style="width:80.0%"
-alt="Figure: Plots of exponential growth rates with different levels of positive lag-1 autocorrelation" />
-<figcaption aria-hidden="true">Figure: Plots of exponential growth rates
-with different levels of positive lag-1 autocorrelation</figcaption>
+alt="Exponential growth rates with different levels of positive lag-1 autocorrelation" />
+<figcaption aria-hidden="true">Exponential growth rates with different
+levels of positive lag-1 autocorrelation</figcaption>
 </figure>
 <h3 id="estimating-population-growth-rates">Estimating population growth
 rates</h3>
 <p>Now we move on to an important section, where we try to estimate the
-growth rate from data, assuming some very simple model. But first, let’s
-talk about different types of errors we might encounter.</p>
+growth rate from data, assuming some very simple models. But first,
+let’s talk about different types of errors we might encounter.</p>
 <h4 id="process-error">Process error</h4>
 <p><strong>Process error</strong> results from variation in true
 population size due to biotic or abiotic processes (Ahrestani <em>et
@@ -1553,10 +1608,10 @@ what is the average growth rate?</p>
 <span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;prediction&#39;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;red&#39;</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
 <figure>
 <img src="process_error_example.png" style="width:80.0%"
-alt="Figure: Plots of data and the predicted population growth using a geometric model, when considering process error only" />
-<figcaption aria-hidden="true">Figure: Plots of data and the predicted
-population growth using a geometric model, when considering process
-error only</figcaption>
+alt="Population data and predicted population growth using a geometric model, when considering process error only" />
+<figcaption aria-hidden="true">Population data and predicted population
+growth using a geometric model, when considering process error
+only</figcaption>
 </figure>
 <h4 id="observation-error">Observation error</h4>
 <p><strong>Observation error</strong> results from variation in the
@@ -1580,7 +1635,7 @@ population is always non-negative.</p>
 N_0+rt+\eta_t\)</span> is in the form of a linear model in which <span
 class="math inline">\(\ln N_t\)</span> is the response variable and
 <span class="math inline">\(t\)</span> is the predictor variable. Using
-simple linear regression, the slope of the fitted function is the
+a simple linear regression, the slope of the fitted function is the
 estimated <span class="math inline">\(r\)</span>. Moreover, the <span
 class="math inline">\(y\)</span>-intercept is the estimated <span
 class="math inline">\(\ln N_0\)</span>. Here we provide another toy
@@ -1604,16 +1659,15 @@ example with the same data as the previous example on process error:</p>
 <span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;prediction&#39;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;red&#39;</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
 <figure>
 <img src="observation_error_example.png" style="width:80.0%"
-alt="Figure: Plots of data and the predicted population growth using a geometric model, when considering observation error only" />
-<figcaption aria-hidden="true">Figure: Plots of data and the predicted
+alt="Population data and the predicted population growth using a geometric model, when considering observation error only" />
+<figcaption aria-hidden="true">Population data and the predicted
 population growth using a geometric model, when considering observation
 error only</figcaption>
 </figure>
-<h3 id="paper-discussion-1">Paper discussion</h3>
-<p>Drever, M. C., Clark, R. G., Derksen, C., Slattery, S. M., Toose, P.
-and Nudds, T. D. (2012) Population vulnerability to climate change
-linked to timing of breeding in boreal ducks, <em>Global Change
-Biology</em>, <strong>18</strong>:480–492.</p>
+<h3 id="illustration-of-current-application-1">Illustration of current
+application</h3>
+<p>Population vulnerability to climate change linked to timing of
+breeding in boreal ducks (Drever et al., 2012).</p>
 <p><img src="mallard.jpg" width="450" height="300"
 alt="© Nrik Kiran, Mallard (Anas platyrhynchos), Creative Commons CC-BY-SA-4.0 license" />
 <img src="american_wigeon.jpg" width="450" height="300"
@@ -1622,7 +1676,7 @@ alt="© Judy Gallagher, American Wigeon (Anas americana), Creative Commons CC-BY
 alt="© MPF, Greater Scaup (Aythya marila), Creative Commons CC-BY-SA-4.0 license" />
 <img src="scoter.jpg" width="450" height="300"
 alt="© Andy Reago &amp; Chrissy McClarren, Surf scoter (Melanitta perspicillata), Creative Commons CC-BY-2.0 license" /></p>
-<p>Figures: (top left) © Nrik Kiran, <a
+<p>(top left) © Nrik Kiran, <a
 href="https://commons.wikimedia.org/wiki/File:Mallard_(Anas_platyrhynchos)_02.jpg">Mallard
 (<em>Anas platyrhynchos</em>)</a>, <a
 href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
@@ -1640,64 +1694,66 @@ href="https://commons.wikimedia.org/wiki/File:Surf_Scoters_in_the_fog_(438363073
 scoter (<em>Melanitta perspicillata</em>)</a>, <a
 href="https://creativecommons.org/licenses/by/2.0/">Creative Commons
 CC-BY-2.0 license</a></p>
-<h4 id="snapshot-of-the-study-2">Snapshot of the study</h4>
+<h4 id="snapshot-of-the-study-1">Snapshot of the study</h4>
 <ul>
-<li>Ducks are perfect test objects because they exhibit diverse breeding
-strategies.</li>
-<li>The authors examined how snow cover duration affected population
+<li><p>Ducks are perfect test objects because they exhibit diverse
+breeding strategies</p></li>
+<li><p>The authors examined how snow cover duration affected population
 dynamics of duck species breeding in the western boreal forest of North
-America, 1973–2007.</li>
-<li>Four species of ducks (mallard, American wigeon, scaup and scoter)
-were studied. Study areas (Alberta, Saskatchewan, Manitoba, Northwest
-Territories, Yukon and Alaska) were further divided into different
-survey strata.</li>
-<li>Four models were developed based on the existence of variations in
-(a) density dependence, and/or (b) effect of snow cover duration over
-different strata.</li>
-<li>The effect of snow cover duration on population dynamics tended to
-be consistent across stratam but differed by species.
+America, 1973-2007</p></li>
+<li><p>Four species of ducks (mallard, American wigeon, scaup and
+scoter) were studied. Study areas (Alberta, Saskatchewan, Manitoba,
+Northwest Territories, Yukon and Alaska) were further divided into
+different survey strata</p></li>
+<li><p>Four models were developed based on the existence of variations
+in (a) density dependence, and/or (b) effect of snow cover duration over
+different strata</p></li>
+<li><p>The effect of snow cover duration on population dynamics tended
+to be consistent across strata but differed by species</p>
 <ul>
 <li>For mallard, neither density dependence nor effect of snow cover
-duration varied among strata.</li>
+duration varied among strata</li>
 <li>For American wigeon, the effect of density dependence varied
-strongly among strata, while the effect of snow cover varied
-weakly.</li>
+strongly among strata, while the effect of snow cover varied weakly</li>
 <li>For fixed-window species (scaup and scoter), the effect of density
 dependence varied among strata, but the effect of snow cover were
-similar among strata.</li>
+similar among strata</li>
 </ul></li>
-<li>Population fluctuations of scaups and scoters were positively linked
-to spring snow cover duration. Duck densities were higher after springs
-with longer snow cover duration. Similar but weaker effect of snow cover
-duration were observed in American wigeon populations. Mallard
-population dynamics were negatively associated with spring snow cover
-duration.</li>
+<li><p>Population fluctuations of scaups and scoters were positively
+linked to spring snow cover duration. Duck densities were higher after
+springs with longer snow cover duration. Similar but weaker effects of
+snow cover duration were observed in American wigeon populations.
+Mallard population dynamics were negatively associated with spring snow
+cover duration</p></li>
 </ul>
 <h3 id="references-2">References</h3>
-<p>Ahrestani, F., Hebblewhite, M. and Post, E. (2013) The importance of
+<p>Ahrestani, F., Hebblewhite, M. and Post, E. (2013). The importance of
 observation versus process error in analyses of global ungulate
-populations. <em>Sci Rep</em>, <strong>3</strong>:3125.</p>
-<p>Albon, S. D., Clutton-Brock, T. H. and Guinness, F. E. (1987) Early
+populations. <em>Sci Rep 3</em>, 3125.</p>
+<p>Albon, S. D., Clutton-Brock, T. H. and Guinness, F. E. (1987). Early
 development and population dynamics in red deer. II. Density-independent
-effects and cohort variation, <em>J. Anim. Ecol.</em>,
-<strong>56</strong>: 69–81.</p>
+effects and cohort variation, <em>J. Anim. Ecol. 56</em>, 69-81.</p>
 <p>Beck-Johnson, L. M., Nelson, W. A., Paaijmans, K. P., Read, A. F.,
-Thomas, M. B. and Bjonstad, O. N. (2013) The Effect of Temperature on
-Anopheles Mosquito Population Dynamics and the Potential for Malaria
-Transmission. <em>PLoS ONE</em>, <strong>8</strong>(11):e79276.</p>
-<p>Benton, T. G., Grant, A. and Clutton-Brock, T. H. (1995) Does
+Thomas, M. B. and Bjonstad, O. N. (2013). The effect of temperature on
+<em>Anopheles mosquito</em> population dynamics and the potential for
+malaria transmission. <em>PLoS ONE 8</em>(11), e79276.</p>
+<p>Benton, T. G., Grant, A. and Clutton-Brock, T. H. (1995). Does
 environmental stochasticity matter? Analysis of red deer life-histories
-on Rum, <em>Evolutionary Ecology</em>, <strong>9</strong>:559–574.</p>
-<p>Beverton, R. and Holt, S. J. (1957) <em>On the Dynamics of Exploited
-Fish Populations</em>. Ministry of Agriculture, Fisheries and Food,
+on Rum, <em>Evolutionary Ecology 9</em>, 559-574.</p>
+<p>Beverton, R. and Holt, S. J. (1957). <em>On the dynamics of exploited
+fish populations</em>. Ministry of Agriculture, Fisheries and Food,
 London, UK.</p>
-<p>Case, T. (2000) <em>An Illustrated Guide to Theoretical Ecology</em>,
-Oxford University Press.</p>
-<p>Lande, R., Engen, S. and Saether, B. (2003) <em>Stochastic Population
-Dynamics in Ecology and Conservation</em>, Oxford Series in Ecology and
-Evolution.</p>
-<p>Mills, L. S. (2007) <em>Conservation of Wildlife Populations:
-Demography, Genetics, and Management</em>, Wiley-Blackwell
+<p>Case, T. (2000). <em>An illustrated guide to theoretical
+ecology</em>, Oxford University Press.</p>
+<p>Drever, M. C., Clark, R. G., Derksen, C., Slattery, S. M., Toose, P.
+and Nudds, T. D. (2012). Population vulnerability to climate change
+linked to timing of breeding in boreal ducks, <em>Global Change Biology
+18</em>, 480-492.</p>
+<p>Lande, R., Engen, S. and Saether, B. (2003). <em>Stochastic
+population dynamics in ecology and conservation</em>. Oxford Series in
+Ecology and Evolution.</p>
+<p>Mills, L. S. (2007) <em>Conservation of wildlife populations:
+Demography, genetics, and management</em>, Wiley-Blackwell
 Publishing.</p>
 <h2
 id="model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
@@ -1724,11 +1780,11 @@ Bay Checkerspot butterfly. In order to test her hypotheses, Dr. Harrison
 used 20 years of mark recapture data that was used to estimate the
 number of female butterflies in each year.</p>
 <p><img src="baycheckertime.jpeg" style="width:50.0%"
-alt="Estimated number of female Bay Checkerspot butterflies from mark recapture data (Harrison at al. 1991)" />
+alt="Estimated number of female Bay Checkerspot butterflies from mark recapture data (data from Harrison at al. 1991)" />
 <img src="630px-Bay_Checkerspot_f2.jpg" style="width:30.0%"
-alt="Wikipedia Commons (CC BY-SA 3.0)" /></p>
-<p>Figure: Data from Harrison (1991). Image Wikipedia Commons (CC BY-SA
-3.0)</p>
+alt="Wikipedia Commons CC BY-SA 3.0" /></p>
+<p>Figure (side by side figs not showing captions?): Data from Harrison
+(1991). Image Wikipedia Commons (CC BY-SA 3.0)</p>
 <p>We can use this data to calculate the annual population growth rate
 <span class="math inline">\(\lambda\)</span> as <span
 class="math inline">\(N_{t+1}/N_{t}\)</span>. If we use least squares
@@ -1812,7 +1868,7 @@ observed data if a particular model was a good description of the
 underlying processes. We can write this as:</p>
 <p><span class="math display">\[L (model|data), \]</span></p>
 <p>which is read as the “likelihood of the model given the collected
-data” (see Edwards 1974).</p>
+data” (see Edwards, 1974).</p>
 <h4 id="probability-and-likelihood">Probability and Likelihood</h4>
 <p>The likelihood of a given model is proportional to the probability of
 obtaining the data given the model. <span class="math display">\[L
@@ -1823,11 +1879,11 @@ matter greatly what the value of this constant might be. Since we are
 using likelihood to compare models, and so the constant will cancel
 out.</p>
 <p>Our main challenge is to calculate the probability, however, if we
-can assume that each data point is independent, this calculate is
+can assume that each data point is independent, this calculation is
 straightforward, for each data point <span
 class="math inline">\(x_i\)</span> in a vector of data, X, we can find
 the probability given the model. To get the total probability, we can
-then just multiply the probability of each one of these data point. So
+then just multiply the probability of each one of these data points. So
 we have:</p>
 <p><span class="math display">\[L(model|X)=P(X|model)=\prod
 g(x_i|model),\]</span></p>
@@ -1849,8 +1905,8 @@ probabilities as given by the probability density function.</p>
 <pre><code> &gt; like1
 [1] 3.133277e-10</code></pre>
 <p>Of course, the value we calculate is not very informative, we need to
-compare to another explanation of the data. For example, what if data
-came from a normal distribution with a different mean?</p>
+compare it to another explanation of the data. For example, what if the
+data came from a normal distribution with a different mean?</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the mean of the normal distribution to 6</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>like2<span class="ot">=</span><span class="fu">prod</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">6</span>,<span class="at">sd=</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>&gt; like2
@@ -1893,15 +1949,15 @@ distribution with sd=2 and a range of means</figcaption>
 than the other candidates. This value of the mean parameter for the
 normal distribution is our <em>maximum likelihood estimate</em>. This is
 the likelihood for which we have chosen parameter(s) values that make
-the likelihood of our model as large as possible</p>
+the likelihood of our model as large as possible.</p>
 <p>So, we can see that we probably need to be a bit more specific when
 we talk about likelihood of a model, since that value is going to change
 depending on the values of the parameters in the model. So, we will
-calculate the likelihhod for given a particular set of parameter values
-(q) for a particular model (Edwards 1974) <span
+calculate the likelihood for given a particular set of parameter values
+(q) for a particular model (Edwards, 1974) <span
 class="math display">\[L(q|data,model),\]</span> which is read as the
 “likelihood of the parameter values q given the collected data and
-specified model”</p>
+specified model”.</p>
 <p>Most models have more than one parameter, and in fact our simple
 example of the normal distribution has two: mean and variance. So the
 maximum likelihood for this model would be at the best values for both
@@ -1937,10 +1993,11 @@ to find the best mean and variance for our data.</p>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#par argument is the starting search values for par[1], and par[2], so our function is the same as before, just written in a way that we can use it with optim()</span></span>
 <span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>mlest<span class="sc">$</span>par</span>
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>mlest<span class="sc">$</span>value</span></code></pre></div>
-<p>We can see that the <strong>optim()</strong> function gives a bit.
+<p>We can see that the <strong>optim()</strong> function gives a bit
 more precision, and tells us that the maximum likelihood (minimum
-negative log-likelihood) is found for parameter values of $= 4.0, =
-2.4.</p>
+negative log-likelihood) is found for parameter values of <span
+class="math inline">\(\mu\)</span> = 4.0, <span
+class="math inline">\(\sigma\)</span> = 2.4.</p>
 <h3 id="model-comparison">Model comparison</h3>
 <p>Let’s go back to our original problem with the Harrison data (1991),
 and use maximum likelihood to find the best parameter values for each
@@ -1951,9 +2008,9 @@ time, by setting the expected value of each observation using the
 equation for a line, with normally distributed errors, where our x is
 the number of female Bay Checkerspot butterflies, and y is the per
 capita growth rate.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>, <span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>, <span class="fl">1.000</span>,<span class="fl">1.882</span>,<span class="fl">0.320</span>,<span class="fl">2.785</span>, <span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,<span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,<span class="fl">6.566</span>, <span class="fl">0.570</span>, <span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>,<span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>,<span class="fl">1.000</span>,<span class="fl">1.882</span>,<span class="fl">0.320</span>,<span class="fl">2.785</span>,<span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,<span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,<span class="fl">6.566</span>,<span class="fl">0.570</span>,<span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>females<span class="ot">=</span><span class="fu">c</span>(<span class="dv">175</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">175</span>,<span class="dv">200</span>,<span class="dv">425</span>,<span class="dv">425</span>,<span class="dv">800</span>,<span class="dv">256</span>,<span class="dv">713</span>,<span class="dv">198</span>,<span class="dv">1819</span>,<span class="dv">575</span>,<span class="dv">567</span>,<span class="dv">1819</span>,<span class="dv">852</span>,  <span class="dv">216</span>,<span class="dv">244</span>,<span class="dv">267</span>,<span class="dv">1753</span>,<span class="dv">999</span>,<span class="dv">1788</span>,<span class="dv">143</span>,<span class="dv">79</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>females<span class="ot">=</span><span class="fu">c</span>(<span class="dv">175</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">175</span>,<span class="dv">200</span>,<span class="dv">425</span>,<span class="dv">425</span>,<span class="dv">800</span>,<span class="dv">256</span>,<span class="dv">713</span>,<span class="dv">198</span>,<span class="dv">1819</span>,<span class="dv">575</span>,<span class="dv">567</span>,<span class="dv">1819</span>,<span class="dv">852</span>,<span class="dv">216</span>,<span class="dv">244</span>,<span class="dv">267</span>,<span class="dv">1753</span>,<span class="dv">999</span>,<span class="dv">1788</span>,<span class="dv">143</span>,<span class="dv">79</span>)</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>normReg <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>females</span>
@@ -1969,11 +2026,11 @@ likelihood and least square regression estimates for simple linear
 regression will be the same.</p>
 <p>We complete the same exercise for three of candidate models and plot
 out our results:</p>
-<p>density independent model: <span
+<p>Density independent model: <span
 class="math inline">\(log(N_{t+1}/N_t)=r\)</span></p>
-<p>logistic model:<span
+<p>Logistic model: <span
 class="math inline">\(log(N_{t+1}/N_t)=r(1-N_t/K)\)</span></p>
-<p>theta logistic model:<span
+<p>Theta logistic model: <span
 class="math inline">\(log(N_{t+1}/N_t)=r(1-(N_t/K)^\theta)\)</span></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>, <span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>, <span class="fl">1.000</span>,<span class="fl">1.882</span>,<span class="fl">0.320</span>,<span class="fl">2.785</span>, <span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,<span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,<span class="fl">6.566</span>, <span class="fl">0.570</span>, <span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1984,9 +2041,9 @@ class="math inline">\(log(N_{t+1}/N_t)=r(1-(N_t/K)^\theta)\)</span></p>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>females</span>
 <span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
 <span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>mle.normReg<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normReg) <span class="co">#par argument is the starting search values for </span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>mle.normReg<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normReg) <span class="co">#par argument is the starting search values</span></span>
 <span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co">#plot data and model predictions at mle</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot data and model predictions at mle</span></span>
 <span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(percap)<span class="sc">~</span>females, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
 <span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="fu">expression</span>(ln<span class="sc">~</span>lambda),<span class="at">las=</span><span class="dv">1</span>,</span>
 <span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;number of females&quot;</span>)</span>
@@ -1997,25 +2054,25 @@ class="math inline">\(log(N_{t+1}/N_t)=r(1-(N_t/K)^\theta)\)</span></p>
 <span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span><span class="fu">mean</span>(<span class="fu">log</span>(percap)),<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">2</span>]),<span class="at">log=</span>T)) }</span>
 <span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>mle.normDI<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normC) <span class="co">#par argument is the starting search values </span></span>
 <span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="co">#plot predictions</span></span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="co"># plot predictions</span></span>
 <span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>mle.normDI<span class="sc">$</span>par[<span class="dv">1</span>],<span class="at">lwd=</span><span class="fl">1.5</span> )</span>
 <span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="co">#function for theta-logistic model</span></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="co"># function for theta-logistic model</span></span>
 <span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>normTh <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
 <span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>(females)<span class="sc">^</span>par[<span class="dv">4</span>]</span>
 <span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
 <span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>mle.normTh<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">1</span>),normTh) <span class="co">#par argument is the starting search values </span></span>
 <span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a><span class="co">#plot predictions and legend</span></span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a><span class="co"># plot predictions and legend</span></span>
 <span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(mle.normTh<span class="sc">$</span>par[<span class="dv">1</span>]<span class="sc">+</span>mle.normTh<span class="sc">$</span>par[<span class="dv">2</span>]<span class="sc">*</span>(x)<span class="sc">^</span>mle.normTh<span class="sc">$</span>par[<span class="dv">4</span>], <span class="at">from=</span><span class="dv">0</span>, </span>
 <span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">to=</span><span class="dv">4000</span>,<span class="at">add=</span>T, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;top&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;exponential&quot;</span>, <span class="st">&quot;logistic&quot;</span>,<span class="st">&quot;theta-logistic&quot;</span> ),</span>
 <span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 <figure>
 <img src="3modelfits.jpeg" style="width:80.0%"
-alt="Fits of the three different models to data from Harrison 1991" />
+alt="Fits of the three different models to data from Harrison, 1991" />
 <figcaption aria-hidden="true">Fits of the three different models to
-data from Harrison 1991</figcaption>
+data from Harrison, 1991</figcaption>
 </figure>
 <p>For each model, we have an estimate of likelihood (e.g,</p>
 <pre><code>&gt; mle.normReg$value
@@ -2053,11 +2110,11 @@ models applied to Harrison’s (1991) Bay Checkerspot data</caption>
 <p>So perhaps we should select the theta-logistic model? After all it
 <strong>does</strong> have the greatest likelihood. However, there is
 another point to consider. The theta-logistic model has four parameters
-(r,k, $, and , the variance of the normal distribution of errors), while
-the logistic model has 3. We note that if a model has n data points and
-n parameters (one for each data point), then the residual variance will
-be ZERO. Would a model with n parameters then be a better model, since
-it explains all the variance?</p>
+(r, k, $$, and $$, the variance of the normal distribution of errors),
+while the logistic model has 3. We note that if a model has n data
+points and n parameters (one for each data point), then the residual
+variance will be ZERO. Would a model with n parameters then be a better
+model, since it explains all the variance?</p>
 <p>More generally, is a model with more parameters, functions, entities,
 etc. more likely to be “true”? Where we use the word “true” as more
 explanatory, accurate, predictive, representative of reality?</p>
@@ -2065,7 +2122,7 @@ explanatory, accurate, predictive, representative of reality?</p>
 <p>We have a conundrum here. If we use goodness of fit as our only
 criteria for model selection, then we will always choose the most
 complex model. Unfortunately, really complex and flexible models are
-more likely to be mislead by errors and noise. For example, compare the
+more likely to be misled by errors and noise. For example, compare the
 fit of a highly flexible curve with a linear fit. The flexible curve
 fits every point, but some of this variance is just noise or error.</p>
 <figure>
@@ -2110,11 +2167,11 @@ decide if a given model has more “support” than another.</p>
 fewer parameters. More complex models are penalized because more
 parameters will always lead to a better fit to the data, but at the cost
 of less precision in the estimate of each parameter and incorporation of
-spurious patterns from the data</p>
+spurious patterns from the data.</p>
 <h4 id="akaike-information-criteria-aic">Akaike information criteria
 (AIC)</h4>
 <p>One commonly used information criteria statistic is the Akaike
-information criteria (AIC) (Akaike 1973). Goodness of fit is usually
+information criteria (AIC) (Akaike, 1973). Goodness of fit is usually
 determined by the maximum log-likelihood parameter estimate <span
 class="math inline">\(\theta\)</span> for a model with a given dataset,
 <span class="math inline">\(y\)</span>, but we can also use residual sum
@@ -2137,7 +2194,7 @@ likelihood ratio test, since we can compare very different models using
 the same metric. In comparison, the likelihood ratio tests assumes that
 the models are nested (i.e. that one model can be converted to another
 by setting one or more parameters equal to 0 or 1; for example, the
-theta logistic model and logistic model are nested)</p>
+theta logistic model and logistic model are nested).</p>
 <h4 id="comparing-our-3-models-with-aic">Comparing our 3 models with
 AIC</h4>
 <p>Let’s use this metric to compare our three models fit to the Harrison
@@ -2178,7 +2235,7 @@ AIC</h4>
 </table>
 <p>In general, AIC values for models that are different by more than 2
 units are interpreted as having importantly different predictive
-performance (Anderson et al. 2000). In this case, we might select the
+performance (Anderson et al., 2000). In this case, we might select the
 logistic model as it has the lowest AIC, but it is still within two
 units of the theta-logistic model. However we do note that for small
 sample sizes, a correction is recommended when the number of data
@@ -2265,10 +2322,5 @@ Statistical Review/Revue Internationale de Statistique</em>,<em>42</em>,
 <p>Harrison, S. (1991). Local extinction in a metapopulation context: an
 empirical evaluation. <em>Biological Journal of the Linnean
 Society</em>, <em>42</em>(1-2), 73-88.</p>
-            </div>
-    </div>
-  </div>
-  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
-
 </body>
 </html>
