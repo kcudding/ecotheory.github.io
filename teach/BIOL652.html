@@ -1,331 +1,246 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<!doctype html>
+<html >
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
   <meta name="author" content="Debora, Eddie, Zitao and Kim" />
-  <meta name="dcterms.date" content="2023-02-03" />
+  <meta name="date" content="2023-02-03" />
   <title>BIOL 652 Structured Population Models</title>
-  <style>
-    html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 1em;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
-      font-size: 85%;
-      margin: 0;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { color: #008000; } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { color: #008000; font-weight: bold; } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <script
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
   type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">BIOL 652 Structured Population Models</h1>
-<p class="author">Debora, Eddie, Zitao and Kim</p>
-<p class="date">2023-02-03</p>
-</header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#module-1-unstructured-population-models"
-id="toc-module-1-unstructured-population-models"><strong>Module 1:
-Unstructured Population Models</strong></a>
-<ul>
-<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
-<li><a href="#learning-outcomes" id="toc-learning-outcomes">Learning
-outcomes</a>
-<ul>
-<li><a href="#what-is-a-population-model"
-id="toc-what-is-a-population-model">What is a population model?</a></li>
-<li><a href="#basic-types-of-population-models"
-id="toc-basic-types-of-population-models">Basic types of population
-models</a></li>
-</ul></li>
-<li><a href="#simple-models-of-population-dynamics"
-id="toc-simple-models-of-population-dynamics">Simple models of
-population dynamics</a>
-<ul>
-<li><a href="#historical-facts" id="toc-historical-facts">Historical
-facts</a></li>
-<li><a
-href="#when-are-simple-population-models-used-in-biological-analyses"
-id="toc-when-are-simple-population-models-used-in-biological-analyses">When
-are simple population models used in biological analyses?</a></li>
-<li><a href="#mathematical-representation-of-population-growth-patterns"
-id="toc-mathematical-representation-of-population-growth-patterns">Mathematical
-representation of population growth patterns</a></li>
-<li><a href="#geometric-growth" id="toc-geometric-growth">Geometric
-growth</a></li>
-<li><a href="#exponential-growth"
-id="toc-exponential-growth">Exponential growth</a></li>
-<li><a href="#references" id="toc-references">References</a></li>
-</ul></li>
-<li><a href="#density-dependence" id="toc-density-dependence">Density
-dependence</a>
-<ul>
-<li><a href="#negative-density-dependence"
-id="toc-negative-density-dependence">Negative density
-dependence</a></li>
-<li><a href="#discrete-time-logistic-growth"
-id="toc-discrete-time-logistic-growth">Discrete time logistic
-growth</a></li>
-<li><a href="#other-types-of-density-denpendent-population-models"
-id="toc-other-types-of-density-denpendent-population-models">Other types
-of density denpendent population models</a></li>
-<li><a href="#illustration-of-current-application-research-paper-review"
-id="toc-illustration-of-current-application-research-paper-review">Illustration
-of current application: research paper review</a></li>
-<li><a href="#references-1" id="toc-references-1">References:</a></li>
-</ul></li>
-<li><a href="#population-dynamics-and-stochasticity"
-id="toc-population-dynamics-and-stochasticity">Population dynamics and
-stochasticity</a>
-<ul>
-<li><a href="#deterministic-vs.-stochastic-factors"
-id="toc-deterministic-vs.-stochastic-factors">Deterministic
-vs. stochastic factors</a></li>
-<li><a href="#basic-forms-of-stochasticity-and-definitions"
-id="toc-basic-forms-of-stochasticity-and-definitions">Basic forms of
-stochasticity and definitions</a></li>
-<li><a href="#implications-of-variation-in-population-growth"
-id="toc-implications-of-variation-in-population-growth">Implications of
-variation in population growth</a></li>
-<li><a href="#stochastic-effects-to-population-growth-rates"
-id="toc-stochastic-effects-to-population-growth-rates">Stochastic
-effects to population growth rates</a></li>
-<li><a href="#estimating-population-growth-rates"
-id="toc-estimating-population-growth-rates">Estimating population growth
-rates</a></li>
-<li><a href="#illustration-of-current-application-1"
-id="toc-illustration-of-current-application-1">Illustration of current
-application</a></li>
-<li><a href="#references-2" id="toc-references-2">References</a></li>
-</ul></li>
-<li><a
-href="#model-selection-how-do-we-tell-which-model-to-use-for-our-data"
-id="toc-model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
-Selection: How do we tell which model to use for our data?</a>
-<ul>
-<li><a href="#likelihood" id="toc-likelihood">Likelihood</a></li>
-<li><a href="#model-comparison" id="toc-model-comparison">Model
-comparison</a></li>
-<li><a href="#references-3" id="toc-references-3">References</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-<h1 id="module-1-unstructured-population-models"><strong>Module 1:
+
+    
+    <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
+    <div class="navbar-inner container-fluid">
+      <div class="container">
+        <span class="doc-title">BIOL 652 Structured Population
+Models</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text">Debora, Eddie, Zitao and
+Kim</p></li>
+                              <li><p class="navbar-text">2023-02-03</p></li>
+                  </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+      <div class="row">
+            <div id="TOC" class="col-sm-7 col-lg-3">
+        <div class="well toc">
+
+        <ul>
+        <li><a href="#module-1-unstructured-population-models"
+        id="toc-module-1-unstructured-population-models"><strong>Module
+        1: Unstructured Population Models</strong></a>
+        <ul>
+        <li><a href="#introduction"
+        id="toc-introduction">Introduction</a></li>
+        <li><a href="#learning-outcomes"
+        id="toc-learning-outcomes">Learning outcomes</a>
+        <ul>
+        <li><a href="#what-is-a-population-model"
+        id="toc-what-is-a-population-model">What is a population
+        model?</a></li>
+        <li><a href="#basic-types-of-population-models"
+        id="toc-basic-types-of-population-models">Basic types of
+        population models</a></li>
+        </ul></li>
+        <li><a href="#simple-models-of-population-dynamics"
+        id="toc-simple-models-of-population-dynamics">Simple models of
+        population dynamics</a>
+        <ul>
+        <li><a href="#historical-facts"
+        id="toc-historical-facts">Historical facts</a></li>
+        <li><a
+        href="#when-are-simple-population-models-used-in-biological-analyses"
+        id="toc-when-are-simple-population-models-used-in-biological-analyses">When
+        are simple population models used in biological
+        analyses?</a></li>
+        <li><a
+        href="#mathematical-representation-of-population-growth-patterns"
+        id="toc-mathematical-representation-of-population-growth-patterns">Mathematical
+        representation of population growth patterns</a></li>
+        <li><a href="#geometric-growth"
+        id="toc-geometric-growth">Geometric growth</a></li>
+        <li><a href="#exponential-growth"
+        id="toc-exponential-growth">Exponential growth</a></li>
+        <li><a href="#references"
+        id="toc-references">References</a></li>
+        </ul></li>
+        <li><a href="#density-dependence"
+        id="toc-density-dependence">Density dependence</a>
+        <ul>
+        <li><a href="#negative-density-dependence"
+        id="toc-negative-density-dependence">Negative density
+        dependence</a></li>
+        <li><a href="#discrete-time-logistic-growth"
+        id="toc-discrete-time-logistic-growth">Discrete time logistic
+        growth</a></li>
+        <li><a
+        href="#other-types-of-density-denpendent-population-models"
+        id="toc-other-types-of-density-denpendent-population-models">Other
+        types of density denpendent population models</a></li>
+        <li><a
+        href="#illustration-of-current-application-research-paper-review"
+        id="toc-illustration-of-current-application-research-paper-review">Illustration
+        of current application: research paper review</a></li>
+        <li><a href="#references-1"
+        id="toc-references-1">References:</a></li>
+        </ul></li>
+        <li><a href="#population-dynamics-and-stochasticity"
+        id="toc-population-dynamics-and-stochasticity">Population
+        dynamics and stochasticity</a>
+        <ul>
+        <li><a href="#why-are-changes-in-population-variable"
+        id="toc-why-are-changes-in-population-variable">Why are changes
+        in population variable?</a></li>
+        <li><a href="#basic-forms-of-stochasticity"
+        id="toc-basic-forms-of-stochasticity">Basic forms of
+        stochasticity</a></li>
+        <li><a href="#implications-of-variation-in-population-growth"
+        id="toc-implications-of-variation-in-population-growth">Implications
+        of variation in population growth</a></li>
+        <li><a
+        href="#estimating-population-growth-rates-in-the-presence-of-processobservation-error"
+        id="toc-estimating-population-growth-rates-in-the-presence-of-processobservation-error">Estimating
+        population growth rates in the presence of process/observation
+        error</a></li>
+        <li><a href="#illustration-of-current-application-markrecapture"
+        id="toc-illustration-of-current-application-markrecapture">Illustration
+        of current application: mark–recapture</a></li>
+        <li><a href="#references-2"
+        id="toc-references-2">References</a></li>
+        </ul></li>
+        <li><a
+        href="#model-selection-how-do-we-tell-which-model-to-use-for-our-data"
+        id="toc-model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
+        Selection: How do we tell which model to use for our data?</a>
+        <ul>
+        <li><a href="#likelihood"
+        id="toc-likelihood">Likelihood</a></li>
+        <li><a href="#model-comparison" id="toc-model-comparison">Model
+        comparison</a></li>
+        <li><a href="#references-3"
+        id="toc-references-3">References</a></li>
+        </ul></li>
+        </ul></li>
+        </ul>
+
+        </div>
+      </div>
+            <div class="col-9">
+
+      
+      <h1 id="module-1-unstructured-population-models"><strong>Module 1:
 Unstructured Population Models</strong></h1>
 <h2 id="introduction">Introduction</h2>
 <p>This module covers the most simple models to predict the dynamics of
@@ -1291,52 +1206,46 @@ R!</em> Dordrecht: Springer.</p>
 effect in <em>Spiza americana</em>. <em>The Auk 88</em>(3), 591–612.</p>
 <h2 id="population-dynamics-and-stochasticity">Population dynamics and
 stochasticity</h2>
-<h3 id="deterministic-vs.-stochastic-factors">Deterministic
-vs. stochastic factors</h3>
+<p>We have studied different population models in previous sections.
+However, these models are still relatively “naive”, since population
+change in the real world will never be constant. In this section, we
+will add randomness, or stochasticity, to the population models.</p>
+<h3 id="why-are-changes-in-population-variable">Why are changes in
+population variable?</h3>
 <ul>
-<li><strong>Deterministic factors</strong> are predictable, such as
-predation, competition, etc.</li>
-<li><strong>Stochastic factors</strong> are unpredictable</li>
+<li><strong>Sample variance</strong> or <strong>observation
+error</strong>: measurement error in estimates of population size or
+density</li>
+<li><strong>Process variance</strong>: variation acually affecting
+numbers in count data over time
+<ul>
+<li><strong>Deterministic factors</strong>: predictable internal
+drivers, such as density dependence, predation and competition.</li>
+<li><strong>Stochastic factors</strong>: unpredictable random
+fluctuations. Some fluctuations might in fact be driven by deterministic
+factors (and thus might be predictable with more complete information),
+but they can be more easily treated as stochastic factors.</li>
+</ul></li>
 </ul>
-<h3 id="basic-forms-of-stochasticity-and-definitions">Basic forms of
-stochasticity and definitions</h3>
-<h4 id="demographic-stochasticity">Demographic stochasticity</h4>
+<h3 id="basic-forms-of-stochasticity">Basic forms of stochasticity</h3>
+<p>There are two main forms of stochastic process variance: demographic
+and environmental stochasticities.</p>
 <p><strong>Demographic stochasticity</strong> refers to chance events of
 individual mortality and reproduction, such as inevitable deviation in
 mean birth and death rates (Lande et al., 2003). Demographic
 stochasticity is only significant in small populations, and we will
 explain this in three examples.</p>
 <ul>
-<li><em>Example</em> 1: Flipping a coin 10,000 times, one will get
+<li><p><em>Example 1</em>: Flipping a coin 10,000 times, one will get
 approximately 5,000 times heads; flipping the same coin 100 times, there
 could be some deviations from the expected 50:50; flipping the same coin
 10 times, it is not suprising that one only gets 2 heads. The
 probability of getting head is approaching 0.5 as the number of trials
-increases. Let’s do some experiments with R:</li>
-</ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Toss a coin 10/100/10,000 times</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate random numbers from {0,1} with the same probability</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We assume: 1 - heads, 0 - tails</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>toss10 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>toss100 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">size =</span> <span class="dv">100</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>toss10k <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">size =</span> <span class="dv">10000</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Record the results in a matrix</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Notice: sum = number of 1&#39;s = number of heads</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="fu">sum</span>(toss10), <span class="dv">10</span><span class="sc">-</span><span class="fu">sum</span>(toss10)),</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">c</span>(<span class="fu">sum</span>(toss100), <span class="dv">100</span><span class="sc">-</span><span class="fu">sum</span>(toss100)),</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">c</span>(<span class="fu">sum</span>(toss10k), <span class="dv">10000</span><span class="sc">-</span><span class="fu">sum</span>(toss10k)))</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(results) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;10 tosses&quot;</span>, <span class="st">&quot;100 tosses&quot;</span>, <span class="st">&quot;10,000 tosses&quot;</span>)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(results) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;heads&quot;</span>, <span class="st">&quot;tails&quot;</span>)</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div>
-<pre><code>##       10 tosses 100 tosses 10,000 tosses
-## heads         7         52          5051
-## tails         3         48          4949</code></pre>
-<ul>
+increases.</p></li>
 <li><p><em>Example 2</em>: The expected sex ratio for a newborn is
 50:50. When there are 3 new births, we cannot have 50% males and 50%
 females. Unbalanced sex ratio will influence future birth rate,
-especially in a small population</p></li>
+especially in a small population.</p></li>
 <li><p><em>Example 3</em>: A death rate of 0.2 does not mean after a
 year an animal is 0.8 alive–it either survives or dies. When the
 population size is large, we may use the product of the total populatiom
@@ -1344,9 +1253,8 @@ and a mean birth/death rate to estimate the number of births/deaths.
 However, such estimation is not accurate when the population size is
 small (a difference of two deaths might not seem to be a big issue in a
 population of size 1000, but will be significant in a population of size
-20)</p></li>
+20).</p></li>
 </ul>
-<h4 id="environmental-stochasticity">Environmental stochasticity</h4>
 <p><strong>Environmental stochasticity</strong> often refers to temporal
 fluctuations in the probability of mortality and reproduction (Lande et
 al., 2003), which is often driven directly or indirectly by weather
@@ -1358,7 +1266,7 @@ between 1971 and 1991 has shown that the changes in red deer population
 size correlates strongly with annual rainfall (Benton et al., 1995)</li>
 </ul>
 <figure>
-<img src="young_red_deer.jpg"
+<img src="red_deer.jpeg"
 alt="© Charles J. Sharp, Red deer (Cervus elaphus), Creative Commons CC-BY-SA-4.0 license" />
 <figcaption aria-hidden="true">© Charles J. Sharp, <a
 href="https://commons.wikimedia.org/wiki/File:Red_deer_(Cervus_elaphus)_young_stag.jpg">Red
@@ -1374,12 +1282,6 @@ research on modelling the mosquito population dynamics and how they
 affect the transmission of those diseases. For an example, refer to
 Beck-Johnson et al. (2013)</li>
 </ul>
-<h4 id="sampling-error">Sampling error</h4>
-<p><strong>Sampling error</strong> (or sampling variance) is the
-measurement error in estimates of population size or density. Some
-researchers categorized it as a basic form of stochasticity (Lande et
-al., 2003), while some distinguished it from deterministic and
-stochastic factors (Mills, 2007).</p>
 <h3 id="implications-of-variation-in-population-growth">Implications of
 variation in population growth</h3>
 <ul>
@@ -1388,14 +1290,13 @@ more uncertain and more variable</p></li>
 <li><p>A less intuitive outcome is that the likelihood of any particular
 population size at time <span class="math inline">\(t\)</span> in the
 future becomes more skewed. Specifically, most populations being
-relatively small, with a tiny fraction being huge. We will discuss this
-in more detail soon…</p></li>
+relatively small, with a tiny fraction being huge. In fact, the realized
+population growth rate <span
+class="math inline">\((N_t/N_s)^{1/(t-s)}\)</span> will be smaller when
+the growth rates vary. Why?</p></li>
 </ul>
-<h3 id="stochastic-effects-to-population-growth-rates">Stochastic
-effects to population growth rates</h3>
-<p>To answer the question whether population size shrinks as a result of
-stochasticity, we need to understand two important concepts: arithmetic
-and geometric means.</p>
+<p>To answer this question, we need to understand two important
+concepts: arithmetic and geometric means.</p>
 <h4 id="arithmetic-mean-vs.-geometric-mean">Arithmetic mean
 vs. geometric mean</h4>
 <p>Let <span class="math inline">\(\lambda_A\)</span> and <span
@@ -1427,49 +1328,23 @@ likely decline for the population, even though the (arithmetic) average
 growth rate is larger than 1 (Mills, 2007). In fact, the geometric mean
 growth rate is <span
 class="math inline">\(\lambda_G=(1.55\times0.55)^{1/2}\approx
-0.9233\)</span>. Here we simulate 100 possible population changes during
-a time period of 16 years. From the left boxplot we can see that only 4
-of them (circles) end up with a relatively large population, while the
-majority stay quite small. We remove the outliers (extreme cases) and
-plot the right boxplot, where we can see that most of the populations
-actually shrink, and the median (bald horizontal line) is a bit less
-than 0.3, which is consistent with the above calculation.</li>
+0.9233\)</span>.</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>N0 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rbinom</span>(<span class="dv">1600</span>, <span class="dv">1</span>, <span class="fl">0.5</span>), <span class="at">ncol =</span> <span class="dv">16</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>lambda[lambda<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fl">1.55</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>lambda[lambda<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="fl">0.55</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># lambda is a 100-by-16 matrix</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Each row represents a possible population change in 16 years</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the outcomes, and plot</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>outcome <span class="ot">&lt;-</span> N0<span class="sc">*</span><span class="fu">apply</span>(lambda, <span class="dv">1</span>, prod)</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(outcome, <span class="at">main =</span> <span class="st">&quot;Boxplot with outliers&quot;</span>, </span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Final population size&quot;</span>)</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(outcome, <span class="at">outline =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">&quot;Boxplot without outliers&quot;</span>)</span></code></pre></div>
-<figure>
-<img src="popsize_boxplot.png" style="width:80.0%"
-alt="Boxplots of final population sizes. (left) All outcomes; (right) outcomes with outliers (extreme cases) ignored" />
-<figcaption aria-hidden="true">Boxplots of final population sizes.
-(left) All outcomes; (right) outcomes with outliers (extreme cases)
-ignored</figcaption>
-</figure>
-<p>It would be helpful to know the conversion between the arithmetic
-mean of <span class="math inline">\(r\)</span> and the geometric mean of
-<span class="math inline">\(\lambda\)</span>. Recall that <span
-class="math inline">\(r=\ln\lambda\)</span>, so <span
+<h4 id="converting-between-lambda-and-r-1">Converting between <span
+class="math inline">\(\lambda\)</span> and <span
+class="math inline">\(r\)</span></h4>
+<p>Recall that the natural logarithm of the growth rate, <span
+class="math inline">\(r=\ln\lambda\)</span>. It would be helpful to know
+the conversion between the arithmetic mean of <span
+class="math inline">\(r\)</span> and the geometric mean of <span
+class="math inline">\(\lambda\)</span>. Note that <span
 class="math display">\[\ln(\lambda_1\lambda_2\cdots\lambda_k)=\ln\lambda_1+\ln\lambda_2+\cdots+\ln\lambda_k=r_1+r_2+\cdots+r_k,\]</span>
 which gives <span
 class="math display">\[\ln(\lambda_1\lambda_2\cdots\lambda_k)^{1/k}=\frac{1}{k}\ln(\lambda_1\lambda_2\cdots\lambda_k)=\frac{1}{k}(r_1+r_2+\cdots+r_k),\]</span>
 and thus <span class="math display">\[\ln\lambda_G=r_A.\]</span></p>
-<p>An interesting but less intuitive fact is that when fixing the
-arithmetic mean of growth rates, highly variable growth rates will more
-likely result in a smaller final population. In other words, increasing
-the variance of the growth rates (<span
-class="math inline">\(\sigma_\lambda^2\)</span>) makes the geometric
-mean growth rate less than the arithmetic mean. Let <span
+<p>Remember we mentioned earlier that highly variable growth rates will
+more likely result in a smaller final population? Now we have the
+knowledge to show this! Let <span
 class="math inline">\(\lambda_t=\lambda_A+\epsilon_t\)</span>, where
 <span class="math inline">\(\epsilon_t\)</span> is the deviation of
 <span class="math inline">\(\lambda_t\)</span> from the arithmetic mean
@@ -1484,14 +1359,18 @@ higher order terms. Hence, taking the expectation of both sides gives
 class="math display">\[r_A=E(\ln\lambda_t)\cong\ln\lambda_A-\frac{E[(\lambda_t-\lambda_A)^2]}{2\lambda_A^2}=\ln\lambda_A-\frac{\sigma_\lambda^2}{2\lambda_A^2},\]</span>
 which further gives <span
 class="math display">\[\lambda_G\cong\exp\left(\ln\lambda_A-\frac{\sigma_\lambda^2}{2\lambda_A^2}\right).\]</span>
-In fact, the geometric mean is <strong>never larger</strong> than the
-arithmetic mean (and they are equal if and only if every term is the
-same).</p>
+As we can see, when the variance of growth rates <span
+class="math inline">\(\sigma_\lambda^2\)</span> gets larger, geometric
+mean growth rate <span class="math inline">\(\lambda_G\)</span> gets
+smaller. In fact, the geometric mean is <strong>never larger</strong>
+than the arithmetic mean (and they are equal if and only if every term
+is the same).</p>
 <h4 id="temporal-autocorrelation">Temporal autocorrelation</h4>
 <p>The examples above assume that <span
 class="math inline">\(r_t\)</span> does not depend on previous growth
-rates, nor will it influence subsequent growth rates. The
-autocorrelation describes the relationship between <span
+rates, nor will it influence subsequent growth rates. This assumption
+may not be very realistic. Here we introduce the idea of temporal
+autocorrelation, which describes the relationship between <span
 class="math inline">\(r_t\)</span> and <span
 class="math inline">\(r_{t+\tau}\)</span>, its value at a time lag <span
 class="math inline">\(\tau\)</span>. One way to incorporate temporal
@@ -1509,50 +1388,39 @@ class="math inline">\(r_{t+1}=r_A+\epsilon_{t+1}\)</span> and there is
 no temporal autocorrelation. Here we present examples of exponential
 growth rates with zero autocorrelation and positive lag-1
 autocorrelation.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We assume that the mean exponential growth rate r_A = 0.3,</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and the noise term epsilon_t is a standard normal random variable,</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We look at a time period of 20 years</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>rA <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">zero =</span> rA <span class="sc">+</span> e)</span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate exponential growth rates with positive lag-1 autocorrelation</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We compare different coefficients rho = 0.2, 0.5, 0.8</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>pos1 <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  pos1[i] <span class="ot">&lt;-</span> r[i,<span class="st">&#39;zero&#39;</span>] <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>(pos1[i<span class="dv">-1</span>] <span class="sc">-</span> rA)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>pos1 <span class="ot">&lt;-</span> pos1</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>pos2 <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  pos2[i] <span class="ot">&lt;-</span> r[i,<span class="st">&#39;zero&#39;</span>] <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(pos2[i<span class="dv">-1</span>] <span class="sc">-</span> rA)</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>pos2 <span class="ot">&lt;-</span> pos2</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>pos3 <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  pos3[i] <span class="ot">&lt;-</span> r[i,<span class="st">&#39;zero&#39;</span>] <span class="sc">+</span> <span class="fl">0.8</span><span class="sc">*</span>(pos3[i<span class="dv">-1</span>] <span class="sc">-</span> rA)</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>pos3 <span class="ot">&lt;-</span> pos3</span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the results</span></span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(r[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&#39;Exponential growth rates with different lag-1 autocorrelation coefficients&#39;</span>,</span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&#39;year&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;exponential growth rate&#39;</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">&quot;bottomright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;rho = 0&#39;</span>, <span class="st">&#39;rho = 0.2&#39;</span>, <span class="st">&#39;rho = 0.5&#39;</span>, <span class="st">&#39;rho = 0.8&#39;</span>),</span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span></code></pre></div>
-<figure>
-<img src="autocorrelation.png" style="width:80.0%"
-alt="Exponential growth rates with different levels of positive lag-1 autocorrelation" />
-<figcaption aria-hidden="true">Exponential growth rates with different
-levels of positive lag-1 autocorrelation</figcaption>
-</figure>
-<h3 id="estimating-population-growth-rates">Estimating population growth
-rates</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We assume that the mean exponential growth rate r_A = 0.3,</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and the noise term epsilon_t is a standard normal random variable,</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We look at a time period of 20 years</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>rA <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">zero =</span> rA <span class="sc">+</span> e)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate exponential growth rates with positive lag-1 autocorrelation</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We compare different coefficients rho = 0.2, 0.5, 0.8</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>pos1 <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) {</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  pos1[i] <span class="ot">&lt;-</span> r[i,<span class="st">&#39;zero&#39;</span>] <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>(pos1[i<span class="dv">-1</span>] <span class="sc">-</span> rA)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>pos1 <span class="ot">&lt;-</span> pos1</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>pos2 <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) {</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  pos2[i] <span class="ot">&lt;-</span> r[i,<span class="st">&#39;zero&#39;</span>] <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(pos2[i<span class="dv">-1</span>] <span class="sc">-</span> rA)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>pos2 <span class="ot">&lt;-</span> pos2</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>pos3 <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) {</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  pos3[i] <span class="ot">&lt;-</span> r[i,<span class="st">&#39;zero&#39;</span>] <span class="sc">+</span> <span class="fl">0.8</span><span class="sc">*</span>(pos3[i<span class="dv">-1</span>] <span class="sc">-</span> rA)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>pos3 <span class="ot">&lt;-</span> pos3</span></code></pre></div>
+<p><img src="autocorrelation.jpeg" /></p>
+<h3
+id="estimating-population-growth-rates-in-the-presence-of-processobservation-error">Estimating
+population growth rates in the presence of process/observation
+error</h3>
 <p>Now we move on to an important section, where we try to estimate the
 growth rate from data, assuming some very simple models. But first,
 let’s talk about different types of errors we might encounter.</p>
-<h4 id="process-error">Process error</h4>
 <p><strong>Process error</strong> results from variation in true
 population size due to biotic or abiotic processes (Ahrestani <em>et
 al</em>., 2013). Environmental and demographic stochasticities are
@@ -1584,41 +1452,26 @@ N_0}{t}.\]</span></p>
 <p>Here is a toy example: suppose we observe the following number of
 fish in a lake during the first 8 years. Assuming a geometric model,
 what is the average growth rate?</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">size =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">98</span>, <span class="dv">152</span>, <span class="dv">298</span>, <span class="dv">302</span>, <span class="dv">383</span>, <span class="dv">575</span>, <span class="dv">728</span>))</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate annual growth rates</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">8</span>, <span class="dv">0</span>)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>) {</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  lambda[i] <span class="ot">&lt;-</span> N[i<span class="sc">+</span><span class="dv">1</span>,<span class="st">&#39;size&#39;</span>]<span class="sc">/</span>N[i,<span class="st">&#39;size&#39;</span>]</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the geometric mean growth rate</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>lambda_avg <span class="ot">&lt;-</span> <span class="fu">prod</span>(lambda)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">8</span>)</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co"># The average growth rate is 1.2816, which is the same as (728/100)^(1/8)</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the theoretical population size, assuming geometric growth</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>N<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="dv">100</span><span class="sc">*</span>lambda_avg<span class="sc">^</span>N<span class="sc">$</span>year</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the results</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(N<span class="sc">$</span>year, N<span class="sc">$</span>size, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">main =</span> <span class="st">&#39;Population growth with process error only&#39;</span>,</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;year&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;size&#39;</span>)</span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(N<span class="sc">$</span>year, N<span class="sc">$</span>pred, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;prediction&#39;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;red&#39;</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
-<figure>
-<img src="process_error_example.png" style="width:80.0%"
-alt="Population data and predicted population growth using a geometric model, when considering process error only" />
-<figcaption aria-hidden="true">Population data and predicted population
-growth using a geometric model, when considering process error
-only</figcaption>
-</figure>
-<h4 id="observation-error">Observation error</h4>
-<p><strong>Observation error</strong> results from variation in the
-methodology used to obtain the population size (Ahrestani <em>et
-al</em>., 2013). Examples of observation error include difficulty in
-counting animals, which might due to lack of technical expertise,
-insufficient funding, etc.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">size =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">98</span>, <span class="dv">152</span>, <span class="dv">298</span>, <span class="dv">302</span>, <span class="dv">383</span>, <span class="dv">575</span>, <span class="dv">728</span>))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate annual growth rates</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">8</span>, <span class="dv">0</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>) {</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  lambda[i] <span class="ot">&lt;-</span> N[i<span class="sc">+</span><span class="dv">1</span>,<span class="st">&#39;size&#39;</span>]<span class="sc">/</span>N[i,<span class="st">&#39;size&#39;</span>]</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the geometric mean growth rate</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>lambda_avg <span class="ot">&lt;-</span> <span class="fu">prod</span>(lambda)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">8</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># The average growth rate is 1.2816, which is the same as (728/100)^(1/8)</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the theoretical population size, assuming geometric growth</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>N<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="dv">100</span><span class="sc">*</span>lambda_avg<span class="sc">^</span>N<span class="sc">$</span>year</span></code></pre></div>
+<p><img src="process_error_example.jpeg" /></p>
+<p><strong>Observation error</strong>, or as we mentioned earlier,
+sample variation, results from variation in the methodology used to
+obtain the population size (Ahrestani <em>et al</em>., 2013).</p>
 <p>When only observation error exists, the growth rate is accurate. A
 possible geometric model with only observation error can be described as
 <span class="math display">\[\begin{aligned}\ln N_t &amp; =\ln
@@ -1640,91 +1493,74 @@ estimated <span class="math inline">\(r\)</span>. Moreover, the <span
 class="math inline">\(y\)</span>-intercept is the estimated <span
 class="math inline">\(\ln N_0\)</span>. Here we provide another toy
 example with the same data as the previous example on process error:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe, and calculate the log-transformed population sizes</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">size =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">98</span>, <span class="dv">152</span>, <span class="dv">298</span>, <span class="dv">302</span>, <span class="dv">383</span>, <span class="dv">575</span>, <span class="dv">728</span>))</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>N<span class="sc">$</span>log <span class="ot">&lt;-</span> <span class="fu">log</span>(N<span class="sc">$</span>size)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a linear regression with log-transformed population sizes as response variables</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># and year as predictor variables</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(log<span class="sc">~</span>year, <span class="at">data =</span> N)</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># After running the regression, we obtain the following coefficients:</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># (Intercept) 4.40771</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co"># year        0.26756</span></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the results</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(N<span class="sc">$</span>year, N<span class="sc">$</span>log, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">main =</span> <span class="st">&#39;Population growth with observation error only&#39;</span>,</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;year&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;log-transformed size&#39;</span>)</span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(lm1, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;data&#39;</span>, <span class="st">&#39;prediction&#39;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;red&#39;</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataframe, and calculate the log-transformed population sizes</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">8</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">size =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">98</span>, <span class="dv">152</span>, <span class="dv">298</span>, <span class="dv">302</span>, <span class="dv">383</span>, <span class="dv">575</span>, <span class="dv">728</span>))</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>N<span class="sc">$</span>log <span class="ot">&lt;-</span> <span class="fu">log</span>(N<span class="sc">$</span>size)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a linear regression with log-transformed population sizes as response variables</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># and year as predictor variables</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(log<span class="sc">~</span>year, <span class="at">data =</span> N)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># After running the regression, we obtain the following coefficients:</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># (Intercept) 4.40771</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># year        0.26756</span></span></code></pre></div>
+<p><img src="observation_error_example.jpeg" /></p>
+<h3 id="illustration-of-current-application-markrecapture">Illustration
+of current application: mark–recapture</h3>
+<p>Most wildlife populations vary due to stochasticity and we also have
+to estimate abundances, which means that process noise and observation
+error usually occur together. When we can estimate observation/sample
+variance, we can remove it from the total variation. However, in most
+cases, we cannot! If we are not certain that our time series contains
+only one of the two forms of variation, one way is to use an EGSS
+(exponential growth state space) model (Humbert <em>et al</em>.,
+2009).</p>
+<p>“Mark and recapture” is frequently employed to determine the size of
+an animal population when counting each individual is not feasible. This
+involves capturing a subset of the population, marking them in some way,
+and then releasing them back into their habitat. At a later time,
+another subset of the population is captured, and the count of marked
+individuals within this sample is used to estimate the overall
+population size. Mills (2012) indicated that if mark–recapture data are
+available, both <span class="math inline">\(\lambda\)</span> and its
+variance can be calculated directly.</p>
+<p>Here we present a research paper that examines the efficacy of using
+“bear rubs” as a noninvasive method to monitor grizzly bear populations
+in the Greater Yellowstone Ecosystem.</p>
+<p>Stetz, J. B., Kendall, K. C. and Servheen, C. (2010) Evaluation of
+Bear Rub Surveys to Monitor Grizzly Bear Population Trends. <em>Journal
+of Wildlife Management 74</em>(4):860–870.</p>
 <figure>
-<img src="observation_error_example.png" style="width:80.0%"
-alt="Population data and the predicted population growth using a geometric model, when considering observation error only" />
-<figcaption aria-hidden="true">Population data and the predicted
-population growth using a geometric model, when considering observation
-error only</figcaption>
+<img src="grizzly_bear.jpeg"
+alt="© Gregory “Slobirdr” Smith, Grizzly bear (Ursus arctos), Creative Commons CC-BY-SA-2.0 license" />
+<figcaption aria-hidden="true">© Gregory “Slobirdr” Smith, <a
+href="https://commons.wikimedia.org/wiki/File:Grizzly_Bear_(Ursus_arctos_ssp.).jpg">Grizzly
+bear (<em>Ursus arctos</em>)</a>, <a
+href="https://creativecommons.org/licenses/by-sa/2.0/">Creative Commons
+CC-BY-SA-2.0 license</a></figcaption>
 </figure>
-<h3 id="illustration-of-current-application-1">Illustration of current
-application</h3>
-<p>Population vulnerability to climate change linked to timing of
-breeding in boreal ducks (Drever et al., 2012).</p>
-<p><img src="mallard.jpg" width="450" height="300"
-alt="© Nrik Kiran, Mallard (Anas platyrhynchos), Creative Commons CC-BY-SA-4.0 license" />
-<img src="american_wigeon.jpg" width="450" height="300"
-alt="© Judy Gallagher, American Wigeon (Anas americana), Creative Commons CC-BY-2.0 license" /></p>
-<p><img src="scaup.jpg" width="450" height="300"
-alt="© MPF, Greater Scaup (Aythya marila), Creative Commons CC-BY-SA-4.0 license" />
-<img src="scoter.jpg" width="450" height="300"
-alt="© Andy Reago &amp; Chrissy McClarren, Surf scoter (Melanitta perspicillata), Creative Commons CC-BY-2.0 license" /></p>
-<p>(top left) © Nrik Kiran, <a
-href="https://commons.wikimedia.org/wiki/File:Mallard_(Anas_platyrhynchos)_02.jpg">Mallard
-(<em>Anas platyrhynchos</em>)</a>, <a
-href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
-CC-BY-SA-4.0 license</a>; (top right) © Judy Gallagher, <a
-href="https://commons.wikimedia.org/wiki/File:American_Wigeon_-_Anas_americana,_Oakley_Street,_Cambridge,_Maryland.jpg">American
-Wigeon (<em>Anas americana</em>)</a>, <a
-href="https://creativecommons.org/licenses/by/2.0/">Creative Commons
-CC-BY-2.0 license</a>; (bottom left) © MPF, <a
-href="https://commons.wikimedia.org/wiki/File:2017-03-24_Aythya_marila,_male,_Killingworth_Lake,_Northumberland_18.jpg">Greater
-Scaup (<em>Aythya marila</em>)</a>, <a
-href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
-CC-BY-SA-4.0 license</a>; (bottom right) © Andy Reago &amp; Chrissy
-McClarren, <a
-href="https://commons.wikimedia.org/wiki/File:Surf_Scoters_in_the_fog_(43836307370).jpg">Surf
-scoter (<em>Melanitta perspicillata</em>)</a>, <a
-href="https://creativecommons.org/licenses/by/2.0/">Creative Commons
-CC-BY-2.0 license</a></p>
 <h4 id="snapshot-of-the-study-1">Snapshot of the study</h4>
 <ul>
-<li><p>Ducks are perfect test objects because they exhibit diverse
-breeding strategies</p></li>
-<li><p>The authors examined how snow cover duration affected population
-dynamics of duck species breeding in the western boreal forest of North
-America, 1973-2007</p></li>
-<li><p>Four species of ducks (mallard, American wigeon, scaup and
-scoter) were studied. Study areas (Alberta, Saskatchewan, Manitoba,
-Northwest Territories, Yukon and Alaska) were further divided into
-different survey strata</p></li>
-<li><p>Four models were developed based on the existence of variations
-in (a) density dependence, and/or (b) effect of snow cover duration over
-different strata</p></li>
-<li><p>The effect of snow cover duration on population dynamics tended
-to be consistent across strata but differed by species</p>
-<ul>
-<li>For mallard, neither density dependence nor effect of snow cover
-duration varied among strata</li>
-<li>For American wigeon, the effect of density dependence varied
-strongly among strata, while the effect of snow cover varied weakly</li>
-<li>For fixed-window species (scaup and scoter), the effect of density
-dependence varied among strata, but the effect of snow cover were
-similar among strata</li>
-</ul></li>
-<li><p>Population fluctuations of scaups and scoters were positively
-linked to spring snow cover duration. Duck densities were higher after
-springs with longer snow cover duration. Similar but weaker effects of
-snow cover duration were observed in American wigeon populations.
-Mallard population dynamics were negatively associated with spring snow
-cover duration</p></li>
+<li><p>Despite the fact that the grizzly bear population in northwestern
+Montana, USA, has been under recovery management since its listing under
+the United States Endangered Species Act in 1975, there has been a lack
+of rigorous data available to assess the program’s
+effectiveness.</p></li>
+<li><p>Bear rubs are trees or other objects that bears rub against to
+leave scent mark. Researchers then used DNA analysis of hair samples
+collected from bear rubs to estimate grizzly bear population size and
+trend.</p></li>
+<li><p>Researchers compared their estimates based on bear rub surveys to
+those based on traditional methods, such as mark-recapture surveys, and
+found that the bear rub surveys provided a reliable method for
+estimating grizzly bear population trends. They also found that the bear
+rub surveys were more cost-effective and less invasive than traditional
+methods.</p></li>
+<li><p>The authors highlights the potential of using noninvasive methods
+like bear rub surveys to monitor wildlife populations, and noted that
+the use of such methods could improve the accuracy and
+cost-effectiveness of wildlife monitoring programs, ultimately helping
+to better inform conservation and management decisions.</p></li>
 </ul>
 <h3 id="references-2">References</h3>
 <p>Ahrestani, F., Hebblewhite, M. and Post, E. (2013). The importance of
@@ -1745,16 +1581,18 @@ fish populations</em>. Ministry of Agriculture, Fisheries and Food,
 London, UK.</p>
 <p>Case, T. (2000). <em>An illustrated guide to theoretical
 ecology</em>, Oxford University Press.</p>
-<p>Drever, M. C., Clark, R. G., Derksen, C., Slattery, S. M., Toose, P.
-and Nudds, T. D. (2012). Population vulnerability to climate change
-linked to timing of breeding in boreal ducks, <em>Global Change Biology
-18</em>, 480-492.</p>
+<p>Humbert, J.-Y., Mills, L.S., Horne, J.S. and Dennis, B. (2009) A
+better way to estimate population trend. <em>Oikos</em>,
+<strong>118</strong>:1487–1498.</p>
 <p>Lande, R., Engen, S. and Saether, B. (2003). <em>Stochastic
 population dynamics in ecology and conservation</em>. Oxford Series in
 Ecology and Evolution.</p>
-<p>Mills, L. S. (2007) <em>Conservation of wildlife populations:
+<p>Mills, L. S. (2012) <em>Conservation of wildlife populations:
 Demography, genetics, and management</em>, Wiley-Blackwell
 Publishing.</p>
+<p>Stetz, J. B., Kendall, K. C. and Servheen, C. (2010) Evaluation of
+Bear Rub Surveys to Monitor Grizzly Bear Population Trends. <em>Journal
+of Wildlife Management 74</em>(4), 860–870.</p>
 <h2
 id="model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
 Selection: How do we tell which model to use for our data?</h2>
@@ -1898,17 +1736,17 @@ distribution with a given mean (5) and variance (4). In this case then,
 our model is simply the normal distribution. We assume independent
 observations, so likelihood is the product of their individual
 probabilities as given by the probability density function.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the probability density function of the normal distribution for a given mean and variance</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># is given by **dnorm()**</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>like1<span class="ot">=</span><span class="fu">prod</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">5</span>,<span class="at">sd=</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the probability density function of the normal distribution for a given mean and variance</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># is given by **dnorm()**</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>like1<span class="ot">=</span><span class="fu">prod</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">5</span>,<span class="at">sd=</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code> &gt; like1
 [1] 3.133277e-10</code></pre>
 <p>Of course, the value we calculate is not very informative, we need to
 compare it to another explanation of the data. For example, what if the
 data came from a normal distribution with a different mean?</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the mean of the normal distribution to 6</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>like2<span class="ot">=</span><span class="fu">prod</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">6</span>,<span class="at">sd=</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set the mean of the normal distribution to 6</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>like2<span class="ot">=</span><span class="fu">prod</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">6</span>,<span class="at">sd=</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>&gt; like2
 [1] 1.072149e-11</code></pre>
 <p>We see that a mean of 6 is less likely than a mean of 5.</p>
@@ -1922,9 +1760,9 @@ computer rounding errors.</p>
 <p>Log-likelihood <span class="math display">\[ln[ \, L(model|X) ]
 \,=\sum ln [ \,g(x_i|model) ] \,\]</span></p>
 <p>We still get the same answer though!</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>) </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>like1<span class="ot">=</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">5</span>,<span class="at">sd=</span><span class="dv">2</span>,<span class="at">log=</span>T))</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>like2<span class="ot">=</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">6</span>,<span class="at">sd=</span><span class="dv">2</span>,<span class="at">log=</span>T))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>) </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>like1<span class="ot">=</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">5</span>,<span class="at">sd=</span><span class="dv">2</span>,<span class="at">log=</span>T))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>like2<span class="ot">=</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(X,<span class="at">mean=</span><span class="dv">6</span>,<span class="at">sd=</span><span class="dv">2</span>,<span class="at">log=</span>T))</span></code></pre></div>
 <pre><code>    &gt; like1
 [1] -21.88377
 &gt; like2
@@ -1934,11 +1772,11 @@ computer rounding errors.</p>
 (MLE)</h4>
 <p>Of course, a mean of 5 and 6 aren’t the only possibilities, Let’s
 look at a range of potential values for the mean.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#varying the mean</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>means <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="at">by=</span>.<span class="dv">1</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>mean.likes <span class="ot">=</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(means,<span class="cf">function</span>(y) <span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="at">x=</span>X,m</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span>y,<span class="at">sd=</span><span class="dv">2</span>, <span class="at">log=</span>T)))</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#varying the mean</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>means <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="at">by=</span>.<span class="dv">1</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>mean.likes <span class="ot">=</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(means,<span class="cf">function</span>(y) <span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="at">x=</span>X,m</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="ot">=</span>y,<span class="at">sd=</span><span class="dv">2</span>, <span class="at">log=</span>T)))</span></code></pre></div>
 <figure>
 <img src="maxlikemean.jpeg" style="width:50.0%"
 alt="Likelihood of the model of a normal distribution with sd=2 and a range of means" />
@@ -1984,15 +1822,15 @@ routines to find the best values. Finding the parameter values where we
 have the minimum of a function is a standard problem for optimization.
 For example, here I use a built-in optimization function in R in order
 to find the best mean and variance for our data.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>) </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>normL <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(X, <span class="at">mean=</span>par[<span class="dv">1</span>],<span class="at">sd=</span>par[<span class="dv">2</span>],<span class="at">log=</span>T))</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>          </span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>mlest<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),normL) </span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#par argument is the starting search values for par[1], and par[2], so our function is the same as before, just written in a way that we can use it with optim()</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>mlest<span class="sc">$</span>par</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>mlest<span class="sc">$</span>value</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">4</span>) </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>normL <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(X, <span class="at">mean=</span>par[<span class="dv">1</span>],<span class="at">sd=</span>par[<span class="dv">2</span>],<span class="at">log=</span>T))</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>mlest<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),normL) </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co">#par argument is the starting search values for par[1], and par[2], so our function is the same as before, just written in a way that we can use it with optim()</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>mlest<span class="sc">$</span>par</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>mlest<span class="sc">$</span>value</span></code></pre></div>
 <p>We can see that the <strong>optim()</strong> function gives a bit
 more precision, and tells us that the maximum likelihood (minimum
 negative log-likelihood) is found for parameter values of <span
@@ -2008,15 +1846,15 @@ time, by setting the expected value of each observation using the
 equation for a line, with normally distributed errors, where our x is
 the number of female Bay Checkerspot butterflies, and y is the per
 capita growth rate.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>,<span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>,<span class="fl">1.000</span>,<span class="fl">1.882</span>,<span class="fl">0.320</span>,<span class="fl">2.785</span>,<span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,<span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,<span class="fl">6.566</span>,<span class="fl">0.570</span>,<span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>females<span class="ot">=</span><span class="fu">c</span>(<span class="dv">175</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">175</span>,<span class="dv">200</span>,<span class="dv">425</span>,<span class="dv">425</span>,<span class="dv">800</span>,<span class="dv">256</span>,<span class="dv">713</span>,<span class="dv">198</span>,<span class="dv">1819</span>,<span class="dv">575</span>,<span class="dv">567</span>,<span class="dv">1819</span>,<span class="dv">852</span>,<span class="dv">216</span>,<span class="dv">244</span>,<span class="dv">267</span>,<span class="dv">1753</span>,<span class="dv">999</span>,<span class="dv">1788</span>,<span class="dv">143</span>,<span class="dv">79</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>normReg <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>females</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>mlest<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normReg) <span class="co">#par argument is the starting search values for par[1:3] </span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>,<span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>,<span class="fl">1.000</span>,<span class="fl">1.882</span>,<span class="fl">0.320</span>,<span class="fl">2.785</span>,<span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,<span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,<span class="fl">6.566</span>,<span class="fl">0.570</span>,<span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>females<span class="ot">=</span><span class="fu">c</span>(<span class="dv">175</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">175</span>,<span class="dv">200</span>,<span class="dv">425</span>,<span class="dv">425</span>,<span class="dv">800</span>,<span class="dv">256</span>,<span class="dv">713</span>,<span class="dv">198</span>,<span class="dv">1819</span>,<span class="dv">575</span>,<span class="dv">567</span>,<span class="dv">1819</span>,<span class="dv">852</span>,<span class="dv">216</span>,<span class="dv">244</span>,<span class="dv">267</span>,<span class="dv">1753</span>,<span class="dv">999</span>,<span class="dv">1788</span>,<span class="dv">143</span>,<span class="dv">79</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>normReg <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>females</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>mlest<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normReg) <span class="co">#par argument is the starting search values for par[1:3] </span></span></code></pre></div>
 <pre><code>&gt; mlest$par[1:2]
 [1]  0.5244783529 -0.0007595998</code></pre>
 <p>Reassuringly, we find that our estimates intercept (par[1]) and slope
@@ -2032,42 +1870,42 @@ class="math inline">\(log(N_{t+1}/N_t)=r\)</span></p>
 class="math inline">\(log(N_{t+1}/N_t)=r(1-N_t/K)\)</span></p>
 <p>Theta logistic model: <span
 class="math inline">\(log(N_{t+1}/N_t)=r(1-(N_t/K)^\theta)\)</span></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>, <span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>, <span class="fl">1.000</span>,<span class="fl">1.882</span>,<span class="fl">0.320</span>,<span class="fl">2.785</span>, <span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,<span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,<span class="fl">6.566</span>, <span class="fl">0.570</span>, <span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>females<span class="ot">=</span><span class="fu">c</span>(<span class="dv">175</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">175</span>,<span class="dv">200</span>,<span class="dv">425</span>,<span class="dv">425</span>,<span class="dv">800</span>,<span class="dv">256</span>,<span class="dv">713</span>,<span class="dv">198</span>,<span class="dv">1819</span>,<span class="dv">575</span>,<span class="dv">567</span>,<span class="dv">1819</span>,<span class="dv">852</span>,  <span class="dv">216</span>,<span class="dv">244</span>,<span class="dv">267</span>,<span class="dv">1753</span>,<span class="dv">999</span>,<span class="dv">1788</span>,<span class="dv">143</span>,<span class="dv">79</span>)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># function for logistic model with normally distributed errors</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>normReg <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>females</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>mle.normReg<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normReg) <span class="co">#par argument is the starting search values</span></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot data and model predictions at mle</span></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(percap)<span class="sc">~</span>females, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="fu">expression</span>(ln<span class="sc">~</span>lambda),<span class="at">las=</span><span class="dv">1</span>,</span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;number of females&quot;</span>)</span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mle.normReg<span class="sc">$</span>par[<span class="dv">1</span>], <span class="at">b=</span>mle.normReg<span class="sc">$</span>par[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># function for density independent model</span></span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>normDI <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span><span class="fu">mean</span>(<span class="fu">log</span>(percap)),<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">2</span>]),<span class="at">log=</span>T)) }</span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>mle.normDI<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normC) <span class="co">#par argument is the starting search values </span></span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="co"># plot predictions</span></span>
-<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>mle.normDI<span class="sc">$</span>par[<span class="dv">1</span>],<span class="at">lwd=</span><span class="fl">1.5</span> )</span>
-<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="co"># function for theta-logistic model</span></span>
-<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>normTh <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
-<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>(females)<span class="sc">^</span>par[<span class="dv">4</span>]</span>
-<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
-<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>mle.normTh<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">1</span>),normTh) <span class="co">#par argument is the starting search values </span></span>
-<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a><span class="co"># plot predictions and legend</span></span>
-<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(mle.normTh<span class="sc">$</span>par[<span class="dv">1</span>]<span class="sc">+</span>mle.normTh<span class="sc">$</span>par[<span class="dv">2</span>]<span class="sc">*</span>(x)<span class="sc">^</span>mle.normTh<span class="sc">$</span>par[<span class="dv">4</span>], <span class="at">from=</span><span class="dv">0</span>, </span>
-<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">to=</span><span class="dv">4000</span>,<span class="at">add=</span>T, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;top&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;exponential&quot;</span>, <span class="st">&quot;logistic&quot;</span>,<span class="st">&quot;theta-logistic&quot;</span> ),</span>
-<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>percap<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.229</span>,<span class="fl">1.125</span>, <span class="fl">3.889</span>,<span class="fl">1.143</span>,<span class="fl">2.125</span>, <span class="fl">1.000</span>,<span class="fl">1.882</span>,<span class="fl">0.320</span>,<span class="fl">2.785</span>, <span class="fl">0.278</span>,<span class="fl">9.187</span>,<span class="fl">0.316</span>,<span class="fl">0.986</span>,<span class="fl">3.208</span>,<span class="fl">3.973</span>,<span class="fl">0.254</span>,<span class="fl">1.130</span>,<span class="fl">1.094</span>,<span class="fl">6.566</span>, <span class="fl">0.570</span>, <span class="fl">1.790</span>,<span class="fl">0.080</span>,<span class="fl">0.552</span>,<span class="fl">1.190</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>females<span class="ot">=</span><span class="fu">c</span>(<span class="dv">175</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">175</span>,<span class="dv">200</span>,<span class="dv">425</span>,<span class="dv">425</span>,<span class="dv">800</span>,<span class="dv">256</span>,<span class="dv">713</span>,<span class="dv">198</span>,<span class="dv">1819</span>,<span class="dv">575</span>,<span class="dv">567</span>,<span class="dv">1819</span>,<span class="dv">852</span>,  <span class="dv">216</span>,<span class="dv">244</span>,<span class="dv">267</span>,<span class="dv">1753</span>,<span class="dv">999</span>,<span class="dv">1788</span>,<span class="dv">143</span>,<span class="dv">79</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># function for logistic model with normally distributed errors</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>normReg <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>females</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>mle.normReg<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normReg) <span class="co">#par argument is the starting search values</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot data and model predictions at mle</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(percap)<span class="sc">~</span>females, <span class="at">type=</span><span class="st">&quot;p&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="fu">expression</span>(ln<span class="sc">~</span>lambda),<span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;number of females&quot;</span>)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span>mle.normReg<span class="sc">$</span>par[<span class="dv">1</span>], <span class="at">b=</span>mle.normReg<span class="sc">$</span>par[<span class="dv">2</span>],<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="co"># function for density independent model</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>normDI <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span><span class="fu">mean</span>(<span class="fu">log</span>(percap)),<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">2</span>]),<span class="at">log=</span>T)) }</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>mle.normDI<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>),normC) <span class="co">#par argument is the starting search values </span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="co"># plot predictions</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>mle.normDI<span class="sc">$</span>par[<span class="dv">1</span>],<span class="at">lwd=</span><span class="fl">1.5</span> )</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="co"># function for theta-logistic model</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>normTh <span class="ot">=</span> <span class="cf">function</span>(par) {</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>          y.pred <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>(females)<span class="sc">^</span>par[<span class="dv">4</span>]</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">dnorm</span>(<span class="fu">log</span>(percap),<span class="at">mean=</span>y.pred,<span class="at">sd=</span><span class="fu">sqrt</span>(par[<span class="dv">3</span>]),<span class="at">log=</span>T)) }</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>mle.normTh<span class="ot">=</span><span class="fu">optim</span>(<span class="at">par=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">100</span>,<span class="dv">1</span>,<span class="dv">1</span>),normTh) <span class="co">#par argument is the starting search values </span></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a><span class="co"># plot predictions and legend</span></span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(mle.normTh<span class="sc">$</span>par[<span class="dv">1</span>]<span class="sc">+</span>mle.normTh<span class="sc">$</span>par[<span class="dv">2</span>]<span class="sc">*</span>(x)<span class="sc">^</span>mle.normTh<span class="sc">$</span>par[<span class="dv">4</span>], <span class="at">from=</span><span class="dv">0</span>, </span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">to=</span><span class="dv">4000</span>,<span class="at">add=</span>T, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;top&quot;</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;exponential&quot;</span>, <span class="st">&quot;logistic&quot;</span>,<span class="st">&quot;theta-logistic&quot;</span> ),</span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 <figure>
 <img src="3modelfits.jpeg" style="width:80.0%"
 alt="Fits of the three different models to data from Harrison, 1991" />
@@ -2322,5 +2160,10 @@ Statistical Review/Revue Internationale de Statistique</em>,<em>42</em>,
 <p>Harrison, S. (1991). Local extinction in a metapopulation context: an
 empirical evaluation. <em>Biological Journal of the Linnean
 Society</em>, <em>42</em>(1-2), 73-88.</p>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
 </body>
 </html>
