@@ -63,7 +63,7 @@ legend(2.2, 2400, legend=c("Exponential population growth", "Arithmetic growth o
        col=c("blue", "red"), cex=0.8, pch=c(21,1))
 ```
 
-![](density-independent_files/figure-html/unnamed-chunk-1-1.jpg)<!-- -->
+![](density-independent_files/figure-html/unnamed-chunk-1-1.jpeg)<!-- -->
 
 * The main difference between these two types of growth is that an arithmetic growth is characterized by the addition or subtraction of a fixed value (eg. we added "50" in our linear growth example above, which could represent agricultural yields, for instance).
 
@@ -312,7 +312,7 @@ legend(1995, 1300, legend=c("Observed data", "Model predictions"),
        col=c("red", "black"), cex=0.8, lty= c(NA,1), pch=c(15,NA))
 ```
 
-![](density-independent_files/figure-html/unnamed-chunk-8-1.jpg)<!-- -->
+![](density-independent_files/figure-html/unnamed-chunk-8-1.jpeg)<!-- -->
 
 #### Simplifying the exponential growth calculation
 
@@ -372,7 +372,7 @@ plot(hippo$year, hippo$pop_size, type="o", pch=15, col="red",
      xlab="years", ylab="population size (number of individuals)")
 ```
 
-![](density-independent_files/figure-html/unnamed-chunk-10-1.jpg)<!-- -->
+![](density-independent_files/figure-html/unnamed-chunk-10-1.jpeg)<!-- -->
 
 
 ```r
@@ -420,7 +420,7 @@ legend(1995, 1300, legend=c("oObserved data", "Model predictions"),
        col=c("red", "black"), cex=0.8, lty= c(NA,1), pch=c(15,NA))
 ```
 
-![](density-independent_files/figure-html/unnamed-chunk-13-1.jpg)<!-- -->
+![](density-independent_files/figure-html/unnamed-chunk-13-1.jpeg)<!-- -->
 
 This illustration demonstrates the utility of the exponential growth model for studying invading populations. Why do you think hippos are showing this uncontrolled growth?
 
