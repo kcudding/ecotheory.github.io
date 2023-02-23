@@ -1,14 +1,41 @@
-
-
 ## Density dependence
 
 Density-dependent population models are used to describe population dynamics in which the growth or decline of a population is influenced by the population's own density.
+
+
+### Logistic growth model
+
+Recall that with exponential growth, per capita growth rate is:
+
+$$ r = \frac{dN}{dtN} $$
+
+* dN/dt: The net number of new individuals in a population over a unit of time (also called recruitment or yield)
+* r: Intrinsic growth rate
+* N: Population size
+
+Of all the ways that the per capita growth rate could decrease with increasing population density, we consider the simplest scenario in which this relationship is linear. Now we have:
+
+$$ \frac{dN}{dtN} = r(1-\frac{N}{K})$$
+
+* K: Carrying capacity
+
+where $1-\frac{N}{K}$ describes the negative effects an increasing population density has on the per capita growth rate.
+
+Re-arrange the above equation and we have the **continuous logistic growth model**:
+
+$$ \frac{dN}{dt} = r \frac{K-N}{K} N $$
+
+* K − N: How many more individuals can be added to the population before
+it hits carrying capacity
+* K − N/K: The fraction of the carrying capacity that has not yet been
+“used up”
+
 
 ###  Negative density dependence
 
 In a population that has already been established, resources begin to become scarce, and competition starts to play a role. As a result, the population growth will be negatively affected by increasing density. This is called **negative density dependence**.
 
-* Increasing population size gives rise to:
+Increasing population size gives rise to:
 
   + shortages in food or other limiting resources
 
@@ -18,38 +45,19 @@ In a population that has already been established, resources begin to become sca
   
   + greater risks of disease outbreak
 
-* Negative density dependence decreases population growth at high density and increases it at low density
+Negative density dependence decreases population growth at high density and increases it at low density.
 
 
 ![](density-dependent_files/figure-html/unnamed-chunk-1-1.png)<!-- -->  
 The constrast between exponential with a constant per capita growth rate of $r=0.18$, and logistic growth with an initial per capita growth rate of $r=0.18$, $K=500$. In logistic growth, the per capita growth rate decreases with population size (adapted from Mills, 2013)
 
-
-##### "K": carrying capacity
+* Carrying capacity (K)
 
 The maximum per capita growth rate, $r$, occurs when population density is zero, and decreases until it finally reaches zero. The population density at which the per capita growth rate is zero, K, is sometimes called the carrying capacity.
 
-* **Note**: Do not think of carrying capacity as the maximum population size observed. A population can exceed K temporarily.
+* *Note*: Do not think of carrying capacity as the maximum population size observed. A population can exceed K temporarily.
 
 With all these concepts, now we should look at the logistic population model.
-
-
-##### Logistic growth model
-
-Recall that with exponential growth, per capita growth rate is:
-
-$$ r = \frac{dN}{dtN} $$
-
-Of all the ways that the per capita growth rate could decrease with increasing population density, we consider the simplest scenario in which this relationship is linear. Now we have:
-
-$$ \frac{dN}{dtN} = r(1-\frac{N}{K})$$
-
-where $1-\frac{N}{K}$ describes the negative effects an increasing population density has on the per capita growth rate.
-
-
-Re-arrange the above equation and we have the **continuous logistic growth model**:
-
-$$ \frac{dN}{dt} = r \frac{K-N}{K} N $$
 
 
 #### Stability
@@ -65,7 +73,7 @@ Consider a logistic growth model with a carrying capacity $K=500$ and per capita
 * When population number is at 0 (point a) or 500 (point d), the population growth rate is at zero so that the density will not change.
 
 ![](density-dependent_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
-Population growth rate, $dN=dt$, as a function of $N$. Arrows are pointing to the stable equilibrium point at carrying capacity (adapted from Stevens, 2009)
+Population growth rate, $dN=dt$, as a function of $N$. Arrows are pointing to the stable equilibrium point at carrying capacity
 
 
 ### Discrete time logistic growth
@@ -103,15 +111,15 @@ Let's look at the following example:
 We have a population that has an initial population density of $N=10$, and carrying capacity $K=100$. With different values of $r$, we can see very different population growth trajectories.
 
 ![](density-dependent_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
-Population growth with an initial population density of $N=10$, carrying capacity $K=100$. With different values of per capita growth rate $r$, the population growth trajectories are very different.
+Population growth with an initial population density of $N=10$, carrying capacity $K=100$. With different values of per capita growth rate $r$, the population growth trajectories are very different
 
-When $r$ is close to zero, we have a steady simple asymptotic approach to K (Fig. a). As $r$ increases, we see the population overshoot the carrying capacity and exhibit **damped oscillations** (Fig. b). At $r=2.2$, we see a stable limit cycle of two points (Fig. c). As $r$ increases further, the number of points increases to a four-point limit cycle (e.g., at $r=2.5$, Fig. d), then an eight-point cycle, a 16-point limit cycle, and so on. As $r$ increases further, however, stable limit cycles shift into chaos (Fig. e).
+When $r$ is close to zero, we have a steady simple asymptotic approach to K (Fig. a). As $r$ increases, we see the population overshoot the carrying capacity and exhibit **damped oscillations** (Fig. b). At $r=2.2$, we see a stable limit cycle of two points (Fig. c). As $r$ increases further, a four-point limit cycle is observed (e.g., at $r=2.5$, Fig. d), then an eight-point cycle, a 16-point limit cycle, and so on. As $r$ increases further, however, stable limit cycles shift into chaos (Fig. e).
 
 **Bifurcation Graph**
 We can also demonstrate the chaotic dynamics using a bifurcation plot, which examines $N$ as a function of $r$. As $r$ increases the number of $N$ will continue to double, growing geometrically. Eventually, we reach a point when there becomes an infinite number of unique points.
 
 ![](density-dependent_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
-Long term dynamics of discrete logistic population growth, with an initial population density of $N=10$, and carrying capacity $K=100$. (Stevens, 2009)
+Long term dynamics of discrete logistic population growth, with an initial population density of $N=10$, and carrying capacity $K=100$ (Stevens, 2009)
 
 <br>
 **Chaos** is a non-repeating, deterministic fluctuating trajectory, that is bounded, and sensitive to initial conditions.
@@ -125,12 +133,12 @@ Chaos is **very sensitive to initial conditions**. Slightly changing the initial
 * Here we start with two populations that have initial size of 10 and 11 (all other parameters remain the same). As shown on the graph below, we see completely different trajectories for population growth.
 
 ![](density-dependent_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
-Chaotic dynamics with different initial conditions. Black solid line demonstrates the population trajectory for a population that has an initial size of 10; red dotted line demonstrates the population trajectory for a population that has an initial size of 11.
+Chaotic dynamics with different initial conditions. Black solid line demonstrates the population trajectory for a population that has an initial size of 10; red dotted line demonstrates the population trajectory for a population that has an initial size of 11
 
 
 **Biological significance of chaos in population growth**
 
-Chaos brings more complexity into predicting population growth, especially for species with relatively large $r_d$ value. For example, for temperate-zone insects in particular, even if the natural world was 100 % predictable, the population dynamics could still in some circumstances be indistinguishable from chaos (Mays, 1975).
+Chaos brings more complexity into predicting population growth, especially for species with relatively large $r_d$ value. For example, for temperate-zone insects in particular, even if the natural world was 100 % predictable, the population dynamics could still in some circumstances be indistinguishable from chaos (May, 1975).
 
 
 ### Other types of density denpendent population models
@@ -149,7 +157,7 @@ The most common way to model non-linear density dependent population growth is t
 
 $$ N_{t+1} = N_t e^{r_0[1-(N_t/K)^\theta]} $$
 
-* The effects of $\theta$ on density dependence  control the shape of relation between growth rate and population size, as seen in the following figure:
+* The effects of $\theta$ on density dependence control the shape of relation between growth rate and population size, as seen in the following figure:
 
 ![](density-dependent_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 Per capita growth rate vs. population size with different theta values
@@ -162,15 +170,13 @@ Population size vs. time with different theta values
 
 #### Positive density dependence
 
-In many cases, cooperation or facilitation leads to mutually positive interactions among members of a population
-
-**Positive density dependence** occurs when vital rates or populations increase as density increases
+In many cases, cooperation or facilitation leads to mutually positive interactions among members of a population. Positive density dependence occurs when vital rates or populations increase as density increases.
 
 ##### Allee effect
 
 Allee & Bowen (1932) initially noticed that goldfish grew faster in waters which had previously contained other goldfish, than in waters that had not contained them. He further experimented with a number of different species and showed that larger group size or some degree of crowding may stimulate reproduction, prolong survival in adverse conditions (through resistance to desiccation or by social thermoregulation), and enhance protection from toxic reagents.
 
-The Allee effect occurs when there is a positive correlation between population density and individual fitness
+The Allee effect occurs when there is a positive correlation between population density and individual fitness at low population density.
 
 ![© flowcomm, African wilddogs hunting in packs (https://live.staticflickr.com/5117/13949089869_e175469efc_b.jpg), Creative Commons CC BY 2.0 license](african_w_dog.jpg)
 
@@ -200,7 +206,7 @@ No Allee effects (green line), weak Allee effects (red line), and strong Allee a
 
 To plot population growth rate as a function of abundance:
 
-$$ \frac{dN}{dt} = rN(\frac{N}{a}-1)(1-\frac{N}{K})$$
+$$\frac{dN}{dt} = rN(\frac{N}{a}-1)(1-\frac{N}{K})$$
 where a is the critical point of the population, below which the population growth rate (or recruitment) becomes negative, and the population is driven towards extinction.
 
 
@@ -211,9 +217,9 @@ From previous sections we learned that carrying capacity $K$ is a stable equilib
 For a population model with a strong Allee effect. It has two stable and one unstable equilibria point. The stable point is when population size equals $N=0$ or carrying capacity $N=K$. The single unstable equalibrium point lies at $N=A$, where $A$ is the critical population size.
 
 
-### Illustration of current application: research paper review
+### Illustration of current application
 
-Title: Density-dependent growth in brown trout: Effects of introducing wild and hatchery fish (Bohlin et al., 2002).
+Density-dependent growth in brown trout: Effects of introducing wild and hatchery fish (Bohlin et al., 2002).
 
 
 #### Research questions
