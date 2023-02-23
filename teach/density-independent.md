@@ -47,7 +47,7 @@ A population model consists of mathematical equations (eg., exponential and logi
 
 In 1798, Thomas Malthus published *An Essay on the Principle of Population* (Malthus, 1798). This work distinguished arithmetic and geometric growth, with human populations characterized by a geometric (or exponential; the difference between them will be covered soon) growth while food resources were restricted to an arithmetic pattern of growth.
 
-![© Elhuyar Fundazioa, [Thomas Malthus](https://commons.wikimedia.org/wiki/File:Malthus.png), [Creative Commons  CC-BY-SA-3.0 license](https://creativecommons.org/licenses/by-sa/3.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/malthus.png) 
+![© Elhuyar Fundazioa, [Thomas Malthus](https://commons.wikimedia.org/wiki/File:Malthus.png), [Creative Commons  CC-BY-SA-3.0 license](https://creativecommons.org/licenses/by-sa/3.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/malthus.jpg) 
 
 Let's plot an illustration to differentiate both types of growth:
 
@@ -63,7 +63,7 @@ legend(2.2, 2400, legend=c("Exponential population growth", "Arithmetic growth o
        col=c("blue", "red"), cex=0.8, pch=c(21,1))
 ```
 
-![](density-independent_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+![](density-independent_files/figure-html/unnamed-chunk-1-1.jpg)<!-- -->
 
 * The main difference between these two types of growth is that an arithmetic growth is characterized by the addition or subtraction of a fixed value (eg. we added "50" in our linear growth example above, which could represent agricultural yields, for instance).
 
@@ -75,7 +75,7 @@ Now let's see when simple models such as the exponential growth model are used i
 
 * **Experimental settings**: In lab conditions, we remove as many factors as possible which could potentially interfere with the growth of our model species, so that we can focus on understanding the effects of our selected explanatory variables during experiments. In our lab, we work with duckweeds, a group of small aquatic plant species. In the photos below, you can see the difference between natural and lab conditions. In lab settings, duckweeds can achieve unlimited growth which can be modelled by exponential growth models. This is because a single species is selected and sterilized, eliminating potential sources of disease and all of the competition naturally seen between duckweed species (different sizes of fronds - leaf-like shapes - represent different duckweed species), and with other species, such as algae. In labs, other factors are also controlled to provide optimal conditions, such as light, nutrition, and temperature.
 
-![Duckweeds in the field (left) and in lab conditions (right); left: *Spirodela polyrhiza* (larger fronds) and (probably) *Lemna minor*; right: *Landoltia punctata*](https://raw.github.com/kcudding/kcudding.github.io/main/teach/duckweed_bio_example.png)
+![Duckweeds in the field (left) and in lab conditions (right); left: *Spirodela polyrhiza* (larger fronds) and (probably) *Lemna minor*; right: *Landoltia punctata*](https://raw.github.com/kcudding/kcudding.github.io/main/teach/duckweed_bio_example.jpg)
 
 * **Expanding invasive species**: Following the introduction of an invasive species, its spread is enabled by an exponential population growth (Shigesada & Kawasaki, 1997) due to the availability of resources and/or absence of natural enemies. Spotted knapweeds (*Centaurea nigra*), for example, were accidentally introduced to North America in the 1980s with agricultural seeds and soil discarded from ship ballast from Eurasia. This species is considered problematic because it quickly replaces livestock pasture and reduces biodiversity in affected sites (Minnesota Department of Agriculture, 2023). A modelling study considering the life history of knapweeds found that exponential growth following the introduction of invading populations can be observed for about 2 years (Jacobs & Sheley, 1998). Thus, exponential models are useful for modelling the behaviour of invading species. 
 
@@ -83,7 +83,7 @@ Now let's see when simple models such as the exponential growth model are used i
 
 * **Management of species at risk of extinction**: Well-managed species will have little limitation to growth due to abundant resources and small population sizes, resulting in exponential growth rates. This was observed following management strategies to recover endangered crane populations in both North America and Japan. Whooping cranes (*Grus americana*) are the largest North American birds which became severely endangered with a population of 21 birds in 1952, as well as the red-crowned crane of Hokkaido (*Grus japonensis*) in Japan, with 33 individuals at this same year. Since then, management efforts such as federal protection and creating wildlife refuges ensured an exponential growth of bird populations, which by 2020 achieved 506 individuals in North America and 1,900 in Japan. The much faster rate at which Japanese cranes are growing is attributed to an additional management strategy consisting of artificially feeding birds during periods of food scarcity which was not implemented in North America (Gronewold, 2021).
 
-![(left) © CheepShot, [Whooping Crane](https://commons.wikimedia.org/wiki/File:Whooping_Crane_%283873713594%29.jpg), [Creative Commons CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/); (right) © Peter Batty, [Red-crowned cranes calling](https://www.flickr.com/photos/ebatty/50772105027), [Creative Commons CC BY-NC-SA 2.0 license](https://creativecommons.org/licenses/by-nc-sa/2.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/cranes.png)
+![(left) © CheepShot, [Whooping Crane](https://commons.wikimedia.org/wiki/File:Whooping_Crane_%283873713594%29.jpg), [Creative Commons CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/); (right) © Peter Batty, [Red-crowned cranes calling](https://www.flickr.com/photos/ebatty/50772105027), [Creative Commons CC BY-NC-SA 2.0 license](https://creativecommons.org/licenses/by-nc-sa/2.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/cranes.jpg)
 
 ### Mathematical representation of population growth patterns
 
@@ -277,7 +277,7 @@ While $\lambda$ values greater than 1 represent growing populations, r values gr
 
 Remember our duckweeds? Due to their fast and asexual growth, they are good model species for population ecology studies. Duckweed population growth can be calculated in a number of ways, such as counting individual fronds (leaf like shape) or measuring the dry weight of specimens. Try to count how many individuals are found in each date in the picture below. Any round-shaped protuberance can be considered as a separate individual.
 
-![Populations of duckweeds (*Lemna minor*) grown in laboratory conditions and optimal temperature](https://raw.github.com/kcudding/kcudding.github.io/main/teach/duckweed_pop2.png) 
+![Populations of duckweeds (*Lemna minor*) grown in laboratory conditions and optimal temperature](https://raw.github.com/kcudding/kcudding.github.io/main/teach/duckweed_pop2.jpg) 
 
 
 ```r
@@ -312,7 +312,7 @@ legend(1995, 1300, legend=c("Observed data", "Model predictions"),
        col=c("red", "black"), cex=0.8, lty= c(NA,1), pch=c(15,NA))
 ```
 
-![](density-independent_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](density-independent_files/figure-html/unnamed-chunk-8-1.jpg)<!-- -->
 
 #### Simplifying the exponential growth calculation
 
@@ -372,7 +372,7 @@ plot(hippo$year, hippo$pop_size, type="o", pch=15, col="red",
      xlab="years", ylab="population size (number of individuals)")
 ```
 
-![](density-independent_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](density-independent_files/figure-html/unnamed-chunk-10-1.jpg)<!-- -->
 
 
 ```r
@@ -420,7 +420,7 @@ legend(1995, 1300, legend=c("oObserved data", "Model predictions"),
        col=c("red", "black"), cex=0.8, lty= c(NA,1), pch=c(15,NA))
 ```
 
-![](density-independent_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+![](density-independent_files/figure-html/unnamed-chunk-13-1.jpg)<!-- -->
 
 This illustration demonstrates the utility of the exponential growth model for studying invading populations. Why do you think hippos are showing this uncontrolled growth?
 
