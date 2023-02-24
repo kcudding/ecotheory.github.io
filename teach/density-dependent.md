@@ -118,7 +118,7 @@ When $r$ is close to zero, we have a steady simple asymptotic approach to K (Fig
 **Bifurcation Graph**
 We can also demonstrate the chaotic dynamics using a bifurcation plot, which examines $N$ as a function of $r$. As $r$ increases the number of $N$ will continue to double, growing geometrically. Eventually, we reach a point when there becomes an infinite number of unique points.
 
-![](density-dependent_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](density-dependent_files/figure-html/unnamed-chunk-6-1.jpeg)<!-- -->
 Long term dynamics of discrete logistic population growth, with an initial population density of $N=10$, and carrying capacity $K=100$ (Stevens, 2009)
 
 <br>
