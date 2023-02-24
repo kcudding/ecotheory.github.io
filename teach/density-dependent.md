@@ -48,7 +48,7 @@ Increasing population size gives rise to:
 Negative density dependence decreases population growth at high density and increases it at low density.
 
 
-![](density-dependent_files/figure-html/unnamed-chunk-1-1.png)<!-- -->  
+![](density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg)<!-- -->  
 The constrast between exponential with a constant per capita growth rate of $r=0.18$, and logistic growth with an initial per capita growth rate of $r=0.18$, $K=500$. In logistic growth, the per capita growth rate decreases with population size (adapted from Mills, 2013)
 
 * Carrying capacity (K)
@@ -72,7 +72,7 @@ Consider a logistic growth model with a carrying capacity $K=500$ and per capita
 
 * When population number is at 0 (point a) or 500 (point d), the population growth rate is at zero so that the density will not change.
 
-![](density-dependent_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](density-dependent_files/figure-html/unnamed-chunk-3-1.jpeg)<!-- -->
 Population growth rate, $dN=dt$, as a function of $N$. Arrows are pointing to the stable equilibrium point at carrying capacity
 
 
@@ -110,7 +110,7 @@ Let's look at the following example:
 
 We have a population that has an initial population density of $N=10$, and carrying capacity $K=100$. With different values of $r$, we can see very different population growth trajectories.
 
-![](density-dependent_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](density-dependent_files/figure-html/unnamed-chunk-4-1.jpeg)<!-- -->
 Population growth with an initial population density of $N=10$, carrying capacity $K=100$. With different values of per capita growth rate $r$, the population growth trajectories are very different
 
 When $r$ is close to zero, we have a steady simple asymptotic approach to K (Fig. a). As $r$ increases, we see the population overshoot the carrying capacity and exhibit **damped oscillations** (Fig. b). At $r=2.2$, we see a stable limit cycle of two points (Fig. c). As $r$ increases further, a four-point limit cycle is observed (e.g., at $r=2.5$, Fig. d), then an eight-point cycle, a 16-point limit cycle, and so on. As $r$ increases further, however, stable limit cycles shift into chaos (Fig. e).
@@ -132,7 +132,7 @@ Chaos is **very sensitive to initial conditions**. Slightly changing the initial
 
 * Here we start with two populations that have initial size of 10 and 11 (all other parameters remain the same). As shown on the graph below, we see completely different trajectories for population growth.
 
-![](density-dependent_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](density-dependent_files/figure-html/unnamed-chunk-5-1.jpeg)<!-- -->
 Chaotic dynamics with different initial conditions. Black solid line demonstrates the population trajectory for a population that has an initial size of 10; red dotted line demonstrates the population trajectory for a population that has an initial size of 11
 
 
@@ -159,12 +159,12 @@ $$ N_{t+1} = N_t e^{r_0[1-(N_t/K)^\theta]} $$
 
 * The effects of $\theta$ on density dependence control the shape of relation between growth rate and population size, as seen in the following figure:
 
-![](density-dependent_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](density-dependent_files/figure-html/unnamed-chunk-7-1.jpeg)<!-- -->
 Per capita growth rate vs. population size with different theta values
 
 * When $\theta$>1, this weakens density dependence at low N, so the population grows faster than logistic, all else being equal (concave). When $\theta$<1, this strengthens density dependence at low N, causing the population to grow more slowly than logistic, all else being equal (convex):
 
-![](density-dependent_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](density-dependent_files/figure-html/unnamed-chunk-8-1.jpeg)<!-- -->
 Population size vs. time with different theta values
 
 
@@ -200,7 +200,7 @@ The Allee effect occurs when there is a positive correlation between population 
 
 * **Allee effect population threshold**: A population size below which the per capita growth rate is negative and the population declines towards extinction. Populations that are subject to Allee effects can collapse and become extinct if their population size falls below the critical threshold
 
-![](density-dependent_files/figure-html/unnamed-chunk-9-1.png)<!-- -->  
+![](density-dependent_files/figure-html/unnamed-chunk-9-1.jpeg)<!-- -->  
 No Allee effects (green line), weak Allee effects (red line), and strong Allee affects (blue line, $a=50$) acting on a population that has an intrinsic population growth rate $r=0.18$ and carrying capacity $K=500$
 
 
