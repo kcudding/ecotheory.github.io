@@ -241,8 +241,7 @@ lionfish <- data.frame(year = c(2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017),
                     density_natural = c(0, 0.02, 0.15, 0.49, 0.57, 0.34, 0.43, 0.56),
                     density_artificial = c(0, 2, 8, 14.7, 32.98, 30.5, 20.45, 32.98))
 
-# We can plot the population trajectories for both populations inhabiting natural
-# and artificial reefs:
+# We can plot the population trajectories for both populations inhabiting natural and artificial reefs:
 par(mfrow=c(1,2))
 
 plot(lionfish$year, lionfish$density_natural, type="o",
