@@ -235,6 +235,27 @@ Density-dependent condition and growth of invasive lionfish in the northern Gulf
 
 #### Calculate the population growth of invasive lionfish
 
+```{r}
+# First, let's create a data frame containing population counts as in Dahl et al. (2019):
+lionfish <- data.frame(year = c(2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017),
+                    density_natural = c(0, 0.02, 0.15, 0.49, 0.57, 0.34, 0.43, 0.56),
+                    density_artificial = c(0, 2, 8, 14.7, 32.98, 30.5, 20.45, 32.98))
+
+# We can plot the population trajectories for both populations inhabiting natural
+# and artificial reefs:
+par(mfrow=c(1,2))
+
+plot(lionfish$year, lionfish$density_natural, type="o",
+     pch=16, lwd=1.5, bty="l", cex.lab=1.2, cex.main=0.8,
+    main="(a)", 
+    xlab="years", ylab="population size")
+
+plot(lionfish$year, lionfish$density_artificial, type="o",
+     pch=16, lwd=1.5, bty="l", cex.lab=1.2, cex.main=0.8,
+     main="(b)", 
+     xlab="years", ylab="population size")
+```
+
 ![](density-dependent_files/figure-html/unnamed-chunk-10-1.jpeg)<!-- -->
 Invasive lionfish mean density estimated from remotely operated vehicle video samples at northern Gulf of Mexico natural (a, n = 16) and artificial (b, n = 22) reef locations. Data are take from Dahl et al. (2019) Fig 2 and text. Unreported data values are chosen chosen arbitrarily from estimation.
 
