@@ -219,32 +219,52 @@ For a population model with a strong Allee effect. It has two stable and one uns
 
 ### Illustration of current application
 
-Density-dependent growth in brown trout: Effects of introducing wild and hatchery fish (Bohlin et al., 2002).
+Density-dependent condition and growth of invasive lionfish in the northern Gulf of Mexico (Dahl et al., 2019). This research paper discusses how increasing population density can affect the condition and size-at-age (growth) of invasive lionfish.
 
+![© Bernard Dupont,Red lionfish (https://commons.wikimedia.org/wiki/File:Red_Lionfish_%28Pterois_volitans%29_%288479302765%29.jpg), Creative Commons CC BY-SA 2.0 license](lionfish.jpg)
 
-#### Research questions
+#### Snapshot of the study
 
-* What is the underlining density dependence mechanism in wild brown trout?
+* Indo-Pacific red lionfish (*Pterois volitans*) have invaded the Gulf of Mexico over the past 30 years. Their invasion success is likely due to a release of predation pressure in the novel environment.
 
-* To what extent will the release of domesticated brown trout induce density-dependent effects on wild brown trout populations?
+* Their invasion poses long-term threats to the native communities by altering trophic structure through direct predation, and reducing species richness.
 
+* An exponential increase in lionfish density at both natural and artificial reefs was observed beginning in 2010 through 2014, after which mean lionfish density on both reef types reached an apparent peak. Throughout the following years, the population number flutuates around the peak value. (illustrated below with a graph)
 
-#### Research snapshot
+* Researchers found that the growth and condition of invasive lionfish appears to be density-dependent. Lionfish inhabiting densely populated reefs exhibited smaller mean size at age (slower growth), and lower body conditions.
 
-* Density can affect growth in both underyearlings and older brown trout. These effects were very similar regardless of what treatment groups these competitors belong to (whether they are wild or hatchery-reared)
+#### Calculate the population growth of invasive lionfish
 
-* Wild resident brown trout showed restricted movement in small streams; while hatchery trout tended to move more when introduced into the wild
+```{r}
+# First, let's create a data frame containing population counts as in Dahl et al. (2019):
+lionfish <- data.frame(year = c(2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017),
+                    density_natural = c(0, 0.02, 0.15, 0.49, 0.57, 0.34, 0.43, 0.56),
+                    density_artificial = c(0, 2, 8, 14.7, 32.98, 30.5, 20.45, 32.98))
 
-* Wild resident brown trout showed an prior residence advantage over hatchery-reared brown trout. Hatchery-reared brown trout ate less and were less efficient in consuming novel prey, despite their larger body size. These differences disappeared after a few weeks in the wild
+# We can plot the population trajectories for both populations inhabiting natural and artificial reefs:
+par(mfrow=c(1,2))
 
+plot(lionfish$year, lionfish$density_natural, type="o",
+     pch=16, lwd=1.5, bty="l", cex.lab=1.2, cex.main=0.8,
+    main="(a)", 
+    xlab="years", ylab="population size")
 
-#### Conclusions
+plot(lionfish$year, lionfish$density_artificial, type="o",
+     pch=16, lwd=1.5, bty="l", cex.lab=1.2, cex.main=0.8,
+     main="(b)", 
+     xlab="years", ylab="population size")
+```
+Invasive lionfish mean density estimated from remotely operated vehicle video samples at northern Gulf of Mexico natural (a, n = 16) and artificial (b, n = 22) reef locations. Data are take from Dahl et al. (2019) Fig 2 and text. Unreported data values are chosen chosen arbitrarily from estimation.
 
-* Competition originating from increasing population density is not only limited to underyearlings brown trout. Density-dependent growth is the main density-dependent response in yearling trout
+From both figures, we can see that the invasive lionfish population increases exponentially during the first couple years (2011-2014). After reaching a capacity in 2014, it starts to fluctuate around that peak value. If the researchers keep recording the population number after 2017, we will be able to generate a density-dependent logisitic growth curve.
 
-* Stocking of hatchery fish can exert similar negative density effects on wild individuals if released into the wild
+#### Takeaways from this example
 
-![U.S.Fish and Wildlife Service, Wild brown trout (link to image), Public Domain Mark 1.0](brown_trout.jpg)
+* The population growth of invasive lionfish in the Gulf of Mexico is likely to be density-dependent. Population trends suggest that this species may have already reached carrying capacity.
+
+* Future studies should examine other potential density-dependent demographic rates (e.g. movement, fecundity, mortality) in invasive lionfish populations to capture the full extent of density-dependent effects.
+
+* These information are necessary for applying effective fish removal programs.
 
 
 ### References:
@@ -255,6 +275,8 @@ Bohlin, T., Sundström, L., Johnsson, J., Höjesjö, J., & Pettersson, J. (2002)
 Courchamp, F., Luděk, B., & Gascoigne, J. (2008). *Allee effects in ecology and conservation*. Oxford Biology. Oxford; Oxford University Press.
 
 Drake, J., & Kramer, A. (2011). Allee effects. *Nature Education Knowledge*. https://www.nature.com/scitable/knowledge/library/allee-effects-19699394/.
+
+Dahl, K. A., Edwards, M. A., & Patterson III, W. F. (2019). Density-dependent condition and growth of invasive lionfish in the northern Gulf of Mexico. *Marine Ecology Progress Series*, 623, 145-159. https://doi.org/10.3354/meps13028.
 
 May, Robert M. (1975). Biological populations obeying difference equations: stable points, stable cycles, and chaos. *Journal of Theoretical Biology 51*(2), 511–24. https://doi.org/10.1016/0022-5193(75)90078-8.
 
