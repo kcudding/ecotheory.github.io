@@ -359,6 +359,7 @@ The stage stage distribution is associated with the right eigenvector $w_1$. The
 $$
 \frac{w_1}{\sum^{s}_{i=1}{w_1}}
 $$
+
 where $s$ is the number of stages.
 
 
