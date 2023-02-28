@@ -246,8 +246,8 @@ par(mfrow=c(1,2))
 
 plot(lionfish$year, lionfish$density_natural, type="o",
      pch=16, lwd=1.5, bty="l", cex.lab=1.2, cex.main=0.8,
-    main="(a)", 
-    xlab="years", ylab="population size")
+     main="(a)", 
+     xlab="years", ylab="population size")
 
 plot(lionfish$year, lionfish$density_artificial, type="o",
      pch=16, lwd=1.5, bty="l", cex.lab=1.2, cex.main=0.8,
