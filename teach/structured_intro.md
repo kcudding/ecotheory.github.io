@@ -146,7 +146,7 @@ Anatomy of a female-based projection matrix for common fog (adapted from Biek et
 
 * In a Leslie Matrix, an individual can only survive and transition to the next stage, or die, so everything below the first row and not on the subdiagonal of the matrix must be zero. (different from the Lefkovitch matrix)
 
-
+$$
 \begin{bmatrix}
 f_0 & f_1 & f_2 & \cdots & f_{m-1}& f_{m} \\
 s_0 & 0 & 0 & \cdots & 0 & 0 \\
@@ -155,6 +155,7 @@ s_0 & 0 & 0 & \cdots & 0 & 0 \\
 \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
 0 & 0 & 0 & \cdots & s_{m-1} & 0 \\
 \end{bmatrix}
+$$
 
 A leslie matrix consists of $m+1$ rows and $m+1$ columns. $f$ represents the reproductive rate of that age class in the population, $s$ represents the probability for surviving and transitioning to the next age class.
 
