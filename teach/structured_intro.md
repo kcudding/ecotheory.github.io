@@ -30,7 +30,7 @@ In the same population, individuals can have markedly different dynamics dependi
 
 * Coulson et al. (2001) found that individual susceptibility to changing environmental conditions differs between Soay sheep of different ages. Young and old individuals are more severely affected by adverse weather conditions than adults of prime reproductive age.
 
-![© Eileen Henderson, A pair of Soay sheep on Hirta(https://www.geograph.org.uk/photo/493775), Creative Commons CC BY-SA 2.0 License](images/soay.jpg)
+![© Eileen Henderson, A pair of Soay sheep on Hirta(https://www.geograph.org.uk/photo/493775), Creative Commons CC BY-SA 2.0 License](soay.jpg)
 
 #### Stage structure
 
