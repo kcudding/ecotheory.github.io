@@ -295,7 +295,7 @@ We can see that the relative proportion of individuals in each stage class stays
 $$
 \begin{bmatrix}
 98.1\% \\
-1.7\%\\
+1.7\% \\
 0.2\% \\
 \end{bmatrix}
 $$
