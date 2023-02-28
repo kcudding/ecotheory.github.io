@@ -141,7 +141,7 @@ Chaotic dynamics with different initial conditions. Black solid line demonstrate
 Chaos brings more complexity into predicting population growth, especially for species with relatively large $r_d$ value. For example, for temperate-zone insects in particular, even if the natural world was 100 % predictable, the population dynamics could still in some circumstances be indistinguishable from chaos (May, 1975).
 
 
-### Other types of density denpendent population models
+### Other types of density dependent population models
 
 The linear decline in per capita growth rate with density modeled above is not necessarily general. In fact, most species exhibit **nonlinear** declines in growth rate under negative density dependence.
 
