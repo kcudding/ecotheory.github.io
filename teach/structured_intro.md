@@ -190,13 +190,21 @@ By multiplying the number of frogs times the matrix of mean vital rates, we proj
 
 
 $$
-\begin{bmatrix}0&52&279.5 \\0.019&0.25&0 \\0&0.08&0.43 \\\end{bmatrix} \times \begin{bmatrix}70 \\20 \\10 \\\end{bmatrix} = 
+\begin{bmatrix}
+  0&52&279.5 \\
+  0.019&0.25&0 \\
+  0&0.08&0.43 \\
+\end{bmatrix} \times \begin{bmatrix}70 \\20 \\10 \\\end{bmatrix} = 
  \begin{bmatrix}
   (0 \times 70) + (52 \times 50) + (279.5 \times 10) \\
   (0.019 \times 70) + (0.25 \times 50) + (0 \times 10)  \\
   (0 \times 70) + (0.08 \times 50) + (0.43 \times 10) \\
  \end{bmatrix} = 
-\begin{bmatrix}3835 \\6 \\6 \\\end{bmatrix}
+\begin{bmatrix}
+  3835 \\
+  6 \\
+  6 \\
+\end{bmatrix}
 $$
 Projecting the population number of common frog through time (adapted from Mills, 2013).
 
