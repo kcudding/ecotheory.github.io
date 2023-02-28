@@ -301,6 +301,7 @@ $$
 $$
 
 This result can also be demonstrated by plotting the log number of individuals in each stage class versus time:
+
 ![](structured_intro_files/figure-html/Plot SSD-1.jpeg)<!-- -->
 Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.
 
