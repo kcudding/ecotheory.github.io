@@ -478,7 +478,7 @@ legend("topleft",
        lty = 1:5, col = 1, bty = "n", cex = 0.8)
 ```
 
-![](structured_intro_files/figure-html/toads projection-1.jpeg)<!-- -->
+![](structured_intro_files/figure-html/toads projection-1.jpeg)
 Population numbers of invasive guttural toad over 30 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.
 
 **Step 2:**
