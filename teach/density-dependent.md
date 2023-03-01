@@ -178,7 +178,7 @@ Allee & Bowen (1932) initially noticed that goldfish grew faster in waters which
 
 The Allee effect occurs when there is a positive correlation between population density and individual fitness at low population density.
 
-![© flowcomm, African wilddogs hunting in packs (https://live.staticflickr.com/5117/13949089869_e175469efc_b.jpg), Creative Commons CC BY 2.0 license](african_w_dog.jpg)
+![© flowcomm, [African wilddogs hunting in packs](https://live.staticflickr.com/5117/13949089869_e175469efc_b.jpg), [Creative Commons CC BY 2.0 license](https://creativecommons.org/licenses/by/2.0/)](african_w_dog.jpg)
 
 **Example**
 
