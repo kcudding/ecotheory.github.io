@@ -77,7 +77,7 @@ $$\text{Component elasticity of vital rate x} = \text{(component sensitivity of 
 
 Let's pretend that we want to identify the most important vital rates affecting the population dynamics of a critically endangered South American pine species, *Araucaria angustifolia*. This ancient tree originated in the Triassic period and is now threatened by habitat loss and climate change (Marchioro, Santos, & Siminski, 2020; Thomas, 2013). 
 
-![© Webysther Nunes, "Araucária" (*Araucaria angustifolia*), https://commons.wikimedia.org/wiki/File:Webysther_20190413132108_-_Arauc%C3%A1ria_%28Araucaria_angustifolia%29.jpg, [Creative Commons CC-BY-SA 4.0 BR license](https://creativecommons.org/licenses/by-sa/4.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/araucaria.jpg){ fig.width=180 fig.height=120 dpi=300 }
+![© Webysther Nunes, ["Araucária" (*Araucaria angustifolia*)](https://commons.wikimedia.org/wiki/File:Webysther_20190413132108_-_Arauc%C3%A1ria_%28Araucaria_angustifolia%29.jpg), [Creative Commons CC-BY-SA 4.0 BR license](https://creativecommons.org/licenses/by-sa/4.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/araucaria.jpg){ fig.width=180 fig.height=120 dpi=300 }
 
 What is the importance of the survival of seedlings vs. adult reproduction for this population?
 
@@ -217,7 +217,7 @@ Elasticities are useful in population biology studies due to the following prope
 
 One of the first studies which applied sensitivity analysis found that management strategies for endangered loggerhead sea turtles should focus on young adults in the ocean more than hatchlings moving from the sand to the sea. This is because elasticity values for young adult survival are greater than elasticities for eggs and hatchlings. High mortality for young adults was attributed to turtles accidentally trapped in fishing gear. After implementing turtle excluder devices (TED) as a management strategy, temporary population increases were observed (Crouse, Crowder, & Caswell, 1987). A more recent study identified that this strategy has contributed to a deep reduction in turtle mortality, including other endangered species (Finkbeiner et al., 2011). Such findings contribute to the choice and application of successful management strategies which result in population growth of endangered species. 
 
-![© T. Moore, Loggerhead Turtle, https://commons.wikimedia.org/wiki/File:Loggerhead_Turtle_%285884715439%29.jpg, [Public use provided by the National Institute of Standards and Technology (NIST), US](https://www.nist.gov/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/turtle.jpg){ fig.width=180 fig.height=120 dpi=300 } 
+![© T. Moore, [Loggerhead Turtle](https://commons.wikimedia.org/wiki/File:Loggerhead_Turtle_%285884715439%29.jpg), Public use provided by the [National Institute of Standards and Technology (NIST), US](https://www.nist.gov/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/turtle.jpg){ fig.width=180 fig.height=120 dpi=300 } 
 
 #### Analytical sensitivity and elasticity & variance in vital rates
 
@@ -261,7 +261,11 @@ poor conditions, and density-dependent factors
 * R^2 is a function of analytical sensitivity and vital rate variance
 
 #### Sensitivity analysis demonstration
-Now let's use an actual population matrix to make a sensitivity analysis and try to figure out the most important vital rates to an oak tree (*Quercus mongolica*) population. In Asia, the native range for this plant, populations have been suffering steep decreases in size due to the spread of a fungal disease vectored by a beetle (Choi et al., 2022). Thus, it is important to know life history aspects affecting the population growth for this species when predicting disease impacts and planning management actions. A mean matrix for this plant can be found on the [Compadre database](https://compadre-db.org/Species/47241).
+Now let's use an actual population matrix to make a sensitivity analysis and try to figure out the most important vital rates to an oak tree (*Quercus mongolica*) population. In Asia, the native range for this plant, populations have been suffering steep decreases in size due to the spread of a fungal disease vectored by a beetle (Choi et al., 2022). 
+
+![(left) © MPF, [*Quercus mongolica*](https://commons.wikimedia.org/wiki/File:Quercus_mongolica_in_June.jpg), [Creative Commons CC BY-SA 3.0 license](https://creativecommons.org/licenses/by-sa/3.0/deed.en); (right) © William M. Ciesla, [Oak wilt](https://www.invasive.org/browse/detail.cfm?imgnum=0758073#), [Creative Commons CC BY-NC 3.0 license](https://creativecommons.org/licenses/by-nc/3.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/oak.jpg){ fig.width=180 fig.height=120 dpi=300 }
+
+It is important to know life history aspects affecting the population growth for this species when predicting disease impacts and planning management actions. A mean matrix for this plant can be found on the [Compadre database](https://compadre-db.org/Species/47241).
 
 ```{r,comment = "NA"}
 # We paste the matrix elements found in the Compadre database
