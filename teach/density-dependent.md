@@ -221,7 +221,7 @@ For a population model with a strong Allee effect. It has two stable and one uns
 
 Density-dependent condition and growth of invasive lionfish in the northern Gulf of Mexico (Dahl et al., 2019). This research paper discusses how increasing population density can affect the condition and size-at-age (growth) of invasive lionfish.
 
-![© Bernard Dupont,Red lionfish (https://commons.wikimedia.org/wiki/File:Red_Lionfish_%28Pterois_volitans%29_%288479302765%29.jpg), Creative Commons CC BY-SA 2.0 license](lionfish.jpg)
+![© Bernard Dupont, [Red lionfish](https://commons.wikimedia.org/wiki/File:Red_Lionfish_%28Pterois_volitans%29_%288479302765%29.jpg), [Creative Commons CC BY-SA 2.0 license](https://creativecommons.org/licenses/by-sa/2.0/deed.en)](lionfish.jpg)
 
 #### Snapshot of the study
 
