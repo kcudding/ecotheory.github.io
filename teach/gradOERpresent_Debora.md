@@ -19,6 +19,8 @@ These sections are composed by a short description of the publication, an illust
 
 ### Applying Theory to Understand Big Problems
 
+* The case of invasive hippos in Colombia
+
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/example1.jpg)
 
 <div class="notes">
@@ -26,6 +28,8 @@ One of our examples describes how an exponential growth of invasive hippo popula
 </div>
 
 ### Improving Learning Through Case Studies
+
+* The case of invasive lionfish in Mexico
 
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/example2.jpg)
 
