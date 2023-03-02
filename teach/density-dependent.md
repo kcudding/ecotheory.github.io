@@ -219,21 +219,21 @@ For a population model with a strong Allee effect. It has two stable and one uns
 
 ### Illustration of current application
 
-Density-dependent condition and growth of invasive lionfish in the northern Gulf of Mexico (Dahl et al., 2019). This research paper discusses how increasing population density can affect the condition and size-at-age (growth) of invasive lionfish.
+Density-dependent condition and growth of invasive lionfish in the northern Gulf of Mexico (Dahl et al., 2019). This research paper discusses how increasing population density can affect invasive lionfish size-at-age (growth) and population dynamics.
 
 ![© Bernard Dupont, [Red lionfish](https://commons.wikimedia.org/wiki/File:Red_Lionfish_%28Pterois_volitans%29_%288479302765%29.jpg), [Creative Commons CC BY-SA 2.0 license](https://creativecommons.org/licenses/by-sa/2.0/deed.en)](lionfish.jpg)
 
 #### Snapshot of the study
 
-* Indo-Pacific red lionfish (*Pterois volitans*) have invaded the Gulf of Mexico over the past 30 years. Their invasion success is likely due to a release of predation pressure in the novel environment.
+* Indo-Pacific red lionfish (*Pterois volitans*) have invaded the Gulf of Mexico over the past 30 years. Their invasion success is likely due to a release of predation pressure in the novel environment
 
-* Their invasion poses long-term threats to the native communities by altering trophic structure through direct predation, and reducing species richness.
+* Their invasion poses long-term threats to the native communities by altering trophic structures through direct predation, and reducing species richness
 
-* An exponential increase in lionfish density at both natural and artificial reefs was observed beginning in 2010 through 2014, after which mean lionfish density on both reef types reached an apparent peak. Throughout the following years, the population number flutuates around the peak value. (illustrated below with a graph)
+* An exponential increase in lionfish density at both natural and artificial reefs was observed beginning in 2010 through 2014, after which mean lionfish density on both reef types reached an apparent peak. Throughout the following years, the population number is fluctuating around this peak value (check the plot below)
 
-* Researchers found that the growth and condition of invasive lionfish appears to be density-dependent. Lionfish inhabiting densely populated reefs exhibited smaller mean size at age (slower growth), and lower body conditions.
+* The growth of invasive lionfish appears to be density-dependent. Lionfish inhabiting densely populated reefs exhibited smaller mean size at age (slower growth)
 
-#### Calculate the population growth of invasive lionfish
+#### Calculating the population growth of invasive lionfish
 
 ```{r}
 # First, let's create a data frame containing population counts as in Dahl et al. (2019):
@@ -256,17 +256,17 @@ plot(lionfish$year, lionfish$density_artificial, type="o",
 ```
 
 ![](density-dependent_files/figure-html/unnamed-chunk-10-1.jpeg)<!-- -->
-Invasive lionfish mean density estimated from remotely operated vehicle video samples at northern Gulf of Mexico natural (a, n = 16) and artificial (b, n = 22) reef locations. Data are take from Dahl et al. (2019) Fig 2 and text. Unreported data values are chosen chosen arbitrarily from estimation.
+Invasive lionfish mean density estimated from remotely operated vehicle video samples at northern Gulf of Mexico natural (a, n = 16) and artificial (b, n = 22) reef locations (Dahl et al., 2019)
 
-From both figures, we can see that the invasive lionfish population increases exponentially during the first couple years (2011-2014). After reaching a capacity in 2014, it starts to fluctuate around that peak value. If the researchers keep recording the population number after 2017, we will be able to generate a density-dependent logisitic growth curve.
+From both figures, we can see that the invasive lionfish population increases exponentially during the first years (2011-2014). After potentially reaching carrying capacity in 2014, it starts to fluctuate around that peak value. If this trend continues, a density-dependent logisitic growth curve will represent well the growth patterns for these populations.
 
 #### Takeaways from this example
 
-* The population growth of invasive lionfish in the Gulf of Mexico is likely to be density-dependent. Population trends suggest that this species may have already reached carrying capacity.
+* The population growth of invasive lionfish in the Gulf of Mexico is likely to be density-dependent. Population trends suggest that this species may have already reached carrying capacity
 
-* Future studies should examine other potential density-dependent demographic rates (e.g. movement, fecundity, mortality) in invasive lionfish populations to capture the full extent of density-dependent effects.
+* Future studies should examine other potential density-dependent demographic rates (e.g. movement, fecundity, mortality) in invasive lionfish populations to capture the full extent of density-dependent effects
 
-* These information are necessary for applying effective fish removal programs.
+* Knowing the population dynamics for this species enables the application of effective fish removal programs
 
 
 ### References:
