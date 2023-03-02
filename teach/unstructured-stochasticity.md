@@ -178,30 +178,6 @@ lm1 <- lm(log~year, data = N)
 
 ![](observation_error_example.jpeg)
 
-
-### Illustration of current application: mark–recapture
-
-Most wildlife populations vary due to stochasticity and we also have to estimate abundances, which means that process noise and observation error usually occur together. When we can estimate observation/sample variance, we can remove it from the total variation. However, in most cases, we cannot! If we are not certain that our time series contains only one of the two forms of variation, one way is to use an EGSS (exponential growth state space) model (Humbert _et al_., 2009).
-
-"Mark and recapture" is frequently employed to determine the size of an animal population when counting each individual is not feasible. This involves capturing a subset of the population, marking them in some way, and then releasing them back into their habitat. At a later time, another subset of the population is captured, and the count of marked individuals within this sample is used to estimate the overall population size. Mills (2012) indicated that if mark–recapture data are available, both $\lambda$ and its variance can be calculated directly.
-
-Here we present a research paper that examines the efficacy of using "bear rubs" as a noninvasive method to monitor grizzly bear populations in the Greater Yellowstone Ecosystem.
-
-Stetz, J. B., Kendall, K. C. and Servheen, C. (2010) Evaluation of Bear Rub Surveys to Monitor Grizzly Bear Population Trends. *Journal of Wildlife Management 74*(4):860--870.
-
-![© Gregory "Slobirdr" Smith, [Grizzly bear (_Ursus arctos_)](https://commons.wikimedia.org/wiki/File:Grizzly_Bear_(Ursus_arctos_ssp.).jpg), [Creative Commons  CC-BY-SA-2.0 license](https://creativecommons.org/licenses/by-sa/2.0/)](grizzly_bear.jpeg)
-
-#### Snapshot of the study
-
--  Despite the fact that the grizzly bear population in northwestern Montana, USA, has been under recovery management since its listing under the United States Endangered Species Act in 1975, there has been a lack of rigorous data available to assess the program's effectiveness.
-
-- Bear rubs are trees or other objects that bears rub against to leave scent mark. Researchers then used DNA analysis of hair samples collected from bear rubs to estimate grizzly bear population size and trend.
-
-- Researchers compared their estimates based on bear rub surveys to those based on traditional methods, such as mark-recapture surveys, and found that the bear rub surveys provided a reliable method for estimating grizzly bear population trends. They also found that the bear rub surveys were more cost-effective and less invasive than traditional methods.
-
-- The authors highlights the potential of using noninvasive methods like bear rub surveys to monitor wildlife populations, and noted that the use of such methods could improve the accuracy and cost-effectiveness of wildlife monitoring programs, ultimately helping to better inform conservation and management decisions.
-
-
 ### References
 Ahrestani, F., Hebblewhite, M. and Post, E. (2013). The importance of observation versus process error in analyses of global ungulate populations. *Sci Rep 3*, 3125.
 
