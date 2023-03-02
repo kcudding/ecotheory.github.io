@@ -87,8 +87,50 @@ Zapata, G. C. (2020). Sprinting to the finish line: The benefits and challenges 
 ### Specific output
 
 - an online e-text (see draft at https://www.ecotheory.ca/teach/BIOL652.html)
-- embedded R code and examples
+- with embedded R code and examples
+![](OERfrontpage.png)
 
+### Connecting Theory, Research, and Application
+
+  
+
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/steps.jpg){width=50%}
+
+  
+
+In our educational material, we are developing sections dedicated to illustrating how a recent publication has applied population ecology theory to tackle ecological problems such as biological invasions or extinction risk
+
+  
+
+These sections are composed by a short description of the publication, an illustration of the concerned organism, codes using published population data and equations to create models, and plots providing model projections for that given population
+
+  
+
+### Applying Theory to Understand Big Problems
+
+  
+
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/example1.jpg)
+
+
+
+One of our examples describes how an exponential growth of invasive hippo populations in South America is threatening aquatic systems due to the overload of organic matter they bring. 
+
+  
+
+### Improving Learning Through Case Studies
+
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/example2.jpg)
+
+Another example focused on invasive lion fish, which threatens the biodiversity of invaded areas, shows that the number of lion fish living at the same time controls the population sizes for this species, which has implications for management actions
+
+Reading recent publications and developing a section in our educational material where we summarize methods and main findings can help improve our learning in the following ways:
+
+- Better understand concepts and equations by applying models to real-world data
+
+- Recognize the importance of ecological theory to understand and manage current problems (extinction risk, biological invasions, etc.)
+
+- Become familiar with relevant literature
 
 ### Perceived difficulties: Jan 2023 - Now
 - Overwhelmed by multiple skills/requirements
@@ -103,6 +145,29 @@ Zapata, G. C. (2020). Sprinting to the finish line: The benefits and challenges 
 
 
 Brown, B., Jacobsen, M., Roberts, V., Hurrell, C., Neutzling, N., & Travers-Hayward, M. Open Educational Practices Create Conditions for Developing Research Skills in Graduate Education. _Online learning and teaching from kindergarten to graduate school_, 457.
+
+### Coding skills developed from the OER experience
+
+  
+
+#### Graphic skills
+
+* Graphs and figures are provided in many section for demonstrating some important concepts.
+
+* The process of re-creating the graphs through code deepens the understanding of the material.
+
+* Better formatting and visualization for the audience.
+
+![](Rplot01.jpeg){width=50%} ![](Rplot02.jpeg){width=50%}
+
+
+#### RMarkdown skills
+
+* Compile the .md file into different formats for demonstration and presentation.
+
+* Different sections of each module are usually divided among the authors. Version control is necessary and important.
+
+* Bibliography and citation using RMarkdown and BibTex file.
 
 ### Summary
 - this OER project course may have added benefits in developing professional skills related to teaching, literature review, and open science practices, beyond the stated learning objective of developing mastery in population modelling
