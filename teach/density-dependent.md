@@ -53,7 +53,7 @@ The constrast between exponential with a constant per capita growth rate of $r=0
 
 Here is another example from the duckweed showing how population size can limit the population growth of duckweed in a controlled environment.
 
-![Logistic growth of duckweed in the lab environment] (https://raw.github.com/kcudding/kcudding.github.io/main/teach/duckweed_log.jpg)
+![Logistic growth of duckweed in the lab environment](https://raw.github.com/kcudding/kcudding.github.io/main/teach/duckweed_log.jpg)
 
 
 * Carrying capacity (K)
