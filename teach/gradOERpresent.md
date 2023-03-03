@@ -123,35 +123,48 @@ Zapata, G. C. (2020). Sprinting to the finish line: The benefits and challenges 
 
 ### Connecting Theory, Research, and Application
   
-- sections dedicated to illustrating how a recent publication has applied population ecology theory to tackle ecological problems such as biological invasions or extinction risk
-- 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/steps.jpg){width=40%}
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/steps.jpg){width=80%}
 
+\note{
 
-- include a short description of the publication, an illustration of the concerned organism, codes using published population data and equations to create models, and plots providing model projections for that given population
+In our educational material, we are developing sections dedicated to illustrating how a recent publication has applied population ecology theory to tackle ecological problems such as biological invasions or extinction risk
 
   
+
+These sections are composed by a short description of the publication, an illustration of the concerned organism, codes using published population data and equations to create models, and plots providing model projections for that given population
+
+}
 
 ### Applying Theory to Understand Big Problems
 
-  
+  * The case of invasive hippos in Colombia
 
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/example1.jpg)
 
-
+\note{
 
 One of our examples describes how an exponential growth of invasive hippo populations in South America is threatening aquatic systems due to the overload of organic matter they bring. 
 
-  
+}
 
 ### Improving Learning Through Case Studies
+
+* The case of invasive lionfish in Mexico
 
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/example2.jpg){ width=90%}
 
+
+
+\note{Everything you want
+
+
 Another example focused on invasive lion fish, which threatens the biodiversity of invaded areas, shows that the number of lion fish living at the same time controls the population sizes for this species, which has implications for management actions
 
-### Improving Learning Through Case Studies
+  
+
 Reading recent publications and developing a section in our educational material where we summarize methods and main findings can help improve our learning in the following ways:
+
+  
 
 - Better understand concepts and equations by applying models to real-world data
 
@@ -159,6 +172,7 @@ Reading recent publications and developing a section in our educational material
 
 - Become familiar with relevant literature
 
+}
 # Lessons
 
 ### Perceived difficulties: Jan 2023 - Now
