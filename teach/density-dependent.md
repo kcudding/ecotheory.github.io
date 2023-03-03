@@ -52,7 +52,8 @@ Negative density dependence decreases population growth at high density and incr
 The constrast between exponential with a constant per capita growth rate of $r=0.18$, and logistic growth with an initial per capita growth rate of $r=0.18$, $K=500$. In logistic growth, the per capita growth rate decreases with population size (adapted from Mills, 2013)
 
 Here is another example from the duckweed showing how population size can limit the population growth of duckweed in a controlled environment.
-![](duckweed.log.jpg)
+
+![Logistic growth of duckweed in the lab environment] (https://raw.github.com/kcudding/kcudding.github.io/main/teach/duckweed_log.jpg)
 
 
 * Carrying capacity (K)
