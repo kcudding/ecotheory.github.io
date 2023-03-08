@@ -80,18 +80,36 @@ $$ln \lambda_S =\lim_{t \to \infty}\frac{1}{t} log || \boldsymbol{A}(t-1) \ldots
 - less likely to be true for short-lived organisms highly influenced by environmental conditions
  - more complicated to complete sensitivity analysis  because need to incorporate mean rates, variances, covariances, and characterisitics of the environmental temporal variation
 
-### transient dynamics? 
-- **stochastic transient population growth rate $r_s$**. Use many simulations (e.g., 10,000) independent sample paths of _t_ = a short interval (e.g., 5 years).
-- **damping ratio** $\rho = |\lambda_{subdom}|/\lambda_{dom}$ of the mean matrix **A**, which is the ratio of the subdominant ($\lambda_{subdom}$) and dominant ($\lambda_{dom}$) eigenvalues ([Haridas and Tuljapurkar, 2007](https://www.frontiersin.org/articles/10.3389/fcosc.2021.814863/full#B26)). The damping ratio is a metric of convergence to the stable stage equilibrium: $\rho$  close to 0 indicates that the population is far from equilibrium and a $\rho$ close to 1 suggests a population that will converge to long-term dynamics relatively rapidly.
-- **transient elasticity** captures the instantaneous influence of a single time step change in vital rates e1ij and the long-term influence of perturbations in the stage structure e2ij ([Haridas and Tuljapurkar, 2007](https://www.frontiersin.org/articles/10.3389/fcosc.2021.814863/full#B26); [Haridas and Gerber, 2010](https://www.frontiersin.org/articles/10.3389/fcosc.2021.814863/full#B25)).
+ 
+ ### Sensitivity analysis of the long term growth rate
+ 
+ 
+ When calculating the sensitivities of a stochastic matrix model, we will need to use the time‐specific stage distribution $\boldsymbol{w}(t)$, the time‐specific reproductive value vector $\boldsymbol{v}(t)$, and the time-specific population growth rate $\lambda_t$. This last term is calculated as 
+ $\lambda_t=\frac{e^T \boldsymbol{n}(t+1)}{e^T \boldsymbol{n}(t)}$
+where $e^T$ is a vector of ones (Tuljapurkar 1990).
 
-### Transient sensitivity and elasticity
-Stochastic transient elasticity with respect to perturbations in the variance captures the effects of temporal variability in matrix elements (i.e., plant vital rates) and the effects of the initial stage structure ([Ellis and Crone, 2013](https://www.frontiersin.org/articles/10.3389/fcosc.2021.814863/full#B12)).
+Caswell (2005) showed that the sensitivity of long‐run population growth to a parameter $\theta$  (with current value $\\theta^*$) upon which some demographic rates depend is:
+$$\frac{\partial ln \lambda_S}{\partial \theta}=\lim_{L\to\infty}\frac{1}{L}\sum^{L-1}_{t=0}\frac{\boldsymbol{v}^T(1+1)\frac{\partial \boldsymbol{A}(t)}{\partial \theta}\boldsymbol{w}(t)}{\lambda_t \boldsymbol{v}^T(t+1)\boldsymbol{w}(t+1)} $$
 
-### Example: reintroduction of critically endangered plant
-_Delissea waianaeensis_ (Campanulaceae) is a critically endangered long-lived shrub endemic to the island of O‘ahu https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:77066986-1
+which is a stochastic analog of the previous expression for sensitivity analysis,  where the derivative should be understood as evaluated at $\theta$  =$\theta^*$  . 
 
-![David  Eickhoff from Pearl City, Hawaii, USA, [CC BY 2.0](https://creativecommons.org/licenses/by/2.0), via Wikimedia Commons](640px-Delissea_waianaeensis.jpg)
+The main approach to estimate  $\frac{\partial ln \lambda_S}{\partial \theta}$ is via stochastic simulations  (Caswell, 2001, Morris & Doak 2002) 
+
+Giaimo, S., & Traulsen, A. (2022). Age‐specific sensitivity analysis of stable, stochastic and transient growth for stage‐classified populations. _Ecology and Evolution_, _12_(12), e9561.
+
+
+### Sensitivity analysis of the time-specific growth rate
+Finally, time‐specific growth (sometimes called the transient population growth rate) $ln \lambda_t$  is susceptible of sensitivity analysis too. Combining and differentiating Equations [3](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-disp-0003) and [5](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-disp-0005), Caswell ([2007](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-bib-0010), eq. 43) found that
+$$\frac{\partial ln \lambda_S}{\partial \theta}=\frac{e^T}{N(t+1)}\frac{\partial \boldsymbol{n}(t+1)}{\partial \theta} - \frac{e^T}{N(t)}\frac{\partial \boldsymbol{n} (t)}{\partial \theta}$$
+
+where the vectors $\frac{\partial \boldsymbol{n}(t)}{\partial \theta}$ are computed via the recursion
+
+$$\frac{\partial \boldsymbol{n}(t+1)}{\partial \theta}=\frac{\partial \boldsymbol{A}(t)}{\partial \theta}\boldsymbol{n}(t)+\boldsymbol{A}(t)\frac{\partial \boldsymbol{n}(t)}{\partial \theta}$$
+
+from given initial vectors $\boldsymbol{n}(0)$ and $\frac {\partial \boldsymbol{n}𝐧(0)}{\partial \theta}$ and 𝜕𝐧(0)/𝜕𝜃. Caswell ([2007](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-bib-0010)) gives information on how to set the latter vector. A particularly relevant case is when 𝜃 has no effect on the initial population and 𝜕𝐧(0)/𝜕𝜃 is the zero vector. The derivatives in Equations [7](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-disp-0007) and [8](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-disp-0008) should be understood as evaluated at 𝜃's current value.
+
+We can state the sesitivtiy of matrix elemt
+
 
 ### Example: reintroduction of critically endangered plant
 Bialic-Murphy, L., Knight, T. M., Kawelo, K., & Gaoue, O. G. (2022). The Disconnect Between Short-and Long-Term Population Projections for Plant Reintroductions. _Frontiers in Conservation Science_, _2_, 124.
