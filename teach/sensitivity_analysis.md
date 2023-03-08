@@ -1,17 +1,3 @@
----
-title: "Sensitivities, elasticities, and management applications"
-author: "Debora"
-date: "2023-02-10"
-output:
-  html_document:
-    toc: true
-    toc_depth: 4
-    number_sections: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: false
-    keep_md: yes
----
 
 
 

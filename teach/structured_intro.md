@@ -1,15 +1,5 @@
 ---
-title: "Structured Introduction"
-author: "Eddie Wu"
-date: '2023-02-08'
-output:
-  html_document: 
-    toc: yes
-    number_sections: yes
-    toc_float:
-      collapsed: no
-      smooth_scroll: no
-    keep_md: yes
+title: "Structured population models"
 bibliography: intro_bibliography.bib
 nocite: '@*'
 ---

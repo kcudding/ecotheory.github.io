@@ -1,8 +1,4 @@
----
-output:
-  html_document: default
-  pdf_document: default
----
+
 ## Density-dependence in populations without stage-structure
 
 In the first chapter, we talked about density-dependence in unstructured population models. In general, we can define a model with a differential equation (continuous)
