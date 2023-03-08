@@ -306,26 +306,22 @@ Kim</p></li>
         <li><a href="#resources" id="toc-resources">Resources</a></li>
         <li><a href="#references-5"
         id="toc-references-5">References</a></li>
-        <li><a
-        href="#density-dependence-in-populations-without-stage-structure"
-        id="toc-density-dependence-in-populations-without-stage-structure">Density-dependence
-        in populations without stage-structure</a></li>
-        <li><a
-        href="#density-dependence-in-populations-with-stage-structure"
-        id="toc-density-dependence-in-populations-with-stage-structure">Density-dependence
-        in populations with stage-structure</a>
+        <li><a href="#density-dependence-in-matrix-models"
+        id="toc-density-dependence-in-matrix-models">Density-dependence
+        in matrix models</a>
         <ul>
         <li><a
-        href="#incorporating-density-dependence-into-a-matrix-model"
-        id="toc-incorporating-density-dependence-into-a-matrix-model">Incorporating
-        density-dependence into a matrix model</a></li>
-        <li><a href="#density-dependence-in-a-leslie-model"
-        id="toc-density-dependence-in-a-leslie-model">Density-dependence
-        in a Leslie model</a></li>
+        href="#placing-a-limit-on-the-size-of-one-or-more-classes"
+        id="toc-placing-a-limit-on-the-size-of-one-or-more-classes">Placing
+        a limit on the size of one or more classes</a></li>
         <li><a
-        href="#illustration-of-current-application-gray-wolf-population-projection"
-        id="toc-illustration-of-current-application-gray-wolf-population-projection">Illustration
-        of current application: Gray wolf population projection</a></li>
+        href="#incorporating-density-dependent-functions-for-particular-vital-rates"
+        id="toc-incorporating-density-dependent-functions-for-particular-vital-rates">Incorporating
+        density-dependent functions for particular vital rates</a></li>
+        <li><a
+        href="#illustration-of-current-application-lake-sturgeon-population"
+        id="toc-illustration-of-current-application-lake-sturgeon-population">Illustration
+        of current application: Lake sturgeon population</a></li>
         <li><a href="#references-6"
         id="toc-references-6">References</a></li>
         </ul></li>
@@ -3698,303 +3694,399 @@ old-growth forest. <em>Southern Forests: a Journal of Forest Science,
 <p>Thomas, P. 2013. <em>Araucaria angustifolia</em>. <em>The IUCN Red
 List of Threatened Species 2013</em>: e.T32975A2829141.
 https://dx.doi.org/10.2305/IUCN.UK.2013-1.RLTS.T32975A2829141.en.</p>
-<h2
-id="density-dependence-in-populations-without-stage-structure">Density-dependence
-in populations without stage-structure</h2>
-<p>In the first chapter, we talked about density-dependence in
-unstructured population models. In general, we can define a model with a
-differential equation (continuous) <span
+<h2 id="density-dependence-in-matrix-models">Density-dependence in
+matrix models</h2>
+<p>As populations increase in size, they compete for limited resources
+and become targets of predators. This leads to lower rates of survival
+and reproduction, which can be represented by linking vital rates to
+population density. Similar to the unstructured models we discussed in
+the first chapter, it is necessary to incorporate density dependence
+into a structured model. However, there are two main factors that make
+it more difficult to consider density dependence in a structured model
+(Morris and Doak, 2002):</p>
+<ul>
+<li><p>In reality, we have much less data for vital-rate estimates in a
+demographic study as we have in a long-term population census due to the
+cost of marking and following multiple individuals.</p></li>
+<li><p>There are many more variables that are potentially
+density-dependent, and here are some questions we need to think
+about:</p>
+<ul>
+<li>What vital rates are density-dependent?</li>
+<li>How do those rates change with density?</li>
+<li>Which classes contribute to the density that each vital rate
+“feels”?</li>
+</ul></li>
+</ul>
+<p>Typically, we won’t compare various density-dependent functions that
+are fitted to each vital rate by using multiple combinations of classes
+to measure density. Here, we will introduce two more practical ways.</p>
+<h3 id="placing-a-limit-on-the-size-of-one-or-more-classes">Placing a
+limit on the size of one or more classes</h3>
+<p>When the focal species is territorial, the most common way to
+introduce density dependence is by implementing caps (or limits) on
+population density. A reasonable cap on the territory-holding
+individuals, usually the breeding adults, can be estimated by dividing
+the total available area of habitat by the average territory size needed
+(for breeding). Setting such a cap can make the transition from the
+pre-reproductive to productive stages density-dependent, even if no
+other vital rates experience density-dependence.</p>
+<h4 id="exmaple-on-iberian-lynx">Exmaple on Iberian lynx</h4>
+<p>Gaona <em>et al</em>. (1998) investigated the population dynamics of
+Iberian lynx in Donana National Park in Spain, and here we present a
+simplified illustration (Morris and Doak, 2002), in which we track only
+four stages of female lynx</p>
+<ul>
+<li>cubs (newborn)</li>
+<li>juveniles (one year old)</li>
+<li>floaters (old enough to breed but not in possession of a
+territory)</li>
+<li>breeders (territory-holding)</li>
+</ul>
+<figure>
+<img src="iberian_lynx.jpg" style="width:50.0%"
+alt="© Diego Delso, Iberian lynx (Lynx pardinus), Creative Commons CC BY-SA-4.0 license" />
+<figcaption aria-hidden="true">© Diego Delso, <a
+href="https://commons.wikimedia.org/wiki/File:Lince_ibérico_(Lynx_pardinus),_Almuradiel,_Ciudad_Real,_España,_2021-12-19,_DD_02.jpg">Iberian
+lynx (<em>Lynx pardinus</em>)</a>, <a
+href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+CC BY-SA-4.0 license</a></figcaption>
+</figure>
+<p>The projection matrix <span class="math inline">\(\mathbf{A}\)</span>
+is defined as follows <span
+class="math display">\[\mathbf{A}=\begin{bmatrix}0 &amp; 0 &amp; 0 &amp;
+f_4s_4\\s_1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; s_2(1-g) &amp; s_3(1-g)
+&amp; 0\\0 &amp; s_2g &amp; s_3g &amp; s_4\end{bmatrix},\]</span> where
+<span class="math inline">\(s_i\)</span> is the survival rate of stage
+<span class="math inline">\(i\)</span>, <span
+class="math inline">\(f_4\)</span> is the average number of female cubs
+produced by a breeder. We let <span class="math inline">\(K\)</span> be
+the maximum number of territories. <span
+class="math inline">\(g\)</span> is the probability that a juvenile or a
+floater will acquire a territory (for breeding) next year, which
+accounts for density dependence and is defined as follows: <span
+class="math display">\[g=\frac{K-s_4n_4(t)}{s_2n_2(t)+s_3n_3(t)}.\]</span>
+It’s not hard to notice that <span class="math inline">\(g\)</span>
+decreases when <span class="math inline">\(n_2\)</span>, <span
+class="math inline">\(n_3\)</span> and <span
+class="math inline">\(n_4\)</span> increase. When applying this method,
+we should also notice the following two points:</p>
+<ul>
+<li><span class="math inline">\(n_4\)</span> should always be no larger
+than <span class="math inline">\(K\)</span>. So if <span
+class="math inline">\(n_4(t)&gt;K\)</span>, we should let <span
+class="math inline">\(n_4(t)=K\)</span>, and update <span
+class="math inline">\(n_3(t)\)</span> with <span
+class="math inline">\(n_3(t)+K-n_4(t)\)</span>.</li>
+<li>With the first point, we always have <span
+class="math inline">\(g\geq 0\)</span>. It is still possible that <span
+class="math inline">\(g&gt;1\)</span>, which is achieved when <span
+class="math inline">\(K-s_4n_4(t)&gt;s_2n_2(t)+s_3n_3(t)\)</span>. So we
+should always update <span class="math inline">\(g\)</span> with <span
+class="math inline">\(\min\{g,1\}\)</span>.</li>
+</ul>
+<p>The R code below shows how thr breeder population and the total
+population change when the maximum number of territories <span
+class="math inline">\(K\)</span> is introduced:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>s4 <span class="ot">&lt;-</span> <span class="fl">0.86</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Reproduction of a female breeder is calculated as</span></span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (sex ratio)*(breeding prob)*(avg number of offsprings)</span></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We change the avg number of offsprings compared to Morris and Doak (2002) for better illustration</span></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>f4 <span class="ot">&lt;-</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.6</span><span class="sc">*</span><span class="dv">4</span></span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">51</span>)</span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>n[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>n_total <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">51</span>, <span class="dv">0</span>)</span>
+<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a>n_total[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">+</span><span class="dv">2</span><span class="sc">+</span><span class="dv">0</span><span class="sc">+</span><span class="dv">5</span></span>
+<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) {</span>
+<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Force n4 to be at most K</span></span>
+<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n[<span class="dv">4</span>, t] <span class="sc">&gt;</span> K) {</span>
+<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a>    n[<span class="dv">4</span>, t] <span class="ot">&lt;-</span> K</span>
+<span id="cb72-20"><a href="#cb72-20" aria-hidden="true" tabindex="-1"></a>    n[<span class="dv">3</span>, t] <span class="ot">&lt;-</span> n[<span class="dv">3</span>, t] <span class="sc">+</span> (K <span class="sc">-</span> n[<span class="dv">4</span>, t])</span>
+<span id="cb72-21"><a href="#cb72-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-22"><a href="#cb72-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-23"><a href="#cb72-23" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> (k <span class="sc">-</span> s4<span class="sc">*</span>n[<span class="dv">4</span>, t])<span class="sc">/</span>(s2<span class="sc">*</span>n[<span class="dv">2</span>, t] <span class="sc">+</span> s3<span class="sc">*</span>n[<span class="dv">3</span>, t])</span>
+<span id="cb72-24"><a href="#cb72-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-25"><a href="#cb72-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clip g between 0 and 1</span></span>
+<span id="cb72-26"><a href="#cb72-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (g <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
+<span id="cb72-27"><a href="#cb72-27" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb72-28"><a href="#cb72-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-29"><a href="#cb72-29" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-30"><a href="#cb72-30" aria-hidden="true" tabindex="-1"></a>  A.data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, f4<span class="sc">*</span>s4,</span>
+<span id="cb72-31"><a href="#cb72-31" aria-hidden="true" tabindex="-1"></a>              s1, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb72-32"><a href="#cb72-32" aria-hidden="true" tabindex="-1"></a>              <span class="dv">0</span>, s2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>g), s3<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>g), <span class="dv">0</span>,</span>
+<span id="cb72-33"><a href="#cb72-33" aria-hidden="true" tabindex="-1"></a>              <span class="dv">0</span>, s2<span class="sc">*</span>g, s3<span class="sc">*</span>g, s4)</span>
+<span id="cb72-34"><a href="#cb72-34" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(A.data, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb72-35"><a href="#cb72-35" aria-hidden="true" tabindex="-1"></a>  n[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A <span class="sc">%*%</span> n[, t]</span>
+<span id="cb72-36"><a href="#cb72-36" aria-hidden="true" tabindex="-1"></a>  n_total[t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(n[, t<span class="sc">+</span><span class="dv">1</span>])</span>
+<span id="cb72-37"><a href="#cb72-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb72-38"><a href="#cb72-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-39"><a href="#cb72-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the trajectories for the breeder population and the total population</span></span>
+<span id="cb72-40"><a href="#cb72-40" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n[<span class="dv">4</span>, ], <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
+<span id="cb72-41"><a href="#cb72-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>), <span class="at">main =</span> <span class="st">&#39;(a)&#39;</span>,</span>
+<span id="cb72-42"><a href="#cb72-42" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;year&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;population&#39;</span>)</span>
+<span id="cb72-43"><a href="#cb72-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-44"><a href="#cb72-44" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n_total, <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
+<span id="cb72-45"><a href="#cb72-45" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>), <span class="at">main =</span> <span class="st">&#39;(b)&#39;</span>,</span>
+<span id="cb72-46"><a href="#cb72-46" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;year&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;population&#39;</span>)</span></code></pre></div>
+<figure>
+<img src="lynx.jpeg"
+alt="(a) Number of breeders; (b) Total lynx population." />
+<figcaption aria-hidden="true">(a) Number of breeders; (b) Total lynx
+population.</figcaption>
+</figure>
+<h3
+id="incorporating-density-dependent-functions-for-particular-vital-rates">Incorporating
+density-dependent functions for particular vital rates</h3>
+<p>In an unstructured model, we can define a density-dependent model
+with a differential equation (continuous) <span
 class="math display">\[\frac{dN}{dt}=Ng(N),\]</span> or a difference
 equation (discrete) <span
 class="math display">\[N_{t+1}=N_t+N_tg(N_t)\]</span> where the per
 capita growth rate <span class="math inline">\(g(N)\)</span> depends on
-the population size/density <span class="math inline">\(N\)</span>. For
-example, when <span class="math inline">\(g(N)=r(1-N/K)\)</span>, we get
-the classic logistic growth model, where the population density has a
-negative effect on per capita crowth rate.</p>
-<h2
-id="density-dependence-in-populations-with-stage-structure">Density-dependence
-in populations with stage-structure</h2>
-<p>Density-dependent processes occur when the population growth rate is
-affected by the population density. This is relatively simple in an
-unstructured model, since we only have one population density and one
-growth rate to consider. In a stage-structured model, things become more
-complicated, and here are some questions we need to think about</p>
+the population density <span class="math inline">\(N\)</span>. Two most
+famous candidates for <span class="math inline">\(g(N)\)</span> are</p>
 <ul>
-<li>There are many vital rates (e.g. fecundity rate (producing
-offsprings), survival rate (staying in the same stage), growth rate
-(growing to the next stage)). Does the population density influence only
-one of these rates, or all of them?</li>
-<li>Are the vital rates of a stage affected by the density of the
-population in that stage, or the density of total population?</li>
-<li>Is each vital rate affected in the same way, or differently?</li>
+<li>Beverton-Holt function: <span
+class="math inline">\(g(N)=\frac{\alpha}{1+\beta N}\)</span>,</li>
+<li>Ricker function: <span class="math inline">\(g(N)=\alpha e^{-\beta
+N}.\)</span></li>
 </ul>
-<h3
-id="incorporating-density-dependence-into-a-matrix-model">Incorporating
-density-dependence into a matrix model</h3>
-<p>There are plenty of ways of incorporating density-dependence into
-matrix models. Let’s start with the simplest case. Consider a two-stage
-model defined by the matrix <span
-class="math display">\[\mathbf{A}=\begin{bmatrix}\sigma_1(1-\gamma_1)
-&amp; f_2\\\sigma_1\gamma_1 &amp; \sigma_2\end{bmatrix},\]</span> where
+<figure>
+<img src="bh_ricker.jpeg"
+alt="(a) Beverton-Holt function and Ricker function; (b) the corresponding recruitment functions. Here, we set \alpha=0.9 and \beta=0.05" />
+<figcaption aria-hidden="true">(a) Beverton-Holt function and Ricker
+function; (b) the corresponding recruitment functions. Here, we set
+<span class="math inline">\(\alpha=0.9\)</span> and <span
+class="math inline">\(\beta=0.05\)</span></figcaption>
+</figure>
+<p>Similarly, for a stage-structured model, we can also assume that one
+or more vital rates depend on the number of individuals in one or more
+stages. Let’s start with the simplest case. Consider a two-stage model
+defined by the matrix <span
+class="math display">\[\mathbf{A}=\begin{bmatrix}\sigma_1(1-\gamma)
+&amp; \phi\\\sigma_1\gamma &amp; \sigma_2\end{bmatrix},\]</span> where
 <span class="math inline">\(\sigma_1\)</span> and <span
 class="math inline">\(\sigma_2\)</span> are survival rate at each stage,
-<span class="math inline">\(\gamma_1\)</span> is the growth rate from
-stage 1 to stage 2, and <span class="math inline">\(f_2\)</span> is the
+<span class="math inline">\(\gamma\)</span> is the growth rate from
+stage 1 to stage 2, and <span class="math inline">\(\phi\)</span> is the
 fecundity rate from stage 2 to stage 1. Here we follow the settings in
-Tuljapurkar and Caswell (1997), but there is no difference between this
-and using a single variable to represent each transition rate.</p>
+Caswell (2001), but there is no difference between this and using a
+single variable to represent each transition rate.</p>
 <p>Let’s assume that vital rates are affected by the total population
-<span class="math inline">\(N=N_1+N_2\)</span>. Here are some possible
-density-dependent rates:</p>
+<span class="math inline">\(N=n_1+n_2\)</span>. Here are some possible
+density-dependent vital rates, using the Ricker function:</p>
 <ul>
 <li><em>Density-dependent fecundity</em>: <span
-class="math inline">\(f_2(N)=f_0e^{-aN}\)</span></li>
+class="math inline">\(\phi\to\phi e^{-bN}\)</span></li>
 <li><em>Density-dependent survival</em>: <span
-class="math inline">\(\sigma_i(N)=\sigma_{0,i}e^{-b_iN},\;i\in\{1,2\}\)</span></li>
+class="math inline">\(\sigma_i\to \sigma_i e^{-bN},\
+i\in\{1,2\}\)</span></li>
 <li><em>Density-dependent growth</em>: <span
-class="math inline">\(\gamma_1(N)=\gamma_0e^{-cN}\)</span></li>
+class="math inline">\(\gamma\to \gamma e^{-bN}\)</span></li>
 <li>Combinations of the above rates</li>
 </ul>
-<h3 id="density-dependence-in-a-leslie-model">Density-dependence in a
-Leslie model</h3>
-<p>Many analysis on density-dependent matrix models starts with the
-Leslie matrix because of its simplicity (Leslie, 1945). Let’s start with
-a three-stage Leslie model whose population projection matrix <span
-class="math inline">\(\mathbf{A}\)</span> has the following form <span
-class="math display">\[\mathbf{A}=\begin{bmatrix}F_0 &amp; F_1 &amp;
-F_2\\S_0 &amp; 0 &amp; 0\\0 &amp; S_1 &amp; 0\end{bmatrix},\]</span>
-where <span class="math inline">\(F_i\)</span> is the fecundity of stage
-group <span class="math inline">\(i\)</span>, and <span
-class="math inline">\(S_i\)</span> is survival from stage <span
-class="math inline">\(i-1\)</span> at time <span
-class="math inline">\(t\)</span> to stage <span
-class="math inline">\(i\)</span> at time <span
-class="math inline">\(t+1\)</span> with continuous mortality (Jensen,
-1995).</p>
-<h4 id="model-setup">Model setup</h4>
-<p>From the Leslie matrix model, we can obtain the new stage structure
-directly from the old stage structure via the equation <span
-class="math display">\[\vec{N}_{t+1}=\mathbf{A}\vec{N}_t,\]</span> which
-can be written as <span
-class="math display">\[\vec{N}_{t+1}=\vec{N}_t+(\mathbf{A}-\mathbf{I})\vec{N}_t,\]</span>
-where <span class="math inline">\(\mathbf{I}\)</span> is the <span
-class="math inline">\(3\times 3\)</span> identity matrix.</p>
-<p>You might have noticed that it has a similar form as <span
-class="math inline">\(N_{t+1}=N_t+rN_t\)</span>, the discrete model we
-discussed in the previous chapter! The transition matrix <span
-class="math inline">\(\mathbf{A}-\mathbf{I}\)</span> is analogous to the
-intrinsic rate of increase <span class="math inline">\(r\)</span>. We
-can develop a density-dependent matrix model with the following equation
-<span
-class="math display">\[\vec{N}_{t+1}=\vec{N}_t+D(\vec{N}_t)(\mathbf{A}-\mathbf{I})\vec{N}_t,\]</span>
-in which <span class="math inline">\(D(N_t)\)</span> is a
-density-dependent function.</p>
-<h4 id="logistic-growth-in-a-leslie-matrix-model">Logistic growth in a
-Leslie matrix model</h4>
-<p>The simplest form of density-dependence might be the logistic
-equation <span class="math inline">\(N_{t+1}=N_t+(1-N_t/K)rN_t\)</span>,
-where <span class="math inline">\(K\)</span> denotes the carrying
-capacity. Hence, a candidate for <span
-class="math inline">\(D(\vec{N}_t)\)</span> could be <span
-class="math display">\[D(\vec{N}_t)=1-T_{\vec{N}_t}/K.\]</span> Here,
-<span class="math inline">\(T_{\vec{N}_t}\)</span> is the total
-population at time <span class="math inline">\(t\)</span>, or the sum of
-the elements in the vector <span
-class="math inline">\(\vec{N}_t\)</span>. In other words, the growth
-rate of each stage group at time <span class="math inline">\(t\)</span>
-is affected by the total population at that time. However, using such a
-function for <span class="math inline">\(D(\vec{N}_t)\)</span> has some
-limitations:</p>
-<ul>
-<li>Jensen (1995) argued that this function is only useful when the
-initial population size is far less than the carrying capacity. With a
-relatively small initial abundance compared to the carrying capacity,
-the stage structure at the carrying capacity is near the stable stage
-distribution given by the Leslie matrix.</li>
-<li>Charlesworth (1994) also mentioned that from empirical results,
-usually, the density-dependent components of the demographic parameters
-respond only to the numbers of individuals in a restricted sub-group of
-the population, not the total population.</li>
-</ul>
-<p>Therefore, we need a more general density-dependent function <span
-class="math inline">\(D(\vec{N}_t)\)</span>. Here we introduce a
-diagonal matrix with term of the form <span
-class="math inline">\(1-N(x,t)/(c_xK)\)</span>, where <span
-class="math inline">\(c_x\)</span> is the proportion of stage <span
-class="math inline">\(x\)</span> in the stable stage distribution, which
-can be determined from the dominant eigenvector of the Leslie matrix. In
-our model setup, <span class="math inline">\(D(\vec{N}_t)\)</span> has
-the following form <span
-class="math display">\[D(\vec{N}_t)=\begin{bmatrix}1-\frac{N(1,t)}{c_1K}
-&amp; 0 &amp; 0\\0 &amp; 1-\frac{N(2,t)}{c_2K} &amp; 0\\0 &amp; 0 &amp;
-1-\frac{N(3,t)}{c_3K}\end{bmatrix}.\]</span></p>
-<p>Now we will do a little math to show how such a diagonal matrix works
-in our model: <span
-class="math display">\[\begin{aligned}\begin{bmatrix}N(0,t+1)\\N(1,t+1)\\N(2,t+1)\end{bmatrix}
-&amp;
-=\begin{bmatrix}N(0,t)\\N(1,t)\\N(2,t)\end{bmatrix}+\begin{bmatrix}1-\frac{N(0,t)}{c_0K}
-&amp; 0 &amp; 0\\0 &amp; 1-\frac{N(1,t)}{c_1K} &amp; 0\\0 &amp; 0 &amp;
-1-\frac{N(2,t)}{c_2K}\end{bmatrix}\begin{bmatrix}F_0-1 &amp; F_1 &amp;
-F_2\\S_0 &amp; -1 &amp; 0\\0 &amp; S_1 &amp;
--1\end{bmatrix}\begin{bmatrix}N(0,t)\\N(1,t)\\N(2,t)\end{bmatrix}\\
-~ &amp;
-=\begin{bmatrix}N(0,t)\\N(1,t)\\N(2,t)\end{bmatrix}+\begin{bmatrix}\left(1-\frac{N(0,t)}{c_0K}\right)(F_0-1)
-&amp; \left(1-\frac{N(0,t)}{c_0K}\right)F_1 &amp;
-\left(1-\frac{N(0,t)}{c_0K}\right)F_2\\\left(1-\frac{N(1,t)}{c_1K}\right)S_0
-&amp; -\left(1-\frac{N(1,t)}{c_1K}\right) &amp; 0\\0 &amp;
-\left(1-\frac{N(2,t)}{c_2K}\right)S_1 &amp;
--\left(1-\frac{N(2,t)}{c_2K}\right)\end{bmatrix}\begin{bmatrix}N(0,t)\\N(1,t)\\N(2,t)\end{bmatrix}\\
-~ &amp;
-=\begin{bmatrix}N(0,t)+\left(1-\frac{N(0,t)}{c_0K}\right)[(F_0-1)N(0,t)+F_1N(1,t)+F_2N(2,t)]\\N(1,t)+\left(1-\frac{N(1,t)}{c_1K}\right)[S_0N(0,t)-N(1,t)]\\N(2,t)+\left(1-\frac{N(2,t)}{c_2K}\right)[S_1N(1,t)-N(2,t)]\end{bmatrix}\end{aligned}\]</span></p>
-<h4 id="matrix-representation">Matrix representation</h4>
-<p>We now develop a matrix expression of the model <span
-class="math inline">\(\vec{N}_{t+1}=\vec{N}_t+D(\vec{N}_t)(\mathbf{A}-\mathbf{I})\vec{N}_t\)</span>.
-The above <span class="math inline">\(D(\vec{N}_t)\)</span> can be
-written as <span
-class="math display">\[D(\vec{N}_t)=\mathbf{I}-\mathbf{K}^{-1}\mathbf{N_t},\]</span>
-in which <span class="math inline">\(\mathbf{K}=diag\{c_xK\}\)</span>
-(<span class="math inline">\(\mathbf{K}^{-1}\)</span> is the inverse of
-<span class="math inline">\(\mathbf{K}\)</span>, which can be easily
-calculated as <span class="math inline">\(diag\{1/(c_xK)\}\)</span>),
-<span class="math inline">\(\mathbf{N}_t=diag\{N(x,t)\}\)</span>. So we
-have <span
-class="math display">\[\vec{N}_{t+1}=\vec{N}_t+(\mathbf{I}-\mathbf{K}^{-1}\mathbf{N_t})(\mathbf{A}-\mathbf{I})\vec{N}_t,\]</span>
-the form of which is analogous to the discrete-time logistic equation
-<span class="math inline">\(N_{t+1}=N_t+(1-N_t/K)rN_t\)</span>.</p>
-<h4 id="application">Application</h4>
+<h4 id="examples-with-density-dependent-fecunditygrowth">Examples with
+density-dependent fecundity/growth</h4>
+<p>Remember that when populations growing according to the discrete
+logistic equation could show different dynamics (smooth approach, damped
+oscillations, limit cycle and chaos) with different parameter values?
+Such phenomena exist in a density-dependent matrix model as well.</p>
+<p>We present an example with density-dependent fecundity where <span
+class="math inline">\(\phi(N)=\phi e^{-N}\)</span>, and an example with
+density-dependent growth where <span
+class="math inline">\(\gamma(N)=\gamma e^{-N}\)</span>. We test
+different values of <span
+class="math inline">\(\phi=50,500,1800\)</span> for the
+density-dependent fecundity model and <span
+class="math inline">\(\phi=300\)</span> for the density-dependent growth
+model. Other parameters are <span
+class="math inline">\(\sigma_1=0.5\)</span>, <span
+class="math inline">\(\sigma_2=0.1\)</span> and <span
+class="math inline">\(\gamma=0.1\)</span>.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>n4 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>n1[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>n2[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>n3[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>n4[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>  A1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.45</span>, <span class="dv">50</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n1[,t])), <span class="fl">0.05</span>, <span class="fl">0.1</span>),</span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>  A2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.45</span>, <span class="dv">500</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n2[,t])), <span class="fl">0.05</span>, <span class="fl">0.1</span>),</span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>  A3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.5</span><span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.1</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n3[,t]))), <span class="dv">300</span>, </span>
+<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.1</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n3[,t])), <span class="fl">0.1</span>),</span>
+<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb73-18"><a href="#cb73-18" aria-hidden="true" tabindex="-1"></a>  A4 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.45</span>, <span class="dv">1800</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n4[,t])), <span class="fl">0.05</span>, <span class="fl">0.1</span>),</span>
+<span id="cb73-19"><a href="#cb73-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb73-20"><a href="#cb73-20" aria-hidden="true" tabindex="-1"></a>  n1[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A1 <span class="sc">%*%</span> n1[, t]</span>
+<span id="cb73-21"><a href="#cb73-21" aria-hidden="true" tabindex="-1"></a>  n2[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A2 <span class="sc">%*%</span> n2[, t]</span>
+<span id="cb73-22"><a href="#cb73-22" aria-hidden="true" tabindex="-1"></a>  n3[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A3 <span class="sc">%*%</span> n3[, t]</span>
+<span id="cb73-23"><a href="#cb73-23" aria-hidden="true" tabindex="-1"></a>  n4[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A4 <span class="sc">%*%</span> n4[, t]</span>
+<span id="cb73-24"><a href="#cb73-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb73-25"><a href="#cb73-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-26"><a href="#cb73-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb73-27"><a href="#cb73-27" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n1[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], n1[<span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>,</span>
+<span id="cb73-28"><a href="#cb73-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(a) Equilibrium&#39;</span>,</span>
+<span id="cb73-29"><a href="#cb73-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]), <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">2</span>]))</span>
+<span id="cb73-30"><a href="#cb73-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-31"><a href="#cb73-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n1[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
+<span id="cb73-32"><a href="#cb73-32" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(b)&#39;</span>,</span>
+<span id="cb73-33"><a href="#cb73-33" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;time&#39;</span>, <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]))</span>
+<span id="cb73-34"><a href="#cb73-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-35"><a href="#cb73-35" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n2[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], n2[<span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>,</span>
+<span id="cb73-36"><a href="#cb73-36" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(c) 4-cycle&#39;</span>,</span>
+<span id="cb73-37"><a href="#cb73-37" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]), <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">2</span>]))</span>
+<span id="cb73-38"><a href="#cb73-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-39"><a href="#cb73-39" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n2[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
+<span id="cb73-40"><a href="#cb73-40" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(d)&#39;</span>,</span>
+<span id="cb73-41"><a href="#cb73-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;time&#39;</span>, <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]))</span>
+<span id="cb73-42"><a href="#cb73-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-43"><a href="#cb73-43" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n3[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], n3[<span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>,</span>
+<span id="cb73-44"><a href="#cb73-44" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(e) Invariant loop&#39;</span>,</span>
+<span id="cb73-45"><a href="#cb73-45" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]), <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">2</span>]))</span>
+<span id="cb73-46"><a href="#cb73-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-47"><a href="#cb73-47" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n3[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
+<span id="cb73-48"><a href="#cb73-48" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(f)&#39;</span>,</span>
+<span id="cb73-49"><a href="#cb73-49" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;time&#39;</span>, <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]))</span>
+<span id="cb73-50"><a href="#cb73-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-51"><a href="#cb73-51" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n4[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], n4[<span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>,</span>
+<span id="cb73-52"><a href="#cb73-52" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(g) Strange attractor&#39;</span>,</span>
+<span id="cb73-53"><a href="#cb73-53" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]), <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">2</span>]))</span>
+<span id="cb73-54"><a href="#cb73-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-55"><a href="#cb73-55" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n4[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
+<span id="cb73-56"><a href="#cb73-56" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(h)&#39;</span>,</span>
+<span id="cb73-57"><a href="#cb73-57" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;time&#39;</span>, <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]))</span></code></pre></div>
 <figure>
-<img src="white_tailed_deer.jpg"
-alt="© John Benson, White-tailed deer (Odocoileus virginianus), Creative Commons CC-BY-2.0 license" />
-<figcaption aria-hidden="true">© John Benson, <a
-href="https://commons.wikimedia.org/wiki/File:Odocoileus_virginianus_fawn,_Owen_Conservation_Park,_Madison,_Wisconsin.jpg">White-tailed
-deer (<em>Odocoileus virginianus</em>)</a>, <a
-href="https://creativecommons.org/licenses/by/2.0/">Creative Commons
-CC-BY-2.0 license</a></figcaption>
+<img src="attractors.jpeg" style="width:75.0%"
+alt="(a,c,e,g) Attractors; (b,d,f,h) dynamics of corresponding attractors." />
+<figcaption aria-hidden="true">(a,c,e,g) Attractors; (b,d,f,h) dynamics
+of corresponding attractors.</figcaption>
 </figure>
-<p>Let’s run a simulation with the data of the George Reserve deer herd
-(McCullough, 1979), where the carrying capacity was about 220, and the
-projection matrix <span class="math inline">\(\mathbf{A}\)</span> is
-<span class="math display">\[\mathbf{A}=\begin{bmatrix}0.7030 &amp;
-0.6359 &amp; 0.6389 &amp; 0.5522 &amp; 0.5551 &amp; 0.7661 &amp;
-0\\0.713 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0.645
-&amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0.648 &amp; 0
-&amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0.560 &amp; 0 &amp; 0
-&amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.563 &amp; 0 &amp; 0\\0 &amp;
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.777 &amp; 0\end{bmatrix}.\]</span></p>
-<p>Here is the R code simulation for the population over 30 years, with
-initial population <span
-class="math inline">\(\vec{N}_0=[0,4,0,0,0,0,0]\)</span>.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the Leslie matrix</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>A.data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.7030</span>, <span class="fl">0.6359</span>, <span class="fl">0.6389</span>, <span class="fl">0.5522</span>, <span class="fl">0.5551</span>, <span class="fl">0.7661</span>, <span class="dv">0</span>,</span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>            <span class="fl">0.713</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span>, <span class="fl">0.645</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.648</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.560</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.563</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>            <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.777</span>, <span class="dv">0</span>)</span>
-<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(A.data, <span class="at">nrow =</span> <span class="dv">7</span>, <span class="at">ncol =</span> <span class="dv">7</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the real part of the eigenvector corresponding to the dominant eigenvalue</span></span>
-<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>w1 <span class="ot">&lt;-</span> <span class="fu">Re</span>(<span class="fu">eigen</span>(A)<span class="sc">$</span>vectors[, <span class="dv">1</span>])</span>
-<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the stable stage distribution</span></span>
-<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a>ssd <span class="ot">&lt;-</span> w1<span class="sc">/</span><span class="fu">sum</span>(w1)</span>
-<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the carrying capacity matrix K</span></span>
-<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">220</span><span class="sc">*</span>ssd, <span class="at">nrow =</span> <span class="dv">7</span>, <span class="at">ncol =</span> <span class="dv">7</span>)</span>
-<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-20"><a href="#cb72-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix N to store the population of each stage x at each time t</span></span>
-<span id="cb72-21"><a href="#cb72-21" aria-hidden="true" tabindex="-1"></a><span class="co"># row: stage x</span></span>
-<span id="cb72-22"><a href="#cb72-22" aria-hidden="true" tabindex="-1"></a><span class="co"># col: time t</span></span>
-<span id="cb72-23"><a href="#cb72-23" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">7</span>, <span class="at">ncol =</span> <span class="dv">31</span>)</span>
-<span id="cb72-24"><a href="#cb72-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-25"><a href="#cb72-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial population</span></span>
-<span id="cb72-26"><a href="#cb72-26" aria-hidden="true" tabindex="-1"></a>N[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb72-27"><a href="#cb72-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-28"><a href="#cb72-28" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>) {</span>
-<span id="cb72-29"><a href="#cb72-29" aria-hidden="true" tabindex="-1"></a>  Nt <span class="ot">&lt;-</span> <span class="fu">diag</span>(N[, t], <span class="at">nrow =</span> <span class="dv">7</span>, <span class="at">ncol =</span> <span class="dv">7</span>)</span>
-<span id="cb72-30"><a href="#cb72-30" aria-hidden="true" tabindex="-1"></a>  N[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> N[, t] <span class="sc">+</span> (<span class="fu">diag</span>(<span class="dv">7</span>) <span class="sc">-</span> <span class="fu">solve</span>(K) <span class="sc">%*%</span> Nt) <span class="sc">%*%</span> (A <span class="sc">-</span> <span class="fu">diag</span>(<span class="dv">7</span>)) <span class="sc">%*%</span> N[, t]</span>
-<span id="cb72-31"><a href="#cb72-31" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>We obtained the following plots, where we can see that the population
-of each stage is approaching the carrying capacity of corresponding
-stage.</p>
-<p><img src="ddplot.jpeg" /></p>
 <h3
-id="illustration-of-current-application-gray-wolf-population-projection">Illustration
-of current application: Gray wolf population projection</h3>
-<p>Here we present a research paper in which a density dependent Leslie
-matrix model was applied to investigate gray wolf population recovery in
-the Upper Peninsula of Michigan. The authors also implement density
-dependence using <span
-class="math inline">\(\vec{N}_{t+1}=\vec{N}_t+D(\vec{N}_t)(\mathbf{A}-\mathbf{I})\vec{N}_t\)</span>
-but with a much simpler <span
-class="math inline">\(D(\vec{N}_t)=1-T_{\vec{N}_t}/K\)</span>, where
-<span class="math inline">\(T_{\vec{N}_t}\)</span> is the total
-population at time <span class="math inline">\(t\)</span>. A 10-by-10
-Leslie matrix was used as the population projection matrix. It was
-similar to what we discussed above, except that the element <span
-class="math inline">\(F_0=0\)</span> (the entry on the first row, first
-column), ignoring the fecundity in yearling wolfs.</p>
-<p>Miller, D.H., Jensen A.L. and Hammill, J.H. (2002) Density dependent
-matrix model for gray wolf population projection, <em>Ecological
-Modelling 151</em>: 271–278.</p>
+id="illustration-of-current-application-lake-sturgeon-population">Illustration
+of current application: Lake sturgeon population</h3>
+<p>Here we present a recent study on lake sturgeon population with
+density-dependent effects:</p>
+<p>Burchfield, J.D., McLaren, B.E., and McLeod, D.T. (2022). Sensitivity
+analysis of a lake sturgeon population with early life stage
+density-dependent effects, <em>Canadian Journal of Fisheries and Aquatic
+Sciences</em>, <em>79</em>(11), 1992-2005.</p>
 <figure>
-<img src="gray_wolf.jpg"
-alt="© Mariofan13, Gray wolf (Canis lupus), Creative Commons CC-BY-SA-3.0 license" />
-<figcaption aria-hidden="true">© Mariofan13, <a
-href="https://commons.wikimedia.org/wiki/File:Canis_lupus_Ernstbrunn.jpg">Gray
-wolf (<em>Canis lupus</em>)</a>, <a
-href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
-CC-BY-SA-3.0 license</a></figcaption>
+<img src="lake_sturgeon.jpg"
+alt="© USFWS, Lake sturgeon (Acipenser fulvescens), Public domain" />
+<figcaption aria-hidden="true">© USFWS, <a
+href="https://commons.wikimedia.org/wiki/File:Lake_sturgeon_(22582474091).jpg">Lake
+sturgeon (<em>Acipenser fulvescens</em>)</a>, Public domain</figcaption>
+</figure>
+<p>The authors composed a Lefkovitch projection matrix (Lefkovitch,
+1965) with six stages: age-0, juvenile, early subadult, late subadult,
+early adult and late adult, with the following projection matrix <span
+class="math display">\[\mathbf{A}=\begin{bmatrix}0 &amp; 0 &amp; 0 &amp;
+S_3G_3f_4 &amp; S_4(1-G_4)f_4+S_4G_4f_5 &amp; S_5(1-G_5)f_5\\S_0G_0
+&amp; S_1(1-G_1) &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; S_1G_1 &amp;
+S_2(1-G_2) &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; S_2G_2 &amp;
+S_3(1-G_3) &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; S_3G_3 &amp;
+S_4(1-G_4) &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; S_4G_4 &amp;
+S_5(1-G_5)\end{bmatrix},\]</span> where <span
+class="math inline">\(S_i\)</span> is the survival rate at stage <span
+class="math inline">\(i\)</span>, <span
+class="math inline">\(G_i\)</span> is the transition rate from stage
+<span class="math inline">\(i\)</span> to stage <span
+class="math inline">\(i+1\)</span>, and <span
+class="math inline">\(f_i\)</span> is the fecundity rate (only for
+adults). Density dependence is introduced with a Ricker function on
+<span class="math inline">\(G_0\)</span> <span
+class="math display">\[G_0=\exp\left[r\left(1-\frac{S_0n_0+S_1n_1}{K_j}\right)\right],\]</span>
+where <span class="math inline">\(K_j\)</span> is the juvenile carrying
+capacity. Here is a sample simulation code (with parameter values
+presented in the paper).</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to calculate the stage transition rate</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the age-structured method, shown in Burchfield et al. (2022)</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>growth <span class="ot">&lt;-</span> <span class="cf">function</span>(S, D) {</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># S: survival rate</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># D: duration of the stage in years</span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>D) {</span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>    total <span class="ot">&lt;-</span> total <span class="sc">+</span> S<span class="sc">^</span>i</span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (S<span class="sc">^</span>D<span class="sc">/</span>total)</span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">151</span>)</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>n[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>)</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.665</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">65.55</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">77.45</span><span class="sc">/</span><span class="dv">100</span>,</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>       <span class="fl">77.45</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">94.8</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">94.8</span><span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">24</span>, <span class="dv">22</span>)</span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">13166</span>, <span class="dv">31656</span>)</span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>Kj <span class="ot">&lt;-</span> <span class="dv">9280</span></span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">150</span>) {</span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>  G0 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fl">2.3</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>(S[<span class="dv">1</span>]<span class="sc">*</span>n[<span class="dv">1</span>,t]<span class="sc">+</span>S[<span class="dv">2</span>]<span class="sc">*</span>n[<span class="dv">2</span>,t])<span class="sc">/</span>Kj))</span>
+<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>  G1 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">2</span>], D[<span class="dv">2</span>])</span>
+<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>  G2 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">3</span>], D[<span class="dv">3</span>])</span>
+<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>  G3 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">4</span>], D[<span class="dv">4</span>])</span>
+<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a>  G4 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">5</span>], D[<span class="dv">5</span>])</span>
+<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a>  G5 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">6</span>], D[<span class="dv">6</span>])</span>
+<span id="cb75-16"><a href="#cb75-16" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">4</span>]<span class="sc">*</span>G3<span class="sc">*</span>f[<span class="dv">5</span>], S[<span class="dv">5</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G4)<span class="sc">*</span>f[<span class="dv">5</span>]<span class="sc">+</span>S[<span class="dv">5</span>]<span class="sc">*</span>G4<span class="sc">*</span>f[<span class="dv">6</span>], S[<span class="dv">6</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G5)<span class="sc">*</span>f[<span class="dv">6</span>],</span>
+<span id="cb75-17"><a href="#cb75-17" aria-hidden="true" tabindex="-1"></a>                S[<span class="dv">1</span>]<span class="sc">*</span>G0, S[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G1), <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb75-18"><a href="#cb75-18" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, S[<span class="dv">2</span>]<span class="sc">*</span>G1, S[<span class="dv">3</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G2), <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb75-19"><a href="#cb75-19" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">3</span>]<span class="sc">*</span>G2, S[<span class="dv">4</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G3), <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb75-20"><a href="#cb75-20" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">4</span>]<span class="sc">*</span>G3, S[<span class="dv">5</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G4), <span class="dv">0</span>,</span>
+<span id="cb75-21"><a href="#cb75-21" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">5</span>]<span class="sc">*</span>G4, S[<span class="dv">6</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G5)),</span>
+<span id="cb75-22"><a href="#cb75-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">6</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb75-23"><a href="#cb75-23" aria-hidden="true" tabindex="-1"></a>  n[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A <span class="sc">%*%</span> n[, t]</span>
+<span id="cb75-24"><a href="#cb75-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb75-25"><a href="#cb75-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-26"><a href="#cb75-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot population trajectories of early and late adults</span></span>
+<span id="cb75-27"><a href="#cb75-27" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n[<span class="dv">5</span>, ], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>,</span>
+<span id="cb75-28"><a href="#cb75-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">lty=</span><span class="dv">1</span>,</span>
+<span id="cb75-29"><a href="#cb75-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;years&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;population&#39;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">35</span>))</span>
+<span id="cb75-30"><a href="#cb75-30" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(n[<span class="dv">6</span>, ], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb75-31"><a href="#cb75-31" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">&quot;topright&quot;</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>,</span>
+<span id="cb75-32"><a href="#cb75-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;Early adult&#39;</span>, <span class="st">&#39;Late adult&#39;</span>),</span>
+<span id="cb75-33"><a href="#cb75-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<figure>
+<img src="lake_sturgeon_simulation.jpeg"
+alt="Population trajectories of adult lake sturgeons, with an initial population of 10 early adults" />
+<figcaption aria-hidden="true">Population trajectories of adult lake
+sturgeons, with an initial population of 10 early adults</figcaption>
 </figure>
 <h4 id="snapshot-of-the-study-2">Snapshot of the study</h4>
 <ul>
-<li><p>The density dependent matrix developed in the paper was simple to
-apply to field population, as it only requires estimates of survival and
-fecundity rates. In fact, the authors used the same fecundity rates
-across all ages (except the yearling), and same adult survival
-rates.</p></li>
-<li><p>A normally distributed random variable that accounts for annual
-environmental stochasticity was also included in the model in order to
-generate a 95% confidence interval for the annual wolf
-population.</p></li>
-<li><p>The authors used the model to investigate the number of years it
-would take the Upper Peninsula wolf population to reach 95% of its
-estimated carrying capacity. The result showed that on average, the gray
-wolf population will reach 95% of carrying capacity in about 21 years,
-as early as 2007.</p></li>
-<li><p>There were several years when the wolf population did not fall in
-the 95% confidence interval as predicted by the model. The authors
-attributed it to the impact of immigration.</p></li>
-<li><p>A sensitivity analysis showed that, for small wolf populations,
-changes in carrying capacity did not significantly impact the predicted
-average population size over time as per the density-dependent matrix
-model. However, as the population size grew larger, the impact of the
-density-dependent function led to greater differences in projected
-population size between different carrying capacity values.</p></li>
-<li><p>The authors suggested that the model has the potential to be
-applied to study the growth of wolf populations in regions that are
-being considered for the reintroduction of gray wolves.</p></li>
+<li><p>In this study, density dependence is limited to the juvenile
+stage. The adult population stabilizes at an equilibrium proportional to
+the juvenile carrying capacity. The authors also argued that varying
+juvenile carrying capacity in the model affects the equilibrium
+abundance of adults in a slow process.</p></li>
+<li><p>The authors emphasized the importance of including a
+density-dependent factor in the modeling of the lake sturgeon’s early
+life stages because it restricts the population’s unlimited exponential
+growth. This highlights the need for caution when using
+density-dependent models to estimate the time it will take for the
+population to recover and increase.</p></li>
 </ul>
 <h3 id="references-6">References</h3>
-<p>Charlesworth, B. (1994) <em>Evolution in Age-Structured
-Populations</em>. Cambridge University Press.</p>
-<p>Jensen, A.L. (1995) Simple density-dependent matrix model for
-population projection. <em>Ecological Modelling 77</em>, 43-48.</p>
-<p>Jensen, A.L. (1996) Density-dependent matrix yield equation for
-optimal harvest of age-structured wildlife populations. <em>Ecological
-Modelling 88</em>, 125-132.</p>
-<p>Jensen, A.L. (1997) Matrix population model with density-dependent
-recruitment for assessment of age-structured wildlife populations.
-<em>Bulletin of Mathematical Biology 59</em>(2), 255-262.</p>
-<p>Leslie, P.H. (1945) On the use of matrices in certain population
+<p>Caswell, H. (2001). <em>Matrix Population Models: Construction,
+Analysis, and Interpretation</em>. 2nd ed. Sinauer Associates,
+Sunderland, MA.</p>
+<p>Gaona, P., Ferreras, P., and Delibes, M. (1998). Dynamics and
+viability of a metapopulation of the endangered Iberian lynx (Lynx
+pardinus). <em>Ecological Monographs</em>, <em>68</em>(3), 349-370.</p>
+<p>Lefkovitch, L.P. (1965). The study of population growth in organisms
+grouped by stages. <em>Biometrics</em>, <em>21</em>, 1–18.</p>
+<p>Leslie, P.H. (1945). On the use of matrices in certain population
 mathematics. <em>Biometrika 33</em>, 183-212.</p>
-<p>McCullough, D.R. (1979) <em>The George Reserve Deer Herd: Population
-Ecology of a K-selected Species</em>. University of Michigan Press.</p>
-<p>Tuljapurkar, S. and Caswell, H. (1997) <em>Structured-Population
-Models in Marine, Terrestrial, and Freshwater Systems</em>. Springer
-Science &amp; Business Media.</p>
+<p>Morris, W.F. and Doak, D.F. (2002). <em>Quantitative Conservation
+Biology</em>. Sinauer, Sunderland, MA.</p>
 <h2 id="temporal-environmental-stochasticity-in-matrix-models">Temporal
 environmental stochasticity in matrix models</h2>
 <h3 id="environmental-conditions-are-not-constant-in-time">Environmental
