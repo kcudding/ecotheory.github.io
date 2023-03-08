@@ -194,7 +194,7 @@ plot(n4[1, 10:101], type="l", pch=1, col=1, bty="l", cex.lab=1.2,
 
 Here we present a recent study on lake sturgeon population with density-dependent effects:
 
-Burchfield, J.D., McLaren, B.E., and McLeod D.T. (2022). Sensitivity analysis of a lake sturgeon population with early life stage density-dependent effects, _Canadian Journal of Fisheries and Aquatic Sciences_, _79_(11), 1992-2005.
+Burchfield, J.D., McLaren, B.E., and McLeod, D.T. (2022). Sensitivity analysis of a lake sturgeon population with early life stage density-dependent effects, _Canadian Journal of Fisheries and Aquatic Sciences_, _79_(11), 1992-2005.
 
 ![© USFWS, [Lake sturgeon (_Acipenser fulvescens_)](https://commons.wikimedia.org/wiki/File:Lake_sturgeon_(22582474091).jpg), Public domain](lake_sturgeon.jpg)
 
@@ -205,16 +205,30 @@ $$G_0=\exp\left[r\left(1-\frac{S_0n_0+S_1n_1}{K_j}\right)\right],$$
 where $K_j$ is the juvenile carrying capacity. Here is a sample simulation code (with parameter values presented in the paper).
 
 ```r
+# Define a function to calculate the stage transition rate
+# using the age-structured method, shown in Burchfield et al. (2022)
+growth <- function(S, D) {
+  # S: survival rate
+  # D: duration of the stage in years
+  total <- 0
+  for (i in 1:D) {
+    total <- total + S^i
+  }
+  return (S^D/total)
+}
+```
+
+```r
 n <- matrix(0, nrow = 6, ncol = 151)
 n[, 1] <- c(0, 0, 0, 0, 10, 0)
 S <- c(2.665/100, 65.55/100, 77.45/100,
        77.45/100, 94.8/100, 94.8/100)
 D <- c(1, 7, 8, 8, 24, 22)
 f <- c(0, 0, 0, 0, 13166, 31656)
-K1 <- 9280
+Kj <- 9280
 
 for (t in 1:150) {
-  G0 <- exp(2.3*(1-(S[1]*n[1,t]+S[2]*n[2,t])/K1))
+  G0 <- exp(2.3*(1-(S[1]*n[1,t]+S[2]*n[2,t])/Kj))
   G1 <- growth(S[2], D[2])
   G2 <- growth(S[3], D[3])
   G3 <- growth(S[4], D[4])
