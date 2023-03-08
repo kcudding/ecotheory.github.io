@@ -1,163 +1,262 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
 
-## Density-dependence in populations without stage-structure
+## Density-dependence in matrix models
 
-In the first chapter, we talked about density-dependence in unstructured population models. In general, we can define a model with a differential equation (continuous)
+As populations increase in size, they compete for limited resources and become targets of predators. This leads to lower rates of survival and reproduction, which can be represented by linking vital rates to population density. Similar to the unstructured models we discussed in the first chapter, it is necessary to incorporate density dependence into a structured model. However, there are two main factors that make it more difficult to consider density dependence in a structured model (Morris and Doak, 2002):
+
+- In reality, we have much less data for vital-rate estimates in a demographic study as we have in a long-term population census due to the cost of marking and following multiple individuals.
+
+- There are many more variables that are potentially density-dependent, and here are some questions we need to think about:
+  - What vital rates are density-dependent?
+  - How do those rates change with density?
+  - Which classes contribute to the density that each vital rate "feels"?
+
+Typically, we won't compare various density-dependent functions that are fitted to each vital rate by using multiple combinations of classes to measure density. Here, we will introduce two more practical ways.
+
+
+### Placing a limit on the size of one or more classes
+
+When the focal species is territorial, the most common way to introduce density dependence is by implementing caps (or limits) on population density. A reasonable cap on the territory-holding individuals, usually the breeding adults, can be estimated by dividing the total available area of habitat by the average territory size needed (for breeding). Setting such a cap can make the transition from the pre-reproductive to productive stages density-dependent, even if no other vital rates experience density-dependence.
+
+#### Exmaple on Iberian lynx
+
+Gaona _et al_. (1998) investigated the population dynamics of Iberian lynx in Donana National Park in Spain, and here we present a simplified illustration (Morris and Doak, 2002), in which we track only four stages of female lynx
+
+- cubs (newborn)
+- juveniles (one year old)
+- floaters (old enough to breed but not in possession of a territory)
+- breeders (territory-holding)
+
+![© Diego Delso, [Iberian lynx (_Lynx pardinus_)](https://commons.wikimedia.org/wiki/File:Lince_ibérico_(Lynx_pardinus),_Almuradiel,_Ciudad_Real,_España,_2021-12-19,_DD_02.jpg), [Creative Commons CC BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)](iberian_lynx.jpg){width=50%}
+
+The projection matrix $\mathbf{A}$ is defined as follows
+$$\mathbf{A}=\begin{bmatrix}0 & 0 & 0 & f_4s_4\\s_1 & 0 & 0 & 0\\0 & s_2(1-g) & s_3(1-g) & 0\\0 & s_2g & s_3g & s_4\end{bmatrix},$$
+where $s_i$ is the survival rate of stage $i$, $f_4$ is the average number of female cubs produced by a breeder. We let $K$ be the maximum number of territories. $g$ is the probability that a juvenile or a floater will acquire a territory (for breeding) next year, which accounts for density dependence and is defined as follows:
+$$g=\frac{K-s_4n_4(t)}{s_2n_2(t)+s_3n_3(t)}.$$
+It's not hard to notice that $g$ decreases when $n_2$, $n_3$ and $n_4$ increase. When applying this method, we should also notice the following two points:
+
+- $n_4$ should always be no larger than $K$. So if $n_4(t)>K$, we should let $n_4(t)=K$, and update $n_3(t)$ with $n_3(t)+K-n_4(t)$.
+- With the first point, we always have $g\geq 0$. It is still possible that $g>1$, which is achieved when $K-s_4n_4(t)>s_2n_2(t)+s_3n_3(t)$. So we should always update $g$ with $\min\{g,1\}$.
+
+The R code below shows how thr breeder population and the total population change when the maximum number of territories $K$ is introduced:
+
+```r
+s1 <- 0.2
+s2 <- 0.7
+s3 <- 0.7
+s4 <- 0.86
+# Reproduction of a female breeder is calculated as
+# (sex ratio)*(breeding prob)*(avg number of offsprings)
+# We change the avg number of offsprings compared to Morris and Doak (2002) for better illustration
+f4 <- 0.5*0.6*4
+K <- 6
+
+n <- matrix(0, nrow = 4, ncol = 51)
+n[, 1] <- c(4, 2, 0, 5)
+n_total <- replicate(51, 0)
+n_total[1] <- 4+2+0+5
+
+for (t in 1:50) {
+  # Force n4 to be at most K
+  if (n[4, t] > K) {
+    n[4, t] <- K
+    n[3, t] <- n[3, t] + (K - n[4, t])
+  }
+  
+  g <- (k - s4*n[4, t])/(s2*n[2, t] + s3*n[3, t])
+  
+  # Clip g between 0 and 1
+  if (g > 1) {
+    g <- 1
+  }
+  
+  A.data <- c(0, 0, 0, f4*s4,
+              s1, 0, 0, 0,
+              0, s2*(1-g), s3*(1-g), 0,
+              0, s2*g, s3*g, s4)
+  A <- matrix(A.data, nrow = 4, ncol = 4, byrow = TRUE)
+  n[, t+1] <- A %*% n[, t]
+  n_total[t+1] <- sum(n[, t+1])
+}
+
+# Plot the trajectories for the breeder population and the total population
+plot(n[4, ], type="b", pch=1, col=1, bty="l", cex.lab=1.2,
+     lty=c(1), main = '(a)',
+     xlab='year', ylab='population')
+
+plot(n_total, type="b", pch=1, col=1, bty="l", cex.lab=1.2,
+     lty=c(1), main = '(b)',
+     xlab='year', ylab='population')
+```
+
+![(a) Number of breeders; (b) Total lynx population.](lynx.jpeg)
+
+
+### Incorporating density-dependent functions for particular vital rates
+
+In an unstructured model, we can define a density-dependent model with a differential equation (continuous)
 $$\frac{dN}{dt}=Ng(N),$$
 or a difference equation (discrete)
 $$N_{t+1}=N_t+N_tg(N_t)$$
-where the per capita growth rate $g(N)$ depends on the population size/density $N$. For example, when $g(N)=r(1-N/K)$, we get the classic logistic growth model, where the population density has a negative effect on per capita crowth rate.
+where the per capita growth rate $g(N)$ depends on the population density $N$. Two most famous candidates for $g(N)$ are
 
+- Beverton-Holt function: $g(N)=\frac{\alpha}{1+\beta N}$,
+- Ricker function: $g(N)=\alpha e^{-\beta N}.$
 
-## Density-dependence in populations with stage-structure
+![(a) Beverton-Holt function and Ricker function; (b) the corresponding recruitment functions. Here, we set $\alpha=0.9$ and $\beta=0.05$](bh_ricker.jpeg)
 
-Density-dependent processes occur when the population growth rate is affected by the population density. This is relatively simple in an unstructured model, since we only have one population density and one growth rate to consider. In a stage-structured model, things become more complicated, and here are some questions we need to think about
+Similarly, for a stage-structured model, we can also assume that one or more vital rates depend on the number of individuals in one or more stages. Let's start with the simplest case. Consider a two-stage model defined by the matrix
+$$\mathbf{A}=\begin{bmatrix}\sigma_1(1-\gamma) & \phi\\\sigma_1\gamma & \sigma_2\end{bmatrix},$$
+where $\sigma_1$ and $\sigma_2$ are survival rate at each stage, $\gamma$ is the growth rate from stage 1 to stage 2, and $\phi$ is the fecundity rate from stage 2 to stage 1. Here we follow the settings in Caswell (2001), but there is no difference between this and using a single variable to represent each transition rate.
 
-- There are many vital rates (e.g. fecundity rate (producing offsprings), survival rate (staying in the same stage), growth rate (growing to the next stage)). Does the population density influence only one of these rates, or all of them?
-- Are the vital rates of a stage affected by the density of the population in that stage, or the density of total population?
-- Is each vital rate affected in the same way, or differently?
+Let's assume that vital rates are affected by the total population $N=n_1+n_2$. Here are some possible density-dependent vital rates, using the Ricker function:
 
-
-### Incorporating density-dependence into a matrix model
-
-There are plenty of ways of incorporating density-dependence into matrix models. Let's start with the simplest case. Consider a two-stage model defined by the matrix
-$$\mathbf{A}=\begin{bmatrix}\sigma_1(1-\gamma_1) & f_2\\\sigma_1\gamma_1 & \sigma_2\end{bmatrix},$$
-where $\sigma_1$ and $\sigma_2$ are survival rate at each stage, $\gamma_1$ is the growth rate from stage 1 to stage 2, and $f_2$ is the fecundity rate from stage 2 to stage 1. Here we follow the settings in Tuljapurkar and Caswell (1997), but there is no difference between this and using a single variable to represent each transition rate.
-
-Let's assume that vital rates are affected by the total population $N=N_1+N_2$. Here are some possible density-dependent rates:
-
-- _Density-dependent fecundity_: $f_2(N)=f_0e^{-aN}$
-- _Density-dependent survival_: $\sigma_i(N)=\sigma_{0,i}e^{-b_iN},\;i\in\{1,2\}$
-- _Density-dependent growth_: $\gamma_1(N)=\gamma_0e^{-cN}$
+- _Density-dependent fecundity_: $\phi\to\phi e^{-bN}$
+- _Density-dependent survival_: $\sigma_i\to \sigma_i e^{-bN},\ i\in\{1,2\}$
+- _Density-dependent growth_: $\gamma\to \gamma e^{-bN}$
 - Combinations of the above rates
 
 
-### Density-dependence in a Leslie model
+#### Examples with density-dependent fecundity/growth
 
-Many analysis on density-dependent matrix models starts with the Leslie matrix because of its simplicity (Leslie, 1945). Let's start with a three-stage Leslie model whose population projection matrix $\mathbf{A}$ has the following form
-$$\mathbf{A}=\begin{bmatrix}F_0 & F_1 & F_2\\S_0 & 0 & 0\\0 & S_1 & 0\end{bmatrix},$$
-where $F_i$ is the fecundity of stage group $i$, and $S_i$ is survival from stage $i-1$ at time $t$ to stage $i$ at time $t+1$ with continuous mortality (Jensen, 1995).
+Remember that when populations growing according to the discrete logistic equation could show different dynamics (smooth approach, damped oscillations, limit cycle and chaos) with different parameter values? Such phenomena exist in a density-dependent matrix model as well.
 
-#### Model setup
+We present an example with density-dependent fecundity where $\phi(N)=\phi e^{-N}$, and an example with density-dependent growth where $\gamma(N)=\gamma e^{-N}$. We test different values of $\phi=50,500,1800$ for the density-dependent fecundity model and $\phi=300$ for the density-dependent growth model. Other parameters are $\sigma_1=0.5$, $\sigma_2=0.1$ and $\gamma=0.1$.
 
-From the Leslie matrix model, we can obtain the new stage structure directly from the old stage structure via the equation
-$$\vec{N}_{t+1}=\mathbf{A}\vec{N}_t,$$
-which can be written as
-$$\vec{N}_{t+1}=\vec{N}_t+(\mathbf{A}-\mathbf{I})\vec{N}_t,$$
-where $\mathbf{I}$ is the $3\times 3$ identity matrix.
-
-You might have noticed that it has a similar form as $N_{t+1}=N_t+rN_t$, the discrete model we discussed in the previous chapter! The transition matrix $\mathbf{A}-\mathbf{I}$ is analogous to the intrinsic rate of increase $r$. We can develop a density-dependent matrix model with the following equation
-$$\vec{N}_{t+1}=\vec{N}_t+D(\vec{N}_t)(\mathbf{A}-\mathbf{I})\vec{N}_t,$$
-in which $D(N_t)$ is a density-dependent function.
-
-#### Logistic growth in a Leslie matrix model
-
-The simplest form of density-dependence might be the logistic equation $N_{t+1}=N_t+(1-N_t/K)rN_t$, where $K$ denotes the carrying capacity. Hence, a candidate for $D(\vec{N}_t)$ could be
-$$D(\vec{N}_t)=1-T_{\vec{N}_t}/K.$$
-Here, $T_{\vec{N}_t}$ is the total population at time $t$, or the sum of the elements in the vector $\vec{N}_t$. In other words, the growth rate of each stage group at time $t$ is affected by the total population at that time. However, using such a function for $D(\vec{N}_t)$ has some limitations:
-
-- Jensen (1995) argued that this function is only useful when the initial population size is far less than the carrying capacity. With a relatively small initial abundance compared to the carrying capacity, the stage structure at the carrying capacity is near the stable stage distribution given by the Leslie matrix.
-- Charlesworth (1994) also mentioned that from empirical results, usually, the density-dependent components of the demographic parameters respond only to the numbers of individuals in a restricted sub-group of the population, not the total population.
-
-Therefore, we need a more general density-dependent function $D(\vec{N}_t)$. Here we introduce a diagonal matrix with term of the form $1-N(x,t)/(c_xK)$, where $c_x$ is the proportion of stage $x$ in the stable stage distribution, which can be determined from the dominant eigenvector of the Leslie matrix. In our model setup, $D(\vec{N}_t)$ has the following form
-$$D(\vec{N}_t)=\begin{bmatrix}1-\frac{N(1,t)}{c_1K} & 0 & 0\\0 & 1-\frac{N(2,t)}{c_2K} & 0\\0 & 0 & 1-\frac{N(3,t)}{c_3K}\end{bmatrix}.$$
-
-Now we will do a little math to show how such a diagonal matrix works in our model:
-$$\begin{aligned}\begin{bmatrix}N(0,t+1)\\N(1,t+1)\\N(2,t+1)\end{bmatrix} & =\begin{bmatrix}N(0,t)\\N(1,t)\\N(2,t)\end{bmatrix}+\begin{bmatrix}1-\frac{N(0,t)}{c_0K} & 0 & 0\\0 & 1-\frac{N(1,t)}{c_1K} & 0\\0 & 0 & 1-\frac{N(2,t)}{c_2K}\end{bmatrix}\begin{bmatrix}F_0-1 & F_1 & F_2\\S_0 & -1 & 0\\0 & S_1 & -1\end{bmatrix}\begin{bmatrix}N(0,t)\\N(1,t)\\N(2,t)\end{bmatrix}\\
-~ & =\begin{bmatrix}N(0,t)\\N(1,t)\\N(2,t)\end{bmatrix}+\begin{bmatrix}\left(1-\frac{N(0,t)}{c_0K}\right)(F_0-1) & \left(1-\frac{N(0,t)}{c_0K}\right)F_1 & \left(1-\frac{N(0,t)}{c_0K}\right)F_2\\\left(1-\frac{N(1,t)}{c_1K}\right)S_0 & -\left(1-\frac{N(1,t)}{c_1K}\right) & 0\\0 & \left(1-\frac{N(2,t)}{c_2K}\right)S_1 & -\left(1-\frac{N(2,t)}{c_2K}\right)\end{bmatrix}\begin{bmatrix}N(0,t)\\N(1,t)\\N(2,t)\end{bmatrix}\\
-~ & =\begin{bmatrix}N(0,t)+\left(1-\frac{N(0,t)}{c_0K}\right)[(F_0-1)N(0,t)+F_1N(1,t)+F_2N(2,t)]\\N(1,t)+\left(1-\frac{N(1,t)}{c_1K}\right)[S_0N(0,t)-N(1,t)]\\N(2,t)+\left(1-\frac{N(2,t)}{c_2K}\right)[S_1N(1,t)-N(2,t)]\end{bmatrix}\end{aligned}$$
-
-
-#### Matrix representation
-
-We now develop a matrix expression of the model $\vec{N}_{t+1}=\vec{N}_t+D(\vec{N}_t)(\mathbf{A}-\mathbf{I})\vec{N}_t$. The above $D(\vec{N}_t)$ can be written as 
-$$D(\vec{N}_t)=\mathbf{I}-\mathbf{K}^{-1}\mathbf{N_t},$$
-in which $\mathbf{K}=diag\{c_xK\}$ ($\mathbf{K}^{-1}$ is the inverse of $\mathbf{K}$, which can be easily calculated as $diag\{1/(c_xK)\}$), $\mathbf{N}_t=diag\{N(x,t)\}$. So we have
-$$\vec{N}_{t+1}=\vec{N}_t+(\mathbf{I}-\mathbf{K}^{-1}\mathbf{N_t})(\mathbf{A}-\mathbf{I})\vec{N}_t,$$
-the form of which is analogous to the discrete-time logistic equation $N_{t+1}=N_t+(1-N_t/K)rN_t$.
-
-
-#### Application
-
-![© John Benson, [White-tailed deer (_Odocoileus virginianus_)](https://commons.wikimedia.org/wiki/File:Odocoileus_virginianus_fawn,_Owen_Conservation_Park,_Madison,_Wisconsin.jpg), [Creative Commons  CC-BY-2.0 license](https://creativecommons.org/licenses/by/2.0/)](white_tailed_deer.jpg)
-
-Let's run a simulation with the data of the George Reserve deer herd (McCullough, 1979), where the carrying capacity was about 220, and the projection matrix $\mathbf{A}$ is
-$$\mathbf{A}=\begin{bmatrix}0.7030 & 0.6359 & 0.6389 & 0.5522 & 0.5551 & 0.7661 & 0\\0.713 & 0 & 0 & 0 & 0 & 0 & 0\\0 & 0.645 & 0 & 0 & 0 & 0 & 0\\0 & 0 & 0.648 & 0 & 0 & 0 & 0\\0 & 0 & 0 & 0.560 & 0 & 0 & 0\\0 & 0 & 0 & 0 & 0.563 & 0 & 0\\0 & 0 & 0 & 0 & 0 & 0.777 & 0\end{bmatrix}.$$
-
-Here is the R code simulation for the population over 30 years, with initial population $\vec{N}_0=[0,4,0,0,0,0,0]$.
 ```r
-# Create the Leslie matrix
-A.data <- c(0.7030, 0.6359, 0.6389, 0.5522, 0.5551, 0.7661, 0,
-            0.713, 0, 0, 0, 0, 0, 0,
-            0, 0.645, 0, 0, 0, 0, 0,
-            0, 0, 0.648, 0, 0, 0, 0,
-            0, 0, 0, 0.560, 0, 0, 0,
-            0, 0, 0, 0, 0.563, 0, 0,
-            0, 0, 0, 0, 0, 0.777, 0)
-A <- matrix(A.data, nrow = 7, ncol = 7, byrow = TRUE)
+n1 <- matrix(0, nrow = 2, ncol = 101)
+n2 <- matrix(0, nrow = 2, ncol = 101)
+n3 <- matrix(0, nrow = 2, ncol = 101)
+n4 <- matrix(0, nrow = 2, ncol = 101)
+n1[, 1] <- c(6, 4)
+n2[, 1] <- c(6, 4)
+n3[, 1] <- c(6, 4)
+n4[, 1] <- c(6, 4)
 
-# Find the real part of the eigenvector corresponding to the dominant eigenvalue
-w1 <- Re(eigen(A)$vectors[, 1])
-
-# Calculate the stable stage distribution
-ssd <- w1/sum(w1)
-
-# Set up the carrying capacity matrix K
-K <- diag(220*ssd, nrow = 7, ncol = 7)
-
-# Create a matrix N to store the population of each stage x at each time t
-# row: stage x
-# col: time t
-N <- matrix(0, nrow = 7, ncol = 31)
-
-# Initial population
-N[, 1] <- c(0, 4, 0, 0, 0, 0, 0)
-
-for (t in 1:30) {
-  Nt <- diag(N[, t], nrow = 7, ncol = 7)
-  N[, t+1] <- N[, t] + (diag(7) - solve(K) %*% Nt) %*% (A - diag(7)) %*% N[, t]
+for (t in 1:100) {
+  A1 <- matrix(c(0.45, 50*exp(-sum(n1[,t])), 0.05, 0.1),
+               nrow = 2, ncol = 2, byrow = TRUE)
+  A2 <- matrix(c(0.45, 500*exp(-sum(n2[,t])), 0.05, 0.1),
+               nrow = 2, ncol = 2, byrow = TRUE)
+  A3 <- matrix(c(0.5*(1-0.1*exp(-sum(n3[,t]))), 300, 
+                 0.5*0.1*exp(-sum(n3[,t])), 0.1),
+               nrow = 2, ncol = 2, byrow = TRUE)
+  A4 <- matrix(c(0.45, 1800*exp(-sum(n4[,t])), 0.05, 0.1),
+               nrow = 2, ncol = 2, byrow = TRUE)
+  n1[, t+1] <- A1 %*% n1[, t]
+  n2[, t+1] <- A2 %*% n2[, t]
+  n3[, t+1] <- A3 %*% n3[, t]
+  n4[, t+1] <- A4 %*% n4[, t]
 }
+
+# Plot
+plot(n1[1, 10:101], n1[2, 10:101], type="b", pch=1, col=1,
+     bty="l", cex.lab=1.2, lty=1, main = '(a) Equilibrium',
+     xlab=expression(n[1]), ylab=expression(n[2]))
+
+plot(n1[1, 10:101], type="l", pch=1, col=1, bty="l", cex.lab=1.2,
+     lty=1, main = '(b)',
+     xlab='time', ylab=expression(n[1]))
+
+plot(n2[1, 10:101], n2[2, 10:101], type="b", pch=1, col=1,
+     bty="l", cex.lab=1.2, lty=1, main = '(c) 4-cycle',
+     xlab=expression(n[1]), ylab=expression(n[2]))
+
+plot(n2[1, 10:101], type="l", pch=1, col=1, bty="l", cex.lab=1.2,
+     lty=1, main = '(d)',
+     xlab='time', ylab=expression(n[1]))
+
+plot(n3[1, 10:101], n3[2, 10:101], type="b", pch=1, col=1,
+     bty="l", cex.lab=1.2, lty=1, main = '(e) Invariant loop',
+     xlab=expression(n[1]), ylab=expression(n[2]))
+
+plot(n3[1, 10:101], type="l", pch=1, col=1, bty="l", cex.lab=1.2,
+     lty=1, main = '(f)',
+     xlab='time', ylab=expression(n[1]))
+
+plot(n4[1, 10:101], n4[2, 10:101], type="b", pch=1, col=1,
+     bty="l", cex.lab=1.2, lty=1, main = '(g) Strange attractor',
+     xlab=expression(n[1]), ylab=expression(n[2]))
+
+plot(n4[1, 10:101], type="l", pch=1, col=1, bty="l", cex.lab=1.2,
+     lty=1, main = '(h)',
+     xlab='time', ylab=expression(n[1]))
 ```
-We obtained the following plots, where we can see that the population of each stage is approaching the carrying capacity of corresponding stage.
 
-![](ddplot.jpeg)
+![(a,c,e,g) Attractors; (b,d,f,h) dynamics of corresponding attractors. ](attractors.jpeg){width=75%}
 
 
-### Illustration of current application: Gray wolf population projection
+### Illustration of current application: Lake sturgeon population
 
-Here we present a research paper in which a density dependent Leslie matrix model was applied to investigate gray wolf population recovery in the Upper Peninsula of Michigan. The authors also implement density dependence using $\vec{N}_{t+1}=\vec{N}_t+D(\vec{N}_t)(\mathbf{A}-\mathbf{I})\vec{N}_t$ but with a much simpler $D(\vec{N}_t)=1-T_{\vec{N}_t}/K$, where $T_{\vec{N}_t}$ is the total population at time $t$. A 10-by-10 Leslie matrix was used as the population projection matrix. It was similar to what we discussed above, except that the element $F_0=0$ (the entry on the first row, first column), ignoring the fecundity in yearling wolfs.
+Here we present a recent study on lake sturgeon population with density-dependent effects:
 
-Miller, D.H., Jensen A.L. and Hammill, J.H. (2002) Density dependent matrix model for gray wolf population projection, _Ecological Modelling 151_: 271--278.
+Burchfield, J.D., McLaren, B.E., and McLeod D.T. (2022). Sensitivity analysis of a lake sturgeon population with early life stage density-dependent effects, _Canadian Journal of Fisheries and Aquatic Sciences_, _79_(11), 1992-2005.
 
-![© Mariofan13, [Gray wolf (_Canis lupus_)](https://commons.wikimedia.org/wiki/File:Canis_lupus_Ernstbrunn.jpg), [Creative Commons CC-BY-SA-3.0 license](https://creativecommons.org/licenses/by-sa/3.0/)](gray_wolf.jpg)
+![© USFWS, [Lake sturgeon (_Acipenser fulvescens_)](https://commons.wikimedia.org/wiki/File:Lake_sturgeon_(22582474091).jpg), Public domain](lake_sturgeon.jpg)
+
+The authors composed a Lefkovitch projection matrix (Lefkovitch, 1965) with six stages: age-0, juvenile, early subadult, late subadult, early adult and late adult, with the following projection matrix
+$$\mathbf{A}=\begin{bmatrix}0 & 0 & 0 & S_3G_3f_4 & S_4(1-G_4)f_4+S_4G_4f_5 & S_5(1-G_5)f_5\\S_0G_0 & S_1(1-G_1) & 0 & 0 & 0 & 0\\0 & S_1G_1 & S_2(1-G_2) & 0 & 0 & 0\\0 & 0 & S_2G_2 & S_3(1-G_3) & 0 & 0\\0 & 0 & 0 & S_3G_3 & S_4(1-G_4) & 0\\0 & 0 & 0 & 0 & S_4G_4 & S_5(1-G_5)\end{bmatrix},$$
+where $S_i$ is the survival rate at stage $i$, $G_i$ is the transition rate from stage $i$ to stage $i+1$, and $f_i$ is the fecundity rate (only for adults). Density dependence is introduced with a Ricker function on $G_0$
+$$G_0=\exp\left[r\left(1-\frac{S_0n_0+S_1n_1}{K_j}\right)\right],$$
+where $K_j$ is the juvenile carrying capacity. Here is a sample simulation code (with parameter values presented in the paper).
+
+```r
+n <- matrix(0, nrow = 6, ncol = 151)
+n[, 1] <- c(0, 0, 0, 0, 10, 0)
+S <- c(2.665/100, 65.55/100, 77.45/100,
+       77.45/100, 94.8/100, 94.8/100)
+D <- c(1, 7, 8, 8, 24, 22)
+f <- c(0, 0, 0, 0, 13166, 31656)
+K1 <- 9280
+
+for (t in 1:150) {
+  G0 <- exp(2.3*(1-(S[1]*n[1,t]+S[2]*n[2,t])/K1))
+  G1 <- growth(S[2], D[2])
+  G2 <- growth(S[3], D[3])
+  G3 <- growth(S[4], D[4])
+  G4 <- growth(S[5], D[5])
+  G5 <- growth(S[6], D[6])
+  A <- matrix(c(0, 0, 0, S[4]*G3*f[5], S[5]*(1-G4)*f[5]+S[5]*G4*f[6], S[6]*(1-G5)*f[6],
+                S[1]*G0, S[2]*(1-G1), 0, 0, 0, 0,
+                0, S[2]*G1, S[3]*(1-G2), 0, 0, 0,
+                0, 0, S[3]*G2, S[4]*(1-G3), 0, 0,
+                0, 0, 0, S[4]*G3, S[5]*(1-G4), 0,
+                0, 0, 0, 0, S[5]*G4, S[6]*(1-G5)),
+              nrow = 6, ncol = 6, byrow = TRUE)
+  n[, t+1] <- A %*% n[, t]
+}
+
+# Plot population trajectories of early and late adults
+plot(n[5, ], type="l", pch=1, col=1,
+     bty="l", cex.lab=1.2, lty=1,
+     xlab='years', ylab='population', ylim=c(0,35))
+lines(n[6, ], type="l", lty=2)
+legend(x = "topright", bty="n",
+       legend = c('Early adult', 'Late adult'),
+       col=c(1,1), lty=c(1,2), cex=0.8)
+```
+
+![Population trajectories of adult lake sturgeons, with an initial population of 10 early adults](lake_sturgeon_simulation.jpeg)
 
 #### Snapshot of the study
 
-- The density dependent matrix developed in the paper was simple to apply to field population, as it only requires estimates of survival and fecundity rates. In fact, the authors used the same fecundity rates across all ages (except the yearling), and same adult survival rates.
+- In this study, density dependence is limited to the juvenile stage. The adult population stabilizes at an equilibrium proportional to the juvenile carrying capacity. The authors also argued that varying juvenile carrying capacity in the model affects the equilibrium abundance of adults in a slow process.
 
-- A normally distributed random variable that accounts for annual environmental stochasticity was also included in the model in order to generate a 95% confidence interval for the annual wolf population.
-
-- The authors used the model to investigate the number of years it would take the Upper Peninsula wolf population to reach 95% of its estimated carrying capacity. The result showed that on average, the gray wolf population will reach 95% of carrying capacity in about 21 years, as early as 2007.
-
-- There were several years when the wolf population did not fall in the 95% confidence interval as predicted by the model. The authors attributed it to the impact of immigration.
-
-- A sensitivity analysis showed that, for small wolf populations, changes in carrying capacity did not significantly impact the predicted average population size over time as per the density-dependent matrix model. However, as the population size grew larger, the impact of the density-dependent function led to greater differences in projected population size between different carrying capacity values.
-
-- The authors suggested that the model has the potential to be applied to study the growth of wolf populations in regions that are being considered for the reintroduction of gray wolves.
-
+- The authors emphasized the importance of including a density-dependent factor in the modeling of the lake sturgeon's early life stages because it restricts the population's unlimited exponential growth. This highlights the need for caution when using density-dependent models to estimate the time it will take for the population to recover and increase.
 
 
 ### References
 
-Charlesworth, B. (1994) _Evolution in Age-Structured Populations_. Cambridge University Press.
+Caswell, H. (2001). _Matrix Population Models: Construction, Analysis, and Interpretation_. 2nd ed. Sinauer Associates, Sunderland, MA. 
 
-Jensen, A.L. (1995) Simple density-dependent matrix model for population projection. _Ecological Modelling 77_, 43-48.
+Gaona, P., Ferreras, P., and Delibes, M. (1998). Dynamics and viability of a metapopulation of the endangered Iberian lynx (Lynx pardinus). _Ecological Monographs_, _68_(3), 349-370.
 
-Jensen, A.L. (1996) Density-dependent matrix yield equation for optimal harvest of age-structured wildlife populations. _Ecological Modelling 88_, 125-132.
+Lefkovitch, L.P. (1965). The study of population growth in organisms grouped by stages. _Biometrics_, _21_, 1–18.
 
-Jensen, A.L. (1997) Matrix population model with density-dependent recruitment for assessment of age-structured wildlife populations. _Bulletin of Mathematical Biology 59_(2), 255-262. 
+Leslie, P.H. (1945). On the use of matrices in certain population mathematics. _Biometrika 33_, 183-212.
 
-Leslie, P.H. (1945) On the use of matrices in certain population mathematics. _Biometrika 33_, 183-212.
-
-McCullough, D.R. (1979) _The George Reserve Deer Herd: Population Ecology of a K-selected Species_. University of Michigan Press.
-
-Tuljapurkar, S. and Caswell, H. (1997) _Structured-Population Models in Marine, Terrestrial, and Freshwater Systems_. Springer Science & Business Media.
+Morris, W.F. and Doak, D.F. (2002). _Quantitative Conservation Biology_. Sinauer, Sunderland, MA.
