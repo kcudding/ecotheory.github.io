@@ -1,0 +1,264 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+  <title>652L2NOANS</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+
+    
+    <div class="container mt-5">
+      <div class="row">
+            <div id="TOC" class="col-sm-7 col-lg-3">
+        <div class="well toc">
+
+        <ul>
+        <li><a href="#biol-652-l2-exercises"
+        id="toc-biol-652-l2-exercises">BIOL 652 L2 Exercises</a></li>
+        </ul>
+
+        </div>
+      </div>
+            <div class="col-9">
+
+      
+      <h1 id="biol-652-l2-exercises">BIOL 652 L2 Exercises</h1>
+<ol type="1">
+<li>The following matrix describes the life history transitions of a
+structured population:</li>
+</ol>
+<p><span class="math inline">\(\begin{bmatrix} 0 &amp; 0 &amp; 12 &amp;
+24\\ 0.1 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0.5 &amp; 0.25 &amp; 0\\ 0
+&amp; 0 &amp; 0.7 &amp; 0.8 \end{bmatrix}\)</span></p>
+<ol type="a">
+<li>Does the matrix describe an age- or stage-structured population? How
+do you know?</li>
+<li>Write down the equations that correspond to the matrix</li>
+<li>The dominant eigenvalue of the matrix is 0.98. What does it
+mean?</li>
+<li>If the population has not reached a stable age distribution, how can
+you predict future population size?</li>
+</ol>
+<ol start="2" type="1">
+<li>You are the manager of a small nature reserve and you notice a new
+invasive plant (spotty fundingcut) is suddenly quite prevalent. You
+search the literature and find that the self-fertilizing plant is
+perennial, but that reproductive output is size-dependent. After one
+year plants are reproductively mature adults; but small plants do not
+have enough energy to produce many seeds.</li>
+</ol>
+<ol type="a">
+<li><p>Draw a graph to describe the life history of the plant</p></li>
+<li><p>To track the species, you establish 50, 1 m2 sample plots located
+randomly throughout the reserve. For two years you sample in early
+summer when fruits are on the plants. In all plots, you tag all first
+year plants, and all older plants, and count the number of fruits on
+each (there is one seed per fruit). For every 100 fruits counted in the
+first year, 30 one-year-old plants were found in the next year. You find
+the 50% of small adult plants become large adult plants in the next
+year. Once large, plants have a 90% chance of surviving from year to
+year. Small plants produced about 0.5 seeds per year, but each large
+plant produced 20 seeds. Use the matrix() command to construct the
+stage-structured projection matrix named L that corresponds to your
+data</p></li>
+<li><p>Your last census revealed that there were 100 seeds, 250 small
+plants, and 50 large plants on the reserve. Create a vector of these
+values using the matrix() command, and then use matrix multiplication to
+project the estimated population size one year into the future. Matrix
+multiplication in R is indicated as <code>%*%</code>. So for example,
+<code>N1&lt;-L%*%N0</code>.</p></li>
+<li><p>Set up a matrix to store the values of the vector for each year,
+and project forward for 6 years. Plot your results, and determine if you
+have a management problem.</p></li>
+<li><p>Farther into the future you might expect the population to reach
+a stable age distribution, and consequently, you should be able to
+calculate the population growth rate as a scalar. Remember that the
+population growth rate is given by the dominant eigenvalue of the matrix
+describing the life history. Use the function eigen() to find the
+eigenvalues and eigenvectors of your matrix. The real part of the
+largest eigenvalue will be your growth rate. What do you think? Will
+spotty fundingcut continue to increase in your reserve?</p></li>
+<li><p>Find the stable age distribution that corresponds to this growth
+rate and express as percentage of the total population. After enough
+time, what percentage of the population will be found in each stage?
+Create a barplot() that illustrates the expected stable age
+distribution.</p></li>
+<li><p>The reproductive value of a stage is the expected contribution of
+individuals in the stage to present and future reproduction. We can find
+the reproductive value of a stage by solving for the left eigenvector
+corresponding to the dominant eigenvalue. Like the right eigenvector
+that gives the stable age distribution, the left eigenvector is
+proportional to the reproductive values. We normally scale this vector
+by the reproductive value of the first stage. We get left eigenvector by
+performing eigenanalysis on the transpose of the life history matrix
+using the t() function and the eigen() function. You’ll also discarded
+the imaginary parts of the vector using the Re() function which just
+takes the real part of each element. What stage has the highest
+reproductive value?</p></li>
+<li><p>Sensitivity tells us the importance of each vital rate in
+determining the population growth rate. These are derived from the
+stable age distribution and the reproductive values as: <span
+class="math inline">\(\frac{\partial\lambda}{\partial a_{ij}}
+=\frac{v_{ij}w{ij}}{\boldsymbol{v} \boldsymbol{\cdot}
+\boldsymbol{w}}\)</span> where <span
+class="math inline">\(\lambda\)</span> is the dominant eigenvalue, and
+<span class="math inline">\(v_i w_j\)</span> is the product of each
+pairwise combination of elements of the dominant left and right
+eigenvectors, <span class="math inline">\(\boldsymbol{v}\)</span> and
+<span class="math inline">\(\boldsymbol{w}\)</span>. The dot product
+<span class="math inline">\(\boldsymbol{v} \boldsymbol{\cdot}
+\boldsymbol{w}\)</span> is the sum of the pairwise products of each
+vector. Dividing by this sum causes the sensitivities to be relative to
+the magnitudes of <span class="math inline">\(\boldsymbol{v}\)</span>
+and <span class="math inline">\(\boldsymbol{w}\)</span>. To find the
+sensitivity let’s first calculate the denominator:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> S.dem<span class="ot">&lt;-</span><span class="fu">sum</span>(repv<span class="sc">*</span>sad)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> <span class="co"># repv is the vector of reproductive value</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># sad is the stable age distribution</span></span></code></pre></div></li>
+</ol>
+<p>Then we can use two loops to calculate the sensitivity of each
+element of the A matrix:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s<span class="ot">=</span>A; n<span class="ot">=</span><span class="fu">dim</span>(L)[<span class="dv">1</span>];</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  s[i,j]<span class="ot">=</span>repv[i]<span class="sc">*</span>sad[j]<span class="sc">/</span>S.dem;</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>} }</span></code></pre></div>
+<p>According to this, which is the most important life history
+component?</p>
+<ol type="i">
+<li>Elasticities are sensitivities weighted by the transition
+probabilities, and tell us about the proportional effects of a change in
+a life history component. So that elasticity of each element, <span
+class="math inline">\(e_{ij}\)</span> , is given by <span
+class="math inline">\(\frac{a_{ij}}{\lambda}\frac{\partial
+\lambda}{\partial a_{ij}}\)</span>. This is easy to calculate in R:</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>elas<span class="ot">&lt;-</span><span class="fu">Re</span>(A<span class="sc">/</span>dom.eig<span class="sc">*</span>s)</span></code></pre></div>
+<p>Elasticities have two nice properties. First, impossible transitions
+have values of zero, since we multiply by the life history matrix, and
+second, elasticities sum to one, so it easy to compare the different
+rates, or between populations.</p>
+<ol start="10" type="a">
+<li>Based on the elasticities, choose a management action that to
+control spotty fundingcut. Provide an argument that your action will be
+the least expensive and most effective plan.</li>
+</ol>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>

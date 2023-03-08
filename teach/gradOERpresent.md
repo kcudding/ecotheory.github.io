@@ -20,7 +20,7 @@ header-includes:
 ###
 **Intro**
 
-1. brief review course-based research/projects for undergraduate and graduate classes
+1. Brief review of course-based research/projects for undergraduate and graduate classes
   
 **Project description**
 
