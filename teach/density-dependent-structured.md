@@ -6,14 +6,13 @@ output:
 
 ## Density-dependence in matrix models
 
-As populations increase in size, they compete for limited resources and become targets of predators. This leads to lower rates of survival and reproduction, which can be represented by linking vital rates to population density. Similar to the unstructured models we discussed in the first chapter, it is necessary to incorporate density dependence into a structured model. However, there are two main factors that make it more difficult to consider density dependence in a structured model (Morris and Doak, 2002):
+As populations increase in size, they compete for limited resources and become targets of predators. This leads to lower rates of survival and reproduction, which can be represented by linking vital rates to population density. Similar to the unstructured models we discussed in the first chapter, it is necessary to incorporate density dependence into a structured model. However, there are two main factors that make it more difficult to consider density dependence in a structured model (Morris and Doak, 2002).
 
-- In reality, we have much less data for vital-rate estimates in a demographic study as we have in a long-term population census due to the cost of marking and following multiple individuals.
-
-- There are many more variables that are potentially density-dependent, and here are some questions we need to think about:
-  - What vital rates are density-dependent?
-  - How do those rates change with density?
-  - Which classes contribute to the density that each vital rate "feels"?
+First of all, in reality, we have much less data for vital-rate estimates in a demographic study due to the cost of marking and following multiple individuals. Also, there are many more variables that are potentially density-dependent, and here are some questions we need to think about:
+  
+- What vital rates are density-dependent?
+- How do those rates change with density?
+- Which classes contribute to the density that each vital rate "feels"?
 
 Typically, we won't compare various density-dependent functions that are fitted to each vital rate by using multiple combinations of classes to measure density. Here, we will introduce two more practical ways.
 
@@ -34,9 +33,9 @@ Gaona _et al_. (1998) investigated the population dynamics of Iberian lynx in Do
 ![© Diego Delso, [Iberian lynx (_Lynx pardinus_)](https://commons.wikimedia.org/wiki/File:Lince_ibérico_(Lynx_pardinus),_Almuradiel,_Ciudad_Real,_España,_2021-12-19,_DD_02.jpg), [Creative Commons CC BY-SA-4.0 license](https://creativecommons.org/licenses/by-sa/4.0/)](iberian_lynx.jpg){width=50%}
 
 The projection matrix $\mathbf{A}$ is defined as follows
-$$\mathbf{A}=\begin{bmatrix}0 & 0 & 0 & f_4s_4\\s_1 & 0 & 0 & 0\\0 & s_2(1-g) & s_3(1-g) & 0\\0 & s_2g & s_3g & s_4\end{bmatrix},$$
-where $s_i$ is the survival rate of stage $i$, $f_4$ is the average number of female cubs produced by a breeder. We let $K$ be the maximum number of territories. $g$ is the probability that a juvenile or a floater will acquire a territory (for breeding) next year, which accounts for density dependence and is defined as follows:
-$$g=\frac{K-s_4n_4(t)}{s_2n_2(t)+s_3n_3(t)}.$$
+$$\mathbf{A}=\begin{bmatrix}0 & 0 & 0 & f_4s_4\\s_1 & 0 & 0 & 0\\0 & s_2[1-g(\mathbf{n})] & s_3[1-g(\mathbf{n})] & 0\\0 & s_2g(\mathbf{n}) & s_3g(\mathbf{n}) & s_4\end{bmatrix},$$
+where $s_i$ is the survival rate of stage $i$, $f_4$ is the average number of female cubs produced by a breeder. We let $K$ be the maximum number of territories. $g=g(\mathbf{n})$ is the probability that a juvenile or a floater will acquire a territory (for breeding) next year, which accounts for density dependence and is defined as follows:
+$$g(\mathbf{n})=\frac{K-s_4n_4(t)}{s_2n_2(t)+s_3n_3(t)}.$$
 It's not hard to notice that $g$ decreases when $n_2$, $n_3$ and $n_4$ increase. When applying this method, we should also notice the following two points:
 
 - $n_4$ should always be no larger than $K$. So if $n_4(t)>K$, we should let $n_4(t)=K$, and update $n_3(t)$ with $n_3(t)+K-n_4(t)$.
@@ -45,21 +44,25 @@ It's not hard to notice that $g$ decreases when $n_2$, $n_3$ and $n_4$ increase.
 The R code below shows how thr breeder population and the total population change when the maximum number of territories $K$ is introduced:
 
 ```r
+# Set the survival rates for each stage
 s1 <- 0.2
 s2 <- 0.7
 s3 <- 0.7
 s4 <- 0.86
 # Reproduction of a female breeder is calculated as
 # (sex ratio)*(breeding prob)*(avg number of offsprings)
-# We change the avg number of offsprings compared to Morris and Doak (2002) for better illustration
 f4 <- 0.5*0.6*4
+# Set the maximum number of territories
 K <- 6
 
+# Project forward for 50 years
 n <- matrix(0, nrow = 4, ncol = 51)
-n[, 1] <- c(4, 2, 0, 5)
 n_total <- replicate(51, 0)
+# Set the initial population
+n[, 1] <- c(4, 2, 0, 5)
 n_total[1] <- 4+2+0+5
 
+# Iterate through 50 years of reproduction
 for (t in 1:50) {
   # Force n4 to be at most K
   if (n[4, t] > K) {
@@ -82,15 +85,6 @@ for (t in 1:50) {
   n[, t+1] <- A %*% n[, t]
   n_total[t+1] <- sum(n[, t+1])
 }
-
-# Plot the trajectories for the breeder population and the total population
-plot(n[4, ], type="b", pch=1, col=1, bty="l", cex.lab=1.2,
-     lty=c(1), main = '(a)',
-     xlab='year', ylab='population')
-
-plot(n_total, type="b", pch=1, col=1, bty="l", cex.lab=1.2,
-     lty=c(1), main = '(b)',
-     xlab='year', ylab='population')
 ```
 
 ![(a) Number of breeders; (b) Total lynx population.](lynx.jpeg)
@@ -98,7 +92,7 @@ plot(n_total, type="b", pch=1, col=1, bty="l", cex.lab=1.2,
 
 ### Incorporating density-dependent functions for particular vital rates
 
-In an unstructured model, we can define a density-dependent model with a differential equation (continuous)
+Another way of incorporating density-dependence is to use density-dependent functions to represent vital rates. Remember that in an unstructured model, we can define a density-dependent model with a differential equation (continuous)
 $$\frac{dN}{dt}=Ng(N),$$
 or a difference equation (discrete)
 $$N_{t+1}=N_t+N_tg(N_t)$$
@@ -111,7 +105,7 @@ where the per capita growth rate $g(N)$ depends on the population density $N$. T
 
 Similarly, for a stage-structured model, we can also assume that one or more vital rates depend on the number of individuals in one or more stages. Let's start with the simplest case. Consider a two-stage model defined by the matrix
 $$\mathbf{A}=\begin{bmatrix}\sigma_1(1-\gamma) & \phi\\\sigma_1\gamma & \sigma_2\end{bmatrix},$$
-where $\sigma_1$ and $\sigma_2$ are survival rate at each stage, $\gamma$ is the growth rate from stage 1 to stage 2, and $\phi$ is the fecundity rate from stage 2 to stage 1. Here we follow the settings in Caswell (2001), but there is no difference between this and using a single variable to represent each transition rate.
+where $\sigma_1$ and $\sigma_2$ are survival rate at each stage, $\gamma$ is the growth rate from stage 1 to stage 2, and $\phi$ is the fecundity rate from stage 2 to stage 1. Here we follow Caswell (2001), but there is no difference between this and using a single variable to represent each transition rate.
 
 Let's assume that vital rates are affected by the total population $N=n_1+n_2$. Here are some possible density-dependent vital rates, using the Ricker function:
 
@@ -123,20 +117,26 @@ Let's assume that vital rates are affected by the total population $N=n_1+n_2$. 
 
 #### Examples with density-dependent fecundity/growth
 
-Remember that when populations growing according to the discrete logistic equation could show different dynamics (smooth approach, damped oscillations, limit cycle and chaos) with different parameter values? Such phenomena exist in a density-dependent matrix model as well.
+Remember that when populations are changing according to the discrete logistic equation, they can have qualitatively different dynamics, depending on parameter values (monotonic approach to an equilibrium, damped oscillations, limit cycles and chaos). Such phenomena exist in a density-dependent matrix model as well.
 
 We present an example with density-dependent fecundity where $\phi(N)=\phi e^{-N}$, and an example with density-dependent growth where $\gamma(N)=\gamma e^{-N}$. We test different values of $\phi=50,500,1800$ for the density-dependent fecundity model and $\phi=300$ for the density-dependent growth model. Other parameters are $\sigma_1=0.5$, $\sigma_2=0.1$ and $\gamma=0.1$.
 
+We will compare the following four projection matriceswith the same initial population $\mathbf{n}(0)=[6,4]$:
+$$\mathbf{A}_1=\begin{bmatrix}0.45 & 50e^{-N}\\0.05 & 0.1\end{bmatrix},\ \mathbf{A}_2=\begin{bmatrix}0.45 & 500e^{-N}\\0.05 & 0.1\end{bmatrix},\ \mathbf{A}_3=\begin{bmatrix}0.5(1-0.1e^{-N}) & 300\\0.5(0.1e^{-N}) & 0.1\end{bmatrix},\ \mathbf{A}_4=\begin{bmatrix}0.45 & 1800e^{-N}\\0.05 & 0.1\end{bmatrix}.$$
+
 ```r
+# Project forward for 100 time steps
 n1 <- matrix(0, nrow = 2, ncol = 101)
 n2 <- matrix(0, nrow = 2, ncol = 101)
 n3 <- matrix(0, nrow = 2, ncol = 101)
 n4 <- matrix(0, nrow = 2, ncol = 101)
+# Set the initial populations
 n1[, 1] <- c(6, 4)
 n2[, 1] <- c(6, 4)
 n3[, 1] <- c(6, 4)
 n4[, 1] <- c(6, 4)
 
+# Iterate through 100 periods of reproduction
 for (t in 1:100) {
   A1 <- matrix(c(0.45, 50*exp(-sum(n1[,t])), 0.05, 0.1),
                nrow = 2, ncol = 2, byrow = TRUE)
@@ -152,39 +152,6 @@ for (t in 1:100) {
   n3[, t+1] <- A3 %*% n3[, t]
   n4[, t+1] <- A4 %*% n4[, t]
 }
-
-# Plot
-plot(n1[1, 10:101], n1[2, 10:101], type="b", pch=1, col=1,
-     bty="l", cex.lab=1.2, lty=1, main = '(a) Equilibrium',
-     xlab=expression(n[1]), ylab=expression(n[2]))
-
-plot(n1[1, 10:101], type="l", pch=1, col=1, bty="l", cex.lab=1.2,
-     lty=1, main = '(b)',
-     xlab='time', ylab=expression(n[1]))
-
-plot(n2[1, 10:101], n2[2, 10:101], type="b", pch=1, col=1,
-     bty="l", cex.lab=1.2, lty=1, main = '(c) 4-cycle',
-     xlab=expression(n[1]), ylab=expression(n[2]))
-
-plot(n2[1, 10:101], type="l", pch=1, col=1, bty="l", cex.lab=1.2,
-     lty=1, main = '(d)',
-     xlab='time', ylab=expression(n[1]))
-
-plot(n3[1, 10:101], n3[2, 10:101], type="b", pch=1, col=1,
-     bty="l", cex.lab=1.2, lty=1, main = '(e) Invariant loop',
-     xlab=expression(n[1]), ylab=expression(n[2]))
-
-plot(n3[1, 10:101], type="l", pch=1, col=1, bty="l", cex.lab=1.2,
-     lty=1, main = '(f)',
-     xlab='time', ylab=expression(n[1]))
-
-plot(n4[1, 10:101], n4[2, 10:101], type="b", pch=1, col=1,
-     bty="l", cex.lab=1.2, lty=1, main = '(g) Strange attractor',
-     xlab=expression(n[1]), ylab=expression(n[2]))
-
-plot(n4[1, 10:101], type="l", pch=1, col=1, bty="l", cex.lab=1.2,
-     lty=1, main = '(h)',
-     xlab='time', ylab=expression(n[1]))
 ```
 
 ![(a,c,e,g) Attractors; (b,d,f,h) dynamics of corresponding attractors. ](attractors.jpeg){width=75%}
@@ -200,9 +167,9 @@ Burchfield, J.D., McLaren, B.E., and McLeod, D.T. (2022). Sensitivity analysis o
 
 The authors composed a Lefkovitch projection matrix (Lefkovitch, 1965) with six stages: age-0, juvenile, early subadult, late subadult, early adult and late adult, with the following projection matrix
 $$\mathbf{A}=\begin{bmatrix}0 & 0 & 0 & S_3G_3f_4 & S_4(1-G_4)f_4+S_4G_4f_5 & S_5(1-G_5)f_5\\S_0G_0 & S_1(1-G_1) & 0 & 0 & 0 & 0\\0 & S_1G_1 & S_2(1-G_2) & 0 & 0 & 0\\0 & 0 & S_2G_2 & S_3(1-G_3) & 0 & 0\\0 & 0 & 0 & S_3G_3 & S_4(1-G_4) & 0\\0 & 0 & 0 & 0 & S_4G_4 & S_5(1-G_5)\end{bmatrix},$$
-where $S_i$ is the survival rate at stage $i$, $G_i$ is the transition rate from stage $i$ to stage $i+1$, and $f_i$ is the fecundity rate (only for adults). Density dependence is introduced with a Ricker function on $G_0$
+where $S_i$ is the survival rate at stage $i$, $G_i$ is the transition rate from stage $i$ to stage $i+1$, and $f_i$ is the fecundity rate (only for adults). Density dependence in lake sturgeon is found in the juvenile stage (McDougall et at., 2018), and is introduced with a Ricker function on $G_0$
 $$G_0=\exp\left[r\left(1-\frac{S_0n_0+S_1n_1}{K_j}\right)\right],$$
-where $K_j$ is the juvenile carrying capacity. Here is a sample simulation code (with parameter values presented in the paper).
+where $K_j$ is the juvenile carrying capacity. Here is a sample simulation code (with parameter values presented in the paper). We also plot the trajectories of adult population as they are reproductive.
 
 ```r
 # Define a function to calculate the stage transition rate
@@ -219,14 +186,21 @@ growth <- function(S, D) {
 ```
 
 ```r
+# Project forward for 150 years
 n <- matrix(0, nrow = 6, ncol = 151)
+# Set the initial population
 n[, 1] <- c(0, 0, 0, 0, 10, 0)
+# Set the survival rates
 S <- c(2.665/100, 65.55/100, 77.45/100,
        77.45/100, 94.8/100, 94.8/100)
+# Set the duration of each stage
 D <- c(1, 7, 8, 8, 24, 22)
+# Set the fecundity rates
 f <- c(0, 0, 0, 0, 13166, 31656)
+# Set the carrying capacity for juvenile sturgeons
 Kj <- 9280
 
+# Iterate through 100 years of reproduction
 for (t in 1:150) {
   G0 <- exp(2.3*(1-(S[1]*n[1,t]+S[2]*n[2,t])/Kj))
   G1 <- growth(S[2], D[2])
@@ -243,18 +217,9 @@ for (t in 1:150) {
               nrow = 6, ncol = 6, byrow = TRUE)
   n[, t+1] <- A %*% n[, t]
 }
-
-# Plot population trajectories of early and late adults
-plot(n[5, ], type="l", pch=1, col=1,
-     bty="l", cex.lab=1.2, lty=1,
-     xlab='years', ylab='population', ylim=c(0,35))
-lines(n[6, ], type="l", lty=2)
-legend(x = "topright", bty="n",
-       legend = c('Early adult', 'Late adult'),
-       col=c(1,1), lty=c(1,2), cex=0.8)
 ```
 
-![Population trajectories of adult lake sturgeons, with an initial population of 10 early adults](lake_sturgeon_simulation.jpeg)
+![Population trajectories of adult lake sturgeons, with an initial population of 10 early adults](lake_sturgeon_simulation.jpeg){width=80%}
 
 #### Snapshot of the study
 
@@ -271,6 +236,8 @@ Gaona, P., Ferreras, P., and Delibes, M. (1998). Dynamics and viability of a met
 
 Lefkovitch, L.P. (1965). The study of population growth in organisms grouped by stages. _Biometrics_, _21_, 1–18.
 
-Leslie, P.H. (1945). On the use of matrices in certain population mathematics. _Biometrika 33_, 183-212.
+Leslie, P.H. (1945). On the use of matrices in certain population mathematics. _Biometrika_, _33_, 183-212.
 
 Morris, W.F. and Doak, D.F. (2002). _Quantitative Conservation Biology_. Sinauer, Sunderland, MA.
+
+McDougall, C.A., Nelson, P.A. and Barth, C.C. (2018). Extrinsic factors influencing somatic growth of lake sturgeon. _Trans. Am. Fish. Soc._, _147_, 459–479.
