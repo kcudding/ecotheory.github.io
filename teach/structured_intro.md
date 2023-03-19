@@ -26,7 +26,7 @@ So far, we have limited our prediction of wild populations by assuming that all 
 
 In the same population, individuals can have markedly different dynamics depending on their age. This is called **age structure**. For example, Coulson et al. (2001) found that individual susceptibility to changing environmental conditions differs between Soay sheep of different ages. Young and old individuals are more severely affected by adverse weather conditions than adults of prime reproductive age.
 
-![© Eileen Henderson, A pair of Soay sheep on Hirta(https://www.geograph.org.uk/photo/493775), Creative Commons CC BY-SA 2.0 License](images/soay.jpg)\
+![© Eileen Henderson, [A pair of Soay sheep on Hirta](https://www.geograph.org.uk/photo/493775), [Creative Commons CC BY-SA 2.0 License](https://creativecommons.org/licenses/by-sa/2.0/)](soay.jpg)\
 
 While for many species (especially for amphibians, fish, and insects), differences in vital rates in wild populations often depend on developmental or morphological stages, rather than ages. This is referred to as **stage structure**. For example, common frogs can be divided into three stages according to their developmental status: Pre-juvenile, juvenile, and adults. The vital rates within each stage are relatively constant. (Biek et al., 2002)
 
@@ -70,7 +70,7 @@ From the life table in the previous section, we can create a life history diagra
 
 * In a life history diagram, different stages are represented by different circles, Self-pointing arrows refer to the probability of remaining in the current stage (survival); forward-points arrows refer to the probability of transitioning to the next stage (transition); backward-pointing arrows refer to the fecundity value (reproduction).
 
-![Life history stage diagram showing the vital rates of common frog in three different developmental stages (data from Biek et al., 2002). Dashed lines represent reproduction rates; solid lines represent trnasition probabilities.](images/frog diagram.jpeg)
+![Life history stage diagram showing the vital rates of common frog in three different developmental stages (data from Biek et al., 2002). Dashed lines represent reproduction rates; solid lines represent trnasition probabilities.](frog diagram.jpeg)
 
 
 ### Use matrix to represent population dynamics
@@ -250,8 +250,7 @@ $$
 \end{bmatrix}
 $$
 This result can also be demonstrated by plotting the log number of individuals in each stage class versus time:
-![](structured_intro_files/figure-html/Plot SSD-1.jpeg)<!-- -->
-Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.
+![Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](Plot SSD-1.jpeg)
 
 At SSD, the population growth rate $\lambda$ also stays constant. See the calculations below for $\lambda$ at year 14 and 15:
 
@@ -371,7 +370,7 @@ This literature example demonstrates how the use of stage-structured population 
 
 The first step is to create a stage-structured population model to project the population dynamics. From Vimercati et al. (2017), we obtain the life history stage diagram and population projection matrix (Note that in our example, the density effects and spatial effects presented in the original literature have been removed to simplify the model.).
 
-![Life history diagram of invasive guttural toad population in Cape Town. All values are extracted from Vimercati et al. (2017), except for the survival rate of metamorph to juvenile, which is arbitrarily chosen as 0.2.](images/toad diagram.jpeg)
+![Life history diagram of invasive guttural toad population in Cape Town. All values are extracted from Vimercati et al. (2017), except for the survival rate of metamorph to juvenile, which is arbitrarily chosen as 0.2.](toad diagram.jpeg)
 
 <br>
 $$
@@ -387,8 +386,7 @@ $$
 With an initial population of 20 adults (when the species was first recorded in a single pond of Cape Town), we project the model for 30 time steps to simulate the population dynamics from 2001 to 2030.
 
 
-![](structured_intro_files/figure-html/toads projection-1.jpeg)<!-- -->
-Population numbers of invasive guttural toad over 30 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.
+![Population numbers of invasive guttural toad over 30 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](structured_intro_files/figure-html/toads projection-1.jpeg)
 
 
 **Step 2:**
