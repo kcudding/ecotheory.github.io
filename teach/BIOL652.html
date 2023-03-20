@@ -42,9 +42,9 @@
   
     <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
     <meta name="generator" content="pandoc" />
-  <meta name="author" content="Debora, Eddie, Zitao and Kim" />
-  <meta name="date" content="2023-02-03" />
-  <title>Structured population models</title>
+  <meta name="author" content="Debora" />
+  <meta name="date" content="2023-03-17" />
+  <title>Sensitivities, elasticities, and management applications</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
   <style type="text/css">
@@ -122,11 +122,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">Structured population models</span>
+        <span class="doc-title">Sensitivities, elasticities, and
+management applications</span>
         <ul class="nav pull-right doc-info">
-                    <li><p class="navbar-text">Debora, Eddie, Zitao and
-Kim</p></li>
-                              <li><p class="navbar-text">2023-02-03</p></li>
+                    <li><p class="navbar-text">Debora</p></li>
+                              <li><p class="navbar-text">2023-03-17</p></li>
                   </ul>
       </div>
     </div>
@@ -288,10 +288,6 @@ Kim</p></li>
         id="toc-component-sensitivity-and-elasticity">Component
         sensitivity and elasticity</a></li>
         <li><a
-        href="#practicing-the-calculation-of-sensitivities-and-elasticities"
-        id="toc-practicing-the-calculation-of-sensitivities-and-elasticities">Practicing
-        the calculation of sensitivities and elasticities</a></li>
-        <li><a
         href="#advantages-of-elasticities-as-compared-to-sensitivites"
         id="toc-advantages-of-elasticities-as-compared-to-sensitivites">Advantages
         of elasticities as compared to sensitivites</a></li>
@@ -299,11 +295,19 @@ Kim</p></li>
         href="#limitations-of-sensitivity-and-elasticity-analyses"
         id="toc-limitations-of-sensitivity-and-elasticity-analyses">Limitations
         of sensitivity and elasticity analyses</a></li>
+        <li><a
+        href="#analytical-sensitivity-and-elasticity-variance-in-vital-rates"
+        id="toc-analytical-sensitivity-and-elasticity-variance-in-vital-rates">Analytical
+        sensitivity and elasticity &amp; variance in vital
+        rates</a></li>
         <li><a href="#sensitivity-analysis-methods"
         id="toc-sensitivity-analysis-methods">Sensitivity analysis
         methods</a></li>
+        <li><a
+        href="#practicing-the-calculation-of-sensitivities-and-elasticities"
+        id="toc-practicing-the-calculation-of-sensitivities-and-elasticities">Practicing
+        the calculation of sensitivities and elasticities</a></li>
         </ul></li>
-        <li><a href="#resources" id="toc-resources">Resources</a></li>
         <li><a href="#references-5"
         id="toc-references-5">References</a></li>
         <li><a href="#density-dependence-in-matrix-models"
@@ -2345,40 +2349,30 @@ Society</em>, <em>42</em>(1-2), 73-88.</p>
 structure</h2>
 <p>So far, we have limited our prediction of wild populations by
 assuming that all individuals in a population are identical. However,
-many plants and animals have demonstrated distinct age or stage
-structure in their populations. In fact, ecologists care about these
-particular parts of a population as much as they do the population as a
-whole. To truly understand and predict population growth, we cannot
-avoid discussing the dynamics of these particular ages and stages.</p>
+many plants and animals have distinct age or stage structure in their
+populations. In fact, ecologists care about these particular parts of a
+population as much as they do the population as a whole. To understand
+and predict population growth, we cannot avoid discussing the dynamics
+of these particular ages and stages.</p>
 <h3 id="different-population-structures">Different population
 structures</h3>
-<h4 id="age-structure">Age structure</h4>
 <p>In the same population, individuals can have markedly different
-dynamics depending on their age.</p>
-<ul>
-<li>Coulson et al. (2001) found that individual susceptibility to
-changing environmental conditions differs between Soay sheep of
-different ages. Young and old individuals are more severely affected by
-adverse weather conditions than adults of prime reproductive age.</li>
-</ul>
-<figure>
-<img src="soay.jpg"
-alt="© Eileen Henderson, A pair of Soay sheep on Hirta(https://www.geograph.org.uk/photo/493775), Creative Commons CC BY-SA 2.0 License" />
-<figcaption aria-hidden="true">© Eileen Henderson, A pair of Soay sheep
-on Hirta(https://www.geograph.org.uk/photo/493775), Creative Commons CC
-BY-SA 2.0 License</figcaption>
-</figure>
-<h4 id="stage-structure">Stage structure</h4>
+dynamics depending on their age. This is called <strong>age
+structure</strong>. For example, Coulson et al. (2001) found that
+individual susceptibility to changing environmental conditions differs
+between Soay sheep of different ages. Young and old individuals are more
+severely affected by adverse weather conditions than adults of prime
+reproductive age.</p>
+<p><img src="soay.jpg"
+alt="© Eileen Henderson, A pair of Soay sheep on Hirta, Creative Commons CC BY-SA 2.0 License" /><br />
+</p>
 <p>While for many species (especially for amphibians, fish, and
 insects), differences in vital rates in wild populations often depend on
-developmental or morphological stages, rather than ages.</p>
-<ul>
-<li>For example, common frogs can be divided into three stages according
-to their developmental status: Pre-juvenile, juvenile, and adults. The
-vital rates within each stage are relatively constant. (Biek et al.,
-2002)</li>
-</ul>
-<h4 id="size-structure">Size structure</h4>
+developmental or morphological stages, rather than ages. This is
+referred to as <strong>stage structure</strong>. For example, common
+frogs can be divided into three stages according to their developmental
+status: Pre-juvenile, juvenile, and adults. The vital rates within each
+stage are relatively constant. (Biek et al., 2002)</p>
 <p><strong>Size structure</strong> is another commonly used category.
 For many fish species, age and body size (fork length) is highly
 correlated. Since fish length is much easier to measure and obtain, it
@@ -2396,106 +2390,84 @@ the demographic vital rates and transition probabilities (the
 probability of surviving and successfully transitioning to the next
 developmental stage) for each stage in a table:</li>
 </ul>
-<br>
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<table>
+<caption>Demographic vital rates and tansition probabilities for
+different common frog developmental stages (data from Biek et al.,
+2002)</caption>
 <thead>
-<tr>
-<th style="text-align:left;">
-Stages
-</th>
-<th style="text-align:right;">
-Survival
-</th>
-<th style="text-align:right;">
-Transition
-</th>
-<th style="text-align:right;">
-Reproduction
-</th>
+<tr class="header">
+<th style="text-align: left;">Stages</th>
+<th style="text-align: center;">Survival</th>
+<th style="text-align: center;">Transition</th>
+<th style="text-align: center;">Reproduction</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Pre-juvenile
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.019
-</td>
-<td style="text-align:right;">
-0.0
-</td>
+<tr class="odd">
+<td style="text-align: left;">Pre-juvenile</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0.019</td>
+<td style="text-align: center;">0</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Juvenile
-</td>
-<td style="text-align:right;">
-0.25
-</td>
-<td style="text-align:right;">
-0.080
-</td>
-<td style="text-align:right;">
-52.0
-</td>
+<tr class="even">
+<td style="text-align: left;">Juvenile</td>
+<td style="text-align: center;">0.25</td>
+<td style="text-align: center;">0.08</td>
+<td style="text-align: center;">52</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Adult
-</td>
-<td style="text-align:right;">
-0.43
-</td>
-<td style="text-align:right;">
-0.000
-</td>
-<td style="text-align:right;">
-279.5
-</td>
+<tr class="odd">
+<td style="text-align: left;">Adult</td>
+<td style="text-align: center;">0.43</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">279.5</td>
 </tr>
 </tbody>
 </table>
-<p>Demographic vital rates and tansition probabilities for different
-common frog developmental stages (data from Biek et al., 2002)</p>
 <h4 id="methods-to-construct-life-tables">Methods to construct life
 tables:</h4>
-<p><strong>Segment-based approach</strong></p>
-<ul>
-<li><p>The segment-based approach looks at the births and deaths of all
-the individuals in the population during some slice of time.</p></li>
-<li><p>Life tables constructed from the segment-based method are often
-called vertical or period life tables.</p></li>
-</ul>
 <p><strong>Cohort-based approach</strong></p>
-<ul>
-<li><p>The cohort analysis follows all individuals born during a time
+<p>The cohort analysis follows all individuals born during a time
 period, determining the ages that they die and their birth rates as they
-age.</p></li>
-<li><p>Life tables constructed from the segment-based method are often
-called horizontal or cohort life tables.</p></li>
+age. Life tables constructed from the segment-based method are often
+called horizontal or cohort life tables. Cohort life tables allow
+researchers to observe the changes in the survival and mortality rates
+of a population over time. However, it is usually very challenging to
+follow a cohort from birth to death of the last individual.</p>
+<p><strong>Segment-based approach</strong></p>
+<p>The segment-based approach looks at the births and deaths of all the
+individuals in the population during some slice of time. Life tables
+constructed from the segment-based method are often called vertical or
+period life tables. It is often used when studying populations of
+animals that are difficult to track over time.</p>
+<ul>
+<li>In summary, both are useful tools to study population dynamics.
+Vertical life tables provide an accurate representation of a
+population’s mortality rate and survivorship at a specific point in
+time; while cohort life tables provide a more detailed understanding of
+how a population’s mortality rate and survivorship change over
+time.</li>
 </ul>
 <h3 id="life-history-stage-diagram">Life history stage diagram</h3>
-<p>We can use a life stage diagram to represent the dynamics in a
-population.</p>
+<p>From the life table in the previous section, we can create a life
+history diagram to represent the vital rates in different population
+stages.</p>
 <ul>
-<li><p>From the life table in the previous section, we can create a life
-history diagram showing the vital rates in different population
-stages.</p></li>
-<li><p>In a life history diagram, different stages are represented by
+<li>In a life history diagram, different stages are represented by
 different circles, Self-pointing arrows refer to the probability of
 remaining in the current stage (survival); forward-points arrows refer
-to the probabilty of transitioning to the next stage (transition);
+to the probability of transitioning to the next stage (transition);
 backward-pointing arrows refer to the fecundity value
-(reproduction).</p></li>
+(reproduction).</li>
 </ul>
-<div id="htmlwidget-45b8be2ce3efcb032ff1" style="width:450px;height:450px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-45b8be2ce3efcb032ff1">{"x":{"diagram":"digraph {\n\ngraph[layout = dot, rankdir = LR]\n\nPrejuvenile\nJuvenile\nAdult\n\nPrejuvenile -> Juvenile [label = \"0.019\"]\nJuvenile -> Adult [label = \"0.08\"]\n\nAdult -> Prejuvenile [label = \"279.50\", style = dashed]\nJuvenile -> Prejuvenile [label = \"52.00\", style = dashed]\n\nAdult -> Adult [label = \"0.43\"]\nJuvenile -> Juvenile [label = \"0.25\"]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-<p>Life history stage diagram showing the vital rates of common frog in
-three different developmental stages (data from Biek et al., 2002)</p>
+<figure>
+<img src="frog_diagram.jpeg"
+alt="Life history stage diagram showing the vital rates of common frog in three different developmental stages. Dashed lines represent reproduction rates; solid lines represent trnasition probabilities. Data obtained from Biek et al., 2002." />
+<figcaption aria-hidden="true">Life history stage diagram showing the
+vital rates of common frog in three different developmental stages.
+Dashed lines represent reproduction rates; solid lines represent
+trnasition probabilities. Data obtained from Biek et al.,
+2002.</figcaption>
+</figure>
 <h3 id="use-matrix-to-represent-population-dynamics">Use matrix to
 represent population dynamics</h3>
 <p>Compared to life tables and life history diagrams, population
@@ -2523,10 +2495,38 @@ that will survive and still be in the same stage next year.</p></li>
 a_{3,2} = 0.08\)</span>) represents the proportion surviving and
 advancing to the next stage.</p></li>
 </ul>
-<pre><code>             Pre-juvenile Juvenile  Adult
-Pre-juvenile        0.000    52.00 279.50
-Juvenile            0.019     0.25   0.00
-Adult               0.000     0.08   0.43</code></pre>
+<table>
+<caption>Anatomy of a female-based projection matrix for common fog
+(adapted from Biek et al., 2002)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Pre-juvenile</th>
+<th style="text-align: right;">Juvenile</th>
+<th style="text-align: right;">Adult</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Pre-juvenile</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">52.00</td>
+<td style="text-align: right;">279.50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Juvenile</td>
+<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adult</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.43</td>
+</tr>
+</tbody>
+</table>
 <p>Anatomy of a female-based projection matrix for common fog (adapted
 from Biek et al., 2002)</p>
 <h4 id="leslie-matrix---for-age-structure">Leslie Matrix - for age
@@ -2539,11 +2539,9 @@ how many individuals will be in the age class i at the next time step
 for each individual in stage j. (Leslie, 1945; Leslie, 1948)</p></li>
 <li><p>In a Leslie Matrix, an individual can only survive and transition
 to the next stage, or die, so everything below the first row and not on
-the subdiagonal of the matrix must be zero. (different from the
-Lefkovitch matrix)</p></li>
+the subdiagonal of the matrix must be zero.</p></li>
 </ul>
-<p><span class="math display">\[
-\begin{bmatrix}
+<span class="math display">\[\begin{bmatrix}
 f_0 &amp; f_1 &amp; f_2 &amp; \cdots &amp; f_{m-1}&amp; f_{m} \\
 s_0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
 0 &amp; s_1 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
@@ -2551,8 +2549,7 @@ s_0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
 \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots
 \\
 0 &amp; 0 &amp; 0 &amp; \cdots &amp; s_{m-1} &amp; 0 \\
-\end{bmatrix}
-\]</span></p>
+\end{bmatrix}\]</span>
 <p>A leslie matrix consists of <span class="math inline">\(m+1\)</span>
 rows and <span class="math inline">\(m+1\)</span> columns. <span
 class="math inline">\(f\)</span> represents the reproductive rate of
@@ -2584,8 +2581,10 @@ class="math inline">\(n(t)\)</span>:</p>
 <p><span class="math display">\[n(t+1) = M*n(t)\]</span></p>
 <p>Projecting the matrix through time requires you to understand the
 fundemantals of matrix math. If you are unfamiliar with how to conduct
-matrix multlipcation, please check out this tutorial.</p>
-<p><strong>Example</strong></p>
+matrix multlipcation, please check out <a
+href="https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:matrices/x9e81a4f98389efdf:multiplying-matrices-by-matrices/a/multiplying-matrices">this
+tutorial</a>.</p>
+<p><strong>Example:</strong></p>
 <p>Consider the population model of common frog we have been discussing.
 The population can be divided into three developmental stages, and the
 vital rates are reported in the matrix in the previous section. In 2010,
@@ -2599,21 +2598,15 @@ rates, we project the population forward for a year.</p>
 vector in 2010 = Population vector in 2011</li>
 </ul>
 <p><span class="math display">\[
-\begin{bmatrix}
-  0&amp;52&amp;279.5 \\
-  0.019&amp;0.25&amp;0 \\
-  0&amp;0.08&amp;0.43 \\
-\end{bmatrix} \times \begin{bmatrix}70 \\20 \\10 \\\end{bmatrix} =
+\begin{bmatrix}0&amp;52&amp;279.5 \\0.019&amp;0.25&amp;0
+\\0&amp;0.08&amp;0.43 \\\end{bmatrix} \times \begin{bmatrix}70 \\20 \\10
+\\\end{bmatrix} =
 \begin{bmatrix}
   (0 \times 70) + (52 \times 50) + (279.5 \times 10) \\
   (0.019 \times 70) + (0.25 \times 50) + (0 \times 10)  \\
   (0 \times 70) + (0.08 \times 50) + (0.43 \times 10) \\
 \end{bmatrix} =
-\begin{bmatrix}
-  3835 \\
-  6 \\
-  6 \\
-\end{bmatrix}
+\begin{bmatrix}3835 \\6 \\6 \\\end{bmatrix}
 \]</span> Projecting the population number of common frog through time
 (adapted from Mills, 2013).</p>
 <h3 id="stable-agestage-distribution">Stable age/stage distribution</h3>
@@ -2624,64 +2617,62 @@ relative number of individuals in each stage, and the population growth
 rate <span class="math inline">\(\lambda\)</span> will be constant.</p>
 <p>Consider the same common frog example. With constant vital rates, we
 project the population for 14 year:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">14</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an empty matrix to store the population projection results</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>N.project <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> years<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the initial population for each stage</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>N.project[,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">20</span>,<span class="dv">10</span>)</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a for loop to iterate through the time steps</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>years) {</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  N.project[, i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> X <span class="sc">%*%</span> N.project[,i]</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">14</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an empty matrix to store the population projection results</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>N.project <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> years<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the initial population for each stage</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>N.project[,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">20</span>,<span class="dv">10</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a for loop to iterate through the time steps</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>years) {</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  N.project[, i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> X <span class="sc">%*%</span> N.project[,i]</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>With the population abundance in each stage, we can calculate the
 stage distribution in 2023:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the stage distribution for 2023</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>s<span class="fl">.2023</span> <span class="ot">&lt;-</span> <span class="fu">sum</span>(N.project[,<span class="dv">14</span>])</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-juvenile:</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">1</span>,<span class="dv">14</span>]<span class="sc">/</span>s<span class="fl">.2023</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the stage distribution for 2023</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>s<span class="fl">.2023</span> <span class="ot">&lt;-</span> <span class="fu">sum</span>(N.project[,<span class="dv">14</span>])</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-juvenile:</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">1</span>,<span class="dv">14</span>]<span class="sc">/</span>s<span class="fl">.2023</span></span></code></pre></div>
 <pre><code>[1] 0.9813586</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Juvenile:</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">2</span>,<span class="dv">14</span>]<span class="sc">/</span>s<span class="fl">.2023</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Juvenile:</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">2</span>,<span class="dv">14</span>]<span class="sc">/</span>s<span class="fl">.2023</span></span></code></pre></div>
 <pre><code>[1] 0.01713166</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adult:</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">3</span>,<span class="dv">14</span>]<span class="sc">/</span>s<span class="fl">.2023</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adult:</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">3</span>,<span class="dv">14</span>]<span class="sc">/</span>s<span class="fl">.2023</span></span></code></pre></div>
 <pre><code>[1] 0.001509782</code></pre>
 <p>Similarly, we can calculate the stage distribution in 2024:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the stage distribution for 2024</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>s<span class="fl">.2024</span> <span class="ot">&lt;-</span> <span class="fu">sum</span>(N.project[,<span class="dv">15</span>])</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-juvenile:</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">1</span>,<span class="dv">15</span>]<span class="sc">/</span>s<span class="fl">.2024</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the stage distribution for 2024</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>s<span class="fl">.2024</span> <span class="ot">&lt;-</span> <span class="fu">sum</span>(N.project[,<span class="dv">15</span>])</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-juvenile:</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">1</span>,<span class="dv">15</span>]<span class="sc">/</span>s<span class="fl">.2024</span></span></code></pre></div>
 <pre><code>[1] 0.9813508</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Juvenile:</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">2</span>,<span class="dv">15</span>]<span class="sc">/</span>s<span class="fl">.2024</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Juvenile:</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">2</span>,<span class="dv">15</span>]<span class="sc">/</span>s<span class="fl">.2024</span></span></code></pre></div>
 <pre><code>[1] 0.0171394</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adult:</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">3</span>,<span class="dv">15</span>]<span class="sc">/</span>s<span class="fl">.2024</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adult:</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>N.project[<span class="dv">3</span>,<span class="dv">15</span>]<span class="sc">/</span>s<span class="fl">.2024</span></span></code></pre></div>
 <pre><code>[1] 0.001509771</code></pre>
 <p>We can see that the relative proportion of individuals in each stage
 class stays the same. The stage structure at SSD is:</p>
 <p><span class="math display">\[
 \begin{bmatrix}
 98.1\% \\
-1.7\% \\
+1.7\%\\
 0.2\% \\
 \end{bmatrix}
-\]</span></p>
-<p>This result can also be demonstrated by plotting the log number of
-individuals in each stage class versus time:</p>
-<p><img
-src="structured_intro_files/figure-html/Plot%20SSD-1.jpeg" /><!-- -->
-Population numbers of common frog over 14 years as shown by stage class.
-The number of frogs is plotted on a logarithmic scale.</p>
+\]</span> This result can also be demonstrated by plotting the log
+number of individuals in each stage class versus time: <img
+src="Plot%20SSD-1.jpeg"
+alt="Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale." /></p>
 <p>At SSD, the population growth rate <span
 class="math inline">\(\lambda\)</span> also stays constant. See the
-calculations below:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The population growth rate from year 2022-2023 is:</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(N.project[,<span class="dv">14</span>])<span class="sc">/</span><span class="fu">sum</span>(N.project[,<span class="dv">13</span>])</span></code></pre></div>
+calculations below for <span class="math inline">\(\lambda\)</span> at
+year 14 and 15:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The population growth rate from year 2022-2023 is:</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(N.project[,<span class="dv">14</span>])<span class="sc">/</span><span class="fu">sum</span>(N.project[,<span class="dv">13</span>])</span></code></pre></div>
 <pre><code>[1] 1.338596</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The population growth rate from year 2023-2024 is:</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(N.project[,<span class="dv">15</span>])<span class="sc">/</span><span class="fu">sum</span>(N.project[,<span class="dv">14</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The population growth rate from year 2023-2024 is:</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(N.project[,<span class="dv">15</span>])<span class="sc">/</span><span class="fu">sum</span>(N.project[,<span class="dv">14</span>])</span></code></pre></div>
 <pre><code>[1] 1.337779</code></pre>
 <h3 id="eigenanalysis">Eigenanalysis</h3>
 <p>The asymptotic matrix properties (stage age distribution, population
@@ -2693,30 +2684,31 @@ population vector out many time steps.</p>
 rate at SSD</h4>
 <p>The asymptotic annual growth rate or finite rate of increase is the
 dominant eigenvalue of the transition matrix.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the eigenanalysis</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>eigs.X <span class="ot">&lt;-</span> <span class="fu">eigen</span>(X)</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index position of the largest absolute value of the eigenvalues</span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>dom.pos <span class="ot">&lt;-</span> <span class="fu">which.max</span>(eigs.X[[<span class="st">&quot;values&quot;</span>]])</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the dominant eigenvalue and retain only its real part</span></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">Re</span>(eigs.X[[<span class="st">&quot;values&quot;</span>]][dom.pos])</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>lambda</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the eigenanalysis</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>eigs.X <span class="ot">&lt;-</span> <span class="fu">eigen</span>(X)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index position of the largest absolute value of the eigenvalues</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>dom.pos <span class="ot">&lt;-</span> <span class="fu">which.max</span>(eigs.X[[<span class="st">&quot;values&quot;</span>]])</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the dominant eigenvalue and retain only its real part</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">Re</span>(eigs.X[[<span class="st">&quot;values&quot;</span>]][dom.pos])</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>lambda</span></code></pre></div>
 <pre><code>[1] 1.338048</code></pre>
+<p><br></p>
 <h4 id="stable-stage-distribution">Stable stage distribution</h4>
 <p>The stage stage distribution is associated with the right eigenvector
 <span class="math inline">\(w_1\)</span>. The distribution is defined
 as:</p>
 <p><span class="math display">\[
-\frac{w_1}{\sum_{i=1}^{s}w_1}
-\]</span></p>
-<p>where <span class="math inline">\(s\)</span> is the number of
+\frac{w_1}{\sum^{s}_{i=1}{w_1}}
+\]</span> where <span class="math inline">\(s\)</span> is the number of
 stages.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract w, keeping just the real part, and divide it by its sum to get the stable stage distribution</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">Re</span>(eigs.X[[<span class="st">&quot;vectors&quot;</span>]][, dom.pos])</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>ssd <span class="ot">&lt;-</span> w<span class="sc">/</span><span class="fu">sum</span>(w)</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(ssd, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract w, keeping just the real part, and divide it by its sum to get the stable stage distribution</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">Re</span>(eigs.X[[<span class="st">&quot;vectors&quot;</span>]][, dom.pos])</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>ssd <span class="ot">&lt;-</span> w<span class="sc">/</span><span class="fu">sum</span>(w)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(ssd, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>[1] 0.981 0.017 0.002</code></pre>
+<p><br></p>
 <h4 id="reproductive-value">Reproductive value</h4>
 <p>The reproductive value gives us one measure of the importance of an
 individual in each stage. Reproductive value is the expected
@@ -2731,17 +2723,17 @@ vA = \lambda v
 proportional to the reproductive values. We have the follow definition
 for reproductive value:</p>
 <p><span class="math display">\[
-\frac{v_1}{\sum_{i=1}^{s}v_1}
+\frac{v_1}{\sum^{s}_{i=1}{v_1}}
 \]</span></p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Performing eigenanalysis on the transpose of the projection matrix</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">eigen</span>(<span class="fu">t</span>(X))</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the left eigenvalues and eigenvectors</span></span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">Re</span>(M<span class="sc">$</span>vectors[, <span class="fu">which.max</span>(<span class="fu">Re</span>(M<span class="sc">$</span>values))])</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract just the dominant left eigenvector; we then scale it, so the stage 1 has a reproductive value of 1.0</span></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>RV <span class="ot">&lt;-</span> v<span class="sc">/</span>v[<span class="dv">1</span>]</span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>RV</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Performing eigenanalysis on the transpose of the projection matrix</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">eigen</span>(<span class="fu">t</span>(X))</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the left eigenvalues and eigenvectors</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">Re</span>(M<span class="sc">$</span>vectors[, <span class="fu">which.max</span>(<span class="fu">Re</span>(M<span class="sc">$</span>values))])</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract just the dominant left eigenvector; we then scale it, so the stage 1 has a reproductive value of 1.0</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>RV <span class="ot">&lt;-</span> v<span class="sc">/</span>v[<span class="dv">1</span>]</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>RV</span></code></pre></div>
 <pre><code>[1]   1.00000  70.42358 307.80308</code></pre>
 <h2 id="illustratin-of-current-application">Illustratin of current
 application</h2>
@@ -2749,37 +2741,27 @@ application</h2>
 population models can be applied to solving real-life ecological
 management problems.</p>
 <p><strong>Problem</strong>: There is an invasive guttural toad
-population in Cape Town. With limited budget and efforts, and prior
-knowledge that the vital rates of this species are likely to differ
-significantly among developmental stages, we would like to know what is
-the most efficient way to remove invasive codes (what stage should we
-target)?</p>
+(<em>Sclerophrys gutturalis</em>) population in Cape Town. With limited
+budget and efforts, and prior knowledge that the vital rates of this
+species are likely to differ significantly among developmental stages,
+we would like to know what is the most efficient way to remove invasive
+codes (what stage should we target)?</p>
 <p><strong>Step 1:</strong></p>
 <p>The first step is to create a stage-structured population model to
-project the population dynamics. We will apply the concepts and
-techniques we learned above in this real-life example.</p>
-<p>First, we use the data from Vimercati et al. (2017) to create a life
-history diagram showing the different life stages of invasive guttural
-toads. Note that in our example, the density effects and spatial effects
-presented in the original literature have been removed to simplify the
-model.</p>
-<div id="htmlwidget-365451dae68952fbc88c" style="width:600px;height:600px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-365451dae68952fbc88c">{"x":{"diagram":"digraph {\n\ngraph[layout = dot, rankdir = LR]\n\nEgg\nTadpole\nMetamorph\nJuvenile\nAdult\n\nEgg -> Tadpole [label = \"0.7\"]\nTadpole -> Metamorph [label = \"0.8\"]\nMetamorph -> Juvenile [label = \"0.5\"]\nJuvenile -> Adult [label = \"0.05\"]\n\nAdult -> Egg [label = \"5200\", style = dashed]\n\nAdult -> Adult [label = \"0.6\"]\nJuvenile -> Juvenile [label = \"0.15\"]\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-<p>Life history diagram of invasive guttural toad population in Cape
-Town. All values are extracted from Vimercati et al. (2017), except for
-the survival rate of metamorph to juvenile, which is arbitrarily chosen
-as 0.2.</p>
-<p>Now we can create a population projection matrix.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the matrix in R with the values we have:</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>toad <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span><span class="dv">5</span>, <span class="at">ncol=</span><span class="dv">5</span>)</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>toad[<span class="dv">2</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>toad[<span class="dv">3</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>toad[<span class="dv">4</span>,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>toad[<span class="dv">5</span>,<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>toad[<span class="dv">4</span>,<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fl">0.15</span></span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>toad[<span class="dv">5</span>,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>toad[<span class="dv">1</span>,<span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">780</span></span></code></pre></div>
-<p><span class="math display">\[
+project the population dynamics. From Vimercati et al. (2017), we obtain
+the life history stage diagram and population projection matrix (Note
+that in our example, the density effects and spatial effects presented
+in the original literature have been removed to simplify the
+model.).</p>
+<figure>
+<img src="toad%20diagram.jpeg"
+alt="Life history diagram of invasive guttural toad population in Cape Town. All values are extracted from Vimercati et al. (2017), except for the survival rate of metamorph to juvenile, which is arbitrarily chosen as 0.2." />
+<figcaption aria-hidden="true">Life history diagram of invasive guttural
+toad population in Cape Town. All values are extracted from Vimercati et
+al. (2017), except for the survival rate of metamorph to juvenile, which
+is arbitrarily chosen as 0.2.</figcaption>
+</figure>
+<p><br> <span class="math display">\[
 \begin{bmatrix}
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 780 \\
 0.7 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -2787,129 +2769,91 @@ as 0.2.</p>
 0 &amp; 0 &amp; 0.5 &amp; 0.15 &amp; 0 \\
 0 &amp; 0 &amp; 0 &amp; 0.05 &amp; 0.6 \\
 \end{bmatrix}
-\]</span></p>
-<p>With an initial population of 20 adults (when the species was first
-recorded in a single pond of Cape Town), we project the model for 30
-time steps to simulate the population dynamics from 2001 to 2030.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an empty matrix to store the population projection results</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>N.project <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> years<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>N.project[,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">20</span>)</span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a for loop to iterate through the time steps</span></span>
-<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>years) {</span>
-<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>  N.project[, i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> toad <span class="sc">%*%</span> N.project[,i]</span>
-<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the population trajectory for each stage (log)</span></span>
-<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(<span class="dv">0</span><span class="sc">:</span>years, <span class="fu">log</span>(<span class="fu">t</span>(N.project)), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">col =</span> <span class="dv">1</span>,</span>
-<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">pch=</span><span class="dv">16</span>, <span class="at">lwd=</span><span class="fl">1.5</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
-<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;year&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Logarithmic stage abundance&quot;</span>)</span>
-<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,</span>
-<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Egg&quot;</span>, <span class="st">&quot;Tadpole&quot;</span>, <span class="st">&quot;Metamorph&quot;</span>, <span class="st">&quot;Juvenile&quot;</span>, <span class="st">&quot;Adult&quot;</span>),</span>
-<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">col =</span> <span class="dv">1</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code></pre></div>
-<p><img
-src="structured_intro_files/figure-html/toads%20projection-1.jpeg" /><!-- -->
-Population numbers of invasive guttural toad over 30 years as shown by
-stage class. The number of frogs is plotted on a logarithmic scale.</p>
+\]</span> <br> With an initial population of 20 adults (when the species
+was first recorded in a single pond of Cape Town), we project the model
+for 30 time steps to simulate the population dynamics from 2001 to
+2030.</p>
+<figure>
+<img src="structured_intro_files/figure-html/toads%20projection-1.jpeg"
+alt="Population numbers of invasive guttural toad over 30 years as shown by stage class. The number of frogs is plotted on a logarithmic scale." />
+<figcaption aria-hidden="true">Population numbers of invasive guttural
+toad over 30 years as shown by stage class. The number of frogs is
+plotted on a logarithmic scale.</figcaption>
+</figure>
 <p><strong>Step 2:</strong></p>
 <p>Knowing the population dynamics, the researchers ran different
 management simulations by altering the mortality rate of different
 stages to simulate the removal efforts targeted at these different
-stages. They then calculated the efficiancy for each strategy, as well
+stages. They then calculated the efficiency for each strategy, as well
 as projected population size at the end of the management to see which
 one is the most efficient method to control toad population. The
 methodology is complicated thus not discussed in details here.
 (Vimercati et al., 2021)</p>
-<table class=" lightable-classic table" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; font-size: 15px; margin-left: auto; margin-right: auto;">
+<table style="width:100%;">
+<caption>Management removal strategy, population size at the end of
+management and efficacy obtained by simulating different strategies with
+a stage-structured model for the invasive population of guttural toad,
+<em>Sclerophrys gutturalis</em>, in Cape Town. (values are taken from
+Vimercati et al., 2021)</caption>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 47%" />
+<col style="width: 21%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-Management removal strategy
-</th>
-<th style="text-align:center;">
-Population size at the end of management
-</th>
-<th style="text-align:center;">
-Strategy efficacy
-</th>
+<tr class="header">
+<th style="text-align: left;">Management removal strategy</th>
+<th style="text-align: center;">Population size at the end of
+management</th>
+<th style="text-align: center;">Strategy efficacy</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-No removal
-</td>
-<td style="text-align:center;">
-2973
-</td>
-<td style="text-align:center;">
-0
-</td>
+<tr class="odd">
+<td style="text-align: left;">No removal</td>
+<td style="text-align: center;">2973</td>
+<td style="text-align: center;">0</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-Adult removal
-</td>
-<td style="text-align:center;">
-2197
-</td>
-<td style="text-align:center;">
-776
-</td>
+<tr class="even">
+<td style="text-align: left;">Adult removal</td>
+<td style="text-align: center;">2197</td>
+<td style="text-align: center;">776</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-Pre-metamorphic removal
-</td>
-<td style="text-align:center;">
-3318
-</td>
-<td style="text-align:center;">
--345
-</td>
+<tr class="odd">
+<td style="text-align: left;">Pre-metamorphic removal</td>
+<td style="text-align: center;">3318</td>
+<td style="text-align: center;">-345</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-Successfully eradication
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-2973
-</td>
+<tr class="even">
+<td style="text-align: left;">Successfully eradication</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">2973</td>
 </tr>
 </tbody>
 </table>
-<p>Management removal strategy, population size at the end of management
-and efficacy obtained by simulating different strategies with a
-stage-structured model for the invasive population of guttural toad,
-<em>Sclerophrys gutturalis</em>, in Cape Town. (values are taken from
-Vimercati et al., 2021)</p>
 <p><strong>Step 3:</strong></p>
-<p>From the results, Vimercati et al. concluded that removing only
+<p>From the results, Vimercati et al.(2021) concluded that removing only
 adults can maximize the reduction of population size and it is the most
 effective strategy. Pre-metamorphic stages (egg and tadpole) should not
-be targeted when making removal plans.</p>
+be targeted when making removal plans, as it is likely to cause opposite
+effects.</p>
 <h1 id="references-4">References</h1>
 <h2
 id="sensitivities-elasticities-and-management-applications">Sensitivities,
 elasticities, and management applications</h2>
 <p>Remember how populations which achieved a stable stage distribution
 (SSD) maintain a constant proportion of organisms in each stage? Each of
-these stages contributes differentially to the overall population, which
-is indicated by specific reproductive values. Thus, we can expect that
+these stages contributes differently to the overall population, which is
+indicated by specific reproductive values. Thus, we can expect that
 vital rates for a stage with more individuals and/or larger reproductive
-values will have a greater impact to <span
-class="math inline">\(\lambda\)</span> growth rates. <strong>Sensitivity
-and elasticity analyses</strong> are performed to determine the
-importance of each vital rate (survival or reproduction) within stages
-to the growth of a given population. While
+values will have a greater impact to population growth rates.
+<strong>Sensitivity and elasticity analyses</strong> are performed to
+determine the importance of each vital rate (survival or reproduction)
+within stages to the growth of a given population. While
 <strong>sensitivities</strong> represent absolute differences,
 <strong>elasticities</strong> enable a proportional comparison between
 vital rates. The theory and mathematical notations used in this section
-are based on Mills (2012).</p>
+are based on Caswell (2001).</p>
 <h3
 id="why-are-sensivities-and-elasticities-important-to-population-ecology-studies">Why
 are sensivities and elasticities important to population ecology
@@ -2921,379 +2865,7 @@ life stages. It enables life history comparisons, managing extinction
 risk, and population growth control (Manlik, Lacy, &amp; Sherwin, 2018).
 Such analyses are also useful for understanding how a given societal,
 environmental, or policy change will affect wildlife, and how population
-fitness evolves as a response to phenotypic changes (Caswell &amp;
-Caswell, 2019).</p>
-<h3 id="sensitivity">Sensitivity</h3>
-<p>How sensitive is population growth to small changes in different
-vital rates? We can investigate this by looking at how <span
-class="math inline">\(\lambda\)</span> is impacted (or how sensitive it
-is) following a very small change in a vital rate within a given
-population matrix, considering that all of the other matrix elements
-remain unchanged. This is called analytical sensitivity, which is
-represented by the following mathematic formulation:</p>
-<p><span class="math display">\[a_{i,j} =
-\frac{\partial\lambda}{\partial a_{i,j}} =
-\frac{v_{i}*w_{j}}{\sum_{k=1}{(v_k*w_k)}}\]</span> Where: a(i,j) = a
-given matrix element<br />
-<span class="math inline">\(\partial\)</span> = partial derivative
-denoting a very small change applied to rates while all other variables
-are held constant<br />
-<span class="math inline">\(\lambda\)</span> = rate of population
-change<br />
-v(i) = reproductive value<br />
-w(j) = stable stage distribution (SSD) value<br />
-v(k) = reproductive value for the last stage class<br />
-w(k) = stable stage distribution (SSD) value for the last stage
-class</p>
-<h3 id="from-sensitivity-to-elasticity">From sensitivity to
-elasticity</h3>
-<p>Because the sensitivity analysis is based in absolute values, changes
-applied to small values have a disproportional effect in comparison to
-changes to larger values, which can make comparisons problematic. This
-is especially true because fecundity rates are usually measured using
-different units than survival rates. A solution is considering vital
-rate sizes and making sensitivities proportional to them. Such rescaled
-sensitivites are then called <strong>elasticities</strong> and can be
-represented by:</p>
-<p><span class="math display">\[\text{Elasticity of }a_{i,j} =
-\text{(sensitivity of }a_{i,j})*\frac{a_{i,j}}{\lambda}\]</span></p>
-<p><img
-src="sensitivity_analysis_files/figure-html/unnamed-chunk-1-1.jpeg" /><!-- --></p>
-<p>In this plot, you can see how hypothetical absolute sensitivity
-values change when scaled into elasticities. Matrix elements which are
-very sensitive (eg., juvenile survival in our plot) greatly alter <span
-class="math inline">\(\lambda\)</span> rates. But to compare vital
-rates, we need elasticities. Our elasticities tell us that adult
-reproduction is proportionally the most significant in terms of
-impacting growth rates. Thus, a very sensitive element may end up having
-a low relative elasticity value. In this case, we could recommend to
-wildlife managers looking at an endangered species to focus on adult
-reproduction first.</p>
-<h3 id="component-sensitivity-and-elasticity">Component sensitivity and
-elasticity</h3>
-<p>This type of analysis is applicable for the following situations:</p>
-<ul>
-<li><p>When both survival and reproduction rates affect a given matrix
-element</p></li>
-<li><p>When a certain vital rate impacts more than one matrix
-element</p></li>
-</ul>
-<p>Component sensitivities and elasticities can be obtained by changing
-the <span class="math inline">\(\lambda\)</span> SSD by a small amount
-(eg., 0.01 in the equation below), obtaining the resulting matrix, and
-obtaining the new <span class="math inline">\(\lambda\)</span> SSD for
-this changed matrix. Then, you proceed with this calculation for a given
-vital rate x:</p>
-<p><span class="math display">\[x =
-\frac{\lambda_{x+0.01}-\lambda_{original}}{0.01}\]</span></p>
-<p>And for the elasticity:</p>
-<p><span class="math display">\[\text{Component elasticity of vital rate
-x} = \text{(component sensitivity of vital rate x)
-}*\frac{x}{\lambda_{original}}\]</span></p>
-<h3
-id="practicing-the-calculation-of-sensitivities-and-elasticities">Practicing
-the calculation of sensitivities and elasticities</h3>
-<p>Let’s pretend that we want to identify the most important vital rates
-affecting the population dynamics of a critically endangered South
-American pine species, <em>Araucaria angustifolia</em>. This ancient
-tree originated in the Triassic period and is now threatened by habitat
-loss and climate change (Marchioro, Santos, &amp; Siminski, 2020;
-Thomas, 2013).</p>
-<figure>
-<img
-src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/araucaria.jpg"
-data-fig.width="180" data-fig.height="120" data-dpi="300"
-alt="© Webysther Nunes, “Araucária” (Araucaria angustifolia), Creative Commons CC-BY-SA 4.0 BR license" />
-<figcaption aria-hidden="true">© Webysther Nunes, <a
-href="https://commons.wikimedia.org/wiki/File:Webysther_20190413132108_-_Arauc%C3%A1ria_%28Araucaria_angustifolia%29.jpg">“Araucária”
-(<em>Araucaria angustifolia</em>)</a>, <a
-href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
-CC-BY-SA 4.0 BR license</a></figcaption>
-</figure>
-<p>What is the importance of the survival of seedlings vs. adult
-reproduction for this population?</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here are the hypothetical vital rates we want to investigate</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>seedl_surv <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>adt_reprod <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co"># These rates can be visualized in the following matrix</span></span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>label <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Seedling&quot;</span>, <span class="st">&quot;Juvenile&quot;</span>, <span class="st">&quot;Adult&quot;</span>)</span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>pop0 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">40</span>,adt_reprod),<span class="fu">c</span>(seedl_surv,<span class="dv">0</span>,<span class="dv">0</span>),</span>
-<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.9</span>))), <span class="at">nrow=</span><span class="dv">3</span>, </span>
-<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">dimnames =</span> <span class="fu">list</span>(label, label))</span>
-<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pop0,<span class="st">&quot;simple&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Original population matrix&quot;</span>)</span></code></pre></div>
-<table>
-<caption>Original population matrix</caption>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">Seedling</th>
-<th style="text-align: right;">Juvenile</th>
-<th style="text-align: right;">Adult</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Seedling</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">40.0</td>
-<td style="text-align: right;">30.0</td>
-</tr>
-<tr class="even">
-<td>Juvenile</td>
-<td style="text-align: right;">0.3</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td>Adult</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.5</td>
-<td style="text-align: right;">0.9</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We want to know the effects of a 10% change (or another observed variance)</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in these vital rates</span></span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>seedl_surv1 <span class="ot">&lt;-</span> seedl_surv <span class="sc">+</span> seedl_surv<span class="sc">*</span><span class="fl">0.1</span></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>adt_reprod1 <span class="ot">&lt;-</span> adt_reprod <span class="sc">+</span> adt_reprod<span class="sc">*</span><span class="fl">0.1</span></span>
-<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="co"># These changes are now incorporated in our original matrix</span></span>
-<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the scenario for a change in seedling survival:</span></span>
-<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>pop1_surv <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">40</span>,adt_reprod1),<span class="fu">c</span>(seedl_surv,<span class="dv">0</span>,<span class="dv">0</span>),</span>
-<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.9</span>))), <span class="at">nrow=</span><span class="dv">3</span>, </span>
-<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">dimnames =</span> <span class="fu">list</span>(label, label))</span>
-<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pop1_surv,<span class="st">&quot;simple&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Changed population matrix: seedling survival&quot;</span>)</span></code></pre></div>
-<table>
-<caption>Changed population matrix: seedling survival</caption>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">Seedling</th>
-<th style="text-align: right;">Juvenile</th>
-<th style="text-align: right;">Adult</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Seedling</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">40.0</td>
-<td style="text-align: right;">33.0</td>
-</tr>
-<tr class="even">
-<td>Juvenile</td>
-<td style="text-align: right;">0.3</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td>Adult</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.5</td>
-<td style="text-align: right;">0.9</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And this is the scenario for a change in adult reproductive rates:</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>pop1_reprod <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">40</span>,adt_reprod),<span class="fu">c</span>(seedl_surv1,<span class="dv">0</span>,<span class="dv">0</span>),</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.9</span>))), <span class="at">nrow=</span><span class="dv">3</span>, </span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">dimnames =</span> <span class="fu">list</span>(label, label))</span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pop1_reprod,<span class="st">&quot;simple&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Changed population matrix: adult reproduction&quot;</span>)</span></code></pre></div>
-<table>
-<caption>Changed population matrix: adult reproduction</caption>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">Seedling</th>
-<th style="text-align: right;">Juvenile</th>
-<th style="text-align: right;">Adult</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Seedling</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">40.0</td>
-<td style="text-align: right;">30.0</td>
-</tr>
-<tr class="even">
-<td>Juvenile</td>
-<td style="text-align: right;">0.33</td>
-<td style="text-align: right;">0.0</td>
-<td style="text-align: right;">0.0</td>
-</tr>
-<tr class="odd">
-<td>Adult</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.5</td>
-<td style="text-align: right;">0.9</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s now obtain the original lambda</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>lambda0 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(<span class="fu">round</span>(<span class="fu">eigen</span>(pop0)<span class="sc">$</span>value[<span class="dv">1</span>], <span class="dv">2</span>), <span class="at">nsmall =</span> <span class="dv">2</span>))</span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co"># And the changed lambdas</span></span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># For a change in seedling survival</span></span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>lambda_surv <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(<span class="fu">round</span>(<span class="fu">eigen</span>(pop1_surv)<span class="sc">$</span>value[<span class="dv">1</span>], <span class="dv">2</span>), <span class="at">nsmall =</span> <span class="dv">2</span>))</span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Change in adult reproduction</span></span>
-<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>lambda_reprod <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(<span class="fu">round</span>(<span class="fu">eigen</span>(pop1_reprod)<span class="sc">$</span>value[<span class="dv">1</span>], <span class="dv">2</span>), <span class="at">nsmall =</span> <span class="dv">2</span>))</span>
-<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">&quot;Original lambda&quot;</span>,<span class="st">&quot;Lambda for change in seedling survival&quot;</span>,</span>
-<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Lambda for change in adult reproduction&quot;</span>),</span>
-<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">c</span>(lambda0,lambda_surv,lambda_reprod)),<span class="st">&quot;simple&quot;</span>)</span></code></pre></div>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Original lambda</td>
-<td style="text-align: left;">Lambda for change in seedling
-survival</td>
-<td style="text-align: left;">Lambda for change in adult
-reproduction</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">3.69</td>
-<td style="text-align: left;">3.71</td>
-<td style="text-align: left;">3.86</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># And here is the sensitivity we get by using the equation we have just seen</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>sensitivity_surv <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(<span class="fu">round</span>((lambda_surv<span class="sc">-</span>lambda0)<span class="sc">/</span>(seedl_surv1<span class="sc">-</span>seedl_surv),</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">2</span>), <span class="at">nsmall =</span> <span class="dv">2</span>))</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>sensitivity_reprod <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(<span class="fu">round</span>((lambda_reprod<span class="sc">-</span>lambda0)<span class="sc">/</span>(adt_reprod1<span class="sc">-</span>adt_reprod),</span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>                                            <span class="dv">2</span>), <span class="at">nsmall =</span> <span class="dv">2</span>))</span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">&quot;Sensitivity for change in seedling survival&quot;</span>,</span>
-<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;Sensitivity for change in adult reproduction&quot;</span>),</span>
-<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">c</span>(sensitivity_surv,sensitivity_reprod)),<span class="st">&quot;simple&quot;</span>)</span></code></pre></div>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Sensitivity for change in seedling
-survival</td>
-<td style="text-align: left;">Sensitivity for change in adult
-reproduction</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">0.67</td>
-<td style="text-align: left;">0.06</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We now scale the sensitivity to get the elasticity</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>elasticity_surv <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(<span class="fu">round</span>(sensitivity_surv<span class="sc">*</span>(seedl_surv<span class="sc">/</span>lambda0),<span class="dv">2</span>), <span class="at">nsmall =</span> <span class="dv">2</span>))</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>elasticity_reprod <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(<span class="fu">round</span>(sensitivity_reprod<span class="sc">*</span>(adt_reprod<span class="sc">/</span>lambda0),<span class="dv">2</span>), <span class="at">nsmall =</span> <span class="dv">2</span>))</span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="st">&quot;Elasticity for change in seedling survival&quot;</span>,</span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;Elasticity for change in adult reproduction&quot;</span>),</span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">c</span>(elasticity_surv,elasticity_reprod)),<span class="st">&quot;simple&quot;</span>)</span></code></pre></div>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Elasticity for change in seedling
-survival</td>
-<td style="text-align: left;">Elasticity for change in adult
-reproduction</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">0.05</td>
-<td style="text-align: left;">0.49</td>
-</tr>
-</tbody>
-</table>
-<p>By looking at the elasticities of seedling survival (0.05) and adult
-reproduction (0.49), we conclude that adult reproduction is more
-important to the growth of this population. Although this is a
-hypothetical example, a sensitivity analysis actually found that adult
-reproduction is the most important vital rate for this tree species.
-This is because this is a long-lived species with low adult mortality,
-while most seedlings do not survive. You can read more in Paludo et
-al. (2016).</p>
-<p>If we keep doing this analysis for all vital rates in a given
-population matrix, we can them compare them to understand their relative
-impact to population growth.</p>
-<h3
-id="advantages-of-elasticities-as-compared-to-sensitivites">Advantages
-of elasticities as compared to sensitivites</h3>
-<p>Elasticities are useful in population biology studies due to the
-following properties:</p>
-<ul>
-<li><p>Elasticities for several vital rates can be directly compared
-within and between populations</p></li>
-<li><p>The sum of elasticities of all matrix elements equals 1</p></li>
-<li><p>The sum of 2 or more elasticities enable analyzing the grouped
-effect of vital rates</p></li>
-<li><p>General life history patterns can be considered when analyzing
-elasticities. For instance, long-lived species tend to have a higher
-elasticity for survival in comparison with reproduction. Thus, when
-observing significant changes in population growth rates, adult survival
-elasticities should be considered first.</p></li>
-</ul>
-<h3 id="limitations-of-sensitivity-and-elasticity-analyses">Limitations
-of sensitivity and elasticity analyses</h3>
-<ul>
-<li><p>Assumption that populations have a stable stage
-distribution</p></li>
-<li><p>They are not enough to describe vital rate dynamics under natural
-or management conditions: this is because high and low sensitivities and
-elasticities need to be considered together with the variance of vital
-rates. For example, a given vital rate with a high elasticity but low
-variance may be less important than another vital rate with a low
-elasticity but which changes a lot.</p></li>
-</ul>
-<h3 id="sensitivity-analysis-methods">Sensitivity analysis methods</h3>
-<h4 id="manual-perturbation">Manual perturbation</h4>
-<ul>
-<li><p>Compare <span class="math inline">\(\lambda\)</span> SSD after
-manually changing vital rates</p></li>
-<li><p>Two or more vital rates are compared when changed by the same
-amount or different proportions</p></li>
-<li><p>Example: compare a 5% change in adult survival vs. a 10% change
-in fecundity</p></li>
-<li><p>In addition to vital rates, this method allows assessing factors
-like density dependence, immigration and emigration, age structure, and
-endogamy (breeding of related individuals resulting in offspring
-performance reduction)</p></li>
-</ul>
-<h4 id="analytical-sensitivity-and-elasticity-analysis">Analytical
-sensitivity and elasticity analysis</h4>
-<ul>
-<li><p>Comparing different vital rates in terms of how much a small and
-equal change in each of them affects population growth</p></li>
-<li><p>Used to analyze a mean matrix, when little information on
-population structure or vital rate variation is known</p></li>
-<li><p>This type of analysis using a mean matrix can be misleading, as
-transient dynamics following management are not considered</p></li>
-<li><p>In this case, phenomena such as population inertia may occur, in
-which growth occurs in opposite trends as the predicted by asymptotic
-elasticity as a result of a large change to a vital rate with a high
-elasticity</p></li>
-<li><p>Sensitivities and elasticities can be calculated for transients
-and fully stochastic scenarios</p></li>
-</ul>
-<h4 id="management-applications">Management applications</h4>
-<ul>
-<li><p>Recall that, in the broad sense, a sensitivity analysis
-encompasses these various analytical and simulation techniques we have
-been talking about</p></li>
-<li><p>Such techniques include sensitivity and elasticity calculations
-together with other important management aspects, such as the joint
-consideration of vital rate variance and sensitivity/elasticity
-analyses</p></li>
-<li><p>Past and future management actions can be compared in terms of
-their impacts to vital rates, which ultimately affects population
-density</p></li>
-</ul>
+fitness evolves as a response to phenotypic changes (Caswell, 2019).</p>
 <p>One of the first studies which applied sensitivity analysis found
 that management strategies for endangered loggerhead sea turtles should
 focus on young adults in the ocean more than hatchlings moving from the
@@ -3319,64 +2891,158 @@ Turtle</a>, Public use provided by the <a
 href="https://www.nist.gov/">National Institute of Standards and
 Technology (NIST), US</a></figcaption>
 </figure>
-<h4
+<h3 id="sensitivity">Sensitivity</h3>
+<p>How sensitive is population growth to small changes in different
+vital rates? We can investigate this by looking at how <span
+class="math inline">\(\lambda\)</span> is impacted (or how sensitive it
+is) following a very small change in a vital rate within a given
+population matrix, considering that all of the other matrix elements
+remain unchanged. This is called analytical sensitivity, which is given
+by the following:</p>
+<p><span class="math display">\[a_{i,j} =
+\frac{\partial\lambda}{\partial a_{i,j}} =
+\frac{v_{i}*w_{j}}{\sum_{k=1}{(v_k*w_k)}}\]</span> Where: a(i,j) = a
+given matrix element<br />
+<span class="math inline">\(\partial\)</span> = partial derivative
+denoting a very small change applied to rates while all other variables
+are held constant<br />
+<span class="math inline">\(\lambda\)</span> = rate of population
+change<br />
+v(i) = reproductive value<br />
+w(j) = stable stage distribution (SSD) value<br />
+v(k) = reproductive value for class k w(k) = stable stage distribution
+(SSD) value for class k</p>
+<h3 id="from-sensitivity-to-elasticity">From sensitivity to
+elasticity</h3>
+<p>Because the sensitivity analysis is based in absolute values, changes
+applied to small values have a disproportional effect in comparison to
+changes to larger values, which can make comparisons problematic. This
+is especially true because fecundity rates are usually measured using
+different units than survival rates. A solution is considering vital
+rate sizes and making sensitivities proportional to them. Such rescaled
+sensitivites are then called <strong>elasticities</strong> and can be
+represented by:</p>
+<p><span class="math display">\[\text{Elasticity of }a_{i,j} =
+\text{(sensitivity of }a_{i,j})*\frac{a_{i,j}}{\lambda}\]</span></p>
+<p>Soon you will learn how to calculate the sensitivities and
+elasticities you see in the following plot. For now, try to focus on the
+fact that absolute sensitivity values change when scaled into
+elasticities. Matrix elements which are very sensitive (eg., survival of
+9-16cm trees in our plot) seem to have the potential to greatly alter
+<span class="math inline">\(\lambda\)</span> rates. But to compare vital
+rates, we need elasticities. Our elasticities tell us that survival for
+bigger trees is proportionally more significant in terms of impacting
+growth rates. Thus, a very sensitive element may end up having a low
+relative elasticity value. In this case, we could recommend to wildlife
+managers looking at an endangered species to focus on taller individuals
+first.</p>
+<figure>
+<img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/sensitivity_analysis_files/unnamed-chunk-6-1.jpeg"
+data-dpi="300"
+alt="Sensitivities and elasticities for several tree sizes (in cm) in an oak population" />
+<figcaption aria-hidden="true">Sensitivities and elasticities for
+several tree sizes (in cm) in an oak population</figcaption>
+</figure>
+<h3 id="component-sensitivity-and-elasticity">Component sensitivity and
+elasticity</h3>
+<p>Component sensitivity is a numerical approximation of sensitivity
+which you have just learnt how to calculate. In addition to being used
+as an approximation to analytical sensitivities, component sensitivities
+can be used in cases in which both survival and reproduction rates
+affect the same matrix elements or when a certain vital rate appears in
+more than one matrix element. They can be calculated by changing the
+<span class="math inline">\(\lambda\)</span> SSD by a small amount (eg.,
+0.01 in the equation below), obtaining the resulting matrix, and
+obtaining the new <span class="math inline">\(\lambda\)</span> SSD for
+this changed matrix. Then, you proceed with this calculation for a given
+vital rate x:</p>
+<p><span class="math display">\[x =
+\frac{\lambda_{x+0.01}-\lambda_{original}}{0.01}\]</span></p>
+<p>And for the elasticity:</p>
+<p><span class="math display">\[\text{Component elasticity of vital rate
+x} = \text{(component sensitivity of vital rate x)
+}*\frac{x}{\lambda_{original}}\]</span></p>
+<h3
+id="advantages-of-elasticities-as-compared-to-sensitivites">Advantages
+of elasticities as compared to sensitivites</h3>
+<p>Elasticities are useful in population biology studies due to the
+following properties:</p>
+<ul>
+<li><p>Elasticities for several vital rates can be directly compared
+within and between populations</p></li>
+<li><p>The sum of elasticities of all matrix elements equals 1</p></li>
+<li><p>The sum of 2 or more elasticities enable analyzing the grouped
+effect of vital rates</p></li>
+<li><p>General life history patterns can be considered when analyzing
+elasticities. For instance, long-lived species tend to have a higher
+elasticity for survival in comparison with reproduction. Thus, when
+observing significant changes in population growth rates, adult survival
+elasticities should be considered first.</p></li>
+</ul>
+<h3 id="limitations-of-sensitivity-and-elasticity-analyses">Limitations
+of sensitivity and elasticity analyses</h3>
+<p>Sensitivities and elasticities are calculated based on the assumption
+that populations have a stable stage distribution. However, they are not
+enough to describe vital rate dynamics under natural or management
+conditions: this is because high and low sensitivities and elasticities
+need to be considered together with the variance of vital rates.</p>
+<p>Sensitivity analyses using a mean matrix can be misleading in some
+situations, such as when environmental conditions have a large influence
+on a given population. Mean matrices also disregard transient dynamics
+following management actions. In this case, phenomena such as population
+inertia may occur, in which growth occurs in opposite trends as the
+predicted by asymptotic elasticity as a result of a large change to a
+vital rate with a high elasticity. Our section entitled <a
+href="https://www.ecotheory.ca/teach/BIOL652.html#structured-population-models"><strong>Temporal
+environmental stochasticity in matrix models</strong></a> details
+analyses considering sensitivities and elasticities for transients and
+stochastic scenarios.</p>
+<h3
 id="analytical-sensitivity-and-elasticity-variance-in-vital-rates">Analytical
-sensitivity and elasticity &amp; variance in vital rates</h4>
-<ul>
-<li><p>The extent to which a given vital rate varies needs to be
-considered together with the analysis of elasticities</p></li>
-<li><p>A high elasticity and low variation in a vital rate may make it
-less important to population growth than another vital rate
-characterized by a low elasticity but a great variability</p></li>
-<li><p>An example is juvenile survival for several species: even if a
-low elasticity is found for this vital rate, it may be more variable
-than vital rates for adults, as juveniles have more mortality due to
-predation, poor conditions, and density-dependent factors</p></li>
-<li><p>Mean matrices are not appropriate for this type of analysis, as
-it requires knowing how much vital rates change in nature or under
-management and how this change affects population growth</p></li>
-</ul>
-<h4 id="life-stage-simulation-analysis-method-1">Life-stage simulation
-analysis: method 1</h4>
-<ul>
-<li><p>Uses techniques from both the analytical sensitivity and
-elasticity analysis and the manual perturbation</p></li>
-<li><p>Finds the most important vital rates impacting population growth
-based on mean rates and on their variation</p></li>
-<li><p>A given realistic change to averages and variances in
-field-collected rates is used to simulate several potential future
-scenarios</p></li>
-<li><p>Vital rate correlations and vital rate distribution functions are
-specified</p></li>
-<li><p>Several matrices are built using the vital rates specified in the
-distribution function</p></li>
-<li><p><span class="math inline">\(\lambda\)</span> SSD can be
-calculated for each matrix (What is the probability of this population
-to increase in time?)</p></li>
-<li><p>How similar is the rating of elasticities across replicates (or
-matrices)?</p></li>
-<li><p>To include stochasticity, random vital rates can be used and
-<span class="math inline">\(\lambda\)</span>S can be calculated instead
-of <span class="math inline">\(\lambda\)</span> SSD</p></li>
-</ul>
-<h4 id="life-stage-simulation-analysis-method-2">Life-stage simulation
-analysis: method 2</h4>
-<ul>
-<li><p><span class="math inline">\(\lambda\)</span> values are regressed
-against each vital rate (for each replicate), considering that all other
-vital rates are also changing at the same time</p></li>
-<li><p>Coefficient of determination (R^2) is corresponds to how much
-variation in population growth is explained by variation in that
-specified vital rate</p></li>
-<li><p>R^2 values sum to one when analysis considers mean effects and
-interactions</p></li>
-<li><p>Slope of line represents the analytical sensitivity; if using
-log-transformed data, the slope corresponds to the elasticity</p></li>
-<li><p>R^2 is a function of analytical sensitivity and vital rate
-variance</p></li>
-</ul>
-<h4 id="sensitivity-analysis-demonstration">Sensitivity analysis
-demonstration</h4>
+sensitivity and elasticity &amp; variance in vital rates</h3>
+<p>A high elasticity and low variation in a vital rate may be less
+important to population growth than another vital rate characterized by
+a low elasticity but a great variability. An example is juvenile
+survival for several species: even if a low elasticity is found for this
+vital rate, it may be more variable than vital rates for adults, as
+juveniles have more mortality due to predation, poor conditions, and
+density-dependent factors. Mean matrices are not appropriate for this
+type of analysis, as it requires knowing how much vital rates change in
+nature or under management and how this change affects population
+growth.</p>
+<h3 id="sensitivity-analysis-methods">Sensitivity analysis methods</h3>
+<p>The most common method for performing a sensitivity analysis is
+called manual perturbation and consists of the technique described above
+of manually changing vital rates and comparing the before and after
+<span class="math inline">\(\lambda\)</span> SSD. In addition to vital
+rates, this method allows assessing factors like density dependence,
+immigration and emigration, age structure, and endogamy (breeding of
+related individuals resulting in offspring performance reduction).</p>
+<p>Another method which considers both sensitivity and variance in vital
+rates is called life-stage simulation analysis. It is done by applying
+realistic changes to averages and variances in field-collected rates to
+simulate several potential future scenarios. Thus, several matrices are
+built using the vital rates specified in a distribution function, and
+<span class="math inline">\(\lambda\)</span> SSDs are calculated for
+each matrix to investigate the probability of a population to increase
+or decrease in time. By considering each matrix as a replicate, we can
+compare ratings of elasticities across scenarios. To include
+stochasticity, random vital rates can be used and <span
+class="math inline">\(\lambda\)</span>S can be calculated instead of
+<span class="math inline">\(\lambda\)</span> SSD.</p>
+<p>Life-stage simulation analyses can also be done by regressing <span
+class="math inline">\(\lambda\)</span> values against each vital rate
+(for each replicate), considering that all other vital rates are also
+changing at the same time. In this case, the coefficient of
+determination (<span class="math inline">\(R^2\)</span>) corresponds to
+how much variation in population growth is explained by variation in
+that specified vital rate. The slope of line represents the analytical
+sensitivity; if using log-transformed data, the slope corresponds to the
+elasticity.</p>
+<h3
+id="practicing-the-calculation-of-sensitivities-and-elasticities">Practicing
+the calculation of sensitivities and elasticities</h3>
 <p>Now let’s use an actual population matrix to make a sensitivity
 analysis and try to figure out the most important vital rates to an oak
 tree (<em>Quercus mongolica</em>) population. In Asia, the native range
@@ -3387,8 +3053,9 @@ due to the spread of a fungal disease vectored by a beetle (Choi et al.,
 <img
 src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/oak.jpg"
 data-fig.width="180" data-fig.height="120" data-dpi="300"
-alt="(left) © MPF, Quercus mongolica, Creative Commons CC BY-SA 3.0 license; (right) © William M. Ciesla, Oak wilt, Creative Commons CC BY-NC 3.0 license" />
-<figcaption aria-hidden="true">(left) © MPF, <a
+alt="A healthy (left) and an infected (right) oak tree; (left) © MPF, Quercus mongolica, Creative Commons CC BY-SA 3.0 license; (right) © William M. Ciesla, Oak wilt, Creative Commons CC BY-NC 3.0 license" />
+<figcaption aria-hidden="true">A healthy (left) and an infected (right)
+oak tree; (left) © MPF, <a
 href="https://commons.wikimedia.org/wiki/File:Quercus_mongolica_in_June.jpg"><em>Quercus
 mongolica</em></a>, <a
 href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Creative
@@ -3402,16 +3069,6 @@ CC BY-NC 3.0 license</a></figcaption>
 growth for this species when predicting disease impacts and planning
 management actions. A mean matrix for this plant can be found on the <a
 href="https://compadre-db.org/Species/47241">Compadre database</a>.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We paste the matrix elements found in the Compadre database</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>oak <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.407</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.606</span>,<span class="fl">0.606</span>,</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>                    <span class="fl">0.483</span>,<span class="fl">0.701</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>                    <span class="fl">0.002</span>,<span class="fl">0.239</span>,<span class="fl">0.832</span>,<span class="dv">0</span>,<span class="dv">0</span>,</span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.117</span>,<span class="fl">0.929</span>,<span class="dv">0</span>,</span>
-<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>                    <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.037</span>,<span class="fl">0.977</span>), <span class="at">nrow=</span><span class="dv">5</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>,</span>
-<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">dimnames=</span><span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;5-8cm&quot;</span>,<span class="st">&quot;9-16cm&quot;</span>,<span class="st">&quot;17-32cm&quot;</span>,<span class="st">&quot;33-64cm&quot;</span>,<span class="st">&quot;&gt;64cm&quot;</span>),</span>
-<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">c</span>(<span class="st">&quot;5-8cm&quot;</span>,<span class="st">&quot;9-16cm&quot;</span>,<span class="st">&quot;17-32cm&quot;</span>,<span class="st">&quot;33-64cm&quot;</span>,<span class="st">&quot;&gt;64cm&quot;</span>)))</span>
-<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(oak,<span class="st">&quot;simple&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -3466,206 +3123,74 @@ href="https://compadre-db.org/Species/47241">Compadre database</a>.</p>
 </tr>
 </tbody>
 </table>
-<p>The popbio package calculates sensitivity and elasticity matrices in
-the same manner as we did in our previous example</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(popbio)</span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>sensit <span class="ot">&lt;-</span> <span class="fu">sensitivity</span>(oak, <span class="at">zero =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(sensit,<span class="st">&quot;simple&quot;</span>,<span class="at">caption=</span><span class="st">&quot;Sensitivity matrix&quot;</span>)</span></code></pre></div>
-<table>
-<caption>Sensitivity matrix</caption>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">5-8cm</th>
-<th style="text-align: right;">9-16cm</th>
-<th style="text-align: right;">17-32cm</th>
-<th style="text-align: right;">33-64cm</th>
-<th style="text-align: right;">&gt;64cm</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>5-8cm</td>
-<td style="text-align: right;">0.0896726</td>
-<td style="text-align: right;">0.1114987</td>
-<td style="text-align: right;">0.1042040</td>
-<td style="text-align: right;">0.0759845</td>
-<td style="text-align: right;">0.0250011</td>
-</tr>
-<tr class="even">
-<td>9-16cm</td>
-<td style="text-align: right;">0.1258554</td>
-<td style="text-align: right;">0.1564882</td>
-<td style="text-align: right;">0.1462501</td>
-<td style="text-align: right;">0.1066441</td>
-<td style="text-align: right;">0.0350890</td>
-</tr>
-<tr class="odd">
-<td>17-32cm</td>
-<td style="text-align: right;">0.2045556</td>
-<td style="text-align: right;">0.2543438</td>
-<td style="text-align: right;">0.2377036</td>
-<td style="text-align: right;">0.1733311</td>
-<td style="text-align: right;">0.0570310</td>
-</tr>
-<tr class="even">
-<td>33-64cm</td>
-<td style="text-align: right;">0.4501133</td>
-<td style="text-align: right;">0.5596695</td>
-<td style="text-align: right;">0.5230536</td>
-<td style="text-align: right;">0.3814054</td>
-<td style="text-align: right;">0.1254935</td>
-</tr>
-<tr class="odd">
-<td>&gt;64cm</td>
-<td style="text-align: right;">0.4832427</td>
-<td style="text-align: right;">0.6008624</td>
-<td style="text-align: right;">0.5615516</td>
-<td style="text-align: right;">0.4094777</td>
-<td style="text-align: right;">0.1347301</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>elast <span class="ot">&lt;-</span> <span class="fu">elasticity</span>(oak)</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(elast,<span class="st">&quot;simple&quot;</span>,<span class="at">caption=</span><span class="st">&quot;Elasticity matrix&quot;</span>)</span></code></pre></div>
-<table>
-<caption>Elasticity matrix</caption>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">5-8cm</th>
-<th style="text-align: right;">9-16cm</th>
-<th style="text-align: right;">17-32cm</th>
-<th style="text-align: right;">33-64cm</th>
-<th style="text-align: right;">&gt;64cm</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>5-8cm</td>
-<td style="text-align: right;">0.0335001</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0422658</td>
-<td style="text-align: right;">0.0139067</td>
-</tr>
-<tr class="even">
-<td>9-16cm</td>
-<td style="text-align: right;">0.0557970</td>
-<td style="text-align: right;">0.1006912</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0000000</td>
-</tr>
-<tr class="odd">
-<td>17-32cm</td>
-<td style="text-align: right;">0.0003755</td>
-<td style="text-align: right;">0.0557970</td>
-<td style="text-align: right;">0.1815311</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0000000</td>
-</tr>
-<tr class="even">
-<td>33-64cm</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0561725</td>
-<td style="text-align: right;">0.3252329</td>
-<td style="text-align: right;">0.0000000</td>
-</tr>
-<tr class="odd">
-<td>&gt;64cm</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0000000</td>
-<td style="text-align: right;">0.0139067</td>
-<td style="text-align: right;">0.1208234</td>
-</tr>
-</tbody>
-</table>
-<p>We can sum up elasticities related to fecundity, stasis, and growth
-components so that we have an overview of their importance to the
-demography of our species:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>fecund <span class="ot">&lt;-</span> <span class="fu">sum</span>(elast[<span class="dv">1</span>,<span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>])</span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>growth <span class="ot">&lt;-</span> <span class="fu">sum</span>(elast[<span class="dv">2</span>,<span class="dv">1</span>],elast[<span class="dv">3</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>],elast[<span class="dv">4</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],elast[<span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>stasis <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">diag</span>(elast))</span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">c</span>(growth, fecund, stasis), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#999999&quot;</span>, <span class="st">&quot;#E69F00&quot;</span>, <span class="st">&quot;#56B4E9&quot;</span>),</span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Growth&quot;</span>, <span class="st">&quot;Fecundity&quot;</span>, <span class="st">&quot;Stasis&quot;</span>), <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="fl">1.5</span>)</span></code></pre></div>
-<p><img
-src="sensitivity_analysis_files/figure-html/unnamed-chunk-10-1.jpeg" /><!-- --></p>
-<p>And now we manually disturb populations by introducing some changes
-to be applied to each vital rate at a time (5%, 10%, and 15% change,
-respectively)</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>changes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">1.05</span>, <span class="fl">1.1</span>, <span class="fl">1.5</span>)</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="co"># This function will calculate the changed lambda for each scenario and save as a list </span></span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>out_matrix <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(changes)) {</span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span><span class="fu">nrow</span>(oak), <span class="at">ncol=</span><span class="fu">nrow</span>(oak))</span>
-<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(oak))) {</span>
-<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(oak))) {</span>
-<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (oak[i,j] <span class="sc">==</span> <span class="dv">0</span>) {result[i,j] <span class="ot">&lt;-</span> <span class="dv">0</span>} <span class="cf">else</span> {</span>
-<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>        matrix <span class="ot">&lt;-</span> oak</span>
-<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>        matrix[i,j] <span class="ot">&lt;-</span> oak[i,j]<span class="sc">*</span>changes[x]</span>
-<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a>        result[i,j] <span class="ot">&lt;-</span> <span class="fu">Re</span>(<span class="fu">eigen</span>(matrix)<span class="sc">$</span>values[<span class="dv">1</span>])</span>
-<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a>  out_matrix[[x]] <span class="ot">&lt;-</span> result</span>
-<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize population growth rate change scenarions from our list in a single matrix</span></span>
-<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow=</span><span class="fu">length</span>(changes), <span class="at">ncol=</span><span class="fu">length</span>(<span class="fu">which</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(out_matrix[[<span class="dv">1</span>]])) <span class="sc">&gt;</span><span class="dv">0</span>)))</span>
-<span id="cb70-22"><a href="#cb70-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (w <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span> <span class="fu">length</span>(changes))) {</span>
-<span id="cb70-23"><a href="#cb70-23" aria-hidden="true" tabindex="-1"></a>  summary[w,] <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">t</span>(out_matrix[[w]]))[<span class="fu">which</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(out_matrix[[w]])) <span class="sc">&gt;</span><span class="dv">0</span>)]</span>
-<span id="cb70-24"><a href="#cb70-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb70-25"><a href="#cb70-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-26"><a href="#cb70-26" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(summary) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Surv_stas_5-8cm&quot;</span>,<span class="st">&quot;Reprod_33-64cm&quot;</span>,<span class="st">&quot;Reprod_&gt;64cm&quot;</span>,<span class="st">&quot;Surv_grow_5-8cm&quot;</span>,<span class="st">&quot;Surv_stas_9-16cm&quot;</span>,</span>
-<span id="cb70-27"><a href="#cb70-27" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;Surv_grow_5-8cm&quot;</span>,<span class="st">&quot;Surv_grow_9-16cm&quot;</span>,<span class="st">&quot;Surv_stas_17-32cm&quot;</span>,<span class="st">&quot;Surv_grow_17-32cm&quot;</span>,<span class="st">&quot;Surv_stas_33-64cm&quot;</span>,<span class="st">&quot;Surv_grow_33-64cm&quot;</span>,<span class="st">&quot;Surv_stas_&gt;64cm&quot;</span>)</span></code></pre></div>
-<p>We can now plot the changed <span
-class="math inline">\(\lambda\)</span> resulting from the rate change
-scenarios we simulated. Here we selected a comparison between growth
-rate changes for survival in 2 immature stages versus 1 mature stage of
-this population:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>lower <span class="ot">&lt;-</span> <span class="fl">0.8</span> <span class="co"># To improve visualization, we choose a growth rate as the starting point for plotting results</span></span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(summary[,<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">12</span>)]<span class="sc">-</span>lower, <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">ylim=</span><span class="fu">c</span>(lower, <span class="fl">1.5</span>), <span class="at">ylab=</span><span class="st">&quot;population growth rate&quot;</span>,</span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;#56B4E9&quot;</span>, <span class="st">&quot;#009E73&quot;</span>, <span class="st">&quot;#F0E442&quot;</span>), <span class="at">offset=</span> lower, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="fl">1.5</span>)</span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>lower, <span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span> (<span class="fu">Re</span>(<span class="fu">eigen</span>(oak)<span class="sc">$</span>values[<span class="dv">1</span>])), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">inset=</span><span class="fu">c</span>(<span class="fl">0.01</span>,<span class="fl">0.01</span>), <span class="fu">c</span>(<span class="st">&quot;+5% rate change&quot;</span>,<span class="st">&quot;+10% rate change&quot;</span>,</span>
-<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&quot;+15% rate change&quot;</span>),</span>
-<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill=</span><span class="fu">c</span>(<span class="st">&quot;#56B4E9&quot;</span>, <span class="st">&quot;#009E73&quot;</span>, <span class="st">&quot;#F0E442&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">1</span>))</span>
-<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">4.5</span>, <span class="fl">1.11</span>, <span class="st">&quot;Lambda&quot;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img
-src="sensitivity_analysis_files/figure-html/unnamed-chunk-12-1.jpeg" /><!-- -->
-And we conclude that small survival vital rate increases of 5% and 10%
-would not significantly change the population growth for these immature
-and mature stages. However, a 15% vital rate increase in mature survival
-would benefit the growth of this population more than the same extent of
-increase in immature survival. Thus, a management program focused on
-increasing the survival of mature oaks in 15% has a potential for
-positive impacts for the overall population growth.</p>
-<h2 id="resources">Resources</h2>
-<ul>
-<li>popbio package:
-https://rdrr.io/cran/popbio/man/01Introduction.html</li>
-</ul>
+<p>We first find the stable stage distribution through an eigen
+analysis:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the eigenanalysis</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>eigen_L <span class="ot">&lt;-</span> <span class="fu">eigen</span>(L)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the index position of the largest absolute value of the eigenvalues</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>position <span class="ot">&lt;-</span> <span class="fu">which.max</span>(eigen_L[[<span class="st">&quot;values&quot;</span>]])</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the dominant eigenvalue and retain only its real part</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">Re</span>(eigen_L[[<span class="st">&quot;values&quot;</span>]][position])</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain the stable stage distribution</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>eigenvectors <span class="ot">&lt;-</span> <span class="fu">Re</span>(eigen_L[[<span class="st">&quot;vectors&quot;</span>]][, position])</span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>ssd <span class="ot">&lt;-</span> eigenvectors<span class="sc">/</span><span class="fu">sum</span>(eigenvectors)</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Transpose projection matrix and do eigen analysis</span></span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>eigenanalysis <span class="ot">&lt;-</span> <span class="fu">eigen</span>(<span class="fu">t</span>(L))</span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract left eigenvector corresponding to dominant eigenvalue</span></span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>left <span class="ot">&lt;-</span> <span class="fu">Re</span>(eigenanalysis<span class="sc">$</span>vectors[, <span class="fu">which.max</span>(<span class="fu">Re</span>(eigenanalysis<span class="sc">$</span>values))])</span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale the left eigenvector by the reproductive value of the first stage</span></span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a>repv <span class="ot">&lt;-</span> left<span class="sc">/</span>left[<span class="dv">1</span>]</span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Sum the products of the vector of reproductive value and the stable stage distribution</span></span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a>S.dem<span class="ot">&lt;-</span><span class="fu">sum</span>(repv<span class="sc">*</span>ssd)</span></code></pre></div>
+<p>And now we are ready to get the sensitivities and elasticities for
+our oak population:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can use two loops to estimate the sensitivity for each matrix element</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>s<span class="ot">=</span>L; n<span class="ot">=</span><span class="fu">dim</span>(L)[<span class="dv">1</span>];</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  s[i,j]<span class="ot">=</span>repv[i]<span class="sc">*</span>ssd[j]<span class="sc">/</span>S.dem;</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>  }}</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co"># And we weight the sensitivities by the transition probabilities to get elasticities</span></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>elas<span class="ot">&lt;-</span><span class="fu">Re</span>(L<span class="sc">/</span><span class="fu">eigen</span>(L)<span class="sc">$</span>values[<span class="dv">1</span>]<span class="sc">*</span>s)</span></code></pre></div>
+<p>Finally, we visualize sensitivities and elasticities for each vital
+rate and stage in these bar plots:</p>
+<figure>
+<img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/sensitivity_analysis_files/r-1.jpeg"
+data-dpi="300"
+alt="Comparing sensitivities and elasticities for the reproduction and survival of several tree sizes (in cm) in an oak population" />
+<figcaption aria-hidden="true">Comparing sensitivities and elasticities
+for the reproduction and survival of several tree sizes (in cm) in an
+oak population</figcaption>
+</figure>
+<p>By looking at the elasticities for survival and reproduction, we
+conclude that <strong>adult survival</strong> for trees between the
+sizes of 17 and 64 cm are the most important vital rates to the growth
+of this population. Thus, such sizes can be prioritized in management
+programs focused on disease prevention.</p>
+<p>Alternatively, you can use the popbio package, which calculates
+sensitivity and elasticity matrices in the same manner as we have just
+done:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(popbio)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>sensit <span class="ot">&lt;-</span> <span class="fu">sensitivity</span>(L, <span class="at">zero =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>elast <span class="ot">&lt;-</span> <span class="fu">elasticity</span>(L)</span></code></pre></div>
 <h2 id="references-5">References</h2>
-<p>Caswell, H. 2001. <em>Matrix Population Models</em> (2nd Edn.).
-Sinauer Associates, Sunderland, MA.</p>
-<p>Caswell, H., &amp; Caswell, H. (2019). Introduction: Sensitivity
-Analysis–What and Why?. <em>Sensitivity Analysis: Matrix Methods in
-Demography and Ecology</em>, 3-12.</p>
+<p>Caswell, H. (2001). <em>Matrix Population Models</em>. Sinauer
+Associates, Sunderland, MA.</p>
+<p>Caswell, H. (2019). Introduction: Sensitivity Analysis–What and Why?.
+<em>Sensitivity Analysis: Matrix Methods in Demography and Ecology</em>,
+3-12.</p>
 <p>Choi, W. I., Lee, D. H., Jung, J. B., &amp; Park, Y. S. (2022). Oak
 decline syndrome in Korean forests: History, biology, and prospects for
 Korean oak wilt. <em>Forests, 13</em>(6), 964.</p>
-<p>Clark, W. R., Bogenschutz, T. R., &amp; Tessin, D. H. (2008).
-Sensitivity analyses of a population projection model of ring‐necked
-pheasants .<em>The Journal of Wildlife Management, 72</em>(7),
-1605-1613.</p>
 <p>Crouse, D. T., Crowder, L. B., &amp; Caswell, H. (1987). A
 stage‐based population model for loggerhead sea turtles and implications
 for conservation. <em>Ecology, 68</em>(5), 1412-1423.</p>
@@ -3680,20 +3205,8 @@ and evolution, 6</em>(13), 4541-4550.</p>
 <p>Manlik, O., Lacy, R. C., &amp; Sherwin, W. B. (2018). Applicability
 and limitations of sensitivity analyses for wildlife management.
 <em>Journal of Applied Ecology, 55</em>(3), 1430-1440.</p>
-<p>Marchioro, C. A., Santos, K. L., &amp; Siminski, A. (2020). Present
-and future of the critically endangered Araucaria angustifolia due to
-climate change and habitat loss. <em>Forestry: An International Journal
-of Forest Research, 93</em>(3), 401-410.</p>
 <p>Mills, L.S. (2012). <em>Conservation of wildlife populations</em>:
 Demography, genetics, and management. Wiley- Blackwell.</p>
-<p>Paludo, G. F., Lauterjung, M. B., dos Reis, M. S., &amp; Mantovani,
-A. (2016). Inferring population trends of <em>Araucaria
-angustifolia</em> (Araucariaceae) using a transition matrix model in an
-old-growth forest. <em>Southern Forests: a Journal of Forest Science,
-78</em>(2), 137-143.</p>
-<p>Thomas, P. 2013. <em>Araucaria angustifolia</em>. <em>The IUCN Red
-List of Threatened Species 2013</em>: e.T32975A2829141.
-https://dx.doi.org/10.2305/IUCN.UK.2013-1.RLTS.T32975A2829141.en.</p>
 <h2 id="density-dependence-in-matrix-models">Density-dependence in
 matrix models</h2>
 <p>As populations increase in size, they compete for limited resources
@@ -3703,20 +3216,17 @@ population density. Similar to the unstructured models we discussed in
 the first chapter, it is necessary to incorporate density dependence
 into a structured model. However, there are two main factors that make
 it more difficult to consider density dependence in a structured model
-(Morris and Doak, 2002):</p>
-<ul>
-<li><p>In reality, we have much less data for vital-rate estimates in a
-demographic study as we have in a long-term population census due to the
-cost of marking and following multiple individuals.</p></li>
-<li><p>There are many more variables that are potentially
-density-dependent, and here are some questions we need to think
-about:</p>
+(Morris and Doak, 2002).</p>
+<p>First of all, in reality, we have much less data for vital-rate
+estimates in a demographic study due to the cost of marking and
+following multiple individuals. Also, there are many more variables that
+are potentially density-dependent, and here are some questions we need
+to think about:</p>
 <ul>
 <li>What vital rates are density-dependent?</li>
 <li>How do those rates change with density?</li>
 <li>Which classes contribute to the density that each vital rate
 “feels”?</li>
-</ul></li>
 </ul>
 <p>Typically, we won’t compare various density-dependent functions that
 are fitted to each vital rate by using multiple combinations of classes
@@ -3755,17 +3265,18 @@ CC BY-SA-4.0 license</a></figcaption>
 <p>The projection matrix <span class="math inline">\(\mathbf{A}\)</span>
 is defined as follows <span
 class="math display">\[\mathbf{A}=\begin{bmatrix}0 &amp; 0 &amp; 0 &amp;
-f_4s_4\\s_1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; s_2(1-g) &amp; s_3(1-g)
-&amp; 0\\0 &amp; s_2g &amp; s_3g &amp; s_4\end{bmatrix},\]</span> where
-<span class="math inline">\(s_i\)</span> is the survival rate of stage
-<span class="math inline">\(i\)</span>, <span
+f_4s_4\\s_1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; s_2[1-g(\mathbf{n})] &amp;
+s_3[1-g(\mathbf{n})] &amp; 0\\0 &amp; s_2g(\mathbf{n}) &amp;
+s_3g(\mathbf{n}) &amp; s_4\end{bmatrix},\]</span> where <span
+class="math inline">\(s_i\)</span> is the survival rate of stage <span
+class="math inline">\(i\)</span>, <span
 class="math inline">\(f_4\)</span> is the average number of female cubs
 produced by a breeder. We let <span class="math inline">\(K\)</span> be
 the maximum number of territories. <span
-class="math inline">\(g\)</span> is the probability that a juvenile or a
-floater will acquire a territory (for breeding) next year, which
-accounts for density dependence and is defined as follows: <span
-class="math display">\[g=\frac{K-s_4n_4(t)}{s_2n_2(t)+s_3n_3(t)}.\]</span>
+class="math inline">\(g=g(\mathbf{n})\)</span> is the probability that a
+juvenile or a floater will acquire a territory (for breeding) next year,
+which accounts for density dependence and is defined as follows: <span
+class="math display">\[g(\mathbf{n})=\frac{K-s_4n_4(t)}{s_2n_2(t)+s_3n_3(t)}.\]</span>
 It’s not hard to notice that <span class="math inline">\(g\)</span>
 decreases when <span class="math inline">\(n_2\)</span>, <span
 class="math inline">\(n_3\)</span> and <span
@@ -3788,52 +3299,47 @@ class="math inline">\(\min\{g,1\}\)</span>.</li>
 <p>The R code below shows how thr breeder population and the total
 population change when the maximum number of territories <span
 class="math inline">\(K\)</span> is introduced:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>s4 <span class="ot">&lt;-</span> <span class="fl">0.86</span></span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Reproduction of a female breeder is calculated as</span></span>
-<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (sex ratio)*(breeding prob)*(avg number of offsprings)</span></span>
-<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We change the avg number of offsprings compared to Morris and Doak (2002) for better illustration</span></span>
-<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>f4 <span class="ot">&lt;-</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.6</span><span class="sc">*</span><span class="dv">4</span></span>
-<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
-<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">51</span>)</span>
-<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>n[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
-<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>n_total <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">51</span>, <span class="dv">0</span>)</span>
-<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a>n_total[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">+</span><span class="dv">2</span><span class="sc">+</span><span class="dv">0</span><span class="sc">+</span><span class="dv">5</span></span>
-<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) {</span>
-<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Force n4 to be at most K</span></span>
-<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n[<span class="dv">4</span>, t] <span class="sc">&gt;</span> K) {</span>
-<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a>    n[<span class="dv">4</span>, t] <span class="ot">&lt;-</span> K</span>
-<span id="cb72-20"><a href="#cb72-20" aria-hidden="true" tabindex="-1"></a>    n[<span class="dv">3</span>, t] <span class="ot">&lt;-</span> n[<span class="dv">3</span>, t] <span class="sc">+</span> (K <span class="sc">-</span> n[<span class="dv">4</span>, t])</span>
-<span id="cb72-21"><a href="#cb72-21" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb72-22"><a href="#cb72-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb72-23"><a href="#cb72-23" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> (k <span class="sc">-</span> s4<span class="sc">*</span>n[<span class="dv">4</span>, t])<span class="sc">/</span>(s2<span class="sc">*</span>n[<span class="dv">2</span>, t] <span class="sc">+</span> s3<span class="sc">*</span>n[<span class="dv">3</span>, t])</span>
-<span id="cb72-24"><a href="#cb72-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb72-25"><a href="#cb72-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clip g between 0 and 1</span></span>
-<span id="cb72-26"><a href="#cb72-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (g <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
-<span id="cb72-27"><a href="#cb72-27" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb72-28"><a href="#cb72-28" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb72-29"><a href="#cb72-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb72-30"><a href="#cb72-30" aria-hidden="true" tabindex="-1"></a>  A.data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, f4<span class="sc">*</span>s4,</span>
-<span id="cb72-31"><a href="#cb72-31" aria-hidden="true" tabindex="-1"></a>              s1, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb72-32"><a href="#cb72-32" aria-hidden="true" tabindex="-1"></a>              <span class="dv">0</span>, s2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>g), s3<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>g), <span class="dv">0</span>,</span>
-<span id="cb72-33"><a href="#cb72-33" aria-hidden="true" tabindex="-1"></a>              <span class="dv">0</span>, s2<span class="sc">*</span>g, s3<span class="sc">*</span>g, s4)</span>
-<span id="cb72-34"><a href="#cb72-34" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(A.data, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb72-35"><a href="#cb72-35" aria-hidden="true" tabindex="-1"></a>  n[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A <span class="sc">%*%</span> n[, t]</span>
-<span id="cb72-36"><a href="#cb72-36" aria-hidden="true" tabindex="-1"></a>  n_total[t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(n[, t<span class="sc">+</span><span class="dv">1</span>])</span>
-<span id="cb72-37"><a href="#cb72-37" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb72-38"><a href="#cb72-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-39"><a href="#cb72-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the trajectories for the breeder population and the total population</span></span>
-<span id="cb72-40"><a href="#cb72-40" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n[<span class="dv">4</span>, ], <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
-<span id="cb72-41"><a href="#cb72-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>), <span class="at">main =</span> <span class="st">&#39;(a)&#39;</span>,</span>
-<span id="cb72-42"><a href="#cb72-42" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;year&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;population&#39;</span>)</span>
-<span id="cb72-43"><a href="#cb72-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-44"><a href="#cb72-44" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n_total, <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
-<span id="cb72-45"><a href="#cb72-45" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>), <span class="at">main =</span> <span class="st">&#39;(b)&#39;</span>,</span>
-<span id="cb72-46"><a href="#cb72-46" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;year&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;population&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the survival rates for each stage</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> <span class="fl">0.7</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>s4 <span class="ot">&lt;-</span> <span class="fl">0.86</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Reproduction of a female breeder is calculated as</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (sex ratio)*(breeding prob)*(avg number of offsprings)</span></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>f4 <span class="ot">&lt;-</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.6</span><span class="sc">*</span><span class="dv">4</span></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the maximum number of territories</span></span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Project forward for 50 years</span></span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">51</span>)</span>
+<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>n_total <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">51</span>, <span class="dv">0</span>)</span>
+<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the initial population</span></span>
+<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a>n[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb60-17"><a href="#cb60-17" aria-hidden="true" tabindex="-1"></a>n_total[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">+</span><span class="dv">2</span><span class="sc">+</span><span class="dv">0</span><span class="sc">+</span><span class="dv">5</span></span>
+<span id="cb60-18"><a href="#cb60-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-19"><a href="#cb60-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through 50 years of reproduction</span></span>
+<span id="cb60-20"><a href="#cb60-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) {</span>
+<span id="cb60-21"><a href="#cb60-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Force n4 to be at most K</span></span>
+<span id="cb60-22"><a href="#cb60-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n[<span class="dv">4</span>, t] <span class="sc">&gt;</span> K) {</span>
+<span id="cb60-23"><a href="#cb60-23" aria-hidden="true" tabindex="-1"></a>    n[<span class="dv">4</span>, t] <span class="ot">&lt;-</span> K</span>
+<span id="cb60-24"><a href="#cb60-24" aria-hidden="true" tabindex="-1"></a>    n[<span class="dv">3</span>, t] <span class="ot">&lt;-</span> n[<span class="dv">3</span>, t] <span class="sc">+</span> (K <span class="sc">-</span> n[<span class="dv">4</span>, t])</span>
+<span id="cb60-25"><a href="#cb60-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb60-26"><a href="#cb60-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb60-27"><a href="#cb60-27" aria-hidden="true" tabindex="-1"></a>  g <span class="ot">&lt;-</span> (k <span class="sc">-</span> s4<span class="sc">*</span>n[<span class="dv">4</span>, t])<span class="sc">/</span>(s2<span class="sc">*</span>n[<span class="dv">2</span>, t] <span class="sc">+</span> s3<span class="sc">*</span>n[<span class="dv">3</span>, t])</span>
+<span id="cb60-28"><a href="#cb60-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb60-29"><a href="#cb60-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clip g between 0 and 1</span></span>
+<span id="cb60-30"><a href="#cb60-30" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (g <span class="sc">&gt;</span> <span class="dv">1</span>) {</span>
+<span id="cb60-31"><a href="#cb60-31" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb60-32"><a href="#cb60-32" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb60-33"><a href="#cb60-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb60-34"><a href="#cb60-34" aria-hidden="true" tabindex="-1"></a>  A.data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, f4<span class="sc">*</span>s4,</span>
+<span id="cb60-35"><a href="#cb60-35" aria-hidden="true" tabindex="-1"></a>              s1, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb60-36"><a href="#cb60-36" aria-hidden="true" tabindex="-1"></a>              <span class="dv">0</span>, s2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>g), s3<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>g), <span class="dv">0</span>,</span>
+<span id="cb60-37"><a href="#cb60-37" aria-hidden="true" tabindex="-1"></a>              <span class="dv">0</span>, s2<span class="sc">*</span>g, s3<span class="sc">*</span>g, s4)</span>
+<span id="cb60-38"><a href="#cb60-38" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(A.data, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb60-39"><a href="#cb60-39" aria-hidden="true" tabindex="-1"></a>  n[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A <span class="sc">%*%</span> n[, t]</span>
+<span id="cb60-40"><a href="#cb60-40" aria-hidden="true" tabindex="-1"></a>  n_total[t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(n[, t<span class="sc">+</span><span class="dv">1</span>])</span>
+<span id="cb60-41"><a href="#cb60-41" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <figure>
 <img src="lynx.jpeg"
 alt="(a) Number of breeders; (b) Total lynx population." />
@@ -3843,8 +3349,10 @@ population.</figcaption>
 <h3
 id="incorporating-density-dependent-functions-for-particular-vital-rates">Incorporating
 density-dependent functions for particular vital rates</h3>
-<p>In an unstructured model, we can define a density-dependent model
-with a differential equation (continuous) <span
+<p>Another way of incorporating density-dependence is to use
+density-dependent functions to represent vital rates. Remember that in
+an unstructured model, we can define a density-dependent model with a
+differential equation (continuous) <span
 class="math display">\[\frac{dN}{dt}=Ng(N),\]</span> or a difference
 equation (discrete) <span
 class="math display">\[N_{t+1}=N_t+N_tg(N_t)\]</span> where the per
@@ -3875,9 +3383,9 @@ class="math display">\[\mathbf{A}=\begin{bmatrix}\sigma_1(1-\gamma)
 class="math inline">\(\sigma_2\)</span> are survival rate at each stage,
 <span class="math inline">\(\gamma\)</span> is the growth rate from
 stage 1 to stage 2, and <span class="math inline">\(\phi\)</span> is the
-fecundity rate from stage 2 to stage 1. Here we follow the settings in
-Caswell (2001), but there is no difference between this and using a
-single variable to represent each transition rate.</p>
+fecundity rate from stage 2 to stage 1. Here we follow Caswell (2001),
+but there is no difference between this and using a single variable to
+represent each transition rate.</p>
 <p>Let’s assume that vital rates are affected by the total population
 <span class="math inline">\(N=n_1+n_2\)</span>. Here are some possible
 density-dependent vital rates, using the Ricker function:</p>
@@ -3893,10 +3401,11 @@ class="math inline">\(\gamma\to \gamma e^{-bN}\)</span></li>
 </ul>
 <h4 id="examples-with-density-dependent-fecunditygrowth">Examples with
 density-dependent fecundity/growth</h4>
-<p>Remember that when populations growing according to the discrete
-logistic equation could show different dynamics (smooth approach, damped
-oscillations, limit cycle and chaos) with different parameter values?
-Such phenomena exist in a density-dependent matrix model as well.</p>
+<p>Remember that when populations are changing according to the discrete
+logistic equation, they can have qualitatively different dynamics,
+depending on parameter values (monotonic approach to an equilibrium,
+damped oscillations, limit cycles and chaos). Such phenomena exist in a
+density-dependent matrix model as well.</p>
 <p>We present an example with density-dependent fecundity where <span
 class="math inline">\(\phi(N)=\phi e^{-N}\)</span>, and an example with
 density-dependent growth where <span
@@ -3909,63 +3418,42 @@ model. Other parameters are <span
 class="math inline">\(\sigma_1=0.5\)</span>, <span
 class="math inline">\(\sigma_2=0.1\)</span> and <span
 class="math inline">\(\gamma=0.1\)</span>.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>n4 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>n1[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>n2[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
-<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>n3[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
-<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>n4[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
-<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
-<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>  A1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.45</span>, <span class="dv">50</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n1[,t])), <span class="fl">0.05</span>, <span class="fl">0.1</span>),</span>
-<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>  A2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.45</span>, <span class="dv">500</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n2[,t])), <span class="fl">0.05</span>, <span class="fl">0.1</span>),</span>
-<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a>  A3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.5</span><span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.1</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n3[,t]))), <span class="dv">300</span>, </span>
-<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.1</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n3[,t])), <span class="fl">0.1</span>),</span>
-<span id="cb73-17"><a href="#cb73-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb73-18"><a href="#cb73-18" aria-hidden="true" tabindex="-1"></a>  A4 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.45</span>, <span class="dv">1800</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n4[,t])), <span class="fl">0.05</span>, <span class="fl">0.1</span>),</span>
-<span id="cb73-19"><a href="#cb73-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb73-20"><a href="#cb73-20" aria-hidden="true" tabindex="-1"></a>  n1[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A1 <span class="sc">%*%</span> n1[, t]</span>
-<span id="cb73-21"><a href="#cb73-21" aria-hidden="true" tabindex="-1"></a>  n2[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A2 <span class="sc">%*%</span> n2[, t]</span>
-<span id="cb73-22"><a href="#cb73-22" aria-hidden="true" tabindex="-1"></a>  n3[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A3 <span class="sc">%*%</span> n3[, t]</span>
-<span id="cb73-23"><a href="#cb73-23" aria-hidden="true" tabindex="-1"></a>  n4[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A4 <span class="sc">%*%</span> n4[, t]</span>
-<span id="cb73-24"><a href="#cb73-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb73-25"><a href="#cb73-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-26"><a href="#cb73-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb73-27"><a href="#cb73-27" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n1[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], n1[<span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>,</span>
-<span id="cb73-28"><a href="#cb73-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(a) Equilibrium&#39;</span>,</span>
-<span id="cb73-29"><a href="#cb73-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]), <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">2</span>]))</span>
-<span id="cb73-30"><a href="#cb73-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-31"><a href="#cb73-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n1[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
-<span id="cb73-32"><a href="#cb73-32" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(b)&#39;</span>,</span>
-<span id="cb73-33"><a href="#cb73-33" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;time&#39;</span>, <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]))</span>
-<span id="cb73-34"><a href="#cb73-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-35"><a href="#cb73-35" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n2[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], n2[<span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>,</span>
-<span id="cb73-36"><a href="#cb73-36" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(c) 4-cycle&#39;</span>,</span>
-<span id="cb73-37"><a href="#cb73-37" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]), <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">2</span>]))</span>
-<span id="cb73-38"><a href="#cb73-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-39"><a href="#cb73-39" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n2[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
-<span id="cb73-40"><a href="#cb73-40" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(d)&#39;</span>,</span>
-<span id="cb73-41"><a href="#cb73-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;time&#39;</span>, <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]))</span>
-<span id="cb73-42"><a href="#cb73-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-43"><a href="#cb73-43" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n3[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], n3[<span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>,</span>
-<span id="cb73-44"><a href="#cb73-44" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(e) Invariant loop&#39;</span>,</span>
-<span id="cb73-45"><a href="#cb73-45" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]), <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">2</span>]))</span>
-<span id="cb73-46"><a href="#cb73-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-47"><a href="#cb73-47" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n3[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
-<span id="cb73-48"><a href="#cb73-48" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(f)&#39;</span>,</span>
-<span id="cb73-49"><a href="#cb73-49" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;time&#39;</span>, <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]))</span>
-<span id="cb73-50"><a href="#cb73-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-51"><a href="#cb73-51" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n4[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], n4[<span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>,</span>
-<span id="cb73-52"><a href="#cb73-52" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(g) Strange attractor&#39;</span>,</span>
-<span id="cb73-53"><a href="#cb73-53" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]), <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">2</span>]))</span>
-<span id="cb73-54"><a href="#cb73-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-55"><a href="#cb73-55" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n4[<span class="dv">1</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">101</span>], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>,</span>
-<span id="cb73-56"><a href="#cb73-56" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&#39;(h)&#39;</span>,</span>
-<span id="cb73-57"><a href="#cb73-57" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;time&#39;</span>, <span class="at">ylab=</span><span class="fu">expression</span>(n[<span class="dv">1</span>]))</span></code></pre></div>
+<p>We will compare the following four projection matriceswith the same
+initial population <span
+class="math inline">\(\mathbf{n}(0)=[6,4]\)</span>: <span
+class="math display">\[\mathbf{A}_1=\begin{bmatrix}0.45 &amp;
+50e^{-N}\\0.05 &amp; 0.1\end{bmatrix},\ \mathbf{A}_2=\begin{bmatrix}0.45
+&amp; 500e^{-N}\\0.05 &amp; 0.1\end{bmatrix},\
+\mathbf{A}_3=\begin{bmatrix}0.5(1-0.1e^{-N}) &amp; 300\\0.5(0.1e^{-N})
+&amp; 0.1\end{bmatrix},\ \mathbf{A}_4=\begin{bmatrix}0.45 &amp;
+1800e^{-N}\\0.05 &amp; 0.1\end{bmatrix}.\]</span></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Project forward for 100 time steps</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>n4 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">101</span>)</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the initial populations</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>n1[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>n2[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>n3[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>n4[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>)</span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through 100 periods of reproduction</span></span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a>  A1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.45</span>, <span class="dv">50</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n1[,t])), <span class="fl">0.05</span>, <span class="fl">0.1</span>),</span>
+<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a>  A2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.45</span>, <span class="dv">500</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n2[,t])), <span class="fl">0.05</span>, <span class="fl">0.1</span>),</span>
+<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a>  A3 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.5</span><span class="sc">*</span>(<span class="dv">1</span><span class="fl">-0.1</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n3[,t]))), <span class="dv">300</span>, </span>
+<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">0.5</span><span class="sc">*</span><span class="fl">0.1</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n3[,t])), <span class="fl">0.1</span>),</span>
+<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-21"><a href="#cb61-21" aria-hidden="true" tabindex="-1"></a>  A4 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.45</span>, <span class="dv">1800</span><span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fu">sum</span>(n4[,t])), <span class="fl">0.05</span>, <span class="fl">0.1</span>),</span>
+<span id="cb61-22"><a href="#cb61-22" aria-hidden="true" tabindex="-1"></a>               <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-23"><a href="#cb61-23" aria-hidden="true" tabindex="-1"></a>  n1[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A1 <span class="sc">%*%</span> n1[, t]</span>
+<span id="cb61-24"><a href="#cb61-24" aria-hidden="true" tabindex="-1"></a>  n2[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A2 <span class="sc">%*%</span> n2[, t]</span>
+<span id="cb61-25"><a href="#cb61-25" aria-hidden="true" tabindex="-1"></a>  n3[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A3 <span class="sc">%*%</span> n3[, t]</span>
+<span id="cb61-26"><a href="#cb61-26" aria-hidden="true" tabindex="-1"></a>  n4[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A4 <span class="sc">%*%</span> n4[, t]</span>
+<span id="cb61-27"><a href="#cb61-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <figure>
 <img src="attractors.jpeg" style="width:75.0%"
 alt="(a,c,e,g) Attractors; (b,d,f,h) dynamics of corresponding attractors." />
@@ -4004,58 +3492,58 @@ class="math inline">\(G_i\)</span> is the transition rate from stage
 <span class="math inline">\(i\)</span> to stage <span
 class="math inline">\(i+1\)</span>, and <span
 class="math inline">\(f_i\)</span> is the fecundity rate (only for
-adults). Density dependence is introduced with a Ricker function on
-<span class="math inline">\(G_0\)</span> <span
+adults). Density dependence in lake sturgeon is found in the juvenile
+stage (McDougall et at., 2018), and is introduced with a Ricker function
+on <span class="math inline">\(G_0\)</span> <span
 class="math display">\[G_0=\exp\left[r\left(1-\frac{S_0n_0+S_1n_1}{K_j}\right)\right],\]</span>
 where <span class="math inline">\(K_j\)</span> is the juvenile carrying
 capacity. Here is a sample simulation code (with parameter values
-presented in the paper).</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to calculate the stage transition rate</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the age-structured method, shown in Burchfield et al. (2022)</span></span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>growth <span class="ot">&lt;-</span> <span class="cf">function</span>(S, D) {</span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># S: survival rate</span></span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># D: duration of the stage in years</span></span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>D) {</span>
-<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>    total <span class="ot">&lt;-</span> total <span class="sc">+</span> S<span class="sc">^</span>i</span>
-<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (S<span class="sc">^</span>D<span class="sc">/</span>total)</span>
-<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">151</span>)</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>n[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>)</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.665</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">65.55</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">77.45</span><span class="sc">/</span><span class="dv">100</span>,</span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>       <span class="fl">77.45</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">94.8</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">94.8</span><span class="sc">/</span><span class="dv">100</span>)</span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">24</span>, <span class="dv">22</span>)</span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">13166</span>, <span class="dv">31656</span>)</span>
-<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>Kj <span class="ot">&lt;-</span> <span class="dv">9280</span></span>
-<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">150</span>) {</span>
-<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>  G0 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fl">2.3</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>(S[<span class="dv">1</span>]<span class="sc">*</span>n[<span class="dv">1</span>,t]<span class="sc">+</span>S[<span class="dv">2</span>]<span class="sc">*</span>n[<span class="dv">2</span>,t])<span class="sc">/</span>Kj))</span>
-<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>  G1 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">2</span>], D[<span class="dv">2</span>])</span>
-<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>  G2 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">3</span>], D[<span class="dv">3</span>])</span>
-<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>  G3 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">4</span>], D[<span class="dv">4</span>])</span>
-<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a>  G4 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">5</span>], D[<span class="dv">5</span>])</span>
-<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a>  G5 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">6</span>], D[<span class="dv">6</span>])</span>
-<span id="cb75-16"><a href="#cb75-16" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">4</span>]<span class="sc">*</span>G3<span class="sc">*</span>f[<span class="dv">5</span>], S[<span class="dv">5</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G4)<span class="sc">*</span>f[<span class="dv">5</span>]<span class="sc">+</span>S[<span class="dv">5</span>]<span class="sc">*</span>G4<span class="sc">*</span>f[<span class="dv">6</span>], S[<span class="dv">6</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G5)<span class="sc">*</span>f[<span class="dv">6</span>],</span>
-<span id="cb75-17"><a href="#cb75-17" aria-hidden="true" tabindex="-1"></a>                S[<span class="dv">1</span>]<span class="sc">*</span>G0, S[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G1), <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb75-18"><a href="#cb75-18" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, S[<span class="dv">2</span>]<span class="sc">*</span>G1, S[<span class="dv">3</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G2), <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb75-19"><a href="#cb75-19" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">3</span>]<span class="sc">*</span>G2, S[<span class="dv">4</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G3), <span class="dv">0</span>, <span class="dv">0</span>,</span>
-<span id="cb75-20"><a href="#cb75-20" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">4</span>]<span class="sc">*</span>G3, S[<span class="dv">5</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G4), <span class="dv">0</span>,</span>
-<span id="cb75-21"><a href="#cb75-21" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">5</span>]<span class="sc">*</span>G4, S[<span class="dv">6</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G5)),</span>
-<span id="cb75-22"><a href="#cb75-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">6</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb75-23"><a href="#cb75-23" aria-hidden="true" tabindex="-1"></a>  n[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A <span class="sc">%*%</span> n[, t]</span>
-<span id="cb75-24"><a href="#cb75-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb75-25"><a href="#cb75-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-26"><a href="#cb75-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot population trajectories of early and late adults</span></span>
-<span id="cb75-27"><a href="#cb75-27" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(n[<span class="dv">5</span>, ], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">pch=</span><span class="dv">1</span>, <span class="at">col=</span><span class="dv">1</span>,</span>
-<span id="cb75-28"><a href="#cb75-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.2</span>, <span class="at">lty=</span><span class="dv">1</span>,</span>
-<span id="cb75-29"><a href="#cb75-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&#39;years&#39;</span>, <span class="at">ylab=</span><span class="st">&#39;population&#39;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">35</span>))</span>
-<span id="cb75-30"><a href="#cb75-30" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(n[<span class="dv">6</span>, ], <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb75-31"><a href="#cb75-31" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">&quot;topright&quot;</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>,</span>
-<span id="cb75-32"><a href="#cb75-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;Early adult&#39;</span>, <span class="st">&#39;Late adult&#39;</span>),</span>
-<span id="cb75-33"><a href="#cb75-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
+presented in the paper). We also plot the trajectories of adult
+population as they are reproductive.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a function to calculate the stage transition rate</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the age-structured method, shown in Burchfield et al. (2022)</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>growth <span class="ot">&lt;-</span> <span class="cf">function</span>(S, D) {</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># S: survival rate</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># D: duration of the stage in years</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>  total <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>D) {</span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>    total <span class="ot">&lt;-</span> total <span class="sc">+</span> S<span class="sc">^</span>i</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span> (S<span class="sc">^</span>D<span class="sc">/</span>total)</span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Project forward for 150 years</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">151</span>)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the initial population</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>n[, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>)</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the survival rates</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.665</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">65.55</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">77.45</span><span class="sc">/</span><span class="dv">100</span>,</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>       <span class="fl">77.45</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">94.8</span><span class="sc">/</span><span class="dv">100</span>, <span class="fl">94.8</span><span class="sc">/</span><span class="dv">100</span>)</span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the duration of each stage</span></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">24</span>, <span class="dv">22</span>)</span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the fecundity rates</span></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">13166</span>, <span class="dv">31656</span>)</span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the carrying capacity for juvenile sturgeons</span></span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a>Kj <span class="ot">&lt;-</span> <span class="dv">9280</span></span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through 100 years of reproduction</span></span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">150</span>) {</span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a>  G0 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fl">2.3</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>(S[<span class="dv">1</span>]<span class="sc">*</span>n[<span class="dv">1</span>,t]<span class="sc">+</span>S[<span class="dv">2</span>]<span class="sc">*</span>n[<span class="dv">2</span>,t])<span class="sc">/</span>Kj))</span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a>  G1 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">2</span>], D[<span class="dv">2</span>])</span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a>  G2 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">3</span>], D[<span class="dv">3</span>])</span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a>  G3 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">4</span>], D[<span class="dv">4</span>])</span>
+<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a>  G4 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">5</span>], D[<span class="dv">5</span>])</span>
+<span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a>  G5 <span class="ot">&lt;-</span> <span class="fu">growth</span>(S[<span class="dv">6</span>], D[<span class="dv">6</span>])</span>
+<span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">4</span>]<span class="sc">*</span>G3<span class="sc">*</span>f[<span class="dv">5</span>], S[<span class="dv">5</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G4)<span class="sc">*</span>f[<span class="dv">5</span>]<span class="sc">+</span>S[<span class="dv">5</span>]<span class="sc">*</span>G4<span class="sc">*</span>f[<span class="dv">6</span>], S[<span class="dv">6</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G5)<span class="sc">*</span>f[<span class="dv">6</span>],</span>
+<span id="cb63-24"><a href="#cb63-24" aria-hidden="true" tabindex="-1"></a>                S[<span class="dv">1</span>]<span class="sc">*</span>G0, S[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G1), <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb63-25"><a href="#cb63-25" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, S[<span class="dv">2</span>]<span class="sc">*</span>G1, S[<span class="dv">3</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G2), <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb63-26"><a href="#cb63-26" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">3</span>]<span class="sc">*</span>G2, S[<span class="dv">4</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G3), <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb63-27"><a href="#cb63-27" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">4</span>]<span class="sc">*</span>G3, S[<span class="dv">5</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G4), <span class="dv">0</span>,</span>
+<span id="cb63-28"><a href="#cb63-28" aria-hidden="true" tabindex="-1"></a>                <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, S[<span class="dv">5</span>]<span class="sc">*</span>G4, S[<span class="dv">6</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>G5)),</span>
+<span id="cb63-29"><a href="#cb63-29" aria-hidden="true" tabindex="-1"></a>              <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="dv">6</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb63-30"><a href="#cb63-30" aria-hidden="true" tabindex="-1"></a>  n[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A <span class="sc">%*%</span> n[, t]</span>
+<span id="cb63-31"><a href="#cb63-31" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <figure>
-<img src="lake_sturgeon_simulation.jpeg"
+<img src="lake_sturgeon_simulation.jpeg" style="width:80.0%"
 alt="Population trajectories of adult lake sturgeons, with an initial population of 10 early adults" />
 <figcaption aria-hidden="true">Population trajectories of adult lake
 sturgeons, with an initial population of 10 early adults</figcaption>
@@ -4084,9 +3572,12 @@ pardinus). <em>Ecological Monographs</em>, <em>68</em>(3), 349-370.</p>
 <p>Lefkovitch, L.P. (1965). The study of population growth in organisms
 grouped by stages. <em>Biometrics</em>, <em>21</em>, 1–18.</p>
 <p>Leslie, P.H. (1945). On the use of matrices in certain population
-mathematics. <em>Biometrika 33</em>, 183-212.</p>
+mathematics. <em>Biometrika</em>, <em>33</em>, 183-212.</p>
 <p>Morris, W.F. and Doak, D.F. (2002). <em>Quantitative Conservation
 Biology</em>. Sinauer, Sunderland, MA.</p>
+<p>McDougall, C.A., Nelson, P.A. and Barth, C.C. (2018). Extrinsic
+factors influencing somatic growth of lake sturgeon. <em>Trans. Am.
+Fish. Soc.</em>, <em>147</em>, 459–479.</p>
 <h2 id="temporal-environmental-stochasticity-in-matrix-models">Temporal
 environmental stochasticity in matrix models</h2>
 <h3 id="environmental-conditions-are-not-constant-in-time">Environmental
