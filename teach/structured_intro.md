@@ -370,7 +370,7 @@ This literature example demonstrates how the use of stage-structured population 
 
 The first step is to create a stage-structured population model to project the population dynamics. From Vimercati et al. (2017), we obtain the life history stage diagram and population projection matrix (Note that in our example, the density effects and spatial effects presented in the original literature have been removed to simplify the model.).
 
-![Life history diagram of invasive guttural toad population in Cape Town. All values are extracted from Vimercati et al. (2017), except for the survival rate of metamorph to juvenile, which is arbitrarily chosen as 0.2.](toad diagram.jpeg)
+![Life history diagram of invasive guttural toad population in Cape Town. All values are extracted from Vimercati et al. (2017), except for the survival rate of metamorph to juvenile, which is arbitrarily chosen as 0.2.](toad_diagram.jpeg)
 
 <br>
 $$
@@ -386,7 +386,7 @@ $$
 With an initial population of 20 adults (when the species was first recorded in a single pond of Cape Town), we project the model for 30 time steps to simulate the population dynamics from 2001 to 2030.
 
 
-![Population numbers of invasive guttural toad over 30 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](structured_intro_files/figure-html/toads projection-1.jpeg)
+![Population numbers of invasive guttural toad over 30 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](structured_intro_files/figure-html/toads_projection-1.jpeg)
 
 
 **Step 2:**
