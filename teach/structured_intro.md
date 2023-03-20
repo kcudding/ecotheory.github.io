@@ -250,7 +250,7 @@ $$
 \end{bmatrix}
 $$
 This result can also be demonstrated by plotting the log number of individuals in each stage class versus time:
-![Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](Plot SSD-1.jpeg)
+![Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](SSDplot-1.jpeg)
 
 At SSD, the population growth rate $\lambda$ also stays constant. See the calculations below for $\lambda$ at year 14 and 15:
 
