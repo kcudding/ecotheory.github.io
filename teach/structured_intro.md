@@ -386,7 +386,7 @@ $$
 With an initial population of 20 adults (when the species was first recorded in a single pond of Cape Town), we project the model for 30 time steps to simulate the population dynamics from 2001 to 2030.
 
 
-![Population numbers of invasive guttural toad over 30 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](structured_intro_files/figure-html/toads_projection-1.jpeg)
+![Population numbers of invasive guttural toad over 30 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](toads_projection-1.jpeg)
 
 
 **Step 2:**
