@@ -70,7 +70,7 @@ From the life table in the previous section, we can create a life history diagra
 
 * In a life history diagram, different stages are represented by different circles, Self-pointing arrows refer to the probability of remaining in the current stage (survival); forward-points arrows refer to the probability of transitioning to the next stage (transition); backward-pointing arrows refer to the fecundity value (reproduction).
 
-![Life history stage diagram showing the vital rates of common frog in three different developmental stages. Dashed lines represent reproduction rates; solid lines represent trnasition probabilities. Data obtained from Biek et al., 2002.](frog diagram.jpeg)
+![Life history stage diagram showing the vital rates of common frog in three different developmental stages. Dashed lines represent reproduction rates; solid lines represent trnasition probabilities. Data obtained from Biek et al., 2002.](frog_diagram.jpeg)
 
 
 ### Use matrix to represent population dynamics
