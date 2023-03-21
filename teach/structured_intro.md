@@ -10,8 +10,6 @@ output:
       collapsed: no
       smooth_scroll: no
     keep_md: yes
-bibliography: intro_bibliography.bib
-nocite: '@*'
 ---
 
 
@@ -407,7 +405,4 @@ Table: Management removal strategy, population size at the end of management and
 **Step 3:**
 
 From the results, Vimercati et al.(2021) concluded that removing only adults can maximize the reduction of population size and it is the most effective strategy. Pre-metamorphic stages (egg and tadpole) should not be targeted when making removal plans, as it is likely to cause opposite effects.
-
-
-# References
 
