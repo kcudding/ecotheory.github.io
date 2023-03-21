@@ -226,18 +226,3 @@ for (t in 1:150) {
 - In this study, density dependence is limited to the juvenile stage. The adult population stabilizes at an equilibrium proportional to the juvenile carrying capacity. The authors also argued that varying juvenile carrying capacity in the model affects the equilibrium abundance of adults in a slow process.
 
 - The authors emphasized the importance of including a density-dependent factor in the modeling of the lake sturgeon's early life stages because it restricts the population's unlimited exponential growth. This highlights the need for caution when using density-dependent models to estimate the time it will take for the population to recover and increase.
-
-
-### References
-
-Caswell, H. (2001). _Matrix Population Models: Construction, Analysis, and Interpretation_. 2nd ed. Sinauer Associates, Sunderland, MA. 
-
-Gaona, P., Ferreras, P., and Delibes, M. (1998). Dynamics and viability of a metapopulation of the endangered Iberian lynx (Lynx pardinus). _Ecological Monographs_, _68_(3), 349-370.
-
-Lefkovitch, L.P. (1965). The study of population growth in organisms grouped by stages. _Biometrics_, _21_, 1–18.
-
-Leslie, P.H. (1945). On the use of matrices in certain population mathematics. _Biometrika_, _33_, 183-212.
-
-Morris, W.F. and Doak, D.F. (2002). _Quantitative Conservation Biology_. Sinauer, Sunderland, MA.
-
-McDougall, C.A., Nelson, P.A. and Barth, C.C. (2018). Extrinsic factors influencing somatic growth of lake sturgeon. _Trans. Am. Fish. Soc._, _147_, 459–479.
