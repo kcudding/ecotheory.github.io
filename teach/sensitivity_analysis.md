@@ -170,22 +170,3 @@ library(popbio)
 sensit <- sensitivity(L, zero = FALSE)
 elast <- elasticity(L)
 ```
-
-
-
-## References
-Caswell, H. (2001). *Matrix Population Models*. Sinauer Associates, Sunderland, MA.
-
-Caswell, H. (2019). Introduction: Sensitivity Analysis–What and Why?. *Sensitivity Analysis: Matrix Methods in Demography and Ecology*, 3-12.
-
-Choi, W. I., Lee, D. H., Jung, J. B., & Park, Y. S. (2022). Oak decline syndrome in Korean forests: History, biology, and prospects for Korean oak wilt. *Forests, 13*(6), 964.
-
-Crouse, D. T., Crowder, L. B., & Caswell, H. (1987). A stage‐based population model for loggerhead sea turtles and implications for conservation. *Ecology, 68*(5), 1412-1423.
-
-Finkbeiner, E. M., Wallace, B. P., Moore, J. E., Lewison, R. L., Crowder, L. B., & Read, A. J. (2011). Cumulative estimates of sea turtle bycatch and mortality in USA fisheries between 1990 and 2007. *Biological Conservation, 144*(11), 2719-2727.
-
-Gonzalez de Leon, S., Herrera, I., & Guevara, R. (2016). Mating system, population growth, and management scenario for *Kalanchoe pinnata* in an invaded seasonally dry tropical forest. *Ecology and evolution, 6*(13), 4541-4550.
-
-Manlik, O., Lacy, R. C., & Sherwin, W. B. (2018). Applicability and limitations of sensitivity analyses for wildlife management. *Journal of Applied Ecology, 55*(3), 1430-1440.
-
-Mills, L.S. (2012). *Conservation of wildlife populations*: Demography, genetics, and management. Wiley- Blackwell.
