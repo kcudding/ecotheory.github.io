@@ -42,9 +42,9 @@
   
     <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
     <meta name="generator" content="pandoc" />
-  <meta name="author" content="Debora" />
-  <meta name="date" content="2023-03-17" />
-  <title>Sensitivities, elasticities, and management applications</title>
+  <meta name="author" content="Eddie Wu" />
+  <meta name="date" content="2023-03-21" />
+  <title>reference structured</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
   <style type="text/css">
@@ -122,11 +122,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">Sensitivities, elasticities, and
-management applications</span>
+        <span class="doc-title">reference structured</span>
         <ul class="nav pull-right doc-info">
-                    <li><p class="navbar-text">Debora</p></li>
-                              <li><p class="navbar-text">2023-03-17</p></li>
+                    <li><p class="navbar-text">Eddie Wu</p></li>
+                              <li><p class="navbar-text">2023-03-21</p></li>
                   </ul>
       </div>
     </div>
@@ -266,9 +265,6 @@ management applications</span>
         <li><a href="#illustratin-of-current-application"
         id="toc-illustratin-of-current-application">Illustratin of
         current application</a></li>
-        </ul></li>
-        <li><a href="#references-4" id="toc-references-4">References</a>
-        <ul>
         <li><a
         href="#sensitivities-elasticities-and-management-applications"
         id="toc-sensitivities-elasticities-and-management-applications">Sensitivities,
@@ -308,8 +304,6 @@ management applications</span>
         id="toc-practicing-the-calculation-of-sensitivities-and-elasticities">Practicing
         the calculation of sensitivities and elasticities</a></li>
         </ul></li>
-        <li><a href="#references-5"
-        id="toc-references-5">References</a></li>
         <li><a href="#density-dependence-in-matrix-models"
         id="toc-density-dependence-in-matrix-models">Density-dependence
         in matrix models</a>
@@ -326,8 +320,6 @@ management applications</span>
         href="#illustration-of-current-application-lake-sturgeon-population"
         id="toc-illustration-of-current-application-lake-sturgeon-population">Illustration
         of current application: Lake sturgeon population</a></li>
-        <li><a href="#references-6"
-        id="toc-references-6">References</a></li>
         </ul></li>
         <li><a
         href="#temporal-environmental-stochasticity-in-matrix-models"
@@ -382,9 +374,11 @@ management applications</span>
         href="#example-reintroduction-of-critically-endangered-plant"
         id="toc-example-reintroduction-of-critically-endangered-plant">Example:
         reintroduction of critically endangered plant</a></li>
-        <li><a href="#references-7"
-        id="toc-references-7">References</a></li>
+        <li><a href="#references-4"
+        id="toc-references-4">References</a></li>
         </ul></li>
+        <li><a href="#references-5"
+        id="toc-references-5">References</a></li>
         </ul></li>
         </ul>
 
@@ -2662,7 +2656,7 @@ class stays the same. The stage structure at SSD is:</p>
 \end{bmatrix}
 \]</span> This result can also be demonstrated by plotting the log
 number of individuals in each stage class versus time: <img
-src="Plot%20SSD-1.jpeg"
+src="SSDplot-1.jpeg"
 alt="Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale." /></p>
 <p>At SSD, the population growth rate <span
 class="math inline">\(\lambda\)</span> also stays constant. See the
@@ -2754,7 +2748,7 @@ that in our example, the density effects and spatial effects presented
 in the original literature have been removed to simplify the
 model.).</p>
 <figure>
-<img src="toad%20diagram.jpeg"
+<img src="toad_diagram.jpeg"
 alt="Life history diagram of invasive guttural toad population in Cape Town. All values are extracted from Vimercati et al. (2017), except for the survival rate of metamorph to juvenile, which is arbitrarily chosen as 0.2." />
 <figcaption aria-hidden="true">Life history diagram of invasive guttural
 toad population in Cape Town. All values are extracted from Vimercati et
@@ -2774,7 +2768,7 @@ was first recorded in a single pond of Cape Town), we project the model
 for 30 time steps to simulate the population dynamics from 2001 to
 2030.</p>
 <figure>
-<img src="structured_intro_files/figure-html/toads%20projection-1.jpeg"
+<img src="toads_projection-1.jpeg"
 alt="Population numbers of invasive guttural toad over 30 years as shown by stage class. The number of frogs is plotted on a logarithmic scale." />
 <figcaption aria-hidden="true">Population numbers of invasive guttural
 toad over 30 years as shown by stage class. The number of frogs is
@@ -2837,7 +2831,6 @@ adults can maximize the reduction of population size and it is the most
 effective strategy. Pre-metamorphic stages (egg and tadpole) should not
 be targeted when making removal plans, as it is likely to cause opposite
 effects.</p>
-<h1 id="references-4">References</h1>
 <h2
 id="sensitivities-elasticities-and-management-applications">Sensitivities,
 elasticities, and management applications</h2>
@@ -3182,31 +3175,6 @@ done:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(popbio)</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>sensit <span class="ot">&lt;-</span> <span class="fu">sensitivity</span>(L, <span class="at">zero =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>elast <span class="ot">&lt;-</span> <span class="fu">elasticity</span>(L)</span></code></pre></div>
-<h2 id="references-5">References</h2>
-<p>Caswell, H. (2001). <em>Matrix Population Models</em>. Sinauer
-Associates, Sunderland, MA.</p>
-<p>Caswell, H. (2019). Introduction: Sensitivity Analysis–What and Why?.
-<em>Sensitivity Analysis: Matrix Methods in Demography and Ecology</em>,
-3-12.</p>
-<p>Choi, W. I., Lee, D. H., Jung, J. B., &amp; Park, Y. S. (2022). Oak
-decline syndrome in Korean forests: History, biology, and prospects for
-Korean oak wilt. <em>Forests, 13</em>(6), 964.</p>
-<p>Crouse, D. T., Crowder, L. B., &amp; Caswell, H. (1987). A
-stage‐based population model for loggerhead sea turtles and implications
-for conservation. <em>Ecology, 68</em>(5), 1412-1423.</p>
-<p>Finkbeiner, E. M., Wallace, B. P., Moore, J. E., Lewison, R. L.,
-Crowder, L. B., &amp; Read, A. J. (2011). Cumulative estimates of sea
-turtle bycatch and mortality in USA fisheries between 1990 and 2007.
-<em>Biological Conservation, 144</em>(11), 2719-2727.</p>
-<p>Gonzalez de Leon, S., Herrera, I., &amp; Guevara, R. (2016). Mating
-system, population growth, and management scenario for <em>Kalanchoe
-pinnata</em> in an invaded seasonally dry tropical forest. <em>Ecology
-and evolution, 6</em>(13), 4541-4550.</p>
-<p>Manlik, O., Lacy, R. C., &amp; Sherwin, W. B. (2018). Applicability
-and limitations of sensitivity analyses for wildlife management.
-<em>Journal of Applied Ecology, 55</em>(3), 1430-1440.</p>
-<p>Mills, L.S. (2012). <em>Conservation of wildlife populations</em>:
-Demography, genetics, and management. Wiley- Blackwell.</p>
 <h2 id="density-dependence-in-matrix-models">Density-dependence in
 matrix models</h2>
 <p>As populations increase in size, they compete for limited resources
@@ -3562,22 +3530,6 @@ growth. This highlights the need for caution when using
 density-dependent models to estimate the time it will take for the
 population to recover and increase.</p></li>
 </ul>
-<h3 id="references-6">References</h3>
-<p>Caswell, H. (2001). <em>Matrix Population Models: Construction,
-Analysis, and Interpretation</em>. 2nd ed. Sinauer Associates,
-Sunderland, MA.</p>
-<p>Gaona, P., Ferreras, P., and Delibes, M. (1998). Dynamics and
-viability of a metapopulation of the endangered Iberian lynx (Lynx
-pardinus). <em>Ecological Monographs</em>, <em>68</em>(3), 349-370.</p>
-<p>Lefkovitch, L.P. (1965). The study of population growth in organisms
-grouped by stages. <em>Biometrics</em>, <em>21</em>, 1–18.</p>
-<p>Leslie, P.H. (1945). On the use of matrices in certain population
-mathematics. <em>Biometrika</em>, <em>33</em>, 183-212.</p>
-<p>Morris, W.F. and Doak, D.F. (2002). <em>Quantitative Conservation
-Biology</em>. Sinauer, Sunderland, MA.</p>
-<p>McDougall, C.A., Nelson, P.A. and Barth, C.C. (2018). Extrinsic
-factors influencing somatic growth of lake sturgeon. <em>Trans. Am.
-Fish. Soc.</em>, <em>147</em>, 459–479.</p>
 <h2 id="temporal-environmental-stochasticity-in-matrix-models">Temporal
 environmental stochasticity in matrix models</h2>
 <h3 id="environmental-conditions-are-not-constant-in-time">Environmental
@@ -3836,7 +3788,7 @@ current field conditions.</p>
 <p>-“We also illustrate that the near-term population projections of
 plant reintroductions established with mature individuals can be overly
 optimistic of long-term outcomes.</p>
-<h3 id="references-7">References</h3>
+<h3 id="references-4">References</h3>
 <p>Bialic-Murphy, L., Knight, T. M., Kawelo, K., &amp; Gaoue, O. G.
 (2022). The Disconnect Between Short-and Long-Term Population
 Projections for Plant Reintroductions. <em>Frontiers in Conservation
@@ -3873,6 +3825,67 @@ random values can be<br />
 constrained to specified intervals. For example, survival rates can be
 constrained to the interval<br />
 0-1. T</p>
+<h2 id="references-5">References</h2>
+<p>Biek, Roman, W. Chris Funk, Bryce A. Maxell, and L. Scott Mills.
+2002. “What Is Missing in Amphibian Decline Research: Insights from
+Ecological Sensitivity Analysis.” <em>Conservation Biology, 16</em> (3):
+728–34.</p>
+<p>Case, Ted J. 2000. <em>An Illustrated Guide to Theoretical
+Ecology</em>. New York: Oxford University Press.</p>
+<p>Caswell, H. (2001). <em>Matrix Population Models</em>. Sinauer
+Associates, Sunderland, MA.</p>
+<p>Caswell, H. (2019). Introduction: Sensitivity Analysis–What and Why?.
+<em>Sensitivity Analysis: Matrix Methods in Demography and Ecology</em>,
+3-12.</p>
+<p>Choi, W. I., Lee, D. H., Jung, J. B., &amp; Park, Y. S. (2022). Oak
+decline syndrome in Korean forests: History, biology, and prospects for
+Korean oak wilt. <em>Forests, 13</em>(6), 964.</p>
+<p>Coulson, T., E. A. Catchpole, S. D. Albon, B. J. T. Morgan, J. M.
+Pemberton, T. H. Clutton-Brock, M. J. Crawley, and B. T. Grenfell. 2001.
+“Age, Sex, Density, Winter Weather, and Population Crashes in Soay
+Sheep.” <em>Science, 292</em> (5521): 1528–31.</p>
+<p>Crouse, D. T., Crowder, L. B., &amp; Caswell, H. (1987). A
+stage‐based population model for loggerhead sea turtles and implications
+for conservation. <em>Ecology, 68</em>(5), 1412-1423.</p>
+<p>Finkbeiner, E. M., Wallace, B. P., Moore, J. E., Lewison, R. L.,
+Crowder, L. B., &amp; Read, A. J. (2011). Cumulative estimates of sea
+turtle bycatch and mortality in USA fisheries between 1990 and 2007.
+<em>Biological Conservation, 144</em>(11), 2719-2727.</p>
+<p>Gaillard, Jean-Michel, Marco Festa-Bianchet, and Nigel G. Yoccoz.
+2001. “Not All Sheep Are Equal.” <em>Science, 292</em> (5521):
+1499–1500.</p>
+<p>Gaona, P., Ferreras, P., and Delibes, M. (1998). Dynamics and
+viability of a metapopulation of the endangered Iberian lynx (Lynx
+pardinus). <em>Ecological Monographs</em>, <em>68</em>(3), 349-370.</p>
+<p>Gonzalez de Leon, S., Herrera, I., &amp; Guevara, R. (2016). Mating
+system, population growth, and management scenario for <em>Kalanchoe
+pinnata</em> in an invaded seasonally dry tropical forest. <em>Ecology
+and evolution, 6</em>(13), 4541-4550.</p>
+<p>Lefkovitch, L. P. 1965. “The Study of Population Growth in Organisms
+Grouped by Stages.” <em>Biometrics, 21</em> (1): 1–18.</p>
+<p>Leslie, P. H. 1945. “On the Use of Matrices in Certain Population
+Mathematics.” <em>Biometrika, 33</em> (3): 183–212.</p>
+<p>Leslie, P. H. 1948. “Some Further Notes on the Use of Matrices in
+Population Mathematics.” <em>Biometrika, 35</em> (3/4): 213–45.
+https://doi.org/10.2307/2332342.</p>
+<p>Manlik, O., Lacy, R. C., &amp; Sherwin, W. B. (2018). Applicability
+and limitations of sensitivity analyses for wildlife management.
+<em>Journal of Applied Ecology, 55</em>(3), 1430-1440.</p>
+<p>McDougall, C.A., Nelson, P.A. and Barth, C.C. (2018). Extrinsic
+factors influencing somatic growth of lake sturgeon. <em>Trans. Am.
+Fish. Soc.</em>, <em>147</em>, 459–479.</p>
+<p>Mills, L. Scott. 2013. <em>Conservation of Wildlife Populations :
+Demography, Genetics, and Management</em>. 2nd ed. Chichester, West
+Sussex ; Wiley-Blackwell.</p>
+<p>Morris, W.F. and Doak, D.F. (2002). <em>Quantitative Conservation
+Biology</em>. Sinauer, Sunderland, MA.</p>
+<p>Vimercati, Giovanni. 2017. “Exploring the Invasion of the Guttural
+Toad Sclerophrys Gutturalis in Cape Town Through a Multidisciplinary
+Approach.” {PhD} {Thesis}, Stellenbosch: Stellenbosch University.</p>
+<p>Vimercati, Giovanni, Sarah J. Davies, Cang Hui, and John Measey.
+2021. “Cost-Benefit Evaluation of Management Strategies for an Invasive
+Amphibian with a Stage-Structured Model.” <em>NeoBiota, 70</em>:
+87–105.</p>
             </div>
     </div>
   </div>
