@@ -1,0 +1,169 @@
+---
+title: "Numerical Implementation"
+author: "Debora"
+date: "2023-03-15"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4
+    number_sections: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,always_allow_html = TRUE, tidy.opts=list(width.cutoff=60), tidy=TRUE, dev = "jpeg", dpi = 300)
+```
+
+## How do we go about implementing an IPM for our species of interest?
+
+Performing an IPM model involves using regression models for vital rates, combining functions into a projection kernel, dividing kernels into classes (bins), and integrating between them to calculate transition rates. An iterative analysis of IPMs output ensures the model is improved so that it is biologically plausible. After obtaining the overall kernel corresponding to a large matrix, the same population analyses performed for matrix projection models (MPMs) can be carried out, such as stable distribution and sensitivity analyses.     
+
+### Modelling vital rates: regressions
+
+To perform an IPM model, regression models are fit to data relative to relevant state variables. Such models include linear or logistic regressions, or non-linear models such as generalized additive models (GAMs). Candidate models can be assessed using the Akaike information criteria (AIC), which you were introduced to in the section [Model Selection](https://www.ecotheory.ca/teach/BIOL652.html#model-selection-how-do-we-tell-which-model-to-use-for-our-data). The dynamics for each vital rate can be modelled by the commonly used examples below:
+
+```{r, echo=FALSE}
+table <- data.frame("Vital_rate" = c("Survival", "Growth", "Probability of life-history transition (eg., flowering)", "Offspring number (eg., fruit number)", "Recruit size distribution"),"Function" = c("Logistic regression (generalized linear model with binomial link function)", "Linear model with normal error distribution","Poisson regression (generalized linear model with log link function)","Logistic regression (generalized linear model with binomial link function)","Normal or log-normal distribution"))
+
+knitr::kable(table,"simple", caption = "Functions commonly used for vital rates")
+```
+
+
+### Numerical integration methods: midpoint rule
+
+A projection kernel obtained in IPMs is analogous to projection matrices of MPMs, as $hK(z_j, z_i)$ is an $m\times m$ matrix (Gonzalez et al., 2021). To create an IPM kernel, we need to put vital rate functions together. To calculate the probability of transitioning to the next size within each group (or bin), the midpoint rule is a commonly used integration technique consisting of dividing the size range into several groups *m* with an equal length *h*. *z~i~* is the midpoint of the *i~th~* size class: 
+
+$$n(z_j,t+1)\approx h\sum_{i=1}^mK(z_j,z_i)n(z_i,t)$$ 
+
+### Model diagnostics and improvement
+
+During the iterative process of model output analysis, we can improve specific functions to better correspond to the observed patterns in our data. For example, if size measurements become more variable in larger individuals, growth variance can be added as a function of size; or a fecundity function can be changed to add the probability of reproduction, which is more realistic considering that we do not observe reproduction in all individuals (Merow et al, 2014). Population analyses can then be re-done and compared to previously run IPMs, where we can check how such improvements affect population dynamics projections.
+
+In terms of survival, an important error to check for is called **eviction**, which consists of individuals transitioning to size classes which are outside the range selected for the model, thus impacting survival projections. To diagnose this, you can plot the relevant matrix elements against the fitted survival model and check for discrepancies. Misplaced individuals can then be returned to the next size class within the established range for the IPM (Merow et al, 2014).
+
+To verify if a given IPM model is biologically realistic, we can calculate several life history events such as  life expectancy and maximum size, and observe how well the model describes our species. 
+
+### Case study: an IPM for duckweeds
+We took note of the mortality of duckweed fronds submitted to fluctuating temperature regimes with a mean of 37C, for 5 days. Because at this time we only have grouped data for initial populations consisting of 4 fronds, we estimated average values per individual. Initial frond surface area was calculated by taking the average surface area of 4 fronds. Individual mortality was considered when population mortality was greater than 4 individuals. Average individual reproduction was calculated as total reproduction divided by the initial population. Size at the next stage was hypothesized as a 3x increase in frond size for the purpose of having dummy data for this exercise only. Here is our data:
+
+```{r,comment = "NA"}
+# Download the dataset
+d <- read.csv("https://raw.githubusercontent.com/kcudding/kcudding.github.io/main/teach/ipm_duckweed.csv",header=TRUE, stringsAsFactors = TRUE,fileEncoding="UTF-8-BOM")
+head(d)
+```
+
+We build one regression for each vital rate: growth, survival, and reproduction. You can start by creating an empty data frame to store parameters for each model. 
+
+```{r, include=FALSE}
+#We begin by setting up a data frame of the model parameters. These parameters will be estimated
+#and recorded below.(MUDAR ISSO e todos os comments below)
+params=data.frame(
+surv.int=NA, # Intercept from logistic regression of survival
+surv.slope=NA, # Slope from logistic regression of survival
+growth.int=NA, # Intercept from linear regression of growth
+growth.slope=NA, # Slope from linear regression of growth
+growth.sd=NA, # Residual sd from the linear regression of growth
+offsp.int=NA, # Intercept from Poisson regression of seed number
+offsp.slope=NA, # Slope from Poisson regression of seed number
+recruit.size.mean=NA, # Mean recruit size
+recruit.size.sd=NA, # Standard deviation of recruit size
+establishment.prob=NA # Probability of establishment
+)
+
+# growth: linear regression
+growth.reg=lm(sizeNext~size,data=d)
+params$growth.int=coefficients(growth.reg)[1]
+params$growth.slope=coefficients(growth.reg)[2]
+params$growth.sd=sd(resid(growth.reg))
+summary(growth.reg)
+
+# reproduction: Poisson regression
+fec.reg=glm(fec~size,data=d,family=poisson())
+params$offsp.int=coefficients(fec.reg)[1]
+params$offsp.slope=coefficients(fec.reg)[2]
+summary(fec.reg)
+
+#(not sure if this needs to be deleted)
+# 4. size distribution of recruits
+params$recruit.size.mean=mean(d$sizeNext[is.na(d$size)])
+params$recruit.size.sd=sd(d$sizeNext[is.na(d$size)])
+
+# 5. establishment probability
+params$establishment.prob=sum(is.na(d$size))/sum(d$fec,na.rm=TRUE)
+```
+
+We will demonstrate the regression for survival:
+```{r,comment = "NA"}
+# Logistic regression for survival
+surv.reg=glm(surv~size,data=d,family=binomial())
+params$surv.int=coefficients(surv.reg)[1]
+params$surv.slope=coefficients(surv.reg)[2]
+summary(surv.reg)
+
+# Now you can continue creating regressions for reproduction and growth
+```
+
+Here are the observations and the model fit:
+
+![A logistic model for the survival of duckweeds](https://raw.github.com/kcudding/kcudding.github.io/main/teach/unnamed-chunk-5-1.jpeg){ dpi=300 }  
+
+```{r, include=FALSE}
+pred=seq(0,8,by=.01) # sizes at which to evaluate predictions
+plot(d$size,jitter(d$surv), xlab="Size (t)",ylab="Survival to t+1") # jittered
+lines(pred,predict(surv.reg,data.frame(size=pred),type="response"),col="blue",lwd=3)
+```
+
+Now it is time to define a function to predict the survival of our population (and the same should be done for the other vital rates):
+```{r,comment = "NA"}
+s.x=function(x,params) {
+u=exp(params$surv.int+params$surv.slope*x)
+return(u/(1+u))
+}
+```
+
+```{r =, include=FALSE}
+# growth function
+g.yx=function(xp,x,params) {
+dnorm(xp,mean=params$growth.int+params$growth.slope*x,sd=params$growth.sd)
+}
+# reproduction function
+f.yx=function(xp,x,params) {
+params$establishment.prob*
+dnorm(xp,mean=params$recruit.size.mean,sd=params$recruit.size.sd)*
+exp(params$offsp.int+params$offsp.slope*x)
+}
+```
+
+To make a kernel, define the matrix size, size range, boundary points, mesh points, and step size:
+```{r,comment = "NA"}
+min.size=.9*min(c(d$size,d$sizeNext),na.rm=T)
+max.size=1.1*max(c(d$size,d$sizeNext),na.rm=T)
+n=100 # amount of cells in the matrix
+b=min.size+c(0:n)*(max.size-min.size)/n # boundary points (edges of matrix)
+y=0.5*(b[1:n]+b[2:(n+1)]) # mesh points (matrix points for midpoint evaluation)
+h=y[2]-y[1] # step size  (widths)
+```
+
+The IPM matrices can now be created using the regression parameters and the settings we have just defined. First, individual matrices are created for growth, reproduction, and survival. The function outer() is used to create the kernels for growth and fecundity by evaluating all pairwise combinations of vectors y in the 2 step sizes. Next, the full matrix is obtained by matrix multiplication and addition:
+```{r,comment = "NA"}
+G=h*outer(y,y,g.yx,params=params) # growth matrix
+S=s.x(y,params=params) # survival matrix
+F=h*outer(y,y,f.yx,params=params) # reproduction matrix
+
+P=G # placeholder; P is redefined on the next line
+for(i in 1:n) P[,i]=G[,i]*S[i] # growth/survival matrix
+K=P+F # full matrix
+K[1:4,1:4]
+```
+
+After obtaining an IPM matrix, population analyses can be performed in a similar fashion as in MPMs, such as asymptotic population growth rate, stable stage structure, reproductive values, sensitivities and elasticities, which you have already learnt about here: [Structured Population Models](hhttps://www.ecotheory.ca/teach/BIOL652.html#structured-population-models)
+
+## References
+Doak, D. F., Waddle, E., Langendorf, R. E., Louthan, A. M., Isabelle Chardon, N., Dibner, R. R., ... & DeMarche, M. L. (2021). A critical comparison of integral projection and matrix projection models for demographic analysis. *Ecological Monographs, 91*(2), e01447.
+
+Gonzalez, E.J., Childs, D.Z., Quintana-Ascencio, P.F. and Salguero-Gomez, R. (2021), Integral projection models. In: *Demographic Methods Across the Tree of Life*. Edited by Roberto Salguero-Gomez and Marlene Gamelon, Oxford University Press.
+
+Merow, C., Dahlgren, J. P., Metcalf, C. J. E., Childs, D. Z., Evans, M. E., Jongejans, E., ... & McMahon, S. M. (2014). Advancing population ecology with integral projection models: a practical guide. *Methods in Ecology and Evolution, 5*(2), 99-110.
