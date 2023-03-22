@@ -23,7 +23,7 @@ In fact, for some organisms, instead of dividing their life cycles into discrete
 
 ### Model structure
 
-Let $n(z,t)$ be the number of individuals with size $z$ at time $t$. The number of individuals with size $z$ in the interval $[a,b]$ is
+Let $n(z,t)$ be the size distribution at time $t$. The number of individuals with size $z$ in the interval $[a,b]$ is
 $$\int_a^bn(z,t)\ dz.$$
 
 - Intuition: _the number of individuals in the size interval $[z,z+\Delta z]$ at time $t$ is approximately $n(z,t)\Delta z$, given a very small $\Delta z$._
@@ -38,7 +38,7 @@ Let $z$ be the size at time $t$, and $z'$ be the size at time $t+1$. The kernel 
 - Growth kernel $P(z',z)=s(z)G(z',z)$, with $s(z)$ the survival rate
 - Fecundity kernel $F(z',z)$
 
-Given $[L,U]$ the range of the sizes of the population, population size at time $t+1$ can be calculated as an integral
+Given $[L,U]$ the range of the sizes of the population, population size distribution at time $t+1$ can be calculated as an integral
 $$n(z',t+1)=\int_L^UK(z',z)n(z,t)\ dz.$$
 
 ### From life cycle to model
@@ -75,9 +75,9 @@ $$K(z',z)=s(z)G(z',z)+s(z)p_b(z)b(z)C_0(z',z)$$
 
 - Introduce proper vital rate regressions
 
-### Numerical intrgration methods: midpoint rule
+### Numerical integration methods: midpoint rule
 
-- Divide the domian $[L,U]$ into $m$ classes with equal length $h$
+- Divide the domain $[L,U]$ into $m$ classes with equal length $h$
 $$n(z_j,t+1)\approx h\sum_{i=1}^mK(z_j,z_i)n(z_i,t)$$
 - Perhaps relate the kernel to the projection matrix of MPM as $hK(z_j, z_i)$ is an $m\times m$ matrix (Gonzalez et al., 2021)
 
