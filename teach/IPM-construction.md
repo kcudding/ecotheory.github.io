@@ -131,6 +131,7 @@ $$K(z',z)=s(z)G(z',z)+s(z)p_b(z)p_r\left(\frac{C_0(z',z)}{2}\right).$$
 We should notice that
 
 - We are using post-reproduction census, so the survival rate $s(z)$ appears in both survival/growth and fecundity kernels.
+- We assume that a single lamb is born at each reproductive event, so $b(z)=1$.
 - The factor $1/2$ appears in the fecundity kernel because we only track female population and an equal sex ratio is assumed.
 - Since we know the parents of each newborn, the recruit size distribution should be dependent on both $z$ and $z'$.
 
