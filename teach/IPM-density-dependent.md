@@ -1,0 +1,145 @@
+---
+title: "IPM-density-dependent"
+author: "Eddie Wu"
+date: "2023-03-28"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    keep_md: yes
+bibliography: IPM.bib
+nocite: '@*'
+---
+
+
+
+## Density dependence in IPM
+
+Like in unstructured population models and matrix population models, density-dependence also occurs in integral projection models. However, a general guide to building density-dependent IPMs is impossible, as there are too many possibilities. Any demographic rate can be affected by competition, and the dependence can take many possible forms. So instead, we will present this section by first introducing a famous example of density-dependent recruitment on Platte thistle (*Cirsium canescens*). Then, we will explain the theories behind the model construction.
+
+
+### Modeling density dependence
+
+Platte thistle (*Cirsium canescens*) is a native thistle species endemic to North America. Its population demography is strongly affected by an invasive herbivore insect *Rhinocyllus conicus*. Rose et al. (2005) tried to determine how demographic rates of Platte thistle varied with plant size and damage by *R. conicus*.
+
+![© Jerry Oldenettel, [Cirsium canescens. AKA(Platt Thistle).](https://www.flickr.com/photos/jroldenettel/1734332992), [Creative Commons CC BY-NC-SA 2.0 license](https://creativecommons.org/licenses/by-nc-sa/2.0/)](platte_thistle_1.jpg)
+
+#### Recruitment with density dependence
+
+For a plant that reproduces by seeds, the number of new recruits in a given year is proportional to the number of seeds produced the previous year. Based on Rose et al. (2005), $Recruits = Seeds^{0.67}$ for *Cirsium canescens*.
+
+The seed set number of Platte thistle (*Cirsium canescens*) is affected by two different factors:
+
+* Plant size.
+
+* The egg number of inflorescence-feeding weevil *R. conicus*.
+
+Therefore, the seed set function $b(z)$ can be defined as a result of two submodels: A function of plant size; and a negative binomial distribution for the number of *R. conicus* eggs with mean depending on plant size.
+
+$$ b(z) = e^{(-0.55+2.02z)}\times(1+\frac{ε(z)}{16})^{-0.32} $$
+where $z$ is the size measure, $ε$ is the mean number of *R. conicus* eggs oviposited on a plant of size $z$.
+
+All the other demographic rates are density-independent: (Rose et al., 2005)
+
+* Flowering probability $p_b(z)$: logit $p_b = −10.22 + 4.25z$
+
+* Mean *R. conicus* eggs per plant: $ε(z) = exp(e0 + 1.71z)$
+
+* Seedling size $c_0(z')$: $z' ∼ Norm(μ = 0.75, σ^2 = 0.17)$
+
+* Survival $s(z)$: logit $s = −0.62 + 0.85z$
+
+* Growth $G(z',z)$: $z' ∼ Norm(μ = 0.83 + 0.69z, σ^2 = 0.19)$
+
+<br>
+
+#### Fit an IPM model with density-dependent recruitment
+
+Now we can construct an IPM with density-dependent recruitment. The survival kernel P is density-independent,
+
+$$ P(z',z) = (1-p_b(z))s(z)G(z',z) $$
+
+The total number of seeds is
+
+$$ S(t) = \int_L^U{p_b(z)b(z)n(z,t)}dz$$
+
+and they will produce $S(t)^{0.67}$ recruits whose size distribution is $c_0(z')$.
+
+Combining the recruits and the survivors, we have
+
+$$ n(z',t+1) = c_0(z')S(t)^{0.67} + \int_L^U{P(z',z)n(z,t)}dz\\
+= c_0(z')(\int_L^U{p_b(z)b(z)n(z,t)}dz)^{0.67} + \int_L^U{(1-p_b(z))s(z)G(z',z)n(z,t)}dz $$
+
+
+### Theories behind density-dependent IPM models
+
+From the previous example, we built an IPM with density-dependent recruitment. For IPMs, recall that the kernel $K$ is consisted of two components: survival $P$ and reproduction $F$. We can incorporate density-dependence into either one of these two kernels, or both of them.
+
+#### IPMs with density-dependent reproduction
+
+For plants such as platte thistle, where competition only affects seedling establishment. The survival kernel $P$ is density-independent and the reproduction kernel $K$ is density-dependent. They can be written as
+
+$$ P(z',z) = (1-p_b(z))s(z)G(z',z) $$
+
+$$ F(z',z,N) = p_r(N)c_0(z')p_b(z)b(z) $$
+
+
+To generalize, this type of density-dependent IPM can be written as
+
+$$ n(z',t+1) = c_0(z')p_r(N(t))N(t) + \int_L^U{P(z',z)n(z,t)dz} $$
+
+where $N(t)$ is the total seed production
+
+$$ N(t) = \int_L^U{p_b(z)b(z)n(z,t)}dz $$
+
+and $p_r$ is the density-dependent recruitment probability, generally a decreasing function of population density $N$.
+
+
+#### IPMs with density-dependent survival
+
+IPMs with density-dependent survival kernel are far less common, but can be constructed the same way. Recall that the survival kernel $P(z',z)$ can be further separated into survival probability $s(z)$ and size transition $G(z',z)$. Biologically speaking, individual survival is more likely to be affected by population density, so we incorporate density-dependence in the survival probability component.
+
+$$ P(z',z, N) = s(z,N)G(z',z) $$
+
+where $s(z,N)$ can be written as a function of size and population density
+
+$$ logit (s(z,N)) = \alpha_s + \alpha_{s,z} + \beta_s^z*z + \beta_s^N*N $$
+
+
+### Possible literature discussion
+
+An integral projection model for gizzard shad (Dorosoma cepedianum) utilizing density-dependent age-0 survival
+
+Introduce an integral projection model for gizzard shad based on empirical data with density-dependent survival in age-0 fish. Then compare model outcomes to the dynamics reported for this fish species in a well-studied navigational pool of the Illinois River.
+
+Survival:
+
+$$ s(z) = s_{min} + \frac{s_{max}-s_{min}}{1+e^{\beta_s(In(z)-In(a_s))}} $$
+
+Transition/Growth:
+
+A two-variable normal distribution centered around a modified von Bertalanffy function of the length at time $t$,
+
+$$ G(z'z) = Prob(z'|z,L_\inf, K_g) $$
+
+Fecundity:
+
+$$ F(z',z) = p*egg(z)vs_0(d(t))C_1(z') $$
+where $p$ is the probability of female reproduction, $egg(z)$ is the mean number of eggs produced by a fish of length $z$, $v$ is the probability that an egg is viable, $s_0(d(t))$ is the **density-dependent** probability of surviving to age-1, and $C_1(z')$ is the length distribution of new recruits at age-1.
+
+The probability of age-0 surviving $s_0(d(t))$ can be defined as an exponential function
+
+$$ s_0(d(t)) = a_0e^{-b_0d(t)}$$
+and $d(t)$ is the density at time $t$ of age-0 gizzard shad per 1000 m3
+
+Need a graph here showing the density-dependent age-0 survival relationship.
+
+
+2. Density dependent environments can select for extremes of body size
+
+incorporate density-dependence in all kernels
+
+### References
+
