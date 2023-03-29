@@ -1,19 +1,3 @@
----
-title: "Structured Introduction"
-author: "Eddie Wu"
-date: '2023-02-08'
-output:
-  html_document: 
-    toc: yes
-    number_sections: no
-    toc_float:
-      collapsed: no
-      smooth_scroll: no
-    keep_md: yes
----
-
-
-
 # Structured population models
 
 ## Introduction to population structure
