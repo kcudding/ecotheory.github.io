@@ -34,9 +34,9 @@ This may seem a bit hard to follow. Here we present a more intuitive description
 
 This comes directly from the intuition behind an integral, which we will show in the following figures:
 
-![](integral.jpeg){width=80%}
+![Illustration of an integral with its rectangular approximation](integral.jpeg){width=80%}
 
-The integral $\int_a^bn(z,t)\ dz$ is equal to the area shaded in red, while $n(a,t)(b-a)$ is equal to the total area shaded in red **and** blue. When $b$ is close enough to $a$, the blue area is small enough to be ignored, making
+The integral $\int_a^bn(z,t)\ dz$ is equal to the area under the curve, which is shaded in red (stripe); $n(a,t)(b-a)$ is equal to the rectangular area shaded in red (stripe) **and** blue (solid). When $b$ is close enough to $a$, the blue area is small enough to be ignored, making
 $$\int_a^bn(z,t)\ dz\approx n(a,t)(b-a).$$
 
 Now if we assume the limit of $z$ is from $L$ to $U$ (i.e. $z\in[L,U]$), the total population is the integral of $n(z,t)$ over the domain $[L,U]$,
@@ -51,12 +51,17 @@ Similar to MPM, IPM also operates in discrete time. From $t$ to $t+1$, individua
 
 $P(z',z)$ is called the **survival/growth kernel** (Merow et al., 2014), which is often written as $P(z',z)=s(z)G(z',z)$, where $s(z)$ is the survival rate and $G(z',z)$ represents the size transition. We can think of $G(z',z)$ as the probability density function of the subsequent size $z'$ of an size-$z$ individual, so we always have
 $$\int_L^UG(z',z)\ dz'=1.$$
+The idea can be explained with the following plot
+
+![Illustration of size transitions and $G(z',z)$](size-dist.jpeg){width=80%}
+
+Suppose that we have collected data of sizes at $t$ and $t+1$, we assume that, for every $z$, the subsequent size $z'$ follows some probability distribution, which is represented by the red curves.
 
 #### Fecundity kernel
 
 $F(z',z)$ is called the **fecundity kernel** (Merow et al., 2014), which represents reproduction of offsprings. $F(z',z)$ is analogous to a probability density function. It is the size distribution of offsprings produced by a size-$z$ individual. In other words, the number of the offsprings of size $z'$ in the interval $[a,b]$ by a size-$z$ individual is
 $$\int_a^bF(z',z)\ dz'.$$
-
+That is, it follows a similar idea of $n(z,t)$.
 
 Now, putting everything together, the population size distribution at time $t+1$ can be calculated as the integral
 $$n(z',t+1)=\int_L^UK(z',z)n(z,t)\ dz.$$
@@ -65,17 +70,17 @@ The kernel $K(z',z)$ in the IPM is analogous to the projection matrix in MPM.
 
 ### From life cycle to model
 
-IPM are data-driven (Ellner et al., 2016), so an essential step of building an IPM is to translate population census data into the vital rates in the kernel.
+An essential step of building an IPM is to translate population census data into the vital rates in the kernel.
 
 #### Population census
 
 First, we introduce two different census methods:
 
-- _Pre-reproductive census_: Census takes place before reproduction. This is common in plants, as the size of offsprings are hard to collect before germination of seeds and growth to noticeable small plants.
+- _Pre-reproductive census_: Census takes place before reproduction. This is common in plants, as the size of offsprings are hard to collect before growth to noticeable small individuals.
 
 ![](pre-repro.jpg){width=70%}
 
-- _Post-reproductive census_: Census takes place after reproduction. This is more common in animals, when we can easily distinguish newborns from adults.
+- _Post-reproductive census_: Census takes place after reproduction. This is more common in animals, when we can easily distinguish newborns from adults and measure their sizes.
 
 ![](post-repro.jpg){width=70%}
 
@@ -83,24 +88,37 @@ First, we introduce two different census methods:
 
 Once we decided the census method, and collected data at each time point, it's time to build the kernel for our IPM, which will be divided into two parts:
 
-- _Survival_: Once we observed the number of individuals survived from each census to the next, we can estimate the survival rate $s$.
-- _Reproduction_: We could define some basic parameters: per capita offspring number $b$, and probability of successful recruitment $p_r$. When we are able to distinguish breeders and non-breeders, we can further define the probability of reproducing $p_b$.
+- _Survival_: After we observed the number of individuals survived from each census to the next, we can estimate the survival rate $s$. By recording the size changes, we can also obtain the distribution of size transition $G$.
+- _Reproduction_: We can estimate some basic parameters: per capita offspring number $b$, and probability of successful recruitment $p_r$. When we are able to distinguish breeders and non-breeders, we can further define the probability of reproducing $p_b$. Similarly, by recording the recruit sizes, we can also obtain the size distribution of recruits, $C$.
 
-Now, let's ignore different sizes of individuals. The population at the time $t+1$, $N(t+1)$, can be calculated as
-$$N(t+1)=\underbrace{sN(t)}_{survival}+\underbrace{p_bbp_rN(t)}_{reproduction}=\underbrace{(s+p_bbp_r)}_{kernel}N(t).$$
+For different census methods, kernels are defined differently. Here we present the most basic situations for both census methods.
 
-When individual sizes are considered, the above vital rates become functions of size $z$ (except $p_r$, which is usually assumed to be independent of size). We also need to further include the transition rate/number from size $z$ to size $z'$ for both survival and reproduction, making
-$$n(z',t+1)=\int_L^U[s(z)G(z',z)+p_b(z)b(z)p_rC(z',z)]n(z,t)\ dz,$$
-where $G(z',z)$ denotes the size transition and $C(z',z)$ is the recruit size distribution.
+|   | Pre-reproductive census | Post-reproductive census |
+|:-------|:-------------------|:-------------------|
+| **Survival kernel** | $s(z)G(z',z)$ | $s(z)G(z',z)$ |
+| **Fecundity kernel** | $p_b(z)b(z)p_rC(z',z)$ | $s(z)p_b(z)b(z)C(z',z)$ |
 
-Based on different census methods, the recruit size distribution will be different. For **pre-reproductive census**, $C(z',z)$ is the size distribution of new recruits at age 1 (after they grow to noticeable individuals after one year), which we denote as $C_1(z',z)$; for **post-reproductive census**, $C(z',z)$ is the size distribution of new recruits at age 0 (immediately after they are born), which we denote as $C_0(z',z)$. For **post-reproductive census**, the probability of recruitment $p_r$ is essentially 1 because new recruits are censused before mortality. However, since mortality is assumed to happen before reproduction, the probability of reproducing $p_b(z)$ is essentially $s(z)p_b(z)$.
+The survival kernel is pretty much the same, while the fecundity kernel is slightly different between two census methods. This is because
+
+- In a **post-reproductive census**, new recruits are censused before mortality, so every new recruit is essentially "successful", making $p_r=1$ in the fecundity kernel.
+- In a **pre-reproductive census**, since the census happens right before reproduction, it is usually assumed that no death occurs between census and reproduction, making $s(z)=1$ in the fecundity kernel.
+
+Now, let's first look at the total population at the time $t+1$, $N(t+1)$. It can be calculated as
+$$N(t+1)=\int_L^U\underbrace{[s(z)+p_b(z)b(z)p_r]}_{\text{kernel}}n(z,t)\ dz$$
+in a pre-reproductive census. Considering the size transition, we further have
+$$n(z',t+1)=\int_L^U\underbrace{[s(z)G(z',z)+p_b(z)b(z)p_rC(z',z)]}_{\text{kernel}}n(z,t)\ dz.$$
+
+Similarly, in a post-reproductive census, we have
+$$n(z',t+1)=\int_L^U\underbrace{[s(z)G(z',z)+s(z)p_b(z)b(z)C(z',z)]}_{\text{kernel}}n(z,t)\ dz.$$
+
+_Note_: based on different census methods, the recruit size distribution $C(z',z)$ will be different. For **pre-reproductive census**, $C(z',z)$ is the size distribution of new recruits at age 1 (after they grow to noticeable individuals after one year), so we denote it as $C_1(z',z)$; for **post-reproductive census**, $C(z',z)$ is the size distribution of new recruits at age 0 (immediately after they are born), so we denote it as $C_0(z',z)$.
 
 
 ### Vital rates with examples
 
 Here, we present some examples of kernels based on life cycles of different species.
 
-#### Example 1: long-lived perennial plant with no seedbank
+#### Example 1: long-lived perennial plant with no seed bank
 
 This example comes from Merow et al. (2014) and it represents the most basic case. For plants, key life history transitions usually depend more on size than on age (Ellner et al., 2016). We assume that once seeds germinate, individuals grow until they are large enough to produce seeds, after which they continue to reproduce until they die. The survival/growth kernel is
 $$P(z',z)=s(z)G(z',z),$$
@@ -138,39 +156,42 @@ We should notice that
 ![© gailhampshire, [Soay sheep (_Ovis aries_)](https://commons.wikimedia.org/wiki/File:Soay_Sheep._Ovis_aries_-_Flickr_-_gailhampshire.jpg), [Creative Commons CC BY-2.0 license](https://creativecommons.org/licenses/by/2.0/)](soay-sheep.jpg)
 
 
-### Illustration of current application: grass carp
+### Illustration of current application: spatial integral projection model
 
-Invasive fish species, such as grass carp, have caused economic damage throughout the United States during the last two decades. One of the effective methods to control populations of invasive fish is to release YY-males. Here we present a recent research paper that applied IPM to model the use of YY-males for grass carp control.
+As we mentioned earlier, the continuous variable $z$ could be unrelated to "size". Also, $z$ could be multidimensional (Ellner et al., 2016). Here we present a paper about spatial integral projection models (SIPM) that include both demography and dispersal with continuous variables.
 
-> Erickson, R.A., Eager, E.A., Brey, M.K., Hansen, M.J. and Kocovsky, P.M. (2017), An integral projection model with YY-males and application to evaluating grass carp control. _Ecological Modelling_, 361:14-25.
+> Jongejans, E., Shea, K., Skarpaas, O., Kelly, D. and Ellner, S.P. (2011), Importance of individual and environmental variation for invasive species spread: a spatial integral projection model. _Ecology_, 92: 86-97.
 
-(We will only discuss the model, while the detailed simulation methods will be ignored.)
-
-![© Rainer Lück, [Grass carp (_Ctenopharyngodon idella_)](https://commons.wikimedia.org/wiki/File:Ctenopharyngodon_idella_-_Murg_IMGP0837.JPG), [Creative Commons CC BY-SA 3.0 license](https://creativecommons.org/licenses/by-sa/3.0/)](grass-carp.jpg)
+![© Baykedevries, [_Carduus nutans_](https://commons.wikimedia.org/wiki/File:Carduus_nutans_NP_Schiermonnikoog.jpg), [Creative Commons CC BY-SA-3.0 license](https://creativecommons.org/licenses/by-sa/3.0/)](carduus-nutans.jpg)
 
 #### Snapshot of the study
 
-- YY-males are fish with 2 male chromosomes, so they only produce male (XY) offsprings, decreasing the female proportion and biasing the sex ratio.
-
-- Like other fish, grass carp experience indeterminate growth and continue to grow throughout their life. They do not start to generate offsprings until their body size reaches some level. In this paper, the authors used body length as the continuous state variable.
-
-- The authors developed an IPM for grass carp including (XX-)females, XY-males and YY-males.
-  - The size distribution of YY-males is
-  $$n_{YY}(z',t+1)=\int_\Omega[s(z)G(z',z)n_{YY}(z,t)]\ dz+\mathbf{n}_{YY}(z,t)$$
-  where $\Omega$ denotes the size range of YY-males and $\mathbf{n}_{YY}(z,t)$ is the (only) recruitment from pulse release. $s(z)$ and $G(z',z)$ have the usual definition as we discussed.
-  - The size distribution of XY-males is
-  $$n_{XY}(z',t+1)=\int_\omega\left[s(z)G(z',z)n_{XY}(z,t)+F(z',z)n_{XX}(z,t)p_{XY}^*dp_r\right]\ dz,$$
-  where $\omega$ denotes the size range of regular grass carp. $p_{XY}^*$ is the XY-male ratio, $d$ quantifies grass carp density, $p_r$ has the usual meaning of probability of successful recruitment. The fecundity kernel $F(z',z)$ is defined as
-  $$F(z',z)=e_ts(z)p_b(z)b(z)C_1(z'),$$
-  where $e_t$ is the probability of eggs transitioning to become a recruit. $p_b(z)$, $b(z)$ and $C_1(z')$ have the usual definitions.
-  - Similarly, The size distribution of XX-females is
-  $$n_{XX}(z',t+1)=\int_\omega\left[s(z)G(z',z)n_{XX}(z,t)+F(z',z)n_{XX}(z,t)p_{XX}^*dp_r\right]\ dz.$$
+- The authors developed an SIPM by combining IPM with an analytical method for modelling spatial spread, Neubert-Caswell Model (NCM). They tested the SIPM on the invasive monocarpic thistle _Carduus nutans_ in New Zealand.
+- For the demographic process, the population is described by the size distribution of rosettes, $R(z,t)$,
+$$R(z',t+1)=\int_Z K_{dem}(z',z)R(z,t)\ dz.$$
+- The vital rates underlie the demographic kernel $K_{dem}(z',z)$ are
+$$K_{dem}=\underbrace{s(z)(1-p_b(z))G(z',z)}_{\text{survival/growth kernel }P(z',z)}+\underbrace{s(z)p_b(z)b(z)p_r\omega(z)\phi C_1(z')}_{\text{fecundity kernel }F(z',z)}.$$
+Compared to the above example of monocarpic perennials, the kernel is defined differently;
+  - Survival rate also appears in the fecundity kernel
+  - Two more variables are introduced. $\omega(z)$ is a size-dependent potential flower head production term, and $\phi$ is the probability that a potential seed escapes florivory and becomes a seed.
+- A seed bank is also considered in the model. Basically, the existence of a seed bank requires the addition of a separate discrete-state variable that is linked to $K_{dem}$ by the proportion of newly produced seeds that enter the seed bank, and the proportion of seeds in the seed bank that survive and become seedlings. We will not discuss the details, but Merow et al. (2014) provides some examples of plants with seed banks.
+- Spatial population spread requires a dispersal kernel $K_{disp}(r)$, which is the probability density function for seed dispersal distance $r$. The authors used an inverse Gaussian distribution.
+- The SIPM that combines both demographic kernel and dispersal kernel is described as a double integral
+$$\mathbf{n}(x',z',t+1)=\iint K(x',z',x,z)\mathbf{n}(x,z,t)\ dxdz,$$
+where $\mathbf{n}(x,z,t)$ is the structured population stage vectors at location $x$ with size $z$ at time $t$. $K(x',z',x,z)$ is the combined demography and dispersal kernel, which is defined as follows
+$$K(x',z',x,z)=K_{disp}(x'-x)F(z',z)+\delta(x'-x)P(z',z),$$
+with $\delta(\cdot)$ the [Dirac delta function](https://mathworld.wolfram.com/DeltaFunction.html) ($\delta(x'-x)=0$ for all $x'\neq x$ and $\delta(x'-x)=1$ for $x'=x$)
+  - _Note_: Only new seeds disperse, while all other life stages are sessile.
 
 
 ### Reference
 
 Easterling, M.R., Ellner, S.P. and Dixon, P.M. (2000), Size-specific sensitivity: applying a new structured population model. _Ecology_, 81: 694-708.
 
+Ellner, S.P. and Rees, M. (2006), Integral projection models for species with complex demography. _Am Nat._, 167(3): 410-28.
+
 Ellner, S.P., Childs, D.Z. and Rees, M. (2016), _Data-driven Modelling of Structured Populations_. Springer Cham.
 
 Merow, C., Dahlgren, J.P., Metcalf, C.J.E., Childs, D.Z., Evans, M.E.K., Jongejans, E., Record, S., Rees, M., Salguero-Gómez, R. and McMahon, S.M. (2014), Advancing population ecology with integral projection models: a practical guide. _Methods Ecol Evol_, 5: 99-110.
+
+Metcalf, C., Rose, K., Childs, D., Sheppard, A., Grubb, P. and Rees, M. (2008), Evolution of flowering decisions in a stochastic, density-dependent environment. _Proceedings of the National Academy of Sciences_, 105: 10466.
