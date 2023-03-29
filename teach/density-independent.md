@@ -430,6 +430,29 @@ This illustration demonstrates the utility of the exponential growth model for s
 
 * As a next step, refining population growth studies to include **stage structure** and **age at maturity** could help identifying useful management strategies, as there may be life history traits which are more relevant to population growth than others. For example, the population structure of hippos appears to be an important factor when predicting future invasion scenarios, as "half of those hippos are calves and juveniles, implying their reproductive rate will increase in the next three years" (Varona, 2022). You will learn about structured population models in the upcoming modules.
 
+### Further Reading
+
+#### Theoretical work
+To read about the theory behind simple models, refer to:
+* Mills, L.S. (2012). *Conservation of wildlife populations*: Demography, genetics, and management. Wiley- Blackwell.
+
+To practice the application of simple models, here are good guides:
+* Dyer, R. (2009). Biological data analysis using R (Doctoral dissertation, Ph. D thesis. Department of Biology, Center for the Study of Biological Complexity, Virginia Commonwealth Univ).
+
+* Stevens, M.H. (2009). *A primer of ecology with R*. Springer.
+
+#### New applications
+* Thomas, L., Russell, D. J., Duck, C. D., Morris, C. D., Lonergan, M., Empacher, F., ... & Harwood, J. (2019). Modelling the population size and dynamics of the British grey seal. *Aquatic Conservation: Marine and Freshwater Ecosystems, 29*, 6-23.
+* 
+### R Resources
+* deSolve: contains solvers (function “ode”) for integrals: eg., integral of the exponential growth equation and ordinary differential equations (ODE): eg., logistic growth
+
+* clogistic: logistic growth equation
+
+* AICcmodavg: model evaluation using Akaike information criteria
+
+* [Stan](https://peter-stewart.github.io/blog/classic-ecological-models-exponential-logistic-growth/)
+
 ### References
 Castelblanco-Martínez, D. N., Moreno-Arias, R. A., Velasco, J. A., Moreno-Bernal, J. W., Restrepo, S., Noguera-Urbano, E. A., ... & Jiménez, G. (2021). A hippo in the room: Predicting the persistence and dispersion of an invasive mega-vertebrate in Colombia, South America. *Biological Conservation, 253*, 108923.
 
