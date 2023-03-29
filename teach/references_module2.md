@@ -1,15 +1,3 @@
----
-title: "reference structured"
-author: "Eddie Wu"
-date: "2023-03-21"
-output: 
-  html_document:
-    keep_md: yes
----
-
-
-
-
 ## References
 
 Biek, Roman, W. Chris Funk, Bryce A. Maxell, and L. Scott Mills. 2002. “What Is Missing in Amphibian Decline Research: Insights from Ecological Sensitivity Analysis.” _Conservation Biology, 16_ (3): 728–34.
