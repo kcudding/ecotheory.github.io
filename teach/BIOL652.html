@@ -42,9 +42,9 @@
   
     <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
     <meta name="generator" content="pandoc" />
-  <meta name="author" content="Eddie Wu" />
-  <meta name="date" content="2023-03-21" />
-  <title>reference structured</title>
+  <meta name="author" content="Debora, Eddie, Zitao and Kim" />
+  <meta name="date" content="2023-02-03" />
+  <title>DRAFT: BIOL 652 Structured Population Models</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
   <style type="text/css">
@@ -122,10 +122,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">reference structured</span>
+        <span class="doc-title">DRAFT: BIOL 652 Structured Population
+Models</span>
         <ul class="nav pull-right doc-info">
-                    <li><p class="navbar-text">Eddie Wu</p></li>
-                              <li><p class="navbar-text">2023-03-21</p></li>
+                    <li><p class="navbar-text">Debora, Eddie, Zitao and
+Kim</p></li>
+                              <li><p class="navbar-text">2023-02-03</p></li>
                   </ul>
       </div>
     </div>
@@ -136,9 +138,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <div class="well toc">
 
         <ul>
-        <li><a href="#module-1-unstructured-population-models"
-        id="toc-module-1-unstructured-population-models"><strong>Module
-        1: Unstructured Population Models</strong></a>
+        <li><a href="#unstructured-population-models"
+        id="toc-unstructured-population-models">Unstructured Population
+        Models</a>
         <ul>
         <li><a href="#introduction"
         id="toc-introduction">Introduction</a></li>
@@ -171,6 +173,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         id="toc-geometric-growth">Geometric growth</a></li>
         <li><a href="#exponential-growth"
         id="toc-exponential-growth">Exponential growth</a></li>
+        <li><a href="#further-reading" id="toc-further-reading">Further
+        Reading</a></li>
         <li><a href="#references"
         id="toc-references">References</a></li>
         </ul></li>
@@ -321,10 +325,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         id="toc-illustration-of-current-application-lake-sturgeon-population">Illustration
         of current application: Lake sturgeon population</a></li>
         </ul></li>
-        <li><a
-        href="#temporal-environmental-stochasticity-in-matrix-models"
-        id="toc-temporal-environmental-stochasticity-in-matrix-models">Temporal
-        environmental stochasticity in matrix models</a>
+        <li><a href="#environmental-stochasticity-in-matrix-models"
+        id="toc-environmental-stochasticity-in-matrix-models">Environmental
+        stochasticity in matrix models</a>
         <ul>
         <li><a href="#environmental-conditions-are-not-constant-in-time"
         id="toc-environmental-conditions-are-not-constant-in-time">Environmental
@@ -334,51 +337,133 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         id="toc-simplest-method-of-including-temporal-environmental-stochasticity">Simplest
         method of including temporal environmental
         stochasticity</a></li>
-        <li><a href="#including-environmental-cycles-or-autocorrelation"
-        id="toc-including-environmental-cycles-or-autocorrelation">Including
-        environmental cycles or autocorrelation</a></li>
-        <li><a href="#methods-of-incorporating-temporal-stochasticity"
-        id="toc-methods-of-incorporating-temporal-stochasticity">Methods
-        of incorporating temporal stochasticity</a></li>
-        <li><a href="#the-stochastic-population-growth-rate"
-        id="toc-the-stochastic-population-growth-rate">the stochastic
-        population growth rate</a></li>
         <li><a
-        href="#estimate-the-stochastic-population-growth-rate-lambda_s-simulation"
-        id="toc-estimate-the-stochastic-population-growth-rate-lambda_s-simulation">estimate
-        the stochastic population growth rate (<span
-        class="math inline">\(\lambda_S\)</span>): Simulation</a></li>
-        <li><a
-        href="#estimate-the-stochastic-population-growth-rate-lambda_s-tuljapurkars-approximation"
-        id="toc-estimate-the-stochastic-population-growth-rate-lambda_s-tuljapurkars-approximation">estimate
-        the stochastic population growth rate (<span
-        class="math inline">\(\lambda_S\)</span>): Tuljapurkar’s
-        approximation</a></li>
-        <li><a href="#more-variance-lower-population-growth"
-        id="toc-more-variance-lower-population-growth">more variance =
-        lower population growth</a></li>
+        href="#other-methods-of-incorporating-temporal-stochasticity"
+        id="toc-other-methods-of-incorporating-temporal-stochasticity">Other
+        methods of incorporating temporal stochasticity</a></li>
+        <li><a href="#stochastic-population-growth-rate"
+        id="toc-stochastic-population-growth-rate">Stochastic population
+        growth rate</a></li>
         <li><a href="#covariance-between-matrix-elements"
         id="toc-covariance-between-matrix-elements">Covariance between
-        matrix elements</a></li>
-        <li><a href="#covariance-between-matrix-elements-1"
-        id="toc-covariance-between-matrix-elements-1">Covariance between
         matrix elements</a></li>
         <li><a href="#sensitivity-analysis-for-stochastic-matrix-models"
         id="toc-sensitivity-analysis-for-stochastic-matrix-models">Sensitivity
         analysis for stochastic matrix models</a></li>
-        <li><a
-        href="#sensitivity-analysis-of-the-time-specific-growth-rate"
-        id="toc-sensitivity-analysis-of-the-time-specific-growth-rate">Sensitivity
-        analysis of the time-specific growth rate</a></li>
-        <li><a
-        href="#example-reintroduction-of-critically-endangered-plant"
-        id="toc-example-reintroduction-of-critically-endangered-plant">Example:
-        reintroduction of critically endangered plant</a></li>
+        </ul></li>
         <li><a href="#references-4"
         id="toc-references-4">References</a></li>
         </ul></li>
+        <li><a href="#integral-projection-models"
+        id="toc-integral-projection-models">Integral Projection
+        Models</a>
+        <ul>
+        <li><a href="#learning-outcomes-1"
+        id="toc-learning-outcomes-1">Learning outcomes</a></li>
+        <li><a href="#introduction-mpm-vs.-ipm"
+        id="toc-introduction-mpm-vs.-ipm">Introduction: MPM
+        vs. IPM</a></li>
+        <li><a href="#contruction-of-ipm"
+        id="toc-contruction-of-ipm">Contruction of IPM</a>
+        <ul>
+        <li><a href="#model-structure" id="toc-model-structure">Model
+        structure</a></li>
+        <li><a href="#kernel" id="toc-kernel">Kernel</a></li>
+        <li><a href="#from-life-cycle-to-model"
+        id="toc-from-life-cycle-to-model">From life cycle to
+        model</a></li>
+        <li><a href="#vital-rates-with-examples"
+        id="toc-vital-rates-with-examples">Vital rates with
+        examples</a></li>
+        <li><a
+        href="#illustration-of-current-application-spatial-integral-projection-model"
+        id="toc-illustration-of-current-application-spatial-integral-projection-model">Illustration
+        of current application: spatial integral projection
+        model</a></li>
+        <li><a href="#reference" id="toc-reference">Reference</a></li>
+        </ul></li>
+        <li><a
+        href="#how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest"
+        id="toc-how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest">How
+        do we go about implementing an IPM for our species of
+        interest?</a>
+        <ul>
+        <li><a href="#modelling-vital-rates-regressions"
+        id="toc-modelling-vital-rates-regressions">Modelling vital
+        rates: regressions</a></li>
+        <li><a href="#numerical-integration-methods-midpoint-rule"
+        id="toc-numerical-integration-methods-midpoint-rule">Numerical
+        integration methods: midpoint rule</a></li>
+        <li><a href="#model-diagnostics-and-improvement"
+        id="toc-model-diagnostics-and-improvement">Model diagnostics and
+        improvement</a></li>
+        <li><a href="#case-study-an-ipm-for-duckweeds"
+        id="toc-case-study-an-ipm-for-duckweeds">Case study: an IPM for
+        duckweeds</a></li>
+        </ul></li>
         <li><a href="#references-5"
         id="toc-references-5">References</a></li>
+        <li><a href="#density-dependence-in-ipm"
+        id="toc-density-dependence-in-ipm">Density dependence in IPM</a>
+        <ul>
+        <li><a href="#modeling-density-dependence"
+        id="toc-modeling-density-dependence">Modeling density
+        dependence</a></li>
+        <li><a href="#theories-behind-density-dependent-ipm-models"
+        id="toc-theories-behind-density-dependent-ipm-models">Theories
+        behind density-dependent IPM models</a></li>
+        <li><a href="#possible-literature-discussion"
+        id="toc-possible-literature-discussion">Possible literature
+        discussion</a></li>
+        <li><a href="#references-6"
+        id="toc-references-6">References</a></li>
+        <li><a href="#environmental-stochasticity-in-ipms"
+        id="toc-environmental-stochasticity-in-ipms">Environmental
+        stochasticity in IPMs</a></li>
+        <li><a
+        href="#example-temperature-dependent-growth-of-gilthead-seabream"
+        id="toc-example-temperature-dependent-growth-of-gilthead-seabream">Example:
+        Temperature dependent growth of gilthead seabream</a></li>
+        <li><a href="#general-stochastic-ipm"
+        id="toc-general-stochastic-ipm">General stochastic IPM</a></li>
+        <li><a href="#two-methods-for-ipm-stochasticity"
+        id="toc-two-methods-for-ipm-stochasticity">Two methods for IPM
+        stochasticity</a></li>
+        <li><a href="#kernel-selection" id="toc-kernel-selection">Kernel
+        Selection</a></li>
+        <li><a href="#parameter-selection"
+        id="toc-parameter-selection">Parameter Selection</a></li>
+        <li><a href="#advantages-and-disadvantages"
+        id="toc-advantages-and-disadvantages">Advantages and
+        disadvantages</a></li>
+        <li><a href="#examples" id="toc-examples">Examples</a></li>
+        <li><a href="#analysis-of-stochastic-ipms"
+        id="toc-analysis-of-stochastic-ipms">Analysis of stochastic
+        IPMS</a></li>
+        <li><a href="#long-run-stochastic-growth-rate-lambda_s"
+        id="toc-long-run-stochastic-growth-rate-lambda_s">Long run
+        stochastic growth rate, <span
+        class="math inline">\(\lambda_S\)</span></a></li>
+        <li><a href="#lambda_s-does-exist"
+        id="toc-lambda_s-does-exist"><span
+        class="math inline">\(\lambda_S\)</span> does exist</a></li>
+        <li><a href="#we-can-compute-lambda_s"
+        id="toc-we-can-compute-lambda_s">We can compute <span
+        class="math inline">\(\lambda_S\)</span></a></li>
+        <li><a
+        href="#we-can-approximate-lambda_s-using-tuljapurkars-small-fluctuations-approximation"
+        id="toc-we-can-approximate-lambda_s-using-tuljapurkars-small-fluctuations-approximation">We
+        can approximate <span class="math inline">\(\lambda_S\)</span>
+        using Tuljapurkar’s small fluctuations approximation</a></li>
+        <li><a href="#covariance-in-life-history-components"
+        id="toc-covariance-in-life-history-components">Covariance in
+        life history components</a></li>
+        <li><a href="#correlation-in-environmental-fluctuations"
+        id="toc-correlation-in-environmental-fluctuations">Correlation
+        in environmental fluctuations</a></li>
+        <li><a href="#references-7"
+        id="toc-references-7">References</a></li>
+        </ul></li>
         </ul></li>
         </ul>
 
@@ -387,8 +472,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <div class="col-9">
 
       
-      <h1 id="module-1-unstructured-population-models"><strong>Module 1:
-Unstructured Population Models</strong></h1>
+      <h1 id="unstructured-population-models">Unstructured Population
+Models</h1>
 <h2 id="introduction">Introduction</h2>
 <p>This module covers the most simple models to predict the dynamics of
 populations, such as <strong>exponential models</strong>. Next,
@@ -898,6 +983,35 @@ those hippos are calves and juveniles, implying their reproductive rate
 will increase in the next three years” (Varona, 2022). You will learn
 about structured population models in the upcoming modules.</p></li>
 </ul>
+<h3 id="further-reading">Further Reading</h3>
+<h4 id="theoretical-work">Theoretical work</h4>
+<p>To read about the theory behind simple models, refer to: * Mills,
+L.S. (2012). <em>Conservation of wildlife populations</em>: Demography,
+genetics, and management. Wiley- Blackwell.</p>
+<p>To practice the application of simple models, here are good guides: *
+Dyer, R. (2009). Biological data analysis using R (Doctoral
+dissertation, Ph. D thesis. Department of Biology, Center for the Study
+of Biological Complexity, Virginia Commonwealth Univ).</p>
+<ul>
+<li>Stevens, M.H. (2009). <em>A primer of ecology with R</em>.
+Springer.</li>
+</ul>
+<h4 id="new-applications">New applications</h4>
+<ul>
+<li><p>Thomas, L., Russell, D. J., Duck, C. D., Morris, C. D., Lonergan,
+M., Empacher, F., … &amp; Harwood, J. (2019). Modelling the population
+size and dynamics of the British grey seal. <em>Aquatic Conservation:
+Marine and Freshwater Ecosystems, 29</em>, 6-23.</p></li>
+<li><h3 id="r-resources">R Resources</h3></li>
+<li><p>deSolve: contains solvers (function “ode”) for integrals: eg.,
+integral of the exponential growth equation and ordinary differential
+equations (ODE): eg., logistic growth</p></li>
+<li><p>clogistic: logistic growth equation</p></li>
+<li><p>AICcmodavg: model evaluation using Akaike information
+criteria</p></li>
+<li><p><a
+href="https://peter-stewart.github.io/blog/classic-ecological-models-exponential-logistic-growth/">Stan</a></p></li>
+</ul>
 <h3 id="references">References</h3>
 <p>Castelblanco-Martínez, D. N., Moreno-Arias, R. A., Velasco, J. A.,
 Moreno-Bernal, J. W., Restrepo, S., Noguera-Urbano, E. A., … &amp;
@@ -993,15 +1107,18 @@ This is called <strong>negative density dependence</strong>.</p>
 </ul>
 <p>Negative density dependence decreases population growth at high
 density and increases it at low density.</p>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg" /><!-- --><br />
-The constrast between exponential with a constant per capita growth rate
-of <span class="math inline">\(r=0.18\)</span>, and logistic growth with
-an initial per capita growth rate of <span
+<figure>
+<img src="density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg"
+alt="The constrast between exponential with a constant per capita growth rate of r=0.18, and logistic growth with an initial per capita growth rate of r=0.18, K=500. In logistic growth, the per capita growth rate decreases with population size (adapted from Mills, 2013)" />
+<figcaption aria-hidden="true">The constrast between exponential with a
+constant per capita growth rate of <span
+class="math inline">\(r=0.18\)</span>, and logistic growth with an
+initial per capita growth rate of <span
 class="math inline">\(r=0.18\)</span>, <span
 class="math inline">\(K=500\)</span>. In logistic growth, the per capita
 growth rate decreases with population size (adapted from Mills,
-2013)</p>
+2013)</figcaption>
+</figure>
 <p>Here is another example from the duckweed showing how population size
 can limit the population growth of duckweed in a controlled
 environment.</p>
@@ -1051,11 +1168,14 @@ class="math inline">\(N=K=500\)</span>.</p></li>
 population growth rate is at zero so that the density will not
 change.</p></li>
 </ul>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-3-1.jpeg" /><!-- -->
-Population growth rate, <span class="math inline">\(dN=dt\)</span>, as a
-function of <span class="math inline">\(N\)</span>. Arrows are pointing
-to the stable equilibrium point at carrying capacity</p>
+<figure>
+<img src="density-dependent_files/figure-html/unnamed-chunk-3-1.jpeg"
+alt="Population growth rate, dN=dt, as a function of N. Arrows are pointing to the stable equilibrium point at carrying capacity" />
+<figcaption aria-hidden="true">Population growth rate, <span
+class="math inline">\(dN=dt\)</span>, as a function of <span
+class="math inline">\(N\)</span>. Arrows are pointing to the stable
+equilibrium point at carrying capacity</figcaption>
+</figure>
 <h3 id="discrete-time-logistic-growth">Discrete time logistic
 growth</h3>
 <p>For many populations, reproduction and mortality occur at very
@@ -1097,13 +1217,16 @@ class="math inline">\(N=10\)</span>, and carrying capacity <span
 class="math inline">\(K=100\)</span>. With different values of <span
 class="math inline">\(r\)</span>, we can see very different population
 growth trajectories.</p>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-4-1.jpeg" /><!-- -->
-Population growth with an initial population density of <span
-class="math inline">\(N=10\)</span>, carrying capacity <span
-class="math inline">\(K=100\)</span>. With different values of per
-capita growth rate <span class="math inline">\(r\)</span>, the
-population growth trajectories are very different</p>
+<figure>
+<img src="density-dependent_files/figure-html/unnamed-chunk-4-1.jpeg"
+alt="Population growth with an initial population density of N=10, carrying capacity K=100. With different values of per capita growth rate r, the population growth trajectories are very different" />
+<figcaption aria-hidden="true">Population growth with an initial
+population density of <span class="math inline">\(N=10\)</span>,
+carrying capacity <span class="math inline">\(K=100\)</span>. With
+different values of per capita growth rate <span
+class="math inline">\(r\)</span>, the population growth trajectories are
+very different</figcaption>
+</figure>
 <p>When <span class="math inline">\(r\)</span> is close to zero, we have
 a steady simple asymptotic approach to K (Fig. a). As <span
 class="math inline">\(r\)</span> increases, we see the population
@@ -1124,12 +1247,14 @@ class="math inline">\(r\)</span> increases the number of <span
 class="math inline">\(N\)</span> will continue to double, growing
 geometrically. Eventually, we reach a point when there becomes an
 infinite number of unique points.</p>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-6-1.jpeg" /><!-- -->
-Long term dynamics of discrete logistic population growth, with an
-initial population density of <span class="math inline">\(N=10\)</span>,
-and carrying capacity <span class="math inline">\(K=100\)</span>
-(Stevens, 2009)</p>
+<figure>
+<img src="density-dependent_files/figure-html/unnamed-chunk-6-1.jpeg"
+alt="Long term dynamics of discrete logistic population growth, with an initial population density of N=10, and carrying capacity K=100 (Stevens, 2009)" />
+<figcaption aria-hidden="true">Long term dynamics of discrete logistic
+population growth, with an initial population density of <span
+class="math inline">\(N=10\)</span>, and carrying capacity <span
+class="math inline">\(K=100\)</span> (Stevens, 2009)</figcaption>
+</figure>
 <p><br> <strong>Chaos</strong> is a non-repeating, deterministic
 fluctuating trajectory, that is bounded, and sensitive to initial
 conditions.</p>
@@ -1152,12 +1277,15 @@ results.</p>
 11 (all other parameters remain the same). As shown on the graph below,
 we see completely different trajectories for population growth.</li>
 </ul>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-5-1.jpeg" /><!-- -->
-Chaotic dynamics with different initial conditions. Black solid line
+<figure>
+<img src="density-dependent_files/figure-html/unnamed-chunk-5-1.jpeg"
+alt="Chaotic dynamics with different initial conditions. Black solid line demonstrates the population trajectory for a population that has an initial size of 10; red dotted line demonstrates the population trajectory for a population that has an initial size of 11" />
+<figcaption aria-hidden="true">Chaotic dynamics with different initial
+conditions. Black solid line demonstrates the population trajectory for
+a population that has an initial size of 10; red dotted line
 demonstrates the population trajectory for a population that has an
-initial size of 10; red dotted line demonstrates the population
-trajectory for a population that has an initial size of 11</p>
+initial size of 11</figcaption>
+</figure>
 <p><strong>Biological significance of chaos in population
 growth</strong></p>
 <p>Chaos brings more complexity into predicting population growth,
@@ -1207,10 +1335,12 @@ dependence.</p>
 density dependence control the shape of relation between growth rate and
 population size, as seen in the following figure:</li>
 </ul>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-7-1.jpeg" /><!-- -->
-Per capita growth rate vs. population size with different theta
-values</p>
+<figure>
+<img src="density-dependent_files/figure-html/unnamed-chunk-7-1.jpeg"
+alt="Per capita growth rate vs. population size with different theta values" />
+<figcaption aria-hidden="true">Per capita growth rate vs. population
+size with different theta values</figcaption>
+</figure>
 <ul>
 <li>When <span class="math inline">\(\theta\)</span>&gt;1, this weakens
 density dependence at low N, so the population grows faster than
@@ -1219,9 +1349,12 @@ class="math inline">\(\theta\)</span>&lt;1, this strengthens density
 dependence at low N, causing the population to grow more slowly than
 logistic, all else being equal (convex):</li>
 </ul>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-8-1.jpeg" /><!-- -->
-Population size vs. time with different theta values</p>
+<figure>
+<img src="density-dependent_files/figure-html/unnamed-chunk-8-1.jpeg"
+alt="Population size vs. time with different theta values" />
+<figcaption aria-hidden="true">Population size vs. time with different
+theta values</figcaption>
+</figure>
 <h4 id="positive-density-dependence">Positive density dependence</h4>
 <p>In many cases, cooperation or facilitation leads to mutually positive
 interactions among members of a population. Positive density dependence
@@ -1277,13 +1410,16 @@ population declines towards extinction. Populations that are subject to
 Allee effects can collapse and become extinct if their population size
 falls below the critical threshold</p></li>
 </ul>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-9-1.jpeg" /><!-- --><br />
-No Allee effects (green line), weak Allee effects (red line), and strong
-Allee affects (blue line, <span class="math inline">\(a=50\)</span>)
-acting on a population that has an intrinsic population growth rate
-<span class="math inline">\(r=0.18\)</span> and carrying capacity <span
-class="math inline">\(K=500\)</span></p>
+<figure>
+<img src="density-dependent_files/figure-html/unnamed-chunk-9-1.jpeg"
+alt="No Allee effects (green line), weak Allee effects (red line), and strong Allee affects (blue line, a=50) acting on a population that has an intrinsic population growth rate r=0.18 and carrying capacity K=500" />
+<figcaption aria-hidden="true">No Allee effects (green line), weak Allee
+effects (red line), and strong Allee affects (blue line, <span
+class="math inline">\(a=50\)</span>) acting on a population that has an
+intrinsic population growth rate <span
+class="math inline">\(r=0.18\)</span> and carrying capacity <span
+class="math inline">\(K=500\)</span></figcaption>
+</figure>
 <p>To plot population growth rate as a function of abundance:</p>
 <p><span class="math display">\[\frac{dN}{dt} =
 rN(\frac{N}{a}-1)(1-\frac{N}{K})\]</span> where a is the critical point
@@ -1354,11 +1490,14 @@ plot(lionfish$year, lionfish$density_artificial, type=&quot;o&quot;,
      pch=16, lwd=1.5, bty=&quot;l&quot;, cex.lab=1.2, cex.main=0.8,
      main=&quot;(b)&quot;, 
      xlab=&quot;years&quot;, ylab=&quot;population size&quot;)</code></pre>
-<p><img
-src="density-dependent_files/figure-html/unnamed-chunk-10-1.jpeg" /><!-- -->
-Invasive lionfish mean density estimated from remotely operated vehicle
-video samples at northern Gulf of Mexico natural (a, n = 16) and
-artificial (b, n = 22) reef locations (Dahl et al., 2019)</p>
+<figure>
+<img src="density-dependent_files/figure-html/unnamed-chunk-10-1.jpeg"
+alt="Invasive lionfish mean density estimated from remotely operated vehicle video samples at northern Gulf of Mexico natural (a, n = 16) and artificial (b, n = 22) reef locations (Dahl et al., 2019)" />
+<figcaption aria-hidden="true">Invasive lionfish mean density estimated
+from remotely operated vehicle video samples at northern Gulf of Mexico
+natural (a, n = 16) and artificial (b, n = 22) reef locations (Dahl et
+al., 2019)</figcaption>
+</figure>
 <p>From both figures, we can see that the invasive lionfish population
 increases exponentially during the first years (2011-2014). After
 potentially reaching carrying capacity in 2014, it starts to fluctuate
@@ -3530,19 +3669,16 @@ growth. This highlights the need for caution when using
 density-dependent models to estimate the time it will take for the
 population to recover and increase.</p></li>
 </ul>
-<h2 id="temporal-environmental-stochasticity-in-matrix-models">Temporal
-environmental stochasticity in matrix models</h2>
+<h2 id="environmental-stochasticity-in-matrix-models">Environmental
+stochasticity in matrix models</h2>
 <h3 id="environmental-conditions-are-not-constant-in-time">Environmental
 conditions are not constant in time</h3>
 <p>We saw in the section on unstructured population models,
 environmental stochasticity can act to change the rate of population
-increase.</p>
-<p>Similarly, we may expect impacts of temporal variation in
-environmental conditions on structured populations.</p>
-<ul>
-<li>e.g., good years may increase reproductive rate, bad years might
-decrease survivorship or somatic growth rates</li>
-</ul>
+increase. Similarly, we may expect impacts of temporal variation in
+environmental conditions on structured populations (e.g., good years may
+increase reproductive rate, bad years might decrease survivorship or
+somatic growth rates)</p>
 <p>In this case our population size and structure at time t+1 will
 depend on a time varying projection matrix, A(t), as: <span
 class="math display">\[\boldsymbol{n}(t+1)=\boldsymbol{A}(t)\boldsymbol{n}(t)=\boldsymbol{A}(t)\boldsymbol{A}(t-1)
@@ -3550,162 +3686,126 @@ class="math display">\[\boldsymbol{n}(t+1)=\boldsymbol{A}(t)\boldsymbol{n}(t)=\b
 <h3
 id="simplest-method-of-including-temporal-environmental-stochasticity">Simplest
 method of including temporal environmental stochasticity</h3>
-<ul>
-<li>simplest method to add environmental variation is to use actual
-projection matrices measured from a number of different time
-periods</li>
-<li>can then randomly select a matrix to use for each projected time
+<p>The simplest method to add environmental variation is to use actual
+projection matrices measured from a number of different time periods. We
+can then randomly select a matrix to use for each projected time
 interval, multiply by the population vector and repeat the process many
-times</li>
-<li>process is analogous to randomly selecting a per capita growth rate
-for each time interval in an unstructured model</li>
-<li>preserves any correlations between life history components</li>
-</ul>
-<h3 id="including-environmental-cycles-or-autocorrelation">Including
-environmental cycles or autocorrelation</h3>
-<ul>
-<li>this simple process can accommodate autocorrelation or regular
-cycles in environmental factors</li>
-<li>for example we could randomly sample from matrices appropriate to
-each part of a cycle</li>
-<li>or estimate the correlation between different environmental
-conditions and ensure our sampling routine takes this correlation into
-account</li>
-</ul>
-<h3 id="methods-of-incorporating-temporal-stochasticity">Methods of
-incorporating temporal stochasticity</h3>
+times. This method is analogous to randomly selecting a per capita
+growth rate for each time interval in an unstructured model, and
+similarly preserves any correlations between life history
+components.</p>
+<p>In addition, this simple process can accommodate autocorrelation or
+regular cycles in environmental factors. For example we could randomly
+sample from matrices appropriate to each part of a cycle or estimate the
+correlation between different environmental conditions and ensure our
+sampling routine takes this correlation into account</p>
+<h3 id="other-methods-of-incorporating-temporal-stochasticity">Other
+methods of incorporating temporal stochasticity</h3>
+<p>There are at least two other methods of including environmental
+stochasticity. So, we have our simple method:</p>
 <ol type="1">
 <li>assume a limited # of discrete environmental states, and randomly
 draw a matrix that corresponds to the frequency and autocorrelation of
-those environmental states (see Morris and Doak 2002). Probably only
-feasible for a small number of states (e.g. wet years vs dry
-years))</li>
-<li>if we know how vital rates depend on environmental variable (e.g.,
-thru thermal performance curves), we can generate random environmental
-conditions with appropriate autocorrelation or cycles, calculate life
-history rates from those conditions, and then construct a projection
-matrix for that year. Requires lots of data!</li>
-<li>form matrices by drawing vital rates from appropriate statistical
-distributions (Caswell 2001, Morris and Doak 2002, Kaye and Pyke
-2003).</li>
+those environmental states (see Morris and Doak 2002). This is probably
+only feasible for a small number of states (e.g. wet years vs dry
+years)).</li>
 </ol>
-<h3 id="the-stochastic-population-growth-rate">the stochastic population
-growth rate</h3>
-<p>Caswell (2019) <span class="math display">\[ln \lambda_S =\lim_{t \to
-\infty}\frac{1}{t} log || \boldsymbol{A}(t-1) \ldots \boldsymbol{A}(0)
-\boldsymbol{n}_0||\]</span> -what is the specific norm here?</p>
-<h3
-id="estimate-the-stochastic-population-growth-rate-lambda_s-simulation">estimate
-the stochastic population growth rate (<span
-class="math inline">\(\lambda_S\)</span>): Simulation</h3>
-<ul>
-<li><p>given a stochastic matrix model, we will want to estimate
-relevant quantities, the population growth is probably the most
-important of these</p></li>
-<li><p>to estimate via simulation: 1. project population size for many
+<p>However, if we know how vital rates depend on environmental variable
+(e.g., thru thermal performance curves), we can</p>
+<ol start="2" type="1">
+<li>generate random environmental conditions with appropriate
+autocorrelation or cycles, calculate life history rates from those
+conditions, and then construct a projection matrix for that year. This
+may requires lots of data!</li>
+</ol>
+<p>We can also, 3. form matrices by drawing vital rates from appropriate
+statistical distributions (Caswell 2001, Morris and Doak 2002, Kaye and
+Pyke 2003).</p>
+<h3 id="stochastic-population-growth-rate">Stochastic population growth
+rate</h3>
+<p>Caswell (2019) provides proof that for small fluctuations, the long
+run stochastic growth rate does exist. We can estimate the stochastic
+population growth rate (<span class="math inline">\(\lambda_S\)</span>)
+via simulation. To do so we need to 1. project population size for many
 years using random matrices 2. calculate the arithmetic mean of <span
 class="math inline">\(ln(N_{t+1}/N_t)\)</span> to approximate <span
 class="math inline">\(\lambda_S\)</span> as:<br />
 <span class="math display">\[log \lambda_S \approx \lim_{t \to
-\infty}\frac{1}{t} log \left[\frac{N(t)}{N(0)}\right] \]</span></p></li>
-<li><p>Need tens of thousands of growth increments for reasonable
-estimates</p></li>
-</ul>
-<h3
-id="estimate-the-stochastic-population-growth-rate-lambda_s-tuljapurkars-approximation">estimate
-the stochastic population growth rate (<span
-class="math inline">\(\lambda_S\)</span>): Tuljapurkar’s
-approximation</h3>
-<ul>
-<li>can use an analytical technique for estimate if we assume that
+\infty}\frac{1}{t} log \left[\frac{N(t)}{N(0)}\right] \]</span></p>
+<p>We will need tens of thousands of growth increments for reasonable
+estimates</p>
+<p>We can also estimate the stochastic population growth rate (<span
+class="math inline">\(\lambda_S\)</span>) using Tuljapurkar’s small
+fluctuation approximation. This method requires that we assume that
 variation among the matrices for each time internal is not large, and
 that the matrix elements are uncorrelated from one time interval to the
-next, and</li>
-<li>approximate using Tuljapurkar’s (1982) method <span
-class="math display">\[ ln \lambda_S \approx ln
+next. The formula is:<br />
+<span class="math display">\[ ln \lambda_S \approx ln
 \bar{\lambda}_1-\frac{1}{2}\left(\frac{\tau^2}{\bar{\lambda}_1^2}\right),
 \]</span> where <span class="math inline">\(\bar{\lambda}_1\)</span> is
 the dominant eigenvalue of the mean matrix <span
 class="math inline">\(\bar{A}\)</span> which we would obtain by
 averaging each element of our time interval specific matrices, where the
 we weight this mean by the frequency with which they are expected to
-occur.</li>
-<li>The quantity <span class="math inline">\(\tau^2\)</span> is given
+occur. The quantity <span class="math inline">\(\tau^2\)</span> is given
 as: <span class="math inline">\(\tau^2 =
 \sum^{S}_{i=1}\sum^{S}_{j=1}\sum^{S}_{k=1}\sum^{S}_{l=1}Cov(a_{ij},
-a_{k,l})\bar{S}_{ij}\bar{S}_{lk}.\)</span></li>
-</ul>
-<h3 id="more-variance-lower-population-growth">more variance = lower
-population growth</h3>
-<ul>
-<li>The term <span
+a_{k,l})\bar{S}_{ij}\bar{S}_{lk}.\)</span></p>
+<p>The formula illustrates that for larger variance we have a smaller
+population growth rate. The term <span
 class="math inline">\(\left(\frac{\tau^2}{\bar{\lambda}_1^2}\right)\)</span>
 approximates the temporal variance of the log population growth rate
 caused by environmental stochasticity, and is the equivalent of <span
-class="math inline">\(\sigma^2\)</span> for unstructured
-populations.</li>
-<li>we can see from the equation <span class="math inline">\(ln
-\lambda_S \approx ln
+class="math inline">\(\sigma^2\)</span> for unstructured populations. We
+can see from the equation <span class="math inline">\(ln \lambda_S
+\approx ln
 \bar{\lambda}_1-\frac{1}{2}\left(\frac{\tau^2}{\bar{\lambda}_1^2}\right)\)</span>
 , that an increase in variance, as measured by <span
 class="math inline">\(\left(\frac{\tau^2}{\bar{\lambda}_1^2}\right)\)</span>
-will decrease the population growth rate</li>
-<li><span class="math inline">\(\bar{S_{ij}}\)</span> is the sensitivity
-of <span class="math inline">\(\bar{\lambda}_1\)</span> to changes in
-<span class="math inline">\(\bar{a_{ij}}\)</span></li>
-<li>so, we expect variation in a given matrix element <span
+will decrease the population growth rate.</p>
+<p>Next, <span class="math inline">\(\bar{S_{ij}}\)</span> is the
+sensitivity of <span class="math inline">\(\bar{\lambda}_1\)</span> to
+changes in <span class="math inline">\(\bar{a_{ij}}\)</span>. So, we
+expect variation in a given matrix element <span
 class="math inline">\(a_{ij}\)</span> will contribute to variation in
 the growth rate only to the extent that the population growth responds,
 or is sensitive, to that matrix element, and the variation is relatively
-large</li>
-</ul>
+large</p>
 <h3 id="covariance-between-matrix-elements">Covariance between matrix
 elements</h3>
-<p>-reasonable to expect both positive and negative covariance between
-matrix elements</p>
-<ul>
-<li><p>e.g., good years for reproduction in age 3 individuals also
-likely to be good for 4-year-olds</p></li>
-<li><p>good environmental conditions may be good for both reproduction
-and survival, or reproduction may come at a cost for somatic
-growth</p></li>
-</ul>
-<h3 id="covariance-between-matrix-elements-1">Covariance between matrix
-elements</h3>
-<ul>
-<li><p>in our equation the quantity <span
+<p>It is reasonable to expect both positive and negative covariance
+between matrix elements (e.g., good years for reproduction in age 3
+individuals also likely to be good for 4-year-olds). Further, good
+environmental conditions may be good for both reproduction and survival,
+or reproduction may come at a cost for somatic growth</p>
+<p>In our equation the quantity <span
 class="math inline">\(Cov(a_{ij}a_{kl})\)</span> is the covariance
 between matrix elements <span class="math inline">\(a_{ij}\)</span> and
-<span class="math inline">\(a_{kl}\)</span>.</p></li>
-<li><p>If <span class="math inline">\(i \neq k\)</span> and <span
+<span class="math inline">\(a_{kl}\)</span>. If <span
+class="math inline">\(i \neq k\)</span> and <span
 class="math inline">\(j \neq l\)</span> we have two different matrix
 elements and <span class="math inline">\(Cov(a_{ij}a_{kl})\)</span> is a
 measure of the tendency of the two elements to change in synchrony
 across time intervals. If <span class="math inline">\(i=k\)</span> and
 <span class="math inline">\(j=l\)</span>, then we have the same element,
-and this is just a measure of variance over different time
-intervals</p></li>
-</ul>
-<p>-positive correlation between two matrix elements mean that either
+and this is just a measure of variance over different time intervals</p>
+<p>A positive correlation between two matrix elements mean that either
 both will be high or low will tend to cause larger variation in the
-population growth rate</p>
-<p>-negative correlation will cause a tendency for the impacts of
-variation to to “cancel out” with reduced variation on population growth
-rates</p>
+population growth rate, while a negative correlation will cause a
+tendency for the impacts of variation to to “cancel out” with reduced
+variation on population growth rate.</p>
 <h3 id="sensitivity-analysis-for-stochastic-matrix-models">Sensitivity
 analysis for stochastic matrix models</h3>
-<ul>
-<li>Caswell (2001) argued that deterministic sensitivity values for a
+<p>Caswell (2001) argued that deterministic sensitivity values for a
 mean matrix are generally good approximations for stochastic matrix
-models</li>
-<li>probably reasonable for long-lived organisms that are reasonably
-buffered from environmental stochasticity</li>
-<li>less likely to be true for short-lived organisms highly influenced
-by environmental conditions</li>
-<li>more complicated to complete sensitivity analysis because need to
-incorporate mean rates, variances, covariances, and characterisitics of
-the environmental temporal variation</li>
-</ul>
+models. This is probably reasonable for long-lived organisms that are
+reasonably buffered from environmental stochasticity, but less likely to
+be true for short-lived organisms highly influenced by environmental
+conditions.</p>
+<p>It is more complicated to complete sensitivity analysis for
+stochastic models because we need to incorporate mean rates, variances,
+covariances, and characterisitics of the environmental temporal
+variation</p>
 <p>### Sensitivity analysis of the long term growth rate</p>
 <p>When calculating the sensitivities of a stochastic matrix model, we
 will need to use the time‐specific stage distribution <span
@@ -3734,98 +3834,11 @@ class="math inline">\(\theta^*\)</span> .</p>
 class="math inline">\(\frac{\partial ln \lambda_S}{\partial
 \theta}\)</span> is via stochastic simulations (Caswell, 2001, Morris
 &amp; Doak 2002)</p>
-<p>Giaimo, S., &amp; Traulsen, A. (2022). Age‐specific sensitivity
-analysis of stable, stochastic and transient growth for stage‐classified
-populations. <em>Ecology and Evolution</em>, <em>12</em>(12), e9561.</p>
-<h3
-id="sensitivity-analysis-of-the-time-specific-growth-rate">Sensitivity
-analysis of the time-specific growth rate</h3>
-<p>Finally, time‐specific growth (sometimes called the transient
-population growth rate) <span class="math inline">\(ln
-\lambda_t\)</span> is susceptible of sensitivity analysis too. Combining
-and differentiating Equations <a
-href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-disp-0003">3</a>
-and <a
-href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-disp-0005">5</a>,
-Caswell (<a
-href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-bib-0010">2007</a>,
-eq. 43) found that <span class="math display">\[\frac{\partial ln
-\lambda_S}{\partial \theta}=\frac{e^T}{N(t+1)}\frac{\partial
-\boldsymbol{n}(t+1)}{\partial \theta} - \frac{e^T}{N(t)}\frac{\partial
-\boldsymbol{n} (t)}{\partial \theta}\]</span></p>
-<p>where the vectors <span class="math inline">\(\frac{\partial
-\boldsymbol{n}(t)}{\partial \theta}\)</span> are computed via the
-recursion</p>
-<p><span class="math display">\[\frac{\partial
-\boldsymbol{n}(t+1)}{\partial \theta}=\frac{\partial
-\boldsymbol{A}(t)}{\partial
-\theta}\boldsymbol{n}(t)+\boldsymbol{A}(t)\frac{\partial
-\boldsymbol{n}(t)}{\partial \theta}\]</span></p>
-<p>from given initial vectors <span
-class="math inline">\(\boldsymbol{n}(0)\)</span> and <span
-class="math inline">\(\frac {\partial \boldsymbol{n}𝐧(0)}{\partial
-\theta}\)</span> and 𝜕𝐧(0)/𝜕𝜃. Caswell (<a
-href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-bib-0010">2007</a>)
-gives information on how to set the latter vector. A particularly
-relevant case is when 𝜃 has no effect on the initial population and
-𝜕𝐧(0)/𝜕𝜃 is the zero vector. The derivatives in Equations <a
-href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-disp-0007">7</a>
-and <a
-href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9763023/#ece39561-disp-0008">8</a>
-should be understood as evaluated at 𝜃’s current value.</p>
-<p>We can state the sesitivtiy of matrix elemt</p>
-<h3 id="example-reintroduction-of-critically-endangered-plant">Example:
-reintroduction of critically endangered plant</h3>
+<h2 id="references-4">References</h2>
 <p>Bialic-Murphy, L., Knight, T. M., Kawelo, K., &amp; Gaoue, O. G.
 (2022). The Disconnect Between Short-and Long-Term Population
 Projections for Plant Reintroductions. <em>Frontiers in Conservation
 Science</em>, <em>2</em>, 124.</p>
-<p>-“stochastic transient projections are more appropriate than
-asymptotic projections to characterize the near-term population growth
-rate because it explicitly incorporates the effects of the initial stage
-structure and captures more realistic environmental variation based on
-current field conditions.</p>
-<p>-“We also illustrate that the near-term population projections of
-plant reintroductions established with mature individuals can be overly
-optimistic of long-term outcomes.</p>
-<h3 id="references-4">References</h3>
-<p>Bialic-Murphy, L., Knight, T. M., Kawelo, K., &amp; Gaoue, O. G.
-(2022). The Disconnect Between Short-and Long-Term Population
-Projections for Plant Reintroductions. <em>Frontiers in Conservation
-Science</em>, <em>2</em>, 124.</p>
-<p>Caswell, H. (2001). Matrix population models: construction, analysis,
-and interpretation. 2nd edn Sinauer Associates. <em>Inc., Sunderland,
-MA</em>.</p>
-<p>Kaye, T. N., &amp; Pyke, D. A. (2003). The effect of stochastic
-technique on estimates of population viability from transition matrix
-models. <em>Ecology</em>, <em>84</em>(6), 1464-1476.</p>
-<p>Morris, W. F., &amp; Doak, D. F. (2002). Quantitative conservation
-biology. <em>Sinauer, Sunderland, Massachusetts, USA</em>.</p>
-<p>Tuljapurkar, S. D. (1982). Population dynamics in variable
-environments. II. Correlated environments, sensitivity analysis and
-dynamics. <em>Theoretical Population Biology</em>, <em>21</em>(1),
-114-140.</p>
-<p>Tuljapurkar, S., &amp; Haridas, C. V. (2006). Temporal
-autocorrelation and stochastic population growth. <em>Ecology
-Letters</em>, <em>9</em>(3), 327-337. _________</p>
-<p>Environmental stochasticity can be incorporated into a model by
-making the parameters process is analogous to randomly selecting a per
-capita growth rate for each time interval in an unstructured model
-random variables. As an example, consider making the reproductive rate
-of adults &gt;2 years old a<br />
-random variable with a normal distribution with mean BA&gt;2 and
-standard deviation SD(BA&gt;2).</p>
-<p>Another distribution<br />
-useful for generating random survival rates (and possibly reproductive
-rates in some<br />
-circumstances) is the beta distribution. Random beta variables can be
-generated in spreadsheets<br />
-with the BETAINV function. Advantages of the beta distribution are that
-random values can be<br />
-constrained to specified intervals. For example, survival rates can be
-constrained to the interval<br />
-0-1. T</p>
-<h2 id="references-5">References</h2>
 <p>Biek, Roman, W. Chris Funk, Bryce A. Maxell, and L. Scott Mills.
 2002. “What Is Missing in Amphibian Decline Research: Insights from
 Ecological Sensitivity Analysis.” <em>Conservation Biology, 16</em> (3):
@@ -3861,6 +3874,9 @@ pardinus). <em>Ecological Monographs</em>, <em>68</em>(3), 349-370.</p>
 system, population growth, and management scenario for <em>Kalanchoe
 pinnata</em> in an invaded seasonally dry tropical forest. <em>Ecology
 and evolution, 6</em>(13), 4541-4550.</p>
+<p>Kaye, T. N., &amp; Pyke, D. A. (2003). The effect of stochastic
+technique on estimates of population viability from transition matrix
+models. <em>Ecology</em>, <em>84</em>(6), 1464-1476.</p>
 <p>Lefkovitch, L. P. 1965. “The Study of Population Growth in Organisms
 Grouped by Stages.” <em>Biometrics, 21</em> (1): 1–18.</p>
 <p>Leslie, P. H. 1945. “On the Use of Matrices in Certain Population
@@ -3879,6 +3895,13 @@ Demography, Genetics, and Management</em>. 2nd ed. Chichester, West
 Sussex ; Wiley-Blackwell.</p>
 <p>Morris, W.F. and Doak, D.F. (2002). <em>Quantitative Conservation
 Biology</em>. Sinauer, Sunderland, MA.</p>
+<p>Tuljapurkar, S. D. (1982). Population dynamics in variable
+environments. II. Correlated environments, sensitivity analysis and
+dynamics. <em>Theoretical Population Biology</em>, <em>21</em>(1),
+114-140.</p>
+<p>Tuljapurkar, S., &amp; Haridas, C. V. (2006). Temporal
+autocorrelation and stochastic population growth. <em>Ecology
+Letters</em>, <em>9</em>(3), 327-337.</p>
 <p>Vimercati, Giovanni. 2017. “Exploring the Invasion of the Guttural
 Toad Sclerophrys Gutturalis in Cape Town Through a Multidisciplinary
 Approach.” {PhD} {Thesis}, Stellenbosch: Stellenbosch University.</p>
@@ -3886,6 +3909,1122 @@ Approach.” {PhD} {Thesis}, Stellenbosch: Stellenbosch University.</p>
 2021. “Cost-Benefit Evaluation of Management Strategies for an Invasive
 Amphibian with a Stage-Structured Model.” <em>NeoBiota, 70</em>:
 87–105.</p>
+<h1 id="integral-projection-models">Integral Projection Models</h1>
+<p>This chapter covers a more advanced topic in (structured) population
+modelling, integral projection models (IPM). We will first
+<strong>derive the formula</strong> for IPM analogously to what we
+learned in Chapter 2, matrix projection models (MPM). Next, we will
+introduce the method to <strong>build simple IPM</strong> with case
+studies. We will then move on to the analysis of IPM, including
+<strong>asymptotic behaviors, sensitivity and elasticity</strong>.
+Lastly, we will incorporate <strong>density-dependence and
+stochasticity</strong> into our IPM, just as what we did in previous
+chapters.</p>
+<h2 id="learning-outcomes-1">Learning outcomes</h2>
+<ul>
+<li>Understand the analogy between IPM and MPM, and the mathematics
+behind IPM</li>
+<li>Being able to choose the proper model for different species based on
+their life cycles, and construct simple IPM from data</li>
+<li>Getting familiar with various numerical methods, such as regression,
+numerical integration</li>
+<li>Being able to perform basic analysis of IPM</li>
+</ul>
+<h2 id="introduction-mpm-vs.-ipm">Introduction: MPM vs. IPM</h2>
+<p><strong>Matrix projection models (MPM)</strong> are widely used in
+modelling structured biological populations. They are easy to understand
+and are conceptually simple to represent population structures. A matrix
+model divides the population into a set of classes, which give rise to
+some potential problems (Ellner and Rees, 2006):</p>
+<ul>
+<li>Representing individuals with different characteristics as a
+distinct stage or category is bound to introduce some amount of
+inaccuracy</li>
+<li>Increasing the number of stages leads to higher sampling error
+because of fewer available data</li>
+</ul>
+<p>In fact, for some organisms, instead of dividing their life cycles
+into discrete classes (e.g. juveniles and adults), it is more
+appropriate to use continuous variables (e.g. body size) (Ellner and
+Rees, 2006). Easterling et al. (2000) proposed <strong>integral
+projection models (IPM)</strong> as an alternative to MPM for
+populations in which demographic rates are primarily influenced by a
+continuous variable. This kind of model was analogous to MPM, allowing
+researchers to avoid inaccurate classifications.</p>
+<h2 id="contruction-of-ipm">Contruction of IPM</h2>
+<p>In this section, we will introduce the basic concepts underlying IPM.
+We will make the assumption that differences between individuals in a
+population are completely described by a <strong>continuous</strong>
+variable <span class="math inline">\(z\)</span>, which could be some
+continuous measure of body size (e.g. total mass and volume). <span
+class="math inline">\(z\)</span> could also be unrelated to “size”, such
+as the individual’s spatial location in a linear habitat. However, <span
+class="math inline">\(z\)</span> must have finite limits.</p>
+<h3 id="model-structure">Model structure</h3>
+<p>Let <span class="math inline">\(n(z,t)\)</span> be the size
+distribution of individuals at time <span
+class="math inline">\(t\)</span>. The number of individuals with size
+<span class="math inline">\(z\)</span> in the interval <span
+class="math inline">\([a,b]\)</span> is <span
+class="math display">\[\int_a^bn(z,t)\ dz.\]</span></p>
+<p>This may seem a bit hard to follow. Here we present a more intuitive
+description:</p>
+<blockquote>
+<p>The number of individuals in the size interval <span
+class="math inline">\([a,b]\)</span> at time <span
+class="math inline">\(t\)</span> is approximately <span
+class="math inline">\(n(a,t)(b-a)\)</span>, given a very small
+difference <span class="math inline">\(b-a\)</span>.</p>
+</blockquote>
+<p>This comes directly from the intuition behind an integral, which we
+will show in the following figures:</p>
+<figure>
+<img src="integral.jpeg" style="width:80.0%"
+alt="Illustration of an integral with its rectangular approximation" />
+<figcaption aria-hidden="true">Illustration of an integral with its
+rectangular approximation</figcaption>
+</figure>
+<p>The integral <span class="math inline">\(\int_a^bn(z,t)\ dz\)</span>
+is equal to the area under the curve, which is shaded in red (stripe);
+<span class="math inline">\(n(a,t)(b-a)\)</span> is equal to the
+rectangular area shaded in red (stripe) <strong>and</strong> blue
+(solid). When <span class="math inline">\(b\)</span> is close enough to
+<span class="math inline">\(a\)</span>, the blue area is small enough to
+be ignored, making <span class="math display">\[\int_a^bn(z,t)\
+dz\approx n(a,t)(b-a).\]</span></p>
+<p>Now if we assume the limit of <span class="math inline">\(z\)</span>
+is from <span class="math inline">\(L\)</span> to <span
+class="math inline">\(U\)</span> (i.e. <span
+class="math inline">\(z\in[L,U]\)</span>), the total population is the
+integral of <span class="math inline">\(n(z,t)\)</span> over the domain
+<span class="math inline">\([L,U]\)</span>, <span
+class="math display">\[N(t)=\int_L^Un(z,t)\ dz.\]</span> We should
+notice that <span class="math inline">\(n(z,t)\)</span> is different
+from a probability distribution, whose integral over the domain is
+<strong>1</strong>. Another thing we should notice is that <span
+class="math inline">\(n(z,t)\)</span> is <strong>NOT</strong> the number
+of individuals of size <span class="math inline">\(z\)</span> at time
+<span class="math inline">\(t\)</span>. If we want to know the number of
+individuals in a size range, we have to calculate the integral.</p>
+<h3 id="kernel">Kernel</h3>
+<p>Similar to MPM, IPM also operates in discrete time. From <span
+class="math inline">\(t\)</span> to <span
+class="math inline">\(t+1\)</span>, individuals could die or change in
+size. They could also produce offsprings that vary in size. We use two
+functions, <span class="math inline">\(P(z&#39;,z)\)</span> and <span
+class="math inline">\(F(z&#39;,z)\)</span>, to describe these two types
+of size transitions (and for convenience, we further let <span
+class="math inline">\(z&#39;\)</span> be the size at time <span
+class="math inline">\(t+1\)</span>). The total transition is represented
+by <span
+class="math inline">\(K(z&#39;,z)=P(z&#39;,z)+F(z&#39;,z)\)</span>,
+which is called the <strong>kernel</strong>.</p>
+<h4 id="survivalgrowth-kernel">Survival/growth kernel</h4>
+<p><span class="math inline">\(P(z&#39;,z)\)</span> is called the
+<strong>survival/growth kernel</strong> (Merow et al., 2014), which is
+often written as <span
+class="math inline">\(P(z&#39;,z)=s(z)G(z&#39;,z)\)</span>, where <span
+class="math inline">\(s(z)\)</span> is the survival rate and <span
+class="math inline">\(G(z&#39;,z)\)</span> represents the size
+transition. We can think of <span
+class="math inline">\(G(z&#39;,z)\)</span> as the probability density
+function of the subsequent size <span
+class="math inline">\(z&#39;\)</span> of an size-<span
+class="math inline">\(z\)</span> individual, so we always have <span
+class="math display">\[\int_L^UG(z&#39;,z)\ dz&#39;=1.\]</span> The idea
+can be explained with the following plot</p>
+<figure>
+<img src="size-dist.jpeg" style="width:80.0%"
+alt="Illustration of size transitions and G(z&#39;,z)" />
+<figcaption aria-hidden="true">Illustration of size transitions and
+<span class="math inline">\(G(z&#39;,z)\)</span></figcaption>
+</figure>
+<p>Suppose that we have collected data of sizes at <span
+class="math inline">\(t\)</span> and <span
+class="math inline">\(t+1\)</span>, we assume that, for every <span
+class="math inline">\(z\)</span>, the subsequent size <span
+class="math inline">\(z&#39;\)</span> follows some probability
+distribution, which is represented by the red curves.</p>
+<h4 id="fecundity-kernel">Fecundity kernel</h4>
+<p><span class="math inline">\(F(z&#39;,z)\)</span> is called the
+<strong>fecundity kernel</strong> (Merow et al., 2014), which represents
+reproduction of offsprings. <span
+class="math inline">\(F(z&#39;,z)\)</span> is analogous to a probability
+density function. It is the size distribution of offsprings produced by
+a size-<span class="math inline">\(z\)</span> individual. In other
+words, the number of the offsprings of size <span
+class="math inline">\(z&#39;\)</span> in the interval <span
+class="math inline">\([a,b]\)</span> by a size-<span
+class="math inline">\(z\)</span> individual is <span
+class="math display">\[\int_a^bF(z&#39;,z)\ dz&#39;.\]</span> That is,
+it follows a similar idea of <span
+class="math inline">\(n(z,t)\)</span>.</p>
+<p>Now, putting everything together, the population size distribution at
+time <span class="math inline">\(t+1\)</span> can be calculated as the
+integral <span
+class="math display">\[n(z&#39;,t+1)=\int_L^UK(z&#39;,z)n(z,t)\
+dz.\]</span> The kernel <span class="math inline">\(K(z&#39;,z)\)</span>
+in the IPM is analogous to the projection matrix in MPM.</p>
+<h3 id="from-life-cycle-to-model">From life cycle to model</h3>
+<p>An essential step of building an IPM is to translate population
+census data into the vital rates in the kernel.</p>
+<h4 id="population-census">Population census</h4>
+<p>First, we introduce two different census methods:</p>
+<ul>
+<li><em>Pre-reproductive census</em>: Census takes place before
+reproduction. This is common in plants, as the size of offsprings are
+hard to collect before growth to noticeable small individuals.</li>
+</ul>
+<p><img src="pre-repro.jpg" style="width:70.0%" /></p>
+<ul>
+<li><em>Post-reproductive census</em>: Census takes place after
+reproduction. This is more common in animals, when we can easily
+distinguish newborns from adults and measure their sizes.</li>
+</ul>
+<p><img src="post-repro.jpg" style="width:70.0%" /></p>
+<h4 id="building-kernels">Building kernels</h4>
+<p>Once we decided the census method, and collected data at each time
+point, it’s time to build the kernel for our IPM, which will be divided
+into two parts:</p>
+<ul>
+<li><em>Survival</em>: After we observed the number of individuals
+survived from each census to the next, we can estimate the survival rate
+<span class="math inline">\(s\)</span>. By recording the size changes,
+we can also obtain the distribution of size transition <span
+class="math inline">\(G\)</span>.</li>
+<li><em>Reproduction</em>: We can estimate some basic parameters: per
+capita offspring number <span class="math inline">\(b\)</span>, and
+probability of successful recruitment <span
+class="math inline">\(p_r\)</span>. When we are able to distinguish
+breeders and non-breeders, we can further define the probability of
+reproducing <span class="math inline">\(p_b\)</span>. Similarly, by
+recording the recruit sizes, we can also obtain the size distribution of
+recruits, <span class="math inline">\(C\)</span>.</li>
+</ul>
+<p>For different census methods, kernels are defined differently. Here
+we present the most basic situations for both census methods.</p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 41%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Pre-reproductive census</th>
+<th style="text-align: left;">Post-reproductive census</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Survival kernel</strong></td>
+<td style="text-align: left;"><span
+class="math inline">\(s(z)G(z&#39;,z)\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(s(z)G(z&#39;,z)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Fecundity kernel</strong></td>
+<td style="text-align: left;"><span
+class="math inline">\(p_b(z)b(z)p_rC(z&#39;,z)\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(s(z)p_b(z)b(z)C(z&#39;,z)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The survival kernel is pretty much the same, while the fecundity
+kernel is slightly different between two census methods. This is
+because</p>
+<ul>
+<li>In a <strong>post-reproductive census</strong>, new recruits are
+censused before mortality, so every new recruit is essentially
+“successful”, making <span class="math inline">\(p_r=1\)</span> in the
+fecundity kernel.</li>
+<li>In a <strong>pre-reproductive census</strong>, since the census
+happens right before reproduction, it is usually assumed that no death
+occurs between census and reproduction, making <span
+class="math inline">\(s(z)=1\)</span> in the fecundity kernel.</li>
+</ul>
+<p>Now, let’s first look at the total population at the time <span
+class="math inline">\(t+1\)</span>, <span
+class="math inline">\(N(t+1)\)</span>. It can be calculated as <span
+class="math display">\[N(t+1)=\int_L^U\underbrace{[s(z)+p_b(z)b(z)p_r]}_{\text{kernel}}n(z,t)\
+dz\]</span> in a pre-reproductive census. Considering the size
+transition, we further have <span
+class="math display">\[n(z&#39;,t+1)=\int_L^U\underbrace{[s(z)G(z&#39;,z)+p_b(z)b(z)p_rC(z&#39;,z)]}_{\text{kernel}}n(z,t)\
+dz.\]</span></p>
+<p>Similarly, in a post-reproductive census, we have <span
+class="math display">\[n(z&#39;,t+1)=\int_L^U\underbrace{[s(z)G(z&#39;,z)+s(z)p_b(z)b(z)C(z&#39;,z)]}_{\text{kernel}}n(z,t)\
+dz.\]</span></p>
+<p><em>Note</em>: based on different census methods, the recruit size
+distribution <span class="math inline">\(C(z&#39;,z)\)</span> will be
+different. For <strong>pre-reproductive census</strong>, <span
+class="math inline">\(C(z&#39;,z)\)</span> is the size distribution of
+new recruits at age 1 (after they grow to noticeable individuals after
+one year), so we denote it as <span
+class="math inline">\(C_1(z&#39;,z)\)</span>; for
+<strong>post-reproductive census</strong>, <span
+class="math inline">\(C(z&#39;,z)\)</span> is the size distribution of
+new recruits at age 0 (immediately after they are born), so we denote it
+as <span class="math inline">\(C_0(z&#39;,z)\)</span>.</p>
+<h3 id="vital-rates-with-examples">Vital rates with examples</h3>
+<p>Here, we present some examples of kernels based on life cycles of
+different species.</p>
+<h4 id="example-1-long-lived-perennial-plant-with-no-seed-bank">Example
+1: long-lived perennial plant with no seed bank</h4>
+<p>This example comes from Merow et al. (2014) and it represents the
+most basic case. For plants, key life history transitions usually depend
+more on size than on age (Ellner et al., 2016). We assume that once
+seeds germinate, individuals grow until they are large enough to produce
+seeds, after which they continue to reproduce until they die. The
+survival/growth kernel is <span
+class="math display">\[P(z&#39;,z)=s(z)G(z&#39;,z),\]</span> and the
+fecundity kernel is <span
+class="math display">\[F(z&#39;,z)=p_b(z)b(z)p_rC_1(z&#39;).\]</span>
+The kernel is just the sum <span
+class="math display">\[K(z&#39;,z)=s(z)G(z&#39;,z)+p_b(z)b(z)p_rC_1(z&#39;).\]</span>
+We should notice that</p>
+<ul>
+<li><span class="math inline">\(p_r\)</span> describes the ratio of
+recruits observed at <span class="math inline">\(t+1\)</span> compared
+to the seeds produced at <span class="math inline">\(t\)</span> (Metcalf
+et al., 2008).</li>
+<li><span class="math inline">\(C_1(z&#39;)\)</span> is size
+distribution of recruits observed at time <span
+class="math inline">\(t+1\)</span>. It does not depend on <span
+class="math inline">\(z\)</span>, since we do not know the parental
+size.</li>
+</ul>
+<h4 id="example-2-monocarpic-perennial">Example 2: monocarpic
+perennial</h4>
+<p>The following two examples were discussed in Ellner et al. (2016). We
+will also use them as case studies in the next section. This example is
+based on <em>Oenothera glazioviana</em>, a monocarpic plant that often
+occurs in sand dune areas. For a monocarpic plant, we should keep in
+mind that reproduction is fatal. The kernel function we will study is
+<span
+class="math display">\[K(z&#39;,z)=(1-p_b(z))s(z)G(z&#39;,z)+p_b(z)b(z)p_rC_1(z&#39;).\]</span>
+We should notice that</p>
+<ul>
+<li>The factor <span class="math inline">\((1-p_b(z))\)</span> in the
+survival/growth kernel represents the proportion of non-flowering
+plants, as flowering plants die after reproduction.</li>
+<li>Similar to Example 1, since we are unable to track parentage, the
+recruit size distribution is independent of parental size <span
+class="math inline">\(z\)</span>.</li>
+</ul>
+<figure>
+<img src="oenothera-glazioviana.jpg"
+alt="© Bernd Sauerwein, Oenothera glazioviana, Creative Commons CC BY-SA-3.0 license" />
+<figcaption aria-hidden="true">© Bernd Sauerwein, <a
+href="https://commons.wikimedia.org/wiki/File:Oenothera_glazioviana.jpg"><em>Oenothera
+glazioviana</em></a>, <a
+href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
+CC BY-SA-3.0 license</a></figcaption>
+</figure>
+<h4 id="example-3-ungulate">Example 3: ungulate</h4>
+<p>Let’s look at a classic animal example, in which we are able to track
+parental sizes. For animals, age or life stage (e.g. mature
+vs. immature) plays a more important role in life history transitions.
+Here we present a example of Soay sheep (<em>Ovis aries</em>), whose
+demographic rates are assumed to be functions of body mass. The kernel
+function is <span
+class="math display">\[K(z&#39;,z)=s(z)G(z&#39;,z)+s(z)p_b(z)p_r\left(\frac{C_0(z&#39;,z)}{2}\right).\]</span>
+We should notice that</p>
+<ul>
+<li>We are using post-reproduction census, so the survival rate <span
+class="math inline">\(s(z)\)</span> appears in both survival/growth and
+fecundity kernels.</li>
+<li>We assume that a single lamb is born at each reproductive event, so
+<span class="math inline">\(b(z)=1\)</span>.</li>
+<li>The factor <span class="math inline">\(1/2\)</span> appears in the
+fecundity kernel because we only track female population and an equal
+sex ratio is assumed.</li>
+<li>Since we know the parents of each newborn, the recruit size
+distribution should be dependent on both <span
+class="math inline">\(z\)</span> and <span
+class="math inline">\(z&#39;\)</span>.</li>
+</ul>
+<figure>
+<img src="soay-sheep.jpg"
+alt="© gailhampshire, Soay sheep (Ovis aries), Creative Commons CC BY-2.0 license" />
+<figcaption aria-hidden="true">© gailhampshire, <a
+href="https://commons.wikimedia.org/wiki/File:Soay_Sheep._Ovis_aries_-_Flickr_-_gailhampshire.jpg">Soay
+sheep (<em>Ovis aries</em>)</a>, <a
+href="https://creativecommons.org/licenses/by/2.0/">Creative Commons CC
+BY-2.0 license</a></figcaption>
+</figure>
+<h3
+id="illustration-of-current-application-spatial-integral-projection-model">Illustration
+of current application: spatial integral projection model</h3>
+<p>As we mentioned earlier, the continuous variable <span
+class="math inline">\(z\)</span> could be unrelated to “size”. Also,
+<span class="math inline">\(z\)</span> could be multidimensional (Ellner
+et al., 2016). Here we present a paper about spatial integral projection
+models (SIPM) that include both demography and dispersal with continuous
+variables.</p>
+<blockquote>
+<p>Jongejans, E., Shea, K., Skarpaas, O., Kelly, D. and Ellner, S.P.
+(2011), Importance of individual and environmental variation for
+invasive species spread: a spatial integral projection model.
+<em>Ecology</em>, 92: 86-97.</p>
+</blockquote>
+<figure>
+<img src="carduus-nutans.jpg"
+alt="© Baykedevries, Carduus nutans, Creative Commons CC BY-SA-3.0 license" />
+<figcaption aria-hidden="true">© Baykedevries, <a
+href="https://commons.wikimedia.org/wiki/File:Carduus_nutans_NP_Schiermonnikoog.jpg"><em>Carduus
+nutans</em></a>, <a
+href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
+CC BY-SA-3.0 license</a></figcaption>
+</figure>
+<h4 id="snapshot-of-the-study-3">Snapshot of the study</h4>
+<ul>
+<li>The authors developed an SIPM by combining IPM with an analytical
+method for modelling spatial spread, Neubert-Caswell Model (NCM). They
+tested the SIPM on the invasive monocarpic thistle <em>Carduus
+nutans</em> in New Zealand.</li>
+<li>For the demographic process, the population is described by the size
+distribution of rosettes, <span class="math inline">\(R(z,t)\)</span>,
+<span class="math display">\[R(z&#39;,t+1)=\int_Z
+K_{dem}(z&#39;,z)R(z,t)\ dz.\]</span></li>
+<li>The vital rates underlie the demographic kernel <span
+class="math inline">\(K_{dem}(z&#39;,z)\)</span> are <span
+class="math display">\[K_{dem}=\underbrace{s(z)(1-p_b(z))G(z&#39;,z)}_{\text{survival/growth
+kernel }P(z&#39;,z)}+\underbrace{s(z)p_b(z)b(z)p_r\omega(z)\phi
+C_1(z&#39;)}_{\text{fecundity kernel }F(z&#39;,z)}.\]</span> Compared to
+the above example of monocarpic perennials, the kernel is defined
+differently;
+<ul>
+<li>Survival rate also appears in the fecundity kernel</li>
+<li>Two more variables are introduced. <span
+class="math inline">\(\omega(z)\)</span> is a size-dependent potential
+flower head production term, and <span
+class="math inline">\(\phi\)</span> is the probability that a potential
+seed escapes florivory and becomes a seed.</li>
+</ul></li>
+<li>A seed bank is also considered in the model. Basically, the
+existence of a seed bank requires the addition of a separate
+discrete-state variable that is linked to <span
+class="math inline">\(K_{dem}\)</span> by the proportion of newly
+produced seeds that enter the seed bank, and the proportion of seeds in
+the seed bank that survive and become seedlings. We will not discuss the
+details, but Merow et al. (2014) provides some examples of plants with
+seed banks.</li>
+<li>Spatial population spread requires a dispersal kernel <span
+class="math inline">\(K_{disp}(r)\)</span>, which is the probability
+density function for seed dispersal distance <span
+class="math inline">\(r\)</span>. The authors used an inverse Gaussian
+distribution.</li>
+<li>The SIPM that combines both demographic kernel and dispersal kernel
+is described as a double integral <span
+class="math display">\[\mathbf{n}(x&#39;,z&#39;,t+1)=\iint
+K(x&#39;,z&#39;,x,z)\mathbf{n}(x,z,t)\ dxdz,\]</span> where <span
+class="math inline">\(\mathbf{n}(x,z,t)\)</span> is the structured
+population stage vectors at location <span
+class="math inline">\(x\)</span> with size <span
+class="math inline">\(z\)</span> at time <span
+class="math inline">\(t\)</span>. <span
+class="math inline">\(K(x&#39;,z&#39;,x,z)\)</span> is the combined
+demography and dispersal kernel, which is defined as follows <span
+class="math display">\[K(x&#39;,z&#39;,x,z)=K_{disp}(x&#39;-x)F(z&#39;,z)+\delta(x&#39;-x)P(z&#39;,z),\]</span>
+with <span class="math inline">\(\delta(\cdot)\)</span> the <a
+href="https://mathworld.wolfram.com/DeltaFunction.html">Dirac delta
+function</a> (<span class="math inline">\(\delta(x&#39;-x)=0\)</span>
+for all <span class="math inline">\(x&#39;\neq x\)</span> and <span
+class="math inline">\(\delta(x&#39;-x)=1\)</span> for <span
+class="math inline">\(x&#39;=x\)</span>)
+<ul>
+<li><em>Note</em>: Only new seeds disperse, while all other life stages
+are sessile.</li>
+</ul></li>
+</ul>
+<h3 id="reference">Reference</h3>
+<p>Easterling, M.R., Ellner, S.P. and Dixon, P.M. (2000), Size-specific
+sensitivity: applying a new structured population model.
+<em>Ecology</em>, 81: 694-708.</p>
+<p>Ellner, S.P. and Rees, M. (2006), Integral projection models for
+species with complex demography. <em>Am Nat.</em>, 167(3): 410-28.</p>
+<p>Ellner, S.P., Childs, D.Z. and Rees, M. (2016), <em>Data-driven
+Modelling of Structured Populations</em>. Springer Cham.</p>
+<p>Merow, C., Dahlgren, J.P., Metcalf, C.J.E., Childs, D.Z., Evans,
+M.E.K., Jongejans, E., Record, S., Rees, M., Salguero-Gómez, R. and
+McMahon, S.M. (2014), Advancing population ecology with integral
+projection models: a practical guide. <em>Methods Ecol Evol</em>, 5:
+99-110.</p>
+<p>Metcalf, C., Rose, K., Childs, D., Sheppard, A., Grubb, P. and Rees,
+M. (2008), Evolution of flowering decisions in a stochastic,
+density-dependent environment. <em>Proceedings of the National Academy
+of Sciences</em>, 105: 10466.</p>
+<h2
+id="how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest">How
+do we go about implementing an IPM for our species of interest?</h2>
+<p>Performing an IPM model involves using regression models for vital
+rates, combining functions into a projection kernel, dividing kernels
+into classes (bins), and integrating between them to calculate
+transition rates. An iterative analysis of IPMs output ensures the model
+is improved so that it is biologically plausible. After obtaining the
+overall kernel corresponding to a large matrix, the same population
+analyses performed for matrix projection models (MPMs) can be carried
+out, such as stable distribution and sensitivity analyses.</p>
+<h3 id="modelling-vital-rates-regressions">Modelling vital rates:
+regressions</h3>
+<p>To perform an IPM model, regression models are fit to data relative
+to relevant state variables. Such models include linear or logistic
+regressions, or non-linear models such as generalized additive models
+(GAMs). Candidate models can be assessed using the Akaike information
+criteria (AIC), which you were introduced to in the section <a
+href="https://www.ecotheory.ca/teach/BIOL652.html#model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
+Selection</a>. The dynamics for each vital rate can be modelled by the
+commonly used examples below:</p>
+<table>
+<caption>Functions commonly used for vital rates</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Vital_rate</th>
+<th style="text-align: left;">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Survival</td>
+<td style="text-align: left;">Logistic regression (generalized linear
+model with binomial link function)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Growth</td>
+<td style="text-align: left;">Linear model with normal error
+distribution</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Probability of life-history transition
+(eg., flowering)</td>
+<td style="text-align: left;">Poisson regression (generalized linear
+model with log link function)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Offspring number (eg., fruit number)</td>
+<td style="text-align: left;">Logistic regression (generalized linear
+model with binomial link function)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Recruit size distribution</td>
+<td style="text-align: left;">Normal or log-normal distribution</td>
+</tr>
+</tbody>
+</table>
+<h3 id="numerical-integration-methods-midpoint-rule">Numerical
+integration methods: midpoint rule</h3>
+<p>A projection kernel obtained in IPMs is analogous to projection
+matrices of MPMs, as <span class="math inline">\(hK(z_j, z_i)\)</span>
+is an <span class="math inline">\(m\times m\)</span> matrix (Gonzalez et
+al., 2021). To create an IPM kernel, we need to put vital rate functions
+together. To calculate the probability of transitioning to the next size
+within each group (or bin), the midpoint rule is a commonly used
+integration technique consisting of dividing the size range into several
+groups <em>m</em> with an equal length <em>h</em>.
+<em>z<sub>i</sub></em> is the midpoint of the <em>i<sub>th</sub></em>
+size class:</p>
+<p><span class="math display">\[n(z_j,t+1)\approx
+h\sum_{i=1}^mK(z_j,z_i)n(z_i,t)\]</span></p>
+<h3 id="model-diagnostics-and-improvement">Model diagnostics and
+improvement</h3>
+<p>During the iterative process of model output analysis, we can improve
+specific functions to better correspond to the observed patterns in our
+data. For example, if size measurements become more variable in larger
+individuals, growth variance can be added as a function of size; or a
+fecundity function can be changed to add the probability of
+reproduction, which is more realistic considering that we do not observe
+reproduction in all individuals (Merow et al, 2014). Population analyses
+can then be re-done and compared to previously run IPMs, where we can
+check how such improvements affect population dynamics projections.</p>
+<p>In terms of survival, an important error to check for is called
+<strong>eviction</strong>, which consists of individuals transitioning
+to size classes which are outside the range selected for the model, thus
+impacting survival projections. To diagnose this, you can plot the
+relevant matrix elements against the fitted survival model and check for
+discrepancies. Misplaced individuals can then be returned to the next
+size class within the established range for the IPM (Merow et al,
+2014).</p>
+<p>To verify if a given IPM model is biologically realistic, we can
+calculate several life history events such as life expectancy and
+maximum size, and observe how well the model describes our species.</p>
+<h3 id="case-study-an-ipm-for-duckweeds">Case study: an IPM for
+duckweeds</h3>
+<p>We took note of the mortality of duckweed fronds submitted to
+fluctuating temperature regimes with a mean of 37C, for 5 days. Because
+at this time we only have grouped data for initial populations
+consisting of 4 fronds, we estimated average values per individual.
+Initial frond surface area was calculated by taking the average surface
+area of 4 fronds. Individual mortality was considered when population
+mortality was greater than 4 individuals. Average individual
+reproduction was calculated as total reproduction divided by the initial
+population. Size at the next stage was hypothesized as a 3x increase in
+frond size for the purpose of having dummy data for this exercise only.
+Here is our data:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the dataset</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/kcudding/kcudding.github.io/main/teach/ipm_duckweed.csv&quot;</span>,<span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8-BOM&quot;</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<pre><code>NA   experiment_number treatment    size sizeNext surv fec
+NA 1                81      0.00 0.05325  0.15975    1   5
+NA 2                81      0.00 0.05875  0.17625    0  NA
+NA 3                81      0.95 0.05525  0.16575    0  NA
+NA 4                81      0.95 0.03575  0.10725    0  NA
+NA 5                82      0.00 0.06475  0.19425    0  NA
+NA 6                82      0.00 0.05600  0.16800    0  NA</code></pre>
+<p>We build one regression for each vital rate: growth, survival, and
+reproduction. You can start by creating an empty data frame to store
+parameters for each model.</p>
+<p>We will demonstrate the regression for survival:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic regression for survival</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>surv.reg<span class="ot">=</span><span class="fu">glm</span>(surv<span class="sc">~</span>size,<span class="at">data=</span>d,<span class="at">family=</span><span class="fu">binomial</span>())</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>params<span class="sc">$</span>surv.int<span class="ot">=</span><span class="fu">coefficients</span>(surv.reg)[<span class="dv">1</span>]</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>params<span class="sc">$</span>surv.slope<span class="ot">=</span><span class="fu">coefficients</span>(surv.reg)[<span class="dv">2</span>]</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(surv.reg)</span></code></pre></div>
+<pre><code>NA 
+NA Call:
+NA glm(formula = surv ~ size, family = binomial(), data = d)
+NA 
+NA Deviance Residuals: 
+NA     Min       1Q   Median       3Q      Max  
+NA -2.1654  -0.8857   0.3729   0.8629   1.8494  
+NA 
+NA Coefficients:
+NA             Estimate Std. Error z value Pr(&gt;|z|)  
+NA (Intercept)   -3.732      1.819  -2.051   0.0403 *
+NA size          52.879     24.590   2.150   0.0315 *
+NA ---
+NA Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+NA 
+NA (Dispersion parameter for binomial family taken to be 1)
+NA 
+NA     Null deviance: 33.104  on 23  degrees of freedom
+NA Residual deviance: 26.474  on 22  degrees of freedom
+NA   (24 observations deleted due to missingness)
+NA AIC: 30.474
+NA 
+NA Number of Fisher Scoring iterations: 4</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now you can continue creating regressions for reproduction and growth</span></span></code></pre></div>
+<p>Here are the observations and the model fit:</p>
+<figure>
+<img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/unnamed-chunk-5-1.jpeg"
+data-dpi="300" alt="A logistic model for the survival of duckweeds" />
+<figcaption aria-hidden="true">A logistic model for the survival of
+duckweeds</figcaption>
+</figure>
+<p>Now it is time to define a function to predict the survival of our
+population (and the same should be done for the other vital rates):</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>s.x<span class="ot">=</span><span class="cf">function</span>(x,params) {</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>u<span class="ot">=</span><span class="fu">exp</span>(params<span class="sc">$</span>surv.int<span class="sc">+</span>params<span class="sc">$</span>surv.slope<span class="sc">*</span>x)</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(u<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span>u))</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>To make a kernel, define the matrix size, size range, boundary
+points, mesh points, and step size:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>min.size<span class="ot">=</span>.<span class="dv">9</span><span class="sc">*</span><span class="fu">min</span>(<span class="fu">c</span>(d<span class="sc">$</span>size,d<span class="sc">$</span>sizeNext),<span class="at">na.rm=</span>T)</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>max.size<span class="ot">=</span><span class="fl">1.1</span><span class="sc">*</span><span class="fu">max</span>(<span class="fu">c</span>(d<span class="sc">$</span>size,d<span class="sc">$</span>sizeNext),<span class="at">na.rm=</span>T)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">100</span> <span class="co"># amount of cells in the matrix</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>b<span class="ot">=</span>min.size<span class="sc">+</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span>n)<span class="sc">*</span>(max.size<span class="sc">-</span>min.size)<span class="sc">/</span>n <span class="co"># boundary points (edges of matrix)</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fl">0.5</span><span class="sc">*</span>(b[<span class="dv">1</span><span class="sc">:</span>n]<span class="sc">+</span>b[<span class="dv">2</span><span class="sc">:</span>(n<span class="sc">+</span><span class="dv">1</span>)]) <span class="co"># mesh points (matrix points for midpoint evaluation)</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>h<span class="ot">=</span>y[<span class="dv">2</span>]<span class="sc">-</span>y[<span class="dv">1</span>] <span class="co"># step size  (widths)</span></span></code></pre></div>
+<p>The IPM matrices can now be created using the regression parameters
+and the settings we have just defined. First, individual matrices are
+created for growth, reproduction, and survival. The function outer() is
+used to create the kernels for growth and fecundity by evaluating all
+pairwise combinations of vectors y in the 2 step sizes. Next, the full
+matrix is obtained by matrix multiplication and addition:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>G<span class="ot">=</span>h<span class="sc">*</span><span class="fu">outer</span>(y,y,g.yx,<span class="at">params=</span>params) <span class="co"># growth matrix</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>S<span class="ot">=</span><span class="fu">s.x</span>(y,<span class="at">params=</span>params) <span class="co"># survival matrix</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>F<span class="ot">=</span>h<span class="sc">*</span><span class="fu">outer</span>(y,y,f.yx,<span class="at">params=</span>params) <span class="co"># reproduction matrix</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>P<span class="ot">=</span>G <span class="co"># placeholder; P is redefined on the next line</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) P[,i]<span class="ot">=</span>G[,i]<span class="sc">*</span>S[i] <span class="co"># growth/survival matrix</span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>K<span class="ot">=</span>P<span class="sc">+</span>F <span class="co"># full matrix</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>K[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>NA             [,1]        [,2]        [,3]        [,4]
+NA [1,] 0.001271302 0.001267617 0.001263943 0.001260279
+NA [2,] 0.001460592 0.001456358 0.001452137 0.001447927
+NA [3,] 0.001673134 0.001668285 0.001663449 0.001658627
+NA [4,] 0.001910973 0.001905434 0.001899911 0.001894403</code></pre>
+<p>After obtaining an IPM matrix, population analyses can be performed
+in a similar fashion as in MPMs, such as asymptotic population growth
+rate, stable stage structure, reproductive values, sensitivities and
+elasticities, which you have already learnt about here: <a
+href="hhttps://www.ecotheory.ca/teach/BIOL652.html#structured-population-models">Structured
+Population Models</a></p>
+<h2 id="references-5">References</h2>
+<p>Doak, D. F., Waddle, E., Langendorf, R. E., Louthan, A. M., Isabelle
+Chardon, N., Dibner, R. R., … &amp; DeMarche, M. L. (2021). A critical
+comparison of integral projection and matrix projection models for
+demographic analysis. <em>Ecological Monographs, 91</em>(2), e01447.</p>
+<p>Gonzalez, E.J., Childs, D.Z., Quintana-Ascencio, P.F. and
+Salguero-Gomez, R. (2021), Integral projection models. In:
+<em>Demographic Methods Across the Tree of Life</em>. Edited by Roberto
+Salguero-Gomez and Marlene Gamelon, Oxford University Press.</p>
+<p>Merow, C., Dahlgren, J. P., Metcalf, C. J. E., Childs, D. Z., Evans,
+M. E., Jongejans, E., … &amp; McMahon, S. M. (2014). Advancing
+population ecology with integral projection models: a practical guide.
+<em>Methods in Ecology and Evolution, 5</em>(2), 99-110.</p>
+<h2 id="density-dependence-in-ipm">Density dependence in IPM</h2>
+<p>Like in unstructured population models and matrix population models,
+density-dependence also occurs in integral projection models. However, a
+general guide to building density-dependent IPMs is impossible, as there
+are too many possibilities. Any demographic rate can be affected by
+competition, and the dependence can take many possible forms. So
+instead, we will present this section by first introducing a famous
+example of density-dependent recruitment on Platte thistle (<em>Cirsium
+canescens</em>). Then, we will explain the theories behind the model
+construction.</p>
+<h3 id="modeling-density-dependence">Modeling density dependence</h3>
+<p>Platte thistle (<em>Cirsium canescens</em>) is a native thistle
+species endemic to North America. Its population demography is strongly
+affected by an invasive herbivore insect <em>Rhinocyllus conicus</em>.
+Rose et al. (2005) tried to determine how demographic rates of Platte
+thistle varied with plant size and damage by <em>R. conicus</em>.</p>
+<figure>
+<img src="platte_thistle_1.jpg"
+alt="© Jerry Oldenettel, Cirsium canescens. AKA(Platt Thistle)., Creative Commons CC BY-NC-SA 2.0 license" />
+<figcaption aria-hidden="true">© Jerry Oldenettel, <a
+href="https://www.flickr.com/photos/jroldenettel/1734332992">Cirsium
+canescens. AKA(Platt Thistle).</a>, <a
+href="https://creativecommons.org/licenses/by-nc-sa/2.0/">Creative
+Commons CC BY-NC-SA 2.0 license</a></figcaption>
+</figure>
+<h4 id="recruitment-with-density-dependence">Recruitment with density
+dependence</h4>
+<p>For a plant that reproduces by seeds, the number of new recruits in a
+given year is proportional to the number of seeds produced the previous
+year. Based on Rose et al. (2005), <span class="math inline">\(Recruits
+= Seeds^{0.67}\)</span> for <em>Cirsium canescens</em>.</p>
+<p>The seed set number of Platte thistle (<em>Cirsium canescens</em>) is
+affected by two different factors:</p>
+<ul>
+<li><p>Plant size.</p></li>
+<li><p>The egg number of inflorescence-feeding weevil <em>R.
+conicus</em>.</p></li>
+</ul>
+<p>Therefore, the seed set function <span
+class="math inline">\(b(z)\)</span> can be defined as a result of two
+submodels: A function of plant size; and a negative binomial
+distribution for the number of <em>R. conicus</em> eggs with mean
+depending on plant size.</p>
+<p><span class="math display">\[ b(z) =
+e^{(-0.55+2.02z)}\times(1+\frac{ε(z)}{16})^{-0.32} \]</span> where <span
+class="math inline">\(z\)</span> is the size measure, <span
+class="math inline">\(ε\)</span> is the mean number of <em>R.
+conicus</em> eggs oviposited on a plant of size <span
+class="math inline">\(z\)</span>.</p>
+<p>All the other demographic rates are density-independent: (Rose et
+al., 2005)</p>
+<ul>
+<li><p>Flowering probability <span
+class="math inline">\(p_b(z)\)</span>: logit <span
+class="math inline">\(p_b = −10.22 + 4.25z\)</span></p></li>
+<li><p>Mean <em>R. conicus</em> eggs per plant: <span
+class="math inline">\(ε(z) = exp(e0 + 1.71z)\)</span></p></li>
+<li><p>Seedling size <span class="math inline">\(c_0(z&#39;)\)</span>:
+<span class="math inline">\(z&#39; ∼ Norm(μ = 0.75, σ^2 =
+0.17)\)</span></p></li>
+<li><p>Survival <span class="math inline">\(s(z)\)</span>: logit <span
+class="math inline">\(s = −0.62 + 0.85z\)</span></p></li>
+<li><p>Growth <span class="math inline">\(G(z&#39;,z)\)</span>: <span
+class="math inline">\(z&#39; ∼ Norm(μ = 0.83 + 0.69z, σ^2 =
+0.19)\)</span></p></li>
+</ul>
+<p><br></p>
+<h4 id="fit-an-ipm-model-with-density-dependent-recruitment">Fit an IPM
+model with density-dependent recruitment</h4>
+<p>Now we can construct an IPM with density-dependent recruitment. The
+survival kernel P is density-independent,</p>
+<p><span class="math display">\[ P(z&#39;,z) = (1-p_b(z))s(z)G(z&#39;,z)
+\]</span></p>
+<p>The total number of seeds is</p>
+<p><span class="math display">\[ S(t) =
+\int_L^U{p_b(z)b(z)n(z,t)}dz\]</span></p>
+<p>and they will produce <span
+class="math inline">\(S(t)^{0.67}\)</span> recruits whose size
+distribution is <span class="math inline">\(c_0(z&#39;)\)</span>.</p>
+<p>Combining the recruits and the survivors, we have</p>
+<p><span class="math display">\[ n(z&#39;,t+1) = c_0(z&#39;)S(t)^{0.67}
++ \int_L^U{P(z&#39;,z)n(z,t)}dz\\
+= c_0(z&#39;)(\int_L^U{p_b(z)b(z)n(z,t)}dz)^{0.67} +
+\int_L^U{(1-p_b(z))s(z)G(z&#39;,z)n(z,t)}dz \]</span></p>
+<h3 id="theories-behind-density-dependent-ipm-models">Theories behind
+density-dependent IPM models</h3>
+<p>From the previous example, we built an IPM with density-dependent
+recruitment. For IPMs, recall that the kernel <span
+class="math inline">\(K\)</span> is consisted of two components:
+survival <span class="math inline">\(P\)</span> and reproduction <span
+class="math inline">\(F\)</span>. We can incorporate density-dependence
+into either one of these two kernels, or both of them.</p>
+<h4 id="ipms-with-density-dependent-reproduction">IPMs with
+density-dependent reproduction</h4>
+<p>For plants such as platte thistle, where competition only affects
+seedling establishment. The survival kernel <span
+class="math inline">\(P\)</span> is density-independent and the
+reproduction kernel <span class="math inline">\(K\)</span> is
+density-dependent. They can be written as</p>
+<p><span class="math display">\[ P(z&#39;,z) = (1-p_b(z))s(z)G(z&#39;,z)
+\]</span></p>
+<p><span class="math display">\[ F(z&#39;,z,N) =
+p_r(N)c_0(z&#39;)p_b(z)b(z) \]</span></p>
+<p>To generalize, this type of density-dependent IPM can be written
+as</p>
+<p><span class="math display">\[ n(z&#39;,t+1) =
+c_0(z&#39;)p_r(N(t))N(t) + \int_L^U{P(z&#39;,z)n(z,t)dz} \]</span></p>
+<p>where <span class="math inline">\(N(t)\)</span> is the total seed
+production</p>
+<p><span class="math display">\[ N(t) = \int_L^U{p_b(z)b(z)n(z,t)}dz
+\]</span></p>
+<p>and <span class="math inline">\(p_r\)</span> is the density-dependent
+recruitment probability, generally a decreasing function of population
+density <span class="math inline">\(N\)</span>.</p>
+<h4 id="ipms-with-density-dependent-survival">IPMs with
+density-dependent survival</h4>
+<p>IPMs with density-dependent survival kernel are far less common, but
+can be constructed the same way. Recall that the survival kernel <span
+class="math inline">\(P(z&#39;,z)\)</span> can be further separated into
+survival probability <span class="math inline">\(s(z)\)</span> and size
+transition <span class="math inline">\(G(z&#39;,z)\)</span>.
+Biologically speaking, individual survival is more likely to be affected
+by population density, so we incorporate density-dependence in the
+survival probability component.</p>
+<p><span class="math display">\[ P(z&#39;,z, N) = s(z,N)G(z&#39;,z)
+\]</span></p>
+<p>where <span class="math inline">\(s(z,N)\)</span> can be written as a
+function of size and population density</p>
+<p><span class="math display">\[ logit (s(z,N)) = \alpha_s +
+\alpha_{s,z} + \beta_s^z*z + \beta_s^N*N \]</span></p>
+<h3 id="possible-literature-discussion">Possible literature
+discussion</h3>
+<p>An integral projection model for gizzard shad (Dorosoma cepedianum)
+utilizing density-dependent age-0 survival</p>
+<p>Introduce an integral projection model for gizzard shad based on
+empirical data with density-dependent survival in age-0 fish. Then
+compare model outcomes to the dynamics reported for this fish species in
+a well-studied navigational pool of the Illinois River.</p>
+<p>Survival:</p>
+<p><span class="math display">\[ s(z) = s_{min} +
+\frac{s_{max}-s_{min}}{1+e^{\beta_s(In(z)-In(a_s))}} \]</span></p>
+<p>Transition/Growth:</p>
+<p>A two-variable normal distribution centered around a modified von
+Bertalanffy function of the length at time <span
+class="math inline">\(t\)</span>,</p>
+<p><span class="math display">\[ G(z&#39;z) = Prob(z&#39;|z,L_\inf, K_g)
+\]</span></p>
+<p>Fecundity:</p>
+<p><span class="math display">\[ F(z&#39;,z) =
+p*egg(z)vs_0(d(t))C_1(z&#39;) \]</span> where <span
+class="math inline">\(p\)</span> is the probability of female
+reproduction, <span class="math inline">\(egg(z)\)</span> is the mean
+number of eggs produced by a fish of length <span
+class="math inline">\(z\)</span>, <span class="math inline">\(v\)</span>
+is the probability that an egg is viable, <span
+class="math inline">\(s_0(d(t))\)</span> is the
+<strong>density-dependent</strong> probability of surviving to age-1,
+and <span class="math inline">\(C_1(z&#39;)\)</span> is the length
+distribution of new recruits at age-1.</p>
+<p>The probability of age-0 surviving <span
+class="math inline">\(s_0(d(t))\)</span> can be defined as an
+exponential function</p>
+<p><span class="math display">\[ s_0(d(t)) = a_0e^{-b_0d(t)}\]</span>
+and <span class="math inline">\(d(t)\)</span> is the density at time
+<span class="math inline">\(t\)</span> of age-0 gizzard shad per 1000
+m3</p>
+<p>Need a graph here showing the density-dependent age-0 survival
+relationship.</p>
+<ol start="2" type="1">
+<li>Density dependent environments can select for extremes of body
+size</li>
+</ol>
+<p>incorporate density-dependence in all kernels</p>
+<h3 id="references-6">References</h3>
+<h3 id="environmental-stochasticity-in-ipms">Environmental stochasticity
+in IPMs</h3>
+<p>Vital rate functions can readily accommodate covariates, such as
+environmental conditions, that help to predict individuals’ vital rates
+above and beyond the state variable. For example, plant growth may be
+determined both by its previous size, and the nutrient conditions in its
+habitat.</p>
+<figure>
+<img src="plants-12-01367-g001.png"
+alt="L. gibba plants grown under high and low total nitrogen and total phosphorus concentrations in nutrient solution (Varga et al. 2023) Open access MDPI" />
+<figcaption aria-hidden="true"><em>L. gibba</em> plants grown under high
+and low total nitrogen and total phosphorus concentrations in nutrient
+solution (Varga et al. 2023) Open access MDPI</figcaption>
+</figure>
+<p>In the case, the growth kernal G is then a function fof the state
+variable of size and nutrients as: <span
+class="math inline">\(G(z&#39;|z, nutrients)\)</span>. Or, if these
+nutrients vary through time we could then state that time dependence as
+<span class="math inline">\(G(z&#39;|z, nutrients_t)\)</span></p>
+<h3
+id="example-temperature-dependent-growth-of-gilthead-seabream">Example:
+Temperature dependent growth of gilthead seabream</h3>
+<p>Heather et al. (2018) used this approach to explore how temperatures
+in the Mediterranean might affect growth rates of gilthead seabream, an
+important aquaculture species</p>
+<figure>
+<img src="Sparus_aurata_Sardegna.jpg"
+alt="Roberto Pillon, CC BY 3.0 https://creativecommons.org/licenses/by/3.0, via Wikimedia Commons" />
+<figcaption aria-hidden="true">Roberto Pillon, CC BY 3.0 <a
+href="https://creativecommons.org/licenses/by/3.0"
+class="uri">https://creativecommons.org/licenses/by/3.0</a>, via
+Wikimedia Commons</figcaption>
+</figure>
+<p>The authors obtained 11 years of growth increments by examining the
+otoliths of wild juvenile and adult fish caught between 2008–2011, and
+water temperature from several locations in the Mediterranean.</p>
+<figure>
+<img src="otoliths.jpg" style="width:50.0%"
+alt="Arne Hendriks, Attribution (CC BY 2.0)(https://creativecommons.org/licenses/by/2.0/)" />
+<figcaption aria-hidden="true">Arne Hendriks, Attribution (CC BY
+2.0)(https://creativecommons.org/licenses/by/2.0/)</figcaption>
+</figure>
+<p>Then they fitted a series of mixed effects models to account for
+intrinsic (e.g. random individual effects) and extrinsic (e.g. water
+temperature, random year effects) effects on the rate of otolith growth.
+The best model (selected by AIC) included random effects of fish and
+year, and fixed effects of otolith size at previous year and mean
+Mediterranean summer temperature.</p>
+<p>They subsequently used otolith annual increment width as a proxy for
+individual-level growth within specified years, which was then coupled
+with an allometry model to estimate fish body growth, to project the
+impacts on growth under climate warming. The authors found about an ~8%
+reduction in individual growth with a 1°C increase in mean summer water
+temperature (Heather et al. 2018).</p>
+<h3 id="general-stochastic-ipm">General stochastic IPM</h3>
+<p>Of course, any of the kernels, or even multiple components of the
+same kernel, could be dependent on environmental covariates that
+fluctuate through time. More generally, we can note that the kernel is
+dependent on time varying parameters in the vector, <span
+class="math inline">\(\theta\)</span>, as:</p>
+<p><span class="math display">\[n(z&#39;, t+1)=\int^U_L
+K(z&#39;,z;\theta(t))n(z,t)dz\]</span></p>
+<h3 id="two-methods-for-ipm-stochasticity">Two methods for IPM
+stochasticity</h3>
+<p>There are two basic approaches to building an IPM with environmental
+stochasticity: 1. Kernel selection, or 2. Parameter selection</p>
+<p>These methods are analogous to those used for matrix population
+models, where one either chooses from a set of transition matrices at
+random, or one chooses life history parameters from some relevant
+distribution. However, for IPMs parameter selection must be followed by
+constructing the relevant kernel.</p>
+<h3 id="kernel-selection">Kernel Selection</h3>
+<p>If we are starting from data: for each year in the study, a fitted
+fixed-effects model gives us a vector of year-specific values for each
+parameter, and a fitted mixed-effects model gives us a vector of fitted
+values or posterior modes for each parameter. In either case, we
+construct a set of kernels using each of the year-specific sets of
+parameters, and then simulate the model by selecting from the set of
+kernels at random.</p>
+<p><strong>Kernel selection process</strong></p>
+<ol type="1">
+<li>Construct set of yearly kernels → 2) Select a kernel at random → 3)
+Project the population forward one time step, and then repeat from
+2).</li>
+</ol>
+<h3 id="parameter-selection">Parameter Selection</h3>
+<p>If you have characterized the between-year variation in the
+parameters using mixed-effects models, then you can sample from the
+fitted distributions and build a unique kernel for each year that you
+simulate.</p>
+<p><strong>Parameter selection process</strong> 1) Simulate a parameter
+vector from fitted distributions → 2) Construct kernel → 3) Project the
+population forward one time step, then repeat from 1).</p>
+<h3 id="advantages-and-disadvantages">Advantages and disadvantages</h3>
+<p><strong>Kernel selection:</strong> An IPM using kernel selection runs
+much faster than one using parameter selection, as all the kernels can
+be constructed before iterating the model. Parameter estimation is
+easier for kernel selection as you don’t have to worry about
+correlations between different demographic processes. These correlations
+are already “built in” to the year-specific parameter estimates.</p>
+<p><strong>Parameter selection:</strong> Parameter selection is a little
+slower, since for every year simulated we need to both randomly select
+the kernel parameters, and then construct the kernel. It is unusual to
+have sufficiently long datasets to characterize some times of important
+environmental stochasticity, or we may wish to estimate the impacts of
+future climate conditions, and parameter selection is important in these
+cases. If we have functions that describe how parameters vary with
+environmental variation we can take advantage of long term climate
+datasets or climate projections</p>
+<h3 id="examples">Examples</h3>
+<p>Models in which demographic rates are functions of environmental
+covariates are an important example of parameter selection. for example,
+Dalgleish et al. (2011) modeled effects of precipitation and temperature
+on all vital rates of three sage-brush steppe plants, including effects
+of climate in previous years. Simmonds and Coulson (2015) linked vital
+rates of Soay sheep on St. Kilda to the NAO (North Atlantic Oscillation)
+index, based on previous studies of NAO effects.</p>
+<h3 id="analysis-of-stochastic-ipms">Analysis of stochastic IPMS</h3>
+<p>Much of the same analysis that we completed for stochastic matrix
+models can be completed for stochastic IPMS We can: 1. estimate the long
+run stochastic growth rate 2. determine how variance or covariance in
+various model components impacts the growth rate 3. calculate
+stochasticity sensitivity</p>
+<h3 id="long-run-stochastic-growth-rate-lambda_s">Long run stochastic
+growth rate, <span class="math inline">\(\lambda_S\)</span></h3>
+<p>There are four main things to know about <span
+class="math inline">\(\lambda_S\)</span>:</p>
+<ol type="1">
+<li><p>it exists,</p></li>
+<li><p>it can be computed by simulation,</p></li>
+<li><p>it can be approximated, and</p></li>
+<li><p>there is a perturbation theory</p></li>
+</ol>
+<p>Overall, just about any analysis you could do for a
+density-independent deterministic IPM or matrix model can also be done
+for a density-independent stochastic IPM.</p>
+<h3 id="lambda_s-does-exist"><span
+class="math inline">\(\lambda_S\)</span> does exist</h3>
+<p><span class="math inline">\(\lambda_S\)</span> is the long-term
+growth rate of total population size N(t), exactly as in stochastic
+matrix models:</p>
+<p><span class="math display">\[\lim\limits_{t \to \infty}
+\frac{1}{t}log(\frac{N(t+1)}{N(t)})=log \lambda_S\]</span></p>
+<p>which exists, if the following assumptions hold: 1. the parameter
+vectors <span class="math inline">\(\theta(t)\)</span> in equation must
+be stationary, ergodic random variables (e.g. finite-order
+autoregressive processes) 2. the kernel <span
+class="math inline">\(K(z&#39;,z,\theta)\)</span> is a positive,
+continuous function of its three arguments (piecewise functions are also
+okay) 3. the distributions of all model parameters are bounded. (e.g.,
+we may need to truncate Gaussian distributions at 99.99%
+percentiles)</p>
+<h3 id="we-can-compute-lambda_s">We can compute <span
+class="math inline">\(\lambda_S\)</span></h3>
+<p><span class="math inline">\(\lambda_S\)</span> is equal to the
+average annual growth rate,</p>
+<p><span class="math inline">\(log(\lambda_S)
+=E[log(\frac{N(t+1)}{N(t)})]\)</span> where N(t) is total population
+size at time t.</p>
+<h3
+id="we-can-approximate-lambda_s-using-tuljapurkars-small-fluctuations-approximation">We
+can approximate <span class="math inline">\(\lambda_S\)</span> using
+Tuljapurkar’s small fluctuations approximation</h3>
+<p>The long run stochastic growth rate can be approximated using the IPM
+version of Tuljapurkar’s small fluctuations approximation, which is
+analogous to the approximation for matrix models: <span
+class="math display">\[log \lambda_S \approx log \lambda_1 -
+\frac{Var⟨v,K_tw⟩}{2\lambda^2_1}+\sum^\infty_{j=1} c_j,\]</span> where
+the first term, <span class="math inline">\(\lambda_1\)</span>, is the
+dominant eigenvalue of the mean kernel <span
+class="math inline">\(\overline{K}\)</span>, in the second term, <span
+class="math inline">\(K_t\)</span> is equal to <span
+class="math inline">\(K(z&#39;,z;\theta(t))\)</span>, <span
+class="math inline">\(v\)</span> and <span
+class="math inline">\(w\)</span> are the left and right eigenvectors of
+<span class="math inline">\(\overline{K}\)</span> scaled so that <span
+class="math inline">\(\langle v,w\rangle = 1\)</span>, and <span
+class="math inline">\(K_tw =\int_{Z} K_t(z&#39;,z)w(z)dz\)</span>.</p>
+<p>The small fluctuation approximation is not only useful on its own, it
+provides some insight into the impact of environmental stochasticity.
+Most obviously, it demonstrates the importance of covariance amoung the
+life history components.</p>
+<h3 id="covariance-in-life-history-components">Covariance in life
+history components</h3>
+<p>Some recent studies have shown, for stochastic matrix models, that
+both the between-year and within-year correlations among matrix entries
+can have a significant impact on model predictions—it is not enough to
+correctly specify the marginal distribution of each matrix entry. The
+same issue occurs for stochastic IPM models</p>
+<p>The second term in our approximation <span
+class="math inline">\(-\frac{Var\langle v, K_t w
+\rangle}{2\lambda^2_1}\)</span> indicates that variance in the life
+history parameters is always going to decrease our growth rates.</p>
+<p>We can write this term as:</p>
+<p><span class="math display">\[-\frac{1}{2\lambda^2_1}\int\int\int\int
+\boldsymbol{s}(z&#39;_2, z_2)\boldsymbol{s}(z&#39;_1,
+z_1)Cov(K_t(z&#39;_2, z_2)K_t(z&#39;_1,
+z_1))dz_1dz_2dz&#39;_1dz&#39;_2,\]</span></p>
+<p>So that, analogous to our work in stochastic matrix models, we can
+see that the impact of stochasticity in an IPM will be determined both
+by covariance in the model elements and the sensitivity, <span
+class="math inline">\(\boldsymbol{s}\)</span> of the mean kernel, to
+these variance elements, where we need to integrate over all Z.</p>
+<h3 id="correlation-in-environmental-fluctuations">Correlation in
+environmental fluctuations</h3>
+<p>The third term of our approximation <span
+class="math inline">\(c_j\)</span> is the effect of environmental
+correlations at time-lag j (i.e., between <span
+class="math inline">\(\theta(t)\)</span> and <span
+class="math inline">\(\theta(t - j)\)</span>). The formula for this term
+is <span class="math display">\[c_j =E\langle v,M_jD^{l-1}M_0w
+\rangle\]</span> where <span class="math inline">\(M_t = (K_t
+-\overline{K})/\lambda_1\)</span> and <span class="math inline">\(D^m =
+(\overline{K}/\lambda_1)^m -P_0\)</span> where <span
+class="math inline">\(P_0(z&#39;,z) = v(z&#39;)w(z)\)</span> for <span
+class="math inline">\(v,w\)</span> scaled so that <span
+class="math inline">\(\langle v,w \rangle = 1\)</span> (see Rees and
+Ellner (2009, Appendix C), which is a translation from Tuljapurkar
+(1990) and Tuljapurkar and Haridas (2006) into IPM notation.</p>
+<h4 id="stochastic-sensitivitivty">Stochastic sensitivitivty</h4>
+<p>To calculate time-varying sensitivity we can use: <span
+class="math display">\[\frac{\partial log \lambda_S}{\partial \epsilon}
+= \frac{1}{\lambda_S}\frac{\partial log \lambda_S}{{\partial \epsilon}
+}=E\left[\frac{\langle v_{t+1}, C_tw_t\rangle}{{\langle v_{t+1}, K_tw_t
+\rangle}}\right]\]</span>, which is an IPM version of the matrix formula
+from Tuljapurkar (1990). The formula describes a general perturbation of
+<span class="math inline">\(K_t\)</span> to <span
+class="math inline">\(K_t + \epsilon C_t\)</span> where <span
+class="math inline">\(C_t = C(z&#39;, z; \theta_t)\)</span> is a
+sequence of kernels such that the perturbed IPM satisfies the small
+perturbation requirements.</p>
+<p>The terms <span class="math inline">\(v_t\)</span>, and <span
+class="math inline">\(w_t\)</span> are calculated from <span
+class="math inline">\(t=0\)</span> to large time as: <span
+class="math display">\[\tilde{w}_{t+1}=K_tw_t, w_{t+1}=\tilde{w}_{t+1}/
+\int_Z \tilde{w}_{t+1}(z)dz\]</span> <span
+class="math display">\[\tilde{v}_{t-1}=v_tK_t = \int_Z
+v_{z&#39;}K_{t-1}(z&#39;,z)dz&#39;,\]</span> <span
+class="math display">\[v_{t-1}=\tilde{v}_{t-1}/ \int_Z
+\tilde{v}_{z}(z)dz\]</span>.</p>
+<p>However, we note that for IPMs every possible perturbation to a
+deterministic model is now tripled. We can examine: 1. a change in mean
+2. a change in the standard deviation, or 3. do a fractional
+perturbation (e.g., a 5% higher value each year) that changes both the
+mean and the standard deviation (Tuljapurkar et al. 2003, 2004).</p>
+<p>Therefore our stochasticity sensitivity equations can be used to
+generate a giant list of perturbation formulas for changes to kernel
+entries, demographic functions, and parameter values (see Table 7.2 in
+Ellne, Rees and Ellner (2009; Appendices E and F))</p>
+<p>We also note that the equation for sensitivity isn’t informative when
+the right-hand side is 0, which will be true whenever the fluctuations
+<span class="math inline">\(C_t\)</span> have zero mean and are
+independent of the unperturbed kernel. In this case, we need to carry
+the expansion out to second order in <span
+class="math inline">\(\epsilon\)</span> for these cases.</p>
+<h3 id="references-7">References</h3>
+<p>Dalgleish, H. J., Koons, D. N., Hooten, M. B., Moffet, C. A., &amp;
+Adler, P. B. (2011). Climate influences the demography of three dominant
+sagebrush steppe plants. <em>Ecology</em>, <em>92</em>(1), 75-85.</p>
+<p>Ellner, S. P., &amp; Rees, M. (2007). Stochastic stable population
+growth in integral projection models: theory and application.
+<em>Journal of mathematical biology</em>, <em>54</em>(2), 227-256.
+https://link.springer.com/content/pdf/10.1007/s00285-006-0044-8.pdf</p>
+<p>Heather, F. J., Childs, D. Z., Darnaude, A. M., &amp; Blanchard, J.
+L. (2018). Using an integral projection model to assess the effect of
+temperature on the growth of gilthead seabream Sparus aurata. PloS one,
+13(5), e0196092.</p>
+<p>Levin, S. C., Childs, D. Z., Compagnoni, A., Evers, S., Knight, T.
+M., &amp; Salguero‐Gómez, R. (2021). ipmr: Flexible implementation of
+Integral Projection Models in R. <em>Methods in Ecology and
+Evolution</em>, <em>12</em>(10), 1826-1834.</p>
+<p>Lindell, T., Ehrlén, J., &amp; Dahlgren, J. P. (2022). Weather‐driven
+demography and population dynamics of an endemic perennial plant during
+a 34‐year period. <em>Journal of Ecology</em>, <em>110</em>(3),
+582-592.</p>
+<p>Rees, M., &amp; Ellner, S. P. (2009). Integral projection models for
+populations in temporally varying environments. <em>Ecological
+Monographs</em>, <em>79</em>(4), 575-594.</p>
+<p>Simmonds, E. G., &amp; Coulson, T. (2015). Analysis of phenotypic
+change in relation to climatic drivers in a population of Soay sheep
+Ovis aries. <em>Oikos</em>, <em>124</em>(5), 543-552.</p>
+<p>Varga, M., Žuna Pfeiffer, T., Begović, L., Mlinarić, S., Horvatić,
+J., Miloloža, T., &amp; Štolfa Čamagajevac, I. (2023). Physiological
+response of nutrient-stressed <em>Lemna gibba</em> to pulse colloidal
+silver treatment. <em>Plants</em>, <em>12</em>(6), 1367.</p>
             </div>
     </div>
   </div>

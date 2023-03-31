@@ -1,5 +1,5 @@
 ---
-title: "BIOL 652 Structured Population Models"
+title: "DRAFT: BIOL 652 Structured Population Models"
 author: "Debora, Eddie, Zitao and Kim"
 date: "2023-02-03"
 output:
@@ -15,7 +15,7 @@ output:
 
 
 
-# **Module 1: Unstructured Population Models**
+# Unstructured Population Models
 
 ## Introduction
 

@@ -1,17 +1,3 @@
----
-title: "Numerical Implementation"
-author: "Debora"
-date: "2023-03-15"
-output:
-  html_document:
-    toc: true
-    toc_depth: 4
-    number_sections: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: false
-    keep_md: yes
----
 
 
 

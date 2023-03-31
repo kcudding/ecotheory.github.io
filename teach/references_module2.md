@@ -1,5 +1,7 @@
 ## References
 
+Bialic-Murphy, L., Knight, T. M., Kawelo, K., & Gaoue, O. G. (2022). The Disconnect Between Short-and Long-Term Population Projections for Plant Reintroductions. _Frontiers in Conservation Science_, _2_, 124.
+
 Biek, Roman, W. Chris Funk, Bryce A. Maxell, and L. Scott Mills. 2002. “What Is Missing in Amphibian Decline Research: Insights from Ecological Sensitivity Analysis.” _Conservation Biology, 16_ (3): 728–34.
 
 Case, Ted J. 2000. _An Illustrated Guide to Theoretical Ecology_. New York: Oxford University Press.
@@ -22,6 +24,8 @@ Gaona, P., Ferreras, P., and Delibes, M. (1998). Dynamics and viability of a met
 
 Gonzalez de Leon, S., Herrera, I., & Guevara, R. (2016). Mating system, population growth, and management scenario for *Kalanchoe pinnata* in an invaded seasonally dry tropical forest. *Ecology and evolution, 6*(13), 4541-4550.
 
+Kaye, T. N., & Pyke, D. A. (2003). The effect of stochastic technique on estimates of population viability from transition matrix models. _Ecology_, _84_(6), 1464-1476.
+
 Lefkovitch, L. P. 1965. “The Study of Population Growth in Organisms Grouped by Stages.” _Biometrics, 21_ (1): 1–18.
 
 Leslie, P. H. 1945. “On the Use of Matrices in Certain Population Mathematics.” _Biometrika, 33_ (3): 183–212.
@@ -35,6 +39,10 @@ McDougall, C.A., Nelson, P.A. and Barth, C.C. (2018). Extrinsic factors influenc
 Mills, L. Scott. 2013. _Conservation of Wildlife Populations : Demography, Genetics, and Management_. 2nd ed. Chichester, West Sussex ; Wiley-Blackwell.
 
 Morris, W.F. and Doak, D.F. (2002). _Quantitative Conservation Biology_. Sinauer, Sunderland, MA.
+
+Tuljapurkar, S. D. (1982). Population dynamics in variable environments. II. Correlated environments, sensitivity analysis and dynamics. _Theoretical Population Biology_, _21_(1), 114-140.
+
+Tuljapurkar, S., & Haridas, C. V. (2006). Temporal autocorrelation and stochastic population growth. _Ecology Letters_, _9_(3), 327-337.
 
 Vimercati, Giovanni. 2017. “Exploring the Invasion of the Guttural Toad Sclerophrys Gutturalis in Cape Town Through a Multidisciplinary Approach.” {PhD} {Thesis}, Stellenbosch: Stellenbosch University.
 
