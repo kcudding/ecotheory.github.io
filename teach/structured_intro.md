@@ -8,7 +8,7 @@ So far, we have limited our prediction of wild populations by assuming that all 
 
 In the same population, individuals can have markedly different dynamics depending on their age. This is called **age structure**. For example, Coulson et al. (2001) found that individual susceptibility to changing environmental conditions differs between Soay sheep of different ages. Young and old individuals are more severely affected by adverse weather conditions than adults of prime reproductive age.
 
-![© Eileen Henderson, [A pair of Soay sheep on Hirta](https://www.geograph.org.uk/photo/493775), [Creative Commons CC BY-SA 2.0 License](https://creativecommons.org/licenses/by-sa/2.0/)](soay.jpg)\
+![© Eileen Henderson, [A pair of Soay sheep on Hirta](https://www.geograph.org.uk/photo/493775), [Creative Commons CC BY-SA 2.0 License](https://creativecommons.org/licenses/by-sa/2.0/)](soay.jpg)
 
 While for many species (especially for amphibians, fish, and insects), differences in vital rates in wild populations often depend on developmental or morphological stages, rather than ages. This is referred to as **stage structure**. For example, common frogs can be divided into three stages according to their developmental status: Pre-juvenile, juvenile, and adults. The vital rates within each stage are relatively constant. (Biek et al., 2002)
 
@@ -232,6 +232,7 @@ $$
 \end{bmatrix}
 $$
 This result can also be demonstrated by plotting the log number of individuals in each stage class versus time:
+
 ![Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](SSDplot-1.jpeg)
 
 At SSD, the population growth rate $\lambda$ also stays constant. See the calculations below for $\lambda$ at year 14 and 15:
