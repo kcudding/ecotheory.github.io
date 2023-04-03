@@ -11,7 +11,7 @@ output:
 title: 'What are models for and <br>can we use them more effectively?'
 
 author: "Kim Cuddington (https://ecotheory.ca) <br/>University of Waterloo"
-date: "16/05/2022"
+date: "03/04/2023"
 output: 
   ioslides_presentation: 
     keep_md: yes
@@ -167,7 +167,7 @@ Lewis Carroll - The Complete Illustrated Works. Gramercy Books, New York (1982)<
 ## Complex models are not necessarily better: <br/>Math and computation
 - "if we put more details in, it will be a better reflection of reality" 
 - this syllogism commits fallacy of undistributed middle
-- think about the map example: complexity is not necessarily helpful for explanation
+- think about the map example: complexity is not necessarily helpful for explanation (e.g., sensitivity analysis)
 - complexity is also a bugbear for exploring model assumptions <br/><br/>(e.g., Valle et al. (2009) found that alternate modeling assumptions in the forest stand simulation model SYMFOR can account for 66–97% of the variance in predicted stand dynamics but note that least they COULD do this analysis because the model was not that complex).
 
 ## Complex models are not necessarily better: Data
@@ -190,9 +190,10 @@ Lewis Carroll - The Complete Illustrated Works. Gramercy Books, New York (1982)<
 
 ## Overfitting
 - but it fits right?? 
-- no not really: overfitting occurs when the data-driven model tries to cover all the data points  in the dataset
-- as a result, the model starts caching noise and inaccuracies present in the dataset
-- when your model fits your data perfectly, it is unlikely to fit new data well
+- no not really: when your model fits your data perfectly, it is unlikely to fit new data well
+- overfitting occurs when the data-driven model tries to cover all the data points in the dataset
+- as a result, the model starts catching noise and inaccuracies in the dataset
+
 
 <img src="overfit.jpg" width="80%" style="display: block; margin: auto;" />
 <font size="2"><div align="center">[Lever et al. (2016)](https://www.nature.com/articles/nmeth.3968)</div></font>
@@ -280,7 +281,7 @@ while we attempt to make do without it, both of these functions require mechanis
 
 ## Strong claim: Mechanistic models are required for prediction to novel conditions
 
-- because these models are based on causal mechanisms rather than correlation, our confidence in extrapolating beyond known data is enhanced 
+- because these models are based on causal mechanisms rather than correlation, our confidence in extrapolating beyond known data is enhanced (i.e., we can EXPLAIN how that might work)
 - that said, there is always uncertainty about how an ecological process will interact with novel conditions
 
 
@@ -293,17 +294,23 @@ while we attempt to make do without it, both of these functions require mechanis
 
 ## The problem of induction and data-driven models
 
-- truth does not flow from the specific to the universal <font size="4">
-     - "All swans are white in Austria in 1680" <br/>
-does not logically entail
-     - "All swans are white"
+- truth does not flow from the specific to the universal <font size="4"><br/>
+      "All swans are white in Austria in 1680" </font> <br/><br/>
 
-- nor does 
-    - "All swans are white in Western Europe in 1300", 
-    - "All swans are white in western Europe in 1301", 
-    - ....." <br/>
-entail 
-    - "All swans are white"
+does not logically entail
+<font size="4"><br/>
+      "All swans are white"<br/>
+</font> 
+
+## The problem of induction and data-driven models 
+
+    
+- nor does <font size="4"> <br/><br/>
+    "All swans are white in Western Europe in 1300", <br/>
+    "All swans are white in western Europe in 1301", <br/>
+     ....." <br/></font>
+entail <br/><font size="4">
+    "All swans are white"
 </font>    
 - no matter how many specific statements we observe, we are never justified in reasoning to a universal statement (Hume 1739)
 - discovery of actual black swans in 1697 
@@ -330,8 +337,8 @@ entail
 
 
 ```{=html}
-<div id="htmlwidget-4bfa58f32e1da99b6907" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4bfa58f32e1da99b6907">{"x":{"diagram":"\ngraph TD\n  A(observe pattern)\n  B(theorize)\n  Q(generate models)\n  C(models predictions)\n  D(machine learning)\n  E(test model 1)\n  G(test model 2)\n  H(test model 3)\n  F(modify/reject theory/model)\n  I(accept theory)\n  J(GAM)\n  K(GLMM)\n  A-->B\n  D-->A\n  B-->Q\n  Q-->C\n  D-->E\n  C-->E\n  C-->G\n  C-->H\n  J-->G\n  K-->H\n  E-->|Reject| F\n  G-->|Reject|F\n  H-->|accept|I\n  F-->B\n style D fill:#FADADD\n style B fill:#B6E6E6;\n style C fill:#B6E6E6;\n style F fill:#B6E6E6;\n style I fill:#B6E6E6;\n style J fill:#FADADD\n style K fill:#FADADD\n class 0 style_main_node;\n    class A1,B1,C1 style_sub_node;\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c8b0cbe219345aa098ae" style="width:100%;height:70%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c8b0cbe219345aa098ae">{"x":{"diagram":"\ngraph TD\n  A(observe pattern)\n  B(theorize)\n  Q(generate models)\n  C(models predictions)\n  D(machine learning)\n  E(test model 1)\n  G(test model 2)\n  H(test model 3)\n  F(modify/reject theory/model)\n  I(accept theory)\n  J(GAM)\n  K(GLMM)\n  A-->B\n  D-->A\n  B-->Q\n  Q-->C\n  D-->E\n  C-->E\n  C-->G\n  C-->H\n  J-->G\n  K-->H\n  E-->|Reject| F\n  G-->|Reject|F\n  H-->|accept|I\n  F-->B\n style D fill:#FADADD\n style B fill:#B6E6E6;\n style C fill:#B6E6E6;\n style F fill:#B6E6E6;\n style I fill:#B6E6E6;\n style J fill:#FADADD\n style K fill:#FADADD\n class 0 style_main_node;\n    class A1,B1,C1 style_sub_node;\n"},"evals":[],"jsHooks":[]}</script>
 ```
 ## Math is not magic (sadly): Mathematical models are not necessarily mechanistic
 
@@ -342,11 +349,14 @@ entail
 ## Making a mathematical models mechanistic
 
 - we can leave g(N,P) to be a mere description of pattern, 
-- or we can examine natural data closely, devise experiments, or reason logically to develop ideas about mechanism that inform the function
+- or we can:
+    - examine natural data closely, 
+    - devise experiments, 
+    - or reason logically 
+    
+to develop ideas about mechanism that inform the function
 <br/><br/><br/>
 
-<font size="5"><p class="comment">"the characteristics of any specific example of a complex process can be determined by the action and interaction of a number of discrete components"<br/>
-(Holling 1959a,b, 1966)</p></font>
 
 ## Remember mechanistic models have specific domains of application 
 
@@ -436,7 +446,7 @@ $$
 
 # case study: regime shifts in the Bay of Quinte
 
-## Bay of Quinte
+## Bay of Quinte, Lake Ontario
 - history of being increasingly eutrophic
 - phosphorus controls implemented 1978
 - invaded by zebra mussels in 1994
@@ -484,24 +494,30 @@ $$
 </div>
 
 ## Alternative explanations for change in Bay of Quinte
-- all of which arise from the SAME mechanistic model
+- all of which arise from the **SAME** mechanistic model
 
   1. a regime shift to a 2nd stable state caused by the disturbance of the zebra mussel invasions
   2. a long transient following the erosion of the stability of the eutrophic state because of a lingering ghost attractor
   3. there was just a slow change in phosphorus (i.e. the system does not have bistable dynamics for the relevant parameter values)
 
 ## Examine alternatives using data-driven models:  
+
+- use time-series of potential drivers (total phosphorus (TP), and mussels), and responses (water clarity, chla)
 - Linear breakpoint analysis <font size="4">$E(y_i)=β_0+break_i+x_i$</font>
 - Nonlinear analysis: Use generalized additive model (GAM: <font size="4">$E(y_i)=β_0+f(x_i)$</font>), and examine the first derivative of fitted smooth to find periods of rapid change
 
+## Expected dynamics: regime shift
+
 <div style="float: left; width: 30%;">
-<font size="3">Simulated data from Scheffer model (2001) where the high turbidity state, which is the initial condition, is no longer stable. Where the derivative significantly deviates from zero, we have a period of rapid change. </font></div>
+<font size="3">Simulated data from Scheffer model (2001) where the high turbidity state, which is the initial condition, is no longer stable. </font></div>
 
 <div style="float: right; width: 70%;">
 <img src="schaefferexap.jpeg" width="100%" style="display: block; margin: auto;" />
-<font size="2"><div align="center">[Currie & Cuddington, in prep]()</div></font>`
-</div>
+<font size="2"><div align="center">[Currie & Cuddington, in prep]()</font>`
 
+
+Where the derivative of the year smooth from our GAM significantly deviates from zero, we have a period of rapid change. 
+</div>
 
 ## 1. examine the dynamics of a mechanistic driver<br/> (phosphorus)
 
@@ -532,6 +548,10 @@ $$
 <font size="2"><div align="center">[Currie & Cuddington, in prep]()</div></font>`
 </div>
 
+
+
+
+
 ## 3. examine the dynamics of the response <br/>(water clarity) {#margins}
 <div style="float: left; width: 40%;">
 - linear breakpoint model <font size="3">$E(light_{i,s}) = \beta_s+break period_{i,s} + year_{i,s} + TP_i$</font>
@@ -556,6 +576,15 @@ $$
 <img src="lightgamApr11.jpeg" width="70%" style="display: block; margin: auto;" /><img src="gamresidlightApr05.jpeg" width="70%" style="display: block; margin: auto;" />
 <font size="2"><div align="center">[Currie & Cuddington, in prep]()</div></font>`
 
+## 4. examine the effect of a driver on the response <br/>(water clarity) {#margins}
+
+- global smooth for TP</font>
+- explains most of the variation
+
+
+
+<img src="4paneltp.jpeg" width="70%" style="display: block; margin: auto;" />
+<font size="2"><div align="center">[Currie & Cuddington, in prep]()</div></font>`
 
 
 ## Conclusion: Probably just slow change and a small disturbance
