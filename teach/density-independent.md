@@ -13,19 +13,17 @@ output:
     keep_md: yes
 ---
 
+# Learning outcomes
 
+* Develop practical skills to independently run a model using your own data based on relevant theory and codes
+* Assess the results of population models to analyze a problem of your interest
+* Distinguish and compare several models and select the most appropriate model according to the life history of organisms and available data 
 
 # Unstructured Population Models
 
 ## Introduction
 
 This module covers the most simple models to predict the dynamics of populations, such as **exponential models**. Next, **stochasticity**, or random effects, is approached as affecting population dynamics. Then, **density-dependency** is introduced as a phenomena that takes place when the amount of individuals present in a given population interferes with the growth rate of that population. Lastly, you will learn techniques to compare models to data and perform **model assessment**.   
-
-## Learning outcomes
-
-* Develop practical skills to independently run a model using your own data based on relevant theory and codes
-* Assess the results of population models to analyze a problem of your interest
-* Distinguish and compare several models and select the most appropriate model according to the life history of organisms and available data 
 
 ### What is a population model?
 
@@ -433,25 +431,34 @@ This illustration demonstrates the utility of the exponential growth model for s
 ### Further Reading
 
 #### Theoretical work
-To read about the theory behind simple models, refer to:
+To read about the theory behind simple models, refer to:  
 * Mills, L.S. (2012). *Conservation of wildlife populations*: Demography, genetics, and management. Wiley- Blackwell.
 
-To practice the application of simple models, here are good guides:
+#### Population modelling codes
+To further practice the application of simple models, here are good guides:  
 * Dyer, R. (2009). Biological data analysis using R (Doctoral dissertation, Ph. D thesis. Department of Biology, Center for the Study of Biological Complexity, Virginia Commonwealth Univ).
 
 * Stevens, M.H. (2009). *A primer of ecology with R*. Springer.
 
 #### New applications
 * Thomas, L., Russell, D. J., Duck, C. D., Morris, C. D., Lonergan, M., Empacher, F., ... & Harwood, J. (2019). Modelling the population size and dynamics of the British grey seal. *Aquatic Conservation: Marine and Freshwater Ecosystems, 29*, 6-23.
-* 
+
 ### R Resources
+#### Packages
 * deSolve: contains solvers (function “ode”) for integrals: eg., integral of the exponential growth equation and ordinary differential equations (ODE): eg., logistic growth
 
 * clogistic: logistic growth equation
 
 * AICcmodavg: model evaluation using Akaike information criteria
 
-* [Stan](https://peter-stewart.github.io/blog/classic-ecological-models-exponential-logistic-growth/)
+#### Functions
+* [for Loop](https://www.datacamp.com/tutorial/tutorial-on-loops-in-r)
+
+* [plotting population models](https://rstudio-pubs-static.s3.amazonaws.com/252603_9c6a71110dc74cc7832f154449235f7f.html)
+
+* [sapply](https://r-coder.com/sapply-function-r/)
+
+* [customized functions](https://swcarpentry.github.io/r-novice-inflammation/02-func-R/)
 
 ### References
 Castelblanco-Martínez, D. N., Moreno-Arias, R. A., Velasco, J. A., Moreno-Bernal, J. W., Restrepo, S., Noguera-Urbano, E. A., ... & Jiménez, G. (2021). A hippo in the room: Predicting the persistence and dispersion of an invasive mega-vertebrate in Colombia, South America. *Biological Conservation, 253*, 108923.
