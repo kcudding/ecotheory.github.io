@@ -1,7 +1,7 @@
 ---
 title: "IPM-density-dependent"
 author: "Eddie Wu"
-date: "2023-03-28"
+date: "2023-04-03"
 output: 
   html_document:
     toc: true
@@ -24,11 +24,14 @@ Like in unstructured population models and matrix population models, density-dep
 
 Platte thistle (*Cirsium canescens*) is a native thistle species endemic to North America. Its population demography is strongly affected by an invasive herbivore insect *Rhinocyllus conicus*. Rose et al. (2005) tried to determine how demographic rates of Platte thistle varied with plant size and damage by *R. conicus*.
 
-![© Jerry Oldenettel, [Cirsium canescens. AKA(Platt Thistle).](https://www.flickr.com/photos/jroldenettel/1734332992), [Creative Commons CC BY-NC-SA 2.0 license](https://creativecommons.org/licenses/by-nc-sa/2.0/)](platte_thistle_1.jpg)
+![© Jerry Oldenettel, [Cirsium canescens. AKA(Platt Thistle).](https://www.flickr.com/photos/jroldenettel/1734332992), [Creative Commons CC BY-NC-SA 2.0 license](https://creativecommons.org/licenses/by-nc-sa/2.0/)](platte_thistle_1.jpg){width=70%}
 
 #### Recruitment with density dependence
 
 For a plant that reproduces by seeds, the number of new recruits in a given year is proportional to the number of seeds produced the previous year. Based on Rose et al. (2005), $Recruits = Seeds^{0.67}$ for *Cirsium canescens*.
+
+![](IPM-density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg)<!-- -->
+{width=80%}
 
 The seed set number of Platte thistle (*Cirsium canescens*) is affected by two different factors:
 
@@ -108,38 +111,100 @@ where $s(z,N)$ can be written as a function of size and population density
 $$ logit (s(z,N)) = \alpha_s + \alpha_{s,z} + \beta_s^z*z + \beta_s^N*N $$
 
 
-### Possible literature discussion
+### Application of current literature
 
-An integral projection model for gizzard shad (Dorosoma cepedianum) utilizing density-dependent age-0 survival
+Here we go back to the same soay sheep example that we have been discussing. In the soay sheep population, density affects three processes in the kernel:
 
-Introduce an integral projection model for gizzard shad based on empirical data with density-dependent survival in age-0 fish. Then compare model outcomes to the dynamics reported for this fish species in a well-studied navigational pool of the Illinois River.
+* The probability that a newborn lamb successfully recruits into the population, $p_r$.
 
-Survival:
+* The size distribution of new recruits, $C_0$.
 
-$$ s(z) = s_{min} + \frac{s_{max}-s_{min}}{1+e^{\beta_s(In(z)-In(a_s))}} $$
+* The survival of adults $s$.
 
-Transition/Growth:
+![(a) Density-dependent adult survival (solid line), and recruitment probability (dashed line) plotted over the observed range of female densities. (b) Offspring mean mass (as a proxy for offspring mean size) plotted over the observed range of female densities. Note that adult survival and offspring size are plotted for a typical-size adult female, z = 2.9. (code adapted from Ellner et al., 2016)](soay_ipm_dd.jpeg)
 
-A two-variable normal distribution centered around a modified von Bertalanffy function of the length at time $t$,
+To construct a density-dependent IPM model on soay sheep, we first define the true population parameters (data and code from Ellner et al., 2016):
 
-$$ G(z'z) = Prob(z'|z,L_\inf, K_g) $$
+```r
+m.par.true <- c(## survival (density dependent)
+                surv.int  =  1.06e+0,
+                surv.z    =  2.09e+0,
+                surv.Nt   = -1.80e-2,
+                ## growth (NOT density dependent)
+                grow.int  =  1.41e+0,
+                grow.z    =  5.57e-1,
+                grow.sd   =  7.99e-2,
+                ## reproduce or not (NOT density dependent)
+                repr.int  = -7.23e+0,
+                repr.z    =  2.60e+0,                
+                ## recruit or not (density dependent)
+                recr.int  =  4.43e+0,
+                recr.Nt   = -9.19e-3,
+                ## recruit size (density dependent)
+                rcsz.int  =  5.40e-1,
+                rcsz.z    =  7.10e-1,
+                rcsz.Nt   = -6.42e-4,
+                rcsz.sd   =  1.59e-1)
+```
 
-Fecundity:
+From literature data we can define the three density-dependent demographic functions:
 
-$$ F(z',z) = p*egg(z)vs_0(d(t))C_1(z') $$
-where $p$ is the probability of female reproduction, $egg(z)$ is the mean number of eggs produced by a fish of length $z$, $v$ is the probability that an egg is viable, $s_0(d(t))$ is the **density-dependent** probability of surviving to age-1, and $C_1(z')$ is the length distribution of new recruits at age-1.
+```r
+## Recruitment function (N.B - from birth in spring to first summer), logistic regression
+pr_z <- function(Nt, m.par) {
+    linear.p <- m.par["recr.int"] + m.par["recr.Nt"] * Nt
+    p <- 1/(1+exp(-linear.p))
+    return(p)
+}
 
-The probability of age-0 surviving $s_0(d(t))$ can be defined as an exponential function
+## Recruit size function
+c_z1z <- function(z1, z, Nt, m.par) {
+    mean <- m.par["rcsz.int"] + m.par["rcsz.Nt"] * Nt + m.par["rcsz.z"] * z
+    sd <- m.par["rcsz.sd"]
+    p.den.rcsz <- dnorm(z1, mean = mean, sd = sd)
+    return(p.den.rcsz)
+}
 
-$$ s_0(d(t)) = a_0e^{-b_0d(t)}$$
-and $d(t)$ is the density at time $t$ of age-0 gizzard shad per 1000 m3
+## Survival function, logistic regression
+s_z <- function(z, Nt, m.par) {
+    linear.p <- m.par["surv.int"] + m.par["surv.Nt"] * Nt + m.par["surv.z"] * z 
+    p <- 1/(1+exp(-linear.p))                                                 
+    return(p)
+}
+```
 
-Need a graph here showing the density-dependent age-0 survival relationship.
+The growth and reproduction function are density-independent, we define them as:
 
+```r
+## Growth function, given you are size z now returns the pdf of size z1 next time
+g_z1z <- function(z1, z, m.par) {
+    mean <- m.par["grow.int"] + m.par["grow.z"] * z           
+    sd <- m.par["grow.sd"]                                    
+    p.den.grow <- dnorm(z1, mean = mean, sd = sd)
+    return(p.den.grow)
+}
 
-2. Density dependent environments can select for extremes of body size
+## Reproduction function, logistic regression
+pb_z <- function(z, m.par) {
+    linear.p <- m.par["repr.int"] + m.par["repr.z"] * z       
+    p <- 1/(1+exp(-linear.p))                                 
+    return(p)
+}
+```
 
-incorporate density-dependence in all kernels
+With all the demographic function defined, now we can construct build the IPM kernels P, F, and K:
+
+```r
+## Define the survival kernel
+P_z1z <- function (z1, z, Nt, m.par) {
+    return( s_z(z, Nt, m.par) * g_z1z(z1, z, m.par) )
+}
+
+## Define the reproduction kernel
+F_z1z <- function (z1, z, Nt, m.par) {
+    return( 0.5* s_z(z, Nt, m.par) * pb_z(z, m.par) * pr_z(Nt, m.par) *             c_z1z(z1, z, Nt, m.par) )
+}
+```
 
 ### References
 
