@@ -13,7 +13,7 @@ Platte thistle (*Cirsium canescens*) is a native thistle species endemic to Nort
 
 For a plant that reproduces by seeds, the number of new recruits in a given year is proportional to the number of seeds produced the previous year. Based on Rose et al. (2005), $Recruits = Seeds^{0.67}$ for *Cirsium canescens*.
 
-![](IPM-density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg)
+![Relationship between the number of recruits at time t+1 and the number of seeds at time t.](plant_dd_ipm.jpeg)
 {width=80%}
 
 The seed set number of Platte thistle (*Cirsium canescens*) is affected by two different factors:
