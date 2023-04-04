@@ -1,7 +1,7 @@
 ---
 title: "IPM-density-dependent"
 author: "Eddie Wu"
-date: "2023-04-03"
+date: "2023-04-04"
 output: 
   html_document:
     toc: true
@@ -9,8 +9,6 @@ output:
       collapsed: false
       smooth_scroll: false
     keep_md: yes
-bibliography: IPM.bib
-nocite: '@*'
 ---
 
 
@@ -111,7 +109,7 @@ where $s(z,N)$ can be written as a function of size and population density
 $$ logit (s(z,N)) = \alpha_s + \alpha_{s,z} + \beta_s^z*z + \beta_s^N*N $$
 
 
-### Application of current literature
+### Application of density-dependent IPM to an ecological problem
 
 Here we go back to the same soay sheep example that we have been discussing. In the soay sheep population, density affects three processes in the kernel:
 
@@ -208,3 +206,8 @@ F_z1z <- function (z1, z, Nt, m.par) {
 
 ### References
 
+Ellner, Stephen P., Dylan Z. Childs, and Mark Rees. 2016. _Data-Driven Modelling of Structured Populations: A Practical Guide to the Integral Projection Model._ Lecture Notes on Mathematical Modelling in the Life Sciences. Switzerland: Springer.
+
+“Example of a Simple, Stochastic, Kernel-Resampled Model with Density Dependence.” n.d. Accessed March 27, 2023.
+
+Rose, Karen E., Svata M. Louda, and Mark Rees. 2005. “Demographic and Evolutionary Impacts of Native and Invasive Insect Herbivores on Cirsium Canescens.” _Ecology (Durham) 86_ (2): 453–65. https://doi.org/10.1890/03-0697.
