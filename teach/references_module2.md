@@ -8,6 +8,8 @@ Case, Ted J. 2000. _An Illustrated Guide to Theoretical Ecology_. New York: Oxfo
 
 Caswell, H. (2001). *Matrix Population Models*. Sinauer Associates, Sunderland, MA.
 
+Caswell, H., Takada, T. and Hunter, C.M. (2004). Sensitivity analysis of equilibrium in density-dependent matrix population models. _Ecology Letters_, _7_: 380-387.
+
 Caswell, H. (2019). Introduction: Sensitivity Analysis–What and Why?. *Sensitivity Analysis: Matrix Methods in Demography and Ecology*, 3-12.
 
 Choi, W. I., Lee, D. H., Jung, J. B., & Park, Y. S. (2022). Oak decline syndrome in Korean forests: History, biology, and prospects for Korean oak wilt. *Forests, 13*(6), 964.
