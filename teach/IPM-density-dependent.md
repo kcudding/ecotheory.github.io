@@ -1,3 +1,18 @@
+---
+title: "IPM-density-dependent"
+author: "Eddie Wu"
+date: "2023-04-05"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+    keep_md: yes
+---
+
+
+
 ## Density dependence in IPM
 
 Like in unstructured population models and matrix population models, density-dependence also occurs in integral projection models. However, a general guide to building density-dependent IPMs is impossible, as there are too many possibilities. Any demographic rate can be affected by competition, and the dependence can take many possible forms. So instead, we will present this section by first introducing a famous example of density-dependent recruitment on Platte thistle (*Cirsium canescens*). Then, we will explain the theories behind the model construction.
@@ -11,23 +26,11 @@ Platte thistle (*Cirsium canescens*) is a native thistle species endemic to Nort
 
 #### Recruitment with density dependence
 
-For a plant that reproduces by seeds, the number of new recruits in a given year is proportional to the number of seeds produced the previous year. Based on Rose et al. (2005), $Recruits = Seeds^{0.67}$ for *Cirsium canescens*.
+For a plant that reproduces by seeds, the number of new recruits in a given year is proportional to the number of seeds produced the previous year. This means that the recruitment is density-dependent. Based on Rose et al. (2005), the relationship between the number of new recruits at year $t+1$ and the number of seeds at time $t$ is $Recruits = Seeds^{0.67}$ for *Cirsium canescens*.
 
-![Relationship between the number of recruits at time t+1 and the number of seeds at time t.](plant_dd_ipm.jpeg)
-{width=80%}
+![](IPM-density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg)<!-- -->
 
-The seed set number of Platte thistle (*Cirsium canescens*) is affected by two different factors:
-
-* Plant size.
-
-* The egg number of inflorescence-feeding weevil *R. conicus*.
-
-Therefore, the seed set function $b(z)$ can be defined as a result of two submodels: A function of plant size; and a negative binomial distribution for the number of *R. conicus* eggs with mean depending on plant size.
-
-$$ b(z) = e^{(-0.55+2.02z)}\times(1+\frac{ε(z)}{16})^{-0.32} $$
-where $z$ is the size measure, $ε$ is the mean number of *R. conicus* eggs oviposited on a plant of size $z$.
-
-All the other demographic rates are density-independent: (Rose et al., 2005)
+Now we can define the density-independent demographic functions. (Rose et al., 2005)
 
 * Flowering probability $p_b(z)$: logit $p_b = −10.22 + 4.25z$
 
@@ -38,6 +41,13 @@ All the other demographic rates are density-independent: (Rose et al., 2005)
 * Survival $s(z)$: logit $s = −0.62 + 0.85z$
 
 * Growth $G(z',z)$: $z' ∼ Norm(μ = 0.83 + 0.69z, σ^2 = 0.19)$
+
+Seed set number is a little more complicated to define. Two factors can impact the seed set number: the plant size and the invasive *R. conicus* egg number. Thus, the seed set function $b(z)$ can be defined as a result of two submodels: A function of plant size; and a negative binomial distribution for the number of *R. conicus* eggs with mean depending on plant size.
+
+* Seed set number $b(z)$: $b(z) = e^{(-0.55+2.02z)}\times(1+\frac{ε(z)}{16})^{-0.32}$
+
+, where $z$ is the size measure, $ε$ is the mean number of *R. conicus* eggs oviposited on a plant of size $z$.
+
 
 <br>
 
@@ -110,24 +120,16 @@ To construct a density-dependent IPM model on soay sheep, we first define the tr
 
 ```r
 m.par.true <- c(## survival (density dependent)
-                surv.int  =  1.06e+0,
-                surv.z    =  2.09e+0,
-                surv.Nt   = -1.80e-2,
+                surv.int= 1.06e+0, surv.z= 2.09e+0, surv.Nt= -1.80e-2,
                 ## growth (NOT density dependent)
-                grow.int  =  1.41e+0,
-                grow.z    =  5.57e-1,
-                grow.sd   =  7.99e-2,
+                grow.int= 1.41e+0, grow.z= 5.57e-1, grow.sd= 7.99e-2,
                 ## reproduce or not (NOT density dependent)
-                repr.int  = -7.23e+0,
-                repr.z    =  2.60e+0,                
+                repr.int= -7.23e+0, repr.z= 2.60e+0,                
                 ## recruit or not (density dependent)
-                recr.int  =  4.43e+0,
-                recr.Nt   = -9.19e-3,
+                recr.int= 4.43e+0, recr.Nt= -9.19e-3,
                 ## recruit size (density dependent)
-                rcsz.int  =  5.40e-1,
-                rcsz.z    =  7.10e-1,
-                rcsz.Nt   = -6.42e-4,
-                rcsz.sd   =  1.59e-1)
+                rcsz.int= 5.40e-1, rcsz.z= 7.10e-1,
+                rcsz.Nt= -6.42e-4, rcsz.sd= 1.59e-1)
 ```
 
 From literature data we can define the three density-dependent demographic functions:
