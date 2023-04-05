@@ -15,7 +15,7 @@ Typically, we won't compare various density-dependent functions that are fitted 
 
 When the focal species is territorial, the most common way to introduce density dependence is by implementing caps (or limits) on population density. A reasonable cap on the territory-holding individuals, usually the breeding adults, can be estimated by dividing the total available area of habitat by the average territory size needed (for breeding). Setting such a cap can make the transition from the pre-reproductive to productive stages density-dependent, even if no other vital rates experience density-dependence.
 
-#### Exmaple on Iberian lynx
+#### Example on Iberian lynx
 
 Gaona _et al_. (1998) investigated the population dynamics of Iberian lynx in Donana National Park in Spain, and here we present a simplified illustration (Morris and Doak, 2002), in which we track only four stages of female lynx
 
@@ -35,7 +35,7 @@ It's not hard to notice that $g$ decreases when $n_2$, $n_3$ and $n_4$ increase.
 - $n_4$ should always be no larger than $K$. So if $n_4(t)>K$, we should let $n_4(t)=K$, and update $n_3(t)$ with $n_3(t)+K-n_4(t)$.
 - With the first point, we always have $g\geq 0$. It is still possible that $g>1$, which is achieved when $K-s_4n_4(t)>s_2n_2(t)+s_3n_3(t)$. So we should always update $g$ with $\min\{g,1\}$.
 
-The R code below shows how thr breeder population and the total population change when the maximum number of territories $K$ is introduced:
+The R code below shows how the breeder population and the total population change when the maximum number of territories $K$ is introduced:
 
 ```r
 # Set the survival rates for each stage
@@ -81,7 +81,7 @@ for (t in 1:50) {
 }
 ```
 
-![(a) Number of breeders; (b) Total lynx population.](lynx.jpeg)
+![(a) Number of breeders; (b) Total lynx population.](lynx.jpeg){width=80%}
 
 
 ### Incorporating density-dependent functions for particular vital rates
@@ -95,7 +95,7 @@ where the per capita growth rate $g(N)$ depends on the population density $N$. T
 - Beverton-Holt function: $g(N)=\frac{\alpha}{1+\beta N}$,
 - Ricker function: $g(N)=\alpha e^{-\beta N}.$
 
-![(a) Beverton-Holt function and Ricker function; (b) the corresponding recruitment functions. Here, we set $\alpha=0.9$ and $\beta=0.05$](bh_ricker.jpeg)
+![(a) Beverton-Holt function and Ricker function; (b) the corresponding recruitment functions. Here, we set $\alpha=0.9$ and $\beta=0.05$](bh_ricker.jpeg){width=80%}
 
 Similarly, for a stage-structured model, we can also assume that one or more vital rates depend on the number of individuals in one or more stages. Let's start with the simplest case. Consider a two-stage model defined by the matrix
 $$\mathbf{A}=\begin{bmatrix}\sigma_1(1-\gamma) & \phi\\\sigma_1\gamma & \sigma_2\end{bmatrix},$$
@@ -111,11 +111,11 @@ Let's assume that vital rates are affected by the total population $N=n_1+n_2$. 
 
 #### Examples with density-dependent fecundity/growth
 
-Remember that when populations are changing according to the discrete logistic equation, they can have qualitatively different dynamics, depending on parameter values (monotonic approach to an equilibrium, damped oscillations, limit cycles and chaos). Such phenomena exist in a density-dependent matrix model as well.
+Remember that when populations are changing according to the discrete logistic equation, they can have qualitatively different dynamics, depending on parameter values (monotonic approach to an equilibrium, damped oscillations, limit cycles and chaos). Such phenomena exist in a density-dependent matrix model as well. With different setups of vital rates, we could get different population dynamics.
 
-We present an example with density-dependent fecundity where $\phi(N)=\phi e^{-N}$, and an example with density-dependent growth where $\gamma(N)=\gamma e^{-N}$. We test different values of $\phi=50,500,1800$ for the density-dependent fecundity model and $\phi=300$ for the density-dependent growth model. Other parameters are $\sigma_1=0.5$, $\sigma_2=0.1$ and $\gamma=0.1$.
+We follow the above two-stage model and present an example with density-dependent fecundity where $\phi(N)=\phi e^{-N}$, and an example with density-dependent growth where $\gamma(N)=\gamma e^{-N}$. We test different values of $\phi=50,500,1800$ for the density-dependent fecundity model and $\phi=300$ for the density-dependent growth model. Other parameters are $\sigma_1=0.5$, $\sigma_2=0.1$ and $\gamma=0.1$. We will show that population trajectories typically converge to an attracting invariant set, which could be an equilibrium point, a cycle, an invariant loop or a strange attractor (Caswell et al., 2004).
 
-We will compare the following four projection matriceswith the same initial population $\mathbf{n}(0)=[6,4]$:
+Specifically, we will compare the following four projection matrices with the same initial population $\mathbf{n}(0)=[6,4]$:
 $$\mathbf{A}_1=\begin{bmatrix}0.45 & 50e^{-N}\\0.05 & 0.1\end{bmatrix},\ \mathbf{A}_2=\begin{bmatrix}0.45 & 500e^{-N}\\0.05 & 0.1\end{bmatrix},\ \mathbf{A}_3=\begin{bmatrix}0.5(1-0.1e^{-N}) & 300\\0.5(0.1e^{-N}) & 0.1\end{bmatrix},\ \mathbf{A}_4=\begin{bmatrix}0.45 & 1800e^{-N}\\0.05 & 0.1\end{bmatrix}.$$
 
 ```r
@@ -148,7 +148,7 @@ for (t in 1:100) {
 }
 ```
 
-![(a,c,e,g) Attractors; (b,d,f,h) dynamics of corresponding attractors. ](attractors.jpeg){width=75%}
+![(a--d) Attractors; (e--h) dynamics of corresponding attractors. ](attractors.jpeg)
 
 
 ### Illustration of current application: Lake sturgeon population

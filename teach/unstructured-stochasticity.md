@@ -1,4 +1,3 @@
-
 ## Population dynamics and stochasticity
 
 We have studied different population models in previous sections. However, these models are still relatively "naive", since population change in the real world will never be constant. In this section, we will add randomness, or stochasticity, to the population models.
@@ -6,7 +5,7 @@ We have studied different population models in previous sections. However, these
 ### Why are changes in population variable?
 
 - **Sample variance** or **observation error**: measurement error in estimates of population size or density
-- **Process variance**: variation acually affecting numbers in count data over time
+- **Process variance**: variation actually affecting numbers in count data over time
   - **Deterministic factors**: predictable internal drivers, such as density dependence, predation and competition.
   - **Stochastic factors**: unpredictable random fluctuations. Some fluctuations might in fact be driven by deterministic factors (and thus might be predictable with more complete information), but they can be more easily treated as stochastic factors.
 
@@ -20,7 +19,7 @@ There are two main forms of stochastic process variance: demographic and environ
 
 - *Example 2*: The expected sex ratio for a newborn is 50:50. When there are 3 new births, we cannot have 50% males and 50% females. Unbalanced sex ratio will influence future birth rate, especially in a small population.
 
-- *Example 3*: A death rate of 0.2 does not mean after a year an animal is 0.8 alive--it either survives or dies. When the population size is large, we may use the product of the total populatiom and a mean birth/death rate to estimate the number of births/deaths. However, such estimation is not accurate when the population size is small (a difference of two deaths might not seem to be a big issue in a population of size 1000, but will be significant in a population of size 20).
+- *Example 3*: A death rate of 0.2 does not mean after a year an animal is 0.8 alive--it either survives or dies. When the population size is large, we may use the product of the total population and a mean birth/death rate to estimate the number of births/deaths. However, such estimation is not accurate when the population size is small (a difference of two deaths might not seem to be a big issue in a population of size 1000, but will be significant in a population of size 20).
 
 
 **Environmental stochasticity** often refers to temporal fluctuations in the probability of mortality and reproduction (Lande et al., 2003), which is often driven directly or indirectly by weather (e.g. unpredictable catastrophes).
@@ -36,7 +35,7 @@ There are two main forms of stochastic process variance: demographic and environ
 
 - An obvious outcome is that future population size outcomes become more uncertain and more variable
 
-- A less intuitive outcome is that the likelihood of any particular population size at time $t$ in the future becomes more skewed. Specifically, most populations being relatively small, with a tiny fraction being huge. In fact, the realized population growth rate $(N_t/N_s)^{1/(t-s)}$ will be smaller when the growth rates vary. Why?
+- The most important, but perhaps less intuitive impact is that the population growth rate is reduced. Specifically, the realized population growth rate $(N_t/N_s)^{1/(t-s)}$ will be smaller when the growth rates vary. Why?
 
 To answer this question, we need to understand two important concepts: arithmetic and geometric means.
 
@@ -74,36 +73,32 @@ As we can see, when the variance of growth rates $\sigma_\lambda^2$ gets larger,
 
 The examples above assume that $r_t$ does not depend on previous growth rates, nor will it influence subsequent growth rates. This assumption may not be very realistic. Here we introduce the idea of temporal autocorrelation, which describes the relationship between $r_t$ and $r_{t+\tau}$, its value at a time lag $\tau$. One way to incorporate temporal autocorrelation is to:
 $$r_{t+\tau}=r_A+\rho(r_{t}-r_A)+\epsilon_{t+\tau},$$
-where $\rho$ is the coefficient of lag-$\tau$ autocorrelation, and $\epsilon_t\sim N(0,\sigma_\epsilon^2)$ is white noise with zero mean and constant variance. An example would be the case $\tau=1$ (lag-1 autocorrelation), where $r_{t+1}=r_A+\rho(r_t-r_A)+\epsilon_{t+1}$. When $\rho=0$, $r_{t+1}=r_A+\epsilon_{t+1}$ and there is no temporal autocorrelation. Here we present examples of exponential growth rates with zero autocorrelation and positive lag-1 autocorrelation.
+where $\rho$ is the coefficient of lag-$\tau$ autocorrelation, and $\epsilon_t\sim N(0,\sigma_\epsilon^2)$ is white noise with zero mean and constant variance. An example would be the case $\tau=1$ (lag-1 autocorrelation), where $r_{t+1}=r_A+\rho(r_t-r_A)+\epsilon_{t+1}$. When $\rho=0$, $r_{t+1}=r_A+\epsilon_{t+1}$ and there is no temporal autocorrelation. Here we present an example of exponential growth rates with zero autocorrelation (black solid line) and positive lag-1 autocorrelation (red dashed line). The horizontal line (blue) shows the mean growth rate. Positive autocorrelation has the following implication:
+
+- A large growth rate at $t$ will result in a larger growth rate at $t+1$
+
+When it comes to the plot, it means:
+
+- If the red circle is above the horizontal line at $t$ (i.e. growth rate at $t$ is larger than the mean growth rate), the red circle will be above the black circle at $t+1$ (i.e. at the next time point $t+1$, the growth rate with positive autocorrelation will be larger, compared to the rate completely driven by the random noise term)
 
 ```r
-# We assume that the mean exponential growth rate r_A = 0.3,
+# We assume that the mean exponential growth rate rA = 0.3,
 # and the noise term epsilon_t is a standard normal random variable,
 # We look at a time period of 20 years
 rA <- 0.3
 e <- rnorm(20, mean = 0, sd = 1)
-r <- data.frame(year = 1:20, zero = rA + e)
+r <- data.frame(year = 1:20)
 ```
 ```r
-# Calculate exponential growth rates with positive lag-1 autocorrelation
-# We compare different coefficients rho = 0.2, 0.5, 0.8
-pos1 = replicate(20, rA + e[1])
+# Calculate exponential growth rates with positive lag-1 autocorrelation with rho = 0.5
+lag0 <- replicate(20, rA + e[1])
+lag1 <- replicate(20, rA + e[1])
 for (i in 2:20) {
-  pos1[i] <- r[i,'zero'] + 0.2*(pos1[i-1] - rA)
+  lag0[i] <- rA + e[i]
+  lag1[i] <- rA + 0.5*(lag1[i-1] - rA) + e[i]
 }
-r$pos1 <- pos1
-
-pos2 = replicate(20, rA + e[1])
-for (i in 2:20) {
-  pos2[i] <- r[i,'zero'] + 0.5*(pos2[i-1] - rA)
-}
-r$pos2 <- pos2
-
-pos3 = replicate(20, rA + e[1])
-for (i in 2:20) {
-  pos3[i] <- r[i,'zero'] + 0.8*(pos3[i-1] - rA)
-}
-r$pos3 <- pos3
+r$lag0 <- lag0
+r$lag1 <- lag1
 ```
 
 ![](autocorrelation.jpeg)
