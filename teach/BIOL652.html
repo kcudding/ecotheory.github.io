@@ -42,9 +42,9 @@
   
     <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
     <meta name="generator" content="pandoc" />
-  <meta name="author" content="Debora, Eddie, Zitao and Kim" />
-  <meta name="date" content="2023-02-03" />
-  <title>DRAFT: BIOL 652 Structured Population Models</title>
+  <meta name="author" content="Debora" />
+  <meta name="date" content="2023-04-04" />
+  <title>Numerical Implementation</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
   <style type="text/css">
@@ -122,12 +122,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">DRAFT: BIOL 652 Structured Population
-Models</span>
+        <span class="doc-title">Numerical Implementation</span>
         <ul class="nav pull-right doc-info">
-                    <li><p class="navbar-text">Debora, Eddie, Zitao and
-Kim</p></li>
-                              <li><p class="navbar-text">2023-02-03</p></li>
+                    <li><p class="navbar-text">Debora</p></li>
+                              <li><p class="navbar-text">2023-04-04</p></li>
                   </ul>
       </div>
     </div>
@@ -138,14 +136,14 @@ Kim</p></li>
         <div class="well toc">
 
         <ul>
+        <li><a href="#learning-outcomes"
+        id="toc-learning-outcomes">Learning outcomes</a></li>
         <li><a href="#unstructured-population-models"
         id="toc-unstructured-population-models">Unstructured Population
         Models</a>
         <ul>
         <li><a href="#introduction"
-        id="toc-introduction">Introduction</a></li>
-        <li><a href="#learning-outcomes"
-        id="toc-learning-outcomes">Learning outcomes</a>
+        id="toc-introduction">Introduction</a>
         <ul>
         <li><a href="#what-is-a-population-model"
         id="toc-what-is-a-population-model">What is a population
@@ -175,6 +173,8 @@ Kim</p></li>
         id="toc-exponential-growth">Exponential growth</a></li>
         <li><a href="#further-reading" id="toc-further-reading">Further
         Reading</a></li>
+        <li><a href="#r-resources" id="toc-r-resources">R
+        Resources</a></li>
         <li><a href="#references"
         id="toc-references">References</a></li>
         </ul></li>
@@ -381,25 +381,23 @@ Kim</p></li>
         of current application: spatial integral projection
         model</a></li>
         <li><a href="#reference" id="toc-reference">Reference</a></li>
-        </ul></li>
+        <li><a href="#the-first-step-of-ipms-regressions"
+        id="toc-the-first-step-of-ipms-regressions">The first step of
+        IPMs: regressions</a></li>
         <li><a
         href="#how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest"
         id="toc-how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest">How
         do we go about implementing an IPM for our species of
-        interest?</a>
-        <ul>
-        <li><a href="#modelling-vital-rates-regressions"
-        id="toc-modelling-vital-rates-regressions">Modelling vital
-        rates: regressions</a></li>
+        interest?</a></li>
         <li><a href="#numerical-integration-methods-midpoint-rule"
         id="toc-numerical-integration-methods-midpoint-rule">Numerical
         integration methods: midpoint rule</a></li>
         <li><a href="#model-diagnostics-and-improvement"
         id="toc-model-diagnostics-and-improvement">Model diagnostics and
         improvement</a></li>
-        <li><a href="#case-study-an-ipm-for-duckweeds"
-        id="toc-case-study-an-ipm-for-duckweeds">Case study: an IPM for
-        duckweeds</a></li>
+        <li><a href="#case-study-an-ipm-for-snapping-turtles"
+        id="toc-case-study-an-ipm-for-snapping-turtles">Case study: an
+        IPM for snapping turtles</a></li>
         </ul></li>
         <li><a href="#references-5"
         id="toc-references-5">References</a></li>
@@ -412,9 +410,10 @@ Kim</p></li>
         <li><a href="#theories-behind-density-dependent-ipm-models"
         id="toc-theories-behind-density-dependent-ipm-models">Theories
         behind density-dependent IPM models</a></li>
-        <li><a href="#possible-literature-discussion"
-        id="toc-possible-literature-discussion">Possible literature
-        discussion</a></li>
+        <li><a
+        href="#application-of-density-dependent-ipm-to-an-ecological-problem"
+        id="toc-application-of-density-dependent-ipm-to-an-ecological-problem">Application
+        of density-dependent IPM to an ecological problem</a></li>
         <li><a href="#references-6"
         id="toc-references-6">References</a></li>
         <li><a href="#environmental-stochasticity-in-ipms"
@@ -470,9 +469,19 @@ Kim</p></li>
         </div>
       </div>
             <div class="col-9">
-                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
       
-      <h1 id="unstructured-population-models">Unstructured Population
+      <h1 id="learning-outcomes">Learning outcomes</h1>
+<ul>
+<li>Develop practical skills to independently run a model using your own
+data based on relevant theory and codes</li>
+<li>Assess the results of population models to analyze a problem of your
+interest</li>
+<li>Distinguish and compare several models and select the most
+appropriate model according to the life history of organisms and
+available data</li>
+</ul>
+<h1 id="unstructured-population-models">Unstructured Population
 Models</h1>
 <h2 id="introduction">Introduction</h2>
 <p>This module covers the most simple models to predict the dynamics of
@@ -483,16 +492,6 @@ is introduced as a phenomena that takes place when the amount of
 individuals present in a given population interferes with the growth
 rate of that population. Lastly, you will learn techniques to compare
 models to data and perform <strong>model assessment</strong>.</p>
-<h2 id="learning-outcomes">Learning outcomes</h2>
-<ul>
-<li>Develop practical skills to independently run a model using your own
-data based on relevant theory and codes</li>
-<li>Assess the results of population models to analyze a problem of your
-interest</li>
-<li>Distinguish and compare several models and select the most
-appropriate model according to the life history of organisms and
-available data</li>
-</ul>
 <h3 id="what-is-a-population-model">What is a population model?</h3>
 <p>A population model consists of mathematical equations (eg.,
 exponential and logistic) which represent patterns of growth, reduction,
@@ -985,11 +984,13 @@ about structured population models in the upcoming modules.</p></li>
 </ul>
 <h3 id="further-reading">Further Reading</h3>
 <h4 id="theoretical-work">Theoretical work</h4>
-<p>To read about the theory behind simple models, refer to: * Mills,
-L.S. (2012). <em>Conservation of wildlife populations</em>: Demography,
-genetics, and management. Wiley- Blackwell.</p>
-<p>To practice the application of simple models, here are good guides: *
-Dyer, R. (2009). Biological data analysis using R (Doctoral
+<p>To read about the theory behind simple models, refer to:<br />
+* Mills, L.S. (2012). <em>Conservation of wildlife populations</em>:
+Demography, genetics, and management. Wiley- Blackwell.</p>
+<h4 id="population-modelling-codes">Population modelling codes</h4>
+<p>To further practice the application of simple models, here are good
+guides:<br />
+* Dyer, R. (2009). Biological data analysis using R (Doctoral
 dissertation, Ph. D thesis. Department of Biology, Center for the Study
 of Biological Complexity, Virginia Commonwealth Univ).</p>
 <ul>
@@ -998,19 +999,34 @@ Springer.</li>
 </ul>
 <h4 id="new-applications">New applications</h4>
 <ul>
-<li><p>Thomas, L., Russell, D. J., Duck, C. D., Morris, C. D., Lonergan,
+<li>Thomas, L., Russell, D. J., Duck, C. D., Morris, C. D., Lonergan,
 M., Empacher, F., … &amp; Harwood, J. (2019). Modelling the population
 size and dynamics of the British grey seal. <em>Aquatic Conservation:
-Marine and Freshwater Ecosystems, 29</em>, 6-23.</p></li>
-<li><h3 id="r-resources">R Resources</h3></li>
+Marine and Freshwater Ecosystems, 29</em>, 6-23.</li>
+</ul>
+<h3 id="r-resources">R Resources</h3>
+<h4 id="packages">Packages</h4>
+<ul>
 <li><p>deSolve: contains solvers (function “ode”) for integrals: eg.,
 integral of the exponential growth equation and ordinary differential
 equations (ODE): eg., logistic growth</p></li>
 <li><p>clogistic: logistic growth equation</p></li>
 <li><p>AICcmodavg: model evaluation using Akaike information
 criteria</p></li>
+</ul>
+<h4 id="functions">Functions</h4>
+<ul>
 <li><p><a
-href="https://peter-stewart.github.io/blog/classic-ecological-models-exponential-logistic-growth/">Stan</a></p></li>
+href="https://www.datacamp.com/tutorial/tutorial-on-loops-in-r">for
+Loop</a></p></li>
+<li><p><a
+href="https://rstudio-pubs-static.s3.amazonaws.com/252603_9c6a71110dc74cc7832f154449235f7f.html">plotting
+population models</a></p></li>
+<li><p><a
+href="https://r-coder.com/sapply-function-r/">sapply</a></p></li>
+<li><p><a
+href="https://swcarpentry.github.io/r-novice-inflammation/02-func-R/">customized
+functions</a></p></li>
 </ul>
 <h3 id="references">References</h3>
 <p>Castelblanco-Martínez, D. N., Moreno-Arias, R. A., Velasco, J. A.,
@@ -2496,9 +2512,15 @@ individual susceptibility to changing environmental conditions differs
 between Soay sheep of different ages. Young and old individuals are more
 severely affected by adverse weather conditions than adults of prime
 reproductive age.</p>
-<p><img src="soay.jpg"
-alt="© Eileen Henderson, A pair of Soay sheep on Hirta, Creative Commons CC BY-SA 2.0 License" /><br />
-</p>
+<figure>
+<img src="soay.jpg"
+alt="© Eileen Henderson, A pair of Soay sheep on Hirta, Creative Commons CC BY-SA 2.0 License" />
+<figcaption aria-hidden="true">© Eileen Henderson, <a
+href="https://www.geograph.org.uk/photo/493775">A pair of Soay sheep on
+Hirta</a>, <a
+href="https://creativecommons.org/licenses/by-sa/2.0/">Creative Commons
+CC BY-SA 2.0 License</a></figcaption>
+</figure>
 <p>While for many species (especially for amphibians, fish, and
 insects), differences in vital rates in wild populations often depend on
 developmental or morphological stages, rather than ages. This is
@@ -2794,9 +2816,14 @@ class stays the same. The stage structure at SSD is:</p>
 0.2\% \\
 \end{bmatrix}
 \]</span> This result can also be demonstrated by plotting the log
-number of individuals in each stage class versus time: <img
-src="SSDplot-1.jpeg"
-alt="Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale." /></p>
+number of individuals in each stage class versus time:</p>
+<figure>
+<img src="SSDplot-1.jpeg"
+alt="Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale." />
+<figcaption aria-hidden="true">Population numbers of common frog over 14
+years as shown by stage class. The number of frogs is plotted on a
+logarithmic scale.</figcaption>
+</figure>
 <p>At SSD, the population growth rate <span
 class="math inline">\(\lambda\)</span> also stays constant. See the
 calculations below for <span class="math inline">\(\lambda\)</span> at
@@ -4357,24 +4384,14 @@ projection models: a practical guide. <em>Methods Ecol Evol</em>, 5:
 M. (2008), Evolution of flowering decisions in a stochastic,
 density-dependent environment. <em>Proceedings of the National Academy
 of Sciences</em>, 105: 10466.</p>
-<h2
-id="how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest">How
-do we go about implementing an IPM for our species of interest?</h2>
-<p>Performing an IPM model involves using regression models for vital
-rates, combining functions into a projection kernel, dividing kernels
-into classes (bins), and integrating between them to calculate
-transition rates. An iterative analysis of IPMs output ensures the model
-is improved so that it is biologically plausible. After obtaining the
-overall kernel corresponding to a large matrix, the same population
-analyses performed for matrix projection models (MPMs) can be carried
-out, such as stable distribution and sensitivity analyses.</p>
-<h3 id="modelling-vital-rates-regressions">Modelling vital rates:
+<h3 id="the-first-step-of-ipms-regressions">The first step of IPMs:
 regressions</h3>
-<p>To perform an IPM model, regression models are fit to data relative
-to relevant state variables. Such models include linear or logistic
-regressions, or non-linear models such as generalized additive models
-(GAMs). Candidate models can be assessed using the Akaike information
-criteria (AIC), which you were introduced to in the section <a
+<p>To perform an IPM model, regression models are commonly fit to vital
+rate data relative to relevant state variables. Such models include
+linear or logistic regressions, or non-linear models such as generalized
+additive models (GAMs). Candidate models can be assessed using the
+Akaike information criteria (AIC), which you were introduced to in the
+section <a
 href="https://www.ecotheory.ca/teach/BIOL652.html#model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
 Selection</a>. The dynamics for each vital rate can be modelled by the
 commonly used examples below:</p>
@@ -4414,6 +4431,34 @@ model with binomial link function)</td>
 </tr>
 </tbody>
 </table>
+<p>→ Note that it is not always necessary to use the above mentioned
+regressions. For example, functions can be used when there is no data
+available for growth. One illustration is the IPM model for grass carp
+developed by Erickson et al. (2017), where the growth function consisted
+of a normal distribution with 2 variables centered around a modified von
+Bertalanffy function of fish length at each time step. A derivative was
+then calculated to map length changes as a function of length.</p>
+<h3
+id="how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest">How
+do we go about implementing an IPM for our species of interest?</h3>
+<p>This diagram shows the main steps to implement an IPM. You have
+already learnt about the steps in blue (first, second, and last
+step).</p>
+<figure>
+<img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/flowchart.jpg"
+data-dpi="300" alt="Flowchart of the key steps to build an IPM" />
+<figcaption aria-hidden="true">Flowchart of the key steps to build an
+IPM</figcaption>
+</figure>
+<p>In addition to using regression models for vital rates, performing an
+IPM involves combining functions into a projection kernel, dividing
+kernels into classes (bins), and integrating between them to calculate
+transition rates. An iterative analysis of IPMs output ensures the model
+is improved so that it is biologically plausible. After obtaining the
+overall kernel corresponding to a large matrix, the same population
+analyses performed for matrix projection models (MPMs) can be carried
+out, such as stable distribution and sensitivity analyses.</p>
 <h3 id="numerical-integration-methods-midpoint-rule">Numerical
 integration methods: midpoint rule</h3>
 <p>A projection kernel obtained in IPMs is analogous to projection
@@ -4432,94 +4477,116 @@ h\sum_{i=1}^mK(z_j,z_i)n(z_i,t)\]</span></p>
 improvement</h3>
 <p>During the iterative process of model output analysis, we can improve
 specific functions to better correspond to the observed patterns in our
-data. For example, if size measurements become more variable in larger
-individuals, growth variance can be added as a function of size; or a
-fecundity function can be changed to add the probability of
+data. Consider these possibilities:</p>
+<ul>
+<li><p>If size measurements become more variable in larger individuals,
+growth variance can be added as a function of size</p></li>
+<li><p>A fecundity function can be changed to add the probability of
 reproduction, which is more realistic considering that we do not observe
-reproduction in all individuals (Merow et al, 2014). Population analyses
-can then be re-done and compared to previously run IPMs, where we can
-check how such improvements affect population dynamics projections.</p>
-<p>In terms of survival, an important error to check for is called
-<strong>eviction</strong>, which consists of individuals transitioning
-to size classes which are outside the range selected for the model, thus
-impacting survival projections. To diagnose this, you can plot the
-relevant matrix elements against the fitted survival model and check for
-discrepancies. Misplaced individuals can then be returned to the next
-size class within the established range for the IPM (Merow et al,
-2014).</p>
+reproduction in all individuals (Merow et al, 2014).</p></li>
+</ul>
+<p>In these cases, population analyses can be re-done and compared to
+previously run IPMs, where we can check how such improvements affect
+population dynamics projections.</p>
+<ul>
+<li><p>In terms of survival, an important error to check for is called
+<strong>eviction</strong>:</p></li>
+<li><p>Eviction consists of individuals transitioning to size classes
+which are outside the range selected for the model, thus impacting
+survival projections.</p></li>
+<li><p>To diagnose eviction, you can plot the relevant matrix elements
+against the fitted survival model and check for discrepancies. Misplaced
+individuals can then be returned to the next size class within the
+established range for the IPM (Merow et al, 2014).</p></li>
+</ul>
 <p>To verify if a given IPM model is biologically realistic, we can
 calculate several life history events such as life expectancy and
 maximum size, and observe how well the model describes our species.</p>
-<h3 id="case-study-an-ipm-for-duckweeds">Case study: an IPM for
-duckweeds</h3>
-<p>We took note of the mortality of duckweed fronds submitted to
-fluctuating temperature regimes with a mean of 37C, for 5 days. Because
-at this time we only have grouped data for initial populations
-consisting of 4 fronds, we estimated average values per individual.
-Initial frond surface area was calculated by taking the average surface
-area of 4 fronds. Individual mortality was considered when population
-mortality was greater than 4 individuals. Average individual
-reproduction was calculated as total reproduction divided by the initial
-population. Size at the next stage was hypothesized as a 3x increase in
-frond size for the purpose of having dummy data for this exercise only.
-Here is our data:</p>
+<h3 id="case-study-an-ipm-for-snapping-turtles">Case study: an IPM for
+snapping turtles</h3>
+<p>Armstrong and colleagues (2018) studied the importance of
+indeterminate growth to ectotherm population dynamics. We used the <a
+href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.2j05h">dataset</a>
+provided in their publication to obtain growth, reproduction and
+survival information for a female population of North American snapping
+turtles (<em>Chelydra serpentina</em>).</p>
+<figure>
+<img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/IPM_implementation_files/turtle.jpg"
+data-fig.width="180" data-fig.height="120" data-dpi="300"
+alt="Common snapping turtle, Creative Commons Attribution-Share Alike 3.0 Unported license" />
+<figcaption aria-hidden="true"><a
+href="https://commons.wikimedia.org/wiki/File:Common_Snapping_Turtle_%28Chelydra_serpentina%29.jpg">Common
+snapping turtle</a>, <a
+href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Creative
+Commons Attribution-Share Alike 3.0 Unported license</a></figcaption>
+</figure>
+<p>Because measurements were made across several years, we selected the
+2 greatest size measurements and the largest fecundity measurement for
+surviving individuals, and the latest measurement for non-surviving
+individuals. New recruits (eg., individual in the 3rd row below) are
+individuals initially measured at the latest years of the data
+collection process.</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the dataset</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/kcudding/kcudding.github.io/main/teach/ipm_duckweed.csv&quot;</span>,<span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8-BOM&quot;</span>)</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
-<pre><code>NA   experiment_number treatment    size sizeNext surv fec
-NA 1                81      0.00 0.05325  0.15975    1   5
-NA 2                81      0.00 0.05875  0.17625    0  NA
-NA 3                81      0.95 0.05525  0.16575    0  NA
-NA 4                81      0.95 0.03575  0.10725    0  NA
-NA 5                82      0.00 0.06475  0.19425    0  NA
-NA 6                82      0.00 0.05600  0.16800    0  NA</code></pre>
-<p>We build one regression for each vital rate: growth, survival, and
-reproduction. You can start by creating an empty data frame to store
-parameters for each model.</p>
-<p>We will demonstrate the regression for survival:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logistic regression for survival</span></span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>surv.reg<span class="ot">=</span><span class="fu">glm</span>(surv<span class="sc">~</span>size,<span class="at">data=</span>d,<span class="at">family=</span><span class="fu">binomial</span>())</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>params<span class="sc">$</span>surv.int<span class="ot">=</span><span class="fu">coefficients</span>(surv.reg)[<span class="dv">1</span>]</span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>params<span class="sc">$</span>surv.slope<span class="ot">=</span><span class="fu">coefficients</span>(surv.reg)[<span class="dv">2</span>]</span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(surv.reg)</span></code></pre></div>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/kcudding/kcudding.github.io/main/teach/snapping_turtles.csv&quot;</span>,<span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>,<span class="at">fileEncoding=</span><span class="st">&quot;UTF-8-BOM&quot;</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code></pre></div>
+<pre><code>NA    ID surv size sizeNext   fec
+NA 1 767    1 26.3     26.4 300.4
+NA 2 C15    1 26.9     26.9 365.0
+NA 3 J09   NA   NA     27.3    NA
+NA 4 H04    1 30.2     30.3    NA
+NA 5 T19    1 25.7     26.0    NA
+NA 6 H18    1 28.5     28.5    NA</code></pre>
+<p>We will demonstrate the regression for reproduction:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># After setting up an empty data frame to store model parameters, we proceed with our Poisson regression for reproduction</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>fec.reg<span class="ot">=</span><span class="fu">glm</span>(fec<span class="sc">~</span>size,<span class="at">data=</span>d,<span class="at">family=</span><span class="fu">poisson</span>())</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>params<span class="sc">$</span>offsp.int<span class="ot">=</span><span class="fu">coefficients</span>(fec.reg)[<span class="dv">1</span>]</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>params<span class="sc">$</span>offsp.slope<span class="ot">=</span><span class="fu">coefficients</span>(fec.reg)[<span class="dv">2</span>]</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fec.reg)</span></code></pre></div>
 <pre><code>NA 
 NA Call:
-NA glm(formula = surv ~ size, family = binomial(), data = d)
+NA glm(formula = fec ~ size, family = poisson(), data = d)
 NA 
 NA Deviance Residuals: 
 NA     Min       1Q   Median       3Q      Max  
-NA -2.1654  -0.8857   0.3729   0.8629   1.8494  
+NA -35.189   -1.742    1.345    4.119   16.884  
 NA 
 NA Coefficients:
-NA             Estimate Std. Error z value Pr(&gt;|z|)  
-NA (Intercept)   -3.732      1.819  -2.051   0.0403 *
-NA size          52.879     24.590   2.150   0.0315 *
+NA             Estimate Std. Error z value Pr(&gt;|z|)    
+NA (Intercept) 2.880108   0.039448   73.01   &lt;2e-16 ***
+NA size        0.110536   0.001365   80.99   &lt;2e-16 ***
 NA ---
 NA Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 NA 
-NA (Dispersion parameter for binomial family taken to be 1)
+NA (Dispersion parameter for poisson family taken to be 1)
 NA 
-NA     Null deviance: 33.104  on 23  degrees of freedom
-NA Residual deviance: 26.474  on 22  degrees of freedom
-NA   (24 observations deleted due to missingness)
-NA AIC: 30.474
+NA     Null deviance: 28996  on 247  degrees of freedom
+NA Residual deviance: 22496  on 246  degrees of freedom
+NA   (50 observations deleted due to missingness)
+NA AIC: 24272
 NA 
-NA Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now you can continue creating regressions for reproduction and growth</span></span></code></pre></div>
+NA Number of Fisher Scoring iterations: 5</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now you can continue creating regressions for survival and growth</span></span></code></pre></div>
 <p>Here are the observations and the model fit:</p>
 <figure>
 <img
-src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/unnamed-chunk-5-1.jpeg"
-data-dpi="300" alt="A logistic model for the survival of duckweeds" />
-<figcaption aria-hidden="true">A logistic model for the survival of
-duckweeds</figcaption>
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/IPM_implementation_files/unnamed-chunk-5-1.jpeg"
+data-dpi="300"
+alt="Reproduction regression for snapping turtles. Bullets are observations and the regression is shown as a curve displaying the relationship between size and clutch mass at time t." />
+<figcaption aria-hidden="true">Reproduction regression for snapping
+turtles. Bullets are observations and the regression is shown as a curve
+displaying the relationship between size and clutch mass at time
+t.</figcaption>
 </figure>
-<p>Now it is time to define a function to predict the survival of our
-population (and the same should be done for the other vital rates):</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>s.x<span class="ot">=</span><span class="cf">function</span>(x,params) {</span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>u<span class="ot">=</span><span class="fu">exp</span>(params<span class="sc">$</span>surv.int<span class="sc">+</span>params<span class="sc">$</span>surv.slope<span class="sc">*</span>x)</span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(u<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span>u))</span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Now it is time to define a function to predict the reproduction of
+our population (and the same should be done for the other vital
+rates):</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>f.yx<span class="ot">=</span><span class="cf">function</span>(xp,x,params) {</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>params<span class="sc">$</span>establishment.prob<span class="sc">*</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(xp,<span class="at">mean=</span>params<span class="sc">$</span>recruit.size.mean,<span class="at">sd=</span>params<span class="sc">$</span>recruit.size.sd)<span class="sc">*</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(params<span class="sc">$</span>offsp.int<span class="sc">+</span>params<span class="sc">$</span>offsp.slope<span class="sc">*</span>x)</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>To make a kernel, define the matrix size, size range, boundary
 points, mesh points, and step size:</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>min.size<span class="ot">=</span>.<span class="dv">9</span><span class="sc">*</span><span class="fu">min</span>(<span class="fu">c</span>(d<span class="sc">$</span>size,d<span class="sc">$</span>sizeNext),<span class="at">na.rm=</span>T)</span>
@@ -4542,22 +4609,90 @@ matrix is obtained by matrix multiplication and addition:</p>
 <span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) P[,i]<span class="ot">=</span>G[,i]<span class="sc">*</span>S[i] <span class="co"># growth/survival matrix</span></span>
 <span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>K<span class="ot">=</span>P<span class="sc">+</span>F <span class="co"># full matrix</span></span>
 <span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>K[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
-<pre><code>NA             [,1]        [,2]        [,3]        [,4]
-NA [1,] 0.001271302 0.001267617 0.001263943 0.001260279
-NA [2,] 0.001460592 0.001456358 0.001452137 0.001447927
-NA [3,] 0.001673134 0.001668285 0.001663449 0.001658627
-NA [4,] 0.001910973 0.001905434 0.001899911 0.001894403</code></pre>
+<pre><code>NA            [,1]        [,2]        [,3]        [,4]
+NA [1,] 0.01356862 0.006496844 0.002771060 0.001054831
+NA [2,] 0.02704795 0.014710977 0.007123565 0.003073257
+NA [3,] 0.04685952 0.028954228 0.015925250 0.007799033
+NA [4,] 0.07055157 0.049528484 0.030947537 0.017213692</code></pre>
+<p>IPMs can also be obtained by using R packages, such as IPMpack:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;IPMpack&quot;</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a regression object for each vital rate, such as:</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>survival_object<span class="ot">&lt;-</span><span class="fu">makeSurvObj</span>(my_dataset,surv<span class="sc">~</span>size)</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co"># This package has built-in functions to evaluate different models within each vital rate</span></span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Now create an IPM matrix</span></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>IPMmatrix<span class="ot">&lt;-</span><span class="fu">makeIPMPmatrix</span>(<span class="at">survObj=</span>survival_object,<span class="at">growObj=</span>growth_object,</span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>                          <span class="at">minSize=</span>minSize,<span class="at">maxSize=</span>maxSize)</span></code></pre></div>
 <p>After obtaining an IPM matrix, population analyses can be performed
 in a similar fashion as in MPMs, such as asymptotic population growth
 rate, stable stage structure, reproductive values, sensitivities and
 elasticities, which you have already learnt about here: <a
 href="hhttps://www.ecotheory.ca/teach/BIOL652.html#structured-population-models">Structured
 Population Models</a></p>
+<p>Now let’s exemplify one of the possible quality checks to our IPM:
+checking for eviction, or individuals outside the size range impacting
+our survival model. For the sake of this example, we excluded a few
+large non-surviving individuals to reduce the variance and improve the
+model fit when doing the regression.</p>
+<p>We begin by plotting probabilities and observed values:</p>
+<figure>
+<img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/IPM_implementation_files/unnamed-chunk-9-1.jpeg"
+data-dpi="300"
+alt="Eviction check: plotting probability of survival and model values. The line shows the fitted survival model and the dots display observed values from model (column sums of growth/survival matrix)" />
+<figcaption aria-hidden="true">Eviction check: plotting probability of
+survival and model values. The line shows the fitted survival model and
+the dots display observed values from model (column sums of
+growth/survival matrix)</figcaption>
+</figure>
+<p>And here we see that eviction is mostly occurring among large
+individuals. To correct this, we can modify our matrix to place evicted
+individuals at the closest bin within the model boundaries (eg.,
+individuals which are too small are placed in the bin for the smallest
+size, and individuals who are too big are placed in the bin for the
+largest size).</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loop to fix eviction of small individuals</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(n<span class="sc">/</span><span class="dv">2</span>)) {</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>G[<span class="dv">1</span>,i]<span class="ot">&lt;-</span>G[<span class="dv">1</span>,i]<span class="sc">+</span><span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(G[,i])</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>P[,i]<span class="ot">&lt;-</span>G[,i]<span class="sc">*</span>S[i]</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="co"># loop to fix eviction of large individuals</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> (n<span class="sc">/</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n) {</span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>G[n,i]<span class="ot">&lt;-</span>G[n,i]<span class="sc">+</span><span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(G[,i])</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>P[,i]<span class="ot">&lt;-</span>G[,i]<span class="sc">*</span>S[i]</span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ...and we recalculate our kernels:</span></span>
+<span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a>F<span class="ot">=</span>h<span class="sc">*</span><span class="fu">outer</span>(y,y,f.yx,<span class="at">params=</span>params) <span class="co"># reproduction</span></span>
+<span id="cb74-15"><a href="#cb74-15" aria-hidden="true" tabindex="-1"></a>K<span class="ot">=</span>P<span class="sc">+</span>F <span class="co"># full matrix</span></span></code></pre></div>
+<p>Let’s plot our new column sums and see if our data looks better
+now:</p>
+<figure>
+<img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/IPM_implementation_files/unnamed-chunk-11-1.jpeg"
+data-dpi="300"
+alt="Eviction check: plotting probability of survival and model values. The line shows the fitted survival model and the dots display observed values from model (column sums of growth/survival matrix)" />
+<figcaption aria-hidden="true">Eviction check: plotting probability of
+survival and model values. The line shows the fitted survival model and
+the dots display observed values from model (column sums of
+growth/survival matrix)</figcaption>
+</figure>
 <h2 id="references-5">References</h2>
+<p>Armstrong, D. P., Keevil, M. G., Rollinson, N., &amp; Brooks, R. J.
+(2018). Subtle individual variation in indeterminate growth leads to
+major variation in survival and lifetime reproductive output in a
+long‐lived reptile. <em>Functional Ecology, 32</em>(3), 752-761.</p>
 <p>Doak, D. F., Waddle, E., Langendorf, R. E., Louthan, A. M., Isabelle
 Chardon, N., Dibner, R. R., … &amp; DeMarche, M. L. (2021). A critical
 comparison of integral projection and matrix projection models for
 demographic analysis. <em>Ecological Monographs, 91</em>(2), e01447.</p>
+<p>Erickson, R. A., Eager, E. A., Brey, M. K., Hansen, M. J., &amp;
+Kocovsky, P. M. (2017). An integral projection model with YY-males and
+application to evaluating grass carp control. Ecological Modelling, 361,
+14-25.</p>
 <p>Gonzalez, E.J., Childs, D.Z., Quintana-Ascencio, P.F. and
 Salguero-Gomez, R. (2021), Integral projection models. In:
 <em>Demographic Methods Across the Tree of Life</em>. Edited by Roberto
@@ -4583,7 +4718,7 @@ affected by an invasive herbivore insect <em>Rhinocyllus conicus</em>.
 Rose et al. (2005) tried to determine how demographic rates of Platte
 thistle varied with plant size and damage by <em>R. conicus</em>.</p>
 <figure>
-<img src="platte_thistle_1.jpg"
+<img src="platte_thistle_1.jpg" style="width:70.0%"
 alt="© Jerry Oldenettel, Cirsium canescens. AKA(Platt Thistle)., Creative Commons CC BY-NC-SA 2.0 license" />
 <figcaption aria-hidden="true">© Jerry Oldenettel, <a
 href="https://www.flickr.com/photos/jroldenettel/1734332992">Cirsium
@@ -4597,6 +4732,9 @@ dependence</h4>
 given year is proportional to the number of seeds produced the previous
 year. Based on Rose et al. (2005), <span class="math inline">\(Recruits
 = Seeds^{0.67}\)</span> for <em>Cirsium canescens</em>.</p>
+<p><img src="plant_dd_ipm.jpeg"
+alt="Relationship between the number of recruits at time t+1 and the number of seeds at time t." />
+{width=80%}</p>
 <p>The seed set number of Platte thistle (<em>Cirsium canescens</em>) is
 affected by two different factors:</p>
 <ul>
@@ -4696,50 +4834,114 @@ survival probability component.</p>
 function of size and population density</p>
 <p><span class="math display">\[ logit (s(z,N)) = \alpha_s +
 \alpha_{s,z} + \beta_s^z*z + \beta_s^N*N \]</span></p>
-<h3 id="possible-literature-discussion">Possible literature
-discussion</h3>
-<p>An integral projection model for gizzard shad (Dorosoma cepedianum)
-utilizing density-dependent age-0 survival</p>
-<p>Introduce an integral projection model for gizzard shad based on
-empirical data with density-dependent survival in age-0 fish. Then
-compare model outcomes to the dynamics reported for this fish species in
-a well-studied navigational pool of the Illinois River.</p>
-<p>Survival:</p>
-<p><span class="math display">\[ s(z) = s_{min} +
-\frac{s_{max}-s_{min}}{1+e^{\beta_s(In(z)-In(a_s))}} \]</span></p>
-<p>Transition/Growth:</p>
-<p>A two-variable normal distribution centered around a modified von
-Bertalanffy function of the length at time <span
-class="math inline">\(t\)</span>,</p>
-<p><span class="math display">\[ G(z&#39;z) = Prob(z&#39;|z,L_\inf, K_g)
-\]</span></p>
-<p>Fecundity:</p>
-<p><span class="math display">\[ F(z&#39;,z) =
-p*egg(z)vs_0(d(t))C_1(z&#39;) \]</span> where <span
-class="math inline">\(p\)</span> is the probability of female
-reproduction, <span class="math inline">\(egg(z)\)</span> is the mean
-number of eggs produced by a fish of length <span
-class="math inline">\(z\)</span>, <span class="math inline">\(v\)</span>
-is the probability that an egg is viable, <span
-class="math inline">\(s_0(d(t))\)</span> is the
-<strong>density-dependent</strong> probability of surviving to age-1,
-and <span class="math inline">\(C_1(z&#39;)\)</span> is the length
-distribution of new recruits at age-1.</p>
-<p>The probability of age-0 surviving <span
-class="math inline">\(s_0(d(t))\)</span> can be defined as an
-exponential function</p>
-<p><span class="math display">\[ s_0(d(t)) = a_0e^{-b_0d(t)}\]</span>
-and <span class="math inline">\(d(t)\)</span> is the density at time
-<span class="math inline">\(t\)</span> of age-0 gizzard shad per 1000
-m3</p>
-<p>Need a graph here showing the density-dependent age-0 survival
-relationship.</p>
-<ol start="2" type="1">
-<li>Density dependent environments can select for extremes of body
-size</li>
-</ol>
-<p>incorporate density-dependence in all kernels</p>
+<h3
+id="application-of-density-dependent-ipm-to-an-ecological-problem">Application
+of density-dependent IPM to an ecological problem</h3>
+<p>Here we go back to the same soay sheep example that we have been
+discussing. In the soay sheep population, density affects three
+processes in the kernel:</p>
+<ul>
+<li><p>The probability that a newborn lamb successfully recruits into
+the population, <span class="math inline">\(p_r\)</span>.</p></li>
+<li><p>The size distribution of new recruits, <span
+class="math inline">\(C_0\)</span>.</p></li>
+<li><p>The survival of adults <span
+class="math inline">\(s\)</span>.</p></li>
+</ul>
+<figure>
+<img src="soay_ipm_dd.jpeg"
+alt="(a) Density-dependent adult survival (solid line), and recruitment probability (dashed line) plotted over the observed range of female densities. (b) Offspring mean mass (as a proxy for offspring mean size) plotted over the observed range of female densities. Note that adult survival and offspring size are plotted for a typical-size adult female, z = 2.9. (code adapted from Ellner et al., 2016)" />
+<figcaption aria-hidden="true">(a) Density-dependent adult survival
+(solid line), and recruitment probability (dashed line) plotted over the
+observed range of female densities. (b) Offspring mean mass (as a proxy
+for offspring mean size) plotted over the observed range of female
+densities. Note that adult survival and offspring size are plotted for a
+typical-size adult female, z = 2.9. (code adapted from Ellner et al.,
+2016)</figcaption>
+</figure>
+<p>To construct a density-dependent IPM model on soay sheep, we first
+define the true population parameters (data and code from Ellner et al.,
+2016):</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>m.par.true <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="do">## survival (density dependent)</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">surv.int  =</span>  <span class="fl">1.06e+0</span>,</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">surv.z    =</span>  <span class="fl">2.09e+0</span>,</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">surv.Nt   =</span> <span class="sc">-</span><span class="fl">1.80e-2</span>,</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>                <span class="do">## growth (NOT density dependent)</span></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">grow.int  =</span>  <span class="fl">1.41e+0</span>,</span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">grow.z    =</span>  <span class="fl">5.57e-1</span>,</span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">grow.sd   =</span>  <span class="fl">7.99e-2</span>,</span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a>                <span class="do">## reproduce or not (NOT density dependent)</span></span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">repr.int  =</span> <span class="sc">-</span><span class="fl">7.23e+0</span>,</span>
+<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">repr.z    =</span>  <span class="fl">2.60e+0</span>,                </span>
+<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>                <span class="do">## recruit or not (density dependent)</span></span>
+<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">recr.int  =</span>  <span class="fl">4.43e+0</span>,</span>
+<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">recr.Nt   =</span> <span class="sc">-</span><span class="fl">9.19e-3</span>,</span>
+<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a>                <span class="do">## recruit size (density dependent)</span></span>
+<span id="cb75-16"><a href="#cb75-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">rcsz.int  =</span>  <span class="fl">5.40e-1</span>,</span>
+<span id="cb75-17"><a href="#cb75-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">rcsz.z    =</span>  <span class="fl">7.10e-1</span>,</span>
+<span id="cb75-18"><a href="#cb75-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">rcsz.Nt   =</span> <span class="sc">-</span><span class="fl">6.42e-4</span>,</span>
+<span id="cb75-19"><a href="#cb75-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">rcsz.sd   =</span>  <span class="fl">1.59e-1</span>)</span></code></pre></div>
+<p>From literature data we can define the three density-dependent
+demographic functions:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Recruitment function (N.B - from birth in spring to first summer), logistic regression</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>pr_z <span class="ot">&lt;-</span> <span class="cf">function</span>(Nt, m.par) {</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>    linear.p <span class="ot">&lt;-</span> m.par[<span class="st">&quot;recr.int&quot;</span>] <span class="sc">+</span> m.par[<span class="st">&quot;recr.Nt&quot;</span>] <span class="sc">*</span> Nt</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>linear.p))</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(p)</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Recruit size function</span></span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a>c_z1z <span class="ot">&lt;-</span> <span class="cf">function</span>(z1, z, Nt, m.par) {</span>
+<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a>    mean <span class="ot">&lt;-</span> m.par[<span class="st">&quot;rcsz.int&quot;</span>] <span class="sc">+</span> m.par[<span class="st">&quot;rcsz.Nt&quot;</span>] <span class="sc">*</span> Nt <span class="sc">+</span> m.par[<span class="st">&quot;rcsz.z&quot;</span>] <span class="sc">*</span> z</span>
+<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a>    sd <span class="ot">&lt;-</span> m.par[<span class="st">&quot;rcsz.sd&quot;</span>]</span>
+<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a>    p.den.rcsz <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(z1, <span class="at">mean =</span> mean, <span class="at">sd =</span> sd)</span>
+<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(p.den.rcsz)</span>
+<span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-16"><a href="#cb76-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Survival function, logistic regression</span></span>
+<span id="cb76-17"><a href="#cb76-17" aria-hidden="true" tabindex="-1"></a>s_z <span class="ot">&lt;-</span> <span class="cf">function</span>(z, Nt, m.par) {</span>
+<span id="cb76-18"><a href="#cb76-18" aria-hidden="true" tabindex="-1"></a>    linear.p <span class="ot">&lt;-</span> m.par[<span class="st">&quot;surv.int&quot;</span>] <span class="sc">+</span> m.par[<span class="st">&quot;surv.Nt&quot;</span>] <span class="sc">*</span> Nt <span class="sc">+</span> m.par[<span class="st">&quot;surv.z&quot;</span>] <span class="sc">*</span> z </span>
+<span id="cb76-19"><a href="#cb76-19" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>linear.p))                                                 </span>
+<span id="cb76-20"><a href="#cb76-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(p)</span>
+<span id="cb76-21"><a href="#cb76-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The growth and reproduction function are density-independent, we
+define them as:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Growth function, given you are size z now returns the pdf of size z1 next time</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>g_z1z <span class="ot">&lt;-</span> <span class="cf">function</span>(z1, z, m.par) {</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    mean <span class="ot">&lt;-</span> m.par[<span class="st">&quot;grow.int&quot;</span>] <span class="sc">+</span> m.par[<span class="st">&quot;grow.z&quot;</span>] <span class="sc">*</span> z           </span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>    sd <span class="ot">&lt;-</span> m.par[<span class="st">&quot;grow.sd&quot;</span>]                                    </span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>    p.den.grow <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(z1, <span class="at">mean =</span> mean, <span class="at">sd =</span> sd)</span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(p.den.grow)</span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Reproduction function, logistic regression</span></span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a>pb_z <span class="ot">&lt;-</span> <span class="cf">function</span>(z, m.par) {</span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>    linear.p <span class="ot">&lt;-</span> m.par[<span class="st">&quot;repr.int&quot;</span>] <span class="sc">+</span> m.par[<span class="st">&quot;repr.z&quot;</span>] <span class="sc">*</span> z       </span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a>    p <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>linear.p))                                 </span>
+<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(p)</span>
+<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>With all the demographic function defined, now we can construct build
+the IPM kernels P, F, and K:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Define the survival kernel</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>P_z1z <span class="ot">&lt;-</span> <span class="cf">function</span> (z1, z, Nt, m.par) {</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>( <span class="fu">s_z</span>(z, Nt, m.par) <span class="sc">*</span> <span class="fu">g_z1z</span>(z1, z, m.par) )</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Define the reproduction kernel</span></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>F_z1z <span class="ot">&lt;-</span> <span class="cf">function</span> (z1, z, Nt, m.par) {</span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>( <span class="fl">0.5</span><span class="sc">*</span> <span class="fu">s_z</span>(z, Nt, m.par) <span class="sc">*</span> <span class="fu">pb_z</span>(z, m.par) <span class="sc">*</span> <span class="fu">pr_z</span>(Nt, m.par) <span class="sc">*</span>             <span class="fu">c_z1z</span>(z1, z, Nt, m.par) )</span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <h3 id="references-6">References</h3>
+<p>Ellner, Stephen P., Dylan Z. Childs, and Mark Rees. 2016.
+<em>Data-Driven Modelling of Structured Populations: A Practical Guide
+to the Integral Projection Model.</em> Lecture Notes on Mathematical
+Modelling in the Life Sciences. Switzerland: Springer.</p>
+<p>“Example of a Simple, Stochastic, Kernel-Resampled Model with Density
+Dependence.” n.d. Accessed March 27, 2023.</p>
+<p>Rose, Karen E., Svata M. Louda, and Mark Rees. 2005. “Demographic and
+Evolutionary Impacts of Native and Invasive Insect Herbivores on Cirsium
+Canescens.” <em>Ecology (Durham) 86</em> (2): 453–65.
+https://doi.org/10.1890/03-0697.</p>
 <h3 id="environmental-stochasticity-in-ipms">Environmental stochasticity
 in IPMs</h3>
 <p>Vital rate functions can readily accommodate covariates, such as
