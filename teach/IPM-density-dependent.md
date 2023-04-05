@@ -1,18 +1,3 @@
----
-title: "IPM-density-dependent"
-author: "Eddie Wu"
-date: "2023-04-05"
-output: 
-  html_document:
-    toc: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: false
-    keep_md: yes
----
-
-
-
 ## Density dependence in IPM
 
 Like in unstructured population models and matrix population models, density-dependence also occurs in integral projection models. However, a general guide to building density-dependent IPMs is impossible, as there are too many possibilities. Any demographic rate can be affected by competition, and the dependence can take many possible forms. So instead, we will present this section by first introducing a famous example of density-dependent recruitment on Platte thistle (*Cirsium canescens*). Then, we will explain the theories behind the model construction.
@@ -28,7 +13,7 @@ Platte thistle (*Cirsium canescens*) is a native thistle species endemic to Nort
 
 For a plant that reproduces by seeds, the number of new recruits in a given year is proportional to the number of seeds produced the previous year. This means that the recruitment is density-dependent. Based on Rose et al. (2005), the relationship between the number of new recruits at year $t+1$ and the number of seeds at time $t$ is $Recruits = Seeds^{0.67}$ for *Cirsium canescens*.
 
-![](IPM-density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg)<!-- -->
+![Relationship between the number of new recruits at year t+1 and the number of seeds at time t](plant_dd_ipm.jpeg)
 
 Now we can define the density-independent demographic functions. (Rose et al., 2005)
 
