@@ -63,9 +63,7 @@ legend(2.2, 2400, legend=c("Exponential population growth", "Arithmetic growth o
 
 ![](density-independent_files/figure-html/unnamed-chunk-1-1.jpeg)<!-- -->
 
-* The main difference between these two types of growth is that an arithmetic growth is characterized by the addition or subtraction of a fixed value (eg. we added "50" in our linear growth example above, which could represent agricultural yields, for instance).
-
-* Meanwhile, geometric and exponential growths are multiplicative processes in which a fixed rate of change is applied to population sizes at all time steps. 
+The main difference between these two types of growth is that an arithmetic growth is characterized by the addition or subtraction of a fixed value (eg. we added "50" in our linear growth example above, which could represent agricultural yields, for instance). Meanwhile, geometric and exponential growths are multiplicative processes in which a fixed rate of change is applied to population sizes at all time steps. 
 
 ### When are simple population models used in biological analyses?
 
@@ -243,7 +241,7 @@ lambda <- (year2/year0)^(1/2)
 
 #### What is exponential growth
 
-For populations which do not reproduce seasonally, an irrestricted growth can be projected using the exponential growth model. Instead of the $\lambda$ rate, the **instantaneous per capita growth rate (r)** is used to represent a constant percentage increase over a continuous time scale. This rate is also useful to compare populations with different intervals of growth.
+For populations which do not reproduce seasonally, an unrestricted growth can be projected using the exponential growth model. Instead of the $\lambda$ rate, the **instantaneous per capita growth rate (r)** is used for populations changes over a continuous time scale. This rate is also useful to compare populations with different intervals of growth.
 
 #### How to calculate the exponential growth rate
 
@@ -312,7 +310,7 @@ legend(1995, 1300, legend=c("Observed data", "Model predictions"),
 
 ![](density-independent_files/figure-html/unnamed-chunk-8-1.jpeg)<!-- -->
 
-#### Simplifying the exponential growth calculation
+#### The exponential growth calculation
 
 Due to the ability to replace $\lambda$ for r and vice-versa, we have:
 
@@ -337,19 +335,7 @@ Ecosystem effects of the world’s largest invasive animal (Shurin et al., 2020)
 
 ##### Snapshot of the study
 
-* An invasive population of hippopotamus (*Hippopotamus amphibus*) is showing an exponential growth in Colombia
-
-* These large mammals were brought from Africa to the famous drug trafficker Carlos Scobar's private zoo about 25 years ago
-
-* Following Scobar's death, the then abandoned animals started spreading in the region, going from 4 to 65 individuals in 25 years
-
-* Hippos are considered as ecosystem engineers because they modify ecosystems by grazing on land and defecating in water bodies, thereby fertilizing aquatic systems
-
-* The growth of this invasive population appears to be in an exponential phase, with numbers achieving thousands in the following decades if no control measures are taken or without density-dependent regulation (to be introduced in the following module)
-
-* This study analyzed aquatic and terrestrial areas populated by hippos to conclude that this invasive species is substantially changing the environment by relocating nutrients from the soil to the water, resulting in cyanobacteria blooms. Continued unrestricted hippo population growth can then lead to water resource damage.
-
-* Constrains to management: Actions to manage this invasive species are complicated by the social-ecological mismatch between the scientific consensus on the ecosystem threats posed by this invasion and the public perception of the presence of hippos as being positive (eg., animal used for touristic purposes)
+An invasive population of hippopotamus (*Hippopotamus amphibus*) is showing an exponential growth in Colombia. These large mammals were brought from Africa to the famous drug trafficker Carlos Scobar's private zoo about 25 years ago. Following Scobar's death, the abandoned animals started spreading in the region. Hippos are considered as ecosystem engineers because they modify ecosystems by grazing on land and defecating in water bodies, thereby fertilizing aquatic systems. Population models predict that there will be thousands of hippos in the following decades if no control measures are taken or without density-dependent regulation (to be introduced in the following module). This study concluded hippos are indeed causing water resource damage. Actions to manage this invasive species are complicated by the social-ecological mismatch between the scientific consensus on ecosystem threats and a positive public perception (eg., animal used for touristic purposes).
 
 ![© Bernard Dupont, [Grazing hippos](https://commons.wikimedia.org/wiki/File:Hippo_%28Hippopotamus_amphibius%29_emaciated_specimen_grazing_on_Sabie_riverbank_..._%2833321050795%29.jpg), [Creative Commons CC-BY-SA-2.0 license](https://creativecommons.org/licenses/by-sa/2.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/hippo2.jpg)
 
