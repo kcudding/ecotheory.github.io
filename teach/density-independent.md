@@ -108,9 +108,9 @@ Geometric growth is a multiplicative process. Simple singled-cell organisms have
 
 #### Mathematical equation to predict future population sizes
 
-If we assume that the number of births and and deaths is proportional to the current population size, and our population is isolated, we can write:
+Instead of considering the total number of births (B) and deaths (D), which change as population sizes change (eg., think of the very high number of births simply resulting from a very big population as compared to a small population), let's think about the probability of a given individual to give birth or die. This probability is called per capita birth rate (bt) and per capita death rate (dt), respectively, and tends to be constant through time in a simple population model. If we also assume that our population is isolated, we can write:
 
-$$N_{(t+1)}=N_{t}(b_{t}-d_{t})$$
+$$N_{t+1}=N_{t}(b_{t}-d_{t})$$
 
 Where:
 N(t+1): number of individuals in the future
@@ -124,10 +124,11 @@ R0 (pronounced as "R-naught") is the net reproductive rate which represents the 
 
 $$R_{0}=b_{t}-d_{t}$$
 
-Thus, future population sizes can be calculated by:
+If we replace the number of births and deaths with R0, we can calculate future population sizes by:
 
-$$N_{(t+1)}=N_{t}*R_0$$
+$$N_{t+1}=N_{t}*R_0$$
 
+If we want to calculate population sizes several generations into the future, we can multiply our initial population by the net reproductive rate, and then keep multiplying it by R0 for each a generation that has passed by:
 
 ```r
 # Let's practice: considering that an initial population of 100 individuals and a net 
@@ -147,15 +148,15 @@ Nfuture
 ## [1] 2073.6
 ```
 
-Thus, for calculating population sizes at any generation, we have: 
+Instead of repeating this R0 multiplication several times, we can calculate population sizes at any generation by raising net reproductive rate to the power of t (time): 
 
 $$N_{t}=N_{0}*(R_0)^t$$
 
 #### From generation time to calendar time: Lambda ($\lambda$) geometric growth rate
 
-If we assume birth rates and death rates are constant through time, we are left with:
+So far, we have learnt how to calculate population sizes using the net reproductive rate (R0), which considers that population changes are occuring at each generation. Now, lets learn how to estimate population changes in units of time. Let's go back to our equation to get future population sizes:
 
-$$N_{t+1}=N_{t}*(b-d)$$
+$$N_{t+1}=N_{t}(b_{t}-d_{t})$$
 
 We can rename this net rate, $\lambda$, to obtain 
 
@@ -312,7 +313,7 @@ legend(1995, 1300, legend=c("Observed data", "Model predictions"),
 
 #### The exponential growth calculation
 
-Due to the ability to replace $\lambda$ for r and vice-versa, we have:
+Due to the ability to replace $\lambda$ for r and vice-versa, the equation for calculating a continuous population growth can be integrated as:
 
 $$N_{t}=N_{0}e^{rt}$$ 
 
@@ -413,66 +414,3 @@ This illustration demonstrates the utility of the exponential growth model for s
 * The research found an annual per capita growth rate of 0.11 x yr^-1 for invasive hippos, which is comparable to population growth rates in the native range and indicates a potential for quick spread of this invasive species in the next decades. The growth rate we obtained above is slightly different because we took into account additional recent demography records. The lack of predators in both native and invasive ranges (Sinclair, Mduma, & Brashares, 2003; Castelblanco-Martínez et al., 2021) is a key factor enabling uncontrolled hippo population growth.
 
 * As a next step, refining population growth studies to include **stage structure** and **age at maturity** could help identifying useful management strategies, as there may be life history traits which are more relevant to population growth than others. For example, the population structure of hippos appears to be an important factor when predicting future invasion scenarios, as "half of those hippos are calves and juveniles, implying their reproductive rate will increase in the next three years" (Varona, 2022). You will learn about structured population models in the upcoming modules.
-
-### Further Reading
-
-#### Theoretical work
-To read about the theory behind simple models, refer to:  
-* Mills, L.S. (2012). *Conservation of wildlife populations*: Demography, genetics, and management. Wiley- Blackwell.
-
-#### Population modelling codes
-To further practice the application of simple models, here are good guides:  
-* Dyer, R. (2009). Biological data analysis using R (Doctoral dissertation, Ph. D thesis. Department of Biology, Center for the Study of Biological Complexity, Virginia Commonwealth Univ).
-
-* Stevens, M.H. (2009). *A primer of ecology with R*. Springer.
-
-#### New applications
-* Thomas, L., Russell, D. J., Duck, C. D., Morris, C. D., Lonergan, M., Empacher, F., ... & Harwood, J. (2019). Modelling the population size and dynamics of the British grey seal. *Aquatic Conservation: Marine and Freshwater Ecosystems, 29*, 6-23.
-
-### R Resources
-#### Packages
-* deSolve: contains solvers (function “ode”) for integrals: eg., integral of the exponential growth equation and ordinary differential equations (ODE): eg., logistic growth
-
-* clogistic: logistic growth equation
-
-* AICcmodavg: model evaluation using Akaike information criteria
-
-#### Functions
-* [for Loop](https://www.datacamp.com/tutorial/tutorial-on-loops-in-r)
-
-* [plotting population models](https://rstudio-pubs-static.s3.amazonaws.com/252603_9c6a71110dc74cc7832f154449235f7f.html)
-
-* [sapply](https://r-coder.com/sapply-function-r/)
-
-* [customized functions](https://swcarpentry.github.io/r-novice-inflammation/02-func-R/)
-
-### References
-Castelblanco-Martínez, D. N., Moreno-Arias, R. A., Velasco, J. A., Moreno-Bernal, J. W., Restrepo, S., Noguera-Urbano, E. A., ... & Jiménez, G. (2021). A hippo in the room: Predicting the persistence and dispersion of an invasive mega-vertebrate in Colombia, South America. *Biological Conservation, 253*, 108923.
-
-Dyer, R. (2009). Biological data analysis using R (Doctoral dissertation, Ph. D thesis. Department of Biology, Center for the Study of Biological Complexity, Virginia Commonwealth Univ).
-
-Gronewold, N. (2021). Comparative Conservation Strategy Efficacy for Grus japonensis and Grus americana: A Post-Policy Implementation Assessment. *Journal of International Wildlife Law & Policy, 24*(3-4), 224-250.
-
-Jacobs, J. S., & Sheley, R. L. (1998). Observation: life history of spotted knapweed. *Rangeland Ecology & Management/Journal of Range Management Archives, 51*(6), 665-673.
-
-Kremer, W. (2014, June 25). Pablo Escobar's hippos: A growing problem. *BBC News*. https://www.bbc.com/news/magazine-27905743 
-
-Malthus, T. R. (1798). *An essay on the principle of population*. The Works of Thomas Robert Malthus, London, Pickering & Chatto Publishers, 1, 1-139.
-
-Mills, L.S. (2012). *Conservation of wildlife populations*: Demography, genetics, and management. Wiley- Blackwell.
-
-NBCUniversal News Group. (2014, July 1). Pablo Escobar's hippos are running wild in Colombia. *NBCNews.com*.  https://www.nbcnews.com/news/latin-america/pablo-escobars-hippos-are-running-wild-colombia-n145446 
-
-Romero, S. (2009, September 10). Colombia confronts drug lord's legacy: Hippos. *The New York Times*. https://www.nytimes.com/2009/09/11/world/americas/11hippo.html 
-
-Shigesada, N. & Kawasaki, K. (1997) Biological Invasions: Theory and Practice (Oxford Univ. Press, Oxford).
-
-Shurin, J. B., Aranguren-Riaño, N., Duque Negro, D., Echeverri Lopez, D., Jones, N. T., Laverde‐R, O., ... & Pedroza Ramos, A. (2020). Ecosystem effects of the world’s largest invasive animal. *Ecology, 101*(5), e02991.
-
-Sinclair, A. R., Mduma, S., & Brashares, J. S. (2003). Patterns of predation in a diverse predator–prey system. *Nature, 425*(6955), 288-290.
-
-Spotted knapweed. (2023). Minnesota Department of Agriculture. https://www.mda.state.mn.us/plants/pestmanagement/weedcontrol/noxiouslist/spottedknapweed 
-
-Stevens, M.H. (2009). *A primer of ecology with R*. Springer. 
-
-Varona , A. O. (2022, November 18). Hippos in Colombia: What to do with them? | Graduate and Postdoctoral Studies | *Rice University*. https://graduate.rice.edu/news/current-news/hippos-colombia-what-do-them 
