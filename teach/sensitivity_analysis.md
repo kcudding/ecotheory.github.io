@@ -100,7 +100,7 @@ s=L; n=dim(L)[1];
 elas<-Re(L/eigen(L)$values[1]*s)
 ```
 
-Finally, we visualize sensitivities and elasticities for each vital rate and stage in these bar plots:
+Finally, we visualize sensitivities and elasticities for each vital rate and stage in these bar plots (note that y-axis values are not the same across the 2 plots):
 
 
 ![Comparing sensitivities and elasticities for the reproduction and survival of several tree sizes (in cm) in an oak population](https://raw.github.com/kcudding/kcudding.github.io/main/teach/sensitivity_analysis_files/r-1.jpeg){ dpi=300 }  
@@ -118,7 +118,7 @@ elast <- elasticity(L)
 
 ### Component sensitivity and elasticity
 
-Component sensitivity is a numerical approximation of sensitivity which you have just learnt how to calculate. In addition to being used as an approximation to analytical sensitivities, component sensitivities can be used in cases in which both survival and reproduction rates affect the same matrix elements or when a certain vital rate appears in more than one matrix element. They can be calculated by changing the $\lambda$ SSD by a small amount (eg., 0.01 in the equation below), obtaining the resulting matrix, and obtaining the new $\lambda$ SSD for this changed matrix. Then, you proceed with this calculation for a given vital rate x:
+Component sensitivities and elasticities, also called lower-level sensitivities and elasticities, can be calculated in cases where matrix elements are made of more than one vital rate, such as the ones in the top row of projection matrices (they may include both survival and reproduction components), or when a given vital rate appears in more than one matrix element. Component sensitivities can be calculated by using the analytical formula you have just learnt about, by differentiating each element containing a given vital rate. Another way of calculating them is by changing the $\lambda$ SSD by a small amount (eg., 0.01 in the equation below), obtaining the resulting matrix, and obtaining the new $\lambda$ SSD for this changed matrix. Then, you proceed with this calculation for a given vital rate x:
 
 $$x = \frac{\lambda_{x+0.01}-\lambda_{original}}{0.01}$$
 
