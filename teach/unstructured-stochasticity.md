@@ -172,24 +172,3 @@ lm1 <- lm(log~year, data = N)
 ```
 
 ![](observation_error_example.jpeg)
-
-### References
-Ahrestani, F., Hebblewhite, M. and Post, E. (2013). The importance of observation versus process error in analyses of global ungulate populations. *Sci Rep 3*, 3125.
-
-Albon, S. D., Clutton-Brock, T. H. and Guinness, F. E. (1987). Early development and population dynamics in red deer. II. Density-independent effects and cohort variation, *J. Anim. Ecol. 56*, 69-81.
-
-Beck-Johnson, L. M., Nelson, W. A., Paaijmans, K. P., Read, A. F., Thomas, M. B. and Bjonstad, O. N. (2013). The effect of temperature on *Anopheles mosquito* population dynamics and the potential for malaria transmission. *PLoS ONE 8*(11), e79276.
-
-Benton, T. G., Grant, A. and Clutton-Brock, T. H. (1995). Does environmental stochasticity matter? Analysis of red deer life-histories on Rum, *Evolutionary Ecology 9*, 559-574.
-
-Beverton, R. and Holt, S. J. (1957). *On the dynamics of exploited fish populations*. Ministry of Agriculture, Fisheries and Food, London, UK.
-
-Case, T. (2000). *An illustrated guide to theoretical ecology*, Oxford University Press.
-
-Humbert, J.-Y., Mills, L.S., Horne, J.S. and Dennis, B. (2009) A better way to estimate population trend. _Oikos_, **118**:1487--1498.
-
-Lande, R., Engen, S. and Saether, B. (2003). *Stochastic population dynamics in ecology and conservation*. Oxford Series in Ecology and Evolution.
-
-Mills, L. S. (2012) *Conservation of wildlife populations: Demography, genetics, and management*, Wiley-Blackwell Publishing.
-
-Stetz, J. B., Kendall, K. C. and Servheen, C. (2010) Evaluation of Bear Rub Surveys to Monitor Grizzly Bear Population Trends. *Journal of Wildlife Management 74*(4), 860--870.
