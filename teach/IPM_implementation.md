@@ -1,14 +1,3 @@
----
-title: "Numerical Implementation"
-author: "Debora"
-date: "2023-04-04"
-output:
-  html_document:
-    keep_md: yes
----
-
-
-
 ### The first step of IPMs: regressions
 
 To perform an IPM model, regression models are commonly fit to  vital rate data relative to relevant state variables. Such models include linear or logistic regressions, or non-linear models such as generalized additive models (GAMs). Candidate models can be assessed using the Akaike information criteria (AIC), which you were introduced to in the section [Model Selection](https://www.ecotheory.ca/teach/BIOL652.html#model-selection-how-do-we-tell-which-model-to-use-for-our-data). The dynamics for each vital rate can be modelled by the commonly used examples below:
