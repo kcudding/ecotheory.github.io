@@ -148,7 +148,7 @@ Nfuture
 ## [1] 2073.6
 ```
 
-Instead of repeating this R0 multiplication several times, we can calculate population sizes at any generation by raising net reproductive rate to the power of t (time): 
+Instead of repeating this R0 multiplication several times, we can calculate population sizes at any generation by raising the net reproductive rate to the power of t (time): 
 
 $$N_{t}=N_{0}*(R_0)^t$$
 
