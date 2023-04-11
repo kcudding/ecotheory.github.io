@@ -287,17 +287,4 @@ Finally, when the AIC differences are very small, the raw values cannot tell us 
 | **logistic**   | 3            | 35.225   | **76.4** |**0.57**|
 | theta-logistic | 4            | 35.174   | 78.3  | 0.22|
 
-Since these weights sum to 1, they can be interpreted as the probability that a given model is the best one, given the data and the set  of candidate models (e.g., Burnham & Anderson, 2001).  Thus, the strength of evidence in favor of one model over the other is obtained by dividing their Akaike weights. So comparing the logistic model and theta-logistic we have $$\frac {w_{Log}}{w_{Theta}}=\frac {.57}{.22}=2.6,$$ indicating that the logistic model is about 2.6 times more likely than the next best model.
-
-### References
-Akaike, H. (1973). Information theory and an extention of the maximum likelihood principle. In _2nd Inter. Symp. on information Theory_. Akademiai Kiado.
-
-Anderson, D. R., Burnham, K. P., & Thompson, W. L. (2000). Null hypothesis testing: problems, prevalence, and an alternative. _The Journal of Wildlife Management_,_64_, 912-923.
-
-Anderson, D., & Burnham, K. (2004). Model selection and multi-model inference. _Second edition_. NY: Springer-Verlag.
-
-Burnham, K. P., & Anderson, D. R. (2001). Kullback-Leibler information as a basis for strong inference in ecological studies. _Wildlife Research_, _28_(2), 111-119.
-
-Edwards, A. W. (1974). The history of likelihood. _International Statistical Review/Revue Internationale de Statistique_,_42_, 9-15.
-
-Harrison, S. (1991). Local extinction in a metapopulation context: an empirical evaluation. _Biological Journal of the Linnean Society_, _42_(1-2), 73-88.
+Since these weights sum to 1, they can be interpreted as the probability that a given model is the best one, given the data and the set  of candidate models (e.g., Burnham & Anderson, 2001).  Thus, the strength of evidence in favor of one model over the other is obtained by dividing their Akaike weights. So comparing the logistic model and theta-logistic we have $$\frac {w_{Log}}{w_{Theta}}=\frac {.57}{.22}=2.6,$$ indicating that the logistic model is about 2.6 times more likely than the next best
