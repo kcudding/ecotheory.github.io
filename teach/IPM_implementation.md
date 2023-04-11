@@ -1,3 +1,5 @@
+## How do we go about implementing an IPM for our species of interest?
+
 ### The first step of IPMs: regressions
 
 To perform an IPM model, regression models are commonly fit to  vital rate data relative to relevant state variables. Such models include linear or logistic regressions, or non-linear models such as generalized additive models (GAMs). Candidate models can be assessed using the Akaike information criteria (AIC), which you were introduced to in the section [Model Selection](https://www.ecotheory.ca/teach/BIOL652.html#model-selection-how-do-we-tell-which-model-to-use-for-our-data). The dynamics for each vital rate can be modelled by the commonly used examples below:
@@ -15,7 +17,7 @@ Recruit size distribution                                 Normal or log-normal d
 
 &rarr; Note that it is not always necessary to use the above mentioned regressions. For example, functions can be used when there is no data available for growth. One illustration is the IPM model for grass carp developed by Erickson et al. (2017), where the growth function consisted of a normal distribution with 2 variables centered around a modified von Bertalanffy function of fish length at each time step. A derivative was then calculated to map length changes as a function of length.     
 
-### How do we go about implementing an IPM for our species of interest?
+### IPM implementation steps
 
 This diagram shows the main steps to implement an IPM. You have already learnt about the steps in blue (first, second, and last step). 
 
