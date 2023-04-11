@@ -65,7 +65,7 @@ That is, it follows a similar idea of $n(z,t)$.
 
 Now, putting everything together, the population size distribution at time $t+1$ can be calculated as the integral
 $$n(z',t+1)=\int_L^UK(z',z)n(z,t)\ dz.$$
-The kernel $K(z',z)$ in the IPM is analogous to the projection matrix in MPM.
+The kernel $K(z',z)$ in the IPM is analogous to the projection matrix in MPM (Gonzalez et al., 2021).
 
 
 ### From life cycle to model
@@ -142,7 +142,7 @@ We should notice that
 
 ![© Bernd Sauerwein, [_Oenothera glazioviana_](https://commons.wikimedia.org/wiki/File:Oenothera_glazioviana.jpg), [Creative Commons CC BY-SA-3.0 license](https://creativecommons.org/licenses/by-sa/3.0/)](oenothera-glazioviana.jpg)
 
-#### Example 3: ungulate
+#### Example 3: soay sheep
 
 Let's look at a classic animal example, in which we are able to track parental sizes. For animals, age or life stage (e.g. mature vs. immature) plays a more important role in life history transitions. Here we present a example of Soay sheep (_Ovis aries_), whose demographic rates are assumed to be functions of body mass. The kernel function is
 $$K(z',z)=s(z)G(z',z)+s(z)p_b(z)p_r\left(\frac{C_0(z',z)}{2}\right).$$
@@ -156,42 +156,12 @@ We should notice that
 ![© gailhampshire, [Soay sheep (_Ovis aries_)](https://commons.wikimedia.org/wiki/File:Soay_Sheep._Ovis_aries_-_Flickr_-_gailhampshire.jpg), [Creative Commons CC BY-2.0 license](https://creativecommons.org/licenses/by/2.0/)](soay-sheep.jpg)
 
 
-### Illustration of current application: spatial integral projection model
+#### Example 4: integral projection phenology models
 
-As we mentioned earlier, the continuous variable $z$ could be unrelated to "size". Also, $z$ could be multidimensional (Ellner et al., 2016). Here we present a paper about spatial integral projection models (SIPM) that include both demography and dispersal with continuous variables.
+As we mentioned earlier, the continuous variable $z$ could be unrelated to "size". Here we present a paper about an integral projection phenology model, in which the authors treated the physiological age as a continuous variable (Goodsman et al., 2018).
 
-> Jongejans, E., Shea, K., Skarpaas, O., Kelly, D. and Ellner, S.P. (2011), Importance of individual and environmental variation for invasive species spread: a spatial integral projection model. _Ecology_, 92: 86-97.
+- Phenology models are primarily used on insects, and IPM have been shown to be useful for modelling phenology (Ellner and Rees, 2006). In this paper, the authors focused on the timing of summer flights (from brood trees to attack new trees) of mountain pine beetles (_Dendroctonus ponderosae_ Hopkins). 
+- Physiological age is different from the discrete time $t$ in IPM, which is usually referred as the "chronological age". Physiological age accumulates over time at some rate and is a standard approach to measure maturation.
+- The IPM used in the paper is relatively complicated. The authors applied an multidimensional (stage- and age-structured) model, and incorporated environmental stochasticity. The kernels vary from one time point to the next. So we will not present the actual model discussed in the paper, but a brief idea on the possibility of treating physiological age as the continuous variable $z$.
+- Details on incorporating stochasticity into IPM will be discussed in a following section.
 
-![© Baykedevries, [_Carduus nutans_](https://commons.wikimedia.org/wiki/File:Carduus_nutans_NP_Schiermonnikoog.jpg), [Creative Commons CC BY-SA-3.0 license](https://creativecommons.org/licenses/by-sa/3.0/)](carduus-nutans.jpg)
-
-#### Snapshot of the study
-
-- The authors developed an SIPM by combining IPM with an analytical method for modelling spatial spread, Neubert-Caswell Model (NCM). They tested the SIPM on the invasive monocarpic thistle _Carduus nutans_ in New Zealand.
-- For the demographic process, the population is described by the size distribution of rosettes, $R(z,t)$,
-$$R(z',t+1)=\int_Z K_{dem}(z',z)R(z,t)\ dz.$$
-- The vital rates underlie the demographic kernel $K_{dem}(z',z)$ are
-$$K_{dem}=\underbrace{s(z)(1-p_b(z))G(z',z)}_{\text{survival/growth kernel }P(z',z)}+\underbrace{s(z)p_b(z)b(z)p_r\omega(z)\phi C_1(z')}_{\text{fecundity kernel }F(z',z)}.$$
-Compared to the above example of monocarpic perennials, the kernel is defined differently;
-  - Survival rate also appears in the fecundity kernel
-  - Two more variables are introduced. $\omega(z)$ is a size-dependent potential flower head production term, and $\phi$ is the probability that a potential seed escapes florivory and becomes a seed.
-- A seed bank is also considered in the model. Basically, the existence of a seed bank requires the addition of a separate discrete-state variable that is linked to $K_{dem}$ by the proportion of newly produced seeds that enter the seed bank, and the proportion of seeds in the seed bank that survive and become seedlings. We will not discuss the details, but Merow et al. (2014) provides some examples of plants with seed banks.
-- Spatial population spread requires a dispersal kernel $K_{disp}(r)$, which is the probability density function for seed dispersal distance $r$. The authors used an inverse Gaussian distribution.
-- The SIPM that combines both demographic kernel and dispersal kernel is described as a double integral
-$$\mathbf{n}(x',z',t+1)=\iint K(x',z',x,z)\mathbf{n}(x,z,t)\ dxdz,$$
-where $\mathbf{n}(x,z,t)$ is the structured population stage vectors at location $x$ with size $z$ at time $t$. $K(x',z',x,z)$ is the combined demography and dispersal kernel, which is defined as follows
-$$K(x',z',x,z)=K_{disp}(x'-x)F(z',z)+\delta(x'-x)P(z',z),$$
-with $\delta(\cdot)$ the [Dirac delta function](https://mathworld.wolfram.com/DeltaFunction.html) ($\delta(x'-x)=0$ for all $x'\neq x$ and $\delta(x'-x)=1$ for $x'=x$)
-  - _Note_: Only new seeds disperse, while all other life stages are sessile.
-
-
-### Reference
-
-Easterling, M.R., Ellner, S.P. and Dixon, P.M. (2000), Size-specific sensitivity: applying a new structured population model. _Ecology_, 81: 694-708.
-
-Ellner, S.P. and Rees, M. (2006), Integral projection models for species with complex demography. _Am Nat._, 167(3): 410-28.
-
-Ellner, S.P., Childs, D.Z. and Rees, M. (2016), _Data-driven Modelling of Structured Populations_. Springer Cham.
-
-Merow, C., Dahlgren, J.P., Metcalf, C.J.E., Childs, D.Z., Evans, M.E.K., Jongejans, E., Record, S., Rees, M., Salguero-Gómez, R. and McMahon, S.M. (2014), Advancing population ecology with integral projection models: a practical guide. _Methods Ecol Evol_, 5: 99-110.
-
-Metcalf, C., Rose, K., Childs, D., Sheppard, A., Grubb, P. and Rees, M. (2008), Evolution of flowering decisions in a stochastic, density-dependent environment. _Proceedings of the National Academy of Sciences_, 105: 10466.

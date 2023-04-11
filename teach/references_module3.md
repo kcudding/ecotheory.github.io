@@ -40,6 +40,8 @@ Ellner, S.P., Childs, D.Z. and Rees, M. (2016), _Data-driven Modelling of Struct
 
 Gonzalez, E.J., Childs, D.Z., Quintana-Ascencio, P.F. and Salguero-Gomez, R. (2021), Integral projection models. In: _Demographic Methods Across the Tree of Life_. Edited by Roberto Salguero-Gomez and Marlene Gamelon, Oxford University Press.
 
+Goodsman, D.W., Aukema, B.H., McDowell, N.G., Middleton, R.S. and Xu, C. (2018), Incorporating variability in simulations of seasonally forced phenology using integral projection models. _Ecol Evol._, _8_: 162-175.
+
 Levin, S.C., Childs, D.Z., Compagnoni, A., Evers, S., Knight, T.M. and Salguero-Gómez, R. (2021), ipmr: Flexible implementation of Integral Projection Models in R. _Methods in Ecology and Evolution_, 12, 1826-1834.
 
 Merow, C., Dahlgren, J.P., Metcalf, C.J.E., Childs, D.Z., Evans, M.E.K., Jongejans, E., Record, S., Rees, M., Salguero-Gómez, R. and McMahon, S.M. (2014), Advancing population ecology with integral projection models: a practical guide. _Methods Ecol Evol_, 5: 99-110.
