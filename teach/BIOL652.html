@@ -42,9 +42,9 @@
   
     <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
     <meta name="generator" content="pandoc" />
-  <meta name="author" content="Debora" />
-  <meta name="date" content="2023-04-04" />
-  <title>Numerical Implementation</title>
+  <meta name="author" content="Debora, Eddie, Zitao and Kim" />
+  <meta name="date" content="2023-02-03" />
+  <title>DRAFT: BIOL 652 Structured Population Models</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
   <style type="text/css">
@@ -122,10 +122,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
     <div class="navbar-inner container-fluid">
       <div class="container">
-        <span class="doc-title">Numerical Implementation</span>
+        <span class="doc-title">DRAFT: BIOL 652 Structured Population
+Models</span>
         <ul class="nav pull-right doc-info">
-                    <li><p class="navbar-text">Debora</p></li>
-                              <li><p class="navbar-text">2023-04-04</p></li>
+                    <li><p class="navbar-text">Debora, Eddie, Zitao and
+Kim</p></li>
+                              <li><p class="navbar-text">2023-02-03</p></li>
                   </ul>
       </div>
     </div>
@@ -171,12 +173,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         id="toc-geometric-growth">Geometric growth</a></li>
         <li><a href="#exponential-growth"
         id="toc-exponential-growth">Exponential growth</a></li>
-        <li><a href="#further-reading" id="toc-further-reading">Further
-        Reading</a></li>
-        <li><a href="#r-resources" id="toc-r-resources">R
-        Resources</a></li>
-        <li><a href="#references"
-        id="toc-references">References</a></li>
         </ul></li>
         <li><a href="#density-dependence"
         id="toc-density-dependence">Density dependence</a>
@@ -196,8 +192,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li><a href="#illustration-of-current-application-1"
         id="toc-illustration-of-current-application-1">Illustration of
         current application</a></li>
-        <li><a href="#references-1"
-        id="toc-references-1">References:</a></li>
+        <li><a href="#references"
+        id="toc-references">References:</a></li>
         </ul></li>
         <li><a href="#population-dynamics-and-stochasticity"
         id="toc-population-dynamics-and-stochasticity">Population
@@ -217,8 +213,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         id="toc-estimating-population-growth-rates-in-the-presence-of-processobservation-error">Estimating
         population growth rates in the presence of process/observation
         error</a></li>
-        <li><a href="#references-2"
-        id="toc-references-2">References</a></li>
         </ul></li>
         <li><a
         href="#model-selection-how-do-we-tell-which-model-to-use-for-our-data"
@@ -229,8 +223,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         id="toc-likelihood">Likelihood</a></li>
         <li><a href="#model-comparison" id="toc-model-comparison">Model
         comparison</a></li>
-        <li><a href="#references-3"
-        id="toc-references-3">References</a></li>
+        <li><a href="#further-reading" id="toc-further-reading">Further
+        Reading</a></li>
+        <li><a href="#r-resources" id="toc-r-resources">R
+        Resources</a></li>
+        <li><a href="#references-1"
+        id="toc-references-1">References</a></li>
         </ul></li>
         </ul></li>
         <li><a href="#structured-population-models"
@@ -279,11 +277,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         id="toc-why-are-sensivities-and-elasticities-important-to-population-ecology-studies">Why
         are sensivities and elasticities important to population ecology
         studies?</a></li>
-        <li><a href="#sensitivity"
-        id="toc-sensitivity">Sensitivity</a></li>
+        <li><a href="#analytical-sensitivity-analysis"
+        id="toc-analytical-sensitivity-analysis">Analytical sensitivity
+        analysis</a></li>
         <li><a href="#from-sensitivity-to-elasticity"
         id="toc-from-sensitivity-to-elasticity">From sensitivity to
         elasticity</a></li>
+        <li><a
+        href="#practicing-the-calculation-of-sensitivities-and-elasticities-through-the-analytical-method"
+        id="toc-practicing-the-calculation-of-sensitivities-and-elasticities-through-the-analytical-method">Practicing
+        the calculation of sensitivities and elasticities through the
+        analytical method</a></li>
         <li><a href="#component-sensitivity-and-elasticity"
         id="toc-component-sensitivity-and-elasticity">Component
         sensitivity and elasticity</a></li>
@@ -295,18 +299,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         href="#limitations-of-sensitivity-and-elasticity-analyses"
         id="toc-limitations-of-sensitivity-and-elasticity-analyses">Limitations
         of sensitivity and elasticity analyses</a></li>
-        <li><a
-        href="#analytical-sensitivity-and-elasticity-variance-in-vital-rates"
-        id="toc-analytical-sensitivity-and-elasticity-variance-in-vital-rates">Analytical
-        sensitivity and elasticity &amp; variance in vital
-        rates</a></li>
-        <li><a href="#sensitivity-analysis-methods"
-        id="toc-sensitivity-analysis-methods">Sensitivity analysis
-        methods</a></li>
-        <li><a
-        href="#practicing-the-calculation-of-sensitivities-and-elasticities"
-        id="toc-practicing-the-calculation-of-sensitivities-and-elasticities">Practicing
-        the calculation of sensitivities and elasticities</a></li>
+        <li><a href="#sensitivity-analysis-variance-in-vital-rates"
+        id="toc-sensitivity-analysis-variance-in-vital-rates">Sensitivity
+        analysis &amp; variance in vital rates</a></li>
+        <li><a href="#life-stage-simulation-analysis"
+        id="toc-life-stage-simulation-analysis">Life-stage simulation
+        analysis</a></li>
         </ul></li>
         <li><a href="#density-dependence-in-matrix-models"
         id="toc-density-dependence-in-matrix-models">Density-dependence
@@ -351,8 +349,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         id="toc-sensitivity-analysis-for-stochastic-matrix-models">Sensitivity
         analysis for stochastic matrix models</a></li>
         </ul></li>
-        <li><a href="#references-4"
-        id="toc-references-4">References</a></li>
+        <li><a href="#references-2"
+        id="toc-references-2">References</a></li>
         </ul></li>
         <li><a href="#integral-projection-models"
         id="toc-integral-projection-models">Integral Projection
@@ -375,20 +373,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li><a href="#vital-rates-with-examples"
         id="toc-vital-rates-with-examples">Vital rates with
         examples</a></li>
-        <li><a
-        href="#illustration-of-current-application-spatial-integral-projection-model"
-        id="toc-illustration-of-current-application-spatial-integral-projection-model">Illustration
-        of current application: spatial integral projection
-        model</a></li>
-        <li><a href="#reference" id="toc-reference">Reference</a></li>
-        <li><a href="#the-first-step-of-ipms-regressions"
-        id="toc-the-first-step-of-ipms-regressions">The first step of
-        IPMs: regressions</a></li>
+        </ul></li>
         <li><a
         href="#how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest"
         id="toc-how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest">How
         do we go about implementing an IPM for our species of
-        interest?</a></li>
+        interest?</a>
+        <ul>
+        <li><a href="#the-first-step-of-ipms-regressions"
+        id="toc-the-first-step-of-ipms-regressions">The first step of
+        IPMs: regressions</a></li>
+        <li><a href="#ipm-implementation-steps"
+        id="toc-ipm-implementation-steps">IPM implementation
+        steps</a></li>
         <li><a href="#numerical-integration-methods-midpoint-rule"
         id="toc-numerical-integration-methods-midpoint-rule">Numerical
         integration methods: midpoint rule</a></li>
@@ -399,8 +396,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         id="toc-case-study-an-ipm-for-snapping-turtles">Case study: an
         IPM for snapping turtles</a></li>
         </ul></li>
-        <li><a href="#references-5"
-        id="toc-references-5">References</a></li>
+        <li><a href="#references-3"
+        id="toc-references-3">References</a></li>
         <li><a href="#density-dependence-in-ipm"
         id="toc-density-dependence-in-ipm">Density dependence in IPM</a>
         <ul>
@@ -414,8 +411,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         href="#application-of-density-dependent-ipm-to-an-ecological-problem"
         id="toc-application-of-density-dependent-ipm-to-an-ecological-problem">Application
         of density-dependent IPM to an ecological problem</a></li>
-        <li><a href="#references-6"
-        id="toc-references-6">References</a></li>
+        <li><a href="#references-4"
+        id="toc-references-4">References</a></li>
         <li><a href="#environmental-stochasticity-in-ipms"
         id="toc-environmental-stochasticity-in-ipms">Environmental
         stochasticity in IPMs</a></li>
@@ -460,9 +457,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li><a href="#correlation-in-environmental-fluctuations"
         id="toc-correlation-in-environmental-fluctuations">Correlation
         in environmental fluctuations</a></li>
-        <li><a href="#references-7"
-        id="toc-references-7">References</a></li>
+        <li><a href="#references-5"
+        id="toc-references-5">References</a></li>
         </ul></li>
+        <li><a href="#key-papers-for-further-reading"
+        id="toc-key-papers-for-further-reading">Key Papers for Further
+        Reading</a>
+        <ul>
+        <li><a href="#classical-reading"
+        id="toc-classical-reading">Classical reading</a></li>
+        <li><a href="#new-reading" id="toc-new-reading">New
+        reading</a></li>
+        </ul></li>
+        <li><a href="#r-resources-1" id="toc-r-resources-1">R
+        resources</a></li>
+        <li><a href="#references-6"
+        id="toc-references-6">References</a></li>
         </ul></li>
         </ul>
 
@@ -543,15 +553,12 @@ CC-BY-SA-3.0 license</a></figcaption>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>, <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">1</span>))</span></code></pre></div>
 <p><img
 src="density-independent_files/figure-html/unnamed-chunk-1-1.jpeg" /><!-- --></p>
-<ul>
-<li><p>The main difference between these two types of growth is that an
+<p>The main difference between these two types of growth is that an
 arithmetic growth is characterized by the addition or subtraction of a
 fixed value (eg. we added “50” in our linear growth example above, which
-could represent agricultural yields, for instance).</p></li>
-<li><p>Meanwhile, geometric and exponential growths are multiplicative
-processes in which a fixed rate of change is applied to population sizes
-at all time steps.</p></li>
-</ul>
+could represent agricultural yields, for instance). Meanwhile, geometric
+and exponential growths are multiplicative processes in which a fixed
+rate of change is applied to population sizes at all time steps.</p>
 <h3
 id="when-are-simple-population-models-used-in-biological-analyses">When
 are simple population models used in biological analyses?</h3>
@@ -672,11 +679,15 @@ geometric growth models.</p>
 <h4
 id="mathematical-equation-to-predict-future-population-sizes">Mathematical
 equation to predict future population sizes</h4>
-<p>If we assume that the number of births and and deaths is proportional
-to the current population size, and our population is isolated, we can
-write:</p>
-<p><span
-class="math display">\[N_{(t+1)}=N_{t}(b_{t}-d_{t})\]</span></p>
+<p>Instead of considering the total number of births (B) and deaths (D),
+which change as population sizes change (eg., think of the very high
+number of births simply resulting from a very big population as compared
+to a small population), let’s think about the probability of a given
+individual to give birth or die. This probability is called per capita
+birth rate (bt) and per capita death rate (dt), respectively, and tends
+to be constant through time in a simple population model. If we also
+assume that our population is isolated, we can write:</p>
+<p><span class="math display">\[N_{t+1}=N_{t}(b_{t}-d_{t})\]</span></p>
 <p>Where: N(t+1): number of individuals in the future Nt: number of
 individuals at time t bt: per capita birth rate dt: per capita death
 rate</p>
@@ -686,8 +697,13 @@ with generation times: Net reproductive rate</h4>
 represents the average offspring per individual within a given
 generation:</p>
 <p><span class="math display">\[R_{0}=b_{t}-d_{t}\]</span></p>
-<p>Thus, future population sizes can be calculated by:</p>
-<p><span class="math display">\[N_{(t+1)}=N_{t}*R_0\]</span></p>
+<p>If we replace the number of births and deaths with R0, we can
+calculate future population sizes by:</p>
+<p><span class="math display">\[N_{t+1}=N_{t}*R_0\]</span></p>
+<p>If we want to calculate population sizes several generations into the
+future, we can multiply our initial population by the net reproductive
+rate, and then keep multiplying it by R0 for each a generation that has
+passed by:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s practice: considering that an initial population of 100 individuals and a net </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># reproductive rate of 1.5, what will be the total population size </span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># in 4 generations?</span></span>
@@ -700,16 +716,20 @@ generation:</p>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>Nfuture <span class="ot">&lt;-</span> (Ninitial<span class="sc">*</span>R0)<span class="sc">*</span>R0<span class="sc">*</span>R0<span class="sc">*</span>R0</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>Nfuture</span></code></pre></div>
 <pre><code>## [1] 2073.6</code></pre>
-<p>Thus, for calculating population sizes at any generation, we
-have:</p>
+<p>Instead of repeating this R0 multiplication several times, we can
+calculate population sizes at any generation by raising the net
+reproductive rate to the power of t (time):</p>
 <p><span class="math display">\[N_{t}=N_{0}*(R_0)^t\]</span></p>
 <h4
 id="from-generation-time-to-calendar-time-lambda-lambda-geometric-growth-rate">From
 generation time to calendar time: Lambda (<span
 class="math inline">\(\lambda\)</span>) geometric growth rate</h4>
-<p>If we assume birth rates and death rates are constant through time,
-we are left with:</p>
-<p><span class="math display">\[N_{t+1}=N_{t}*(b-d)\]</span></p>
+<p>So far, we have learnt how to calculate population sizes using the
+net reproductive rate (R0), which considers that population changes are
+occuring at each generation. Now, lets learn how to estimate population
+changes in units of time. Let’s go back to our equation to get future
+population sizes:</p>
+<p><span class="math display">\[N_{t+1}=N_{t}(b_{t}-d_{t})\]</span></p>
 <p>We can rename this net rate, <span
 class="math inline">\(\lambda\)</span>, to obtain</p>
 <p><span class="math display">\[N_{t+1}=N_{t}*\lambda\]</span></p>
@@ -783,13 +803,12 @@ available and the first time period:</p>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> (year2<span class="sc">/</span>year0)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
 <h3 id="exponential-growth">Exponential growth</h3>
 <h4 id="what-is-exponential-growth">What is exponential growth</h4>
-<p>For populations which do not reproduce seasonally, an irrestricted
+<p>For populations which do not reproduce seasonally, an unrestricted
 growth can be projected using the exponential growth model. Instead of
 the <span class="math inline">\(\lambda\)</span> rate, the
-<strong>instantaneous per capita growth rate (r)</strong> is used to
-represent a constant percentage increase over a continuous time scale.
-This rate is also useful to compare populations with different intervals
-of growth.</p>
+<strong>instantaneous per capita growth rate (r)</strong> is used for
+populations changes over a continuous time scale. This rate is also
+useful to compare populations with different intervals of growth.</p>
 <h4 id="how-to-calculate-the-exponential-growth-rate">How to calculate
 the exponential growth rate</h4>
 <p>Using calculus, very small changes in abundance over time can be
@@ -848,11 +867,12 @@ populations are growing at an average daily rate of 24.38%.</p>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>, <span class="at">lty=</span> <span class="fu">c</span>(<span class="cn">NA</span>,<span class="dv">1</span>), <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">15</span>,<span class="cn">NA</span>))</span></code></pre></div>
 <p><img
 src="density-independent_files/figure-html/unnamed-chunk-8-1.jpeg" /><!-- --></p>
-<h4 id="simplifying-the-exponential-growth-calculation">Simplifying the
-exponential growth calculation</h4>
+<h4 id="the-exponential-growth-calculation">The exponential growth
+calculation</h4>
 <p>Due to the ability to replace <span
-class="math inline">\(\lambda\)</span> for r and vice-versa, we
-have:</p>
+class="math inline">\(\lambda\)</span> for r and vice-versa, the
+equation for calculating a continuous population growth can be
+integrated as:</p>
 <p><span class="math display">\[N_{t}=N_{0}e^{rt}\]</span></p>
 <h4 id="doubling-time">Doubling time</h4>
 <p>If we need to know how much time it would take for a population to
@@ -869,32 +889,21 @@ application</h4>
 al., 2020). This research paper discusses population dynamics of
 invasive hippos in Colombia.</p>
 <h5 id="snapshot-of-the-study">Snapshot of the study</h5>
-<ul>
-<li><p>An invasive population of hippopotamus (<em>Hippopotamus
-amphibus</em>) is showing an exponential growth in Colombia</p></li>
-<li><p>These large mammals were brought from Africa to the famous drug
-trafficker Carlos Scobar’s private zoo about 25 years ago</p></li>
-<li><p>Following Scobar’s death, the then abandoned animals started
-spreading in the region, going from 4 to 65 individuals in 25
-years</p></li>
-<li><p>Hippos are considered as ecosystem engineers because they modify
-ecosystems by grazing on land and defecating in water bodies, thereby
-fertilizing aquatic systems</p></li>
-<li><p>The growth of this invasive population appears to be in an
-exponential phase, with numbers achieving thousands in the following
-decades if no control measures are taken or without density-dependent
-regulation (to be introduced in the following module)</p></li>
-<li><p>This study analyzed aquatic and terrestrial areas populated by
-hippos to conclude that this invasive species is substantially changing
-the environment by relocating nutrients from the soil to the water,
-resulting in cyanobacteria blooms. Continued unrestricted hippo
-population growth can then lead to water resource damage.</p></li>
-<li><p>Constrains to management: Actions to manage this invasive species
-are complicated by the social-ecological mismatch between the scientific
-consensus on the ecosystem threats posed by this invasion and the public
-perception of the presence of hippos as being positive (eg., animal used
-for touristic purposes)</p></li>
-</ul>
+<p>An invasive population of hippopotamus (<em>Hippopotamus
+amphibus</em>) is showing an exponential growth in Colombia. These large
+mammals were brought from Africa to the famous drug trafficker Carlos
+Scobar’s private zoo about 25 years ago. Following Scobar’s death, the
+abandoned animals started spreading in the region. Hippos are considered
+as ecosystem engineers because they modify ecosystems by grazing on land
+and defecating in water bodies, thereby fertilizing aquatic systems.
+Population models predict that there will be thousands of hippos in the
+following decades if no control measures are taken or without
+density-dependent regulation (to be introduced in the following module).
+This study concluded hippos are indeed causing water resource damage.
+Actions to manage this invasive species are complicated by the
+social-ecological mismatch between the scientific consensus on ecosystem
+threats and a positive public perception (eg., animal used for touristic
+purposes).</p>
 <figure>
 <img
 src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/hippo2.jpg"
@@ -982,99 +991,6 @@ those hippos are calves and juveniles, implying their reproductive rate
 will increase in the next three years” (Varona, 2022). You will learn
 about structured population models in the upcoming modules.</p></li>
 </ul>
-<h3 id="further-reading">Further Reading</h3>
-<h4 id="theoretical-work">Theoretical work</h4>
-<p>To read about the theory behind simple models, refer to:<br />
-* Mills, L.S. (2012). <em>Conservation of wildlife populations</em>:
-Demography, genetics, and management. Wiley- Blackwell.</p>
-<h4 id="population-modelling-codes">Population modelling codes</h4>
-<p>To further practice the application of simple models, here are good
-guides:<br />
-* Dyer, R. (2009). Biological data analysis using R (Doctoral
-dissertation, Ph. D thesis. Department of Biology, Center for the Study
-of Biological Complexity, Virginia Commonwealth Univ).</p>
-<ul>
-<li>Stevens, M.H. (2009). <em>A primer of ecology with R</em>.
-Springer.</li>
-</ul>
-<h4 id="new-applications">New applications</h4>
-<ul>
-<li>Thomas, L., Russell, D. J., Duck, C. D., Morris, C. D., Lonergan,
-M., Empacher, F., … &amp; Harwood, J. (2019). Modelling the population
-size and dynamics of the British grey seal. <em>Aquatic Conservation:
-Marine and Freshwater Ecosystems, 29</em>, 6-23.</li>
-</ul>
-<h3 id="r-resources">R Resources</h3>
-<h4 id="packages">Packages</h4>
-<ul>
-<li><p>deSolve: contains solvers (function “ode”) for integrals: eg.,
-integral of the exponential growth equation and ordinary differential
-equations (ODE): eg., logistic growth</p></li>
-<li><p>clogistic: logistic growth equation</p></li>
-<li><p>AICcmodavg: model evaluation using Akaike information
-criteria</p></li>
-</ul>
-<h4 id="functions">Functions</h4>
-<ul>
-<li><p><a
-href="https://www.datacamp.com/tutorial/tutorial-on-loops-in-r">for
-Loop</a></p></li>
-<li><p><a
-href="https://rstudio-pubs-static.s3.amazonaws.com/252603_9c6a71110dc74cc7832f154449235f7f.html">plotting
-population models</a></p></li>
-<li><p><a
-href="https://r-coder.com/sapply-function-r/">sapply</a></p></li>
-<li><p><a
-href="https://swcarpentry.github.io/r-novice-inflammation/02-func-R/">customized
-functions</a></p></li>
-</ul>
-<h3 id="references">References</h3>
-<p>Castelblanco-Martínez, D. N., Moreno-Arias, R. A., Velasco, J. A.,
-Moreno-Bernal, J. W., Restrepo, S., Noguera-Urbano, E. A., … &amp;
-Jiménez, G. (2021). A hippo in the room: Predicting the persistence and
-dispersion of an invasive mega-vertebrate in Colombia, South America.
-<em>Biological Conservation, 253</em>, 108923.</p>
-<p>Dyer, R. (2009). Biological data analysis using R (Doctoral
-dissertation, Ph. D thesis. Department of Biology, Center for the Study
-of Biological Complexity, Virginia Commonwealth Univ).</p>
-<p>Gronewold, N. (2021). Comparative Conservation Strategy Efficacy for
-Grus japonensis and Grus americana: A Post-Policy Implementation
-Assessment. <em>Journal of International Wildlife Law &amp; Policy,
-24</em>(3-4), 224-250.</p>
-<p>Jacobs, J. S., &amp; Sheley, R. L. (1998). Observation: life history
-of spotted knapweed. <em>Rangeland Ecology &amp; Management/Journal of
-Range Management Archives, 51</em>(6), 665-673.</p>
-<p>Kremer, W. (2014, June 25). Pablo Escobar’s hippos: A growing
-problem. <em>BBC News</em>.
-https://www.bbc.com/news/magazine-27905743</p>
-<p>Malthus, T. R. (1798). <em>An essay on the principle of
-population</em>. The Works of Thomas Robert Malthus, London, Pickering
-&amp; Chatto Publishers, 1, 1-139.</p>
-<p>Mills, L.S. (2012). <em>Conservation of wildlife populations</em>:
-Demography, genetics, and management. Wiley- Blackwell.</p>
-<p>NBCUniversal News Group. (2014, July 1). Pablo Escobar’s hippos are
-running wild in Colombia. <em>NBCNews.com</em>.
-https://www.nbcnews.com/news/latin-america/pablo-escobars-hippos-are-running-wild-colombia-n145446</p>
-<p>Romero, S. (2009, September 10). Colombia confronts drug lord’s
-legacy: Hippos. <em>The New York Times</em>.
-https://www.nytimes.com/2009/09/11/world/americas/11hippo.html</p>
-<p>Shigesada, N. &amp; Kawasaki, K. (1997) Biological Invasions: Theory
-and Practice (Oxford Univ. Press, Oxford).</p>
-<p>Shurin, J. B., Aranguren-Riaño, N., Duque Negro, D., Echeverri Lopez,
-D., Jones, N. T., Laverde‐R, O., … &amp; Pedroza Ramos, A. (2020).
-Ecosystem effects of the world’s largest invasive animal. <em>Ecology,
-101</em>(5), e02991.</p>
-<p>Sinclair, A. R., Mduma, S., &amp; Brashares, J. S. (2003). Patterns
-of predation in a diverse predator–prey system. <em>Nature,
-425</em>(6955), 288-290.</p>
-<p>Spotted knapweed. (2023). Minnesota Department of Agriculture.
-https://www.mda.state.mn.us/plants/pestmanagement/weedcontrol/noxiouslist/spottedknapweed</p>
-<p>Stevens, M.H. (2009). <em>A primer of ecology with R</em>.
-Springer.</p>
-<p>Varona , A. O. (2022, November 18). Hippos in Colombia: What to do
-with them? | Graduate and Postdoctoral Studies | <em>Rice
-University</em>.
-https://graduate.rice.edu/news/current-news/hippos-colombia-what-do-them</p>
 <h2 id="density-dependence">Density dependence</h2>
 <p>Density-dependent population models are used to describe population
 dynamics in which the growth or decline of a population is influenced by
@@ -1532,7 +1448,7 @@ effects</p></li>
 <li><p>Knowing the population dynamics for this species enables the
 application of effective fish removal programs</p></li>
 </ul>
-<h3 id="references-1">References:</h3>
+<h3 id="references">References:</h3>
 <p>Allee, W. C., &amp; Bowen, E. (1932). Studies in animal aggregations:
 Mass protection against colloidal silver among goldfishes. <em>The
 Journal of Experimental Zoology 61</em> (2), 185–207.
@@ -1580,7 +1496,7 @@ population variable?</h3>
 <li><strong>Sample variance</strong> or <strong>observation
 error</strong>: measurement error in estimates of population size or
 density</li>
-<li><strong>Process variance</strong>: variation acually affecting
+<li><strong>Process variance</strong>: variation actually affecting
 numbers in count data over time
 <ul>
 <li><strong>Deterministic factors</strong>: predictable internal
@@ -1612,7 +1528,7 @@ females. Unbalanced sex ratio will influence future birth rate,
 especially in a small population.</p></li>
 <li><p><em>Example 3</em>: A death rate of 0.2 does not mean after a
 year an animal is 0.8 alive–it either survives or dies. When the
-population size is large, we may use the product of the total populatiom
+population size is large, we may use the product of the total population
 and a mean birth/death rate to estimate the number of births/deaths.
 However, such estimation is not accurate when the population size is
 small (a difference of two deaths might not seem to be a big issue in a
@@ -1651,13 +1567,10 @@ variation in population growth</h3>
 <ul>
 <li><p>An obvious outcome is that future population size outcomes become
 more uncertain and more variable</p></li>
-<li><p>A less intuitive outcome is that the likelihood of any particular
-population size at time <span class="math inline">\(t\)</span> in the
-future becomes more skewed. Specifically, most populations being
-relatively small, with a tiny fraction being huge. In fact, the realized
-population growth rate <span
-class="math inline">\((N_t/N_s)^{1/(t-s)}\)</span> will be smaller when
-the growth rates vary. Why?</p></li>
+<li><p>The most important, but perhaps less intuitive impact is that the
+population growth rate is reduced. Specifically, the realized population
+growth rate <span class="math inline">\((N_t/N_s)^{1/(t-s)}\)</span>
+will be smaller when the growth rates vary. Why?</p></li>
 </ul>
 <p>To answer this question, we need to understand two important
 concepts: arithmetic and geometric means.</p>
@@ -1749,34 +1662,42 @@ autocorrelation), where <span
 class="math inline">\(r_{t+1}=r_A+\rho(r_t-r_A)+\epsilon_{t+1}\)</span>.
 When <span class="math inline">\(\rho=0\)</span>, <span
 class="math inline">\(r_{t+1}=r_A+\epsilon_{t+1}\)</span> and there is
-no temporal autocorrelation. Here we present examples of exponential
-growth rates with zero autocorrelation and positive lag-1
-autocorrelation.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We assume that the mean exponential growth rate r_A = 0.3,</span></span>
+no temporal autocorrelation. Here we present an example of exponential
+growth rates with zero autocorrelation (black solid line) and positive
+lag-1 autocorrelation (red dashed line). The horizontal line (blue)
+shows the mean growth rate. Positive autocorrelation has the following
+implication:</p>
+<ul>
+<li>A large growth rate at <span class="math inline">\(t\)</span> will
+result in a larger growth rate at <span
+class="math inline">\(t+1\)</span></li>
+</ul>
+<p>When it comes to the plot, it means:</p>
+<ul>
+<li>If the red circle is above the horizontal line at <span
+class="math inline">\(t\)</span> (i.e. growth rate at <span
+class="math inline">\(t\)</span> is larger than the mean growth rate),
+the red circle will be above the black circle at <span
+class="math inline">\(t+1\)</span> (i.e. at the next time point <span
+class="math inline">\(t+1\)</span>, the growth rate with positive
+autocorrelation will be larger, compared to the rate completely driven
+by the random noise term)</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We assume that the mean exponential growth rate rA = 0.3,</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and the noise term epsilon_t is a standard normal random variable,</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We look at a time period of 20 years</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>rA <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">zero =</span> rA <span class="sc">+</span> e)</span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate exponential growth rates with positive lag-1 autocorrelation</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We compare different coefficients rho = 0.2, 0.5, 0.8</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>pos1 <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate exponential growth rates with positive lag-1 autocorrelation with rho = 0.5</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>lag0 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>lag1 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  pos1[i] <span class="ot">&lt;-</span> r[i,<span class="st">&#39;zero&#39;</span>] <span class="sc">+</span> <span class="fl">0.2</span><span class="sc">*</span>(pos1[i<span class="dv">-1</span>] <span class="sc">-</span> rA)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>pos1 <span class="ot">&lt;-</span> pos1</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>pos2 <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  pos2[i] <span class="ot">&lt;-</span> r[i,<span class="st">&#39;zero&#39;</span>] <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(pos2[i<span class="dv">-1</span>] <span class="sc">-</span> rA)</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>pos2 <span class="ot">&lt;-</span> pos2</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>pos3 <span class="ot">=</span> <span class="fu">replicate</span>(<span class="dv">20</span>, rA <span class="sc">+</span> e[<span class="dv">1</span>])</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  pos3[i] <span class="ot">&lt;-</span> r[i,<span class="st">&#39;zero&#39;</span>] <span class="sc">+</span> <span class="fl">0.8</span><span class="sc">*</span>(pos3[i<span class="dv">-1</span>] <span class="sc">-</span> rA)</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>pos3 <span class="ot">&lt;-</span> pos3</span></code></pre></div>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  lag0[i] <span class="ot">&lt;-</span> rA <span class="sc">+</span> e[i]</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  lag1[i] <span class="ot">&lt;-</span> rA <span class="sc">+</span> <span class="fl">0.5</span><span class="sc">*</span>(lag1[i<span class="dv">-1</span>] <span class="sc">-</span> rA) <span class="sc">+</span> e[i]</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>lag0 <span class="ot">&lt;-</span> lag0</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>r<span class="sc">$</span>lag1 <span class="ot">&lt;-</span> lag1</span></code></pre></div>
 <p><img src="autocorrelation.jpeg" /></p>
 <h3
 id="estimating-population-growth-rates-in-the-presence-of-processobservation-error">Estimating
@@ -1869,37 +1790,6 @@ example with the same data as the previous example on process error:</p>
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># (Intercept) 4.40771</span></span>
 <span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># year        0.26756</span></span></code></pre></div>
 <p><img src="observation_error_example.jpeg" /></p>
-<h3 id="references-2">References</h3>
-<p>Ahrestani, F., Hebblewhite, M. and Post, E. (2013). The importance of
-observation versus process error in analyses of global ungulate
-populations. <em>Sci Rep 3</em>, 3125.</p>
-<p>Albon, S. D., Clutton-Brock, T. H. and Guinness, F. E. (1987). Early
-development and population dynamics in red deer. II. Density-independent
-effects and cohort variation, <em>J. Anim. Ecol. 56</em>, 69-81.</p>
-<p>Beck-Johnson, L. M., Nelson, W. A., Paaijmans, K. P., Read, A. F.,
-Thomas, M. B. and Bjonstad, O. N. (2013). The effect of temperature on
-<em>Anopheles mosquito</em> population dynamics and the potential for
-malaria transmission. <em>PLoS ONE 8</em>(11), e79276.</p>
-<p>Benton, T. G., Grant, A. and Clutton-Brock, T. H. (1995). Does
-environmental stochasticity matter? Analysis of red deer life-histories
-on Rum, <em>Evolutionary Ecology 9</em>, 559-574.</p>
-<p>Beverton, R. and Holt, S. J. (1957). <em>On the dynamics of exploited
-fish populations</em>. Ministry of Agriculture, Fisheries and Food,
-London, UK.</p>
-<p>Case, T. (2000). <em>An illustrated guide to theoretical
-ecology</em>, Oxford University Press.</p>
-<p>Humbert, J.-Y., Mills, L.S., Horne, J.S. and Dennis, B. (2009) A
-better way to estimate population trend. <em>Oikos</em>,
-<strong>118</strong>:1487–1498.</p>
-<p>Lande, R., Engen, S. and Saether, B. (2003). <em>Stochastic
-population dynamics in ecology and conservation</em>. Oxford Series in
-Ecology and Evolution.</p>
-<p>Mills, L. S. (2012) <em>Conservation of wildlife populations:
-Demography, genetics, and management</em>, Wiley-Blackwell
-Publishing.</p>
-<p>Stetz, J. B., Kendall, K. C. and Servheen, C. (2010) Evaluation of
-Bear Rub Surveys to Monitor Grizzly Bear Population Trends. <em>Journal
-of Wildlife Management 74</em>(4), 860–870.</p>
 <h2
 id="model-selection-how-do-we-tell-which-model-to-use-for-our-data">Model
 Selection: How do we tell which model to use for our data?</h2>
@@ -2473,26 +2363,178 @@ strength of evidence in favor of one model over the other is obtained by
 dividing their Akaike weights. So comparing the logistic model and
 theta-logistic we have <span class="math display">\[\frac
 {w_{Log}}{w_{Theta}}=\frac {.57}{.22}=2.6,\]</span> indicating that the
-logistic model is about 2.6 times more likely than the next best
-model.</p>
-<h3 id="references-3">References</h3>
+logistic model is about 2.6 times more likely than the next best</p>
+<h3 id="further-reading">Further Reading</h3>
+<h4 id="theoretical-work">Theoretical work</h4>
+<p>To read about the theory behind simple models, refer to:<br />
+* Mills, L.S. (2012). <em>Conservation of wildlife populations</em>:
+Demography, genetics, and management. Wiley- Blackwell.</p>
+<h4 id="population-modelling-codes">Population modelling codes</h4>
+<p>To further practice the application of simple models, here are good
+guides:<br />
+* Dyer, R. (2009). Biological data analysis using R (Doctoral
+dissertation, Ph. D thesis. Department of Biology, Center for the Study
+of Biological Complexity, Virginia Commonwealth Univ).</p>
+<ul>
+<li>Stevens, M.H. (2009). <em>A primer of ecology with R</em>.
+Springer.</li>
+</ul>
+<h4 id="new-applications">New applications</h4>
+<ul>
+<li>Thomas, L., Russell, D. J., Duck, C. D., Morris, C. D., Lonergan,
+M., Empacher, F., … &amp; Harwood, J. (2019). Modelling the population
+size and dynamics of the British grey seal. <em>Aquatic Conservation:
+Marine and Freshwater Ecosystems, 29</em>, 6-23.</li>
+</ul>
+<h3 id="r-resources">R Resources</h3>
+<h4 id="packages">Packages</h4>
+<ul>
+<li><p><a
+href="https://cran.r-project.org/web/packages/deSolve/index.html">deSolve</a>:
+contains solvers (function “ode”) for integrals: eg., integral of the
+exponential growth equation and ordinary differential equations (ODE):
+eg., logistic growth</p></li>
+<li><p><a
+href="https://cran.r-project.org/web/packages/Epi/index.html">Epi</a>:
+has functions for demographic and epidemiological analysis, such as
+“clogistic” for predicting logistic growth</p></li>
+<li><p><a
+href="https://cran.r-project.org/web/packages/AICcmodavg/index.html">AICcmodavg</a>:
+model evaluation using Akaike information criteria</p></li>
+</ul>
+<h4 id="functions">Functions</h4>
+<ul>
+<li><p><a
+href="https://www.datacamp.com/tutorial/tutorial-on-loops-in-r">for
+Loop</a></p></li>
+<li><p><a
+href="https://rstudio-pubs-static.s3.amazonaws.com/252603_9c6a71110dc74cc7832f154449235f7f.html">plotting
+population models</a></p></li>
+<li><p><a
+href="https://r-coder.com/sapply-function-r/">sapply</a></p></li>
+<li><p><a
+href="https://swcarpentry.github.io/r-novice-inflammation/02-func-R/">customized
+functions</a></p></li>
+</ul>
+<h3 id="references-1">References</h3>
+<p>Ahrestani, F., Hebblewhite, M. and Post, E. (2013). The importance of
+observation versus process error in analyses of global ungulate
+populations. <em>Sci Rep 3</em>, 3125.</p>
+<p>Albon, S. D., Clutton-Brock, T. H. and Guinness, F. E. (1987). Early
+development and population dynamics in red deer. II. Density-independent
+effects and cohort variation, <em>J. Anim. Ecol. 56</em>, 69-81.</p>
 <p>Akaike, H. (1973). Information theory and an extention of the maximum
 likelihood principle. In <em>2nd Inter. Symp. on information
 Theory</em>. Akademiai Kiado.</p>
+<p>Allee, W. C., &amp; Bowen, E. (1932). Studies in animal aggregations:
+Mass protection against colloidal silver among goldfishes. <em>The
+Journal of Experimental Zoology 61</em> (2), 185–207.
+https://doi.org/10.1002/jez.1400610202.</p>
 <p>Anderson, D. R., Burnham, K. P., &amp; Thompson, W. L. (2000). Null
 hypothesis testing: problems, prevalence, and an alternative. <em>The
-Journal of Wildlife Management</em>,<em>64</em>, 912-923.</p>
-<p>Anderson, D., &amp; Burnham, K. (2004). Model selection and
-multi-model inference. <em>Second edition</em>. NY: Springer-Verlag.</p>
+Journal of Wildlife Management,64</em>, 912-923.</p>
+<p>Anderson, D., &amp; Burnham, K. (2004). <em>Model selection and
+multi-model inference</em>. Second edition. NY: Springer-Verlag.</p>
+<p>Beck-Johnson, L. M., Nelson, W. A., Paaijmans, K. P., Read, A. F.,
+Thomas, M. B. and Bjonstad, O. N. (2013). The effect of temperature on
+<em>Anopheles mosquito</em> population dynamics and the potential for
+malaria transmission. <em>PLoS ONE 8</em>(11), e79276.</p>
+<p>Benton, T. G., Grant, A. and Clutton-Brock, T. H. (1995). Does
+environmental stochasticity matter? Analysis of red deer life-histories
+on Rum, <em>Evolutionary Ecology 9</em>, 559-574.</p>
+<p>Beverton, R. and Holt, S. J. (1957). <em>On the dynamics of exploited
+fish populations</em>. Ministry of Agriculture, Fisheries and Food,
+London, UK.</p>
+<p>Bohlin, T., Sundström, L., Johnsson, J., Höjesjö, J., &amp;
+Pettersson, J. (2002). Density-dependent growth in brown trout: Effects
+of introducing wild and hatchery fish. <em>Journal of Animal Ecology
+71</em>(4), 683–92.
+https://doi.org/10.1046/j.1365-2656.2002.00631.x.</p>
 <p>Burnham, K. P., &amp; Anderson, D. R. (2001). Kullback-Leibler
 information as a basis for strong inference in ecological studies.
-<em>Wildlife Research</em>, <em>28</em>(2), 111-119.</p>
+<em>Wildlife Research, 28</em>(2), 111-119.</p>
+<p>Case, T. (2000). <em>An illustrated guide to theoretical
+ecology</em>, Oxford University Press.</p>
+<p>Castelblanco-Martínez, D. N., Moreno-Arias, R. A., Velasco, J. A.,
+Moreno-Bernal, J. W., Restrepo, S., Noguera-Urbano, E. A., … &amp;
+Jiménez, G. (2021). A hippo in the room: Predicting the persistence and
+dispersion of an invasive mega-vertebrate in Colombia, South America.
+<em>Biological Conservation, 253</em>, 108923.</p>
+<p>Courchamp, F., Luděk, B., &amp; Gascoigne, J. (2008). <em>Allee
+effects in ecology and conservation</em>. Oxford Biology. Oxford; Oxford
+University Press.</p>
+<p>Dahl, K. A., Edwards, M. A., &amp; Patterson III, W. F. (2019).
+Density-dependent condition and growth of invasive lionfish in the
+northern Gulf of Mexico. <em>Marine Ecology Progress Series</em>, 623,
+145-159. https://doi.org/10.3354/meps13028.</p>
+<p>Dyer, R. (2009). <em>Biological data analysis using R.</em> (Doctoral
+dissertation, Ph. D thesis. Department of Biology, Center for the Study
+of Biological Complexity, Virginia Commonwealth Univ).</p>
+<p>Drake, J., &amp; Kramer, A. (2011). Allee effects. <em>Nature
+Education Knowledge</em>.
+https://www.nature.com/scitable/knowledge/library/allee-effects-19699394/.</p>
 <p>Edwards, A. W. (1974). The history of likelihood. <em>International
-Statistical Review/Revue Internationale de Statistique</em>,<em>42</em>,
+Statistical Review/Revue Internationale de Statistique, 42</em>,
 9-15.</p>
+<p>Gronewold, N. (2021). Comparative Conservation Strategy Efficacy for
+Grus japonensis and Grus americana: A Post-Policy Implementation
+Assessment. <em>Journal of International Wildlife Law &amp; Policy,
+24</em>(3-4), 224-250.</p>
 <p>Harrison, S. (1991). Local extinction in a metapopulation context: an
-empirical evaluation. <em>Biological Journal of the Linnean
-Society</em>, <em>42</em>(1-2), 73-88.</p>
+empirical evaluation. <em>Biological Journal of the Linnean Society,
+42</em>(1-2), 73-88.</p>
+<p>Humbert, J.-Y., Mills, L.S., Horne, J.S. and Dennis, B. (2009) A
+better way to estimate population trend. <em>Oikos</em>,
+<strong>118</strong>:1487–1498.</p>
+<p>Jacobs, J. S., &amp; Sheley, R. L. (1998). Observation: life history
+of spotted knapweed. <em>Rangeland Ecology &amp; Management/Journal of
+Range Management Archives, 51</em>(6), 665-673.</p>
+<p>Kremer, W. (2014, June 25). Pablo Escobar’s hippos: A growing
+problem. <em>BBC News</em>.
+https://www.bbc.com/news/magazine-27905743</p>
+<p>Lande, R., Engen, S. and Saether, B. (2003). <em>Stochastic
+population dynamics in ecology and conservation</em>. Oxford Series in
+Ecology and Evolution.</p>
+<p>Malthus, T. R. (1798). <em>An essay on the principle of
+population</em>. The Works of Thomas Robert Malthus, London, Pickering
+&amp; Chatto Publishers, 1, 1-139.</p>
+<p>May, Robert M. (1975). Biological populations obeying difference
+equations: stable points, stable cycles, and chaos. <em>Journal of
+Theoretical Biology 51</em>(2), 511–24.
+https://doi.org/10.1016/0022-5193(75)90078-8.</p>
+<p>Mills, L.S. (2012). <em>Conservation of wildlife populations</em>:
+Demography, genetics, and management. Wiley- Blackwell.</p>
+<p>Moreira-Saporiti, A., Bejarano, S., Viana, I., Belshe, E., Mtolera
+M., &amp; Teichberg, M. (2021). Local victory: Assessing interspecific
+competition in seagrass from a trait-based perspective. <em>Frontiers in
+Plant Science 12</em>, 709257–57.
+https://doi.org/10.3389/fpls.2021.709257.</p>
+<p>NBC Universal News Group. (2014, July 1). Pablo Escobar’s hippos are
+running wild in Colombia. <em>NBCNews.com</em>.
+https://www.nbcnews.com/news/latin-america/pablo-escobars-hippos-are-running-wild-colombia-n145446</p>
+<p>Romero, S. (2009, September 10). Colombia confronts drug lord’s
+legacy: Hippos. <em>The New York Times</em>.
+https://www.nytimes.com/2009/09/11/world/americas/11hippo.html</p>
+<p>Shigesada, N. &amp; Kawasaki, K. (1997) Biological Invasions: Theory
+and Practice (Oxford Univ. Press, Oxford).</p>
+<p>Shurin, J. B., Aranguren-Riaño, N., Duque Negro, D., Echeverri Lopez,
+D., Jones, N. T., Laverde‐R, O., … &amp; Pedroza Ramos, A. (2020).
+Ecosystem effects of the world’s largest invasive animal. <em>Ecology,
+101</em>(5), e02991.</p>
+<p>Sinclair, A. R., Mduma, S., &amp; Brashares, J. S. (2003). Patterns
+of predation in a diverse predator–prey system. <em>Nature,
+425</em>(6955), 288-290.</p>
+<p>Stevens, M.H. (2009). <em>A primer of ecology with R</em>.
+Springer.</p>
+<p>Stetz, J. B., Kendall, K. C. and Servheen, C. (2010) Evaluation of
+Bear Rub Surveys to Monitor Grizzly Bear Population Trends. <em>Journal
+of Wildlife Management 74</em>(4), 860-870.</p>
+<p>Varona , A. O. (2022, November 18). Hippos in Colombia: What to do
+with them? | Graduate and Postdoctoral Studies | <em>Rice
+University</em>.
+https://graduate.rice.edu/news/current-news/hippos-colombia-what-do-them</p>
+<p>Zimmerman, John L. (1971). The territory and its density dependent
+effect in <em>Spiza americana</em>. <em>The Auk 88</em>(3), 591–612.</p>
 <h1 id="structured-population-models">Structured population models</h1>
 <h2 id="introduction-to-population-structure">Introduction to population
 structure</h2>
@@ -3050,7 +3092,8 @@ Turtle</a>, Public use provided by the <a
 href="https://www.nist.gov/">National Institute of Standards and
 Technology (NIST), US</a></figcaption>
 </figure>
-<h3 id="sensitivity">Sensitivity</h3>
+<h3 id="analytical-sensitivity-analysis">Analytical sensitivity
+analysis</h3>
 <p>How sensitive is population growth to small changes in different
 vital rates? We can investigate this by looking at how <span
 class="math inline">\(\lambda\)</span> is impacted (or how sensitive it
@@ -3103,105 +3146,10 @@ alt="Sensitivities and elasticities for several tree sizes (in cm) in an oak pop
 <figcaption aria-hidden="true">Sensitivities and elasticities for
 several tree sizes (in cm) in an oak population</figcaption>
 </figure>
-<h3 id="component-sensitivity-and-elasticity">Component sensitivity and
-elasticity</h3>
-<p>Component sensitivity is a numerical approximation of sensitivity
-which you have just learnt how to calculate. In addition to being used
-as an approximation to analytical sensitivities, component sensitivities
-can be used in cases in which both survival and reproduction rates
-affect the same matrix elements or when a certain vital rate appears in
-more than one matrix element. They can be calculated by changing the
-<span class="math inline">\(\lambda\)</span> SSD by a small amount (eg.,
-0.01 in the equation below), obtaining the resulting matrix, and
-obtaining the new <span class="math inline">\(\lambda\)</span> SSD for
-this changed matrix. Then, you proceed with this calculation for a given
-vital rate x:</p>
-<p><span class="math display">\[x =
-\frac{\lambda_{x+0.01}-\lambda_{original}}{0.01}\]</span></p>
-<p>And for the elasticity:</p>
-<p><span class="math display">\[\text{Component elasticity of vital rate
-x} = \text{(component sensitivity of vital rate x)
-}*\frac{x}{\lambda_{original}}\]</span></p>
 <h3
-id="advantages-of-elasticities-as-compared-to-sensitivites">Advantages
-of elasticities as compared to sensitivites</h3>
-<p>Elasticities are useful in population biology studies due to the
-following properties:</p>
-<ul>
-<li><p>Elasticities for several vital rates can be directly compared
-within and between populations</p></li>
-<li><p>The sum of elasticities of all matrix elements equals 1</p></li>
-<li><p>The sum of 2 or more elasticities enable analyzing the grouped
-effect of vital rates</p></li>
-<li><p>General life history patterns can be considered when analyzing
-elasticities. For instance, long-lived species tend to have a higher
-elasticity for survival in comparison with reproduction. Thus, when
-observing significant changes in population growth rates, adult survival
-elasticities should be considered first.</p></li>
-</ul>
-<h3 id="limitations-of-sensitivity-and-elasticity-analyses">Limitations
-of sensitivity and elasticity analyses</h3>
-<p>Sensitivities and elasticities are calculated based on the assumption
-that populations have a stable stage distribution. However, they are not
-enough to describe vital rate dynamics under natural or management
-conditions: this is because high and low sensitivities and elasticities
-need to be considered together with the variance of vital rates.</p>
-<p>Sensitivity analyses using a mean matrix can be misleading in some
-situations, such as when environmental conditions have a large influence
-on a given population. Mean matrices also disregard transient dynamics
-following management actions. In this case, phenomena such as population
-inertia may occur, in which growth occurs in opposite trends as the
-predicted by asymptotic elasticity as a result of a large change to a
-vital rate with a high elasticity. Our section entitled <a
-href="https://www.ecotheory.ca/teach/BIOL652.html#structured-population-models"><strong>Temporal
-environmental stochasticity in matrix models</strong></a> details
-analyses considering sensitivities and elasticities for transients and
-stochastic scenarios.</p>
-<h3
-id="analytical-sensitivity-and-elasticity-variance-in-vital-rates">Analytical
-sensitivity and elasticity &amp; variance in vital rates</h3>
-<p>A high elasticity and low variation in a vital rate may be less
-important to population growth than another vital rate characterized by
-a low elasticity but a great variability. An example is juvenile
-survival for several species: even if a low elasticity is found for this
-vital rate, it may be more variable than vital rates for adults, as
-juveniles have more mortality due to predation, poor conditions, and
-density-dependent factors. Mean matrices are not appropriate for this
-type of analysis, as it requires knowing how much vital rates change in
-nature or under management and how this change affects population
-growth.</p>
-<h3 id="sensitivity-analysis-methods">Sensitivity analysis methods</h3>
-<p>The most common method for performing a sensitivity analysis is
-called manual perturbation and consists of the technique described above
-of manually changing vital rates and comparing the before and after
-<span class="math inline">\(\lambda\)</span> SSD. In addition to vital
-rates, this method allows assessing factors like density dependence,
-immigration and emigration, age structure, and endogamy (breeding of
-related individuals resulting in offspring performance reduction).</p>
-<p>Another method which considers both sensitivity and variance in vital
-rates is called life-stage simulation analysis. It is done by applying
-realistic changes to averages and variances in field-collected rates to
-simulate several potential future scenarios. Thus, several matrices are
-built using the vital rates specified in a distribution function, and
-<span class="math inline">\(\lambda\)</span> SSDs are calculated for
-each matrix to investigate the probability of a population to increase
-or decrease in time. By considering each matrix as a replicate, we can
-compare ratings of elasticities across scenarios. To include
-stochasticity, random vital rates can be used and <span
-class="math inline">\(\lambda\)</span>S can be calculated instead of
-<span class="math inline">\(\lambda\)</span> SSD.</p>
-<p>Life-stage simulation analyses can also be done by regressing <span
-class="math inline">\(\lambda\)</span> values against each vital rate
-(for each replicate), considering that all other vital rates are also
-changing at the same time. In this case, the coefficient of
-determination (<span class="math inline">\(R^2\)</span>) corresponds to
-how much variation in population growth is explained by variation in
-that specified vital rate. The slope of line represents the analytical
-sensitivity; if using log-transformed data, the slope corresponds to the
-elasticity.</p>
-<h3
-id="practicing-the-calculation-of-sensitivities-and-elasticities">Practicing
-the calculation of sensitivities and elasticities</h3>
+id="practicing-the-calculation-of-sensitivities-and-elasticities-through-the-analytical-method">Practicing
+the calculation of sensitivities and elasticities through the analytical
+method</h3>
 <p>Now let’s use an actual population matrix to make a sensitivity
 analysis and try to figure out the most important vital rates to an oak
 tree (<em>Quercus mongolica</em>) population. In Asia, the native range
@@ -3320,7 +3268,8 @@ our oak population:</p>
 <span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co"># And we weight the sensitivities by the transition probabilities to get elasticities</span></span>
 <span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>elas<span class="ot">&lt;-</span><span class="fu">Re</span>(L<span class="sc">/</span><span class="fu">eigen</span>(L)<span class="sc">$</span>values[<span class="dv">1</span>]<span class="sc">*</span>s)</span></code></pre></div>
 <p>Finally, we visualize sensitivities and elasticities for each vital
-rate and stage in these bar plots:</p>
+rate and stage in these bar plots (note that y-axis values are not the
+same across the 2 plots):</p>
 <figure>
 <img
 src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/sensitivity_analysis_files/r-1.jpeg"
@@ -3341,6 +3290,98 @@ done:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(popbio)</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>sensit <span class="ot">&lt;-</span> <span class="fu">sensitivity</span>(L, <span class="at">zero =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>elast <span class="ot">&lt;-</span> <span class="fu">elasticity</span>(L)</span></code></pre></div>
+<h3 id="component-sensitivity-and-elasticity">Component sensitivity and
+elasticity</h3>
+<p>Component sensitivities and elasticities, also called lower-level
+sensitivities and elasticities, can be calculated in cases where matrix
+elements are made of more than one vital rate, such as the ones in the
+top row of projection matrices (they may include both survival and
+reproduction components), or when a given vital rate appears in more
+than one matrix element. Component sensitivities can be calculated by
+using the analytical formula you have just learnt about, by
+differentiating each element containing a given vital rate. Another way
+of calculating them is by changing the <span
+class="math inline">\(\lambda\)</span> SSD by a small amount (eg., 0.01
+in the equation below), obtaining the resulting matrix, and obtaining
+the new <span class="math inline">\(\lambda\)</span> SSD for this
+changed matrix. Then, you proceed with this calculation for a given
+vital rate x:</p>
+<p><span class="math display">\[x =
+\frac{\lambda_{x+0.01}-\lambda_{original}}{0.01}\]</span></p>
+<p>And for the elasticity:</p>
+<p><span class="math display">\[\text{Component elasticity of vital rate
+x} = \text{(component sensitivity of vital rate x)
+}*\frac{x}{\lambda_{original}}\]</span></p>
+<h3
+id="advantages-of-elasticities-as-compared-to-sensitivites">Advantages
+of elasticities as compared to sensitivites</h3>
+<p>Elasticities are useful in population biology studies due to the
+following properties:</p>
+<ul>
+<li><p>Elasticities for several vital rates can be directly compared
+within and between populations</p></li>
+<li><p>The sum of elasticities of all matrix elements equals 1</p></li>
+<li><p>The sum of 2 or more elasticities enable analyzing the grouped
+effect of vital rates</p></li>
+<li><p>General life history patterns can be considered when analyzing
+elasticities. For instance, long-lived species tend to have a higher
+elasticity for survival in comparison with reproduction. Thus, when
+observing significant changes in population growth rates, adult survival
+elasticities should be considered first.</p></li>
+</ul>
+<h3 id="limitations-of-sensitivity-and-elasticity-analyses">Limitations
+of sensitivity and elasticity analyses</h3>
+<p>Sensitivities and elasticities are calculated based on the assumption
+that populations have a stable stage distribution. However, they are not
+enough to describe vital rate dynamics under natural or management
+conditions: this is because high and low sensitivities and elasticities
+need to be considered together with the variance of vital rates.</p>
+<p>Sensitivity analyses using a mean matrix can be misleading in some
+situations, such as when environmental conditions have a large influence
+on a given population. Mean matrices also disregard transient dynamics
+following management actions. In this case, phenomena such as population
+inertia may occur, in which growth occurs in opposite trends as the
+predicted by asymptotic elasticity as a result of a large change to a
+vital rate with a high elasticity. Our section entitled <a
+href="https://www.ecotheory.ca/teach/BIOL652.html#structured-population-models"><strong>Temporal
+environmental stochasticity in matrix models</strong></a> details
+analyses considering sensitivities and elasticities for transients and
+stochastic scenarios.</p>
+<h3 id="sensitivity-analysis-variance-in-vital-rates">Sensitivity
+analysis &amp; variance in vital rates</h3>
+<p>A high elasticity and low variation in a vital rate may be less
+important to population growth than another vital rate characterized by
+a low elasticity but a great variability. An example is juvenile
+survival for several species: even if a low elasticity is found for this
+vital rate, it may be more variable than vital rates for adults, as
+juveniles have more mortality due to predation, poor conditions, and
+density-dependent factors. Mean matrices are not appropriate for this
+type of analysis, as it requires knowing how much vital rates change in
+nature or under management and how this change affects population
+growth.</p>
+<h3 id="life-stage-simulation-analysis">Life-stage simulation
+analysis</h3>
+<p>Life-stage simulation analysis is a method which considers both
+sensitivity and variance in vital rates. It is done by applying
+realistic changes to averages and variances in field-collected rates to
+simulate several potential future scenarios. Thus, several matrices are
+built using the vital rates specified in a distribution function, and
+<span class="math inline">\(\lambda\)</span> SSDs are calculated for
+each matrix to investigate the probability of a population to increase
+or decrease in time. By considering each matrix as a replicate, we can
+compare ratings of elasticities across scenarios. To include
+stochasticity, random vital rates can be used and <span
+class="math inline">\(\lambda\)</span>S can be calculated instead of
+<span class="math inline">\(\lambda\)</span> SSD.</p>
+<p>Life-stage simulation analyses can also be done by regressing <span
+class="math inline">\(\lambda\)</span> values against each vital rate
+(for each replicate), considering that all other vital rates are also
+changing at the same time. In this case, the coefficient of
+determination (<span class="math inline">\(R^2\)</span>) corresponds to
+how much variation in population growth is explained by variation in
+that specified vital rate. The slope of line represents the analytical
+sensitivity; if using log-transformed data, the slope corresponds to the
+elasticity.</p>
 <h2 id="density-dependence-in-matrix-models">Density-dependence in
 matrix models</h2>
 <p>As populations increase in size, they compete for limited resources
@@ -3375,7 +3416,7 @@ the total available area of habitat by the average territory size needed
 (for breeding). Setting such a cap can make the transition from the
 pre-reproductive to productive stages density-dependent, even if no
 other vital rates experience density-dependence.</p>
-<h4 id="exmaple-on-iberian-lynx">Exmaple on Iberian lynx</h4>
+<h4 id="example-on-iberian-lynx">Example on Iberian lynx</h4>
 <p>Gaona <em>et al</em>. (1998) investigated the population dynamics of
 Iberian lynx in Donana National Park in Spain, and here we present a
 simplified illustration (Morris and Doak, 2002), in which we track only
@@ -3430,7 +3471,7 @@ class="math inline">\(K-s_4n_4(t)&gt;s_2n_2(t)+s_3n_3(t)\)</span>. So we
 should always update <span class="math inline">\(g\)</span> with <span
 class="math inline">\(\min\{g,1\}\)</span>.</li>
 </ul>
-<p>The R code below shows how thr breeder population and the total
+<p>The R code below shows how the breeder population and the total
 population change when the maximum number of territories <span
 class="math inline">\(K\)</span> is introduced:</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the survival rates for each stage</span></span>
@@ -3475,7 +3516,7 @@ class="math inline">\(K\)</span> is introduced:</p>
 <span id="cb60-40"><a href="#cb60-40" aria-hidden="true" tabindex="-1"></a>  n_total[t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(n[, t<span class="sc">+</span><span class="dv">1</span>])</span>
 <span id="cb60-41"><a href="#cb60-41" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <figure>
-<img src="lynx.jpeg"
+<img src="lynx.jpeg" style="width:80.0%"
 alt="(a) Number of breeders; (b) Total lynx population." />
 <figcaption aria-hidden="true">(a) Number of breeders; (b) Total lynx
 population.</figcaption>
@@ -3500,7 +3541,7 @@ class="math inline">\(g(N)=\frac{\alpha}{1+\beta N}\)</span>,</li>
 N}.\)</span></li>
 </ul>
 <figure>
-<img src="bh_ricker.jpeg"
+<img src="bh_ricker.jpeg" style="width:80.0%"
 alt="(a) Beverton-Holt function and Ricker function; (b) the corresponding recruitment functions. Here, we set \alpha=0.9 and \beta=0.05" />
 <figcaption aria-hidden="true">(a) Beverton-Holt function and Ricker
 function; (b) the corresponding recruitment functions. Here, we set
@@ -3539,8 +3580,10 @@ density-dependent fecundity/growth</h4>
 logistic equation, they can have qualitatively different dynamics,
 depending on parameter values (monotonic approach to an equilibrium,
 damped oscillations, limit cycles and chaos). Such phenomena exist in a
-density-dependent matrix model as well.</p>
-<p>We present an example with density-dependent fecundity where <span
+density-dependent matrix model as well. With different setups of vital
+rates, we could get different population dynamics.</p>
+<p>We follow the above two-stage model and present an example with
+density-dependent fecundity where <span
 class="math inline">\(\phi(N)=\phi e^{-N}\)</span>, and an example with
 density-dependent growth where <span
 class="math inline">\(\gamma(N)=\gamma e^{-N}\)</span>. We test
@@ -3551,9 +3594,12 @@ class="math inline">\(\phi=300\)</span> for the density-dependent growth
 model. Other parameters are <span
 class="math inline">\(\sigma_1=0.5\)</span>, <span
 class="math inline">\(\sigma_2=0.1\)</span> and <span
-class="math inline">\(\gamma=0.1\)</span>.</p>
-<p>We will compare the following four projection matriceswith the same
-initial population <span
+class="math inline">\(\gamma=0.1\)</span>. We will show that population
+trajectories typically converge to an attracting invariant set, which
+could be an equilibrium point, a cycle, an invariant loop or a strange
+attractor (Caswell et al., 2004).</p>
+<p>Specifically, we will compare the following four projection matrices
+with the same initial population <span
 class="math inline">\(\mathbf{n}(0)=[6,4]\)</span>: <span
 class="math display">\[\mathbf{A}_1=\begin{bmatrix}0.45 &amp;
 50e^{-N}\\0.05 &amp; 0.1\end{bmatrix},\ \mathbf{A}_2=\begin{bmatrix}0.45
@@ -3589,10 +3635,10 @@ class="math display">\[\mathbf{A}_1=\begin{bmatrix}0.45 &amp;
 <span id="cb61-26"><a href="#cb61-26" aria-hidden="true" tabindex="-1"></a>  n4[, t<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> A4 <span class="sc">%*%</span> n4[, t]</span>
 <span id="cb61-27"><a href="#cb61-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <figure>
-<img src="attractors.jpeg" style="width:75.0%"
-alt="(a,c,e,g) Attractors; (b,d,f,h) dynamics of corresponding attractors." />
-<figcaption aria-hidden="true">(a,c,e,g) Attractors; (b,d,f,h) dynamics
-of corresponding attractors.</figcaption>
+<img src="attractors.jpeg"
+alt="(a–d) Attractors; (e–h) dynamics of corresponding attractors." />
+<figcaption aria-hidden="true">(a–d) Attractors; (e–h) dynamics of
+corresponding attractors.</figcaption>
 </figure>
 <h3
 id="illustration-of-current-application-lake-sturgeon-population">Illustration
@@ -3861,7 +3907,7 @@ class="math inline">\(\theta^*\)</span> .</p>
 class="math inline">\(\frac{\partial ln \lambda_S}{\partial
 \theta}\)</span> is via stochastic simulations (Caswell, 2001, Morris
 &amp; Doak 2002)</p>
-<h2 id="references-4">References</h2>
+<h2 id="references-2">References</h2>
 <p>Bialic-Murphy, L., Knight, T. M., Kawelo, K., &amp; Gaoue, O. G.
 (2022). The Disconnect Between Short-and Long-Term Population
 Projections for Plant Reintroductions. <em>Frontiers in Conservation
@@ -3874,6 +3920,9 @@ Ecological Sensitivity Analysis.” <em>Conservation Biology, 16</em> (3):
 Ecology</em>. New York: Oxford University Press.</p>
 <p>Caswell, H. (2001). <em>Matrix Population Models</em>. Sinauer
 Associates, Sunderland, MA.</p>
+<p>Caswell, H., Takada, T. and Hunter, C.M. (2004). Sensitivity analysis
+of equilibrium in density-dependent matrix population models.
+<em>Ecology Letters</em>, <em>7</em>: 380-387.</p>
 <p>Caswell, H. (2019). Introduction: Sensitivity Analysis–What and Why?.
 <em>Sensitivity Analysis: Matrix Methods in Demography and Ecology</em>,
 3-12.</p>
@@ -4091,7 +4140,8 @@ time <span class="math inline">\(t+1\)</span> can be calculated as the
 integral <span
 class="math display">\[n(z&#39;,t+1)=\int_L^UK(z&#39;,z)n(z,t)\
 dz.\]</span> The kernel <span class="math inline">\(K(z&#39;,z)\)</span>
-in the IPM is analogous to the projection matrix in MPM.</p>
+in the IPM is analogous to the projection matrix in MPM (Gonzalez et
+al., 2021).</p>
 <h3 id="from-life-cycle-to-model">From life cycle to model</h3>
 <p>An essential step of building an IPM is to translate population
 census data into the vital rates in the kernel.</p>
@@ -4250,7 +4300,7 @@ glazioviana</em></a>, <a
 href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
 CC BY-SA-3.0 license</a></figcaption>
 </figure>
-<h4 id="example-3-ungulate">Example 3: ungulate</h4>
+<h4 id="example-3-soay-sheep">Example 3: soay sheep</h4>
 <p>Let’s look at a classic animal example, in which we are able to track
 parental sizes. For animals, age or life stage (e.g. mature
 vs. immature) plays a more important role in life history transitions.
@@ -4282,108 +4332,36 @@ sheep (<em>Ovis aries</em>)</a>, <a
 href="https://creativecommons.org/licenses/by/2.0/">Creative Commons CC
 BY-2.0 license</a></figcaption>
 </figure>
-<h3
-id="illustration-of-current-application-spatial-integral-projection-model">Illustration
-of current application: spatial integral projection model</h3>
+<h4 id="example-4-integral-projection-phenology-models">Example 4:
+integral projection phenology models</h4>
 <p>As we mentioned earlier, the continuous variable <span
-class="math inline">\(z\)</span> could be unrelated to “size”. Also,
-<span class="math inline">\(z\)</span> could be multidimensional (Ellner
-et al., 2016). Here we present a paper about spatial integral projection
-models (SIPM) that include both demography and dispersal with continuous
-variables.</p>
-<blockquote>
-<p>Jongejans, E., Shea, K., Skarpaas, O., Kelly, D. and Ellner, S.P.
-(2011), Importance of individual and environmental variation for
-invasive species spread: a spatial integral projection model.
-<em>Ecology</em>, 92: 86-97.</p>
-</blockquote>
-<figure>
-<img src="carduus-nutans.jpg"
-alt="© Baykedevries, Carduus nutans, Creative Commons CC BY-SA-3.0 license" />
-<figcaption aria-hidden="true">© Baykedevries, <a
-href="https://commons.wikimedia.org/wiki/File:Carduus_nutans_NP_Schiermonnikoog.jpg"><em>Carduus
-nutans</em></a>, <a
-href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
-CC BY-SA-3.0 license</a></figcaption>
-</figure>
-<h4 id="snapshot-of-the-study-3">Snapshot of the study</h4>
+class="math inline">\(z\)</span> could be unrelated to “size”. Here we
+present a paper about an integral projection phenology model, in which
+the authors treated the physiological age as a continuous variable
+(Goodsman et al., 2018).</p>
 <ul>
-<li>The authors developed an SIPM by combining IPM with an analytical
-method for modelling spatial spread, Neubert-Caswell Model (NCM). They
-tested the SIPM on the invasive monocarpic thistle <em>Carduus
-nutans</em> in New Zealand.</li>
-<li>For the demographic process, the population is described by the size
-distribution of rosettes, <span class="math inline">\(R(z,t)\)</span>,
-<span class="math display">\[R(z&#39;,t+1)=\int_Z
-K_{dem}(z&#39;,z)R(z,t)\ dz.\]</span></li>
-<li>The vital rates underlie the demographic kernel <span
-class="math inline">\(K_{dem}(z&#39;,z)\)</span> are <span
-class="math display">\[K_{dem}=\underbrace{s(z)(1-p_b(z))G(z&#39;,z)}_{\text{survival/growth
-kernel }P(z&#39;,z)}+\underbrace{s(z)p_b(z)b(z)p_r\omega(z)\phi
-C_1(z&#39;)}_{\text{fecundity kernel }F(z&#39;,z)}.\]</span> Compared to
-the above example of monocarpic perennials, the kernel is defined
-differently;
-<ul>
-<li>Survival rate also appears in the fecundity kernel</li>
-<li>Two more variables are introduced. <span
-class="math inline">\(\omega(z)\)</span> is a size-dependent potential
-flower head production term, and <span
-class="math inline">\(\phi\)</span> is the probability that a potential
-seed escapes florivory and becomes a seed.</li>
-</ul></li>
-<li>A seed bank is also considered in the model. Basically, the
-existence of a seed bank requires the addition of a separate
-discrete-state variable that is linked to <span
-class="math inline">\(K_{dem}\)</span> by the proportion of newly
-produced seeds that enter the seed bank, and the proportion of seeds in
-the seed bank that survive and become seedlings. We will not discuss the
-details, but Merow et al. (2014) provides some examples of plants with
-seed banks.</li>
-<li>Spatial population spread requires a dispersal kernel <span
-class="math inline">\(K_{disp}(r)\)</span>, which is the probability
-density function for seed dispersal distance <span
-class="math inline">\(r\)</span>. The authors used an inverse Gaussian
-distribution.</li>
-<li>The SIPM that combines both demographic kernel and dispersal kernel
-is described as a double integral <span
-class="math display">\[\mathbf{n}(x&#39;,z&#39;,t+1)=\iint
-K(x&#39;,z&#39;,x,z)\mathbf{n}(x,z,t)\ dxdz,\]</span> where <span
-class="math inline">\(\mathbf{n}(x,z,t)\)</span> is the structured
-population stage vectors at location <span
-class="math inline">\(x\)</span> with size <span
-class="math inline">\(z\)</span> at time <span
-class="math inline">\(t\)</span>. <span
-class="math inline">\(K(x&#39;,z&#39;,x,z)\)</span> is the combined
-demography and dispersal kernel, which is defined as follows <span
-class="math display">\[K(x&#39;,z&#39;,x,z)=K_{disp}(x&#39;-x)F(z&#39;,z)+\delta(x&#39;-x)P(z&#39;,z),\]</span>
-with <span class="math inline">\(\delta(\cdot)\)</span> the <a
-href="https://mathworld.wolfram.com/DeltaFunction.html">Dirac delta
-function</a> (<span class="math inline">\(\delta(x&#39;-x)=0\)</span>
-for all <span class="math inline">\(x&#39;\neq x\)</span> and <span
-class="math inline">\(\delta(x&#39;-x)=1\)</span> for <span
-class="math inline">\(x&#39;=x\)</span>)
-<ul>
-<li><em>Note</em>: Only new seeds disperse, while all other life stages
-are sessile.</li>
-</ul></li>
+<li>Phenology models are primarily used on insects, and IPM have been
+shown to be useful for modelling phenology (Ellner and Rees, 2006). In
+this paper, the authors focused on the timing of summer flights (from
+brood trees to attack new trees) of mountain pine beetles
+(<em>Dendroctonus ponderosae</em> Hopkins).</li>
+<li>Physiological age is different from the discrete time <span
+class="math inline">\(t\)</span> in IPM, which is usually referred as
+the “chronological age”. Physiological age accumulates over time at some
+rate and is a standard approach to measure maturation.</li>
+<li>The IPM used in the paper is relatively complicated. The authors
+applied an multidimensional (stage- and age-structured) model, and
+incorporated environmental stochasticity. The kernels vary from one time
+point to the next. So we will not present the actual model discussed in
+the paper, but a brief idea on the possibility of treating physiological
+age as the continuous variable <span
+class="math inline">\(z\)</span>.</li>
+<li>Details on incorporating stochasticity into IPM will be discussed in
+a following section.</li>
 </ul>
-<h3 id="reference">Reference</h3>
-<p>Easterling, M.R., Ellner, S.P. and Dixon, P.M. (2000), Size-specific
-sensitivity: applying a new structured population model.
-<em>Ecology</em>, 81: 694-708.</p>
-<p>Ellner, S.P. and Rees, M. (2006), Integral projection models for
-species with complex demography. <em>Am Nat.</em>, 167(3): 410-28.</p>
-<p>Ellner, S.P., Childs, D.Z. and Rees, M. (2016), <em>Data-driven
-Modelling of Structured Populations</em>. Springer Cham.</p>
-<p>Merow, C., Dahlgren, J.P., Metcalf, C.J.E., Childs, D.Z., Evans,
-M.E.K., Jongejans, E., Record, S., Rees, M., Salguero-Gómez, R. and
-McMahon, S.M. (2014), Advancing population ecology with integral
-projection models: a practical guide. <em>Methods Ecol Evol</em>, 5:
-99-110.</p>
-<p>Metcalf, C., Rose, K., Childs, D., Sheppard, A., Grubb, P. and Rees,
-M. (2008), Evolution of flowering decisions in a stochastic,
-density-dependent environment. <em>Proceedings of the National Academy
-of Sciences</em>, 105: 10466.</p>
+<h2
+id="how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest">How
+do we go about implementing an IPM for our species of interest?</h2>
 <h3 id="the-first-step-of-ipms-regressions">The first step of IPMs:
 regressions</h3>
 <p>To perform an IPM model, regression models are commonly fit to vital
@@ -4438,9 +4416,7 @@ developed by Erickson et al. (2017), where the growth function consisted
 of a normal distribution with 2 variables centered around a modified von
 Bertalanffy function of fish length at each time step. A derivative was
 then calculated to map length changes as a function of length.</p>
-<h3
-id="how-do-we-go-about-implementing-an-ipm-for-our-species-of-interest">How
-do we go about implementing an IPM for our species of interest?</h3>
+<h3 id="ipm-implementation-steps">IPM implementation steps</h3>
 <p>This diagram shows the main steps to implement an IPM. You have
 already learnt about the steps in blue (first, second, and last
 step).</p>
@@ -4680,7 +4656,7 @@ survival and model values. The line shows the fitted survival model and
 the dots display observed values from model (column sums of
 growth/survival matrix)</figcaption>
 </figure>
-<h2 id="references-5">References</h2>
+<h2 id="references-3">References</h2>
 <p>Armstrong, D. P., Keevil, M. G., Rollinson, N., &amp; Brooks, R. J.
 (2018). Subtle individual variation in indeterminate growth leads to
 major variation in survival and lifetime reproductive output in a
@@ -4730,31 +4706,20 @@ Commons CC BY-NC-SA 2.0 license</a></figcaption>
 dependence</h4>
 <p>For a plant that reproduces by seeds, the number of new recruits in a
 given year is proportional to the number of seeds produced the previous
-year. Based on Rose et al. (2005), <span class="math inline">\(Recruits
-= Seeds^{0.67}\)</span> for <em>Cirsium canescens</em>.</p>
-<p><img src="plant_dd_ipm.jpeg"
-alt="Relationship between the number of recruits at time t+1 and the number of seeds at time t." />
-{width=80%}</p>
-<p>The seed set number of Platte thistle (<em>Cirsium canescens</em>) is
-affected by two different factors:</p>
-<ul>
-<li><p>Plant size.</p></li>
-<li><p>The egg number of inflorescence-feeding weevil <em>R.
-conicus</em>.</p></li>
-</ul>
-<p>Therefore, the seed set function <span
-class="math inline">\(b(z)\)</span> can be defined as a result of two
-submodels: A function of plant size; and a negative binomial
-distribution for the number of <em>R. conicus</em> eggs with mean
-depending on plant size.</p>
-<p><span class="math display">\[ b(z) =
-e^{(-0.55+2.02z)}\times(1+\frac{ε(z)}{16})^{-0.32} \]</span> where <span
-class="math inline">\(z\)</span> is the size measure, <span
-class="math inline">\(ε\)</span> is the mean number of <em>R.
-conicus</em> eggs oviposited on a plant of size <span
-class="math inline">\(z\)</span>.</p>
-<p>All the other demographic rates are density-independent: (Rose et
-al., 2005)</p>
+year. This means that the recruitment is density-dependent. Based on
+Rose et al. (2005), the relationship between the number of new recruits
+at year <span class="math inline">\(t+1\)</span> and the number of seeds
+at time <span class="math inline">\(t\)</span> is <span
+class="math inline">\(Recruits = Seeds^{0.67}\)</span> for <em>Cirsium
+canescens</em>.</p>
+<figure>
+<img src="plant_dd_ipm.jpeg"
+alt="Relationship between the number of new recruits at year t+1 and the number of seeds at time t" />
+<figcaption aria-hidden="true">Relationship between the number of new
+recruits at year t+1 and the number of seeds at time t</figcaption>
+</figure>
+<p>Now we can define the density-independent demographic functions.
+(Rose et al., 2005)</p>
 <ul>
 <li><p>Flowering probability <span
 class="math inline">\(p_b(z)\)</span>: logit <span
@@ -4770,6 +4735,22 @@ class="math inline">\(s = −0.62 + 0.85z\)</span></p></li>
 class="math inline">\(z&#39; ∼ Norm(μ = 0.83 + 0.69z, σ^2 =
 0.19)\)</span></p></li>
 </ul>
+<p>Seed set number is a little more complicated to define. Two factors
+can impact the seed set number: the plant size and the invasive <em>R.
+conicus</em> egg number. Thus, the seed set function <span
+class="math inline">\(b(z)\)</span> can be defined as a result of two
+submodels: A function of plant size; and a negative binomial
+distribution for the number of <em>R. conicus</em> eggs with mean
+depending on plant size.</p>
+<ul>
+<li>Seed set number <span class="math inline">\(b(z)\)</span>: <span
+class="math inline">\(b(z) =
+e^{(-0.55+2.02z)}\times(1+\frac{ε(z)}{16})^{-0.32}\)</span></li>
+</ul>
+<p>, where <span class="math inline">\(z\)</span> is the size measure,
+<span class="math inline">\(ε\)</span> is the mean number of <em>R.
+conicus</em> eggs oviposited on a plant of size <span
+class="math inline">\(z\)</span>.</p>
 <p><br></p>
 <h4 id="fit-an-ipm-model-with-density-dependent-recruitment">Fit an IPM
 model with density-dependent recruitment</h4>
@@ -4863,24 +4844,16 @@ typical-size adult female, z = 2.9. (code adapted from Ellner et al.,
 define the true population parameters (data and code from Ellner et al.,
 2016):</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>m.par.true <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="do">## survival (density dependent)</span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">surv.int  =</span>  <span class="fl">1.06e+0</span>,</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">surv.z    =</span>  <span class="fl">2.09e+0</span>,</span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">surv.Nt   =</span> <span class="sc">-</span><span class="fl">1.80e-2</span>,</span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>                <span class="do">## growth (NOT density dependent)</span></span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">grow.int  =</span>  <span class="fl">1.41e+0</span>,</span>
-<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">grow.z    =</span>  <span class="fl">5.57e-1</span>,</span>
-<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">grow.sd   =</span>  <span class="fl">7.99e-2</span>,</span>
-<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a>                <span class="do">## reproduce or not (NOT density dependent)</span></span>
-<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">repr.int  =</span> <span class="sc">-</span><span class="fl">7.23e+0</span>,</span>
-<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">repr.z    =</span>  <span class="fl">2.60e+0</span>,                </span>
-<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>                <span class="do">## recruit or not (density dependent)</span></span>
-<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>                <span class="at">recr.int  =</span>  <span class="fl">4.43e+0</span>,</span>
-<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">recr.Nt   =</span> <span class="sc">-</span><span class="fl">9.19e-3</span>,</span>
-<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a>                <span class="do">## recruit size (density dependent)</span></span>
-<span id="cb75-16"><a href="#cb75-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">rcsz.int  =</span>  <span class="fl">5.40e-1</span>,</span>
-<span id="cb75-17"><a href="#cb75-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">rcsz.z    =</span>  <span class="fl">7.10e-1</span>,</span>
-<span id="cb75-18"><a href="#cb75-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">rcsz.Nt   =</span> <span class="sc">-</span><span class="fl">6.42e-4</span>,</span>
-<span id="cb75-19"><a href="#cb75-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">rcsz.sd   =</span>  <span class="fl">1.59e-1</span>)</span></code></pre></div>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">surv.int=</span> <span class="fl">1.06e+0</span>, <span class="at">surv.z=</span> <span class="fl">2.09e+0</span>, <span class="at">surv.Nt=</span> <span class="sc">-</span><span class="fl">1.80e-2</span>,</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>                <span class="do">## growth (NOT density dependent)</span></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">grow.int=</span> <span class="fl">1.41e+0</span>, <span class="at">grow.z=</span> <span class="fl">5.57e-1</span>, <span class="at">grow.sd=</span> <span class="fl">7.99e-2</span>,</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>                <span class="do">## reproduce or not (NOT density dependent)</span></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">repr.int=</span> <span class="sc">-</span><span class="fl">7.23e+0</span>, <span class="at">repr.z=</span> <span class="fl">2.60e+0</span>,                </span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>                <span class="do">## recruit or not (density dependent)</span></span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">recr.int=</span> <span class="fl">4.43e+0</span>, <span class="at">recr.Nt=</span> <span class="sc">-</span><span class="fl">9.19e-3</span>,</span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a>                <span class="do">## recruit size (density dependent)</span></span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">rcsz.int=</span> <span class="fl">5.40e-1</span>, <span class="at">rcsz.z=</span> <span class="fl">7.10e-1</span>,</span>
+<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">rcsz.Nt=</span> <span class="sc">-</span><span class="fl">6.42e-4</span>, <span class="at">rcsz.sd=</span> <span class="fl">1.59e-1</span>)</span></code></pre></div>
 <p>From literature data we can define the three density-dependent
 demographic functions:</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Recruitment function (N.B - from birth in spring to first summer), logistic regression</span></span>
@@ -4931,7 +4904,7 @@ the IPM kernels P, F, and K:</p>
 <span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>F_z1z <span class="ot">&lt;-</span> <span class="cf">function</span> (z1, z, Nt, m.par) {</span>
 <span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>( <span class="fl">0.5</span><span class="sc">*</span> <span class="fu">s_z</span>(z, Nt, m.par) <span class="sc">*</span> <span class="fu">pb_z</span>(z, m.par) <span class="sc">*</span> <span class="fu">pr_z</span>(Nt, m.par) <span class="sc">*</span>             <span class="fu">c_z1z</span>(z1, z, Nt, m.par) )</span>
 <span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<h3 id="references-6">References</h3>
+<h3 id="references-4">References</h3>
 <p>Ellner, Stephen P., Dylan Z. Childs, and Mark Rees. 2016.
 <em>Data-Driven Modelling of Structured Populations: A Practical Guide
 to the Integral Projection Model.</em> Lecture Notes on Mathematical
@@ -5197,7 +5170,7 @@ the right-hand side is 0, which will be true whenever the fluctuations
 independent of the unperturbed kernel. In this case, we need to carry
 the expansion out to second order in <span
 class="math inline">\(\epsilon\)</span> for these cases.</p>
-<h3 id="references-7">References</h3>
+<h3 id="references-5">References</h3>
 <p>Dalgleish, H. J., Koons, D. N., Hooten, M. B., Moffet, C. A., &amp;
 Adler, P. B. (2011). Climate influences the demography of three dominant
 sagebrush steppe plants. <em>Ecology</em>, <em>92</em>(1), 75-85.</p>
@@ -5227,6 +5200,92 @@ Ovis aries. <em>Oikos</em>, <em>124</em>(5), 543-552.</p>
 J., Miloloža, T., &amp; Štolfa Čamagajevac, I. (2023). Physiological
 response of nutrient-stressed <em>Lemna gibba</em> to pulse colloidal
 silver treatment. <em>Plants</em>, <em>12</em>(6), 1367.</p>
+<h2 id="key-papers-for-further-reading">Key Papers for Further
+Reading</h2>
+<h3 id="classical-reading">Classical reading</h3>
+<p>These three papers provide mathematics/theories of IPM:</p>
+<ul>
+<li>Easterling, M.R., Ellner, S.P. and Dixon, P.M. (2000), Size-specific
+sensitivity: applying a new structured population model.
+<em>Ecology</em>, 81: 694-708.</li>
+<li>Ellner, S.P. and Rees, M. (2006), Integral projection models for
+species with complex demography. <em>Am Nat.</em>, 167(3):410-28.</li>
+<li>Ellner, S.P. and Rees, M. (2007), Stochastic stable population
+growth in integral projection models: theory and application. <em>J.
+Math. Biol.</em>, 54: 227–256</li>
+</ul>
+<p>The following two papers provide useful practical guide:</p>
+<ul>
+<li>Rees, M., Childs, D.Z. and Ellner, S.P. (2014), Building integral
+projection models: a user’s guide. <em>J Anim Ecol</em>, 83:
+528-545.</li>
+<li>Merow, C., Dahlgren, J.P., Metcalf, C.J.E., Childs, D.Z., Evans,
+M.E.K., Jongejans, E., Record, S., Rees, M., Salguero-Gómez, R. and
+McMahon, S.M. (2014), Advancing population ecology with integral
+projection models: a practical guide. <em>Methods Ecol Evol</em>, 5:
+99-110.</li>
+</ul>
+<p>The following book provides a thorough introduction about IPM. The
+practical parts are summarized in Rees et al. (2014)</p>
+<ul>
+<li>Ellner, S.P., Childs, D.Z. and Rees, M. (2016), <em>Data-driven
+Modelling of Structured Populations</em>. Springer Cham.</li>
+</ul>
+<h3 id="new-reading">New reading</h3>
+<p>Here are some recent applications of IPM</p>
+<ul>
+<li>Erickson, R.A., Eager, E.A., Kocovsky, P.M., Glover, D.C., Kallis,
+J.L. and Long, K.R. (2018), A spatially discrete, integral projection
+model and its application to invasive carp. <em>Ecological
+Modelling</em>, 387:163-171.</li>
+<li>Peirce, J., Sandland, G., Bennie, B. and Erickson, R. (2023), An
+integral projection model for gizzard shad (<em>Dorosoma
+cepedianum</em>) utilizing density-dependent age-0 survival.
+<em>Ecological Modelling</em>, 477:110260.</li>
+</ul>
+<h2 id="r-resources-1">R resources</h2>
+<ul>
+<li><em>IPMpack</em> (Metcalf et al., 2013)</li>
+<li>ipmr (Levin et al., 2021)</li>
+<li>lefko3 (Shefferson et al., 2021) (This package is devoted to the
+analysis of demographic data through MPM. It also builds discretized
+IPM)</li>
+</ul>
+<h2 id="references-6">References</h2>
+<p>Easterling, M.R., Ellner, S.P. and Dixon, P.M. (2000), Size-specific
+sensitivity: applying a new structured population model.
+<em>Ecology</em>, 81: 694-708.</p>
+<p>Ellner, S.P. and Rees, M. (2006), Integral projection models for
+species with complex demography. <em>Am Nat.</em>, 167(3): 410-28.</p>
+<p>Ellner, S.P., Childs, D.Z. and Rees, M. (2016), <em>Data-driven
+Modelling of Structured Populations</em>. Springer Cham.</p>
+<p>Gonzalez, E.J., Childs, D.Z., Quintana-Ascencio, P.F. and
+Salguero-Gomez, R. (2021), Integral projection models. In:
+<em>Demographic Methods Across the Tree of Life</em>. Edited by Roberto
+Salguero-Gomez and Marlene Gamelon, Oxford University Press.</p>
+<p>Goodsman, D.W., Aukema, B.H., McDowell, N.G., Middleton, R.S. and Xu,
+C. (2018), Incorporating variability in simulations of seasonally forced
+phenology using integral projection models. <em>Ecol Evol.</em>,
+<em>8</em>: 162-175.</p>
+<p>Levin, S.C., Childs, D.Z., Compagnoni, A., Evers, S., Knight, T.M.
+and Salguero-Gómez, R. (2021), ipmr: Flexible implementation of Integral
+Projection Models in R. <em>Methods in Ecology and Evolution</em>, 12,
+1826-1834.</p>
+<p>Merow, C., Dahlgren, J.P., Metcalf, C.J.E., Childs, D.Z., Evans,
+M.E.K., Jongejans, E., Record, S., Rees, M., Salguero-Gómez, R. and
+McMahon, S.M. (2014), Advancing population ecology with integral
+projection models: a practical guide. <em>Methods Ecol Evol</em>, 5:
+99-110.</p>
+<p>Metcalf, C., Rose, K., Childs, D., Sheppard, A., Grubb, P. and Rees,
+M. (2008), Evolution of flowering decisions in a stochastic,
+density-dependent environment. <em>Proceedings of the National Academy
+of Sciences</em>, 105: 10466.</p>
+<p>Metcalf, C.J.E., McMahon, S.M., Salguero-Gómez, R. and Jongejans, E.
+(2013), IPMpack: an R package for integral projection models.
+<em>Methods Ecol Evol</em>, 4: 195-200.</p>
+<p>Shefferson, R.P., Kurokawa, S. and Ehrlén, J. (2021), lefko3:
+Analysing individual history through size-classified matrix population
+models. <em>Methods Ecol Evol</em>, 12: 378-382.</p>
             </div>
     </div>
   </div>

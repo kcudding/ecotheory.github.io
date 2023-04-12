@@ -1,12 +1,3 @@
----
-title: "unstructured_resources_references"
-author: "Debora"
-date: "2023-04-10"
-output: 
-  html_document:
-    keep_md: yes
----
-
 
 
 ### Further Reading
