@@ -42,7 +42,7 @@ $$ \frac{dN}{dtN} = r(1-\frac{N}{K})$$
 
 where $K$ is the carrying capacity and $1-\frac{N}{K}$ describes the linear negative effects an increasing population density has on the per capita growth rate (see the plot below).
 
-![Per capita growth rate in exponential and logistic growth](density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg)
+![Per capita growth rate in exponential and logistic growth](density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg){width=80%}
 
 <br>
 Re-arrange the above equation and we have the **continuous logistic growth model**:
