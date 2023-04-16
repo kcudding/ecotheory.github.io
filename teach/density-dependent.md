@@ -42,8 +42,7 @@ $$ \frac{dN}{dtN} = r(1-\frac{N}{K})$$
 
 where $K$ is the carrying capacity and $1-\frac{N}{K}$ describes the linear negative effects an increasing population density has on the per capita growth rate (see the plot below).
 
-![](density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg)<!-- -->
-Per capita growth rate in exponential and logistic growth.
+![Per capita growth rate in exponential and logistic growth](density-dependent_files/figure-html/unnamed-chunk-1-1.jpeg)
 
 <br>
 Re-arrange the above equation and we have the **continuous logistic growth model**:
@@ -56,8 +55,7 @@ it hits carrying capacity
 “used up”
 
 <!-- include the graph for exponential and logistic growth -->
-![](density-dependent_files/figure-html/unnamed-chunk-2-1.jpeg)<!-- -->
-The contrast between exponential and logistic growth (adapted from Mills, 2013)
+![The contrast between exponential and logistic growth (adapted from Mills, 2013)](density-dependent_files/figure-html/unnamed-chunk-2-1.jpeg)
 
 <br>
 The maximum per capita growth rate, $r$, occurs when population density is zero, and decreases until it finally reaches zero. The population density at which the per capita growth rate is zero, $K$, is sometimes called the **carrying capacity**.
@@ -78,7 +76,7 @@ Consider a logistic growth model with a carrying capacity $K=500$ and per capita
 
 * When population number is at 0 (point a) or 500 (point d), the population growth rate is at zero so that the density will not change.
 
-![](density-dependent_files/figure-html/unnamed-chunk-3-1.jpeg)<!-- -->
+![](density-dependent_files/figure-html/unnamed-chunk-3-1.jpeg)
 
 
 ### Discrete time logistic growth
@@ -115,16 +113,14 @@ Let's look at the following example:
 
 We have a population that has an initial population density of $N=10$, and carrying capacity $K=100$. With different values of $r$, we can see very different population growth trajectories.
 
-![](density-dependent_files/figure-html/unnamed-chunk-4-1.jpeg)<!-- -->
-Population growth with an initial population density of $N=10$, carrying capacity $K=100$. With different values of per capita growth rate $r$, the population growth trajectories are very different
+![Population growth with an initial population density of $N=10$, carrying capacity $K=100$. With different values of per capita growth rate $r$, the population growth trajectories are very different](density-dependent_files/figure-html/unnamed-chunk-4-1.jpeg)
 
 When $r$ is close to zero, we have a steady simple asymptotic approach to K (Fig. a). As $r$ increases, we see the population overshoot the carrying capacity and exhibit **damped oscillations** (Fig. b). At $r=2.2$, we see a stable limit cycle of two points (Fig. c). As $r$ increases further, a four-point limit cycle is observed (e.g., at $r=2.5$, Fig. d), then an eight-point cycle, a 16-point limit cycle, and so on. As $r$ increases further, however, stable limit cycles shift into chaos (Fig. e).
 
 **Bifurcation Graph**
 We can also demonstrate the chaotic dynamics using a bifurcation plot, which examines $N$ as a function of $r$. As $r$ increases the number of $N$ will continue to double, growing geometrically. Eventually, we reach a point when there becomes an infinite number of unique points.
 
-![](density-dependent_files/figure-html/unnamed-chunk-5-1.jpeg)<!-- -->
-Long term dynamics of discrete logistic population growth, with an initial population density of $N=10$, and carrying capacity $K=100$ (Stevens, 2009)
+![Long term dynamics of discrete logistic population growth, with an initial population density of $N=10$, and carrying capacity $K=100$ (Stevens, 2009)](density-dependent_files/figure-html/unnamed-chunk-5-1.jpeg)
 
 * Note that chaos is different from stochasticity or randomness. If you start with exactly the same initial conditions under chaotic dynamics, you will get exactly the same population trajectories every time
 
@@ -132,8 +128,7 @@ Chaos is **very sensitive to initial conditions**. Slightly changing the initial
 
 * Here we start with two populations that have initial size of 10 and 11 (all other parameters remain the same). As shown on the graph below, we see completely different trajectories for population growth.
 
-![](density-dependent_files/figure-html/unnamed-chunk-6-1.jpeg)<!-- -->
-Chaotic dynamics with different initial conditions. Black solid line demonstrates the population trajectory for a population that has an initial size of 10; red dotted line demonstrates the population trajectory for a population that has an initial size of 11
+![Chaotic dynamics with different initial conditions. Black solid line demonstrates the population trajectory for a population that has an initial size of 10; red dotted line demonstrates the population trajectory for a population that has an initial size of 11](density-dependent_files/figure-html/unnamed-chunk-6-1.jpeg)
 
 
 **Biological significance of chaos in population growth**
@@ -159,13 +154,11 @@ $$ N_{t+1} = N_t e^{r_0[1-(N_t/K)^\theta]} $$
 
 * The effects of $\theta$ on density dependence control the shape of relation between growth rate and population size, as seen in the following figure:
 
-<img src="density-dependent_files/figure-html/unnamed-chunk-7-1.jpeg" width="80%" />
-Per capita growth rate vs. population size with different theta values
+![Per capita growth rate vs. population size with different theta values](density-dependent_files/figure-html/unnamed-chunk-7-1.jpeg){width=80%}
 
 * When $\theta$>1, this weakens density dependence at low N, so the population grows faster than logistic, all else being equal (concave). When $\theta$<1, this strengthens density dependence at low N, causing the population to grow more slowly than logistic, all else being equal (convex):
 
-<img src="density-dependent_files/figure-html/unnamed-chunk-8-1.jpeg" width="80%" />
-Population size vs. time with different theta values
+![Population size vs. time with different theta values](density-dependent_files/figure-html/unnamed-chunk-8-1.jpeg){width=80%}
 
 
 #### Positive density dependence
@@ -200,9 +193,7 @@ The Allee effect occurs when there is a positive correlation between population 
 
 * **Allee effect population threshold**: A population size below which the per capita growth rate is negative and the population declines towards extinction. Populations that are subject to Allee effects can collapse and become extinct if their population size falls below the critical threshold
 
-![](density-dependent_files/figure-html/unnamed-chunk-9-1.jpeg)<!-- -->
-No Allee effects (green line), weak Allee effects (red line), and strong Allee affects (blue line, $a=50$) acting on a population that has an intrinsic population growth rate $r=0.18$ and carrying capacity $K=500$
-
+![No Allee effects (green line), weak Allee effects (red line), and strong Allee affects (blue line, $a=50$) acting on a population that has an intrinsic population growth rate $r=0.18$ and carrying capacity $K=500$](density-dependent_files/figure-html/unnamed-chunk-9-1.jpeg)
 
 To plot population growth rate as a function of abundance:
 
@@ -215,8 +206,7 @@ From previous sections we learned that carrying capacity $K$ is a stable equilib
 
 For a population model with a strong Allee effect. It has two stable (represented by black circles on the graph below) and one unstable equilibria point (represented by an red triangle on the graph below). The stable point is when population size equals $N=0$ or carrying capacity $N=K$. The single unstable equalibrium point lies at $N=A$, where $A$ is the critical population size.
 
-<img src="density-dependent_files/figure-html/unnamed-chunk-10-1.jpeg" width="80%" />
-Stability in density-dependent population growth with strong allele effects. The red triangle represents the unstable equilibrium point; while the black circles represent two stable equalibrium points.
+![Stability in density-dependent population growth with strong allele effects. The red triangle represents the unstable equilibrium point; while the black circles represent two stable equalibrium points](density-dependent_files/figure-html/unnamed-chunk-10-1.jpeg)
 
 ### Illustration of current application
 
@@ -258,9 +248,7 @@ plot(lionfish$year, lionfish$density_artificial, type="o",
      xlab="years", ylab="population size")
 ```
 
-![](density-dependent_files/figure-html/unnamed-chunk-11-1.jpeg)<!-- -->
-Invasive lionfish mean density estimated from remotely operated vehicle video samples at northern Gulf of Mexico natural (a, n = 16) and artificial (b, n = 22) reef locations (Dahl et al., 2019)
-
+![Invasive lionfish mean density estimated from remotely operated vehicle video samples at northern Gulf of Mexico natural (a, n = 16) and artificial (b, n = 22) reef locations (Dahl et al., 2019)](density-dependent_files/figure-html/unnamed-chunk-11-1.jpeg)
 From both figures, we can see that the invasive lionfish population increases exponentially during the first years (2011-2014). After potentially reaching carrying capacity in 2014, it starts to fluctuate around that peak value. If this trend continues, a density-dependent logisitic growth curve will represent well the growth patterns for these populations.
 
 
