@@ -1,3 +1,17 @@
+## Key Papers for Further Reading
+
+### Classical reading
+
+
+
+### New reading
+
+
+
+## R resources
+
+
+
 ## References
 
 Bialic-Murphy, L., Knight, T. M., Kawelo, K., & Gaoue, O. G. (2022). The Disconnect Between Short-and Long-Term Population Projections for Plant Reintroductions. _Frontiers in Conservation Science_, _2_, 124.
