@@ -1,21 +1,3 @@
----
-title: "Structured Introduction"
-author: "Eddie Wu"
-date: '2023-02-08'
-output:
-  html_document: 
-    toc: yes
-    number_sections: no
-    toc_float:
-      collapsed: no
-      smooth_scroll: no
-    keep_md: yes
-bibliography: intro_bibliography.bib
-nocite: '@*'
----
-
-
-
 # Structured population models
 
 This module covers using more advanced population models to predict populations with distinct structure. We will first introduce what is **population structure**, how to construct a **projection matrix**, and project the matrix over time. Next, we will explain how to conduct **sensitivity and elasticity analysis** on structured population models. Finally, we will introduce more advanced topics such as how to incorporate **density-dependence** and **stochasticity** into structured population models.
@@ -84,7 +66,7 @@ From the life table in the previous section, we can create a life history diagra
 
 * In a life history diagram, different stages are represented by different circles, Self-pointing arrows refer to the probability of remaining in the current stage (survival); forward-points arrows refer to the probability of transitioning to the next stage (transition); backward-pointing arrows refer to the fecundity value (reproduction).
 
-![Life history stage diagram showing the vital rates of common frog in three different developmental stages (data from Biek et al., 2002). Red dashed lines represent the reproduction process; solid black lines represent the transition process. The red and black texts represent the fecundity rate or transition probability for the corresponding process. ](images/frog_diagram.jpeg)
+![Life history stage diagram showing the vital rates of common frog in three different developmental stages (data from Biek et al., 2002). Red dashed lines represent the reproduction process; solid black lines represent the transition process. The red and black texts represent the fecundity rate or transition probability for the corresponding process. ](images/frog_diagram.jpeg){width=80%}
 
 ### Population census
 
@@ -289,8 +271,7 @@ $$
 \end{bmatrix}
 $$
 This result can also be demonstrated by plotting the log number of individuals in each stage class versus time:
-![](structured_intro_files/figure-html/SSDplot-1.jpeg)<!-- -->
-Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.
+![Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale](SSDplot-1.jpeg)
 
 At SSD, the population growth rate $\lambda$ also stays constant. See the calculations below for $\lambda$ at year 14 and 15:
 
