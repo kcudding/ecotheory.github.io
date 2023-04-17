@@ -1,4 +1,36 @@
+---
+title: "Structured Introduction"
+author: "Eddie Wu"
+date: '2023-02-08'
+output:
+  html_document: 
+    toc: yes
+    number_sections: no
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+    keep_md: yes
+bibliography: intro_bibliography.bib
+nocite: '@*'
+---
+
+
+
 # Structured population models
+
+This module covers using more advanced population models to predict populations with distinct structure. We will first introduce what is **population structure**, how to construct a **projection matrix**, and project the matrix over time. Next, we will explain how to conduct **sensitivity and elasticity analysis** on structured population models. Finally, we will introduce more advanced topics such as how to incorporate **density-dependence** and **stochasticity** into structured population models.
+
+
+## Learning outcomes
+
+* Understand the link and differences between unstructured and structured population models.
+
+* Being able to construct a matrix population model from given life history traits, and project the model through time.
+
+* Being able perform eigenanalysis and sensitivity/elasticity analyses on the matrix population model constructed, and provide biological interpretation to the results.
+
+* Have the skills to incorporate density-dependence and stochasticity into structured population models.
+
 
 ## Introduction to population structure
 
@@ -8,7 +40,7 @@ So far, we have limited our prediction of wild populations by assuming that all 
 
 In the same population, individuals can have markedly different dynamics depending on their age. This is called **age structure**. For example, Coulson et al. (2001) found that individual susceptibility to changing environmental conditions differs between Soay sheep of different ages. Young and old individuals are more severely affected by adverse weather conditions than adults of prime reproductive age.
 
-![© Eileen Henderson, [A pair of Soay sheep on Hirta](https://www.geograph.org.uk/photo/493775), [Creative Commons CC BY-SA 2.0 License](https://creativecommons.org/licenses/by-sa/2.0/)](soay.jpg)
+![© Eileen Henderson, A pair of Soay sheep on Hirta(https://www.geograph.org.uk/photo/493775), Creative Commons CC BY-SA 2.0 License](images/soay.jpg)\
 
 While for many species (especially for amphibians, fish, and insects), differences in vital rates in wild populations often depend on developmental or morphological stages, rather than ages. This is referred to as **stage structure**. For example, common frogs can be divided into three stages according to their developmental status: Pre-juvenile, juvenile, and adults. The vital rates within each stage are relatively constant. (Biek et al., 2002)
 
@@ -25,7 +57,7 @@ Consider the same common frog example we discussed above:
 
 
 
-Table: Demographic vital rates and tansition probabilities for different common frog developmental stages (data from Biek et al., 2002)
+Table: Demographic vital rates and transition probabilities for different common frog developmental stages (data from Biek et al., 2002)
 
 |Stages       | Survival | Transition | Reproduction |
 |:------------|:--------:|:----------:|:------------:|
@@ -38,13 +70,13 @@ Table: Demographic vital rates and tansition probabilities for different common 
 
 **Cohort-based approach**
 
-The cohort analysis follows all individuals born during a time period, determining the ages that they die and their birth rates as they age. Life tables constructed from the segment-based method are often called horizontal or cohort life tables. Cohort life tables allow researchers to observe the changes in the survival and mortality rates of a population over time. However, it is usually very challenging to follow a cohort from birth to death of the last individual.
+The cohort analysis follows all individuals born during a time period, determining the ages that they die and their birth rates as they age. Life tables constructed from the cohort-based method are often called **horizontal or cohort life tables**. Cohort life tables are constructed by tracking the mortality age and birth rate of each individual in a population as they age, until the last one of them dies. It allows researchers to observe the changes in the survival and mortality rates of a population over time. However, it is usually very challenging to follow a cohort from birth to death of the last individual.
 
 **Segment-based approach**
 
-The segment-based approach looks at the births and deaths of all the individuals in the population during some slice of time. Life tables constructed from the segment-based method are often called vertical or period life tables. It is often used when studying populations of animals that are difficult to track over time.
+The segment-based approach looks at the births and deaths of all the individuals in the population during some slice of time. Life tables constructed from the segment-based method are often called **vertical or period life tables**. It is often used when studying populations of animals that are difficult to track over time. One example of the segment-based approach is to count tree rings to estimate the age of trees.
 
-* In summary, both are useful tools to study population dynamics. Vertical life tables provide an accurate representation of a population's mortality rate and survivorship at a specific point in time; while cohort life tables provide a more detailed understanding of how a population's mortality rate and survivorship change over time.
+In summary, both are useful tools to study population dynamics. Period life tables provide an accurate representation of a population's mortality rate and survivorship at a specific point in time; while cohort life tables provide a more detailed understanding of how a population's mortality rate and survivorship change over time.
 
 ### Life history stage diagram
 
@@ -52,7 +84,33 @@ From the life table in the previous section, we can create a life history diagra
 
 * In a life history diagram, different stages are represented by different circles, Self-pointing arrows refer to the probability of remaining in the current stage (survival); forward-points arrows refer to the probability of transitioning to the next stage (transition); backward-pointing arrows refer to the fecundity value (reproduction).
 
-![Life history stage diagram showing the vital rates of common frog in three different developmental stages. Dashed lines represent reproduction rates; solid lines represent trnasition probabilities. Data obtained from Biek et al., 2002.](frog_diagram.jpeg)
+![Life history stage diagram showing the vital rates of common frog in three different developmental stages (data from Biek et al., 2002). Red dashed lines represent the reproduction process; solid black lines represent the transition process. The red and black texts represent the fecundity rate or transition probability for the corresponding process. ](images/frog_diagram.jpeg)
+
+### Population census
+
+Population census can take place before or after the reproduction event.
+
+**Pre-reproductive census**: Census takes place before reproduction. The young of the year have not yet been born, and the young from last year which survived have reached 1 year-old.
+
+![](pre-repro.jpg){width=70%}
+
+**Post-reproductive census**: Census takes place after reproduction. The population contains both the adults survived from the previous year and the new-born.
+
+![](post-repro.jpg){width=70%}
+
+Biologists generally base their choice of method on which formulation more conveniently suits the life history of the organism and the timing of the data collection.
+
+* For example, someone studying polar bears would have trouble counting the number of young produced, since births takes place in ice caves away from view. Therefore, population census would take place later in the year when the adults emerge with their young. At that time, an observer can see how many cubs have survived but not necessarily how many were born (pre-reproduction census).
+
+* On the other hand, someone studying seabirds typically finds an island where they breed. In this case, population census would take place after reproduction so that the research can count all the newborns sitting side by side with their mothers to estimate the birth rates (post-reproduction census).
+
+Different census methods lead to different fecundity term $F_x$ for age $x$ in the matrix:
+
+* Pre-breeding census: $F_x = s_0b_x$
+
+* Post-breeding census: $F_x = s_xb_{x+1}$
+
+, where $s_x$ is the age-specific survial rate, and $b_x$ is the age-specific birth rate.
 
 
 ### Use matrix to represent population dynamics
@@ -112,9 +170,9 @@ A leslie matrix consists of $m+1$ rows and $m+1$ columns. $f$ represents the rep
 
 Once the matrix model is filled with vital rates it can be projected through time, keeping track of both total population size and numbers of individuals in each stage.
 
-To determine the population size vector next year $n(t+1)$, multiply the matrix $M$ of vital rates by the vector of individuals at current time $n(t)$:
+To determine the population size vector next year $\mathbf{n}(t+1)$, multiply the matrix $\mathbf{M}$ of vital rates by the vector of individuals at current time $\mathbf{n}(t)$:
 
-$$n(t+1) = M*n(t)$$
+$$\mathbf{n}(t+1) = \mathbf{M}\mathbf{n}(t)$$
 
 Projecting the matrix through time requires you to understand the fundemantals of matrix math. If you are unfamiliar with how to conduct matrix multlipcation, please check out [this tutorial](https://www.khanacademy.org/math/precalculus/x9e81a4f98389efdf:matrices/x9e81a4f98389efdf:multiplying-matrices-by-matrices/a/multiplying-matrices).
 
@@ -138,14 +196,13 @@ $$
  \end{bmatrix} = 
 \begin{bmatrix}3835 \\6 \\6 \\\end{bmatrix}
 $$
-Projecting the population number of common frog through time (adapted from Mills, 2013).
 
 
 ### Stable age/stage distribution
 
 A property of a stage structured population is that, if all the vital rates in the projection matrix remain constant, the population stage structure will approach a stable stage distribution, in which the relative number of individuals in each stage, and the population growth rate $\lambda$ will be constant.
 
-Consider the same common frog example. With constant vital rates, we project the population for 14 year:
+Consider the same common frog example. We have an initial population of 70 pre-juveniles, 20 juveniles, and 10 adults in 2010. With constant vital rates, we project the population for 14 years:
 
 
 ```r
@@ -160,7 +217,7 @@ for (i in 1:years) {
   N.project[, i+1] <- X %*% N.project[,i]
 }
 ```
-With the population abundance in each stage, we can calculate the stage distribution in 2023:
+With the population abundance in each stage, we can calculate the stage distribution 14 years later (2023):
 
 ```r
 # Calculate the stage distribution for 2023
@@ -191,7 +248,7 @@ N.project[3,14]/s.2023
 [1] 0.001509782
 ```
 
-Similarly, we can calculate the stage distribution in 2024:
+Similarly, we can calculate the stage distribution 15 years later (2024):
 
 ```r
 # Calculate the stage distribution for 2024
@@ -232,8 +289,8 @@ $$
 \end{bmatrix}
 $$
 This result can also be demonstrated by plotting the log number of individuals in each stage class versus time:
-
-![Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](SSDplot-1.jpeg)
+![](structured_intro_files/figure-html/SSDplot-1.jpeg)<!-- -->
+Population numbers of common frog over 14 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.
 
 At SSD, the population growth rate $\lambda$ also stays constant. See the calculations below for $\lambda$ at year 14 and 15:
 
@@ -340,54 +397,3 @@ RV
 ```
 [1]   1.00000  70.42358 307.80308
 ```
-
-
-## Illustratin of current application
-
-This literature example demonstrates how the use of stage-structured population models can be applied to solving real-life ecological management problems.
-
-**Problem**: There is an invasive guttural toad (*Sclerophrys gutturalis*) population in Cape Town. With limited budget and efforts, and prior knowledge that the vital rates of this species are likely to differ significantly among developmental stages, we would like to know what is the most efficient way to remove invasive codes (what stage should we target)?
-
-
-**Step 1:**
-
-The first step is to create a stage-structured population model to project the population dynamics. From Vimercati et al. (2017), we obtain the life history stage diagram and population projection matrix (Note that in our example, the density effects and spatial effects presented in the original literature have been removed to simplify the model.).
-
-![Life history diagram of invasive guttural toad population in Cape Town. All values are extracted from Vimercati et al. (2017), except for the survival rate of metamorph to juvenile, which is arbitrarily chosen as 0.2.](toad_diagram.jpeg)
-
-<br>
-$$
-\begin{bmatrix}
-0 & 0 & 0 & 0 & 780 \\
-0.7 & 0 & 0 & 0 & 0 \\
-0 & 0.8 & 0 & 0 & 0 \\
-0 & 0 & 0.5 & 0.15 & 0 \\
-0 & 0 & 0 & 0.05 & 0.6 \\
-\end{bmatrix}
-$$
-<br>
-With an initial population of 20 adults (when the species was first recorded in a single pond of Cape Town), we project the model for 30 time steps to simulate the population dynamics from 2001 to 2030.
-
-
-![Population numbers of invasive guttural toad over 30 years as shown by stage class. The number of frogs is plotted on a logarithmic scale.](toads_projection-1.jpeg)
-
-
-**Step 2:**
-
-Knowing the population dynamics, the researchers ran different management simulations by altering the mortality rate of different stages to simulate the removal efforts targeted at these different stages. They then calculated the efficiency for each strategy, as well as projected population size at the end of the management to see which one is the most efficient method to control toad population. The methodology is complicated thus not discussed in details here. (Vimercati et al., 2021)
-
-
-Table: Management removal strategy, population size at the end of management and efficacy obtained by simulating different strategies with a stage-structured model for the invasive population of guttural toad, *Sclerophrys gutturalis*, in Cape Town. (values are taken from Vimercati et al., 2021)
-
-|Management removal strategy | Population size at the end of management | Strategy efficacy |
-|:---------------------------|:----------------------------------------:|:-----------------:|
-|No removal                  |                   2973                   |         0         |
-|Adult removal               |                   2197                   |        776        |
-|Pre-metamorphic removal     |                   3318                   |       -345        |
-|Successfully eradication    |                    0                     |       2973        |
-
-
-**Step 3:**
-
-From the results, Vimercati et al.(2021) concluded that removing only adults can maximize the reduction of population size and it is the most effective strategy. Pre-metamorphic stages (egg and tadpole) should not be targeted when making removal plans, as it is likely to cause opposite effects.
-
