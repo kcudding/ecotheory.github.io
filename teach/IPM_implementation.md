@@ -1,13 +1,3 @@
----
-title: "Numerical Implementation"
-author: "Debora"
-date: "2023-04-04"
-output:
-  html_document:
-    keep_md: yes
----
-
-
 
 ### The first step of IPMs: regressions
 
