@@ -184,7 +184,7 @@ Armstrong and colleagues (2018) studied the importance of indeterminate growth t
 
 ![© right: © Gab Izma, snapping turtle; left: © Leejcooper, [Common snapping turtle](https://commons.wikimedia.org/wiki/File:Common_Snapping_Turtle_%28Chelydra_serpentina%29.jp), [Creative Commons Attribution-Share Alike 3.0 Unported license](https://creativecommons.org/licenses/by-sa/3.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/IPM_implementation_files/turtle.jpg){ fig.width=180 fig.height=120 dpi=300 } 
 
-Because measurements were made across several years, we selected the 2 greatest size measurements as the size at time t and time t+1, and the largest fecundity measurement for surviving individuals. For non-surviving individuals, the latest measurement was considered for time t+1. New recruits (eg., individual in the 3rd row below) are individuals initially measured at the latest years of the data collection process.
+Because measurements were made across several years, we selected the 2 greatest size measurements as the size at time t and time t+1, and the largest fecundity measurement for surviving individuals. For non-surviving individuals, the latest measurement was considered for time t+1. New recruits (e.g., individual in the 3rd row below) are individuals initially measured at the latest years of the data collection process.
 
 
 ```r
@@ -204,8 +204,6 @@ head(d)
 6 H18 28.5     28.5    1   0.0
 ```
 
-
-
 We will demonstrate the regression for reproduction:
 
 ```r
@@ -217,7 +215,6 @@ summary(fec.reg)
 ```
 
 ```
-
 Call:
 glm(formula = fec ~ size, family = poisson(), data = d)
 
@@ -250,19 +247,14 @@ Here are the observations and the model fit:
 
 ![Reproduction regression for snapping turtles. Bullets are observations and the regression is shown as a curve displaying the relationship between size and clutch mass at time t. ](https://raw.github.com/kcudding/kcudding.github.io/main/teach/IPM_implementation_files/unnamed-chunk-5-1.jpeg){ dpi=300 }  
 
-
-
 Now it is time to define a function to predict the reproduction of our population (and the same should be done for the other vital rates):
 
 ```r
-f.yx=function(xp,x,params) {
-params$establishment.prob*
-dnorm(xp,mean=params$recruit.size.mean,sd=params$recruit.size.sd)*
-exp(params$offsp.int+params$offsp.slope*x)
+f.yx = function(xp,x,params) {
+  params$establishment.prob*
+  dnorm(xp, mean=params$recruit.size.mean, sd=params$recruit.size.sd)*
+  exp(params$offsp.int+params$offsp.slope*x)
 }
 ```
 
-
-
 The parameters of these regressions will later be used during the numerical implementation of IPMs.
-
