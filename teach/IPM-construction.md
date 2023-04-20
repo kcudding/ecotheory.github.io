@@ -72,17 +72,12 @@ The kernel $K(z',z)$ in the IPM is analogous to the projection matrix in MPM (Go
 
 An essential step of building an IPM is to translate population census data into the vital rates in the kernel.
 
-#### Population census
-
-First, we introduce two different census methods:
+First, we recall the two population census methods discussed in an earlier section [Population Census](https://github.com/kcudding/kcudding.github.io/blob/main/teach/structured_intro.md#population-census):
 
 - _Pre-reproductive census_: Census takes place before reproduction. This is common in plants, as the size of offsprings are hard to collect before growth to noticeable small individuals.
 
-![](pre-repro.jpg){width=70%}
-
 - _Post-reproductive census_: Census takes place after reproduction. This is more common in animals, when we can easily distinguish newborns from adults and measure their sizes.
 
-![](post-repro.jpg){width=70%}
 
 #### Building kernels
 
@@ -164,4 +159,110 @@ As we mentioned earlier, the continuous variable $z$ could be unrelated to "size
 - Physiological age is different from the discrete time $t$ in IPM, which is usually referred as the "chronological age". Physiological age accumulates over time at some rate and is a standard approach to measure maturation.
 - The IPM used in the paper is relatively complicated. The authors applied an multidimensional (stage- and age-structured) model, and incorporated environmental stochasticity. The kernels vary from one time point to the next. So we will not present the actual model discussed in the paper, but a brief idea on the possibility of treating physiological age as the continuous variable $z$.
 - Details on incorporating stochasticity into IPM will be discussed in a following section.
+
+
+### The first step of IPMs: regressions
+
+To perform an IPM model, regression models are commonly fit to  vital rate data relative to relevant state variables. Such models include linear or logistic regressions, or non-linear models such as generalized additive models (GAMs). Candidate models can be assessed using the Akaike information criteria (AIC), which you were introduced to in the section [Model Selection](https://www.ecotheory.ca/teach/BIOL652.html#model-selection-how-do-we-tell-which-model-to-use-for-our-data). The dynamics for each vital rate can be modelled by the commonly used examples below:
+
+
+Table: Functions commonly used for vital rates
+
+Vital_rate                                                Function                                                                   
+--------------------------------------------------------  ---------------------------------------------------------------------------
+Survival                                                  Logistic regression (generalized linear model with binomial link function) 
+Growth                                                    Linear model with normal error distribution                                
+Probability of life-history transition (eg., flowering)   Poisson regression (generalized linear model with log link function)       
+Offspring number (eg., fruit number)                      Logistic regression (generalized linear model with binomial link function) 
+Recruit size distribution                                 Normal or log-normal distribution                                          
+
+&rarr; Note that it is not always necessary to use the above mentioned regressions. For example, functions can be used when there is no data available for growth. One illustration is the IPM model for grass carp developed by Erickson et al. (2017), where the growth function consisted of a normal distribution with 2 variables centered around a modified von Bertalanffy function of fish length at each time step. A derivative was then calculated to map length changes as a function of length.     
+
+### Case study: an IPM for snapping turtles 
+
+Armstrong and colleagues (2018) studied the importance of indeterminate growth to ectotherm population dynamics. We used the [dataset](https://datadryad.org/stash/dataset/doi:10.5061/dryad.2j05h) provided in their publication to obtain growth, reproduction and survival information for a female population of North American snapping turtles (*Chelydra serpentina*). 
+
+![© right: © Gab Izma, snapping turtle; left: © Leejcooper, [Common snapping turtle](https://commons.wikimedia.org/wiki/File:Common_Snapping_Turtle_%28Chelydra_serpentina%29.jp), [Creative Commons Attribution-Share Alike 3.0 Unported license](https://creativecommons.org/licenses/by-sa/3.0/)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/IPM_implementation_files/turtle.jpg){ fig.width=180 fig.height=120 dpi=300 } 
+
+Because measurements were made across several years, we selected the 2 greatest size measurements as the size at time t and time t+1, and the largest fecundity measurement for surviving individuals. For non-surviving individuals, the latest measurement was considered for time t+1. New recruits (eg., individual in the 3rd row below) are individuals initially measured at the latest years of the data collection process.
+
+
+```r
+# Download the dataset
+d <- read.csv("https://raw.githubusercontent.com/kcudding/kcudding.github.io/main/teach/snapping_turtles.csv",header=TRUE, stringsAsFactors = TRUE,fileEncoding="UTF-8-BOM")
+
+head(d)
+```
+
+```
+   ID size sizeNext surv   fec
+1 767 26.3     26.4    1 300.4
+2 C15 26.9     26.9    1 365.0
+3 J09   NA     27.3   NA    NA
+4 H04 30.2     30.3    1   0.0
+5 T19 25.7     26.0    1   0.0
+6 H18 28.5     28.5    1   0.0
+```
+
+
+
+We will demonstrate the regression for reproduction:
+
+```r
+# After setting up an empty data frame to store model parameters, we proceed with our Poisson regression for reproduction
+fec.reg=glm(fec~size,data=d,family=poisson())
+params$offsp.int=coefficients(fec.reg)[1]
+params$offsp.slope=coefficients(fec.reg)[2]
+summary(fec.reg)
+```
+
+```
+
+Call:
+glm(formula = fec ~ size, family = poisson(), data = d)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-34.320   -1.294    2.041    4.742   17.207  
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  2.96203    0.03959   74.82   <2e-16 ***
+size         0.10609    0.00137   77.46   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 37977  on 258  degrees of freedom
+Residual deviance: 32023  on 257  degrees of freedom
+  (39 observations deleted due to missingness)
+AIC: 33798
+
+Number of Fisher Scoring iterations: 5
+```
+
+```r
+# Now you can continue creating regressions for survival and growth
+```
+
+Here are the observations and the model fit:
+
+![Reproduction regression for snapping turtles. Bullets are observations and the regression is shown as a curve displaying the relationship between size and clutch mass at time t. ](https://raw.github.com/kcudding/kcudding.github.io/main/teach/IPM_implementation_files/unnamed-chunk-5-1.jpeg){ dpi=300 }  
+
+
+
+Now it is time to define a function to predict the reproduction of our population (and the same should be done for the other vital rates):
+
+```r
+f.yx=function(xp,x,params) {
+params$establishment.prob*
+dnorm(xp,mean=params$recruit.size.mean,sd=params$recruit.size.sd)*
+exp(params$offsp.int+params$offsp.slope*x)
+}
+```
+
+
+
+The parameters of these regressions will later be used during the numerical implementation of IPMs.
 
