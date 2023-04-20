@@ -175,11 +175,3 @@ F_z1z <- function (z1, z, Nt, m.par) {
     return( 0.5* s_z(z, Nt, m.par) * pb_z(z, m.par) * pr_z(Nt, m.par) *             c_z1z(z1, z, Nt, m.par) )
 }
 ```
-
-### References
-
-Ellner, Stephen P., Dylan Z. Childs, and Mark Rees. 2016. _Data-Driven Modelling of Structured Populations: A Practical Guide to the Integral Projection Model._ Lecture Notes on Mathematical Modelling in the Life Sciences. Switzerland: Springer.
-
-“Example of a Simple, Stochastic, Kernel-Resampled Model with Density Dependence.” n.d. Accessed March 27, 2023.
-
-Rose, Karen E., Svata M. Louda, and Mark Rees. 2005. “Demographic and Evolutionary Impacts of Native and Invasive Insect Herbivores on Cirsium Canescens.” _Ecology (Durham) 86_ (2): 453–65. https://doi.org/10.1890/03-0697.
