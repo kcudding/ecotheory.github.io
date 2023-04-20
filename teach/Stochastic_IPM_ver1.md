@@ -138,20 +138,3 @@ However, we note that for IPMs  every possible perturbation to a deterministic m
 Therefore our stochasticity sensitivity equations can be used to generate a giant list of perturbation formulas for changes to kernel entries, demographic functions, and parameter values (see Table 7.2 in Ellne, Rees and Ellner (2009; Appendices E and F))
 
 We also note that the equation for sensitivity isn't informative when the right-hand side is 0, which will be true whenever the fluctuations $C_t$ have zero mean and are independent of the unperturbed kernel. In this case, we need to carry the expansion out to second order in $\epsilon$ for these cases.
-
-### References
-Dalgleish, H. J., Koons, D. N., Hooten, M. B., Moffet, C. A., & Adler, P. B. (2011). Climate influences the demography of three dominant sagebrush steppe plants. _Ecology_, _92_(1), 75-85.
-
-Ellner, S. P., & Rees, M. (2007). Stochastic stable population growth in integral projection models: theory and application. _Journal of mathematical biology_, _54_(2), 227-256. https://link.springer.com/content/pdf/10.1007/s00285-006-0044-8.pdf
-
-Heather, F. J., Childs, D. Z., Darnaude, A. M., & Blanchard, J. L. (2018). Using an integral projection model to assess the effect of temperature on the growth of gilthead seabream Sparus aurata. PloS one, 13(5), e0196092.
-
-Levin, S. C., Childs, D. Z., Compagnoni, A., Evers, S., Knight, T. M., & Salguero‐Gómez, R. (2021). ipmr: Flexible implementation of Integral Projection Models in R. _Methods in Ecology and Evolution_, _12_(10), 1826-1834.
-
-Lindell, T., Ehrlén, J., & Dahlgren, J. P. (2022). Weather‐driven demography and population dynamics of an endemic perennial plant during a 34‐year period. _Journal of Ecology_, _110_(3), 582-592.
-
-Rees, M., & Ellner, S. P. (2009). Integral projection models for populations in temporally varying environments. _Ecological Monographs_, _79_(4), 575-594.
-
-Simmonds, E. G., & Coulson, T. (2015). Analysis of phenotypic change in relation to climatic drivers in a population of Soay sheep Ovis aries. _Oikos_, _124_(5), 543-552.
-
-Varga, M., Žuna Pfeiffer, T., Begović, L., Mlinarić, S., Horvatić, J., Miloloža, T., & Štolfa Čamagajevac, I. (2023). Physiological response of nutrient-stressed *Lemna gibba* to pulse colloidal silver treatment. _Plants_, _12_(6), 1367.
