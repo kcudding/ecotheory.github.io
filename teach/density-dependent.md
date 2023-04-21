@@ -1,5 +1,3 @@
-# **Module 1: Unstructured Population Models**
-
 ## Density-dependence
 
 Density-dependent population models are used to describe population dynamics in which the growth or decline of a population is influenced by the population's own density.
