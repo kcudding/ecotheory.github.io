@@ -1,0 +1,141 @@
+---
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Basic introduction to R
+
+This is an introduction to basic stats in R with a focus on regression. We will assume a familiarity with R to the extent of having tried to do something with the programming environment in the past (e.g., a t-test), but no more than this. If you have never used R in anyway at a all, it may be helpful to take a quick look at this interactive tutorial for undergraduates at the University of Guelph. Just complete the tutorial entirely online rather than downloading.
+
+[https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/](https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/)
+
+Then, when you are ready, get some help installing R on your laptop. You will need R installed for use in the workshop. 
+
+
+##  Data import and basic summary
+
+We will be using a flat .xlsx file of Hamilton Harbour data for our exercises today. Our first job is to import the data.
+
+### Data import & packages
+
+We can import .csv files without any special tools (and we encourage you to consider this data format). So while base R includes the function **read.csv()** to read .csv files, to import proprietary formats like .xlsx we will need to use a _package_ to import the data. 
+
+R is an open source platform, which means that anyone can contribute code for everyone to use. There are thousands of functions in R written by scientists, statisticians and mathematicians all over the world. Sometimes a group of functions related to a particular task are grouped together in what is called a “library” or "package". We are going to use one such library that has been created to import .xlsx files, "readxl". 
+
+On your own computer, you will need download the package and install it. This is pretty easy. On the RStudio menu select 'Tools', and then 'Install packages' from the drop down list. Enter 'readxl' in the search window, and then select  'Install'. You can also use the function install.packages. Just type install.packages("readxl").
+
+
+```{r, eval=FALSE}
+install.packages("readxl")
+```
+
+The function install.package downloads the indicated package from the internet and stores it. Eventually, in the console window you should see an indication the R has downloaded and installed the package. 
+
+Once you've done this once, you don't need to do it ever again, unless you update the version of R you are using, or wish to use an updated version of the package.
+
+The package is now part of R’s set of functions, but since it is not a standard part of the program, you will have to mention to R when you wish to use functions from this collection. The **library()** function tells R you wish to use commands from that package on this occasion. 
+
+Every time you restart R, or try to compile a .Rmd file, you will have to mention to R when you wish to use functions from this collection. The simplest method to do this is to always include the statement 'library(readxl)' at the beginning of code that uses functions from this package.
+
+Here R loads the package into active memory.
+
+```{r, echo=TRUE}
+library(readxl)
+```
+
+## Read in data
+
+
+Next we will use this library to read in the .xlsx file. The function we need is **read_excel()**. In general, I advise uses to examine the help functions in R every time they use a new function. If you type '?read_xlsx' in the console window, a help window will be called.
+
+The help file indicates the inputs that the function takes. We see that we need the *path* to the .xlsx file, the *sheet* of that file we want to read. Note that if we do not specifiy which sheet, the function will default to reading the first sheet. Most functions in R will have default settings for the inputs so that you do not necessary have to set these. For example, to read in you Hamilton Harbour data, we are not going to using the *range* inpput that selects a cell range to read in. 
+
+### Where’s my file??
+ If you don’t know where you have saved a file (the *path*) you can combine the **file.choose()** function to get a drop down menu of your computers file system as source(file.choose()). You can then use the menu to choose the appropriate file.
+
+However, it might be better to save the file somewhere specific! The command getwd() allows you to see which directory R is currently focusing on, and the command setwd("C:/Users yourusername/workshop") or similar should change the directory to the location you want to save to. You can check by typing getwd() again. Then you could simply enter "read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx"), since R would already be focusing on the correct directory.
+
+
+```{r}
+# xlsx files
+ham <- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
+```
+
+
+### Did the import work?
+
+```{r}
+colnames(ham)
+str(ham)
+#View(ham)
+```
+
+### Selecting data
+
+```{r}
+# by column
+head(ham$Station_Acronym)
+
+# by condition
+ham$calanoid[ham$Station_Acronym=="HH6" & ham$year==2016]
+ham$calanoid[ham$Station_Acronym=="HH6" & ham$year==2015]
+
+```
+
+
+### Plotting data
+
+```{r}
+ham$area_group=as.factor(ham$area_group)
+plot(calanoid~SamplingDate, data=ham, col=area_group)
+legend("topleft", legend=levels(ham$area_group), 
+       pch=1,col=c(1:length(levels(ham$area_group))))
+```
+
+
+
+### Summarizing data 
+
+```{r}
+table(ham$Station_Acronym)
+
+knitr::kable(table(ham$Station_Acronym), col.names = c("Station Name", "No. of samples"))
+```
+
+### Simple tests
+
+
+
+### Plotting data
+
+```{r}
+samps=as.data.frame(table(ham[,c("year","area_group")]))
+samps$year=as.numeric(as.character(samps$year))
+plot(Freq~year,data=samps[samps$area_group=="deep",],
+     xlim=c(min(samps$year), max(samps$year)),
+     ylim=c(min(samps$Freq), max(samps$Freq)),
+     col="black", type="b", main="Samples per year by area group")
+lines(Freq~year,data=samps[samps$area_group=="NE",],
+      col="red", type="b")
+lines(Freq~year,data=samps[samps$area_group=="west",],
+      col="blue", type="b")
+lines(Freq~year,data=samps[samps$area_group=="wind",],
+      col="green", type="b")
+
+legend("topleft", legend=levels(ham$area_group), lty=1,
+       pch=1,col=c("black", "red", "blue", "green"))
+```
+
+```{r}
+# similar plot using ggplot
+library(ggplot2)
+ggplot(samps, aes(x = year, y = Freq, 
+    group = area_group, colour = area_group)) + geom_line()
+
+```
