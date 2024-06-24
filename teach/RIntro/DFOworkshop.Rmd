@@ -11,19 +11,28 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Basic introduction to R
 
-This is an introduction to basic stats in R with a focus on regression. We will assume a familiarity with R to the extent of having tried to do something with the programming environment in the past (e.g., a t-test), but no more than this. If you have never used R in anyway at a all, it may be helpful to take a quick look at this interactive tutorial for undergraduates at the University of Guelph. Just complete the tutorial entirely online rather than downloading.
+## Get ready for the workshop
+
+This is an introduction to basic stats in R with a focus on regression. We will assume a familiarity with R to the extent of the participant having tried to do something with the programming environment in the past (e.g., a t-test), but no more than this. 
+
+### R from zero warmup
+
+If you have never used R in any way at a all, it may be helpful to take a quick look at this interactive tutorial for undergraduates at the University of Waterloo. Just complete the tutorial entirely online rather than downloading.
 
 [https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/](https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/)
 
-Then, when you are ready, get some help installing R on your laptop. You will need R installed for use in the workshop. 
+Then, when you are ready, get some help installing R on your laptop. You will need R installed to participate in workshop. 
 
 
-##  Data import and basic summary
+### Download needed files and packages
 
-We will be using a flat .xlsx file of Hamilton Harbour data for our exercises today. Our first job is to import the data.
+We will be using a flat .xlsx file of Hamilton Harbour data for our wrokshop exercise today. Our first job at the workshop will be to import that data. 
 
-### Data import & packages
+Please download the .xlxs to your personal computer prior to the workshop. 
 
+In addition, we encourage you to download and install the packages we will be using.
+
+### Package to read .xlsx files
 We can import .csv files without any special tools (and we encourage you to consider this data format). So while base R includes the function **read.csv()** to read .csv files, to import proprietary formats like .xlsx we will need to use a _package_ to import the data. 
 
 R is an open source platform, which means that anyone can contribute code for everyone to use. There are thousands of functions in R written by scientists, statisticians and mathematicians all over the world. Sometimes a group of functions related to a particular task are grouped together in what is called a “library” or "package". We are going to use one such library that has been created to import .xlsx files, "readxl". 
@@ -49,10 +58,16 @@ Here R loads the package into active memory.
 library(readxl)
 ```
 
-## Read in data
+If this command works, you are ready to go for the first part of the workshop!
 
 
-Next we will use this library to read in the .xlsx file. The function we need is **read_excel()**. In general, I advise uses to examine the help functions in R every time they use a new function. If you type '?read_xlsx' in the console window, a help window will be called.
+## Workshop activities
+
+### Data import & packages
+
+Our first job today is to use a package to import the data we will be using throughout the workshop.
+
+If you have sucessfully installed the library *readxl*, we can use it to read in the .xlsx file. The function we need is **read_excel()**. In general, I advise uses to examine the help functions in R every time they use a new function. If you type '?read_xlsx' in the console window, a help window will be called.
 
 The help file indicates the inputs that the function takes. We see that we need the *path* to the .xlsx file, the *sheet* of that file we want to read. Note that if we do not specifiy which sheet, the function will default to reading the first sheet. Most functions in R will have default settings for the inputs so that you do not necessary have to set these. For example, to read in you Hamilton Harbour data, we are not going to using the *range* inpput that selects a cell range to read in. 
 
