@@ -15,7 +15,7 @@ This is an introduction to basic stats in R with a focus on regression. We will 
 
 ### R from zero warmup
 
-If you have never used R in any way at a all, it may be helpful to take a quick look at this interactive tutorial for undergraduates at the University of Waterloo. Just complete the tutorial entirely online rather than downloading.
+If you have never used R in any way at a all, it may be helpful to take a quick look at this interactive tutorial for undergraduates at the University of Waterloo. Just complete the tutorial entirely online rather than downloading, starting from "R as a calculator".
 
 [https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/](https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/)
 
@@ -72,9 +72,17 @@ If you have sucessfully installed the library *readxl*, we can use it to read in
 The help file indicates the inputs that the function takes. We see that we need the *path* to the .xlsx file, the *sheet* of that file we want to read. Note that if we do not specifiy which sheet, the function will default to reading the first sheet. Most functions in R will have default settings for the inputs so that you do not necessary have to set these. For example, to read in you Hamilton Harbour data, we are not going to using the *range* inpput that selects a cell range to read in. 
 
 ### Where’s my file??
- If you don’t know where you have saved a file (the *path*) you can combine the **file.choose()** function to get a drop down menu of your computers file system as source(file.choose()). You can then use the menu to choose the appropriate file.
 
-However, it might be better to save the file somewhere specific! The command getwd() allows you to see which directory R is currently focusing on, and the command setwd("C:/Users yourusername/workshop") or similar should change the directory to the location you want to save to. You can check by typing getwd() again. Then you could simply enter "read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx"), since R would already be focusing on the correct directory.
+There are at least three ways to find .xlsx file in R:
+
+1. If you don’t know where you have saved a file (the *path*) you can combine the **file.choose()** function to get a drop down menu of your computers file system as read_excel(file.choose()). You can then use the menu to choose the appropriate file. </break> To import the data and save it to the variable name 'ham', enter the command 'ham = read_excel(file.choose())' in the Console window. This command opens a directory window and allows you to choose the file you wish to open.
+
+2. Alternately, if you knew the location of your file, you could enter a command like ham = read_excel("/Users/Kim/Documents/hamiltonharbour.xlsx") to open the file immediately.
+
+3. You could also simply change the directory that R is looking at. The command **getwd()** allows you to see which directory R is currently focusing on, and the command "setwd("C:/Users yourusername/workshop")" or similar should change the directory to the location you want to save to. You can check by typing getwd() again. Then you could simply enter "read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx"), since R would already be focusing on the correct directory
+
+
+
 
 
 
@@ -84,10 +92,23 @@ ham <- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
 ```
 
 
-### Did the import work?
+### Did the import work??
+
+Once you have read in the data, it is critically import to check that th import worked properly. Problems that can arise from incorrectly formatted files can then be resolved. Problems can include: numierc data being read in as character data, column names being read in as the the first row of data, missing values being coded as something other than NA.
+
+Methods to examine the imported data: 
+
+1. The easiest method is of course just to print the data. You can just type 'ham' in the Console window. However, most datasets will be too large for this approach to be useful (the top of the data will scroll right off the page). The **view()** function brings up a flat file view of the data which can be easier to use, but it is still pretty unwieldly for a dataset this size.
+
+In that case, there are a number of commands to look at a portion of the dataset. 
+
+2. The function **colnames(mydata)** will show you the all the column headings.  
+3. The functions **head(mydata)** and **tail()** will show the first or last rows of the data.
+4. The command **str(mydata)**. gives a whole bunch of information about your dataset including: the number of observations, the number of columns, the names of the different columns, the number of different string values in each text column (e.g., 7 levels for days of the week), the kind of values in the numeric columns (e.g., “int” for integer values). You should be pretty confident that your data was imported into R correctly after looking at all this.
 
 
 ```r
+#View(ham)
 colnames(ham)
 ```
 
@@ -147,6 +168,29 @@ colnames(ham)
 ## [105] "epi_chl"                     "meta_chl"                   
 ## [107] "hypo_chl"                    "bottom hypoxia (Y/N)"       
 ## [109] "stratified"
+```
+
+```r
+tail(ham)
+```
+
+```
+## # A tibble: 6 × 109
+##   waterbody        area_group Latitude Longtitude Station_Acronym report_Stn
+##   <chr>            <chr>         <dbl>      <dbl> <chr>           <chr>     
+## 1 Hamilton Harbour NE             43.3      -79.8 HHBURSTP        BSTP      
+## 2 Hamilton Harbour west           43.3      -79.9 HHCarolsP       CP        
+## 3 Hamilton Harbour west           43.3      -79.9 HHRHYC          RHYC      
+## 4 Hamilton Harbour west           43.3      -79.9 HHRHYC out      RHYC out  
+## 5 Hamilton Harbour wind           43.3      -79.8 HH4_PHYTO       WSTP      
+## 6 Hamilton Harbour west           43.3      -79.9 HHBayfront-West BFW       
+## # … with 103 more variables: SamplingDate <dttm>, season <dbl>, year <dbl>,
+## #   Julian_Day <dbl>, Julian_Week <dbl>, Month <dbl>, Station_depth <dbl>,
+## #   `water level` <dbl>, Ammonia_ECCC1m <dbl>, DIC_ECCC1m <dbl>,
+## #   DOC_ECCC1m <dbl>, POC_ECCC1m <dbl>, Chl_ECCC1m <dbl>,
+## #   `Chl Cor_ECCC1m` <dbl>, NO2_NO3_ECCC1m <dbl>, PON_ECCC1m <dbl>,
+## #   `TKN dissolved_ECCC1m` <dbl>, SRP_ECCC1m <dbl>, TP_ECCC1m <dbl>,
+## #   `TP dissolved_ECCC1m` <dbl>, Chl_a_uncorrected <dbl>, Secchi <dbl>, …
 ```
 
 ```r
@@ -257,11 +301,23 @@ str(ham)
 ##   [list output truncated]
 ```
 
-```r
-#View(ham)
-```
+### Data in R
 
-### Selecting data
+You’ll notice that the data are structured in columns. This is a *dataframe*, one of the most used data structures in R. Data structures are sets of variables organized in a particular way. In R there are 4 primary data structures we will use repeatedly.
+
+*Vectors* are one-dimensional ordered sets composed of a single data type. Data types include integers, real numbers, and strings (character variables)
+
+*Matrices* are two-dimensional ordered sets composed of a single data type, equivalent to the concept of matrix in linear algebra.
+
+*Dataframes* are one to multi-dimensional sets with a row-column structure, and can be composed of different data types (although all data in a single column must be of the same type). In addition, each column in a data frame may be given a label or name to identify it. Data frames are equivalent to a flat file database, similar to spreadsheets (e.g., like a single excel spreadsheet).
+
+*Lists* are compound objects of associated data. Like data frames, they need not contain only a single data type, but can include strings (character variables), numeric variables, and even such things as matrices and data frames. In contrast to data frames, list items do not have a row-column structure, and items need not be the same length; some can be a single value, and others a matrix. You can think of a list as a named box to put related objects into.
+
+### Selecting portions of a dataframe
+You can always grab just part of a dataframe. Dataframes are indexed by rows and columns. If you want the item from the 5th row and 2nd column type 'mydata[5,2]'. If you need just one column you can type either 'mydata[,2]', which grabs everything in column 2, or if you know the name of the column 'mydata\$Population'. To get rows 2 to 5 you can enter 'mydata[2:5,2]'. You can also combine this with the column name which may be easier to read, as 'mydata$Population[2:5]'.
+
+Try it now: select just the first 15 rows of the dataframe you read into R.
+
 
 
 ```r
@@ -292,7 +348,7 @@ ham$calanoid[ham$Station_Acronym=="HH6" & ham$year==2015]
 ```
 ## [1] NA NA NA
 ```
-
+### Data types in R
 
 ### Plotting data
 
@@ -367,8 +423,6 @@ knitr::kable(table(ham$Station_Acronym), col.names = c("Station Name", "No. of s
 |HHRHYC out      |             21|
 |HHWC            |             13|
 
-### Simple tests
-
 
 
 ### Plotting data
@@ -403,3 +457,7 @@ ggplot(samps, aes(x = year, y = Freq,
 ```
 
 ![](DFOworkshop_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+
+
+### Simple tests
+
