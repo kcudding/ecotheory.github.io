@@ -448,9 +448,9 @@ for (i in seq_along(datasets)) {
 
 # Create a data frame with appropriate column names
 auc_results_df <- data.frame(
-  "Phyto & nitrate" = auc_results[1],
-  "Diatoms & temperature" = auc_results[2],
-  "Diatoms & phosphorus" = auc_results[3]
+  "Phyto-nitrate" = auc_results[1],
+  "Diatom-temperature" = auc_results[2],
+  "Diatom-phosphorus" = auc_results[3]
 )
 
 # Display the table using kable
