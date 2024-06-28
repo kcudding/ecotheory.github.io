@@ -1,9 +1,12 @@
 ---
-output: 
+title: 'R Intro Workshop'
+author: "Cuddington Lab"
+date: "2024-06-27"
+output:
   html_document: 
-    keep_md: yes
+    keep_md: true
+  pdf_document: default
 ---
-
 
 
 

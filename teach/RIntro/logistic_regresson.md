@@ -1,22 +1,4 @@
----
-title: "DFO training: Logistic Regression"
-date: "2024-06-28"
-output:
-  html_document:
-    toc: true
-    toc_depth: 3
-    number_sections: true
-    keep_md: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: false
-  pdf_document:
-    toc: true
-    toc_depth: '3'
-  word_document:
-    toc: true
-    toc_depth: '3'
----
+
 
 
 

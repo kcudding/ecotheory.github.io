@@ -1,0 +1,1720 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Domine|Montserrat" rel="stylesheet"> 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+  <meta name="author" content="Cuddington Lab" />
+  <meta name="date" content="2024-06-27" />
+  <title>R Intro Workshop</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">body { font-family: Domine, Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif} h1, h2, h3, h4, h5, h6 { font-family: Montserrat, sans }</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+
+    
+    <div class="navbar navbar-static-top navbar-expand-sm px-0 pt-0">
+    <div class="navbar-inner container-fluid">
+      <div class="container">
+        <span class="doc-title">R Intro Workshop</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text">Cuddington Lab</p></li>
+                              <li><p class="navbar-text">2024-06-27</p></li>
+                  </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+      <div class="row">
+            <div id="TOC" class="col-sm-7 col-lg-3">
+        <div class="well toc">
+
+        <ul>
+        <li><a href="#basic-introduction-to-r"
+        id="toc-basic-introduction-to-r">Basic introduction to R</a>
+        <ul>
+        <li><a href="#get-ready-for-the-workshop"
+        id="toc-get-ready-for-the-workshop">Get ready for the
+        workshop</a>
+        <ul>
+        <li><a href="#r-from-zero-warmup" id="toc-r-from-zero-warmup">R
+        from zero warmup</a></li>
+        <li><a href="#download-needed-files-and-packages"
+        id="toc-download-needed-files-and-packages">Download needed
+        files and packages</a></li>
+        <li><a href="#package-to-read-.xlsx-files"
+        id="toc-package-to-read-.xlsx-files">Package to read .xlsx
+        files</a></li>
+        </ul></li>
+        <li><a href="#workshop-activities"
+        id="toc-workshop-activities">Workshop activities</a>
+        <ul>
+        <li><a href="#data-import-packages"
+        id="toc-data-import-packages">Data import &amp;
+        packages</a></li>
+        <li><a href="#wheres-my-file" id="toc-wheres-my-file">Where’s my
+        file??</a></li>
+        <li><a href="#did-the-import-work"
+        id="toc-did-the-import-work">Did the import work??</a></li>
+        <li><a href="#data-in-r" id="toc-data-in-r">Data in R</a></li>
+        <li><a href="#selecting-portions-of-a-dataframe"
+        id="toc-selecting-portions-of-a-dataframe">Selecting portions of
+        a dataframe</a></li>
+        <li><a href="#using-conditional-statements-to-access-data"
+        id="toc-using-conditional-statements-to-access-data">Using
+        conditional statements to access data</a></li>
+        </ul></li>
+        <li><a href="#functions-in-r" id="toc-functions-in-r">Functions
+        in R</a>
+        <ul>
+        <li><a href="#summarizing-data"
+        id="toc-summarizing-data">Summarizing data</a></li>
+        <li><a href="#plotting-data" id="toc-plotting-data">Plotting
+        data</a></li>
+        <li><a href="#plotting-data-1" id="toc-plotting-data-1">Plotting
+        data</a></li>
+        <li><a href="#simple-tests" id="toc-simple-tests">Simple
+        tests</a></li>
+        </ul></li>
+        </ul></li>
+        <li><a href="#linear-regression"
+        id="toc-linear-regression">Linear regression</a>
+        <ul>
+        <li><a href="#learning-outcomes"
+        id="toc-learning-outcomes">Learning outcomes</a>
+        <ul>
+        <li><a href="#introduction"
+        id="toc-introduction">Introduction</a></li>
+        <li><a href="#data-import-packages-1"
+        id="toc-data-import-packages-1">Data import &amp;
+        packages</a></li>
+        <li><a
+        href="#linear-regression-using-water-level-and-total-zooplankton"
+        id="toc-linear-regression-using-water-level-and-total-zooplankton">Linear
+        regression using water level and total zooplankton</a></li>
+        </ul></li>
+        <li><a href="#what-does-this-output-tell-us"
+        id="toc-what-does-this-output-tell-us">What does this output
+        tell us?</a>
+        <ul>
+        <li><a
+        href="#what-does-the-summary-output-tell-us-about-the-relationship-between-water-level-and-total-zooplankton"
+        id="toc-what-does-the-summary-output-tell-us-about-the-relationship-between-water-level-and-total-zooplankton">What
+        does the summary output tell us about the relationship between
+        water level and total zooplankton?</a></li>
+        </ul></li>
+        <li><a href="#what-are-the-assumptions-of-a-linear-regression"
+        id="toc-what-are-the-assumptions-of-a-linear-regression">What
+        are the assumptions of a linear regression?</a></li>
+        <li><a
+        href="#how-do-you-evaluate-the-assumptions-of-a-linear-regression"
+        id="toc-how-do-you-evaluate-the-assumptions-of-a-linear-regression">How
+        do you evaluate the assumptions of a linear regression?</a>
+        <ul>
+        <li><a href="#lets-try" id="toc-lets-try">Let’s try…</a></li>
+        <li><a href="#section" id="toc-section">1.</a></li>
+        <li><a href="#section-1" id="toc-section-1">2.</a></li>
+        <li><a href="#section-2" id="toc-section-2">3.</a></li>
+        <li><a href="#section-3" id="toc-section-3">4.</a></li>
+        </ul></li>
+        <li><a href="#how-can-we-plot-this-linear-regression"
+        id="toc-how-can-we-plot-this-linear-regression">How can we plot
+        this linear regression?</a></li>
+        <li><a href="#references-and-resources"
+        id="toc-references-and-resources">References and
+        resources</a></li>
+        <li><a href="#alternative-resource"
+        id="toc-alternative-resource">Alternative resource:</a></li>
+        </ul></li>
+        <li><a href="#logistic-regression"
+        id="toc-logistic-regression"><strong>Logistic
+        regression</strong></a>
+        <ul>
+        <li><a href="#objectives"
+        id="toc-objectives">Objectives</a></li>
+        <li><a href="#what-is-a-logistic-regression"
+        id="toc-what-is-a-logistic-regression">What is a logistic
+        regression?</a></li>
+        <li><a
+        href="#how-are-logistic-regressions-different-from-linear-regressions"
+        id="toc-how-are-logistic-regressions-different-from-linear-regressions">How
+        are logistic regressions different from linear
+        regressions?</a></li>
+        <li><a href="#what-does-the-logistic-curve-mean"
+        id="toc-what-does-the-logistic-curve-mean">What does the
+        logistic curve mean?</a></li>
+        <li><a href="#mathematical-representation"
+        id="toc-mathematical-representation">Mathematical
+        representation</a></li>
+        <li><a
+        href="#what-kind-of-predictors-can-we-have-in-a-logistic-regression"
+        id="toc-what-kind-of-predictors-can-we-have-in-a-logistic-regression">What
+        kind of predictors can we have in a logistic
+        regression?</a></li>
+        <li><a href="#key-binomial-logistic-model-assumptions"
+        id="toc-key-binomial-logistic-model-assumptions">Key binomial
+        logistic model assumptions</a></li>
+        <li><a href="#aquatic-ecology-studies-using-logistic-regression"
+        id="toc-aquatic-ecology-studies-using-logistic-regression">Aquatic
+        ecology studies using logistic regression</a></li>
+        <li><a href="#practice-time-run-your-own-logistic-model"
+        id="toc-practice-time-run-your-own-logistic-model">Practice
+        time: run your own logistic model</a>
+        <ul>
+        <li><a href="#steps-to-run-a-logistic-model-in-r"
+        id="toc-steps-to-run-a-logistic-model-in-r">Steps to run a
+        logistic model in R</a></li>
+        <li><a href="#lets-create-this-first-model-together"
+        id="toc-lets-create-this-first-model-together">Let’s create this
+        first model together</a></li>
+        <li><a href="#create-your-own-model"
+        id="toc-create-your-own-model">Create your own model</a></li>
+        </ul></li>
+        <li><a href="#evaluating-the-accuracy-of-logistic-models"
+        id="toc-evaluating-the-accuracy-of-logistic-models">Evaluating
+        the accuracy of logistic models</a></li>
+        <li><a href="#what-could-go-wrong"
+        id="toc-what-could-go-wrong">What could go wrong?</a></li>
+        <li><a href="#r-resources" id="toc-r-resources">R
+        resources</a></li>
+        </ul></li>
+        </ul>
+
+        </div>
+      </div>
+            <div class="col-9">
+
+      
+      <h1 id="basic-introduction-to-r">Basic introduction to R</h1>
+<h2 id="get-ready-for-the-workshop">Get ready for the workshop</h2>
+<p>This is an introduction to basic stats in R with a focus on
+regression. We will assume a familiarity with R to the extent of the
+participant having tried to do something with the programming
+environment in the past (e.g., a t-test), but no more than this.</p>
+<h3 id="r-from-zero-warmup">R from zero warmup</h3>
+<p>If you have never used R in any way at a all, it may be helpful to
+take a quick look at this interactive tutorial for undergraduates at the
+University of Waterloo. Just complete the tutorial entirely online
+rather than downloading, starting from “R as a calculator”.</p>
+<p><a
+href="https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/">https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/</a></p>
+<p>Then, when you are ready, get some help installing R on your laptop.
+You will need R installed to participate in workshop.</p>
+<h3 id="download-needed-files-and-packages">Download needed files and
+packages</h3>
+<p>We will be using a flat .xlsx file of Hamilton Harbour data for our
+workshop exercise today. Our first job at the workshop will be to import
+that data.</p>
+<p>Please download the .xlxs to your personal computer prior to the
+workshop.</p>
+<p>In addition, we encourage you to download and install the packages we
+will be using for the workshop.</p>
+<h3 id="package-to-read-.xlsx-files">Package to read .xlsx files</h3>
+<p>R is an open source platform, which means that anyone can contribute
+code for everyone to use. There are thousands of functions in R written
+by scientists, statisticians and mathematicians all over the world.
+Sometimes a group of functions related to a particular task are grouped
+together in what is called a “library” or “package”. We are going to use
+one such library that has been created to import .xlsx files,
+“readxl”.</p>
+<p>On your own computer, you will need download the package and install
+it. This is pretty easy. On the RStudio menu select ‘Tools’, and then
+‘Install packages’ from the drop down list. Enter ‘readxl’ in the search
+window, and then select ‘Install’. You can also use the function
+install.packages. Just type install.packages(“readxl”).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
+<p>The function install.package downloads the indicated package from the
+internet and stores it. Eventually, in the console window you should see
+an indication the R has downloaded and installed the package.</p>
+<p>Once you’ve done this once, you don’t need to do it ever again,
+unless you update the version of R you are using, or wish to use an
+updated version of the package.</p>
+<p>In addition, the exercise on multivariate analysis will use the
+“vegan”. Please install this package prior to the workshop as well.s</p>
+<p>Thee package are now part of R’s set of functions, but since it they
+not part of the standard environment, you will have to mention to R when
+you wish to use functions from this collection. The
+<strong>library()</strong> function tells R you wish to use commands
+from a particular package on this occasion.</p>
+<p>Every time you restart R, or try to compile a .Rmd file, you will
+have to mention to R when you wish to use functions from this
+collection. The simplest method to do this is to always include the
+statement ‘library(readxl)’ at the beginning of code that uses functions
+from this package.</p>
+<p>Here R loads the package into active memory.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
+<p>If this command works, you are ready to go for the first part of the
+workshop!</p>
+<h2 id="workshop-activities">Workshop activities</h2>
+<h3 id="data-import-packages">Data import &amp; packages</h3>
+<p>Our first job today is to use a package to import the data we will be
+using throughout the workshop.</p>
+<p>If you have sucessfully installed the library <em>readxl</em>, we can
+use it to read in the .xlsx file. The function we need is
+<strong>read_excel()</strong>. In general, I advise users to examine the
+help functions in R every time they use a new function. If you type
+‘?read_xlsx’ in the console window, a help window will be called.</p>
+<p>The help file indicates the inputs that the function takes. We see
+that we need the <em>path</em> to the .xlsx file, the <em>sheet</em> of
+that file we want to read. Note that if we do not specifiy which sheet,
+the function will default to reading the first sheet. Most functions in
+R will have default settings for the inputs so that you do not
+necessarily have to set these. For example, to read in you Hamilton
+Harbour data, we are not going to using the <em>range</em> inpput that
+selects a cell range to read in.</p>
+<h3 id="wheres-my-file">Where’s my file??</h3>
+<p>To use this import function we need the <em>path</em> where the file
+is located. There are at least three ways to find and import a file in
+R:</p>
+<ol type="1">
+<li><p>If you don’t know where you have saved a file (the <em>path</em>)
+you can combine the <strong>file.choose()</strong> function to get a
+drop down menu of your computers file system. If you enter
+‘read_excel(file.choose())’, you can then use the menu which appears to
+choose the appropriate file. For example, to import the data and save it
+to the variable name ‘ham’, enter the command ‘ham =
+read_excel(file.choose())’ in the Console window.</p></li>
+<li><p>Alternately, if you know the location of your file, you can enter
+a command like ‘ham =
+read_excel(“/Users/Kim/Documents/hamiltonharbour.xlsx”)’ to open the
+file immediately.</p></li>
+<li><p>You could also simply change the directory that R is looking at.
+The command <strong>getwd()</strong> allows you to see which directory R
+is currently focusing on, and the command ‘setwd(“C:/Users
+yourusername/workshop”)’ or similar should change the directory to the
+location you want to save to. You can check by typing getwd() again.
+Then you could simply enter “read_excel(”ind dates flat all parameters
+Hamilton only FOR Kim.xlsx”), since R would already be focusing on the
+correct directory</p></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the library</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># import the xlsx file</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ham <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;ind dates flat all parameters Hamilton only FOR Kim.xlsx&quot;</span>)</span></code></pre></div>
+<h3 id="did-the-import-work">Did the import work??</h3>
+<p>Once you have read in the data, it is critically import to check that
+th import worked properly. Problems that can arise from incorrectly
+formatted files can then be resolved. Problems can include: numierc data
+being read in as character data, column names being read in as the the
+first row of data, missing values being coded as something other than
+NA.</p>
+<p>Methods to examine the imported data:</p>
+<ol type="1">
+<li>The easiest method is of course just to print the data. You can just
+type ‘ham’ in the Console window. However, most datasets will be too
+large for this approach to be useful (the top of the data will scroll
+right off the page). The <strong>view()</strong> function brings up a
+flat file view of the data which can be easier to use, but it is still
+pretty unwieldly for a dataset this size.</li>
+</ol>
+<p>In that case, there are a number of commands to look at a portion of
+the dataset.</p>
+<ol start="2" type="1">
+<li>The function <strong>colnames(mydata)</strong> will show you the all
+the column headings.<br />
+</li>
+<li>The functions <strong>head(mydata)</strong> and
+<strong>tail()</strong> will show the first or last rows of the
+data.</li>
+<li>The command <strong>str(mydata)</strong>. gives a whole bunch of
+information about your dataset including: the number of observations,
+the number of columns, the names of the different columns, the number of
+different string values in each text column (e.g., 7 levels for days of
+the week), the kind of values in the numeric columns (e.g., “int” for
+integer values). You should be pretty confident that your data was
+imported into R correctly after looking at all this.</li>
+</ol>
+<p><strong>Try it now:</strong> Use <strong>colnames()</strong> to see
+the names of the columns in ham, <strong>tail()</strong> to see the last
+rows of ham, and <strong>str()</strong> to see information about data
+type etc.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#View(ham)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ham[,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span></code></pre></div>
+<pre><code>##  [1] &quot;waterbody&quot;       &quot;area_group&quot;      &quot;Latitude&quot;        &quot;Longtitude&quot;     
+##  [5] &quot;Station_Acronym&quot; &quot;report_Stn&quot;      &quot;SamplingDate&quot;    &quot;season&quot;         
+##  [9] &quot;year&quot;            &quot;Julian_Day&quot;</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(ham, <span class="at">n=</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 109
+##    waterbody        area_group Latitude Longtitude Station_Acronym report_Stn
+##    &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     
+##  1 Hamilton Harbour west           43.3      -79.9 HH9031          9031      
+##  2 Hamilton Harbour deep           43.3      -79.8 HH9033          9033      
+##  3 Hamilton Harbour west           43.3      -79.9 HH1B            1B        
+##  4 Hamilton Harbour west           43.3      -79.9 HH2B            2B        
+##  5 Hamilton Harbour NE             43.3      -79.8 HHBURSTP        BSTP      
+##  6 Hamilton Harbour west           43.3      -79.9 HHCarolsP       CP        
+##  7 Hamilton Harbour west           43.3      -79.9 HHRHYC          RHYC      
+##  8 Hamilton Harbour west           43.3      -79.9 HHRHYC out      RHYC out  
+##  9 Hamilton Harbour wind           43.3      -79.8 HH4_PHYTO       WSTP      
+## 10 Hamilton Harbour west           43.3      -79.9 HHBayfront-West BFW       
+## # … with 103 more variables: SamplingDate &lt;dttm&gt;, season &lt;dbl&gt;, year &lt;dbl&gt;,
+## #   Julian_Day &lt;dbl&gt;, Julian_Week &lt;dbl&gt;, Month &lt;dbl&gt;, Station_depth &lt;dbl&gt;,
+## #   `water level` &lt;dbl&gt;, Ammonia_ECCC1m &lt;dbl&gt;, DIC_ECCC1m &lt;dbl&gt;,
+## #   DOC_ECCC1m &lt;dbl&gt;, POC_ECCC1m &lt;dbl&gt;, Chl_ECCC1m &lt;dbl&gt;,
+## #   `Chl Cor_ECCC1m` &lt;dbl&gt;, NO2_NO3_ECCC1m &lt;dbl&gt;, PON_ECCC1m &lt;dbl&gt;,
+## #   `TKN dissolved_ECCC1m` &lt;dbl&gt;, SRP_ECCC1m &lt;dbl&gt;, TP_ECCC1m &lt;dbl&gt;,
+## #   `TP dissolved_ECCC1m` &lt;dbl&gt;, Chl_a_uncorrected &lt;dbl&gt;, Secchi &lt;dbl&gt;, …</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ham, <span class="at">list.len=</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## tibble [742 × 109] (S3: tbl_df/tbl/data.frame)
+##  $ waterbody                  : chr [1:742] &quot;Hamilton Harbour&quot; &quot;Hamilton Harbour&quot; &quot;Hamilton Harbour&quot; &quot;Hamilton Harbour&quot; ...
+##  $ area_group                 : chr [1:742] &quot;deep&quot; &quot;NE&quot; &quot;deep&quot; &quot;west&quot; ...
+##  $ Latitude                   : num [1:742] 43.3 43.3 43.3 43.3 43.3 ...
+##  $ Longtitude                 : num [1:742] -79.9 -79.8 -79.8 -79.9 -79.9 ...
+##  $ Station_Acronym            : chr [1:742] &quot;HH908&quot; &quot;HH6&quot; &quot;HH258&quot; &quot;HHBayfront&quot; ...
+##  $ report_Stn                 : chr [1:742] &quot;908&quot; &quot;6&quot; &quot;258&quot; &quot;BF&quot; ...
+##  $ SamplingDate               : POSIXct[1:742], format: &quot;2016-05-10&quot; &quot;2021-06-23&quot; ...
+##  $ season                     : num [1:742] 1 2 2 2 2 2 2 2 2 2 ...
+##  $ year                       : num [1:742] 2016 2021 2021 2022 2022 ...
+##  $ Julian_Day                 : num [1:742] 131 174 174 174 174 174 174 174 174 174 ...
+##   [list output truncated]</code></pre>
+<h3 id="data-in-r">Data in R</h3>
+<p>You’ll notice that the data are structured in columns. This is a
+<em>dataframe</em>, one of the most used data structures in R. Data
+structures are sets of variables organized in a particular way. In R
+there are 4 primary data structures we will use repeatedly.</p>
+<p><em>Vectors</em> are one-dimensional ordered sets composed of a
+single data type. Data types include integers, real numbers, and strings
+(character variables)</p>
+<p><em>Matrices</em> are two-dimensional ordered sets composed of a
+single data type, equivalent to the concept of matrix in linear
+algebra.</p>
+<p><em>Dataframes</em> are one to multi-dimensional sets with a
+row-column structure, and can be composed of different data types
+(although all data in a single column must be of the same type). In
+addition, each column in a data frame may be given a label or name to
+identify it. Data frames are equivalent to a flat file database, similar
+to spreadsheets (e.g., like a single excel spreadsheet).</p>
+<p><em>Lists</em> are compound objects of associated data. Like data
+frames, they need not contain only a single data type, but can include
+strings (character variables), numeric variables, and even such things
+as matrices and data frames. In contrast to data frames, list items do
+not have a row-column structure, and items need not be the same length;
+some can be a single value, and others a matrix. You can think of a list
+as a named box to put related objects into.</p>
+<h3 id="selecting-portions-of-a-dataframe">Selecting portions of a
+dataframe</h3>
+<p>To start our examination and analysis of this data, we need to be
+able to select items of interest. Dataframes are indexed by rows and
+columns. If you want the item from the 5th row and 2nd column type
+‘mydata[5,2]’. If you need just one column you can type either
+‘mydata[,2]’, which grabs everything in column 2, or if you know the
+name of the column ‘mydata$Population’. To get rows 2 to 5 you can enter
+‘mydata[2:5,2]’. You can also combine this with the column name which
+may be easier to read, as ‘mydata$Population[2:5]’.</p>
+<p><strong>Try it now:</strong> select just the first 15 rows and first
+3 columns of the dataframe you read into R.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># access a subsection of a dataframe</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ham[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## # A tibble: 15 × 3
+##    waterbody        area_group Latitude
+##    &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt;
+##  1 Hamilton Harbour deep           43.3
+##  2 Hamilton Harbour NE             43.3
+##  3 Hamilton Harbour deep           43.3
+##  4 Hamilton Harbour west           43.3
+##  5 Hamilton Harbour deep           43.3
+##  6 Hamilton Harbour west           43.3
+##  7 Hamilton Harbour west           43.3
+##  8 Hamilton Harbour west           43.3
+##  9 Hamilton Harbour west           43.3
+## 10 Hamilton Harbour west           43.3
+## 11 Hamilton Harbour west           43.3
+## 12 Hamilton Harbour west           43.3
+## 13 Hamilton Harbour deep           43.3
+## 14 Hamilton Harbour NE             43.3
+## 15 Hamilton Harbour deep           43.3</code></pre>
+<p>We can create new data subsets by using the <strong>c()</strong> or
+<strong>c</strong>ombine function. Let’s access the first 3 and column
+10, and save the result to a new variable ’ ham_sub’</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save a subsection of a dataframe</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ham_sub<span class="ot">=</span>ham[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">9</span><span class="sc">:</span><span class="dv">10</span>)]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ham_sub</span></code></pre></div>
+<pre><code>## # A tibble: 15 × 5
+##    waterbody        area_group Latitude  year Julian_Day
+##    &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
+##  1 Hamilton Harbour deep           43.3  2016        131
+##  2 Hamilton Harbour NE             43.3  2021        174
+##  3 Hamilton Harbour deep           43.3  2021        174
+##  4 Hamilton Harbour west           43.3  2022        174
+##  5 Hamilton Harbour deep           43.3  2022        174
+##  6 Hamilton Harbour west           43.3  2022        174
+##  7 Hamilton Harbour west           43.3  2022        174
+##  8 Hamilton Harbour west           43.3  2022        174
+##  9 Hamilton Harbour west           43.3  2022        174
+## 10 Hamilton Harbour west           43.3  2022        174
+## 11 Hamilton Harbour west           43.3  2022        174
+## 12 Hamilton Harbour west           43.3  2022        174
+## 13 Hamilton Harbour deep           43.3  2016        174
+## 14 Hamilton Harbour NE             43.3  2021        174
+## 15 Hamilton Harbour deep           43.3  2016        174</code></pre>
+<p>We can also just grab a single column, using the column name to
+identify it as mydata$thiscolumn or mydata[,“thiscolumn”]</p>
+<p><strong>Try it now:</strong> Access the Station_Acronym column of the
+data</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># by column</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ham<span class="sc">$</span>Station_Acronym)</span></code></pre></div>
+<pre><code>## [1] &quot;HH908&quot;      &quot;HH6&quot;        &quot;HH258&quot;      &quot;HHBayfront&quot; &quot;HH908&quot;     
+## [6] &quot;HH9031&quot;</code></pre>
+<p>Our subsetted data is not ordered by year or group, so let’s use the
+<strong>order()</strong> function to rearrange</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save a subsection of a dataframe</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>ham_sub<span class="ot">=</span>ham_sub[<span class="fu">order</span>(ham_sub<span class="sc">$</span>area_group,ham_sub<span class="sc">$</span>year),]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>ham_sub</span></code></pre></div>
+<pre><code>## # A tibble: 15 × 5
+##    waterbody        area_group Latitude  year Julian_Day
+##    &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
+##  1 Hamilton Harbour deep           43.3  2016        131
+##  2 Hamilton Harbour deep           43.3  2016        174
+##  3 Hamilton Harbour deep           43.3  2016        174
+##  4 Hamilton Harbour deep           43.3  2021        174
+##  5 Hamilton Harbour deep           43.3  2022        174
+##  6 Hamilton Harbour NE             43.3  2021        174
+##  7 Hamilton Harbour NE             43.3  2021        174
+##  8 Hamilton Harbour west           43.3  2022        174
+##  9 Hamilton Harbour west           43.3  2022        174
+## 10 Hamilton Harbour west           43.3  2022        174
+## 11 Hamilton Harbour west           43.3  2022        174
+## 12 Hamilton Harbour west           43.3  2022        174
+## 13 Hamilton Harbour west           43.3  2022        174
+## 14 Hamilton Harbour west           43.3  2022        174
+## 15 Hamilton Harbour west           43.3  2022        174</code></pre>
+<h3 id="using-conditional-statements-to-access-data">Using conditional
+statements to access data</h3>
+<p>We can also use conditional statements to access portions of the
+data. Conditional statements evaluate to TRUE or FALSE. The “==” symbol
+is used to determine if a variable is equal to some value, while “!=”
+evaluates is something is not equal. As you might expect we can also use
+greater than (“&gt;”) or less than (“&lt;”) conditionals.</p>
+<p>For example, let’s say you wanted to access the calanoid data only
+from the sampling station “HH6”. You would type
+‘ham$calanoid[ham$Station_Acronym==“HH6”]’. Note that ‘ham$calanoid’
+accesses the column of calanoid data, while the conditional
+‘ham$Station_Acronym==“HH6”’ will only be TRUE for some of the data in
+the column.</p>
+<p><strong>Try it now:</strong> Enter
+‘ham$calanoid[ham$Station_Acronym==“HH6”]’ and examine the data.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># by condition... using head() to show the first 6 items</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ham<span class="sc">$</span>calanoid[ham<span class="sc">$</span>Station_Acronym<span class="sc">==</span><span class="st">&quot;HH6&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 84.094200542 13.196863744 64.145098250 58.389201770 25.256348256
+## [6]  0.006374018</code></pre>
+<p>Of course, this gives us all of the sampling dates for this station.
+Let’s assume we only want data from 2016. In that case we can combine
+our conditional statements using “&amp;” for AND and “|” for OR. So we
+use an “&amp;” symbol to indicate that we want the selected data to be
+from station “HH6” and to be from the 2016.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ham<span class="sc">$</span>calanoid[ham<span class="sc">$</span>Station_Acronym<span class="sc">==</span><span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> ham<span class="sc">$</span>year<span class="sc">==</span><span class="dv">2016</span>]</span></code></pre></div>
+<pre><code>##  [1]  64.145098  25.256348  70.721192 142.447448  89.268307  70.066000
+##  [7]  32.332505  78.560037   7.974158 120.229185  91.171246  19.286071
+## [13] 104.393878</code></pre>
+<p>If we wanted we could use the same conditionals to grab the julian
+sampling day for these observations, and save the result to new
+vectors</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>cal_HH6_2016<span class="ot">=</span>ham<span class="sc">$</span>calanoid[ham<span class="sc">$</span>Station_Acronym<span class="sc">==</span><span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> ham<span class="sc">$</span>year<span class="sc">==</span><span class="dv">2016</span>]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>jul_cal_HH6_2016<span class="ot">=</span>ham<span class="sc">$</span>Julian_Day[ham<span class="sc">$</span>Station_Acronym<span class="sc">==</span><span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> ham<span class="sc">$</span>year<span class="sc">==</span><span class="dv">2016</span>]</span></code></pre></div>
+<table>
+<caption>Calanoid data for 2016 at station HH6</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">calanoid</th>
+<th style="text-align: right;">julian</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">64.145098</td>
+<td style="text-align: right;">145</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25.256348</td>
+<td style="text-align: right;">131</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">70.721192</td>
+<td style="text-align: right;">160</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">142.447448</td>
+<td style="text-align: right;">188</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">89.268306</td>
+<td style="text-align: right;">201</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">70.066000</td>
+<td style="text-align: right;">215</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">32.332505</td>
+<td style="text-align: right;">174</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">78.560037</td>
+<td style="text-align: right;">258</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7.974158</td>
+<td style="text-align: right;">228</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">120.229185</td>
+<td style="text-align: right;">242</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">91.171246</td>
+<td style="text-align: right;">270</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19.286071</td>
+<td style="text-align: right;">286</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">104.393878</td>
+<td style="text-align: right;">299</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Try it now:</strong> Access the calanoid data at station
+“HH6” for 2014</p>
+<pre><code>##  [1]  3.7525745  4.4195122  4.4719882 49.3636318  7.1764905  0.8381301
+##  [7]  3.7054878  6.7292412  4.0907797  5.7956002  1.0151220  5.4204413</code></pre>
+<h2 id="functions-in-r">Functions in R</h2>
+<p>Next, let’s figure out how to complete some simple calucations with
+these values, like finding the mean and standard deviation.</p>
+<p>We have already used some functions in R. R contains thousands of
+functions, and more are being added everyday. In fact, R is defined as a
+functional programming language Some common ones are</p>
+<ul>
+<li>abs() - absolute value</li>
+<li>cos(), sin(), tan() - cosine, sine, tangent of angle x in
+radians</li>
+<li>exp - exponential function</li>
+<li>log - natural (base-e) logarithm</li>
+<li>log10 - common (base-10) logarithm</li>
+<li>sqrt - square root function</li>
+</ul>
+<p>You can obtain lists of mathematical functions by typing ?Arithmetic
+for simple, ?log for logarithmic, ?sin for trigonometric, and ?Special
+for special functions.</p>
+<p>If you are trying to find a function that does something you need to
+do, you can use the command apropos(“keyword”) to see if there is a
+function that contains the keyword in its name.</p>
+<p><strong>Try it now:</strong> For example if you wanted to find a
+function that calculated means you might: type ‘apropos(“mean”)’. What
+happens?</p>
+<p>One of the listed functions “mean” looks promising. Your next step
+might be to get more information by typing ‘help(mean)’ or
+‘example(mean)’. <strong>Try this now</strong>. You should see that the
+funciton <strong>mean()</strong> works on a vector of numeric data.</p>
+<p>Perhaps the function does not contain the keyword in its name, in
+this case try ??”keyword phrase” to get R to search function
+descriptions</p>
+<p>If the internal help menu lets you down you can also try a search at
+http://www.rseek.org/</p>
+<p><strong>Try it now:</strong> Use these tools to find a function that
+calculates standard deviation Then mean this function and a function to
+calculate means to get the mean and standard deviation of calanoid
+density in 2014.</p>
+<pre><code>## [1] 8.064917</code></pre>
+<pre><code>## [1] 13.14886</code></pre>
+<h3 id="summarizing-data">Summarizing data</h3>
+<p>Other functions can help with quick data summaries. for example, the
+<strong>table()</strong> function can be used to take a quick look at
+the number of sampling dates for each station.</p>
+<p><strong>Try it now:</strong> Use this function on the Station_Acronym
+column of the data</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ham<span class="sc">$</span>Station_Acronym)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Station Name</th>
+<th style="text-align: right;">No. of samples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CCIW dock</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HH17</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HH1B</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HH2</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HH2000</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HH2001</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HH2002</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HH2003</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HH2004</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HH258</td>
+<td style="text-align: right;">172</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HH2B</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HH39</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HH4_PHYTO</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HH6</td>
+<td style="text-align: right;">136</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HH8</td>
+<td style="text-align: right;">38</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HH9031</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HH9033</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HH908</td>
+<td style="text-align: right;">96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HH917</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HHBayfront</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HHBayfront-West</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HHBFouter</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HHBURSTP</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HHCarolsP</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HHRHYC</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HHRHYC out</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HHWC</td>
+<td style="text-align: right;">13</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>summary()</strong> function can also give information
+about a vector. <strong>Try it now:</strong> Use the summary function on
+the “Chl_a_uncorrected” data for site HH258</p>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   3.060   9.508  12.600  15.004  19.253  70.020      25</code></pre>
+<h3 id="plotting-data">Plotting data</h3>
+<p>A quick check of data can also be done with simple plots. for
+example, let’s see what the Chl_a_uncorrected data from 2016 looks like
+using the <strong>plot()</strong> function.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y=</span>ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x=</span>ham<span class="sc">$</span>Julian_Day)</span></code></pre></div>
+<p><img
+src="DFOworkshop_files/figure-html/unnamed-chunk-18-1.png" /><!-- --></p>
+<p>Of course, this is the data from every station. Let’s just plot
+station HH258, and colour code by sampling year</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sub2_ham<span class="ot">=</span>ham[ham<span class="sc">$</span>Station_Acronym<span class="sc">==</span><span class="st">&quot;HH258&quot;</span>,]</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y=</span>sub2_ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x=</span>sub2_ham<span class="sc">$</span>Julian_Day, <span class="at">col=</span>sub2_ham<span class="sc">$</span>year)</span></code></pre></div>
+<p><img
+src="DFOworkshop_files/figure-html/unnamed-chunk-19-1.png" /><!-- --></p>
+<p>Kind of hard to read… we’ll group the data by decade, and let’s pimp
+the plot a little. We’ll colour code by decade. We also need axis
+labels, a nicer symbol and a legend.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sub2_ham<span class="sc">$</span>decade <span class="ot">&lt;-</span> <span class="fu">cut</span>(sub2_ham<span class="sc">$</span>year, <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">2000</span>,<span class="dv">2010</span>,<span class="dv">2020</span>,<span class="dv">2030</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2010</span>, <span class="dv">2020</span>))</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y=</span>sub2_ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x=</span>sub2_ham<span class="sc">$</span>Julian_Day, <span class="at">col=</span>sub2_ham<span class="sc">$</span>decade, <span class="at">pch=</span><span class="dv">16</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="at">xlab=</span><span class="st">&quot;Chla&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Julian Day&quot;</span>, </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="at">bty=</span><span class="st">&quot;l&quot;</span>, <span class="at">cex.lab=</span><span class="fl">1.6</span>, <span class="at">las=</span><span class="dv">1</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend=</span><span class="fu">levels</span>(sub2_ham<span class="sc">$</span>decade), <span class="at">pch=</span><span class="dv">16</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">bty=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<p><img
+src="DFOworkshop_files/figure-html/unnamed-chunk-20-1.png" /><!-- --></p>
+<p>Notice that I’ve used a <em>factor</em> variable to control the
+colour of the data from each decade.</p>
+<p>Let’s try one more. Let’s quickly visualize the number of calanoid
+samples from each area by date. Again we will use a factor variable to
+control appearance</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>ham<span class="sc">$</span>area_group<span class="ot">=</span><span class="fu">as.factor</span>(ham<span class="sc">$</span>area_group)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(calanoid<span class="sc">~</span>SamplingDate, <span class="at">data=</span>ham, <span class="at">col=</span>area_group)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend=</span><span class="fu">levels</span>(ham<span class="sc">$</span>area_group), <span class="at">bty=</span><span class="st">&quot;n&quot;</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">levels</span>(ham<span class="sc">$</span>area_group))))</span></code></pre></div>
+<p><img
+src="DFOworkshop_files/figure-html/unnamed-chunk-21-1.png" /><!-- --></p>
+<p>This is too cluttered, so I am going to summarize the data by year
+and area, and then plot that. I’m going to plot the data from each area
+individually starting with the first one, and then adding subsequent
+areas to the same plot using the <strong>lines()</strong> function.</p>
+<h3 id="plotting-data-1">Plotting data</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>samps<span class="ot">=</span><span class="fu">as.data.frame</span>(<span class="fu">table</span>(ham[,<span class="fu">c</span>(<span class="st">&quot;year&quot;</span>,<span class="st">&quot;area_group&quot;</span>)]))</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>samps<span class="sc">$</span>year<span class="ot">=</span><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(samps<span class="sc">$</span>year))</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Freq<span class="sc">~</span>year,<span class="at">data=</span>samps[samps<span class="sc">$</span>area_group<span class="sc">==</span><span class="st">&quot;deep&quot;</span>,], <span class="at">bty=</span><span class="st">&quot;L&quot;</span>,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="fu">min</span>(samps<span class="sc">$</span>year), <span class="fu">max</span>(samps<span class="sc">$</span>year)),</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="fu">min</span>(samps<span class="sc">$</span>Freq), <span class="fu">max</span>(samps<span class="sc">$</span>Freq)),</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;black&quot;</span>, <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">main=</span><span class="st">&quot;Samples per year by area group&quot;</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq<span class="sc">~</span>year,<span class="at">data=</span>samps[samps<span class="sc">$</span>area_group<span class="sc">==</span><span class="st">&quot;NE&quot;</span>,],</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">type=</span><span class="st">&quot;b&quot;</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq<span class="sc">~</span>year,<span class="at">data=</span>samps[samps<span class="sc">$</span>area_group<span class="sc">==</span><span class="st">&quot;west&quot;</span>,],</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">type=</span><span class="st">&quot;b&quot;</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq<span class="sc">~</span>year,<span class="at">data=</span>samps[samps<span class="sc">$</span>area_group<span class="sc">==</span><span class="st">&quot;wind&quot;</span>,],</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">type=</span><span class="st">&quot;b&quot;</span>)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend=</span><span class="fu">levels</span>(ham<span class="sc">$</span>area_group), <span class="at">lty=</span><span class="dv">1</span>,<span class="at">bty=</span><span class="st">&quot;n&quot;</span>,</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">1</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<p><img
+src="DFOworkshop_files/figure-html/unnamed-chunk-22-1.png" /><!-- --></p>
+<p>At this point, the plotting is getting a bit more complex, so you may
+want to use another library called *ggplot2** to do some of your
+plotting. This library of functions has a non-intuitive command
+structure, but is quick for plotting multiple sets of data on the same
+plot with a legend.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># similar plot using ggplot</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(samps, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> Freq, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">group =</span> area_group, <span class="at">colour =</span> area_group)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img
+src="DFOworkshop_files/figure-html/unnamed-chunk-23-1.png" /><!-- --></p>
+<h3 id="simple-tests">Simple tests</h3>
+<h1 id="linear-regression">Linear regression</h1>
+<h2 id="learning-outcomes">Learning outcomes</h2>
+<ul>
+<li>Understand the definition and application of a linear
+regression</li>
+<li>Understand the assumptions of a linear regression and how to
+evaluate these with diagnostic plots</li>
+<li>Interpret the results of a linear regression</li>
+<li>Create and interpret a raw data plot with a regression line</li>
+</ul>
+<h3 id="introduction">Introduction</h3>
+<p>A linear model is used when you want to test a prediction of
+correlation between an independent (or predictor) variable and a
+dependent (or response) variable (Phillips, 2018). For example, for our
+Hamilton Harbour data, we will be testing for a correlation between
+water level (our independent variable) and total zooplankton (our
+dependent variable) counted in the net grab.</p>
+<h3 id="data-import-packages-1">Data import &amp; packages</h3>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;readxl&quot;)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: package &#39;readxl&#39; was built under R version 4.4.1</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># xlsx files</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ham<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;ind dates flat all parameters Hamilton only FOR Kim.xlsx&quot;</span>)</span></code></pre></div>
+<h3
+id="linear-regression-using-water-level-and-total-zooplankton">Linear
+regression using water level and total zooplankton</h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># changing the column name to one that is easier to use</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ham)[<span class="fu">colnames</span>(ham) <span class="sc">==</span> <span class="st">&#39;water level&#39;</span>] <span class="ot">&lt;-</span> <span class="st">&#39;waterlevel&#39;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># running the linear regression of water level and total zooplankton</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>waterlzoo.lm<span class="ot">&lt;-</span> <span class="fu">lm</span>(waterlevel<span class="sc">~</span>total.zoop, ham)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># getting the results using the summary() function</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(waterlzoo.lm)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = waterlevel ~ total.zoop, data = ham)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.75082 -0.18579 -0.02821  0.14399  0.98481 
+## 
+## Coefficients:
+##              Estimate Std. Error  t value Pr(&gt;|t|)    
+## (Intercept) 7.487e+01  1.659e-02 4511.728  &lt; 2e-16 ***
+## total.zoop  2.537e-04  3.189e-05    7.954 1.08e-14 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.2986 on 537 degrees of freedom
+##   (203 observations deleted due to missingness)
+## Multiple R-squared:  0.1054, Adjusted R-squared:  0.1037 
+## F-statistic: 63.26 on 1 and 537 DF,  p-value: 1.078e-14</code></pre>
+<h2 id="what-does-this-output-tell-us">What does this output tell
+us?</h2>
+<p>The <em>call</em> in the summary output displays the call that was
+given to R, our linear regression coding using the lm() function. The
+<em>residuals</em> show the difference between the observed versus the
+expected values for the linear regression analysis. Under
+<em>coefficients</em>, the <em>estimate</em> shows the average change in
+value of our dependent variable (total zooplankton) when there is a 1
+unit increase in the independent variable (water level). The
+<em>standard error</em> is a value that represents any uncertainty with
+the <em>estimate</em> value, where the <em>t value</em> shows the
+difference between these two values. The <em>p-value</em> is arguably
+the most important in this output. It indicates the level of
+significance of the relationship between the independent (water level)
+and dependent (total zooplankton) variables. Aka whether the value of
+the independent variable significantly impacts the value of the
+dependent variable. A <em>p-value</em> smaller than 0.05 is
+<em>generally</em> considered to represent a statistically significant
+relationship, whereas a <em>p-value</em> larger than 0.05 is
+<em>generally</em> considered to represent a statistically insignificant
+relationship between the independent and dependent variable.</p>
+<h3
+id="what-does-the-summary-output-tell-us-about-the-relationship-between-water-level-and-total-zooplankton">What
+does the summary output tell us about the relationship between water
+level and total zooplankton?</h3>
+<h2 id="what-are-the-assumptions-of-a-linear-regression">What are the
+assumptions of a linear regression?</h2>
+<ul>
+<li>There is a linear relationship between the independent and dependent
+variable (Statistics solutions, 2024).</li>
+<li>The residuals are normally distributed (Statistics solutions,
+2024).</li>
+<li>The variance of the residuals should be consistent across all the
+values of the independent variable (Statistics solutions, 2024).</li>
+<li>Each observation is independent of one another (there is no
+significant correlation between the independent variable values)
+(Statistics solutions, 2024).</li>
+</ul>
+<h2 id="how-do-you-evaluate-the-assumptions-of-a-linear-regression">How
+do you evaluate the assumptions of a linear regression?</h2>
+<p>You can evaluate the assumptions of a linear regression by creating
+diagnostic plots. These look at the residuals of the linear regression,
+that were shown using the summary() function above, to determine if the
+linear model is appropriate for the data (the data does not violate any
+assumptions) (Statistics solutions, 2024). This will create 4 diagnostic
+plots: residuals versus leverage, scale-location, Q-Q residuals and
+residuals versus fitted values.</p>
+<h3 id="lets-try">Let’s try…</h3>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting diagnostic plots</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(waterlzoo.lm)</span></code></pre></div>
+<p><img
+src="HHworkshop_files/figure-html/unnamed-chunk-3-1.png" /><!-- --><img
+src="HHworkshop_files/figure-html/unnamed-chunk-3-2.png" /><!-- --><img
+src="HHworkshop_files/figure-html/unnamed-chunk-3-3.png" /><!-- --><img
+src="HHworkshop_files/figure-html/unnamed-chunk-3-4.png" /><!-- --></p>
+<h3 id="section">1.</h3>
+<p>The <em>residuals versus fitted plot</em> determines if the residuals
+exhibit non-linear behaviour (Statistics solutions, 2024). If the red
+line roughly follows the horizontal line on the plot, the residuals are
+showing linear behaviour (Statistics solutions, 2024). In this case, the
+red line follows the horizontal line very closely. We can determine then
+that the linear model is suitable for this dataset.</p>
+<h3 id="section-1">2.</h3>
+<p>The <em>Q-Q plot</em> evaluates our second assumption; the residuals
+are normally distributed (Statistics solutions, 2024). If the points on
+the plot follow the diagonal line, then the residuals are normally
+distributed (Statistics solutions, 2024). In this case, the points fall
+roughly on the diagonal line, with some variation towards the upper
+end.</p>
+<h3 id="section-2">3.</h3>
+<p>The <em>Scale-Location</em> plot is used to determine our third
+assumption; the variance of the residuals should be consistent across
+all the values The he independent variable (Statistics solutions, 2024).
+This is also called homoscedasticity (Bobbitt, 2021). In this case, the
+line is roughly horizontal along the plot, so the variance of residuals
+is likely consistent.</p>
+<h3 id="section-3">4.</h3>
+<p>The <em>Residuals versus Leverage</em> plot displays any influential
+points in the dataset compared to Cook’s distance (Bobbitt, 2021).
+Ideally, the points should fall close to the ‘0’ line on the plot with
+little variation. Any points that fall past the line indicating Cook’s
+distance are considered strongly influential points (Bobbitt, 2021). In
+this case, we have one point that falls past the line of Cook’s distance
+(point 282), indicating that we have one strongly influential point in
+our dataset.</p>
+<h2 id="how-can-we-plot-this-linear-regression">How can we plot this
+linear regression?</h2>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot with water level and total zooplankton</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use xlab(), ylab() and main() to put titles on the plot</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ham<span class="sc">$</span>waterlevel, ham<span class="sc">$</span>total.zoop, <span class="at">xlab=</span><span class="st">&quot;Water level (m)&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Total zooplankton collected&quot;</span>, <span class="at">main=</span><span class="st">&quot;Relationship between water level and total zooplankton&quot;</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add regression line to the plot using the abline() function</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(waterlzoo.lm, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img
+src="HHworkshop_files/figure-html/unnamed-chunk-4-1.png" /><!-- --></p>
+<p>In this case, water level does not appear to have a large impact on
+the amount of zooplankton collected. The regression, shown by the red
+line on the plot, shows a horizontal pattern between water level (m) and
+total zooplankton collection.</p>
+<h2 id="references-and-resources">References and resources</h2>
+<p>Assumptions of multiple linear regression analysis. Statistics
+Solutions. (2024, April 17).
+https://www.statisticssolutions.com/free-resources/directory-of-statistical-analyses/assumptions-of-linear-regression/</p>
+<p>Bobbitt, Z. (2021, July 23). How to interpret diagnostic plots in R.
+Statology. https://www.statology.org/diagnostic-plots-in-r/</p>
+<p>Phillips, N. D. (2018, January 22). Yarrr! The Pirate’s Guide to R.
+YaRrr! The Pirate’s Guide to R. https://bookdown.org/ndphillips/YaRrr/ *
+Check out chapter 15 on linear regression analysis</p>
+<h2 id="alternative-resource">Alternative resource:</h2>
+<p>Another way to evaluate the assumptions of a linear regression is to
+compare fitted values (theoretical values of the dependent variable that
+are predicted by the model, assuming linearity) and the observed values
+of the dependent variable in a plot (Phillips, 2018). If the model
+fitted values forms a diagonal line with the observed values of the
+dependent variable, then the linear model fits the data well, and the
+assumptions of the linear model are met (Phillips, 2018). See Phillips
+resource for more details and sample coding.</p>
+<h1 id="logistic-regression"><strong>Logistic regression</strong></h1>
+<h2 id="objectives">Objectives</h2>
+<ul>
+<li>Learn main uses of logistic regressions<br />
+</li>
+<li>Describe logistic regression assumptions<br />
+</li>
+<li>Apply models to your own data using R programming language<br />
+</li>
+<li>Interpret model fits and results</li>
+</ul>
+<h2 id="what-is-a-logistic-regression">What is a logistic
+regression?</h2>
+<ul>
+<li>Used to understand association between binary response variable and
+predictors</li>
+<li>Example: species distribution models
+<ul>
+<li>Binary response variable: presence (1) or absence (0) of species in
+area</li>
+<li>Results in predictions of habitat suitability</li>
+</ul></li>
+</ul>
+<h2
+id="how-are-logistic-regressions-different-from-linear-regressions">How
+are logistic regressions different from linear regressions?</h2>
+<p><em>Linear regression</em><br />
+- Quantitative outcomes are predicted based on value of predictors using
+straight line<br />
+- We calculate correlation and test for significance of regression<br />
+- We compare different types of model, from more simple, with single
+predictors, to more complicated, with several predictors and
+interactions, and then find the ones that provide a best fit to our
+data</p>
+<p><em>Logistic regression</em><br />
+- We can also do all of that!<br />
+- Main difference: our outcomes are <em>binary</em> as opposed to
+continuous measurements<br />
+- Examples of binary outcomes: presence versus absence; positive to a
+disease versus negative; dead versus alive<br />
+- Outcomes can be categorized as 1 (e.g., success) and 0 (e.g., failure)
+- In the case of Hamilton Harbour dataset, let’s suppose that it becomes
+hard for zooplankton to eat when there are more “less edible” algae than
+“edible” algae in the environment (that was the criteria for populating
+the column “Easy to eat”:)</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Nitrate/nitrite</th>
+<th style="text-align: right;">Edible</th>
+<th style="text-align: right;">Less edible</th>
+<th style="text-align: left;">Easy to eat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2.23</td>
+<td style="text-align: right;">884.60</td>
+<td style="text-align: right;">1645.7</td>
+<td style="text-align: left;">yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.50</td>
+<td style="text-align: right;">900.00</td>
+<td style="text-align: right;">1133.3</td>
+<td style="text-align: left;">yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.50</td>
+<td style="text-align: right;">923.20</td>
+<td style="text-align: right;">939.9</td>
+<td style="text-align: left;">yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.13</td>
+<td style="text-align: right;">1546.40</td>
+<td style="text-align: right;">1312.0</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.13</td>
+<td style="text-align: right;">811.90</td>
+<td style="text-align: right;">454.1</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.62</td>
+<td style="text-align: right;">339.16</td>
+<td style="text-align: right;">308.2</td>
+<td style="text-align: left;">no</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.67</td>
+<td style="text-align: right;">1376.80</td>
+<td style="text-align: right;">552.2</td>
+<td style="text-align: left;">no</td>
+</tr>
+</tbody>
+</table>
+<p>When we plot this type of binary data, we see that observations are
+either of the two outcome possibilities.</p>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-7467c7c65297c0f2e666" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-7467c7c65297c0f2e666">{"x":{"visdat":{"3d2879104474":["function () ","plotlyVisDat"],"3d28454f399a":["function () ","data"]},"cur_data":"3d28454f399a","attrs":{"3d28454f399a":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","text":{},"textposition":"middle right","hoverinfo":"text","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":80,"r":10},"title":"Comparison of edible and less edible phytoplankton","xaxis":{"domain":[0,1],"automargin":true,"title":"Nitrite + Nitrate (mg/L)","gridcolor":"rgba(0,0,0,0)"},"yaxis":{"domain":[0,1],"automargin":true,"title":"How easy is it to eat?","range":[-0.10000000000000001,1.1000000000000001],"gridcolor":"rgba(0,0,0,0)"},"legend":{"orientation":"h","x":0,"y":1},"font":{"size":16},"showlegend":false,"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[2.5800000000000001,2.4300000000000002,2.23,2.23,2.5,2.5,2.1299999999999999,2.1299999999999999,2.6200000000000001,2.6699999999999999,2.1800000000000002,2.3199999999999998,2.8599999999999999,2.8399999999999999,2.7599999999999998,2.6099999999999999,2.6499999999999999,2.4399999999999999,2.5499999999999998,2.4399999999999999,2.7999999999999998,2.4399999999999999,2.0899999999999999,3.1699999999999999,2.6299999999999999,2,2,2.3199999999999998,2.5800000000000001,2.5800000000000001,2.2000000000000002,2.54,3.3799999999999999,2.6499999999999999,1.8600000000000001,1.8600000000000001,2.1000000000000001,2.1000000000000001,2.04,2.6800000000000002,2.2400000000000002,1.8999999999999999,2.4300000000000002,1.9099999999999999,3.1800000000000002,1.8700000000000001,2.3100000000000001,2.3100000000000001,2.1600000000000001,1.8500000000000001,1.5,2.7200000000000002,2.48,2.48,1.77,2,1.6899999999999999,2.0699999999999998,2.4700000000000002,2.4700000000000002,2.27,1.54,2.2999999999999998,1.9199999999999999,1.74,2.0800000000000001,2.3799999999999999,1.8999999999999999,2.8300000000000001,1.6899999999999999,1.96,3.0800000000000001,1.6799999999999999,1.6599999999999999,1.51,2.0800000000000001,2.3599999999999999,1.74,2.6200000000000001,2.6499999999999999,2.04,2.96,1.6399999999999999,1.78,1.54,1.6799999999999999,1.4299999999999999,1.5600000000000001,1.6399999999999999,1.6499999999999999,1.6499999999999999,1.77,1.75,1.6299999999999999,1.3500000000000001,2.3700000000000001,1.97,2.1099999999999999,1.9399999999999999,2.2400000000000002,2.0499999999999998,2.0499999999999998,1.72,1.8999999999999999,2.7599999999999998,1.4199999999999999,2.0800000000000001,1.52,1.6100000000000001,2.04,2.1299999999999999,1.4099999999999999,1.3899999999999999,1.71,1.4399999999999999,1.8100000000000001,1.72,1.99,3.1000000000000001],"y":[1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,1,0,0,1,1,0,0,0,0,1,1,0,1,1,1,1,0,1,1,1,0,0,0,1,1,1,1,0,1,0,1,1,0,1,1,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,0],"type":"scatter","mode":"markers","text":["Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat"],"textposition":["middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p>This type of data is best fit by an s-shaped curve instead of a line.
+And this is another difference between linear and logistic
+regressions.</p>
+<h2 id="what-does-the-logistic-curve-mean">What does the logistic curve
+mean?</h2>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-b4c79b86040623934af3" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-b4c79b86040623934af3">{"x":{"visdat":{"3d2813ce5926":["function () ","plotlyVisDat"],"3d2863d72607":["function () ","data"]},"cur_data":"3d2863d72607","attrs":{"3d2813ce5926":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":[1.3500000000000001,1.3672033898305085,1.3844067796610171,1.4016101694915255,1.4188135593220339,1.4360169491525425,1.4532203389830509,1.4704237288135593,1.4876271186440679,1.5048305084745763,1.522033898305085,1.5392372881355934,1.5564406779661017,1.5736440677966104,1.5908474576271188,1.6080508474576272,1.6252542372881358,1.6424576271186442,1.6596610169491526,1.6768644067796612,1.6940677966101696,1.711271186440678,1.7284745762711866,1.745677966101695,1.7628813559322034,1.780084745762712,1.7972881355932204,1.8144915254237288,1.8316949152542374,1.8488983050847458,1.8661016949152542,1.8833050847457629,1.9005084745762713,1.9177118644067797,1.9349152542372883,1.9521186440677967,1.9693220338983051,1.9865254237288137,2.0037288135593219,2.0209322033898305,2.0381355932203391,2.0553389830508477,2.0725423728813559,2.0897457627118645,2.1069491525423727,2.1241525423728813,2.1413559322033899,2.1585593220338986,2.1757627118644067,2.1929661016949153,2.2101694915254235,2.2273728813559321,2.2445762711864408,2.2617796610169494,2.2789830508474576,2.2961864406779662,2.3133898305084744,2.330593220338983,2.3477966101694916,2.3650000000000002,2.3822033898305088,2.399406779661017,2.4166101694915252,2.4338135593220338,2.4510169491525424,2.468220338983051,2.4854237288135597,2.5026271186440678,2.519830508474576,2.5370338983050846,2.5542372881355933,2.5714406779661019,2.5886440677966105,2.6058474576271187,2.6230508474576268,2.6402542372881355,2.6574576271186441,2.6746610169491527,2.6918644067796613,2.7090677966101695,2.7262711864406781,2.7434745762711863,2.7606779661016949,2.7778813559322035,2.7950847457627122,2.8122881355932203,2.8294915254237289,2.8466949152542371,2.8638983050847457,2.8811016949152544,2.898305084745763,2.9155084745762712,2.9327118644067798,2.949915254237288,2.9671186440677966,2.9843220338983052,3.0015254237288138,3.018728813559322,3.0359322033898306,3.0531355932203388,3.0703389830508474,3.087542372881356,3.1047457627118646,3.1219491525423728,3.1391525423728814,3.1563559322033896,3.1735593220338982,3.1907627118644069,3.2079661016949155,3.2251694915254236,3.2423728813559323,3.2595762711864404,3.2767796610169491,3.2939830508474577,3.3111864406779663,3.3283898305084749,3.3455932203389831,3.3627966101694917,3.3799999999999999],"y":[0.92206453347252348,0.91892952240140702,0.91567993543226311,0.91231252307049093,0.90882402002850338,0.90521115222535053,0.9014706443961733,0.8975992283295311,0.89359365174813499,0.88945068784554882,0.88516714548797049,0.88073988008624737,0.87616580513879005,0.87144190444102143,0.86656524495139819,0.86153299029790709,0.85634241490222196,0.85099091869146659,0.84547604235976503,0.83979548313351238,0.83394711098562324,0.82792898523496417,0.8217393714578336,0.81537675862881187,0.80883987639866406,0.80212771240737546,0.79523952952096599,0.78817488287161264,0.78093363657199411,0.77351597996681831,0.76592244327739489,0.75815391248907604,0.75021164332658929,0.74209727415893278,0.7338128376737878,0.72536077116149378,0.71674392525070585,0.70796557094205026,0.69902940479251541,0.68993955211207203,0.68070056804513324,0.67131743642294728,0.66179556628883929,0.65214078601627368,0.64235933495986419,0.63245785260151333,0.62244336517758703,0.61232326979810292,0.60210531609502571,0.59179758546350936,0.58140846798691714,0.57094663716322169,0.56042102257652227,0.54984078068240261,0.53921526389930152,0.52855398821948096,0.51786659957219394,0.50716283918786575,0.49645250822524006,0.48574543193317099,0.47505142362494651,0.46438024874552541,0.45374158931082437,0.44314500899324794,0.43259991911907603,0.42211554583132288,0.41170089865647053,0.40136474069537309,0.39111556063796976,0.38096154677865646,0.37091056318462501,0.36097012814369606,0.35114739499155889,0.34144913539136551,0.33188172511174641,0.32245113232295042,0.31316290840533806,0.30402218124024866,0.29503365093061179,0.28620158787785294,0.27752983312285895,0.26902180084218386,0.26068048287638945,0.2525084551555043,0.24450788587702918,0.23668054528472107,0.22902781689144408,0.22155070998660942,0.21424987326797237,0.2071256094386919,0.20017789061336838,0.19340637438111641,0.1868104203793664,0.18038910723885815,0.17414124976796533,0.16806541625291449,0.16215994575941864,0.15642296533059616,0.15085240698560495,0.14544602443306662,0.14020140942293746,0.13511600766991105,0.1301871342905887,0.12541198870546988,0.12078766896521016,0.1163111854685276,0.1119794740465595,0.10778940839536547,0.10373781184460495,0.099821468456199713,0.096037133452008747,0.092381542974215289,0.088851423186258244,0.085443498725762998,0.082154500524050503,0.078981173009472799,0.075920280714043983,0.0729686143046651,0.070122996061686843],"type":"scatter","mode":"lines","line":{"color":"black","width":2},"text":"Predicted probabilities","textposition":"middle right","hoverinfo":"text","inherit":true},"3d2813ce5926.1":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":[1.3500000000000001,1.3672033898305085,1.3844067796610171,1.4016101694915255,1.4188135593220339,1.4360169491525425,1.4532203389830509,1.4704237288135593,1.4876271186440679,1.5048305084745763,1.522033898305085,1.5392372881355934,1.5564406779661017,1.5736440677966104,1.5908474576271188,1.6080508474576272,1.6252542372881358,1.6424576271186442,1.6596610169491526,1.6768644067796612,1.6940677966101696,1.711271186440678,1.7284745762711866,1.745677966101695,1.7628813559322034,1.780084745762712,1.7972881355932204,1.8144915254237288,1.8316949152542374,1.8488983050847458,1.8661016949152542,1.8833050847457629,1.9005084745762713,1.9177118644067797,1.9349152542372883,1.9521186440677967,1.9693220338983051,1.9865254237288137,2.0037288135593219,2.0209322033898305,2.0381355932203391,2.0553389830508477,2.0725423728813559,2.0897457627118645,2.1069491525423727,2.1241525423728813,2.1413559322033899,2.1585593220338986,2.1757627118644067,2.1929661016949153,2.2101694915254235,2.2273728813559321,2.2445762711864408,2.2617796610169494,2.2789830508474576,2.2961864406779662,2.3133898305084744,2.330593220338983,2.3477966101694916,2.3650000000000002,2.3822033898305088,2.399406779661017,2.4166101694915252,2.4338135593220338,2.4510169491525424,2.468220338983051,2.4854237288135597,2.5026271186440678,2.519830508474576,2.5370338983050846,2.5542372881355933,2.5714406779661019,2.5886440677966105,2.6058474576271187,2.6230508474576268,2.6402542372881355,2.6574576271186441,2.6746610169491527,2.6918644067796613,2.7090677966101695,2.7262711864406781,2.7434745762711863,2.7606779661016949,2.7778813559322035,2.7950847457627122,2.8122881355932203,2.8294915254237289,2.8466949152542371,2.8638983050847457,2.8811016949152544,2.898305084745763,2.9155084745762712,2.9327118644067798,2.949915254237288,2.9671186440677966,2.9843220338983052,3.0015254237288138,3.018728813559322,3.0359322033898306,3.0531355932203388,3.0703389830508474,3.087542372881356,3.1047457627118646,3.1219491525423728,3.1391525423728814,3.1563559322033896,3.1735593220338982,3.1907627118644069,3.2079661016949155,3.2251694915254236,3.2423728813559323,3.2595762711864404,3.2767796610169491,3.2939830508474577,3.3111864406779663,3.3283898305084749,3.3455932203389831,3.3627966101694917,3.3799999999999999],"y":[0.87390050118898011,0.86988990443495973,0.86575564229913071,0.86149479844122712,0.85710447108310706,0.85258178113615413,0.8479238809128965,0.84312796343264518,0.83819127232778001,0.83311111235368474,0.82788486050123122,0.82250997770612488,0.81698402114432778,0.8113046570971868,0.80546967436377881,0.79947699819140605,0.79332470468808514,0.78701103567335928,0.78053441391583545,0.77389345869755588,0.76708700163674337,0.76011410269166557,0.7529740662594574,0.74566645727481973,0.73819111720470254,0.73054817982651288,0.7227380866692269,0.71476160198916028,0.70661982714527571,0.69831421423292239,0.68984657883000922,0.68121911170600813,0.67243438934202282,0.66349538310964362,0.65440546695759672,0.64516842345842962,0.63578844807279411,0.62627015149639509,0.61661855996441317,0.60683911340025642,0.5969376613098113,0.58692045633888856,0.576794145430231,0.56656575853707281,0.55624269487264111,0.54583270669890682,0.53534388068303262,0.52478461687597433,0.51416360539420869,0.50348980091215167,0.49277239509907733,0.4820207871597767,0.47124455266239107,0.46045341085930869,0.44965719072736759,0.43886579597139319,0.42808916925001084,0.41733725589435089,0.40661996739851658,0.39594714496524824,0.38532852339106222,0.37477369557217405,0.36429207790578627,0.35389287685097393,0.34358505689957991,0.33337731019054323,0.3232780279812123,0.31329527416683012,0.30343676101492589,0.29370982725528016,0.28412141863886614,0.27467807105124264,0.26538589623771941,0.25625057016970321,0.24727732405440006,0.23847093796390267,0.22983573703497606,0.22137559016790856,0.21309391113185946,0.20499366196543733,0.19707735854492547,0.18934707817874333,0.1818044690754323,0.17445076152369615,0.16728678061673496,0.16031296034923159,0.15352935891372485,0.14693567502360858,0.14053126509242428,0.13431516110330619,0.12828608900814503,0.12244248750308598,0.11678252703511914,0.11130412890357132,0.10600498433003654,0.1008825733805216,0.095934183634117723,0.091156928503203269,0.086547765120858239,0.082103511721711916,0.077820864452718574,0.073696413560278465,0.069726658909591677,0.065908024801099946,0.062236874057274204,0.058709521360813331,0.055322245832500831,0.052071302843520857,0.048952935062944694,0.045963382746388136,0.04309889327650962,0.040355729970098723,0.037730180170014872,0.035218562643213214,0.032817234308562697,0.030522596320168925,0.028331099533480196,0.026239249382635145,0.024243610198325459],"type":"scatter","mode":"lines","line":{"color":"blue","width":2,"dash":"dash"},"text":"Lower bound","textposition":"middle right","hoverinfo":"text","inherit":true},"3d2813ce5926.2":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":[1.3500000000000001,1.3672033898305085,1.3844067796610171,1.4016101694915255,1.4188135593220339,1.4360169491525425,1.4532203389830509,1.4704237288135593,1.4876271186440679,1.5048305084745763,1.522033898305085,1.5392372881355934,1.5564406779661017,1.5736440677966104,1.5908474576271188,1.6080508474576272,1.6252542372881358,1.6424576271186442,1.6596610169491526,1.6768644067796612,1.6940677966101696,1.711271186440678,1.7284745762711866,1.745677966101695,1.7628813559322034,1.780084745762712,1.7972881355932204,1.8144915254237288,1.8316949152542374,1.8488983050847458,1.8661016949152542,1.8833050847457629,1.9005084745762713,1.9177118644067797,1.9349152542372883,1.9521186440677967,1.9693220338983051,1.9865254237288137,2.0037288135593219,2.0209322033898305,2.0381355932203391,2.0553389830508477,2.0725423728813559,2.0897457627118645,2.1069491525423727,2.1241525423728813,2.1413559322033899,2.1585593220338986,2.1757627118644067,2.1929661016949153,2.2101694915254235,2.2273728813559321,2.2445762711864408,2.2617796610169494,2.2789830508474576,2.2961864406779662,2.3133898305084744,2.330593220338983,2.3477966101694916,2.3650000000000002,2.3822033898305088,2.399406779661017,2.4166101694915252,2.4338135593220338,2.4510169491525424,2.468220338983051,2.4854237288135597,2.5026271186440678,2.519830508474576,2.5370338983050846,2.5542372881355933,2.5714406779661019,2.5886440677966105,2.6058474576271187,2.6230508474576268,2.6402542372881355,2.6574576271186441,2.6746610169491527,2.6918644067796613,2.7090677966101695,2.7262711864406781,2.7434745762711863,2.7606779661016949,2.7778813559322035,2.7950847457627122,2.8122881355932203,2.8294915254237289,2.8466949152542371,2.8638983050847457,2.8811016949152544,2.898305084745763,2.9155084745762712,2.9327118644067798,2.949915254237288,2.9671186440677966,2.9843220338983052,3.0015254237288138,3.018728813559322,3.0359322033898306,3.0531355932203388,3.0703389830508474,3.087542372881356,3.1047457627118646,3.1219491525423728,3.1391525423728814,3.1563559322033896,3.1735593220338982,3.1907627118644069,3.2079661016949155,3.2251694915254236,3.2423728813559323,3.2595762711864404,3.2767796610169491,3.2939830508474577,3.3111864406779663,3.3283898305084749,3.3455932203389831,3.3627966101694917,3.3799999999999999],"y":[0.97022856575606686,0.96796914036785431,0.96560422856539552,0.96313024769975475,0.9605435689738997,0.95784052331454694,0.95501740787945011,0.95207049322641701,0.94899603116848996,0.9457902633374129,0.94244943047470975,0.93896978246636986,0.93534758913325233,0.93157915178485606,0.92766081553901758,0.92358898240440812,0.91936012511635878,0.9149708017095739,0.91041767080369462,0.90569750756946887,0.90080722033450311,0.89574386777826276,0.8905046766562098,0.88508705998280401,0.87948863559262558,0.87370724498823804,0.86774097237270509,0.861588163754065,0.8552474459987125,0.84871774570071423,0.84199830772478057,0.83508871327214396,0.82798889731115577,0.82069916520822195,0.81322020838997888,0.80555311886455794,0.79769940242861759,0.78966099038770543,0.78144024962061764,0.77303999082388763,0.76446347478045518,0.75571441650700599,0.74679698714744758,0.73771581349547455,0.72847597504708728,0.71908299850411983,0.70954284967214143,0.69986192272023151,0.69004702679584273,0.68010537001486704,0.67004454087475696,0.65987248716666669,0.64959749249065346,0.63922815050549653,0.62877333707123551,0.61824218046756874,0.60764402989437705,0.59698842248138062,0.58628504905196355,0.57554371890109379,0.56477432385883075,0.55398680191887684,0.54319110071586252,0.53239714113552195,0.5216147813385722,0.51085378147210259,0.50012376933172875,0.48943420722391606,0.47879436026101363,0.46821326630203275,0.45769970773038388,0.44726218523614947,0.43690889374539837,0.42664770061302781,0.41648612616909275,0.40643132668199816,0.39649007977570006,0.38666877231258878,0.37697339072936409,0.36740951379026854,0.35798230770079242,0.34869652350562441,0.33955649667734661,0.33056614878731244,0.32172899113732339,0.31304813022021055,0.30452627486916328,0.29616574494961023,0.2879684814435205,0.2799360577740776,0.27206969221859173,0.26437026125914687,0.25683831372361365,0.24947408557414497,0.24227751520589413,0.23524825912530739,0.22838570788471957,0.22168900215798903,0.21515704885035167,0.2087885371444213,0.20258195439315635,0.19653560177954366,0.19064760967158573,0.18491595260983981,0.17933846387314611,0.17391284957624187,0.16863670226061817,0.16350751394721008,0.15852268862626523,0.15367955416601128,0.14897537362750787,0.14440735597833185,0.13997266620250162,0.13566843480831278,0.1314917667395383,0.12743974969877667,0.12350946189460776,0.11969797922669506,0.11600238192504822],"type":"scatter","mode":"lines","line":{"color":"blue","width":2,"dash":"dash"},"text":"Upper bound","textposition":"middle right","hoverinfo":"text","inherit":true},"3d2863d72607":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","text":{},"textposition":"middle right","hoverinfo":"text","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":80,"r":10},"title":"Comparison of edible and less edible phytoplankton","xaxis":{"domain":[0,1],"automargin":true,"title":"Nitrite + Nitrate (mg/L)","gridcolor":"rgba(0,0,0,0)"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Predicted probability","range":[-0.10000000000000001,1.1000000000000001],"gridcolor":"rgba(0,0,0,0)"},"legend":{"orientation":"h","x":0,"y":1},"font":{"size":16},"showlegend":false,"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[1.3500000000000001,1.3672033898305085,1.3844067796610171,1.4016101694915255,1.4188135593220339,1.4360169491525425,1.4532203389830509,1.4704237288135593,1.4876271186440679,1.5048305084745763,1.522033898305085,1.5392372881355934,1.5564406779661017,1.5736440677966104,1.5908474576271188,1.6080508474576272,1.6252542372881358,1.6424576271186442,1.6596610169491526,1.6768644067796612,1.6940677966101696,1.711271186440678,1.7284745762711866,1.745677966101695,1.7628813559322034,1.780084745762712,1.7972881355932204,1.8144915254237288,1.8316949152542374,1.8488983050847458,1.8661016949152542,1.8833050847457629,1.9005084745762713,1.9177118644067797,1.9349152542372883,1.9521186440677967,1.9693220338983051,1.9865254237288137,2.0037288135593219,2.0209322033898305,2.0381355932203391,2.0553389830508477,2.0725423728813559,2.0897457627118645,2.1069491525423727,2.1241525423728813,2.1413559322033899,2.1585593220338986,2.1757627118644067,2.1929661016949153,2.2101694915254235,2.2273728813559321,2.2445762711864408,2.2617796610169494,2.2789830508474576,2.2961864406779662,2.3133898305084744,2.330593220338983,2.3477966101694916,2.3650000000000002,2.3822033898305088,2.399406779661017,2.4166101694915252,2.4338135593220338,2.4510169491525424,2.468220338983051,2.4854237288135597,2.5026271186440678,2.519830508474576,2.5370338983050846,2.5542372881355933,2.5714406779661019,2.5886440677966105,2.6058474576271187,2.6230508474576268,2.6402542372881355,2.6574576271186441,2.6746610169491527,2.6918644067796613,2.7090677966101695,2.7262711864406781,2.7434745762711863,2.7606779661016949,2.7778813559322035,2.7950847457627122,2.8122881355932203,2.8294915254237289,2.8466949152542371,2.8638983050847457,2.8811016949152544,2.898305084745763,2.9155084745762712,2.9327118644067798,2.949915254237288,2.9671186440677966,2.9843220338983052,3.0015254237288138,3.018728813559322,3.0359322033898306,3.0531355932203388,3.0703389830508474,3.087542372881356,3.1047457627118646,3.1219491525423728,3.1391525423728814,3.1563559322033896,3.1735593220338982,3.1907627118644069,3.2079661016949155,3.2251694915254236,3.2423728813559323,3.2595762711864404,3.2767796610169491,3.2939830508474577,3.3111864406779663,3.3283898305084749,3.3455932203389831,3.3627966101694917,3.3799999999999999],"y":[0.92206453347252348,0.91892952240140702,0.91567993543226311,0.91231252307049093,0.90882402002850338,0.90521115222535053,0.9014706443961733,0.8975992283295311,0.89359365174813499,0.88945068784554882,0.88516714548797049,0.88073988008624737,0.87616580513879005,0.87144190444102143,0.86656524495139819,0.86153299029790709,0.85634241490222196,0.85099091869146659,0.84547604235976503,0.83979548313351238,0.83394711098562324,0.82792898523496417,0.8217393714578336,0.81537675862881187,0.80883987639866406,0.80212771240737546,0.79523952952096599,0.78817488287161264,0.78093363657199411,0.77351597996681831,0.76592244327739489,0.75815391248907604,0.75021164332658929,0.74209727415893278,0.7338128376737878,0.72536077116149378,0.71674392525070585,0.70796557094205026,0.69902940479251541,0.68993955211207203,0.68070056804513324,0.67131743642294728,0.66179556628883929,0.65214078601627368,0.64235933495986419,0.63245785260151333,0.62244336517758703,0.61232326979810292,0.60210531609502571,0.59179758546350936,0.58140846798691714,0.57094663716322169,0.56042102257652227,0.54984078068240261,0.53921526389930152,0.52855398821948096,0.51786659957219394,0.50716283918786575,0.49645250822524006,0.48574543193317099,0.47505142362494651,0.46438024874552541,0.45374158931082437,0.44314500899324794,0.43259991911907603,0.42211554583132288,0.41170089865647053,0.40136474069537309,0.39111556063796976,0.38096154677865646,0.37091056318462501,0.36097012814369606,0.35114739499155889,0.34144913539136551,0.33188172511174641,0.32245113232295042,0.31316290840533806,0.30402218124024866,0.29503365093061179,0.28620158787785294,0.27752983312285895,0.26902180084218386,0.26068048287638945,0.2525084551555043,0.24450788587702918,0.23668054528472107,0.22902781689144408,0.22155070998660942,0.21424987326797237,0.2071256094386919,0.20017789061336838,0.19340637438111641,0.1868104203793664,0.18038910723885815,0.17414124976796533,0.16806541625291449,0.16215994575941864,0.15642296533059616,0.15085240698560495,0.14544602443306662,0.14020140942293746,0.13511600766991105,0.1301871342905887,0.12541198870546988,0.12078766896521016,0.1163111854685276,0.1119794740465595,0.10778940839536547,0.10373781184460495,0.099821468456199713,0.096037133452008747,0.092381542974215289,0.088851423186258244,0.085443498725762998,0.082154500524050503,0.078981173009472799,0.075920280714043983,0.0729686143046651,0.070122996061686843],"type":"scatter","mode":"lines","line":{"color":"black","width":2},"text":["Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities","Predicted probabilities"],"textposition":["middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1.3500000000000001,1.3672033898305085,1.3844067796610171,1.4016101694915255,1.4188135593220339,1.4360169491525425,1.4532203389830509,1.4704237288135593,1.4876271186440679,1.5048305084745763,1.522033898305085,1.5392372881355934,1.5564406779661017,1.5736440677966104,1.5908474576271188,1.6080508474576272,1.6252542372881358,1.6424576271186442,1.6596610169491526,1.6768644067796612,1.6940677966101696,1.711271186440678,1.7284745762711866,1.745677966101695,1.7628813559322034,1.780084745762712,1.7972881355932204,1.8144915254237288,1.8316949152542374,1.8488983050847458,1.8661016949152542,1.8833050847457629,1.9005084745762713,1.9177118644067797,1.9349152542372883,1.9521186440677967,1.9693220338983051,1.9865254237288137,2.0037288135593219,2.0209322033898305,2.0381355932203391,2.0553389830508477,2.0725423728813559,2.0897457627118645,2.1069491525423727,2.1241525423728813,2.1413559322033899,2.1585593220338986,2.1757627118644067,2.1929661016949153,2.2101694915254235,2.2273728813559321,2.2445762711864408,2.2617796610169494,2.2789830508474576,2.2961864406779662,2.3133898305084744,2.330593220338983,2.3477966101694916,2.3650000000000002,2.3822033898305088,2.399406779661017,2.4166101694915252,2.4338135593220338,2.4510169491525424,2.468220338983051,2.4854237288135597,2.5026271186440678,2.519830508474576,2.5370338983050846,2.5542372881355933,2.5714406779661019,2.5886440677966105,2.6058474576271187,2.6230508474576268,2.6402542372881355,2.6574576271186441,2.6746610169491527,2.6918644067796613,2.7090677966101695,2.7262711864406781,2.7434745762711863,2.7606779661016949,2.7778813559322035,2.7950847457627122,2.8122881355932203,2.8294915254237289,2.8466949152542371,2.8638983050847457,2.8811016949152544,2.898305084745763,2.9155084745762712,2.9327118644067798,2.949915254237288,2.9671186440677966,2.9843220338983052,3.0015254237288138,3.018728813559322,3.0359322033898306,3.0531355932203388,3.0703389830508474,3.087542372881356,3.1047457627118646,3.1219491525423728,3.1391525423728814,3.1563559322033896,3.1735593220338982,3.1907627118644069,3.2079661016949155,3.2251694915254236,3.2423728813559323,3.2595762711864404,3.2767796610169491,3.2939830508474577,3.3111864406779663,3.3283898305084749,3.3455932203389831,3.3627966101694917,3.3799999999999999],"y":[0.87390050118898011,0.86988990443495973,0.86575564229913071,0.86149479844122712,0.85710447108310706,0.85258178113615413,0.8479238809128965,0.84312796343264518,0.83819127232778001,0.83311111235368474,0.82788486050123122,0.82250997770612488,0.81698402114432778,0.8113046570971868,0.80546967436377881,0.79947699819140605,0.79332470468808514,0.78701103567335928,0.78053441391583545,0.77389345869755588,0.76708700163674337,0.76011410269166557,0.7529740662594574,0.74566645727481973,0.73819111720470254,0.73054817982651288,0.7227380866692269,0.71476160198916028,0.70661982714527571,0.69831421423292239,0.68984657883000922,0.68121911170600813,0.67243438934202282,0.66349538310964362,0.65440546695759672,0.64516842345842962,0.63578844807279411,0.62627015149639509,0.61661855996441317,0.60683911340025642,0.5969376613098113,0.58692045633888856,0.576794145430231,0.56656575853707281,0.55624269487264111,0.54583270669890682,0.53534388068303262,0.52478461687597433,0.51416360539420869,0.50348980091215167,0.49277239509907733,0.4820207871597767,0.47124455266239107,0.46045341085930869,0.44965719072736759,0.43886579597139319,0.42808916925001084,0.41733725589435089,0.40661996739851658,0.39594714496524824,0.38532852339106222,0.37477369557217405,0.36429207790578627,0.35389287685097393,0.34358505689957991,0.33337731019054323,0.3232780279812123,0.31329527416683012,0.30343676101492589,0.29370982725528016,0.28412141863886614,0.27467807105124264,0.26538589623771941,0.25625057016970321,0.24727732405440006,0.23847093796390267,0.22983573703497606,0.22137559016790856,0.21309391113185946,0.20499366196543733,0.19707735854492547,0.18934707817874333,0.1818044690754323,0.17445076152369615,0.16728678061673496,0.16031296034923159,0.15352935891372485,0.14693567502360858,0.14053126509242428,0.13431516110330619,0.12828608900814503,0.12244248750308598,0.11678252703511914,0.11130412890357132,0.10600498433003654,0.1008825733805216,0.095934183634117723,0.091156928503203269,0.086547765120858239,0.082103511721711916,0.077820864452718574,0.073696413560278465,0.069726658909591677,0.065908024801099946,0.062236874057274204,0.058709521360813331,0.055322245832500831,0.052071302843520857,0.048952935062944694,0.045963382746388136,0.04309889327650962,0.040355729970098723,0.037730180170014872,0.035218562643213214,0.032817234308562697,0.030522596320168925,0.028331099533480196,0.026239249382635145,0.024243610198325459],"type":"scatter","mode":"lines","line":{"color":"blue","width":2,"dash":"dash"},"text":["Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound","Lower bound"],"textposition":["middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1.3500000000000001,1.3672033898305085,1.3844067796610171,1.4016101694915255,1.4188135593220339,1.4360169491525425,1.4532203389830509,1.4704237288135593,1.4876271186440679,1.5048305084745763,1.522033898305085,1.5392372881355934,1.5564406779661017,1.5736440677966104,1.5908474576271188,1.6080508474576272,1.6252542372881358,1.6424576271186442,1.6596610169491526,1.6768644067796612,1.6940677966101696,1.711271186440678,1.7284745762711866,1.745677966101695,1.7628813559322034,1.780084745762712,1.7972881355932204,1.8144915254237288,1.8316949152542374,1.8488983050847458,1.8661016949152542,1.8833050847457629,1.9005084745762713,1.9177118644067797,1.9349152542372883,1.9521186440677967,1.9693220338983051,1.9865254237288137,2.0037288135593219,2.0209322033898305,2.0381355932203391,2.0553389830508477,2.0725423728813559,2.0897457627118645,2.1069491525423727,2.1241525423728813,2.1413559322033899,2.1585593220338986,2.1757627118644067,2.1929661016949153,2.2101694915254235,2.2273728813559321,2.2445762711864408,2.2617796610169494,2.2789830508474576,2.2961864406779662,2.3133898305084744,2.330593220338983,2.3477966101694916,2.3650000000000002,2.3822033898305088,2.399406779661017,2.4166101694915252,2.4338135593220338,2.4510169491525424,2.468220338983051,2.4854237288135597,2.5026271186440678,2.519830508474576,2.5370338983050846,2.5542372881355933,2.5714406779661019,2.5886440677966105,2.6058474576271187,2.6230508474576268,2.6402542372881355,2.6574576271186441,2.6746610169491527,2.6918644067796613,2.7090677966101695,2.7262711864406781,2.7434745762711863,2.7606779661016949,2.7778813559322035,2.7950847457627122,2.8122881355932203,2.8294915254237289,2.8466949152542371,2.8638983050847457,2.8811016949152544,2.898305084745763,2.9155084745762712,2.9327118644067798,2.949915254237288,2.9671186440677966,2.9843220338983052,3.0015254237288138,3.018728813559322,3.0359322033898306,3.0531355932203388,3.0703389830508474,3.087542372881356,3.1047457627118646,3.1219491525423728,3.1391525423728814,3.1563559322033896,3.1735593220338982,3.1907627118644069,3.2079661016949155,3.2251694915254236,3.2423728813559323,3.2595762711864404,3.2767796610169491,3.2939830508474577,3.3111864406779663,3.3283898305084749,3.3455932203389831,3.3627966101694917,3.3799999999999999],"y":[0.97022856575606686,0.96796914036785431,0.96560422856539552,0.96313024769975475,0.9605435689738997,0.95784052331454694,0.95501740787945011,0.95207049322641701,0.94899603116848996,0.9457902633374129,0.94244943047470975,0.93896978246636986,0.93534758913325233,0.93157915178485606,0.92766081553901758,0.92358898240440812,0.91936012511635878,0.9149708017095739,0.91041767080369462,0.90569750756946887,0.90080722033450311,0.89574386777826276,0.8905046766562098,0.88508705998280401,0.87948863559262558,0.87370724498823804,0.86774097237270509,0.861588163754065,0.8552474459987125,0.84871774570071423,0.84199830772478057,0.83508871327214396,0.82798889731115577,0.82069916520822195,0.81322020838997888,0.80555311886455794,0.79769940242861759,0.78966099038770543,0.78144024962061764,0.77303999082388763,0.76446347478045518,0.75571441650700599,0.74679698714744758,0.73771581349547455,0.72847597504708728,0.71908299850411983,0.70954284967214143,0.69986192272023151,0.69004702679584273,0.68010537001486704,0.67004454087475696,0.65987248716666669,0.64959749249065346,0.63922815050549653,0.62877333707123551,0.61824218046756874,0.60764402989437705,0.59698842248138062,0.58628504905196355,0.57554371890109379,0.56477432385883075,0.55398680191887684,0.54319110071586252,0.53239714113552195,0.5216147813385722,0.51085378147210259,0.50012376933172875,0.48943420722391606,0.47879436026101363,0.46821326630203275,0.45769970773038388,0.44726218523614947,0.43690889374539837,0.42664770061302781,0.41648612616909275,0.40643132668199816,0.39649007977570006,0.38666877231258878,0.37697339072936409,0.36740951379026854,0.35798230770079242,0.34869652350562441,0.33955649667734661,0.33056614878731244,0.32172899113732339,0.31304813022021055,0.30452627486916328,0.29616574494961023,0.2879684814435205,0.2799360577740776,0.27206969221859173,0.26437026125914687,0.25683831372361365,0.24947408557414497,0.24227751520589413,0.23524825912530739,0.22838570788471957,0.22168900215798903,0.21515704885035167,0.2087885371444213,0.20258195439315635,0.19653560177954366,0.19064760967158573,0.18491595260983981,0.17933846387314611,0.17391284957624187,0.16863670226061817,0.16350751394721008,0.15852268862626523,0.15367955416601128,0.14897537362750787,0.14440735597833185,0.13997266620250162,0.13566843480831278,0.1314917667395383,0.12743974969877667,0.12350946189460776,0.11969797922669506,0.11600238192504822],"type":"scatter","mode":"lines","line":{"color":"blue","width":2,"dash":"dash"},"text":["Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound","Upper bound"],"textposition":["middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[2.5800000000000001,2.4300000000000002,2.23,2.23,2.5,2.5,2.1299999999999999,2.1299999999999999,2.6200000000000001,2.6699999999999999,2.1800000000000002,2.3199999999999998,2.8599999999999999,2.8399999999999999,2.7599999999999998,2.6099999999999999,2.6499999999999999,2.4399999999999999,2.5499999999999998,2.4399999999999999,2.7999999999999998,2.4399999999999999,2.0899999999999999,3.1699999999999999,2.6299999999999999,2,2,2.3199999999999998,2.5800000000000001,2.5800000000000001,2.2000000000000002,2.54,3.3799999999999999,2.6499999999999999,1.8600000000000001,1.8600000000000001,2.1000000000000001,2.1000000000000001,2.04,2.6800000000000002,2.2400000000000002,1.8999999999999999,2.4300000000000002,1.9099999999999999,3.1800000000000002,1.8700000000000001,2.3100000000000001,2.3100000000000001,2.1600000000000001,1.8500000000000001,1.5,2.7200000000000002,2.48,2.48,1.77,2,1.6899999999999999,2.0699999999999998,2.4700000000000002,2.4700000000000002,2.27,1.54,2.2999999999999998,1.9199999999999999,1.74,2.0800000000000001,2.3799999999999999,1.8999999999999999,2.8300000000000001,1.6899999999999999,1.96,3.0800000000000001,1.6799999999999999,1.6599999999999999,1.51,2.0800000000000001,2.3599999999999999,1.74,2.6200000000000001,2.6499999999999999,2.04,2.96,1.6399999999999999,1.78,1.54,1.6799999999999999,1.4299999999999999,1.5600000000000001,1.6399999999999999,1.6499999999999999,1.6499999999999999,1.77,1.75,1.6299999999999999,1.3500000000000001,2.3700000000000001,1.97,2.1099999999999999,1.9399999999999999,2.2400000000000002,2.0499999999999998,2.0499999999999998,1.72,1.8999999999999999,2.7599999999999998,1.4199999999999999,2.0800000000000001,1.52,1.6100000000000001,2.04,2.1299999999999999,1.4099999999999999,1.3899999999999999,1.71,1.4399999999999999,1.8100000000000001,1.72,1.99,3.1000000000000001],"y":[1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,1,0,0,1,1,0,0,0,0,1,1,0,1,1,1,1,0,1,1,1,0,0,0,1,1,1,1,0,1,0,1,1,0,1,1,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,1,0,1,0,0,1,0,0,1,0,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,0],"type":"scatter","mode":"markers","text":["Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Hard to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Easy to eat","Hard to eat"],"textposition":["middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right","middle right"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"line":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<ul>
+<li>It represents the <em>probability</em> of positive outcomes
+depending on predictors<br />
+</li>
+<li>Hover your mouse over the logistic curve: as we move along the curve
+and our predictor values change, we go from 0 to 100% probability of our
+outcome</li>
+</ul>
+<h2 id="mathematical-representation">Mathematical representation</h2>
+<ul>
+<li>Before we can correlate variables in our models: the code we use to
+run logistic regressions transforms the response variable to get a
+linear relationship between variables<br />
+</li>
+<li>This transformation is called logit (log of probability of
+success/probability of failure)</li>
+<li>Our explanatory variable is in log(odds)</li>
+</ul>
+<p>This is the equation for the logistic regression:</p>
+<p><span class="math display">\[ Log (p/1-p) = b0+b1*x1+e \]</span>
+<em>Log (p/1-p)</em>: response variable<br />
+<em>b0</em>: y intercept<br />
+<em>x</em>: predictor variable<br />
+<em>b1</em>: slope for explanatory variable 1<br />
+<em>e</em>: error</p>
+<p>If we had more explanatory variables, we could keep adding them to
+the equation above as b2*x2 and so forth.</p>
+<h2
+id="what-kind-of-predictors-can-we-have-in-a-logistic-regression">What
+kind of predictors can we have in a logistic regression?</h2>
+<p>Just like in a linear regression, we can use continuous and/or
+discrete variables to make predictions. Here are some examples:</p>
+<p><strong>Continuous variables</strong></p>
+<ul>
+<li><p>Temperature</p></li>
+<li><p>Precipitation</p></li>
+<li><p>Water depth</p></li>
+<li><p>Nitrogen concentration</p></li>
+</ul>
+<p><strong>Discrete variables</strong></p>
+<ul>
+<li><p>Levels of aquatic vegetation</p></li>
+<li><p>Soil type</p></li>
+<li><p>Water body type</p></li>
+</ul>
+<h2 id="key-binomial-logistic-model-assumptions">Key binomial logistic
+model assumptions</h2>
+<ul>
+<li><p>Dependent variable has 2 levels or is a proportion of
+successes</p></li>
+<li><p>Observations are independent</p></li>
+<li><p>Normal distribution of data or residuals is not needed</p></li>
+</ul>
+<h2 id="aquatic-ecology-studies-using-logistic-regression">Aquatic
+ecology studies using logistic regression</h2>
+<ul>
+<li><p>The distribution of gammarid species was predicted using logistic
+regressions, where current velocity was the most important factor
+explaining their distribution <a
+href="https://onlinelibrary.wiley.com/doi/epdf/10.1046/j.1365-2427.1998.00304.x">(Peeters
+&amp; Gardeniers, 1998)</a></p></li>
+<li><p>Foraging shift behaviour from the benthos to the water surface in
+brown trout (1 = surface prey consumed, 0 = no surface prey consumed)
+was predicted using fish length as a predictor in a logistic regression
+<a
+href="https://cdnsciencepub.com/doi/full/10.1139/cjfas-2017-0021%5D">(Sánchez-Hernández
+&amp; Cobo, 2017)</a></p></li>
+</ul>
+<figure>
+<img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic_studies_example.jpg"
+alt="Amphipod Gammaridae; Brown Trout, USFWS Mountain-Prairie" />
+<figcaption aria-hidden="true"><a
+href="https://commons.wikimedia.org/wiki/File:Amphipod_Gammaridae_%288741971996%29.jpg">Amphipod
+Gammaridae</a>; <a
+href="https://www.flickr.com/photos/usfwsmtnprairie/49860328703">Brown
+Trout, USFWS Mountain-Prairie</a></figcaption>
+</figure>
+<h2 id="practice-time-run-your-own-logistic-model">Practice time: run
+your own logistic model</h2>
+<h3 id="steps-to-run-a-logistic-model-in-r">Steps to run a logistic
+model in R</h3>
+<ol type="1">
+<li>Select potentially interesting predictors</li>
+<li>Format predictors to correspond to binomial levels</li>
+<li>Select time period and location</li>
+<li>Run model</li>
+<li>Interpret model</li>
+<li>Plot results</li>
+</ol>
+<h3 id="lets-create-this-first-model-together">Let’s create this first
+model together</h3>
+<p>First, we are going to have a look at some potentially interesting
+variables:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ham[<span class="fu">c</span>(<span class="dv">25</span><span class="sc">:</span><span class="dv">30</span>), <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">26</span>,<span class="dv">47</span>,<span class="dv">98</span>)],<span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">digits=</span><span class="dv">2</span>, <span class="at">align=</span><span class="fu">rep</span>(<span class="st">&#39;c&#39;</span>, <span class="dv">3</span>),</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Location&quot;</span>, <span class="st">&quot;Season&quot;</span>, <span class="st">&quot;Total phosphorus&quot;</span>, <span class="st">&quot;Filamentous diatom biomass&quot;</span>, <span class="st">&quot;Epilimnion temperat.&quot;</span>))</span></code></pre></div>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 9%" />
+<col style="width: 20%" />
+<col style="width: 32%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Location</th>
+<th style="text-align: center;">Season</th>
+<th style="text-align: center;">Total phosphorus</th>
+<th style="text-align: center;">Filamentous diatom biomass</th>
+<th style="text-align: center;">Epilimnion temperat.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">deep</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.01</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;">21.79</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">deep</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.01</td>
+<td style="text-align: center;">3.10</td>
+<td style="text-align: center;">21.83</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">NE</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.02</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">19.89</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">deep</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.02</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">19.71</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">NE</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">13.90</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">deep</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">287.18</td>
+<td style="text-align: center;">16.05</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s consider that filamentous diatom is our response variable of
+interest, as this food source is hard for zooplankton to consume. We
+will look at epilimnion temperature as a potential explanatory
+variable.</p>
+<p>First, let’s create a copy of the original dataset so that we can
+introduce modifications but keep the original data in case we need
+it.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>filam_diatom <span class="ot">&lt;-</span> ham</span></code></pre></div>
+<p>Before we can get started with the analysis, we need to remove NA
+data. We will now do that for the potential response variable
+filamentous diatom column, and for the potential explanatory variable
+epilimnion temperature:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>filam_diatom <span class="ot">&lt;-</span> filam_diatom[<span class="sc">!</span><span class="fu">is.na</span>(filam_diatom<span class="sc">$</span>filamentous_Diatom), ]</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>filam_diatom <span class="ot">&lt;-</span> filam_diatom[<span class="sc">!</span><span class="fu">is.na</span>(filam_diatom<span class="sc">$</span>mean_mixing_depth_temp), ]</span></code></pre></div>
+<p><em>Practice time</em>: Now you can do this last step (removing NA
+data) for total phosphorus (“TP dissolved_ECCC1m”), as we will consider
+this as another potential explanatory variable later on.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the original dataset &quot;ham&quot; to subset this data, and give this new  dataset a name, like &quot;filam_diatom_P&quot;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Don&#39;t forget to remove NA data from both the response and the explanatory variables</span></span></code></pre></div>
+<p>Let’s go back to our “filam_diatom” dataset. Now we will create a new
+column to describe presence or absence of filamentous diatoms.</p>
+<p>Ensure the reference group (“absent”) is the first to be shown:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>filam_diatom<span class="sc">$</span>filam_presence <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(filam_diatom<span class="sc">$</span>filamentous_Diatom <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;present&quot;</span>, <span class="st">&quot;absent&quot;</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>filam_diatom<span class="sc">$</span>filam_presence <span class="ot">&lt;-</span> <span class="fu">factor</span>(filam_diatom<span class="sc">$</span>filam_presence)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(filam_diatom<span class="sc">$</span>filam_presence)</span></code></pre></div>
+<pre><code>## [1] &quot;absent&quot;  &quot;present&quot;</code></pre>
+<p>Subset to analyse at specific times of the year and at specific
+locations Here I selected summer conditions. Ideally we should also
+subset by station (column “Station_Acronym”), but because there’s not
+enough data to do that, let’s subset by depth, by removing records in
+deep locations:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>filam_diatom <span class="ot">&lt;-</span> <span class="fu">subset</span>(filam_diatom, (season<span class="sc">==</span><span class="dv">2</span> <span class="sc">|</span> season<span class="sc">==</span><span class="dv">3</span>) <span class="sc">&amp;</span> (<span class="sc">!</span>area_group<span class="sc">==</span><span class="st">&quot;deep&quot;</span>))</span></code></pre></div>
+<p>Run model using glm function and family binomial</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(filam_presence <span class="sc">~</span> mean_mixing_depth_temp,</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> filam_diatom, <span class="at">family =</span> binomial)</span></code></pre></div>
+<p>Now we can check the model results</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = filam_presence ~ mean_mixing_depth_temp, family = binomial, 
+##     data = filam_diatom)
+## 
+## Coefficients:
+##                        Estimate Std. Error z value Pr(&gt;|z|)   
+## (Intercept)             10.1581     3.8402   2.645  0.00816 **
+## mean_mixing_depth_temp  -0.4202     0.1736  -2.420  0.01551 * 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 79.807  on 69  degrees of freedom
+## Residual deviance: 72.195  on 68  degrees of freedom
+## AIC: 76.195
+## 
+## Number of Fisher Scoring iterations: 5</code></pre>
+<p>So we can see that our p-value for the epilimnion temperature
+predictor is smaller than 0.05, which means that the presence of
+filamentous diatoms can be predicted by temperatures.</p>
+<p>Let’s see what each component of the model result summary means:</p>
+<p><img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/model_output_description.jpg" /></p>
+<p>We are ready for the best part: plotting model predictions</p>
+<p>The dotted curves are confidence intervals, which show us the range
+in which we are 95% sure about the location of true values, based on our
+data</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, let&#39;s calculate predicted probabilities for different values of mean_mixing_depth_temp</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of values for mean_mixing_depth_temp</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>mean_mixing_depth_temp_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(filam_diatom<span class="sc">$</span>mean_mixing_depth_temp), <span class="fu">max</span>(filam_diatom<span class="sc">$</span>mean_mixing_depth_temp), <span class="at">length.out =</span> <span class="fu">length</span>(filam_diatom<span class="sc">$</span>mean_mixing_depth_temp))</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame with mean_mixing_depth_temp values</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mean_mixing_depth_temp =</span> mean_mixing_depth_temp_values)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict probabilities for each value of mean_mixing_depth_temp</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>predicted_probabilities_filam <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">newdata =</span> newdata, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate confidence intervals manually</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.95</span>) <span class="sc">/</span> <span class="dv">2</span>)  <span class="co"># 95% confidence level</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(predicted_probabilities_filam <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> predicted_probabilities_filam) <span class="sc">/</span> <span class="fu">nrow</span>(filam_diatom))</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>lower_bound <span class="ot">&lt;-</span> predicted_probabilities_filam <span class="sc">-</span> z <span class="sc">*</span> se</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>upper_bound <span class="ot">&lt;-</span> predicted_probabilities_filam <span class="sc">+</span> z <span class="sc">*</span> se</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert &quot;present&quot; and &quot;absent&quot; to 1 and 0</span></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>presence_numeric_filam <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(filam_diatom<span class="sc">$</span>filam_presence <span class="sc">==</span> <span class="st">&quot;present&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the predicted probabilities with confidence intervals</span></span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mean_mixing_depth_temp_values, predicted_probabilities_filam, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Filamentous diatom presence&quot;</span>,</span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Epilimnion temperature (\u00B0C)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Predicted probability&quot;</span>, <span class="at">cex.axis =</span> <span class="fl">1.5</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mean_mixing_depth_temp_values, lower_bound, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mean_mixing_depth_temp_values, upper_bound, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(filam_diatom<span class="sc">$</span>mean_mixing_depth_temp, presence_numeric_filam)</span></code></pre></div>
+<p><img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/plot1.png" /></p>
+<p><em>Practice time</em>:</p>
+<h3 id="create-your-own-model">Create your own model</h3>
+<p>Now it’s your turn! Run your own logistic model using total
+phosphorus as a predictor, and filamentous diatoms as the response
+variable again.</p>
+<p><em>Formatting</em></p>
+<p>Do you remember how you previously labeled your dataset for the
+phosphorus analysis? You can use that for this exercise. You have
+already removed NA data, but before proceeding, let’s relabel the
+response variable to remove empty spaces, which may cause errors going
+forward:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(filam_diatom_P)[<span class="fu">names</span>(filam_diatom_P) <span class="sc">==</span> <span class="st">&quot;TP dissolved_ECCC1m&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Total_phosphorus&quot;</span></span></code></pre></div>
+<p>Now you can create a new column that describes the presence or the
+absence of filamentous diatoms across the dataset:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To create a new column, first type the label you chose previously for the dataframe related to the phosphorus analysis (something like &quot;filam_diatom_P&quot;), then create a column name, and use the function &quot;ifelse&quot; to label all observations where measurements were greater than zero as &quot;present&quot;, and all observations where measurements were equal to zero as &quot;absent&quot;:</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>your_dataset_name<span class="sc">$</span>new_column_name <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(your_dataset_name<span class="sc">$</span>filamentous_Diatom <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;present&quot;</span>, <span class="st">&quot;absent&quot;</span>)</span></code></pre></div>
+<p>Format this new column as a factor</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use the factor function here</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and check how it looks by calling:</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(your_dataset_name<span class="sc">$</span>filamentous_Diatom)</span></code></pre></div>
+<p><em>Select time periods and locations</em></p>
+<p>You can choose to select summer, or another time period. Because we
+have more data for phosphorus, you can select a single station (column
+5: “Station_Acronym”)</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the subset function to select desired periods of time and locations. You can use &quot;&amp;&quot; for more than one selection at the same time, and &quot;|&quot; for selecting either one or other option:</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>your_dataset_name <span class="ot">&lt;-</span> <span class="fu">subset</span>(your_dataset_name, (season<span class="sc">==</span><span class="st">&quot;your selection&quot;</span> <span class="sc">|</span> season<span class="sc">==</span><span class="st">&quot;your selection&quot;</span>) <span class="sc">&amp;</span> (Station_Acronym<span class="sc">==</span><span class="st">&quot;your selection&quot;</span>))</span></code></pre></div>
+<p><em>Run model</em></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use glm function and family binomial</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>your_model_name <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="st">&quot;response variable&quot;</span> <span class="sc">~</span> <span class="st">&quot;explanatory variable&quot;</span>,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> your_dataset_name, <span class="at">family =</span> binomial)</span></code></pre></div>
+<p>Check model results using the summary function</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(your_model_name)</span></code></pre></div>
+<p>How well did this predictor do?</p>
+<p><em>Plot model predictions</em></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of values for Total_phosphorus</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>Total_phosphorus_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(filam_diatom_P<span class="sc">$</span>Total_phosphorus), <span class="fu">max</span>(filam_diatom_P<span class="sc">$</span>Total_phosphorus), <span class="at">length.out =</span> <span class="fu">length</span>(filam_diatom_P<span class="sc">$</span>Total_phosphorus))</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame with Total_phosphorus values</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Total_phosphorus =</span> Total_phosphorus_values)</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict probabilities for each value of Total_phosphorus</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>predicted_probabilities_P <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">newdata =</span> newdata, <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate confidence intervals manually</span></span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.95</span>) <span class="sc">/</span> <span class="dv">2</span>)  <span class="co"># 95% confidence level</span></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(predicted_probabilities_P <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> predicted_probabilities_P) <span class="sc">/</span> <span class="fu">nrow</span>(filam_diatom))</span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>lower_bound <span class="ot">&lt;-</span> predicted_probabilities_P <span class="sc">-</span> z <span class="sc">*</span> se</span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>upper_bound <span class="ot">&lt;-</span> predicted_probabilities_P <span class="sc">+</span> z <span class="sc">*</span> se</span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert &quot;present&quot; and &quot;absent&quot; to 1 and 0</span></span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>presence_numeric_P <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(filam_diatom_P<span class="sc">$</span>filam_presence <span class="sc">==</span> <span class="st">&quot;present&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the predicted probabilities with confidence intervals</span></span>
+<span id="cb58-20"><a href="#cb58-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Total_phosphorus_values, predicted_probabilities_P, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, </span>
+<span id="cb58-21"><a href="#cb58-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Filamentous diatom presence&quot;</span>,</span>
+<span id="cb58-22"><a href="#cb58-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Total phosphorous (dissolved fraction) (mg/L)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Predicted probability&quot;</span>, <span class="at">cex.axis =</span> <span class="fl">1.5</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb58-23"><a href="#cb58-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Total_phosphorus_values, lower_bound, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb58-24"><a href="#cb58-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Total_phosphorus_values, upper_bound, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb58-25"><a href="#cb58-25" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(filam_diatom_P<span class="sc">$</span>Total_phosphorus, presence_numeric_P)</span></code></pre></div>
+<p><img
+src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/plot2.png" /></p>
+<h2 id="evaluating-the-accuracy-of-logistic-models">Evaluating the
+accuracy of logistic models</h2>
+<p>Our last topic will be how to evaluate model accuracy: AUC, or the
+Area Under the Curve (AUC), is a widely used metric which compares the
+probabilities we predicted to the actual data. It evaluates how well the
+model can correctly classify positive cases versus how often the model
+makes mistakes by classifying negatives as positives. It does that
+across different thresholds (from zero to one).</p>
+<p>AUC goes from zero to one, with values close to 1 designating models
+with high accuracy, and values at 0.5 meaning that the model is not
+classifying better than a random classification.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Phyto.nitrate</th>
+<th style="text-align: right;">Diatom.temperature</th>
+<th style="text-align: right;">Diatom.phosphorus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">0.53</td>
+<td style="text-align: right;">0.47</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, none of our models have great accuracy. This could be
+improved by adding data (especially if there is an imbalance between
+positive and negative observations), choosing different or additional
+predictors, subsetting to more specific stations or locations, or
+periods of time.</p>
+<h2 id="what-could-go-wrong">What could go wrong?</h2>
+<ul>
+<li><em>Mixing up predictors and response variables in the logistic
+model equation</em>
+<ul>
+<li>If you get a warning when running your logistic model, you may have
+mixed up the predictors and the response variables. The response
+variable should be the first one to appear after the opening
+parenthesis</li>
+<li>In addition to the variable mix-up, this warning tells us that we
+may be using quantitative measures as our response variable, which is
+not appropriate for a logistic regression. See how this error looks
+like:</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(Total_phosphorus <span class="sc">~</span> filam_presence,</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> filam_diatom_P, <span class="at">family =</span> binomial)</span></code></pre></div>
+<pre><code>## Warning in eval(family$initialize): non-integer #successes in a binomial glm!</code></pre>
+<ul>
+<li><em>Incorrectly coding data so that it is not independent</em></li>
+</ul>
+<p>Imagine you have counts of living and dead organisms in your
+dataset:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>example_independence <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">date=</span><span class="fu">rep</span>(<span class="st">&quot;Jan-1-2024&quot;</span>, <span class="at">times=</span><span class="dv">3</span>), <span class="at">location=</span><span class="fu">c</span>(<span class="st">&quot;station-1&quot;</span>,<span class="st">&quot;station-2&quot;</span>, <span class="st">&quot;station-3&quot;</span>), <span class="at">living_daphnia=</span><span class="fu">floor</span>(<span class="fu">runif</span>(<span class="dv">3</span>, <span class="at">min=</span><span class="dv">0</span>, <span class="at">max=</span><span class="dv">101</span>)),<span class="at">dead_daphnia=</span><span class="fu">floor</span>(<span class="fu">runif</span>(<span class="dv">3</span>, <span class="at">min=</span><span class="dv">0</span>, <span class="at">max=</span><span class="dv">101</span>)))</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># runif function generates random numbers within the range established by &quot;min&quot; and &quot;max&quot; values</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(example_independence))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">date</th>
+<th style="text-align: left;">location</th>
+<th style="text-align: right;">living_daphnia</th>
+<th style="text-align: right;">dead_daphnia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Jan-1-2024</td>
+<td style="text-align: left;">station-1</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">99</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jan-1-2024</td>
+<td style="text-align: left;">station-2</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jan-1-2024</td>
+<td style="text-align: left;">station-3</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">10</td>
+</tr>
+</tbody>
+</table>
+<p>In this case, instead of considering each individual as “living” or
+“dead”, you should calculate the proportion of living organisms <em>per
+replicate</em> like this:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>example_independence<span class="sc">$</span>proportion <span class="ot">&lt;-</span> <span class="fu">round</span>(example_independence<span class="sc">$</span>living_daphnia<span class="sc">/</span>(example_independence<span class="sc">$</span>living_daphnia<span class="sc">+</span>example_independence<span class="sc">$</span>dead_daphnia),<span class="dv">2</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the round function ensures we have 2 decimals in our proportion values</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(example_independence))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">date</th>
+<th style="text-align: left;">location</th>
+<th style="text-align: right;">living_daphnia</th>
+<th style="text-align: right;">dead_daphnia</th>
+<th style="text-align: right;">proportion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Jan-1-2024</td>
+<td style="text-align: left;">station-1</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">0.35</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Jan-1-2024</td>
+<td style="text-align: left;">station-2</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">0.76</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Jan-1-2024</td>
+<td style="text-align: left;">station-3</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.77</td>
+</tr>
+</tbody>
+</table>
+<p>This proportion will be your response variable for the logistic
+model. When using proportions, you should also provide the “weights”
+information in the glm formula (i.e., a dataset with total number of
+trials per replicate, or the sum of events where we got success + events
+where we got failure).</p>
+<ul>
+<li><em>Categorical response variable is formatted as character instead
+of factor</em>
+<ul>
+<li>Formatting data as factors allows for defining order or reference
+group for statistical testing</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we are selecting and formatting the binomial data as we did before, but now we accidentally forget to format the new column as &quot;factor&quot; </span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> ham</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>example<span class="sc">$</span>filam_presence <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(example<span class="sc">$</span>filamentous_Diatom <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">&quot;present&quot;</span>, <span class="st">&quot;absent&quot;</span>)</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(filam_presence <span class="sc">~</span> mean_mixing_depth_temp,</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> example, <span class="at">family =</span> binomial)</span></code></pre></div>
+<pre><code>## Error in eval(family$initialize): y values must be 0 &lt;= y &lt;= 1</code></pre>
+<p>Check the data in the problematic column:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(example<span class="sc">$</span>filam_presence)</span></code></pre></div>
+<pre><code>##  chr [1:742] &quot;present&quot; NA NA &quot;present&quot; NA NA NA NA NA NA NA NA &quot;present&quot; NA ...</code></pre>
+<p>See how we need to remove NA data and format the column as factor for
+our model to run nicely:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> example[<span class="sc">!</span><span class="fu">is.na</span>(example<span class="sc">$</span>filamentous_Diatom), ]</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>example<span class="sc">$</span>filam_presence <span class="ot">&lt;-</span> <span class="fu">factor</span>(example<span class="sc">$</span>filam_presence)</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(example<span class="sc">$</span>filam_presence)</span></code></pre></div>
+<pre><code>## [1] &quot;absent&quot;  &quot;present&quot;</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(filam_presence <span class="sc">~</span> mean_mixing_depth_temp,</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> example, <span class="at">family =</span> binomial)</span></code></pre></div>
+<p>No more errors now!</p>
+<p>That’s it for now, but if you are interested in more complex logistic
+models, here are some resources:</p>
+<h2 id="r-resources">R resources</h2>
+<p><em>Multiple logistic regression</em></p>
+<ul>
+<li><p><a
+href="https://www.quantitative-biology.ca/machine-learning-and-classification.html#multiple-logistic-regression">Building
+Skills in Quantitative Biology (Cuddington, Edwards, &amp; Ingalls,
+2022)</a></p></li>
+<li><p><a
+href="https://library.virginia.edu/data/articles/getting-started-with-multivariate-multiple-regression">Getting
+started with Multivariate Multiple Regression (Ford, 2024)</a></p></li>
+</ul>
+<p><em>Multinomial logistic regression</em></p>
+<ul>
+<li><a
+href="https://ladal.edu.au/regression.html#Mixed-Effects_Binomial_Logistic_Regression">Multinomial
+logistic regression (Russell, 2022)</a></li>
+</ul>
+<p><em>Mixed-effects logistic regression</em></p>
+<ul>
+<li><p><a
+href="https://stats4nr.com/logistic-regression#modeling-more-than-two-responses">Mixed-Effects
+Binomial Logistic Regression (Schweinberger, 2022 )</a></p></li>
+<li><p><a
+href="https://people.linguistics.mcgill.ca/~morgan/qmld-book/mixed-effects-logistic-regression.html">Mixed-effects
+logistic regression (Sonderegger, Wagner, &amp; Torreira,
+2018)</a></p></li>
+</ul>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
