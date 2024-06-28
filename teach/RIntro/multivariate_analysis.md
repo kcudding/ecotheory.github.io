@@ -27,47 +27,11 @@ library(knitr)
 
 # xlsx files
 ham <- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
-#colnames(ham)
-#str(ham)
-#View(ham)
-#table(ham$Station_Acronym)
-
-#summary(ham$calanoid[ham$Station_Acronym=="HH6"])
-
-#ham$calanoid[ham$Station_Acronym=="HH6" & ham$year==2016]
-#ham$calanoid[ham$Station_Acronym=="HH6" & ham$year==2015]
 
 ham$area_group <- as.factor(ham$area_group)
 ham$season <- as.factor(ham$season)
-
 ```
 
-```{r data ploting, eval = FALSE}
-plot(calanoid~SamplingDate, data=ham, col=area_group)
-legend("topleft", legend=levels(ham$area_group), 
-       pch=1,col=c(1:length(levels(ham$area_group))))
-
-samps=as.data.frame(table(ham[,c("year","area_group")]))
-samps$year=as.numeric(as.character(samps$year))
-plot(Freq~year,data=samps[samps$area_group=="deep",],
-     xlim=c(min(samps$year), max(samps$year)),
-     ylim=c(min(samps$Freq), max(samps$Freq)),
-     col="black", type="b", main="Samples per year by area group")
-lines(Freq~year,data=samps[samps$area_group=="NE",],
-      col="red", type="b")
-lines(Freq~year,data=samps[samps$area_group=="west",],
-      col="blue", type="b")
-lines(Freq~year,data=samps[samps$area_group=="wind",],
-      col="green", type="b")
-
-legend("topleft", legend=levels(ham$area_group), lty=1,
-       pch=1,col=c("black", "red", "blue", "green"))
-
-# similar plot using ggplot
-ggplot(samps, aes(x = year, y = Freq, 
-    group = area_group, colour = area_group)) + geom_line()
-
-```
 
 # Multivariate analysis
 
