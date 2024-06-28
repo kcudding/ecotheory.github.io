@@ -1,20 +1,8 @@
----
-title: "Multi-variate Linear Regression Model"
-author: "Xuewen"
-date: "2024-06-20"
-output: 
-  html_document: 
-    toc: true
-    toc_float:
-      collapsed: false
-    toc_depth: 4
-    theme: lumen
-    keep_md: true
----
+
+# Multi-variate Linear Regression
 
 
-
-# 0. Objectives
+## 0. Objectives
 
 In the following sections, you will learn about:
 
@@ -26,7 +14,7 @@ In the following sections, you will learn about:
 
 - model output interpretation and evaluation
 
-# 1. Introduction 
+## Introduction (REMOVE MANUAL NUMBERING)
 
 ## 1.1 What is Multivariate Linear Regression Model
 
@@ -81,7 +69,7 @@ colnames(multi_data)<-c("waterlevel","DIC","bottomhypoxia","totalzoop")
 multi_data<-na.omit(multi_data)
 ```
 
-# 2. Data preparation
+## 2. Data preparation
 
 First, we want to determine the characteristics of the three predictor variables we have, most importantly, are they continuous or categorical? 
 
@@ -154,7 +142,7 @@ multi_data$bottomhypoxia<-as.factor(multi_data$bottomhypoxia)
 
 *Note: As you noticed, the `as.xxx()` format is used to transform data type directly in R. You can explore some other options on your own, such as as.character(), as.integer()....*
 
-# 3. Model building
+## 3. Model building
 
 Continuous variables work smoothly in multi-variate regression model. For categorical variable data, `lm()` function has embedded an automatic *dummy coding* process that will transform categorical values into n-1 groups of 0s and 1s. *(You can check `contrast()` function to learn more about the dummy coding process.)* 
 
@@ -174,7 +162,7 @@ It should be something like this:
 multi_model<-lm(totalzoop~waterlevel+DIC+bottomhypoxia, data=multi_data)
 ```
 
-# 4. Model output
+## 4. Model output
 
 ## 4.1 Model assumptions
 
@@ -290,7 +278,7 @@ summary(multi_model)
 ```
 However, unlike the single variate model, you can compare the coefficients and significance of multiple predictors and decide on whether you want to exclude some of the variables in your final model. In this case, DIC seems to be the most significant variable and we might be able to get a similarly accurate model from this single predictor 
 
-# 5. What could go wrong? 
+## 5. What could go wrong? 
 
 - Check carefully whether the values in your data set are in their correct data types, especially for the categorical variables if you have any. 
 
@@ -298,7 +286,7 @@ However, unlike the single variate model, you can compare the coefficients and s
 
 - Always check the model assumptions to see if linear regression model is indeed the appropriate model to use. 
 
-# References and Resources
+## References and Resources
 
 Other resources on introductions to multivariate linear regression model in R:  
 https://www.datacamp.com/tutorial/multiple-linear-regression-r-tutorial  
