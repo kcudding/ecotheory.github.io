@@ -321,6 +321,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li><a href="#r-resources" id="toc-r-resources">R
         resources</a></li>
         </ul></li>
+        <li><a href="#multivariate-analysis"
+        id="toc-multivariate-analysis">Multivariate analysis”</a>
+        <ul>
+        <li><a href="#libraries-and-imports"
+        id="toc-libraries-and-imports">Libraries and imports</a></li>
+        <li><a href="#xlsx-files" id="toc-xlsx-files">xlsx
+        files</a></li>
+        <li><a href="#principle-component-analysis-pca"
+        id="toc-principle-component-analysis-pca">Principle Component
+        Analysis (PCA)</a>
+        <ul>
+        <li><a href="#correlation-examination"
+        id="toc-correlation-examination">Correlation
+        examination</a></li>
+        </ul></li>
+        <li><a href="#correlation-plot"
+        id="toc-correlation-plot">Correlation plot</a></li>
+        <li><a href="#get-loadings" id="toc-get-loadings">Get
+        loadings</a>
+        <ul>
+        <li><a href="#plot-ordination" id="toc-plot-ordination">Plot
+        ordination</a></li>
+        </ul></li>
+        <li><a href="#use-factoextra-package"
+        id="toc-use-factoextra-package">Use factoextra package</a></li>
+        <li><a href="#variables" id="toc-variables">Variables</a></li>
+        </ul></li>
+        <li><a
+        href="#get-co-ordinates-of-variables-loadings-and-multiply-by-10"
+        id="toc-get-co-ordinates-of-variables-loadings-and-multiply-by-10">Get
+        co-ordinates of variables (loadings), and multiply by
+        10</a></li>
+        <li><a href="#draw-arrows" id="toc-draw-arrows">Draw
+        arrows</a></li>
+        <li><a href="#label-position" id="toc-label-position">Label
+        position</a>
+        <ul>
+        <li><a href="#package" id="toc-package">Package</a>
+        <ul>
+        <li><a href="#shepard-plot" id="toc-shepard-plot">Shepard
+        Plot</a></li>
+        <li><a href="#ordination-plot"
+        id="toc-ordination-plot">Ordination plot</a></li>
+        </ul></li>
+        </ul></li>
+        <li><a href="#add-the-species-variables"
+        id="toc-add-the-species-variables">Add the species variables</a>
+        <ul>
+        <li><a href="#other-resources" id="toc-other-resources">Other
+        resources</a></li>
+        </ul></li>
         </ul>
 
         </div>
@@ -2062,6 +2113,267 @@ Binomial Logistic Regression (Schweinberger, 2022 )</a></p></li>
 href="https://people.linguistics.mcgill.ca/~morgan/qmld-book/mixed-effects-logistic-regression.html">Mixed-effects
 logistic regression (Sonderegger, Wagner, &amp; Torreira,
 2018)</a></p></li>
+</ul>
+<h1 id="multivariate-analysis">Multivariate analysis”</h1>
+<p><code>{r setup, include=FALSE} knitr::opts_chunk$set(message = FALSE, dev = "jpeg", dpi = 300)</code></p>
+<h2 id="libraries-and-imports">Libraries and imports</h2>
+<p>```{r import} library(readxl) library(ggplot2) library(tidyverse)
+library(factoextra) library(knitr)</p>
+<h2 id="xlsx-files">xlsx files</h2>
+<p>ham &lt;- read_excel(“ind dates flat all parameters Hamilton only FOR
+Kim.xlsx”)</p>
+<p>ham<span class="math inline">\(area_group &lt;-
+as.factor(ham\)</span>area_group) ham<span class="math inline">\(season
+&lt;- as.factor(ham\)</span>season)</p>
+<pre><code>
+
+
+
+
+## Learning goals
+
+put in the same format as the previous sections...
+
+## Introduction to multivariate analysis
+
+In previous sections, we have discussed scenarios where there is one response variable. If we have multiple responses, $y_1$...$y_n$, and multiple predictors, $x_1$...$x_n$, then we need multivariate approaches.
+
+These methods allow us to represent the variables or observations in a lower-dimensional space, such as a two-dimensional or three-dimensional plot, while preserving the overall structure of the data.
+
+**OUTLINE: &quot;Large zooplankton such as Daphnia, large copepods or predatory Cladocera (Bythotrephes, Cercopagis, Leptodora) are much better prey for forage fishes, so changes in their populations (or shifting drivers) are of particular interest.&quot;**
+
+*Question: What are the major drivers of Diaphnia biomass?*
+
+*Variables*: Daphnia biomass (mg/m3), water column temperature (°C), epilimnion temperature(°C), particulate organic nitrogen (mg/L), dissolved inorganic carbon (mg/L), particulate organic carbon (mg/L)
+
+
+```{r multivariate data}
+## Select the variables interested
+ham.multi &lt;- ham %&gt;% 
+  select(area_group, season, Station_Acronym,Daphnia,
+         watercolumn_temp,mean_mixing_depth_temp,
+         PON_ECCC1m,DIC_ECCC1m,POC_ECCC1m) %&gt;% 
+  na.omit()
+
+# Rename the columns
+colnames(ham.multi) &lt;- c(&quot;area&quot;,&quot;season&quot;,&quot;station&quot;,&quot;daphnia&quot;,&quot;column.temp&quot;,
+                         &quot;epili.temp&quot;,&quot;pon&quot;,&quot;dic&quot;,&quot;poc&quot;)
+
+
+## Visualize the multivariate response variables
+ggplot(ham.multi, aes(x=season, y=daphnia))+
+  geom_bar(stat = &quot;identity&quot;)</code></pre>
+<h2 id="principle-component-analysis-pca">Principle Component Analysis
+(PCA)</h2>
+<p>Principle component analysis is a linear transformation method that
+converts the original set of variables into a new set of linearly
+uncorrelated variables, called principal components (PCs), which are
+sorted in decreasing order of variance.</p>
+<h3 id="correlation-examination">Correlation examination</h3>
+<p>First of all, we need to examine the correlation between our
+variables. We can either run a correlation test, or create a correlation
+plot.</p>
+<p>```{r correlation} ## Correlation table cor.df &lt;-
+cor(ham.multi[4:9]) kable(cor.df)</p>
+<h2 id="correlation-plot">Correlation plot</h2>
+<p>pairs(ham.multi[4:8], main = “Ham Data”, pch = as.numeric(ham<span
+class="math inline">\(season), col = (ham\)</span>season))</p>
+<pre><code>
+### PCA with standardized data
+
+Now we can start with running our principle component analyses. PCA can be computed using various functions in R, such as prcomp() in *stats* package, princomp() in *stats* package, rda() in *vegan* package.
+
+Here we demonstrate the simplest method using prcomp() function.
+
+```{r pca run}
+## Run PCA analysis
+pca.ham &lt;- prcomp(ham.multi[, 4:9], scale = TRUE) #subset for all continuous variables
+summary(pca.ham)</code></pre>
+<p>After completing the dimension reduction, each sample now appears as
+a point in space specified by its new position along the principle
+component axes. There coordinates are the <strong>scores</strong>
+returned by the PCA.</p>
+<p><strong>Loadings</strong> are the coefficients of the linear
+combinations of the original variables that define the principle
+components. They essentially tell us how much weight each original
+variable has in forming a particular principal component.</p>
+<p>These information can be extracted from the PCA object very
+easily.</p>
+<p>```{r pca loadings and scores} ## Get scores score &lt;-
+as.data.frame(pca.ham$x)</p>
+<h2 id="get-loadings">Get loadings</h2>
+<p>loadings &lt;- as.data.frame(pca.ham<span
+class="math inline">\(rotation) barplot(pca.ham\)</span>rotation[,1],
+main = ““) # loadings on PC1 barplot(pca.ham$rotation[,2], main =”“) #
+loadings on PC2</p>
+<pre><code>
+
+### Screeplot
+
+Now, we need to determine how many principle components to retain for further analysis. The screeplot() function allows us to visualize the variance explained by each of the principle component axes. Ideally, a curve should be steep, and then bend at an &quot;elbow&quot;, after which the curve flattens out. The first few principle components usually account for a large portion of the variance in the data, and should be retained.
+
+```{r pca screeplot}
+## Screeplot
+screeplot(pca.ham, type = (&quot;lines&quot;), main = &quot;Screeplot&quot;, pch = 16, cex = 1)
+
+## Another ploting method using factoextra package
+fviz_eig(pca.ham, col.var=&quot;blue&quot;)</code></pre>
+<p>The first two principle components together explain roughly 72% of
+the total variance in this dataset. So we are confident to use the first
+two principle components to interprate our results.</p>
+<h3 id="plot-ordination">Plot ordination</h3>
+<p>After we chose our principle component axes, we can start visualizing
+our multidimensional data in a 2-dimensional space.</p>
+<p>First of all, we would like visualize the positions of our samples on
+the new axes (PC1 and PC2).</p>
+<p>```{r pca score plot} ## Use base R plot function pvar &lt;-
+round(summary(pca.ham)$importance[2, 1:2], 2) pvar</p>
+<p>plot(pca.ham<span class="math inline">\(x[, 1:2], col =
+as.numeric(ham.multi\)</span>season) + 1, ylim = c(-3,3), cex = 1, pch =
+as.numeric(ham.multi$season) + 14, xlab = paste0(“PC1 (”,pvar[1] * 100,
+“%)”), ylab = paste0(“PC2 (”, pvar[2] * 100,“%)”))</p>
+<p>legend(“topright”, legend = unique(ham.multi<span
+class="math inline">\(season),  pch =
+as.numeric(unique(ham.multi\)</span>season)) +14, col = c(2, 3, 4,5),
+bty = “n”)</p>
+<h2 id="use-factoextra-package">Use factoextra package</h2>
+<p>fviz_pca_ind(pca.ham)</p>
+<pre><code>
+We can also plot how much influence each variable has on each of the two principle components. We can get such information from the loadings scores we extracted earlier, and create a loading plot.
+
+```{r pca loading plot}
+## Use base R plot function
+plot(NA, ylim = c(-8, 8), xlim = c(-6, 6),
+     xlab = paste0(&quot;PC1 (&quot;,pvar[1] * 100, &quot;%)&quot;),
+     ylab = paste0(&quot;PC2 (&quot;, pvar[2] * 100,&quot;%)&quot;))
+
+abline(v = 0, col = &quot;grey90&quot;)
+abline(h = 0, col = &quot;grey90&quot;)
+
+# Get co-ordinates of variables (loadings), and multiply by 10
+l.x &lt;- loadings[, 1] * 10
+l.y &lt;- loadings[, 2] * 10
+
+# Draw arrows
+arrows(x0 = 0, x1 = l.x, y0 = 0, y1 = l.y, col = 4, length = 0.15,
+    lwd = 1.5)
+
+# Label position
+l.pos &lt;- l.y  # Create a vector of y axis coordinates
+lo &lt;- which(l.y &lt; 0)  # Get the variables on the bottom half of the plot
+hi &lt;- which(l.y &gt; 0)  # Get variables on the top half
+# Replace values in the vector
+l.pos &lt;- replace(l.pos, lo, &quot;1&quot;)
+l.pos &lt;- replace(l.pos, hi, &quot;3&quot;)
+l.pos[4] &lt;- &quot;3&quot;
+l.x[3:4] &lt;- l.x[3:4] + 0.75
+# Variable labels
+text(l.x, l.y, labels = row.names(loadings), col = 2, pos = l.pos,
+    cex = 1)
+
+
+## Use factoextra package
+fviz_pca_var(pca.ham)</code></pre>
+<p>Remember that positively correlated variables are grouped close
+together (formed angle around 0 degree); variables with about a 90
+degree angle are not correlated; negatively correlated variables are
+positioned on opposite sides of the plot origin (~180 degree angle). The
+distance between the variables and the origin measure the contribution
+of that variable to the ordination. A shorter arrow indicates its less
+importance for the ordination. A longer arrow means the variable is
+better represented.</p>
+<p>Finally, we can visualize all above information (loadings and scores)
+on one graph using a biplot.</p>
+<p>```{r pca biplot} ## Samples plot(pca.ham<span
+class="math inline">\(x[, 1:2], col =
+as.numeric(ham.multi\)</span>season) + 1, ylim = c(-6,6), xlim =
+c(-5,7), cex = 1, pch = as.numeric(ham.multi$season) + 14, xlab =
+paste0(“PC1 (”,pvar[1] * 100, “%)”), ylab = paste0(“PC2 (”, pvar[2] *
+100,“%)”))</p>
+<p>legend(“topright”, legend = unique(ham.multi<span
+class="math inline">\(season),  pch =
+as.numeric(unique(ham.multi\)</span>season)) +14, col = c(2, 3, 4,5),
+bty = “n”)</p>
+<h2 id="variables">Variables</h2>
+<h1 id="get-co-ordinates-of-variables-loadings-and-multiply-by-10">Get
+co-ordinates of variables (loadings), and multiply by 10</h1>
+<p>l.x &lt;- loadings[, 1] * 10 l.y &lt;- loadings[, 2] * 10</p>
+<h1 id="draw-arrows">Draw arrows</h1>
+<p>arrows(x0 = 0, x1 = l.x, y0 = 0, y1 = l.y, col = 4, length = 0.15,
+lwd = 1.5)</p>
+<h1 id="label-position">Label position</h1>
+<p>l.pos &lt;- l.y # Create a vector of y axis coordinates lo &lt;-
+which(l.y &lt; 0) # Get the variables on the bottom half of the plot hi
+&lt;- which(l.y &gt; 0) # Get variables on the top half # Replace values
+in the vector l.pos &lt;- replace(l.pos, lo, “1”) l.pos &lt;-
+replace(l.pos, hi, “3”) l.pos[4] &lt;- “3” l.x[3:4] &lt;- l.x[3:4] +
+0.75 # Variable labels text(l.x, l.y, labels = row.names(loadings), col
+= 2, pos = l.pos, cex = 1)</p>
+<h2 id="package">Package</h2>
+<p>fviz_pca_biplot(pca.ham, label = “none”, habillage =
+ham.multi$season, addEllipses = TRUE)</p>
+<pre><code>
+## Non-metric multidimensional scaling (nMDS)
+
+The produced biplot in PCA represents well the distance among objects, but fails to represent the whole variation dimensions of the ordination space. Unlike PCA, non-metric multidimensional scaling (nMDS) does not to preserve the exact dissimilarities (distance) among objects in an ordination plot, instead it represents as well as possible the ordering relationships among objects in a small and specified number of axes.
+
+In other words, the goal of nMDS is to represent the original position of samples in multidimensional space as accurately as possible using a reduced number of dimensions.
+
+```{r nMDS run}
+library(vegan)
+nmds.ham &lt;- metaMDS(ham.multi[,4:9], distance = &quot;bray&quot;, k = 2, trace = FALSE)
+
+## Stress
+nmds.ham$stress</code></pre>
+<p><em>Stress</em>: How well points fit within the specified number of
+dimensions.</p>
+<p><em>A good rule of thumb for stress:</em></p>
+<ul>
+<li><span class="math inline">\(&gt;0.2\)</span> Poor (risk in
+interpretation)</li>
+<li><span class="math inline">\(0.1-0.2\)</span> Fair (some distances
+misleading)</li>
+<li><span class="math inline">\(0.05-0.1\)</span> Good (inferences
+confident)</li>
+<li><span class="math inline">\(&lt;0.05\)</span> Excellent
+representation</li>
+</ul>
+<h3 id="shepard-plot">Shepard Plot</h3>
+<p>We can use a Shepard plot to learn about the distortion of
+representation. On the x-axis, it plots the original dissimilarity
+(original distances in full dimensions). On the y-axis, it plots the
+distances in the reduced dimensional space. Ideally, a really accurate
+dimension reduction will produce a straight line.</p>
+<p><code>{r nMDS shepard plot} ## Shepard plot stressplot(nmds.ham, pch = 16, las = 1,            main = "Shrepad plot")</code></p>
+<h3 id="ordination-plot">Ordination plot</h3>
+<p>```{r nMDS ordination} ## Simple plot ordiplot(nmds.ham, type = “n”,
+main = “Ordination”) orditorp(nmds.ham, display = “sites”, labels = F,
+pch = as.numeric(ham.multi<span class="math inline">\(season) + 14,  col
+= c(2, 3, 4, 5) [as.numeric(ham.multi\)</span>season)], cex = 1) # add
+sites legend(“bottomright”, legend = unique(ham.multi<span
+class="math inline">\(season),  pch =
+as.numeric(unique(ham.multi\)</span>season)) + 14, col = c(2,3,4,5), bty
+= “n”, cex = 1) # add legend</p>
+<h1 id="add-the-species-variables">Add the species variables</h1>
+<p>#’ Envfit fits environmental vectors or factors onto an ordination
+spp.fit &lt;- envfit(nmds.ham, ham.multi[,4:9], permutations = 999)
+plot(spp.fit, p.max = 0.01, col = “black”, cex = 0.7) ```</p>
+<h2 id="other-resources">Other resources</h2>
+<p><em>Multivariate analyses tutorials</em></p>
+<ul>
+<li><a href="!https://www.quantitative-biology.ca/index.html">Building
+Skills in Quantitative Biology</a></li>
+<li><a href="!https://r.qcbs.ca/workshop09/book-en/index.html">QCBS R
+Workshop Series - Multivariate Analyses in R</a></li>
+<li><a href="!https://rpubs.com/CPEL/NMDS">Running NMDS using
+‘metaMDS’(nMDS tutorial with vegan package)</a></li>
+</ul>
+<p><em>Useful R packages</em></p>
+<ul>
+<li>factoextra (for visualizing PCA results)</li>
+<li><a href="!https://bryanhanson.github.io/LearnPCA/">learnPCA (an R
+package for PCA learning)</a></li>
+<li>ggbiplot</li>
 </ul>
             </div>
     </div>

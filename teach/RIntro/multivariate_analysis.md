@@ -1,22 +1,11 @@
----
-title: "Multivariate analysis"
-author: "Eddie Wu"
-date: "`r Sys.Date()`"
-output:
-  html_document: 
-    toc: yes
-    number_sections: no
-    toc_float:
-      collapsed: no
-      smooth_scroll: no
-    keep_md: yes
----
+
+# Multivariate analysis"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message = FALSE, dev = "jpeg", dpi = 300)
 ```
 
-# Libraries and imports
+## Libraries and imports
 
 ```{r import}
 library(readxl)
@@ -25,7 +14,7 @@ library(tidyverse)
 library(factoextra)
 library(knitr)
 
-# xlsx files
+## xlsx files
 ham <- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
 
 ham$area_group <- as.factor(ham$area_group)
@@ -33,7 +22,7 @@ ham$season <- as.factor(ham$season)
 ```
 
 
-# Multivariate analysis
+
 
 
 ## Learning goals
