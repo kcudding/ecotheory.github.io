@@ -334,7 +334,7 @@ stressplot(nmds.ham, pch = 16, las = 1,
            main = "Shrepad plot")
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_stressplot.jpeg)
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_streeplot.jpeg)
 
 
 ### Plot ordination for nMDS
