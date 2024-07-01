@@ -283,7 +283,7 @@ biplot(pca.ham,
        ylab = paste0("PC2 (", pvar[2],"%)"))
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/biplot1.jpeg)
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_biplot1.jpeg)
 
 **Some important points for the `biplot()` function**:
 
@@ -334,7 +334,7 @@ stressplot(nmds.ham, pch = 16, las = 1,
            main = "Shrepad plot")
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/stressplot.jpeg)
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_stressplot.jpeg)
 
 
 ### Plot ordination for nMDS
