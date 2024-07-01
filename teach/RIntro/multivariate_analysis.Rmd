@@ -24,21 +24,16 @@ library(ggplot2)
 library(tidyverse)
 library(factoextra)
 library(knitr)
+library(vegan)
 
 # xlsx files
 ham <- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
 
 ham$area_group <- as.factor(ham$area_group)
-ham$season <- as.factor(ham$season)
 ```
 
 
 # Multivariate analysis
-
-
-## Learning goals
-
-put in the same format as the previous sections...
 
 ## Introduction to multivariate analysis
 
@@ -53,7 +48,7 @@ These methods allow us to represent the variables or observations in a lower-dim
 *Variables*: Daphnia biomass (mg/m3), water column temperature (°C), epilimnion temperature(°C), particulate organic nitrogen (mg/L), dissolved inorganic carbon (mg/L), particulate organic carbon (mg/L)
 
 
-```{r multivariate data}
+```{r}
 ## Select the variables interested
 ham.multi <- ham %>% 
   select(area_group, season, Station_Acronym,Daphnia,
@@ -61,14 +56,21 @@ ham.multi <- ham %>%
          PON_ECCC1m,DIC_ECCC1m,POC_ECCC1m) %>% 
   na.omit()
 
-# Rename the columns
+
+## Rename the columns
 colnames(ham.multi) <- c("area","season","station","daphnia","column.temp",
                          "epili.temp","pon","dic","poc")
+```
 
+In our new dataframe, different seasons are represented by numeric numbers from 1 to 5. We would like to re-code them into string factors, for easier visualization in later graphics. There are many ways to do this, here we introduce using the `factor()` function.
 
-## Visualize the multivariate response variables
-ggplot(ham.multi, aes(x=season, y=daphnia))+
-  geom_bar(stat = "identity")
+```{r}
+## Recode the season numeric code into factors
+table(ham.multi$season)
+ham.multi$season <- factor(ham.multi$season, 
+                           levels = c(1, 2, 3, 4), 
+                           labels = c("spring", "early summer",
+                                      "late summer", "early fall"))
 ```
 
 
@@ -79,9 +81,9 @@ Principle component analysis is a linear transformation method that converts the
 
 ### Correlation examination
 
-First of all, we need to examine the correlation between our variables. We can either run a correlation test, or create a correlation plot.
+First of all, we need to examine the correlation between our variables. We can achieve this by running a correlation test using `cor()` function, or creating a correlation plot using `pairs()` function.
 
-```{r correlation}
+```{r}
 ## Correlation table
 cor.df <- cor(ham.multi[4:9])
 kable(cor.df)
@@ -92,158 +94,148 @@ pairs(ham.multi[4:8], main = "Ham Data",
 
 ```
 
+Dimension reduction techniques such PCA works the best when variables are strongly correlated with each other. From the above correlation test output and plot, we can see that some variables clearly have a linear relationship, such as water column temperature and epilimnion temperature, or water column temperature and dissolved inorganic carbon.
+
 ### PCA with standardized data
 
 Now we can start with running our principle component analyses. PCA can be computed using various functions in R, such as prcomp() in *stats* package, princomp() in *stats* package, rda() in *vegan* package.
 
-Here we demonstrate the simplest method using prcomp() function.
+Here we demonstrate using the *vegan* package, since it also allows easy visualization of our results. Keep in mind that we need to run the PCA on all columns containing continuous variables, which is column 4 - 9 in the ham.multi dataset.
 
-```{r pca run}
+```{r}
 ## Run PCA analysis
-pca.ham <- prcomp(ham.multi[, 4:9], scale = TRUE) #subset for all continuous variables
+pca.ham <- rda(ham.multi[,4:9], scale = TRUE) #subset for all continuous variables
 summary(pca.ham)
 ```
 
+After completing the dimension reduction, each sample now appears as a point in space specified by its new position along the principle component axes. There coordinates are referred to as "site scores" in rda() results, and we can assess such information with the `scores()` function.
 
-After completing the dimension reduction, each sample now appears as a point in space specified by its new position along the principle component axes. There coordinates are the **scores** returned by the PCA.
-
-**Loadings** are the coefficients of the linear combinations of the original variables that define the principle components. They essentially tell us how much weight each original variable has in forming a particular principal component.
-
-These information can be extracted from the PCA object very easily.
-
-```{r pca loadings and scores}
-## Get scores
-score <- as.data.frame(pca.ham$x)
-
-## Get loadings
-loadings <- as.data.frame(pca.ham$rotation)
-barplot(pca.ham$rotation[,1], main = "") # loadings on PC1
-barplot(pca.ham$rotation[,2], main = "") # loadings on PC2
+```{r, eval = FALSE}
+scores(pca.ham, display = "sites")
 ```
+
+Meanwhile, our original variables are projected on the the new principle components. They are defined as "Loadings" and are referred to as "species scores" in rda() results. This information can be obtained with the `scores()` function too.
+
+```{r, eval = FALSE}
+scores(pca.ham, display = "species")
+```
+
+
+**Remember**:
+
+* "Sites" refer to your observations (the rows in your dataset).
+
+* "Species" refer to your descriptors (the columns in your dataset), which are the different environmental variables.
 
 
 ### Screeplot
 
-Now, we need to determine how many principle components to retain for further analysis. The screeplot() function allows us to visualize the variance explained by each of the principle component axes. Ideally, a curve should be steep, and then bend at an "elbow", after which the curve flattens out. The first few principle components usually account for a large portion of the variance in the data, and should be retained.
+Now, let's determine how many principle components to retain for further analysis. The `screeplot()` function allows us to visualize the variance explained by each of the principle components. Ideally, a curve should be steep, and then bend at an "elbow", after which the curve flattens out. The first few principle components usually account for a large portion of the variance in the data, and should be retained.
 
-```{r pca screeplot}
+```{r}
 ## Screeplot
 screeplot(pca.ham, type = ("lines"), main = "Screeplot", pch = 16, cex = 1)
-
-## Another ploting method using factoextra package
-fviz_eig(pca.ham, col.var="blue")
 ```
 
-The first two principle components together explain roughly 72% of the total variance in this dataset. So we are confident to use the first two principle components to interprate our results.
+Meanwhile, we can also look at the proportional variance explained by each principle component. Such information is available in the `summary()` of our PCA results. We see the first two PCs together explain roughly 72% of the total variance in this dataset. Along with the screeplot, we are confident that the first two PC are sufficient enough to represent our data.
 
+For easier usage in future, let's store them in a list:
 
-### Plot ordination
-
-After we chose our principle component axes, we can start visualizing our multidimensional data in a 2-dimensional space.
-
-First of all, we would like visualize the positions of our samples on the new axes (PC1 and PC2).
-
-```{r pca score plot}
-## Use base R plot function
-pvar <- round(summary(pca.ham)$importance[2, 1:2], 2)
+```{r}
+pvar <- c(50.22, 21.43)
 pvar
-
-plot(pca.ham$x[, 1:2], col = as.numeric(ham.multi$season) + 1,
-     ylim = c(-3,3), cex = 1, pch = as.numeric(ham.multi$season) + 14,
-     xlab = paste0("PC1 (",pvar[1] * 100, "%)"),
-     ylab = paste0("PC2 (", pvar[2] * 100,"%)"))
-
-legend("topright", legend = unique(ham.multi$season),
-       pch = as.numeric(unique(ham.multi$season)) +14,
-       col = c(2, 3, 4,5), bty = "n")
-
-
-## Use factoextra package
-fviz_pca_ind(pca.ham)
 ```
 
-We can also plot how much influence each variable has on each of the two principle components. We can get such information from the loadings scores we extracted earlier, and create a loading plot.
+### Plot ordination for PCA
 
-```{r pca loading plot}
-## Use base R plot function
-plot(NA, ylim = c(-8, 8), xlim = c(-6, 6),
-     xlab = paste0("PC1 (",pvar[1] * 100, "%)"),
-     ylab = paste0("PC2 (", pvar[2] * 100,"%)"))
+After we have chosen the first two principle components, now let's start visualizing our multidimensional data in a 2-dimensional space. 
 
-abline(v = 0, col = "grey90")
-abline(h = 0, col = "grey90")
+As we have seen in previous materials, there are many different methods/packages for creating plots in R. Some of these resources are listed in the "Other Resources" section at the end if you are interested. For this tutorial, we demonstrate using the vegan package to visualize our multivariate results.
 
-# Get co-ordinates of variables (loadings), and multiply by 10
-l.x <- loadings[, 1] * 10
-l.y <- loadings[, 2] * 10
+In general, plotting ordination with vegan follows two steps:
 
-# Draw arrows
-arrows(x0 = 0, x1 = l.x, y0 = 0, y1 = l.y, col = 4, length = 0.15,
-    lwd = 1.5)
+1. Use `ordiplot()` to create an empty canvas (You can specify the title, axes, limits, and many other features during this step).
 
-# Label position
-l.pos <- l.y  # Create a vector of y axis coordinates
-lo <- which(l.y < 0)  # Get the variables on the bottom half of the plot
-hi <- which(l.y > 0)  # Get variables on the top half
-# Replace values in the vector
-l.pos <- replace(l.pos, lo, "1")
-l.pos <- replace(l.pos, hi, "3")
-l.pos[4] <- "3"
-l.x[3:4] <- l.x[3:4] + 0.75
-# Variable labels
-text(l.x, l.y, labels = row.names(loadings), col = 2, pos = l.pos,
-    cex = 1)
+2. Use `points()` to add points representing samples or variables in the new dimensions. Use `text()` to add labels.
 
 
-## Use factoextra package
-fviz_pca_var(pca.ham)
+**Plot 1 - Site Plot (samples)**
+
+we can visualize the positions of our samples on the new axes (PC1 and PC2). This is the "site plot".
+
+```{r}
+# Create a blank plot
+ordiplot(pca.ham, type = "n", main = "Individuals ('sites')",
+         xlab = paste0("PC1 (",pvar[1], "%)"), # x-axis label
+         ylab = paste0("PC2 (", pvar[2],"%)"), # y-axis label
+         ylim = c(-1.2,1.2))
+
+# Use points() to add points
+points(pca.ham, display = "sites", cex = 1) # add sites
+```
+
+What if we are interested in the seasonal patterns of our samples on the reduced dimensions? We can use the same graphing techniques, but group our dataset using different seasons. Make sure to label your seasons in the "legend".
+
+```{r}
+## Plot the individuals
+ordiplot(pca.ham, type = "n", main = "Individuals ('sites') by season",
+         xlab = paste0("PC1 (",pvar[1], "%)"),
+         ylab = paste0("PC2 (", pvar[2],"%)"),
+         ylim = c(-1.2,1.2)) # specify the -axis limits
+
+## Use points() to add points
+points(pca.ham, display = "sites",
+       pch = as.numeric(ham.multi$season) + 14,
+       col = c(2, 3, 4, 5) [as.numeric(ham.multi$season)],
+       cex = 1) # add sites
+
+## Add legends
+legend("bottomright", legend = unique(ham.multi$season),
+       pch = as.numeric(ham.multi$season) +14,
+       col = c(2, 3, 4,5), bty = "n") # bty specifys legend box boarder
+
+
+```
+
+There are many other functions in the vegan package that allows customization of your ordination plots. For example, `ordiellipse(pca.ham, display="sites", conf=0.95, kind="sd", groups=ham.multi$season)` function allows us to add 95% confidence intervals to each group of samples.
+
+**Plot 2 - Species Plot (variables)**
+
+We can also plot how much influence each variable has on each of the two principle components. This is the "species plot". The steps are very similar. Instead of `display = "sites"`, we specify `display = "species"` in `points()`.
+
+```{r}
+## Plot the individuals
+ordiplot(pca.ham, type = "n", main = "Variables ('species')",
+         xlab = paste0("PC1 (",pvar[1], "%)"),
+         ylab = paste0("PC2 (", pvar[2],"%)")) # specify the -axis limits
+
+## Use points() to add points
+points(pca.ham, display = "species",cex = 1) # add species
+text(pca.ham, display = "species") # add species labels
 ```
 
 Remember that positively correlated variables are grouped close together (formed angle around 0 degree); variables with about a 90 degree angle are not correlated; negatively correlated variables are positioned on opposite sides of the plot origin (~180 degree angle). The distance between the variables and the origin measure the contribution of that variable to the ordination. A shorter arrow indicates its less importance for the ordination. A longer arrow means the variable is better represented.
 
-Finally, we can visualize all above information (loadings and scores) on one graph using a biplot.
+**Plot 3 - BiPlot (samples and variables)**
 
-```{r pca biplot}
-## Samples
-plot(pca.ham$x[, 1:2], col = as.numeric(ham.multi$season) + 1,
-     ylim = c(-6,6), xlim = c(-5,7),
-     cex = 1, pch = as.numeric(ham.multi$season) + 14,
-     xlab = paste0("PC1 (",pvar[1] * 100, "%)"),
-     ylab = paste0("PC2 (", pvar[2] * 100,"%)"))
+Finally, we can visualize all above information (sites and species) on one graph with a biplot. This time, we use the `biplot()` function in base R to do this.
 
-legend("topright", legend = unique(ham.multi$season),
-       pch = as.numeric(unique(ham.multi$season)) +14,
-       col = c(2, 3, 4,5), bty = "n")
-
-
-## Variables
-# Get co-ordinates of variables (loadings), and multiply by 10
-l.x <- loadings[, 1] * 10
-l.y <- loadings[, 2] * 10
-
-# Draw arrows
-arrows(x0 = 0, x1 = l.x, y0 = 0, y1 = l.y, col = 4, length = 0.15,
-    lwd = 1.5)
-
-# Label position
-l.pos <- l.y  # Create a vector of y axis coordinates
-lo <- which(l.y < 0)  # Get the variables on the bottom half of the plot
-hi <- which(l.y > 0)  # Get variables on the top half
-# Replace values in the vector
-l.pos <- replace(l.pos, lo, "1")
-l.pos <- replace(l.pos, hi, "3")
-l.pos[4] <- "3"
-l.x[3:4] <- l.x[3:4] + 0.75
-# Variable labels
-text(l.x, l.y, labels = row.names(loadings), col = 2, pos = l.pos,
-    cex = 1)
-
-
-## Package
-fviz_pca_biplot(pca.ham, label = "none",
-                habillage = ham.multi$season,
-                addEllipses = TRUE)
+```{r}
+## Biplot for PCA
+biplot(pca.ham,
+       display = c("sites","species"), # display both elements
+       type = c("text", "points"),
+       main = "Biplot",
+       xlab = paste0("PC1 (",pvar[1], "%)"),
+       ylab = paste0("PC2 (", pvar[2],"%)"))
 ```
+
+**Some important points for the `biplot()` function**:
+
+1. `biplot()` allows different scaling options to preserve either the Euclidean distance (in multidimensional space) among objects (sites), or the correlations/covariances between variables (species). To learn more, please refer to the [function description](!https://rdrr.io/rforge/vegan/man/biplot.rda.html) or these online tutorials: [QCBS workshop - Unconstrained Ordination Scaling](!https://r.qcbs.ca/workshop09/book-en/principal-component-analysis.html#condensing-data-with-principal-component-analysis); [Tutorial 14.2 - Principle Component Analysis (PCA)](!https://www.flutterbys.com.au/stats/tut/tut14.2.html).
+
+2. `biplot()` can also be used to show only the samples or variables, by setting `display = "sites"` or `display = "species"`. However, it does not allow us to visualize samples in different groups. This is why we introduce the slightly more complicated `ordiplot()` method in the previous sections.
+
 
 ## Non-metric multidimensional scaling (nMDS)
 
@@ -251,22 +243,23 @@ The produced biplot in PCA represents well the distance among objects, but fails
 
 In other words, the goal of nMDS is to represent the original position of samples in multidimensional space as accurately as possible using a reduced number of dimensions.
 
-```{r nMDS run}
-library(vegan)
+We can use the `metaMDS()` function in the vegan package to conduct non-metric multidimensional scaling in R. In addition to the input dataframe, this function also requires us to specify the distance measure `distance = ?` and number of reduced dimensions `k = ?`.
+
+```{r}
 nmds.ham <- metaMDS(ham.multi[,4:9], distance = "bray", k = 2, trace = FALSE)
 
 ## Stress
 nmds.ham$stress
 ```
 
-*Stress*: How well points fit within the specified number of dimensions.
+From the nMDS results, we can extract the **stress** parameter. Stress identifies how well points fit within the specified number of dimensions.
 
 *A good rule of thumb for stress:*
 
-* $>0.2$ Poor (risk in interpretation)
-* $0.1-0.2$ Fair (some distances misleading)
-* $0.05-0.1$ Good (inferences confident)
-* $<0.05$ Excellent representation
+* *$>0.2$ Poor (risk in interpretation)*
+* *$0.1-0.2$ Fair (some distances misleading)*
+* *$0.05-0.1$ Good (inferences confident)*
+* *$<0.05$ Excellent representation*
 
 
 ### Shepard Plot
@@ -274,20 +267,23 @@ nmds.ham$stress
 We can use a Shepard plot to learn about the distortion of representation. On the x-axis, it plots the original dissimilarity (original distances in full dimensions). On the y-axis, it plots the distances in the reduced dimensional space. Ideally, a really accurate dimension reduction will produce a straight line.
 
 
-```{r nMDS shepard plot}
+```{r}
 ## Shepard plot
 stressplot(nmds.ham, pch = 16, las = 1,
            main = "Shrepad plot")
 ```
 
 
+### Plot ordination for nMDS
 
-### Ordination plot
+No we can plot the ordination for nMDS, just like for PCA in the previous sections. The steps exactly the same. We use `ordiplot()` to create an empty canvas first, then use `points()` to add samples/variables. Additionally, we would like to represent species scores with arrows.
 
-```{r nMDS ordination}
-## Simple plot
-ordiplot(nmds.ham, type = "n", main = "Ordination")
-orditorp(nmds.ham, display = "sites", labels = F,
+```{r}
+## Empty canvas
+ordiplot(nmds.ham, type = "n", main = "nMDS Ordination")
+
+## Add points and legends
+points(nmds.ham, display = "sites",
          pch = as.numeric(ham.multi$season) + 14,
          col = c(2, 3, 4, 5) [as.numeric(ham.multi$season)],
          cex = 1) # add sites
@@ -295,22 +291,24 @@ legend("bottomright", legend = unique(ham.multi$season),
        pch = as.numeric(unique(ham.multi$season)) + 14,
        col = c(2,3,4,5), bty = "n", cex = 1) # add legend
 
-# Add the species variables
-#' Envfit fits environmental vectors or factors onto an ordination
-spp.fit <- envfit(nmds.ham, ham.multi[,4:9], permutations = 999)
-plot(spp.fit, p.max = 0.01, col = "black", cex = 0.7)
+## Add species scores manually
+species_scores <- scores(nmds.ham, display = "species")
+arrows(0, 0, species_scores[,1], species_scores[,2],
+       col = "black", length = 0.1)
+text(species_scores[,1], species_scores[,2],
+     labels = rownames(species_scores), col = "black",
+     pos = c(2,2,3,4,2,3))
 ```
-
-
 
 
 ## Other resources
 
 *Multivariate analyses tutorials*
 
-* [Building Skills in Quantitative Biology](!https://www.quantitative-biology.ca/index.html)
+* [Building Skills in Quantitative Biology](!https://www.quantitative-biology.ca/multi.html)
 * [QCBS R Workshop Series - Multivariate Analyses in R](!https://r.qcbs.ca/workshop09/book-en/index.html)
 * [Running NMDS using 'metaMDS'(nMDS tutorial with vegan package)](!https://rpubs.com/CPEL/NMDS)
+* [Introduction to Ordination](!https://ourcodingclub.github.io/tutorials/ordination/)
 
 *Useful R packages*
 
