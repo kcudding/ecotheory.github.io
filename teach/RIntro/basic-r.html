@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Basic R | R Intro Workshop</title>
+  <meta name="description" content="Building Skills in Quantitative Biology" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Basic R | R Intro Workshop" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Building Skills in Quantitative Biology" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Basic R | R Intro Workshop" />
+  
+  <meta name="twitter:description" content="Building Skills in Quantitative Biology" />
+  
+
+<meta name="author" content="The Cuddington Lab" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="get-ready-for-the-workshop.html"/>
+<link rel="next" href="linear-regression.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { font-weight: bold; } /* Alert */
+code span.an { font-style: italic; } /* Annotation */
+code span.cf { font-weight: bold; } /* ControlFlow */
+code span.co { font-style: italic; } /* Comment */
+code span.cv { font-style: italic; } /* CommentVar */
+code span.do { font-style: italic; } /* Documentation */
+code span.dt { text-decoration: underline; } /* DataType */
+code span.er { font-weight: bold; } /* Error */
+code span.in { font-style: italic; } /* Information */
+code span.kw { font-weight: bold; } /* Keyword */
+code span.pp { font-weight: bold; } /* Preprocessor */
+code span.wa { font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to our Workshop!</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.1</b> Learning objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html"><i class="fa fa-check"></i><b>2</b> Get ready for the workshop</a>
+<ul>
+<li class="chapter" data-level="2.0.1" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#r-from-zero-warmup"><i class="fa fa-check"></i><b>2.0.1</b> R from zero warmup</a></li>
+<li class="chapter" data-level="2.0.2" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#download-needed-files-and-packages"><i class="fa fa-check"></i><b>2.0.2</b> Download needed files and packages</a></li>
+<li class="chapter" data-level="2.0.3" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#package-to-read-.xlsx-files"><i class="fa fa-check"></i><b>2.0.3</b> Package to read .xlsx files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-r.html"><a href="basic-r.html"><i class="fa fa-check"></i><b>3</b> Basic R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="basic-r.html"><a href="basic-r.html#data-import-packages"><i class="fa fa-check"></i><b>3.1</b> Data import &amp; packages</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="basic-r.html"><a href="basic-r.html#wheres-my-file"><i class="fa fa-check"></i><b>3.1.1</b> Where’s my file??</a></li>
+<li class="chapter" data-level="3.1.2" data-path="basic-r.html"><a href="basic-r.html#did-the-import-work"><i class="fa fa-check"></i><b>3.1.2</b> Did the import work??</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-r.html"><a href="basic-r.html#data-in-r"><i class="fa fa-check"></i><b>3.2</b> Data in R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-r.html"><a href="basic-r.html#selecting-portions-of-a-dataframe"><i class="fa fa-check"></i><b>3.2.1</b> Selecting portions of a dataframe</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-r.html"><a href="basic-r.html#using-conditional-statements-to-access-data"><i class="fa fa-check"></i><b>3.2.2</b> Using conditional statements to access data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="basic-r.html"><a href="basic-r.html#functions-in-r"><i class="fa fa-check"></i><b>3.3</b> Functions in R</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="basic-r.html"><a href="basic-r.html#summarizing-data"><i class="fa fa-check"></i><b>3.3.1</b> Summarizing data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="basic-r.html"><a href="basic-r.html#plotting-data"><i class="fa fa-check"></i><b>3.4</b> Plotting data</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-r.html"><a href="basic-r.html#the-editor-window"><i class="fa fa-check"></i><b>3.5</b> The Editor window</a></li>
+<li class="chapter" data-level="3.6" data-path="basic-r.html"><a href="basic-r.html#simple-tests"><i class="fa fa-check"></i><b>3.6</b> Simple tests</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="linear-regression.html"><a href="linear-regression.html#introduction"><i class="fa fa-check"></i><b>4.0.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.0.2" data-path="linear-regression.html"><a href="linear-regression.html#data-import-packages-1"><i class="fa fa-check"></i><b>4.0.2</b> Data import &amp; packages</a></li>
+<li class="chapter" data-level="4.0.3" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-using-water-level-and-total-zooplankton"><i class="fa fa-check"></i><b>4.0.3</b> Linear regression using water level and total zooplankton</a></li>
+<li class="chapter" data-level="4.1" data-path="linear-regression.html"><a href="linear-regression.html#what-does-this-output-tell-us"><i class="fa fa-check"></i><b>4.1</b> What does this output tell us?</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="linear-regression.html"><a href="linear-regression.html#what-does-the-summary-output-tell-us-about-the-relationship-between-water-level-and-total-zooplankton"><i class="fa fa-check"></i><b>4.1.1</b> What does the summary output tell us about the relationship between water level and total zooplankton?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression.html"><a href="linear-regression.html#what-are-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.2</b> What are the assumptions of a linear regression?</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-regression.html"><a href="linear-regression.html#how-do-you-evaluate-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.3</b> How do you evaluate the assumptions of a linear regression?</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="linear-regression.html"><a href="linear-regression.html#lets-try"><i class="fa fa-check"></i><b>4.3.1</b> Let’s try…</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-regression.html"><a href="linear-regression.html#section"><i class="fa fa-check"></i><b>4.3.2</b> 1.</a></li>
+<li class="chapter" data-level="4.3.3" data-path="linear-regression.html"><a href="linear-regression.html#section-1"><i class="fa fa-check"></i><b>4.3.3</b> 2.</a></li>
+<li class="chapter" data-level="4.3.4" data-path="linear-regression.html"><a href="linear-regression.html#section-2"><i class="fa fa-check"></i><b>4.3.4</b> 3.</a></li>
+<li class="chapter" data-level="4.3.5" data-path="linear-regression.html"><a href="linear-regression.html#section-3"><i class="fa fa-check"></i><b>4.3.5</b> 4.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="linear-regression.html"><a href="linear-regression.html#how-can-we-plot-this-linear-regression"><i class="fa fa-check"></i><b>4.4</b> How can we plot this linear regression?</a></li>
+<li class="chapter" data-level="4.5" data-path="linear-regression.html"><a href="linear-regression.html#references-and-resources"><i class="fa fa-check"></i><b>4.5</b> References and resources</a></li>
+<li class="chapter" data-level="4.6" data-path="linear-regression.html"><a href="linear-regression.html#alternative-resource"><i class="fa fa-check"></i><b>4.6</b> Alternative resource:</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html"><i class="fa fa-check"></i><b>5</b> Multiple Linear Regression Model</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#what-is-a-mulitple-linear-regression-model"><i class="fa fa-check"></i><b>5.1.1</b> What is a Mulitple Linear Regression Model</a></li>
+<li class="chapter" data-level="5.1.2" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#recipe-for-multi-variate-model-in-r"><i class="fa fa-check"></i><b>5.1.2</b> Recipe for multi-variate model in R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#data-preparation"><i class="fa fa-check"></i><b>5.2</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#check-data-type"><i class="fa fa-check"></i><b>5.2.1</b> Check data type</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#model-building"><i class="fa fa-check"></i><b>5.3</b> Model building</a></li>
+<li class="chapter" data-level="5.4" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#model-output"><i class="fa fa-check"></i><b>5.4</b> Model output</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#model-assumptions"><i class="fa fa-check"></i><b>5.4.1</b> Model assumptions</a></li>
+<li class="chapter" data-level="5.4.2" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#evaluate-model-assumptions"><i class="fa fa-check"></i><b>5.4.2</b> Evaluate model assumptions</a></li>
+<li class="chapter" data-level="5.4.3" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#output-interpretation"><i class="fa fa-check"></i><b>5.4.3</b> Output interpretation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#what-could-go-wrong"><i class="fa fa-check"></i><b>5.5</b> What could go wrong?</a></li>
+<li class="chapter" data-level="5.6" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#references-and-resources-1"><i class="fa fa-check"></i><b>5.6</b> References and Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>6</b> <strong>Logistic regression</strong></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="logistic-regression.html"><a href="logistic-regression.html#what-is-a-logistic-regression"><i class="fa fa-check"></i><b>6.1</b> What is a logistic regression?</a></li>
+<li class="chapter" data-level="6.2" data-path="logistic-regression.html"><a href="logistic-regression.html#how-are-logistic-regressions-different-from-linear-regressions"><i class="fa fa-check"></i><b>6.2</b> How are logistic regressions different from linear regressions?</a></li>
+<li class="chapter" data-level="6.3" data-path="logistic-regression.html"><a href="logistic-regression.html#how-does-this-type-of-data-look-like"><i class="fa fa-check"></i><b>6.3</b> How does this type of data look like?</a></li>
+<li class="chapter" data-level="6.4" data-path="logistic-regression.html"><a href="logistic-regression.html#what-does-the-logistic-curve-mean"><i class="fa fa-check"></i><b>6.4</b> What does the logistic curve mean?</a></li>
+<li class="chapter" data-level="6.5" data-path="logistic-regression.html"><a href="logistic-regression.html#mathematical-representation"><i class="fa fa-check"></i><b>6.5</b> Mathematical representation</a></li>
+<li class="chapter" data-level="6.6" data-path="logistic-regression.html"><a href="logistic-regression.html#what-kind-of-predictors-can-we-have-in-a-logistic-regression"><i class="fa fa-check"></i><b>6.6</b> What kind of predictors can we have in a logistic regression?</a></li>
+<li class="chapter" data-level="6.7" data-path="logistic-regression.html"><a href="logistic-regression.html#key-binomial-logistic-model-assumptions"><i class="fa fa-check"></i><b>6.7</b> Key binomial logistic model assumptions</a></li>
+<li class="chapter" data-level="6.8" data-path="logistic-regression.html"><a href="logistic-regression.html#aquatic-ecology-studies-using-logistic-regressions"><i class="fa fa-check"></i><b>6.8</b> Aquatic ecology studies using logistic regressions</a></li>
+<li class="chapter" data-level="6.9" data-path="logistic-regression.html"><a href="logistic-regression.html#creating-a-logistic-model-in-r"><i class="fa fa-check"></i><b>6.9</b> Creating a logistic model in R</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="logistic-regression.html"><a href="logistic-regression.html#steps-to-run-a-logistic-model-in-r"><i class="fa fa-check"></i><b>6.9.1</b> Steps to run a logistic model in R</a></li>
+<li class="chapter" data-level="6.9.2" data-path="logistic-regression.html"><a href="logistic-regression.html#lets-create-this-first-model-together"><i class="fa fa-check"></i><b>6.9.2</b> Let’s create this first model together</a></li>
+<li class="chapter" data-level="6.9.3" data-path="logistic-regression.html"><a href="logistic-regression.html#creating-your-logistic-model"><i class="fa fa-check"></i><b>6.9.3</b> Creating your logistic model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="logistic-regression.html"><a href="logistic-regression.html#what-could-go-wrong-1"><i class="fa fa-check"></i><b>6.10</b> What could go wrong?</a></li>
+<li class="chapter" data-level="6.11" data-path="logistic-regression.html"><a href="logistic-regression.html#r-resources"><i class="fa fa-check"></i><b>6.11</b> R resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html"><i class="fa fa-check"></i><b>7</b> Multivariate analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#libraries-and-imports"><i class="fa fa-check"></i><b>7.1</b> Libraries and imports</a></li>
+<li class="chapter" data-level="7.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#introduction-to-multivariate-analysis"><i class="fa fa-check"></i><b>7.2</b> Introduction to multivariate analysis</a></li>
+<li class="chapter" data-level="7.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#principle-component-analysis-pca"><i class="fa fa-check"></i><b>7.3</b> Principle Component Analysis (PCA)</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#correlation-examination"><i class="fa fa-check"></i><b>7.3.1</b> Correlation examination</a></li>
+<li class="chapter" data-level="7.3.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#pca-with-standardized-data"><i class="fa fa-check"></i><b>7.3.2</b> PCA with standardized data</a></li>
+<li class="chapter" data-level="7.3.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#screeplot"><i class="fa fa-check"></i><b>7.3.3</b> Screeplot</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#plot-ordination-for-pca"><i class="fa fa-check"></i><b>7.3.4</b> Plot ordination for PCA</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#non-metric-multidimensional-scaling-nmds"><i class="fa fa-check"></i><b>7.4</b> Non-metric multidimensional scaling (nMDS)</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#shepard-plot"><i class="fa fa-check"></i><b>7.4.1</b> Shepard Plot</a></li>
+<li class="chapter" data-level="7.4.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#plot-ordination-for-nmds"><i class="fa fa-check"></i><b>7.4.2</b> Plot ordination for nMDS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#other-resources"><i class="fa fa-check"></i><b>7.5</b> Other resources</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Intro Workshop</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basic-r" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Basic R<a href="basic-r.html#basic-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="data-import-packages" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Data import &amp; packages<a href="basic-r.html#data-import-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Our first job today is to use a package to import the data we will be using throughout the workshop. If you have sucessfully installed the library <em>readxl</em>, we can use it to read in the .xlsx file.</p>
+<div id="wheres-my-file" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Where’s my file??<a href="basic-r.html#wheres-my-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To do the import we need the <em>path</em> where the file is located. There are at least three ways to find and import a file in R:</p>
+<ol style="list-style-type: decimal">
+<li>use <strong>file.choose()</strong>,</li>
+<li>use the actual path to the file,</li>
+<li>use <strong>setwd()</strong> to change the current directory to the location of the file</li>
+</ol>
+<div id="try-it-now" class="section level4 hasAnchor" number="3.1.1.1">
+<h4><span class="header-section-number">3.1.1.1</span> Try it now:<a href="basic-r.html#try-it-now" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Import the data file using the function <strong>read_excel()</strong> from the <em>readxl</em> library, and indicate the path using one of the methods above.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="basic-r.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the library</span></span>
+<span id="cb2-2"><a href="basic-r.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb2-3"><a href="basic-r.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="basic-r.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># import the xlsx file</span></span>
+<span id="cb2-5"><a href="basic-r.html#cb2-5" aria-hidden="true" tabindex="-1"></a>ham <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;ind dates flat all parameters Hamilton only FOR Kim.xlsx&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="did-the-import-work" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Did the import work??<a href="basic-r.html#did-the-import-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Once you have read in the data, it is critically import to check that th import worked properly. Problems that can arise from incorrectly formatted files can then be resolved. Problems can include: numeric data being read in as character data, column names being read in as the the first row of data, missing values being coded as something other than NA.</p>
+<p>There are a number of commands to look at a portion of the dataset. Four quick methods to check data import:</p>
+<ol style="list-style-type: decimal">
+<li>print or <strong>view()</strong>,</li>
+<li>colnames()**,</li>
+<li><strong>head()</strong> or <strong>tail()</strong>,</li>
+<li><strong>str()</strong></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="basic-r.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(ham)</span></span>
+<span id="cb3-2"><a href="basic-r.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ham[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
+<pre><code>[1] &quot;waterbody&quot;       &quot;area_group&quot;      &quot;Latitude&quot;        &quot;Longtitude&quot;     
+[5] &quot;Station_Acronym&quot;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(ham, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code># A tibble: 5 × 109
+  waterbody        area_group Latitude Longtitude Station_Acronym report_Stn
+  &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     
+1 Hamilton Harbour west           43.3      -79.9 HHCarolsP       CP        
+2 Hamilton Harbour west           43.3      -79.9 HHRHYC          RHYC      
+3 Hamilton Harbour west           43.3      -79.9 HHRHYC out      RHYC out  
+4 Hamilton Harbour wind           43.3      -79.8 HH4_PHYTO       WSTP      
+5 Hamilton Harbour west           43.3      -79.9 HHBayfront-West BFW       
+# … with 103 more variables: SamplingDate &lt;dttm&gt;, season &lt;dbl&gt;, year &lt;dbl&gt;,
+#   Julian_Day &lt;dbl&gt;, Julian_Week &lt;dbl&gt;, Month &lt;dbl&gt;, Station_depth &lt;dbl&gt;,
+#   `water level` &lt;dbl&gt;, Ammonia_ECCC1m &lt;dbl&gt;, DIC_ECCC1m &lt;dbl&gt;, DOC_ECCC1m &lt;dbl&gt;,
+#   POC_ECCC1m &lt;dbl&gt;, Chl_ECCC1m &lt;dbl&gt;, `Chl Cor_ECCC1m` &lt;dbl&gt;, NO2_NO3_ECCC1m &lt;dbl&gt;,
+#   PON_ECCC1m &lt;dbl&gt;, `TKN dissolved_ECCC1m` &lt;dbl&gt;, SRP_ECCC1m &lt;dbl&gt;, TP_ECCC1m &lt;dbl&gt;,
+#   `TP dissolved_ECCC1m` &lt;dbl&gt;, Chl_a_uncorrected &lt;dbl&gt;, Secchi &lt;dbl&gt;,
+#   `Kd light_attenuation` &lt;dbl&gt;, Cyano &lt;dbl&gt;, Chloro &lt;dbl&gt;, Eugleno &lt;dbl&gt;, …</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="basic-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ham, <span class="at">list.len =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>tibble [742 × 109] (S3: tbl_df/tbl/data.frame)
+ $ waterbody                  : chr [1:742] &quot;Hamilton Harbour&quot; &quot;Hamilton Harbour&quot; &quot;Hamilton Harbour&quot; &quot;Hamilton Harbour&quot; ...
+ $ area_group                 : chr [1:742] &quot;deep&quot; &quot;NE&quot; &quot;deep&quot; &quot;west&quot; ...
+ $ Latitude                   : num [1:742] 43.3 43.3 43.3 43.3 43.3 ...
+ $ Longtitude                 : num [1:742] -79.9 -79.8 -79.8 -79.9 -79.9 ...
+ $ Station_Acronym            : chr [1:742] &quot;HH908&quot; &quot;HH6&quot; &quot;HH258&quot; &quot;HHBayfront&quot; ...
+  [list output truncated]</code></pre>
+</div>
+</div>
+<div id="data-in-r" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Data in R<a href="basic-r.html#data-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You’ll notice that the data are structured in columns. This is a <em>dataframe</em>, one of the most used data structures in R. Data structures are sets of variables organized in a particular way. In R there are 4 primary data structures we will use repeatedly: vectors, matrices, dataframes and lists.</p>
+<div id="selecting-portions-of-a-dataframe" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Selecting portions of a dataframe<a href="basic-r.html#selecting-portions-of-a-dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To start our examination and analysis of this data, we need to be able to select items of interest. Dataframes are indexed by rows and columns. If you want the item from the 5th row and 2nd column type <em>mydata[5,2]</em>. If you need just one column you can type either <em>mydata[,2]</em>, which grabs everything in column 2, or if you know the name of the column <em>mydata$Population</em>. To get rows 2 to 5 you can enter <em>mydata[2:5,2]</em>. You can also combine this with the column name which may be easier to read, as <em>mydata$Population[2:5]</em>.</p>
+<div id="try-it-now-1" class="section level4 hasAnchor" number="3.2.1.1">
+<h4><span class="header-section-number">3.2.1.1</span> Try it now:<a href="basic-r.html#try-it-now-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Select just the first 5 rows and first 3 columns of the dataframe you read into R.</p>
+<pre><code># A tibble: 5 × 3
+  waterbody        area_group Latitude
+  &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt;
+1 Hamilton Harbour deep           43.3
+2 Hamilton Harbour NE             43.3
+3 Hamilton Harbour deep           43.3
+4 Hamilton Harbour west           43.3
+5 Hamilton Harbour deep           43.3</code></pre>
+<p>We can create new data subsets by using the <strong>c()</strong> or <strong>c</strong>ombine function.</p>
+</div>
+<div id="try-it-now-2" class="section level4 hasAnchor" number="3.2.1.2">
+<h4><span class="header-section-number">3.2.1.2</span> Try it now:<a href="basic-r.html#try-it-now-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Let’s access the first 3 and column 10, and save the result to a new variable ’ ham_sub’</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="basic-r.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save a subsection of a dataframe</span></span>
+<span id="cb10-2"><a href="basic-r.html#cb10-2" aria-hidden="true" tabindex="-1"></a>ham_sub <span class="ot">=</span> ham[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">9</span><span class="sc">:</span><span class="dv">10</span>)]</span>
+<span id="cb10-3"><a href="basic-r.html#cb10-3" aria-hidden="true" tabindex="-1"></a>ham_sub</span></code></pre></div>
+<pre><code># A tibble: 5 × 5
+  waterbody        area_group Latitude  year Julian_Day
+  &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
+1 Hamilton Harbour deep           43.3  2016        131
+2 Hamilton Harbour NE             43.3  2021        174
+3 Hamilton Harbour deep           43.3  2021        174
+4 Hamilton Harbour west           43.3  2022        174
+5 Hamilton Harbour deep           43.3  2022        174</code></pre>
+<p>We can also just grab a single column, using the column name to identify it as <strong>mydata$thiscolumn</strong> or <em>mydata[,“thiscolumn”]</em>.</p>
+</div>
+<div id="try-it-now-3" class="section level4 hasAnchor" number="3.2.1.3">
+<h4><span class="header-section-number">3.2.1.3</span> Try it now:<a href="basic-r.html#try-it-now-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Access the Station_Acronym column of the data</p>
+<pre><code>[1] &quot;HH908&quot;      &quot;HH6&quot;        &quot;HH258&quot;      &quot;HHBayfront&quot; &quot;HH908&quot;      &quot;HH9031&quot;    </code></pre>
+</div>
+<div id="try-it-now-4" class="section level4 hasAnchor" number="3.2.1.4">
+<h4><span class="header-section-number">3.2.1.4</span> Try it now:<a href="basic-r.html#try-it-now-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Our subsetted data is not ordered by year or group, so let’s use the <strong>order()</strong> function to rearrange</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-r.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save a subsection of a dataframe</span></span>
+<span id="cb13-2"><a href="basic-r.html#cb13-2" aria-hidden="true" tabindex="-1"></a>ham_sub <span class="ot">=</span> ham_sub[<span class="fu">order</span>(ham_sub<span class="sc">$</span>area_group, ham_sub<span class="sc">$</span>year), ]</span>
+<span id="cb13-3"><a href="basic-r.html#cb13-3" aria-hidden="true" tabindex="-1"></a>ham_sub</span></code></pre></div>
+<pre><code># A tibble: 5 × 5
+  waterbody        area_group Latitude  year Julian_Day
+  &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
+1 Hamilton Harbour deep           43.3  2016        131
+2 Hamilton Harbour deep           43.3  2021        174
+3 Hamilton Harbour deep           43.3  2022        174
+4 Hamilton Harbour NE             43.3  2021        174
+5 Hamilton Harbour west           43.3  2022        174</code></pre>
+</div>
+</div>
+<div id="using-conditional-statements-to-access-data" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Using conditional statements to access data<a href="basic-r.html#using-conditional-statements-to-access-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can also use conditional statements to access portions of the data. Conditional statements evaluate to TRUE or FALSE. The “==” symbol is used to determine if a variable is equal to some value, while “!=” evaluates is something is not equal. As you might expect we can also use greater than (“&gt;”) or less than (“&lt;”) conditionals.</p>
+<div id="try-it-now-5" class="section level4 hasAnchor" number="3.2.2.1">
+<h4><span class="header-section-number">3.2.2.1</span> Try it now:<a href="basic-r.html#try-it-now-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Enter <em>ham$calanoid[ham$Station_Acronym==“HH6”]</em> and examine the data.</p>
+<pre><code>[1] 84.094200542 13.196863744 64.145098250 58.389201770 25.256348256  0.006374018</code></pre>
+<p>Of course, this gives us all of the sampling dates for this station. Let’s assume we only want data from 2016. In that case we can combine our conditional statements using “&amp;” for AND and “|” for OR.</p>
+</div>
+<div id="try-it-now-6" class="section level4 hasAnchor" number="3.2.2.2">
+<h4><span class="header-section-number">3.2.2.2</span> Try it now:<a href="basic-r.html#try-it-now-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use an “&amp;” symbol to indicate that we want the selected data to be from station “HH6” and to be from the 2016.</p>
+<pre><code> [1]  64.145098  25.256348  70.721192 142.447448  89.268307  70.066000  32.332505
+ [8]  78.560037   7.974158 120.229185  91.171246  19.286071 104.393878</code></pre>
+<p>If we wanted we could use the same conditionals to grab the julian sampling day for these observations, and save the result to new vectors</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-r.html#cb17-1" aria-hidden="true" tabindex="-1"></a>cal_HH6_2016 <span class="ot">=</span> ham<span class="sc">$</span>calanoid[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> ham<span class="sc">$</span>year <span class="sc">==</span> </span>
+<span id="cb17-2"><a href="basic-r.html#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2016</span>]</span>
+<span id="cb17-3"><a href="basic-r.html#cb17-3" aria-hidden="true" tabindex="-1"></a>jul_cal_HH6_2016 <span class="ot">=</span> ham<span class="sc">$</span>Julian_Day[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb17-4"><a href="basic-r.html#cb17-4" aria-hidden="true" tabindex="-1"></a>    ham<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>]</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-17">Table 3.1: </span>Calanoid data for 2016 at station HH6</caption>
+<thead>
+<tr class="header">
+<th align="right">calanoid</th>
+<th align="right">julian</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">64.145098</td>
+<td align="right">145</td>
+</tr>
+<tr class="even">
+<td align="right">25.256348</td>
+<td align="right">131</td>
+</tr>
+<tr class="odd">
+<td align="right">70.721192</td>
+<td align="right">160</td>
+</tr>
+<tr class="even">
+<td align="right">142.447448</td>
+<td align="right">188</td>
+</tr>
+<tr class="odd">
+<td align="right">89.268306</td>
+<td align="right">201</td>
+</tr>
+<tr class="even">
+<td align="right">70.066000</td>
+<td align="right">215</td>
+</tr>
+<tr class="odd">
+<td align="right">32.332505</td>
+<td align="right">174</td>
+</tr>
+<tr class="even">
+<td align="right">78.560037</td>
+<td align="right">258</td>
+</tr>
+<tr class="odd">
+<td align="right">7.974158</td>
+<td align="right">228</td>
+</tr>
+<tr class="even">
+<td align="right">120.229185</td>
+<td align="right">242</td>
+</tr>
+<tr class="odd">
+<td align="right">91.171246</td>
+<td align="right">270</td>
+</tr>
+<tr class="even">
+<td align="right">19.286071</td>
+<td align="right">286</td>
+</tr>
+<tr class="odd">
+<td align="right">104.393878</td>
+<td align="right">299</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="try-it-now-7" class="section level4 hasAnchor" number="3.2.2.3">
+<h4><span class="header-section-number">3.2.2.3</span> Try it now:<a href="basic-r.html#try-it-now-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Access the calanoid data at station “HH6” for 2014</p>
+<pre><code> [1]  3.7525745  4.4195122  4.4719882 49.3636318  7.1764905  0.8381301  3.7054878
+ [8]  6.7292412  4.0907797  5.7956002  1.0151220  5.4204413</code></pre>
+</div>
+</div>
+</div>
+<div id="functions-in-r" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Functions in R<a href="basic-r.html#functions-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Next, let’s figure out how to complete some simple calculations with these values, like finding the mean and standard deviation.</p>
+<p>We have already used some functions in R. R contains thousands of functions, and more are being added everyday.</p>
+<p>If you are trying to find a function that does something you need to do, you can use the command apropos(“keyword”) to see if there is a function that contains the keyword in its name.</p>
+<div id="try-it-now-8" class="section level4 hasAnchor" number="3.3.0.1">
+<h4><span class="header-section-number">3.3.0.1</span> Try it now:<a href="basic-r.html#try-it-now-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For example if you wanted to find a function that calculated means you might: type ‘apropos(“mean”)’. What happens?</p>
+<p>One of the listed functions “mean” looks promising. Your next step might be to get more information by typing ‘help(mean)’ or ‘example(mean)’.</p>
+</div>
+<div id="try-it-now-9" class="section level4 hasAnchor" number="3.3.0.2">
+<h4><span class="header-section-number">3.3.0.2</span> Try it now:<a href="basic-r.html#try-it-now-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You should see that the funciton <strong>mean()</strong> works on a vector of numeric data.</p>
+<p>Perhaps the function does not contain the keyword in its name, in this case try ??”keyword phrase” to get R to search function descriptions</p>
+<p>If the internal help menu lets you down you can also try a search at <a href="http://www.rseek.org/" class="uri">http://www.rseek.org/</a></p>
+</div>
+<div id="try-it-now-10" class="section level4 hasAnchor" number="3.3.0.3">
+<h4><span class="header-section-number">3.3.0.3</span> Try it now:<a href="basic-r.html#try-it-now-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use these tools to find a function that calculates standard deviation
+Then mean this function and a function to calculate means to get the mean and standard deviation of calanoid density in 2014.</p>
+<pre><code>[1] 8.064917</code></pre>
+<pre><code>[1] 13.14886</code></pre>
+</div>
+<div id="summarizing-data" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Summarizing data<a href="basic-r.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Other functions can help with quick data summaries. for example, the <strong>table()</strong> function can be used to take a quick look at the number of sampling dates for each station.</p>
+<div id="try-it-now-11" class="section level4 hasAnchor" number="3.3.1.1">
+<h4><span class="header-section-number">3.3.1.1</span> Try it now:<a href="basic-r.html#try-it-now-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use this function on the Station_Acronym column of the data</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Station Name</th>
+<th align="right">No. of samples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CCIW dock</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">HH17</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="left">HH1B</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">HH2</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">HH2000</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">HH2001</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">HH2002</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">HH2003</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">HH2004</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">HH258</td>
+<td align="right">172</td>
+</tr>
+<tr class="odd">
+<td align="left">HH2B</td>
+<td align="right">21</td>
+</tr>
+<tr class="even">
+<td align="left">HH39</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">HH4_PHYTO</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">HH6</td>
+<td align="right">136</td>
+</tr>
+<tr class="odd">
+<td align="left">HH8</td>
+<td align="right">38</td>
+</tr>
+<tr class="even">
+<td align="left">HH9031</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">HH9033</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">HH908</td>
+<td align="right">96</td>
+</tr>
+<tr class="odd">
+<td align="left">HH917</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">HHBayfront</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">HHBayfront-West</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">HHBFouter</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">HHBURSTP</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">HHCarolsP</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">HHRHYC</td>
+<td align="right">21</td>
+</tr>
+<tr class="even">
+<td align="left">HHRHYC out</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">HHWC</td>
+<td align="right">13</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>summary()</strong> function can also give information about a vector.
+#### Try it now:
+Use the summary function on the “Chl_a_uncorrected” data for site HH258</p>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+  3.060   9.508  12.600  15.004  19.253  70.020      25 </code></pre>
+</div>
+</div>
+</div>
+<div id="plotting-data" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Plotting data<a href="basic-r.html#plotting-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A quick check of data can also be done with simple plots. for example, let’s see what the Chl_a_uncorrected data from 2016 looks like using the <strong>plot()</strong> function.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-r.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x =</span> ham<span class="sc">$</span>Julian_Day)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672"  /></p>
+<p>Of course, this is the data from every station. Let’s just plot station HH258, and colour code by sampling year</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="basic-r.html#cb23-1" aria-hidden="true" tabindex="-1"></a>sub2_ham <span class="ot">=</span> ham[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH258&quot;</span>, ]</span>
+<span id="cb23-2"><a href="basic-r.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> sub2_ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x =</span> sub2_ham<span class="sc">$</span>Julian_Day, </span>
+<span id="cb23-3"><a href="basic-r.html#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> sub2_ham<span class="sc">$</span>year)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672"  /></p>
+<p>Kind of hard to read… I think I wan to group the data by decade, and let’s pimp the plot a little. We also need axis labels, a nicer symbol and a legend.</p>
+</div>
+<div id="the-editor-window" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> The Editor window<a href="basic-r.html#the-editor-window" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Preveiously you could have completed all of these commands in the Console window where R would execute them immediately. Now we’re going to have a bunch of commands, some of which we may want to tweek (e.g., colours). This time, let’s save our code in the Editor window so that it is easy to change and rerun.</p>
+<p>We’ll create a new file using the drop down menus. Click <em>File</em> then <em>New File</em>, and then <em>R Script</em>. A blank document will appear in the Editor window is found in the top left of the default R Studio.</p>
+<div id="try-it-now-12" class="section level4 hasAnchor" number="3.5.0.1">
+<h4><span class="header-section-number">3.5.0.1</span> Try it now:<a href="basic-r.html#try-it-now-12" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Create a new file, enter the following code, and then save it using the drop down menu or cntrl-s or command-s. Then run the code</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672"  /></p>
+<p>Notice that I’ve used a <em>factor</em> variable to control the colour of the data from each decade.</p>
+<p>Let’s try one more. Let’s quickly visualize the number of calanoid samples from each area by date. Again we will use a factor variable to control appearance</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="basic-r.html#cb24-1" aria-hidden="true" tabindex="-1"></a>ham<span class="sc">$</span>area_group <span class="ot">=</span> <span class="fu">as.factor</span>(ham<span class="sc">$</span>area_group)</span>
+<span id="cb24-2"><a href="basic-r.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(calanoid <span class="sc">~</span> SamplingDate, <span class="at">data =</span> ham, <span class="at">col =</span> area_group)</span>
+<span id="cb24-3"><a href="basic-r.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">levels</span>(ham<span class="sc">$</span>area_group), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb24-4"><a href="basic-r.html#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">levels</span>(ham<span class="sc">$</span>area_group))))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672"  /></p>
+<p>This is too cluttered, so I am going to summarize the data by year and area, and then plot that. I’m going to plot the data from each area individually starting with the first one, and then adding subsequent areas to the same plot using the <strong>lines()</strong> function.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="basic-r.html#cb25-1" aria-hidden="true" tabindex="-1"></a>samps <span class="ot">=</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(ham[, <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;area_group&quot;</span>)]))</span>
+<span id="cb25-2"><a href="basic-r.html#cb25-2" aria-hidden="true" tabindex="-1"></a>samps<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(samps<span class="sc">$</span>year))</span>
+<span id="cb25-3"><a href="basic-r.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;deep&quot;</span>, ], </span>
+<span id="cb25-4"><a href="basic-r.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bty =</span> <span class="st">&quot;L&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fu">min</span>(samps<span class="sc">$</span>year), <span class="fu">max</span>(samps<span class="sc">$</span>year)), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(samps<span class="sc">$</span>Freq), </span>
+<span id="cb25-5"><a href="basic-r.html#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">max</span>(samps<span class="sc">$</span>Freq)), <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Samples per year by area group&quot;</span>)</span>
+<span id="cb25-6"><a href="basic-r.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;NE&quot;</span>, ], </span>
+<span id="cb25-7"><a href="basic-r.html#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb25-8"><a href="basic-r.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;west&quot;</span>, ], </span>
+<span id="cb25-9"><a href="basic-r.html#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb25-10"><a href="basic-r.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;wind&quot;</span>, ], </span>
+<span id="cb25-11"><a href="basic-r.html#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb25-12"><a href="basic-r.html#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="basic-r.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">levels</span>(ham<span class="sc">$</span>area_group), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb25-14"><a href="basic-r.html#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672"  /></p>
+<p>At this point, the plotting is getting a bit more complex, so you may want to use another library called *ggplot2** to do some of your plotting. This library of functions has a non-intuitive command structure, but is quick for plotting multiple sets of data on the same plot with a legend.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="basic-r.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># similar plot using ggplot</span></span>
+<span id="cb26-2"><a href="basic-r.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb26-3"><a href="basic-r.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(samps, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> Freq, <span class="at">group =</span> area_group, <span class="at">colour =</span> area_group)) <span class="sc">+</span> </span>
+<span id="cb26-4"><a href="basic-r.html#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672"  /></p>
+</div>
+</div>
+<div id="simple-tests" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Simple tests<a href="basic-r.html#simple-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Finally, let’s complete a couple of simple tests.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="basic-r.html#cb27-1" aria-hidden="true" tabindex="-1"></a>year_sub <span class="ot">=</span> ham[(ham<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2019</span>), ]</span>
+<span id="cb27-2"><a href="basic-r.html#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="basic-r.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(calanoid <span class="sc">~</span> area_group, <span class="at">data =</span> year_sub[(year_sub<span class="sc">$</span>area_group <span class="sc">==</span> </span>
+<span id="cb27-4"><a href="basic-r.html#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;deep&quot;</span> <span class="sc">|</span> year_sub<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;NE&quot;</span>), ])</span></code></pre></div>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  calanoid by area_group
+t = -1.5146, df = 15.19, p-value = 0.1504
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -19.198594   3.237734
+sample estimates:
+mean in group deep   mean in group NE 
+           8.47007           16.45050 </code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="basic-r.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(calanoid <span class="sc">~</span> area_group, <span class="at">data =</span> year_sub)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672"  /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="get-ready-for-the-workshop.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linear-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

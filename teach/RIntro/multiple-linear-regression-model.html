@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Multiple Linear Regression Model | R Intro Workshop</title>
+  <meta name="description" content="Building Skills in Quantitative Biology" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Multiple Linear Regression Model | R Intro Workshop" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Building Skills in Quantitative Biology" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Multiple Linear Regression Model | R Intro Workshop" />
+  
+  <meta name="twitter:description" content="Building Skills in Quantitative Biology" />
+  
+
+<meta name="author" content="The Cuddington Lab" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="linear-regression.html"/>
+<link rel="next" href="logistic-regression.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { font-weight: bold; } /* Alert */
+code span.an { font-style: italic; } /* Annotation */
+code span.cf { font-weight: bold; } /* ControlFlow */
+code span.co { font-style: italic; } /* Comment */
+code span.cv { font-style: italic; } /* CommentVar */
+code span.do { font-style: italic; } /* Documentation */
+code span.dt { text-decoration: underline; } /* DataType */
+code span.er { font-weight: bold; } /* Error */
+code span.in { font-style: italic; } /* Information */
+code span.kw { font-weight: bold; } /* Keyword */
+code span.pp { font-weight: bold; } /* Preprocessor */
+code span.wa { font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to our Workshop!</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>1.1</b> Learning objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html"><i class="fa fa-check"></i><b>2</b> Get ready for the workshop</a>
+<ul>
+<li class="chapter" data-level="2.0.1" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#r-from-zero-warmup"><i class="fa fa-check"></i><b>2.0.1</b> R from zero warmup</a></li>
+<li class="chapter" data-level="2.0.2" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#download-needed-files-and-packages"><i class="fa fa-check"></i><b>2.0.2</b> Download needed files and packages</a></li>
+<li class="chapter" data-level="2.0.3" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#package-to-read-.xlsx-files"><i class="fa fa-check"></i><b>2.0.3</b> Package to read .xlsx files</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-r.html"><a href="basic-r.html"><i class="fa fa-check"></i><b>3</b> Basic R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="basic-r.html"><a href="basic-r.html#data-import-packages"><i class="fa fa-check"></i><b>3.1</b> Data import &amp; packages</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="basic-r.html"><a href="basic-r.html#wheres-my-file"><i class="fa fa-check"></i><b>3.1.1</b> Where’s my file??</a></li>
+<li class="chapter" data-level="3.1.2" data-path="basic-r.html"><a href="basic-r.html#did-the-import-work"><i class="fa fa-check"></i><b>3.1.2</b> Did the import work??</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-r.html"><a href="basic-r.html#data-in-r"><i class="fa fa-check"></i><b>3.2</b> Data in R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-r.html"><a href="basic-r.html#selecting-portions-of-a-dataframe"><i class="fa fa-check"></i><b>3.2.1</b> Selecting portions of a dataframe</a></li>
+<li class="chapter" data-level="3.2.2" data-path="basic-r.html"><a href="basic-r.html#using-conditional-statements-to-access-data"><i class="fa fa-check"></i><b>3.2.2</b> Using conditional statements to access data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="basic-r.html"><a href="basic-r.html#functions-in-r"><i class="fa fa-check"></i><b>3.3</b> Functions in R</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="basic-r.html"><a href="basic-r.html#summarizing-data"><i class="fa fa-check"></i><b>3.3.1</b> Summarizing data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="basic-r.html"><a href="basic-r.html#plotting-data"><i class="fa fa-check"></i><b>3.4</b> Plotting data</a></li>
+<li class="chapter" data-level="3.5" data-path="basic-r.html"><a href="basic-r.html#the-editor-window"><i class="fa fa-check"></i><b>3.5</b> The Editor window</a></li>
+<li class="chapter" data-level="3.6" data-path="basic-r.html"><a href="basic-r.html#simple-tests"><i class="fa fa-check"></i><b>3.6</b> Simple tests</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="4.0.1" data-path="linear-regression.html"><a href="linear-regression.html#introduction"><i class="fa fa-check"></i><b>4.0.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.0.2" data-path="linear-regression.html"><a href="linear-regression.html#data-import-packages-1"><i class="fa fa-check"></i><b>4.0.2</b> Data import &amp; packages</a></li>
+<li class="chapter" data-level="4.0.3" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-using-water-level-and-total-zooplankton"><i class="fa fa-check"></i><b>4.0.3</b> Linear regression using water level and total zooplankton</a></li>
+<li class="chapter" data-level="4.1" data-path="linear-regression.html"><a href="linear-regression.html#what-does-this-output-tell-us"><i class="fa fa-check"></i><b>4.1</b> What does this output tell us?</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="linear-regression.html"><a href="linear-regression.html#what-does-the-summary-output-tell-us-about-the-relationship-between-water-level-and-total-zooplankton"><i class="fa fa-check"></i><b>4.1.1</b> What does the summary output tell us about the relationship between water level and total zooplankton?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression.html"><a href="linear-regression.html#what-are-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.2</b> What are the assumptions of a linear regression?</a></li>
+<li class="chapter" data-level="4.3" data-path="linear-regression.html"><a href="linear-regression.html#how-do-you-evaluate-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.3</b> How do you evaluate the assumptions of a linear regression?</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="linear-regression.html"><a href="linear-regression.html#lets-try"><i class="fa fa-check"></i><b>4.3.1</b> Let’s try…</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-regression.html"><a href="linear-regression.html#section"><i class="fa fa-check"></i><b>4.3.2</b> 1.</a></li>
+<li class="chapter" data-level="4.3.3" data-path="linear-regression.html"><a href="linear-regression.html#section-1"><i class="fa fa-check"></i><b>4.3.3</b> 2.</a></li>
+<li class="chapter" data-level="4.3.4" data-path="linear-regression.html"><a href="linear-regression.html#section-2"><i class="fa fa-check"></i><b>4.3.4</b> 3.</a></li>
+<li class="chapter" data-level="4.3.5" data-path="linear-regression.html"><a href="linear-regression.html#section-3"><i class="fa fa-check"></i><b>4.3.5</b> 4.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="linear-regression.html"><a href="linear-regression.html#how-can-we-plot-this-linear-regression"><i class="fa fa-check"></i><b>4.4</b> How can we plot this linear regression?</a></li>
+<li class="chapter" data-level="4.5" data-path="linear-regression.html"><a href="linear-regression.html#references-and-resources"><i class="fa fa-check"></i><b>4.5</b> References and resources</a></li>
+<li class="chapter" data-level="4.6" data-path="linear-regression.html"><a href="linear-regression.html#alternative-resource"><i class="fa fa-check"></i><b>4.6</b> Alternative resource:</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html"><i class="fa fa-check"></i><b>5</b> Multiple Linear Regression Model</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#what-is-a-mulitple-linear-regression-model"><i class="fa fa-check"></i><b>5.1.1</b> What is a Mulitple Linear Regression Model</a></li>
+<li class="chapter" data-level="5.1.2" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#recipe-for-multi-variate-model-in-r"><i class="fa fa-check"></i><b>5.1.2</b> Recipe for multi-variate model in R</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#data-preparation"><i class="fa fa-check"></i><b>5.2</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#check-data-type"><i class="fa fa-check"></i><b>5.2.1</b> Check data type</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#model-building"><i class="fa fa-check"></i><b>5.3</b> Model building</a></li>
+<li class="chapter" data-level="5.4" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#model-output"><i class="fa fa-check"></i><b>5.4</b> Model output</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#model-assumptions"><i class="fa fa-check"></i><b>5.4.1</b> Model assumptions</a></li>
+<li class="chapter" data-level="5.4.2" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#evaluate-model-assumptions"><i class="fa fa-check"></i><b>5.4.2</b> Evaluate model assumptions</a></li>
+<li class="chapter" data-level="5.4.3" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#output-interpretation"><i class="fa fa-check"></i><b>5.4.3</b> Output interpretation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#what-could-go-wrong"><i class="fa fa-check"></i><b>5.5</b> What could go wrong?</a></li>
+<li class="chapter" data-level="5.6" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html#references-and-resources-1"><i class="fa fa-check"></i><b>5.6</b> References and Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>6</b> <strong>Logistic regression</strong></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="logistic-regression.html"><a href="logistic-regression.html#what-is-a-logistic-regression"><i class="fa fa-check"></i><b>6.1</b> What is a logistic regression?</a></li>
+<li class="chapter" data-level="6.2" data-path="logistic-regression.html"><a href="logistic-regression.html#how-are-logistic-regressions-different-from-linear-regressions"><i class="fa fa-check"></i><b>6.2</b> How are logistic regressions different from linear regressions?</a></li>
+<li class="chapter" data-level="6.3" data-path="logistic-regression.html"><a href="logistic-regression.html#how-does-this-type-of-data-look-like"><i class="fa fa-check"></i><b>6.3</b> How does this type of data look like?</a></li>
+<li class="chapter" data-level="6.4" data-path="logistic-regression.html"><a href="logistic-regression.html#what-does-the-logistic-curve-mean"><i class="fa fa-check"></i><b>6.4</b> What does the logistic curve mean?</a></li>
+<li class="chapter" data-level="6.5" data-path="logistic-regression.html"><a href="logistic-regression.html#mathematical-representation"><i class="fa fa-check"></i><b>6.5</b> Mathematical representation</a></li>
+<li class="chapter" data-level="6.6" data-path="logistic-regression.html"><a href="logistic-regression.html#what-kind-of-predictors-can-we-have-in-a-logistic-regression"><i class="fa fa-check"></i><b>6.6</b> What kind of predictors can we have in a logistic regression?</a></li>
+<li class="chapter" data-level="6.7" data-path="logistic-regression.html"><a href="logistic-regression.html#key-binomial-logistic-model-assumptions"><i class="fa fa-check"></i><b>6.7</b> Key binomial logistic model assumptions</a></li>
+<li class="chapter" data-level="6.8" data-path="logistic-regression.html"><a href="logistic-regression.html#aquatic-ecology-studies-using-logistic-regressions"><i class="fa fa-check"></i><b>6.8</b> Aquatic ecology studies using logistic regressions</a></li>
+<li class="chapter" data-level="6.9" data-path="logistic-regression.html"><a href="logistic-regression.html#creating-a-logistic-model-in-r"><i class="fa fa-check"></i><b>6.9</b> Creating a logistic model in R</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="logistic-regression.html"><a href="logistic-regression.html#steps-to-run-a-logistic-model-in-r"><i class="fa fa-check"></i><b>6.9.1</b> Steps to run a logistic model in R</a></li>
+<li class="chapter" data-level="6.9.2" data-path="logistic-regression.html"><a href="logistic-regression.html#lets-create-this-first-model-together"><i class="fa fa-check"></i><b>6.9.2</b> Let’s create this first model together</a></li>
+<li class="chapter" data-level="6.9.3" data-path="logistic-regression.html"><a href="logistic-regression.html#creating-your-logistic-model"><i class="fa fa-check"></i><b>6.9.3</b> Creating your logistic model</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="logistic-regression.html"><a href="logistic-regression.html#what-could-go-wrong-1"><i class="fa fa-check"></i><b>6.10</b> What could go wrong?</a></li>
+<li class="chapter" data-level="6.11" data-path="logistic-regression.html"><a href="logistic-regression.html#r-resources"><i class="fa fa-check"></i><b>6.11</b> R resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html"><i class="fa fa-check"></i><b>7</b> Multivariate analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#libraries-and-imports"><i class="fa fa-check"></i><b>7.1</b> Libraries and imports</a></li>
+<li class="chapter" data-level="7.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#introduction-to-multivariate-analysis"><i class="fa fa-check"></i><b>7.2</b> Introduction to multivariate analysis</a></li>
+<li class="chapter" data-level="7.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#principle-component-analysis-pca"><i class="fa fa-check"></i><b>7.3</b> Principle Component Analysis (PCA)</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#correlation-examination"><i class="fa fa-check"></i><b>7.3.1</b> Correlation examination</a></li>
+<li class="chapter" data-level="7.3.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#pca-with-standardized-data"><i class="fa fa-check"></i><b>7.3.2</b> PCA with standardized data</a></li>
+<li class="chapter" data-level="7.3.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#screeplot"><i class="fa fa-check"></i><b>7.3.3</b> Screeplot</a></li>
+<li class="chapter" data-level="7.3.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#plot-ordination-for-pca"><i class="fa fa-check"></i><b>7.3.4</b> Plot ordination for PCA</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#non-metric-multidimensional-scaling-nmds"><i class="fa fa-check"></i><b>7.4</b> Non-metric multidimensional scaling (nMDS)</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#shepard-plot"><i class="fa fa-check"></i><b>7.4.1</b> Shepard Plot</a></li>
+<li class="chapter" data-level="7.4.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#plot-ordination-for-nmds"><i class="fa fa-check"></i><b>7.4.2</b> Plot ordination for nMDS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#other-resources"><i class="fa fa-check"></i><b>7.5</b> Other resources</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Intro Workshop</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multiple-linear-regression-model" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Multiple Linear Regression Model<a href="multiple-linear-regression-model.html#multiple-linear-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-1" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introduction<a href="multiple-linear-regression-model.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-a-mulitple-linear-regression-model" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> What is a Mulitple Linear Regression Model<a href="multiple-linear-regression-model.html#what-is-a-mulitple-linear-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A multiple linear regression model allows using multiple predictor variables to predict a single response variable, as in this equation:</p>
+<p><span class="math display">\[\hat{y}=\hat{a}x_1+\hat{b}x_2+\hat{c}x_3...+\hat{z}\]</span></p>
+<p>It’s basically an extension of the previously introduced single-variate linear regression model, both mathematically speaking and in the sense of building them in R.</p>
+</div>
+<div id="recipe-for-multi-variate-model-in-r" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Recipe for multi-variate model in R<a href="multiple-linear-regression-model.html#recipe-for-multi-variate-model-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To build and interpret a multi-variate model:</p>
+<ul>
+<li><p>First, we will start from <strong>preparing data for building multi-variate model</strong>. We will select and check our variables of interests in <a href="multiple-linear-regression-model.html#data-preparation">Data preparation</a>. The characteristics of our data might affect the subsequent model building and evaluation process.</p></li>
+<li><p><strong>Once we prepared the data, we can start to build the actual model</strong>. The standard R package <strong>stats</strong> provides the simplest way to do single and multi-variate linear regression model through the function <code>lm()</code>. We will introduce the detailed usage of this function for multi-variate linear regression model in <a href="multiple-linear-regression-model.html#model-building">Model building</a>.</p></li>
+<li><p>At the end, <strong>we examine our model and analyze the presented relationships</strong> between the predictors and the response. An entire section (<a href="multiple-linear-regression-model.html#model-output">Model output</a>) will be dedicated in introducing ways to interpret the model output and to evaluate the model based on all the assumptions multi-variate linear regression model made.</p></li>
+</ul>
+<div id="loading-data" class="section level4 hasAnchor" number="5.1.2.1">
+<h4><span class="header-section-number">5.1.2.1</span> Loading data:<a href="multiple-linear-regression-model.html#loading-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Let’s load all the necessary packages before proceeding to the actual modeling process. For the following sections, there are only two necessary packages <em>readxl</em> and <em>car</em>. If you have not installed these package before, please install it using <code>install.package()</code>. For example: <code>install.package(readxl)</code></p>
+<p><em>Note: I hide the warnings from this code chunk because loading packages give out a lot of warnings. If you want to see those warnings, delete <code>warning=FALSE</code>. </em></p>
+<p>For this and following sections, we will be using 3 predictor variables (water level, dissolved inorganic carbon amount and bottom hypoxia) and 1 response variable (total zooplankton) from the Hamilton Harbour AOC project dataset.</p>
+<p>So, we need to read the dataset and separate our selected variables from the complete dataset first:</p>
+</div>
+</div>
+</div>
+<div id="data-preparation" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Data preparation<a href="multiple-linear-regression-model.html#data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First, we want to determine the characteristics of the three predictor variables we have, most importantly, are they continuous or categorical?</p>
+<blockquote>
+<p><strong>Continuous variable</strong>: data that are measured and ordered. It can be any specific value within a certain numerical range.</p>
+</blockquote>
+<p>For example:</p>
+<pre><code>
+74.34 74.36  74.4 74.42 74.49  74.5 74.54 74.55 74.56 74.59  74.6 74.63 74.64 74.65 
+    2     0     0     2     0     4     6     3     4     3     6     0     0     4 
+ 74.7 74.71 74.74 74.75 74.78 74.79 74.81 74.84 74.85 74.86 74.87 74.88 74.89  74.9 
+    8     4     4     0    10    10     7    11     5     6     0     4     0     4 
+74.91 74.92 74.94 74.95 74.96 74.98 74.99 75.02 75.03 75.04 75.05 75.06 75.08 75.09 
+    6     2     0    12     4     4     0     8     4     0     4     4     1    12 
+ 75.1 75.11 75.12 75.13 75.14 75.16 75.17 75.18 75.19 75.21 75.22 75.23 75.24  75.3 
+    2     0     7     0     5     6     4     2     8     0     0     0     2     4 
+75.33 75.35 75.43 75.53 75.69  75.7  75.8 75.81 75.91 
+    0     0     1     2     2     0     4     0     0 </code></pre>
+<blockquote>
+<p><strong>Categorical variable</strong>: data that is divided into categories with distinct label. These data can’t be ordered or measured as continuous variables.</p>
+</blockquote>
+<p>For example:</p>
+<pre><code>
+  n   y 
+116 101 </code></pre>
+<div id="check-data-type" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Check data type<a href="multiple-linear-regression-model.html#check-data-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Because of the intrinsic differences between continuous and categorical variables, we always want to check whether our data is in the correct data type before proceeding to the next step. Sometimes the data is not read in as the correct data type, and other times data types got altered during previous data modification procedures. We can check data type easily using the <code>class()</code> function, for example:</p>
+<pre><code>[1] &quot;factor&quot;</code></pre>
+<p>Oops, it seems we do need to modify the data type of our dataset. Let’s continue to check the other three columns of our dataframe using the same code:</p>
+<div id="set-data-type" class="section level4 hasAnchor" number="5.2.1.1">
+<h4><span class="header-section-number">5.2.1.1</span> Set data type:<a href="multiple-linear-regression-model.html#set-data-type" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>We can set the data type back into numeric for our continuous variables using <code>as.numeric()</code>. For our categorical variables, we can transform them into groups/factors using <code>as.factor()</code>. I also transformed them into binary <em>dummy variables</em> that are required for some functions to accommodate categorical variables.</p>
+<p><em>Note: As you noticed, the <code>as.xxx()</code> format is used to transform data type directly in R. You can explore some other options on your own, such as as.character(), as.integer()….</em></p>
+</div>
+</div>
+</div>
+<div id="model-building" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Model building<a href="multiple-linear-regression-model.html#model-building" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Continuous variables work smoothly in multi-variate regression model. For categorical variable data, <code>lm()</code> function has embedded an automatic <em>dummy coding</em> process that will transform categorical values into n-1 groups of 0s and 1s. <em>(You can check <code>contrast()</code> function to learn more about the dummy coding process.)</em></p>
+<p>Generating the model itself is similar to the single variable model and is very simple once we prepared our data. Simply adding a + sign between predictor variables to include more than one variable in your model. So, instead of <code>lm(response ~ predictor, data = dataframe)</code>, we are now using <code>lm(response ~ predictor 1 + predictor 2 ..., data = dataframe)</code></p>
+<div id="building-the-actual-model" class="section level4 hasAnchor" number="5.3.0.1">
+<h4><span class="header-section-number">5.3.0.1</span> Building the actual model:<a href="multiple-linear-regression-model.html#building-the-actual-model" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Let’s try to include the two additional predictor variables <code>DIC</code> and <code>bottomhypoxia</code> in our model based on the previous single variate model:</p>
+</div>
+</div>
+<div id="model-output" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Model output<a href="multiple-linear-regression-model.html#model-output" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="model-assumptions" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Model assumptions<a href="multiple-linear-regression-model.html#model-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Just like the simple linear regression model, the multi-variate linear regression models come with similar assumptions:</p>
+<ol style="list-style-type: decimal">
+<li><p>The predictor variables and the response variable have a <strong>linear relationship</strong> since we are doing a linear regression model.</p></li>
+<li><p>The model also assumed <strong>normal distribution in residuals</strong>.</p></li>
+<li><p><strong>Homoscedasticity</strong> that there exists equal variance in residuals.</p></li>
+</ol>
+<p>And the multi-variate feature brings in one more assumption:</p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>No multicollinearity</strong>. The independent variables should be independent of each other.</li>
+</ol>
+<div id="plot-diagnosis-plots" class="section level4 hasAnchor" number="5.4.1.1">
+<h4><span class="header-section-number">5.4.1.1</span> Plot diagnosis plots:<a href="multiple-linear-regression-model.html#plot-diagnosis-plots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>I found it much easier to build the model first then check the assumptions as we can utilize these auto-generated model diagnosis plots from the <code>lm()</code> function. These plots can be called by simply run <code>plot(model_name)</code>. Let’s try this:</p>
+<p>You should see four diagnosis plots generated: <em>Residuals vs Fitted plot</em>, <em>Normal Q-Q plot</em>, <em>Scale-Location plot</em>, and <em>The Residuals vs Leverage plot</em>.</p>
+</div>
+</div>
+<div id="evaluate-model-assumptions" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Evaluate model assumptions<a href="multiple-linear-regression-model.html#evaluate-model-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Residuals vs Fitted plot: </strong></p>
+<p><img src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/mvlrm1.png" /></p>
+<ol style="list-style-type: decimal">
+<li><em>Residuals vs Fitted plot</em> checks <strong>linearity assumption</strong>. If the red line, represents residual distribution, in the plot align with the dashed black line (horizontal at zero), it indicates linear relationship exists in the model.
+<ul>
+<li>we can also test linear relationship by simply do a scatter plot between each predictor variable and the response variable, using <code>plot()</code>. For example, <code>plot(multi_data$totalzoop~multi_data$DIC)</code>, and we can add a linear regression line by using <code>abline()</code> and a single linear model between these two variables using <code>lm()</code>.</li>
+</ul></li>
+</ol>
+<p><img src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/mvlrm2.png" /></p>
+<pre><code>  The R squared of the linear regression line can be extracted and evaluate whether the relationship is linear: `summary(lm(totalzoop~DIC,data=multi_data))$r.squared`.</code></pre>
+<p><strong>Normal Q-Q plot: </strong></p>
+<p><img src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/mvlrm3.png" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li><em>Normal Q-Q plot</em> checks the <strong>normality of residuals</strong> assumption. If the standardized residuals follow the straight dashed line, then the assumption is fulfilled.
+<ul>
+<li>Another simpler way to visualize and check it is to plot histogram using (<code>hist()</code>) model residuals.</li>
+</ul></li>
+</ol>
+<p><img src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/mvlrm4.png" /></p>
+<p><strong>Scale-Location plot: </strong>
+<img src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/mvlrm5.png" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><em>Scale-Location plot</em> is used to check the <strong>homoscedasticity</strong>. If the residuals have equal variance, the standardized will spread randomly with the red line approximate horizontal line.
+<ul>
+<li>If heteroscedasticity is found, we can try to eliminate it by doing non-linear data transformation or adding quadratic terms.</li>
+</ul></li>
+</ol>
+<p><strong>Residuals vs Leverage plot: </strong></p>
+<p><img src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/mvlrm6.png" /></p>
+<ul>
+<li><em>The Residuals vs Leverage plot is not used to check any of the model assumptions. However, it is still important and worth checking as it is used to identify extreme values that can cause a huge influence to our analysis of the model output based on Cook’s distance. Extreme values can be identified as any of the values are outside of the dashed lines. </em></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>The above diagnosis plots check three out of the total four assumptions of this model, the last one, <strong>Multicollinearity</strong>, can be checked by the following several ways depending on the data characteristics:
+<ul>
+<li><p>If we only have continuous variables in our dataset, we can check this using correlation matrix through <code>cor()</code> or/and <code>corrplot()</code>, or variance inflation factor using <code>vif()</code> from the <em>car</em> package, or<code>vifcor()</code> and <code>vifstep()</code> from the <em>usdm</em> package.<br />
+</p></li>
+<li><p>If we have both continuous and categorical variables in our dataset, we need to transfer our categorical variables into dummy variables and viewing them as a single entity. We have already done that in [2. Data preparation]. The <code>vif()</code> function will automatically detect our categorical variables and compute us the generalized vifs.</p></li>
+<li><p>Our variables look good. If multicollinearity is found (vif &gt; 5 is indicating problematic amount of multicollinearity), we can try to remove it by identify and remove the predictor variable that is causing troubles.</p></li>
+</ul></li>
+</ol>
+</div>
+<div id="output-interpretation" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Output interpretation<a href="multiple-linear-regression-model.html#output-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To access model output, the easiest way is to call the <code>summary()</code> method just like the single variate linear regression model:</p>
+<p>However, unlike the single variate model, you can compare the coefficients and significance of multiple predictors and decide on whether you want to exclude some of the variables in your final model. In this case, DIC seems to be the most significant variable and we might be able to get a similarly accurate model from this single predictor</p>
+</div>
+</div>
+<div id="what-could-go-wrong" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> What could go wrong?<a href="multiple-linear-regression-model.html#what-could-go-wrong" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Check carefully whether the values in your data set are in their correct data types, especially for the categorical variables if you have any.</p></li>
+<li><p>Be careful with the <em>comma ,</em> and <em>tilde ~</em> symbols when you are dealing with functions in R. They represent opposite positions of the independent and dependent variables.</p></li>
+<li><p>Always check the model assumptions to see if linear regression model is indeed the appropriate model to use.</p></li>
+</ul>
+</div>
+<div id="references-and-resources-1" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> References and Resources<a href="multiple-linear-regression-model.html#references-and-resources-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Other resources on introductions to multivariate linear regression model in R:<br />
+<a href="https://www.datacamp.com/tutorial/multiple-linear-regression-r-tutorial" class="uri">https://www.datacamp.com/tutorial/multiple-linear-regression-r-tutorial</a><br />
+<a href="https://bookdown.org/jimr1603/Intermediate_R_-_R_for_Survey_Analysis/regression-model.html#multiple-linear-regression" class="uri">https://bookdown.org/jimr1603/Intermediate_R_-_R_for_Survey_Analysis/regression-model.html#multiple-linear-regression</a><br />
+<a href="https://library.virginia.edu/data/articles/getting-started-with-multivariate-multiple-regression" class="uri">https://library.virginia.edu/data/articles/getting-started-with-multivariate-multiple-regression</a><br />
+<a href="https://rpubs.com/bensonsyd/385183" class="uri">https://rpubs.com/bensonsyd/385183</a></p>
+<p>If you would like to have prettier plots for presentation purposes, check the <em>ggplot2</em> package:
+<a href="https://ggplot2.tidyverse.org/" class="uri">https://ggplot2.tidyverse.org/</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="logistic-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
