@@ -58,6 +58,14 @@ This type of data is best fit by an s-shaped curve instead of a line. And this i
 * It represents the *probability* of positive outcomes depending on predictors  
 * As we move along the curve and our predictor values change, we go from 0 to 100% probability of our outcome  
 
+## Aquatic ecology studies using logistic regressions  
+
+- The distribution of gammarid species was predicted using logistic regressions, where current velocity was the most important factor explaining their distribution [(Peeters & Gardeniers, 1998)](https://onlinelibrary.wiley.com/doi/epdf/10.1046/j.1365-2427.1998.00304.x)  
+
+- Foraging shift behaviour from the benthos to the water surface in brown trout (1 = surface prey consumed, 0 = no surface prey consumed) was predicted using fish length as a predictor in a logistic regression [(Sánchez-Hernández & Cobo, 2017)](https://cdnsciencepub.com/doi/full/10.1139/cjfas-2017-0021])
+
+![[Amphipod Gammaridae](https://commons.wikimedia.org/wiki/File:Amphipod_Gammaridae_%288741971996%29.jpg); [Brown Trout, USFWS Mountain-Prairie](https://www.flickr.com/photos/usfwsmtnprairie/49860328703)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic_studies_example.jpg)
+
 ## Mathematical representation
 
 * Logistic regression: transformation of response variable to get linear relationship  
@@ -105,14 +113,6 @@ Just like in a linear regression, we can use continuous and/or discrete variable
 
 - Normal distribution of data or residuals is not needed  
 
-## Aquatic ecology studies using logistic regressions  
-
-- The distribution of gammarid species was predicted using logistic regressions, where current velocity was the most important factor explaining their distribution [(Peeters & Gardeniers, 1998)](https://onlinelibrary.wiley.com/doi/epdf/10.1046/j.1365-2427.1998.00304.x)  
-
-- Foraging shift behaviour from the benthos to the water surface in brown trout (1 = surface prey consumed, 0 = no surface prey consumed) was predicted using fish length as a predictor in a logistic regression [(Sánchez-Hernández & Cobo, 2017)](https://cdnsciencepub.com/doi/full/10.1139/cjfas-2017-0021])
-
-![[Amphipod Gammaridae](https://commons.wikimedia.org/wiki/File:Amphipod_Gammaridae_%288741971996%29.jpg); [Brown Trout, USFWS Mountain-Prairie](https://www.flickr.com/photos/usfwsmtnprairie/49860328703)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic_studies_example.jpg)
-
 ## Creating a logistic model in R
 
 ### Steps to run a logistic model in R
@@ -126,14 +126,13 @@ Just like in a linear regression, we can use continuous and/or discrete variable
 
 ### Let's create this first model together
 
-First, we are going to have a look at some potentially interesting variables:
+First, we are going to create a new dataset including some potentially interesting variables:
 
 
 ```r
-knitr::kable(ham[c(25:30), c(2,8,26,47,98)],row.names = FALSE, digits=2, align=rep('c', 3),
-             col.names = c("Location", "Season", "Total phosphorus", "Filamentous diatom biomass", "Epilimnion temperat."))
+filam_diatom <- ham[, c("area_group", "season", "TP dissolved_ECCC1m",
+                        "filamentous_Diatom", "mean_mixing_depth_temp")]
 ```
-
 
 
 | Location | Season | Total phosphorus | Filamentous diatom biomass | Epilimnion temperat. |
@@ -150,10 +149,6 @@ Let's consider that filamentous diatom is our response variable of interest, as 
 First, let's create a copy of the original dataset so that we can introduce modifications but keep the original data in case we need it.
 
 
-```r
-filam_diatom <- ham
-```
-
 Before we can get started with the analysis, we need to remove NA data. We will now do that for the potential response variable filamentous diatom column, and for the potential explanatory variable epilimnion temperature:
 
 
@@ -163,25 +158,46 @@ filam_diatom <- filam_diatom[!is.na(filam_diatom$mean_mixing_depth_temp), ]
 ```
 
 
-#### Try it now
-Now you can do this last step (removing NA data) for total phosphorus ("TP dissolved_ECCC1m"), as we will consider this as another potential explanatory variable later on. 
+#### Try it now {-}
 
+Now you can do this last step (removing NA data) for total phosphorus ("TP dissolved_ECCC1m"), as we will consider this as another potential explanatory variable later on.
+
+First we remove NA data based on the response variable:
 
 ```r
 # Use the original dataset "ham" to subset this data, and give this new  dataset a name, like "filam_diatom_P"
+your_dataset_phosphorus <- original_dataset[!is.na(original_dataset$filamentous_Diatom), ]
+```
 
-# Don't forget to remove NA data from both the response and the explanatory variables
+Before you remove NA data based on the explanatory variable, let's relabel it to remove empty spaces, which may cause errors going forward:
+
+
+```r
+colnames(your_dataset_phosphorus)[colnames(your_dataset_phosphorus) == "TP dissolved_ECCC1m"] <- "Total_phosphorus"
+```
+
+Now you can remove NA data based on the explanatory variable:
+
+
+```r
+your_dataset_phosphorus <- your_dataset_phosphorus[!is.na(your_dataset_phosphorus$Total_phosphorus), ]
 ```
 
 
 
 Let's go back to our "filam_diatom" dataset. Now we will create a new column to describe presence or absence of filamentous diatoms.
 
-Ensure the reference group ("absent") is the first to be shown:
+We can do that with a function called "ifelse" to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
 
 
 ```r
 filam_diatom$filam_presence <- ifelse(filam_diatom$filamentous_Diatom > 0, "present", "absent")
+```
+
+Now we format this column as "factor" and ensure the reference group ("absent") is the first to be shown:
+
+
+```r
 filam_diatom$filam_presence <- factor(filam_diatom$filam_presence)
 levels(filam_diatom$filam_presence)
 ```
@@ -190,12 +206,13 @@ levels(filam_diatom$filam_presence)
 ## [1] "absent"  "present"
 ```
 
-Subset to analyse at specific times of the year and at specific locations
-Here I selected summer conditions. Ideally we should also subset by station (column "Station_Acronym"), but because there's not enough data to do that, let's subset by depth, by removing records in deep locations:
+- Subsetting to analyse at specific times of the year and at specific locations
+
+Here we select summer conditions and remove deep locations:
 
 
 ```r
-filam_diatom <- subset(filam_diatom, (season==2 | season==3) & (!area_group=="deep"))
+filam_diatom <- filam_diatom[(filam_diatom$season == 2 | filam_diatom$season == 3) & filam_diatom$area_group != "deep", ]
 ```
 
 Run model using glm function and family binomial
@@ -235,40 +252,41 @@ summary(model)
 ## Number of Fisher Scoring iterations: 5
 ```
 
-So we can see that our p-value for the epilimnion temperature predictor is smaller than 0.05, which means that the presence of filamentous diatoms can be predicted by temperatures. 
+So we can see that our p-value for the epilimnion temperature predictor is smaller than 0.05. This suggests that there is a statistically significant relationship between temperature and the presence of filamentous diatoms.
 
 Let's see what each component of the model result summary means:
 
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic_model_output.jpg)
 
 
-We are ready for the best part: plotting model predictions  
+We are now ready for the best part: plotting model predictions  
 
-The dotted curves are confidence intervals, which show us the range in which we are 95% sure about the location of true values, based on our data
-
+First, we calculate predicted probabilities for different temperature values: 
 
 ```r
-# Now, let's calculate predicted probabilities for different values of mean_mixing_depth_temp
-
-# Create a sequence of values for mean_mixing_depth_temp
+# Create a sequence of temperature values
 mean_mixing_depth_temp_values <- seq(min(filam_diatom$mean_mixing_depth_temp), max(filam_diatom$mean_mixing_depth_temp), length.out = length(filam_diatom$mean_mixing_depth_temp))
 
-# Create a data frame with mean_mixing_depth_temp values
+# Create a data frame with these temperature values
 newdata <- data.frame(mean_mixing_depth_temp = mean_mixing_depth_temp_values)
 
-# Predict probabilities for each value of mean_mixing_depth_temp
+# Predict probabilities for each temperature value
 predicted_probabilities_filam <- predict(model, newdata = newdata, type = "response")
 
-# Calculate confidence intervals manually
+# Calculate errors around these predictions (confidence intervals)
 z <- qnorm(1 - (1 - 0.95) / 2)  # 95% confidence level
 se <- sqrt(predicted_probabilities_filam * (1 - predicted_probabilities_filam) / nrow(filam_diatom))
 lower_bound <- predicted_probabilities_filam - z * se
 upper_bound <- predicted_probabilities_filam + z * se
+```
 
+Now we are ready to plot the actual data and the model predictions:
+
+```r
 # Convert "present" and "absent" to 1 and 0
 presence_numeric_filam <- ifelse(filam_diatom$filam_presence == "present", 1, 0)
 
-# Plot the predicted probabilities with confidence intervals
+# Plot the actual data along with predicted probabilities and confidence intervals
 plot(mean_mixing_depth_temp_values, predicted_probabilities_filam, type = "l",
      main = "Filamentous diatom presence",
      xlab = "Epilimnion temperature (\u00B0C)", ylab = "Predicted probability", cex.axis = 1.5, ylim = c(0, 1), lwd = 2)
@@ -279,7 +297,9 @@ points(filam_diatom$mean_mixing_depth_temp, presence_numeric_filam)
 
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic3.png)
 
-#### Try it now
+The dotted curves are confidence intervals, which show us the range in which we are 95% sure about the location of true values, based on our data
+
+#### Try it now {-}
 
 ### Creating your logistic model 
 
@@ -287,14 +307,7 @@ Now it's your turn! Run this next logistic model using total phosphorus as a pre
 
 *Formatting* 
 
-Do you remember how you previously labeled your dataset for the phosphorus analysis? You can use that for this exercise. You have already removed NA data, but before proceeding, let's relabel the response variable to remove empty spaces, which may cause errors going forward:
-
-
-```r
-names(filam_diatom_P)[names(filam_diatom_P) == "TP dissolved_ECCC1m"] <- "Total_phosphorus"
-```
-
-Now you can create a new column that describes the presence or the absence of filamentous diatoms across the dataset:
+Do you remember how you previously labeled your dataset for the phosphorus analysis? You can use that for this exercise. You have already removed NA data. Now you can create a new column that describes the presence or the absence of filamentous diatoms across the dataset:
 
 
 ```r
@@ -315,15 +328,19 @@ levels(your_dataset_name$filamentous_Diatom)
 
 
 
+```
+## [1] "absent"  "present"
+```
 
 *Select time periods and locations*
 
-You can choose to select summer, or another time period. Because we have more data for phosphorus, you can select a single station (column 5: "Station_Acronym")
+You can choose to select summer, or another time period. We are excluding deep locations once again:
 
 
 ```r
-# Use the subset function to select desired periods of time and locations. You can use "&" for more than one selection at the same time, and "|" for selecting either one or other option:
-your_dataset_name <- subset(your_dataset_name, (season=="your selection" | season=="your selection") & (Station_Acronym=="your selection"))
+# Select desired periods of time and locations. You can use "&" for more than one selection at the same time, and "|" for selecting either one or other option:
+
+your_dataset_name <- your_dataset_name[(your_dataset_name$season == "your selection" | your_dataset_name$season == "your selection") & your_dataset_name$area_group != "deep", ]
 ```
 
 
@@ -352,6 +369,7 @@ How well did this predictor do?
 
 *Plot model predictions*
 
+Start with obtaining model predictions and errors:
 
 ```r
 # Create a sequence of values for Total_phosphorus
@@ -363,12 +381,16 @@ newdata <- data.frame(Total_phosphorus = Total_phosphorus_values)
 # Predict probabilities for each value of Total_phosphorus
 predicted_probabilities_P <- predict(model, newdata = newdata, type = "response")
 
-# Calculate confidence intervals manually
+# Calculate confidence intervals
 z <- qnorm(1 - (1 - 0.95) / 2)  # 95% confidence level
 se <- sqrt(predicted_probabilities_P * (1 - predicted_probabilities_P) / nrow(filam_diatom))
 lower_bound <- predicted_probabilities_P - z * se
 upper_bound <- predicted_probabilities_P + z * se
+```
 
+Now you are ready to plot the data and the predictions:
+
+```r
 # Convert "present" and "absent" to 1 and 0
 presence_numeric_P <- ifelse(filam_diatom_P$filam_presence == "present", 1, 0)
 
@@ -381,10 +403,13 @@ lines(Total_phosphorus_values, upper_bound, col = "blue", lty = 2)
 points(filam_diatom_P$Total_phosphorus, presence_numeric_P)
 ```
 
+
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic4.png)
 
 
-## What could go wrong?
+## Additional resources
+
+### What could go wrong?
 
 - *Mixing up predictors and response variables in the logistic model equation*
     + If you get a warning when running your logistic model, you may have mixed up the predictors and the response variables. The response variable should be the first one to appear after the opening parenthesis 
@@ -402,22 +427,14 @@ model <- glm(Total_phosphorus ~ filam_presence,
 
 - *Incorrectly coding data so that it is not independent*
 
-Imagine you have counts of living and dead organisms in your dataset:
-
-
-```r
-example_independence <- data.frame(date=rep("Jan-1-2024", times=3), location=c("station-1","station-2", "station-3"), living_daphnia=floor(runif(3, min=0, max=101)),dead_daphnia=floor(runif(3, min=0, max=101)))
-# runif function generates random numbers within the range established by "min" and "max" values
-knitr::kable(head(example_independence))
-```
-
+Imagine you have counts of living and dead organisms in this imaginary dataset:
 
 
 |date       |location  | living_daphnia| dead_daphnia|
 |:----------|:---------|--------------:|------------:|
-|Jan-1-2024 |station-1 |             85|           78|
-|Jan-1-2024 |station-2 |             56|           92|
-|Jan-1-2024 |station-3 |             98|           83|
+|Jan-1-2024 |station-1 |             97|           89|
+|Jan-1-2024 |station-2 |             95|           61|
+|Jan-1-2024 |station-3 |             63|           86|
 
 In this case, instead of considering each individual as "living" or "dead", you should calculate the proportion of living organisms *per replicate* like this:
     
@@ -425,17 +442,14 @@ In this case, instead of considering each individual as "living" or "dead", you 
 ```r
 example_independence$proportion <- round(example_independence$living_daphnia/(example_independence$living_daphnia+example_independence$dead_daphnia),2)
 # the round function ensures we have 2 decimals in our proportion values
-
-knitr::kable(head(example_independence))
 ```
-
 
 
 |date       |location  | living_daphnia| dead_daphnia| proportion|
 |:----------|:---------|--------------:|------------:|----------:|
-|Jan-1-2024 |station-1 |             85|           78|       0.52|
-|Jan-1-2024 |station-2 |             56|           92|       0.38|
-|Jan-1-2024 |station-3 |             98|           83|       0.54|
+|Jan-1-2024 |station-1 |             97|           89|       0.52|
+|Jan-1-2024 |station-2 |             95|           61|       0.61|
+|Jan-1-2024 |station-3 |             63|           86|       0.42|
 
 This proportion will be your response variable for the logistic model. When using proportions, you should also provide the "weights" information in the glm formula (i.e., a dataset with total number of trials per replicate, or the sum of events where we got success + events where we got failure).
 
@@ -492,7 +506,7 @@ No more errors now!
 
 That's it for now, but if you are interested in more complex logistic models, here are some resources:
 
-## R resources 
+### R resources 
 
 *Multiple logistic regression*
 
