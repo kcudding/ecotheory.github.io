@@ -122,6 +122,8 @@ code span.wa { font-style: italic; } /* Warning */
 <li class="chapter" data-level="2.0.1" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#r-from-zero-warmup"><i class="fa fa-check"></i><b>2.0.1</b> R from zero warmup</a></li>
 <li class="chapter" data-level="2.0.2" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#download-needed-files-and-packages"><i class="fa fa-check"></i><b>2.0.2</b> Download needed files and packages</a></li>
 <li class="chapter" data-level="2.0.3" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#package-to-read-.xlsx-files"><i class="fa fa-check"></i><b>2.0.3</b> Package to read .xlsx files</a></li>
+<li class="chapter" data-level="2.0.4" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#other-needed-packages"><i class="fa fa-check"></i><b>2.0.4</b> Other needed packages</a></li>
+<li class="chapter" data-level="2.0.5" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#load-a-package-into-memory"><i class="fa fa-check"></i><b>2.0.5</b> Load a package into memory</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="basic-r.html"><a href="basic-r.html"><i class="fa fa-check"></i><b>3</b> Basic R</a>
 <ul>
@@ -252,7 +254,7 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="download-needed-files-and-packages" class="section level3 hasAnchor" number="2.0.2">
 <h3><span class="header-section-number">2.0.2</span> Download needed files and packages<a href="get-ready-for-the-workshop.html#download-needed-files-and-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will be using a flat .xlsx file of Hamilton Harbour data for our workshop exercise today. Our first job at the workshop will be to import that data.</p>
-<p>Please download the .xlxs to your personal computer prior to the workshop.</p>
+<p>Please download the .xlxs to your personal computer prior to the workshop <a href="https://ecotheory.ca/teach/RIntro/ind%20dates%20flat%20all%20parameters%20Hamilton%20only%20FOR%20Kim.xlsx">https://ecotheory.ca/teach/RIntro/ind dates flat all parameters Hamilton only FOR Kim.xlsx</a></p>
 <p>In addition, we encourage you to download and install the packages we will be using for the workshop.</p>
 </div>
 <div id="package-to-read-.xlsx-files" class="section level3 hasAnchor" number="2.0.3">
@@ -261,9 +263,15 @@ code span.wa { font-style: italic; } /* Warning */
 <p>On your own computer, you will need download the package and install it. This is pretty easy. On the RStudio menu select <em>Tools</em>, and then <em>Install packages</em> from the drop down list. Enter <em>readxl</em> in the search window, and then select <em>Install</em>. You can also use the function install.packages. Just type <em>install.packages(“readxl”)</em>.</p>
 <p>The function <strong>install.package()</strong> downloads the indicated package from the internet and stores it. Eventually, in the console window you should see an indication the R has downloaded and installed the package.</p>
 <p>Once you’ve done this once, you don’t need to do it ever again, unless you update the version of R you are using, or wish to use an updated version of the package.</p>
-<p>In addition, the exercise on multivariate analysis will use the “vegan”. Please install this package prior to the workshop as well.</p>
+</div>
+<div id="other-needed-packages" class="section level3 hasAnchor" number="2.0.4">
+<h3><span class="header-section-number">2.0.4</span> Other needed packages<a href="get-ready-for-the-workshop.html#other-needed-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In addition, the exercise on multivariate analysis will use the <em>vegan</em>, and <em>car</em>. Please install these package prior to the workshop as well.</p>
+</div>
+<div id="load-a-package-into-memory" class="section level3 hasAnchor" number="2.0.5">
+<h3><span class="header-section-number">2.0.5</span> Load a package into memory<a href="get-ready-for-the-workshop.html#load-a-package-into-memory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>These packages are now part of R’s set of functions, but since it they not part of the standard environment, you will have to mention to R when you wish to use functions from this collection. The <strong>library()</strong> function tells R you wish to use commands from a particular package on this occasion.</p>
-<p>Every time you restart R, or try to compile a .Rmd file, you will have to mention to R when you wish to use functions from this collection. The simplest method to do this is to always include the statement <em>library(readxl)</em> at the beginning of code that uses functions from this package.</p>
+<p>Every time you restart R you will have to mention to R when you wish to use functions from this collection. The simplest method to do this is to always include the statement <em>library(readxl)</em> at the beginning of code that uses functions from this package.</p>
 <p>Here R loads the package into active memory.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="get-ready-for-the-workshop.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
 <p>If this command works, you are ready to go for the first part of the workshop!</p>

@@ -122,6 +122,8 @@ code span.wa { font-style: italic; } /* Warning */
 <li class="chapter" data-level="2.0.1" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#r-from-zero-warmup"><i class="fa fa-check"></i><b>2.0.1</b> R from zero warmup</a></li>
 <li class="chapter" data-level="2.0.2" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#download-needed-files-and-packages"><i class="fa fa-check"></i><b>2.0.2</b> Download needed files and packages</a></li>
 <li class="chapter" data-level="2.0.3" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#package-to-read-.xlsx-files"><i class="fa fa-check"></i><b>2.0.3</b> Package to read .xlsx files</a></li>
+<li class="chapter" data-level="2.0.4" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#other-needed-packages"><i class="fa fa-check"></i><b>2.0.4</b> Other needed packages</a></li>
+<li class="chapter" data-level="2.0.5" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#load-a-package-into-memory"><i class="fa fa-check"></i><b>2.0.5</b> Load a package into memory</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="basic-r.html"><a href="basic-r.html"><i class="fa fa-check"></i><b>3</b> Basic R</a>
 <ul>
@@ -269,15 +271,21 @@ code span.wa { font-style: italic; } /* Warning */
 <p>There are a number of commands to look at a portion of the dataset. Four quick methods to check data import:</p>
 <ol style="list-style-type: decimal">
 <li>print or <strong>view()</strong>,</li>
-<li>colnames()**,</li>
+<li><strong>colnames()</strong>,</li>
 <li><strong>head()</strong> or <strong>tail()</strong>,</li>
 <li><strong>str()</strong></li>
 </ol>
+<div id="try-it-now-1" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:{<a href="basic-r.html#try-it-now-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use <strong>colnames()</strong> to see the names of the columns in ham, <strong>tail()</strong> to see the last rows of ham, and <strong>str()</strong> to see information about data type etc.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="basic-r.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View(ham)</span></span>
-<span id="cb3-2"><a href="basic-r.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ham[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
+<span id="cb3-2"><a href="basic-r.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="basic-r.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the first 5 column names of the dataframe ham</span></span>
+<span id="cb3-4"><a href="basic-r.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ham[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
 <pre><code>[1] &quot;waterbody&quot;       &quot;area_group&quot;      &quot;Latitude&quot;        &quot;Longtitude&quot;     
 [5] &quot;Station_Acronym&quot;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(ham, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Looks at the last 5 rows</span></span>
+<span id="cb5-2"><a href="basic-r.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(ham, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code># A tibble: 5 × 109
   waterbody        area_group Latitude Longtitude Station_Acronym report_Stn
   &lt;chr&gt;            &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;     
@@ -293,7 +301,8 @@ code span.wa { font-style: italic; } /* Warning */
 #   PON_ECCC1m &lt;dbl&gt;, `TKN dissolved_ECCC1m` &lt;dbl&gt;, SRP_ECCC1m &lt;dbl&gt;, TP_ECCC1m &lt;dbl&gt;,
 #   `TP dissolved_ECCC1m` &lt;dbl&gt;, Chl_a_uncorrected &lt;dbl&gt;, Secchi &lt;dbl&gt;,
 #   `Kd light_attenuation` &lt;dbl&gt;, Cyano &lt;dbl&gt;, Chloro &lt;dbl&gt;, Eugleno &lt;dbl&gt;, …</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="basic-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ham, <span class="at">list.len =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="basic-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get a summary regarding the first 5 columns</span></span>
+<span id="cb7-2"><a href="basic-r.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ham, <span class="at">list.len =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>tibble [742 × 109] (S3: tbl_df/tbl/data.frame)
  $ waterbody                  : chr [1:742] &quot;Hamilton Harbour&quot; &quot;Hamilton Harbour&quot; &quot;Hamilton Harbour&quot; &quot;Hamilton Harbour&quot; ...
  $ area_group                 : chr [1:742] &quot;deep&quot; &quot;NE&quot; &quot;deep&quot; &quot;west&quot; ...
@@ -303,14 +312,15 @@ code span.wa { font-style: italic; } /* Warning */
   [list output truncated]</code></pre>
 </div>
 </div>
+</div>
 <div id="data-in-r" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Data in R<a href="basic-r.html#data-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You’ll notice that the data are structured in columns. This is a <em>dataframe</em>, one of the most used data structures in R. Data structures are sets of variables organized in a particular way. In R there are 4 primary data structures we will use repeatedly: vectors, matrices, dataframes and lists.</p>
 <div id="selecting-portions-of-a-dataframe" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Selecting portions of a dataframe<a href="basic-r.html#selecting-portions-of-a-dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To start our examination and analysis of this data, we need to be able to select items of interest. Dataframes are indexed by rows and columns. If you want the item from the 5th row and 2nd column type <em>mydata[5,2]</em>. If you need just one column you can type either <em>mydata[,2]</em>, which grabs everything in column 2, or if you know the name of the column <em>mydata$Population</em>. To get rows 2 to 5 you can enter <em>mydata[2:5,2]</em>. You can also combine this with the column name which may be easier to read, as <em>mydata$Population[2:5]</em>.</p>
-<div id="try-it-now-1" class="section level4 hasAnchor" number="3.2.1.1">
-<h4><span class="header-section-number">3.2.1.1</span> Try it now:<a href="basic-r.html#try-it-now-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-2" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Select just the first 5 rows and first 3 columns of the dataframe you read into R.</p>
 <pre><code># A tibble: 5 × 3
   waterbody        area_group Latitude
@@ -320,11 +330,11 @@ code span.wa { font-style: italic; } /* Warning */
 3 Hamilton Harbour deep           43.3
 4 Hamilton Harbour west           43.3
 5 Hamilton Harbour deep           43.3</code></pre>
-<p>We can create new data subsets by using the <strong>c()</strong> or <strong>c</strong>ombine function.</p>
+<p>We can also create new data subsets by using the <strong>c()</strong> or <strong>c</strong>ombine function.</p>
 </div>
-<div id="try-it-now-2" class="section level4 hasAnchor" number="3.2.1.2">
-<h4><span class="header-section-number">3.2.1.2</span> Try it now:<a href="basic-r.html#try-it-now-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Let’s access the first 3 and column 10, and save the result to a new variable ’ ham_sub’</p>
+<div id="try-it-now-3" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Let’s access the first 5 rows, the first 3 columns and column 10, and save the result to a new variable ’ ham_sub’</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="basic-r.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save a subsection of a dataframe</span></span>
 <span id="cb10-2"><a href="basic-r.html#cb10-2" aria-hidden="true" tabindex="-1"></a>ham_sub <span class="ot">=</span> ham[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">9</span><span class="sc">:</span><span class="dv">10</span>)]</span>
 <span id="cb10-3"><a href="basic-r.html#cb10-3" aria-hidden="true" tabindex="-1"></a>ham_sub</span></code></pre></div>
@@ -338,13 +348,13 @@ code span.wa { font-style: italic; } /* Warning */
 5 Hamilton Harbour deep           43.3  2022        174</code></pre>
 <p>We can also just grab a single column, using the column name to identify it as <strong>mydata$thiscolumn</strong> or <em>mydata[,“thiscolumn”]</em>.</p>
 </div>
-<div id="try-it-now-3" class="section level4 hasAnchor" number="3.2.1.3">
-<h4><span class="header-section-number">3.2.1.3</span> Try it now:<a href="basic-r.html#try-it-now-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-4" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Access the Station_Acronym column of the data</p>
 <pre><code>[1] &quot;HH908&quot;      &quot;HH6&quot;        &quot;HH258&quot;      &quot;HHBayfront&quot; &quot;HH908&quot;      &quot;HH9031&quot;    </code></pre>
 </div>
-<div id="try-it-now-4" class="section level4 hasAnchor" number="3.2.1.4">
-<h4><span class="header-section-number">3.2.1.4</span> Try it now:<a href="basic-r.html#try-it-now-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-5" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Our subsetted data is not ordered by year or group, so let’s use the <strong>order()</strong> function to rearrange</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-r.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save a subsection of a dataframe</span></span>
 <span id="cb13-2"><a href="basic-r.html#cb13-2" aria-hidden="true" tabindex="-1"></a>ham_sub <span class="ot">=</span> ham_sub[<span class="fu">order</span>(ham_sub<span class="sc">$</span>area_group, ham_sub<span class="sc">$</span>year), ]</span>
@@ -362,14 +372,14 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="using-conditional-statements-to-access-data" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Using conditional statements to access data<a href="basic-r.html#using-conditional-statements-to-access-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can also use conditional statements to access portions of the data. Conditional statements evaluate to TRUE or FALSE. The “==” symbol is used to determine if a variable is equal to some value, while “!=” evaluates is something is not equal. As you might expect we can also use greater than (“&gt;”) or less than (“&lt;”) conditionals.</p>
-<div id="try-it-now-5" class="section level4 hasAnchor" number="3.2.2.1">
-<h4><span class="header-section-number">3.2.2.1</span> Try it now:<a href="basic-r.html#try-it-now-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-6" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Enter <em>ham$calanoid[ham$Station_Acronym==“HH6”]</em> and examine the data.</p>
 <pre><code>[1] 84.094200542 13.196863744 64.145098250 58.389201770 25.256348256  0.006374018</code></pre>
 <p>Of course, this gives us all of the sampling dates for this station. Let’s assume we only want data from 2016. In that case we can combine our conditional statements using “&amp;” for AND and “|” for OR.</p>
 </div>
-<div id="try-it-now-6" class="section level4 hasAnchor" number="3.2.2.2">
-<h4><span class="header-section-number">3.2.2.2</span> Try it now:<a href="basic-r.html#try-it-now-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-7" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use an “&amp;” symbol to indicate that we want the selected data to be from station “HH6” and to be from the 2016.</p>
 <pre><code> [1]  64.145098  25.256348  70.721192 142.447448  89.268307  70.066000  32.332505
  [8]  78.560037   7.974158 120.229185  91.171246  19.286071 104.393878</code></pre>
@@ -442,8 +452,8 @@ code span.wa { font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
-<div id="try-it-now-7" class="section level4 hasAnchor" number="3.2.2.3">
-<h4><span class="header-section-number">3.2.2.3</span> Try it now:<a href="basic-r.html#try-it-now-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-8" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Access the calanoid data at station “HH6” for 2014</p>
 <pre><code> [1]  3.7525745  4.4195122  4.4719882 49.3636318  7.1764905  0.8381301  3.7054878
  [8]  6.7292412  4.0907797  5.7956002  1.0151220  5.4204413</code></pre>
@@ -455,19 +465,19 @@ code span.wa { font-style: italic; } /* Warning */
 <p>Next, let’s figure out how to complete some simple calculations with these values, like finding the mean and standard deviation.</p>
 <p>We have already used some functions in R. R contains thousands of functions, and more are being added everyday.</p>
 <p>If you are trying to find a function that does something you need to do, you can use the command apropos(“keyword”) to see if there is a function that contains the keyword in its name.</p>
-<div id="try-it-now-8" class="section level4 hasAnchor" number="3.3.0.1">
-<h4><span class="header-section-number">3.3.0.1</span> Try it now:<a href="basic-r.html#try-it-now-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-9" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For example if you wanted to find a function that calculated means you might: type ‘apropos(“mean”)’. What happens?</p>
 <p>One of the listed functions “mean” looks promising. Your next step might be to get more information by typing ‘help(mean)’ or ‘example(mean)’.</p>
 </div>
-<div id="try-it-now-9" class="section level4 hasAnchor" number="3.3.0.2">
-<h4><span class="header-section-number">3.3.0.2</span> Try it now:<a href="basic-r.html#try-it-now-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-10" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>You should see that the funciton <strong>mean()</strong> works on a vector of numeric data.</p>
 <p>Perhaps the function does not contain the keyword in its name, in this case try ??”keyword phrase” to get R to search function descriptions</p>
 <p>If the internal help menu lets you down you can also try a search at <a href="http://www.rseek.org/" class="uri">http://www.rseek.org/</a></p>
 </div>
-<div id="try-it-now-10" class="section level4 hasAnchor" number="3.3.0.3">
-<h4><span class="header-section-number">3.3.0.3</span> Try it now:<a href="basic-r.html#try-it-now-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-11" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use these tools to find a function that calculates standard deviation
 Then mean this function and a function to calculate means to get the mean and standard deviation of calanoid density in 2014.</p>
 <pre><code>[1] 8.064917</code></pre>
@@ -476,8 +486,8 @@ Then mean this function and a function to calculate means to get the mean and st
 <div id="summarizing-data" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Summarizing data<a href="basic-r.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Other functions can help with quick data summaries. for example, the <strong>table()</strong> function can be used to take a quick look at the number of sampling dates for each station.</p>
-<div id="try-it-now-11" class="section level4 hasAnchor" number="3.3.1.1">
-<h4><span class="header-section-number">3.3.1.1</span> Try it now:<a href="basic-r.html#try-it-now-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-12" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-12" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use this function on the Station_Acronym column of the data</p>
 <table>
 <thead>
@@ -598,7 +608,7 @@ Then mean this function and a function to calculate means to get the mean and st
 </tbody>
 </table>
 <p>The <strong>summary()</strong> function can also give information about a vector.
-#### Try it now:
+#### Try it now: {-}
 Use the summary function on the “Chl_a_uncorrected” data for site HH258</p>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
   3.060   9.508  12.600  15.004  19.253  70.020      25 </code></pre>
@@ -610,19 +620,27 @@ Use the summary function on the “Chl_a_uncorrected” data for site HH258</p>
 <p>A quick check of data can also be done with simple plots. for example, let’s see what the Chl_a_uncorrected data from 2016 looks like using the <strong>plot()</strong> function.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-r.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x =</span> ham<span class="sc">$</span>Julian_Day)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672"  /></p>
+<div id="try-it-now-13" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-13" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Create this plot</p>
 <p>Of course, this is the data from every station. Let’s just plot station HH258, and colour code by sampling year</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="basic-r.html#cb23-1" aria-hidden="true" tabindex="-1"></a>sub2_ham <span class="ot">=</span> ham[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH258&quot;</span>, ]</span>
 <span id="cb23-2"><a href="basic-r.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> sub2_ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x =</span> sub2_ham<span class="sc">$</span>Julian_Day, </span>
 <span id="cb23-3"><a href="basic-r.html#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> sub2_ham<span class="sc">$</span>year)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672"  /></p>
+</div>
+<div id="try-it-now-14" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-14" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Create this plot</p>
 <p>Kind of hard to read… I think I wan to group the data by decade, and let’s pimp the plot a little. We also need axis labels, a nicer symbol and a legend.</p>
+</div>
 </div>
 <div id="the-editor-window" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> The Editor window<a href="basic-r.html#the-editor-window" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Preveiously you could have completed all of these commands in the Console window where R would execute them immediately. Now we’re going to have a bunch of commands, some of which we may want to tweek (e.g., colours). This time, let’s save our code in the Editor window so that it is easy to change and rerun.</p>
+<p>Previously you could have completed all of these commands in the Console window where R would execute them immediately. Now we’re going to have a bunch of commands, some of which we may want to tweek (e.g., colours). This time, let’s save our code in the Editor window so that it is easy to change and rerun.</p>
 <p>We’ll create a new file using the drop down menus. Click <em>File</em> then <em>New File</em>, and then <em>R Script</em>. A blank document will appear in the Editor window is found in the top left of the default R Studio.</p>
-<div id="try-it-now-12" class="section level4 hasAnchor" number="3.5.0.1">
-<h4><span class="header-section-number">3.5.0.1</span> Try it now:<a href="basic-r.html#try-it-now-12" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-15" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-15" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Create a new file, enter the following code, and then save it using the drop down menu or cntrl-s or command-s. Then run the code</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672"  /></p>
 <p>Notice that I’ve used a <em>factor</em> variable to control the colour of the data from each decade.</p>
@@ -632,6 +650,10 @@ Use the summary function on the “Chl_a_uncorrected” data for site HH258</p>
 <span id="cb24-3"><a href="basic-r.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">levels</span>(ham<span class="sc">$</span>area_group), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
 <span id="cb24-4"><a href="basic-r.html#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">levels</span>(ham<span class="sc">$</span>area_group))))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672"  /></p>
+</div>
+<div id="try-it-now-16" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-16" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Create this plot</p>
 <p>This is too cluttered, so I am going to summarize the data by year and area, and then plot that. I’m going to plot the data from each area individually starting with the first one, and then adding subsequent areas to the same plot using the <strong>lines()</strong> function.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="basic-r.html#cb25-1" aria-hidden="true" tabindex="-1"></a>samps <span class="ot">=</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(ham[, <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;area_group&quot;</span>)]))</span>
 <span id="cb25-2"><a href="basic-r.html#cb25-2" aria-hidden="true" tabindex="-1"></a>samps<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(samps<span class="sc">$</span>year))</span>
@@ -648,6 +670,10 @@ Use the summary function on the “Chl_a_uncorrected” data for site HH258</p>
 <span id="cb25-13"><a href="basic-r.html#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">levels</span>(ham<span class="sc">$</span>area_group), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
 <span id="cb25-14"><a href="basic-r.html#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672"  /></p>
+</div>
+<div id="try-it-now-17" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-17" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Create this plot</p>
 <p>At this point, the plotting is getting a bit more complex, so you may want to use another library called *ggplot2** to do some of your plotting. This library of functions has a non-intuitive command structure, but is quick for plotting multiple sets of data on the same plot with a legend.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="basic-r.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># similar plot using ggplot</span></span>
 <span id="cb26-2"><a href="basic-r.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>

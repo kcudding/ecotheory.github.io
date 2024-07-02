@@ -122,6 +122,8 @@ code span.wa { font-style: italic; } /* Warning */
 <li class="chapter" data-level="2.0.1" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#r-from-zero-warmup"><i class="fa fa-check"></i><b>2.0.1</b> R from zero warmup</a></li>
 <li class="chapter" data-level="2.0.2" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#download-needed-files-and-packages"><i class="fa fa-check"></i><b>2.0.2</b> Download needed files and packages</a></li>
 <li class="chapter" data-level="2.0.3" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#package-to-read-.xlsx-files"><i class="fa fa-check"></i><b>2.0.3</b> Package to read .xlsx files</a></li>
+<li class="chapter" data-level="2.0.4" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#other-needed-packages"><i class="fa fa-check"></i><b>2.0.4</b> Other needed packages</a></li>
+<li class="chapter" data-level="2.0.5" data-path="get-ready-for-the-workshop.html"><a href="get-ready-for-the-workshop.html#load-a-package-into-memory"><i class="fa fa-check"></i><b>2.0.5</b> Load a package into memory</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="basic-r.html"><a href="basic-r.html"><i class="fa fa-check"></i><b>3</b> Basic R</a>
 <ul>
@@ -481,8 +483,8 @@ code span.wa { font-style: italic; } /* Warning */
 <span id="cb38-2"><a href="logistic-regression.html#cb38-2" aria-hidden="true" tabindex="-1"></a>    ]</span>
 <span id="cb38-3"><a href="logistic-regression.html#cb38-3" aria-hidden="true" tabindex="-1"></a>filam_diatom <span class="ot">&lt;-</span> filam_diatom[<span class="sc">!</span><span class="fu">is.na</span>(filam_diatom<span class="sc">$</span>mean_mixing_depth_temp), </span>
 <span id="cb38-4"><a href="logistic-regression.html#cb38-4" aria-hidden="true" tabindex="-1"></a>    ]</span></code></pre></div>
-<div id="try-it-now-13" class="section level4 hasAnchor" number="6.9.2.1">
-<h4><span class="header-section-number">6.9.2.1</span> Try it now<a href="logistic-regression.html#try-it-now-13" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-18" class="section level4 hasAnchor" number="6.9.2.1">
+<h4><span class="header-section-number">6.9.2.1</span> Try it now<a href="logistic-regression.html#try-it-now-18" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Now you can do this last step (removing NA data) for total phosphorus (“TP dissolved_ECCC1m”), as we will consider this as another potential explanatory variable later on.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="logistic-regression.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the original dataset &#39;ham&#39; to subset this data, and</span></span>
 <span id="cb39-2"><a href="logistic-regression.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># give this new dataset a name, like &#39;filam_diatom_P&#39;</span></span>
@@ -570,8 +572,8 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <span id="cb46-35"><a href="logistic-regression.html#cb46-35" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(filam_diatom<span class="sc">$</span>mean_mixing_depth_temp, presence_numeric_filam)</span></code></pre></div>
 <p><img src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic3.png" /></p>
 </div>
-<div id="try-it-now-14" class="section level4 hasAnchor" number="6.9.2.2">
-<h4><span class="header-section-number">6.9.2.2</span> Try it now<a href="logistic-regression.html#try-it-now-14" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-19" class="section level4 hasAnchor" number="6.9.2.2">
+<h4><span class="header-section-number">6.9.2.2</span> Try it now<a href="logistic-regression.html#try-it-now-19" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 </div>
 </div>
 <div id="creating-your-logistic-model" class="section level3 hasAnchor" number="6.9.3">
@@ -680,20 +682,20 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-1</td>
-<td align="right">20</td>
-<td align="right">53</td>
+<td align="right">74</td>
+<td align="right">5</td>
 </tr>
 <tr class="even">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-2</td>
-<td align="right">36</td>
-<td align="right">2</td>
+<td align="right">81</td>
+<td align="right">13</td>
 </tr>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-3</td>
-<td align="right">55</td>
-<td align="right">100</td>
+<td align="right">4</td>
+<td align="right">42</td>
 </tr>
 </tbody>
 </table>
@@ -718,23 +720,23 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-1</td>
-<td align="right">20</td>
-<td align="right">53</td>
-<td align="right">0.27</td>
+<td align="right">74</td>
+<td align="right">5</td>
+<td align="right">0.94</td>
 </tr>
 <tr class="even">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-2</td>
-<td align="right">36</td>
-<td align="right">2</td>
-<td align="right">0.95</td>
+<td align="right">81</td>
+<td align="right">13</td>
+<td align="right">0.86</td>
 </tr>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-3</td>
-<td align="right">55</td>
-<td align="right">100</td>
-<td align="right">0.35</td>
+<td align="right">4</td>
+<td align="right">42</td>
+<td align="right">0.09</td>
 </tr>
 </tbody>
 </table>
