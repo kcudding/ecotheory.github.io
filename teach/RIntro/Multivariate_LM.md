@@ -1,6 +1,6 @@
 ---
 title: "Multi-variate Linear Regression Model"
-author: "Xuewen"
+author: "Xuewen Geng"
 date: "2024-06-20"
 output: 
   html_document: 
@@ -13,18 +13,7 @@ output:
 ---
 
 
-
-## Objectives
-
-In the following sections, you will learn about:
-
-- understand the concept of multi-variate linear regression model
-
-- prepare and evaluate data for multi-variate linear regression model
-
-- build multi-variate linear regression model
-
-- model output interpretation and evaluation
+# Multivariate Linear Regression Model
 
 ## Introduction 
 
