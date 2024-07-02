@@ -1,67 +1,47 @@
 ---
-title: "DFO training: Logistic Regression"
-date: "2024-06-28"
-output:
-  html_document:
-    toc: true
-    toc_depth: 3
-    number_sections: true
-    keep_md: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: false
-  pdf_document:
-    toc: true
-    toc_depth: '3'
-  word_document:
-    toc: true
-    toc_depth: '3'
+
 ---
 
 
 
 # **Logistic regression**
 
-## Objectives
-
-* Learn main uses of logistic regressions  
-* Describe logistic regression assumptions    
-* Apply models to your own data using R programming language  
-* Interpret model fits and results   
-
 ## What is a logistic regression?
 
-* Used to understand association between binary response variable and predictors 
+* Association between binary response variable and predictors 
 * Example: species distribution models 
     + Binary response variable: presence (1) or absence (0) of species in area
-    + Results in predictions of habitat suitability
+    + Predictions of habitat suitability
 
 ## How are logistic regressions different from linear regressions?
 
 *Linear regression*  
-- Quantitative outcomes are predicted based on value of predictors using straight line  
-- We calculate correlation and test for significance of regression  
-- We compare different types of model, from more simple, with single predictors, to more complicated, with several predictors and interactions, and then find the ones that provide a best fit to our data  
+- Quantitative predictions: straight line  
+- Correlation and test for significance of regression  
+- Model comparison (eg., single versus several predictors)  
 
 *Logistic regression*  
 - We can also do all of that!  
-- Main difference: our outcomes are *binary* as opposed to continuous measurements  
+- Main difference: our outcomes are now *binary*
 - Examples of binary outcomes: presence versus absence; positive to a disease versus negative; dead versus alive  
 - Outcomes can be categorized as 1 (e.g., success) and 0 (e.g., failure)
-- In the case of Hamilton Harbour dataset, let's suppose that it becomes hard for zooplankton to eat when there are more "less edible" algae than "edible" algae in the environment (that was the criteria for populating the column "Easy to eat":)
+
+## How does this type of data look like?
+- Hamilton Harbour dataset: let's suppose that it becomes hard for zooplankton to eat when there are more "less edible" algae than "edible" algae in the environment
+- That was the criteria for populating the column "Easy to eat":
 
 
 | Nitrate/nitrite|  Edible| Less edible|Easy to eat |
 |---------------:|-------:|-----------:|:-----------|
-|            2.23|  884.60|      1645.7|yes         |
-|            2.50|  900.00|      1133.3|yes         |
-|            2.50|  923.20|       939.9|yes         |
-|            2.13| 1546.40|      1312.0|no          |
-|            2.13|  811.90|       454.1|no          |
-|            2.62|  339.16|       308.2|no          |
-|            2.67| 1376.80|       552.2|no          |
+|            2.23|  884.60|      1645.7|no          |
+|            2.50|  900.00|      1133.3|no          |
+|            2.50|  923.20|       939.9|no          |
+|            2.13| 1546.40|      1312.0|yes         |
+|            2.13|  811.90|       454.1|yes         |
+|            2.62|  339.16|       308.2|yes         |
+|            2.67| 1376.80|       552.2|yes         |
 
-When we plot this type of binary data, we see that observations are either of the two outcome possibilities.
+When we plot this type of binary data, we see that observations are either of the two outcome possibilities:
 
 
 
@@ -76,15 +56,15 @@ This type of data is best fit by an s-shaped curve instead of a line. And this i
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic2.png)
 
 * It represents the *probability* of positive outcomes depending on predictors  
-* Hover your mouse over the logistic curve: as we move along the curve and our predictor values change, we go from 0 to 100% probability of our outcome  
+* As we move along the curve and our predictor values change, we go from 0 to 100% probability of our outcome  
 
 ## Mathematical representation
 
-* Before we can correlate variables in our models: the code we use to run logistic regressions transforms the response variable to get a linear relationship between variables  
-* This transformation is called logit (log of probability of success/probability of failure)
-* Our explanatory variable is in log(odds)  
+* Logistic regression: transformation of response variable to get linear relationship  
+* logit (log of probability of success/probability of failure)
+* Explanatory variable is in log(odds)  
 
-This is the equation for the logistic regression:
+Equation for logistic regression:
 
 $$ Log (p/1-p) = b0+b1*x1+e $$
 *Log (p/1-p)*: response variable  
@@ -125,7 +105,7 @@ Just like in a linear regression, we can use continuous and/or discrete variable
 
 - Normal distribution of data or residuals is not needed  
 
-## Aquatic ecology studies using logistic regression  
+## Aquatic ecology studies using logistic regressions  
 
 - The distribution of gammarid species was predicted using logistic regressions, where current velocity was the most important factor explaining their distribution [(Peeters & Gardeniers, 1998)](https://onlinelibrary.wiley.com/doi/epdf/10.1046/j.1365-2427.1998.00304.x)  
 
@@ -133,7 +113,7 @@ Just like in a linear regression, we can use continuous and/or discrete variable
 
 ![[Amphipod Gammaridae](https://commons.wikimedia.org/wiki/File:Amphipod_Gammaridae_%288741971996%29.jpg); [Brown Trout, USFWS Mountain-Prairie](https://www.flickr.com/photos/usfwsmtnprairie/49860328703)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic_studies_example.jpg)
 
-## Practice time: run your own logistic model
+## Creating a logistic model in R
 
 ### Steps to run a logistic model in R
 
@@ -183,7 +163,8 @@ filam_diatom <- filam_diatom[!is.na(filam_diatom$mean_mixing_depth_temp), ]
 ```
 
 
-*Practice time*: Now you can do this last step (removing NA data) for total phosphorus ("TP dissolved_ECCC1m"), as we will consider this as another potential explanatory variable later on. 
+#### Try it now
+Now you can do this last step (removing NA data) for total phosphorus ("TP dissolved_ECCC1m"), as we will consider this as another potential explanatory variable later on. 
 
 
 ```r
@@ -258,7 +239,7 @@ So we can see that our p-value for the epilimnion temperature predictor is small
 
 Let's see what each component of the model result summary means:
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/model_output_description.jpg)
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic_model_output.jpg)
 
 
 We are ready for the best part: plotting model predictions  
@@ -298,11 +279,11 @@ points(filam_diatom$mean_mixing_depth_temp, presence_numeric_filam)
 
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic3.png)
 
-*Practice time*:
+#### Try it now
 
-### Create your own model
+### Creating your logistic model 
 
-Now it's your turn! Run your own logistic model using total phosphorus as a predictor, and filamentous diatoms as the response variable again.
+Now it's your turn! Run this next logistic model using total phosphorus as a predictor, and filamentous diatoms as the response variable again.
 
 *Formatting* 
 
@@ -434,9 +415,9 @@ knitr::kable(head(example_independence))
 
 |date       |location  | living_daphnia| dead_daphnia|
 |:----------|:---------|--------------:|------------:|
-|Jan-1-2024 |station-1 |             98|           79|
-|Jan-1-2024 |station-2 |             71|           13|
-|Jan-1-2024 |station-3 |             12|           40|
+|Jan-1-2024 |station-1 |             85|           78|
+|Jan-1-2024 |station-2 |             56|           92|
+|Jan-1-2024 |station-3 |             98|           83|
 
 In this case, instead of considering each individual as "living" or "dead", you should calculate the proportion of living organisms *per replicate* like this:
     
@@ -452,9 +433,9 @@ knitr::kable(head(example_independence))
 
 |date       |location  | living_daphnia| dead_daphnia| proportion|
 |:----------|:---------|--------------:|------------:|----------:|
-|Jan-1-2024 |station-1 |             98|           79|       0.55|
-|Jan-1-2024 |station-2 |             71|           13|       0.85|
-|Jan-1-2024 |station-3 |             12|           40|       0.23|
+|Jan-1-2024 |station-1 |             85|           78|       0.52|
+|Jan-1-2024 |station-2 |             56|           92|       0.38|
+|Jan-1-2024 |station-3 |             98|           83|       0.54|
 
 This proportion will be your response variable for the logistic model. When using proportions, you should also provide the "weights" information in the glm formula (i.e., a dataset with total number of trials per replicate, or the sum of events where we got success + events where we got failure).
 
