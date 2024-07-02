@@ -1,0 +1,63 @@
+---
+output: 
+  html_document: 
+    keep_md: yes
+    fig_caption:  yes
+    toc: true
+    toc_float: true
+    
+---
+
+
+
+
+# Get ready for the workshop
+
+This is an introduction to basic stats in R with a focus on regression. We will assume a familiarity with R to the extent of the participant having tried to do something with the programming environment in the past (e.g., a t-test), but no more than this. 
+
+### R from zero warmup
+
+If you have never used R in any way at a all, it may be helpful to take a quick look at this interactive tutorial for undergraduates at the University of Waterloo. Just complete the tutorial entirely online rather than downloading, starting from "R as a calculator".
+
+[https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/](https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/)
+
+Then, when you are ready, get some help installing R on your laptop. You will need R installed to participate in workshop. 
+
+
+### Download needed files and packages
+
+We will be using a flat .xlsx file of Hamilton Harbour data for our workshop exercise today. Our first job at the workshop will be to import that data. 
+
+Please download the .xlxs to your personal computer prior to the workshop. 
+
+In addition, we encourage you to download and install the packages we will be using for the workshop.
+
+### Package to read .xlsx files
+
+R is an open source platform, which means that anyone can contribute code for everyone to use. There are thousands of functions in R written by scientists, statisticians and mathematicians all over the world. Sometimes a group of functions related to a particular task are grouped together in what is called a “library” or "package". We are going to use one such library that has been created to import .xlsx files, "readxl". 
+
+On your own computer, you will need download the package and install it. This is pretty easy. On the RStudio menu select *Tools*, and then *Install packages* from the drop down list. Enter *readxl* in the search window, and then select *Install*. You can also use the function install.packages. Just type *install.packages("readxl")*.
+
+
+```{r, eval=FALSE}
+install.packages("readxl")
+```
+
+The function **install.package()** downloads the indicated package from the internet and stores it. Eventually, in the console window you should see an indication the R has downloaded and installed the package. 
+
+Once you've done this once, you don't need to do it ever again, unless you update the version of R you are using, or wish to use an updated version of the package.
+
+In addition, the exercise on multivariate analysis will use the "vegan". Please install this package prior to the workshop as well.
+
+These packages are now part of R’s set of functions, but since it they not part of the standard environment, you will have to mention to R when you wish to use functions from this collection. The **library()** function tells R you wish to use commands from a particular package on this occasion. 
+
+Every time you restart R, or try to compile a .Rmd file, you will have to mention to R when you wish to use functions from this collection. The simplest method to do this is to always include the statement *library(readxl)* at the beginning of code that uses functions from this package.
+
+Here R loads the package into active memory.
+
+```{r, echo=TRUE}
+library(readxl)
+```
+
+If this command works, you are ready to go for the first part of the workshop!
+

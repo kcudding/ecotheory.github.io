@@ -1,28 +1,12 @@
----
-title: "Multivariate analysis"
-author: "Eddie Wu"
-date: "`r Sys.Date()`"
-output:
-  html_document: 
-    toc: yes
-    number_sections: no
-    toc_float:
-      collapsed: no
-      smooth_scroll: no
-    keep_md: yes
----
+# Multivariate analysis
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(message = FALSE, dev = "jpeg", dpi = 300)
-```
-
-# Libraries and imports
+## Libraries and imports
 
 ```{r import}
 library(readxl)
 library(ggplot2)
 library(tidyverse)
-library(factoextra)
+#library(factoextra)
 library(knitr)
 library(vegan)
 
@@ -33,7 +17,6 @@ ham$area_group <- as.factor(ham$area_group)
 ```
 
 
-# Multivariate analysis
 
 ## Introduction to multivariate analysis
 

@@ -1,18 +1,6 @@
----
-title: 'DFO Training: Linear Regression'
-author: "Ashley Ferns"
-date: "2024-06-27"
-output:
-  html_document: 
-    keep_md: true
-  pdf_document: default
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
   
-## Linear regression
+# Linear regression
 ### Introduction 
 
   A linear model is used when you want to test a prediction of correlation between an independent (or predictor) variable and a dependent (or response) variable (Phillips, 2018). For example, for our Hamilton Harbour data, we will be testing for a correlation between water level (our independent variable) and total zooplankton (our dependent variable) counted in the net grab. 

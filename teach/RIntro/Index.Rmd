@@ -1,0 +1,42 @@
+---
+title: "R Intro Workshop"
+author: "The Cuddington Lab"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook:
+    highlight: monochrome
+    config:
+      toc:
+        collapse: section
+
+documentclass: book
+
+github-repo: rstudio/bookdown-demo
+description: "Building Skills in Quantitative Biology"
+---
+`
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE, echo=FALSE, comment="",fig.pos = "H", out.extra = "")
+soln=FALSE
+```
+
+
+#  Welcome to our Workshop!
+
+Please check out the Getting Ready for the  Workshop activities. We would like you to download and install some files before the Workshop
+
+During the Workshop, this document will be available for you to copy code etc.
+
+After the workshop we will provide a more detailed version of this accompanying website.
+
+## Learning objectives
+ 
+* Create graphs to visualize data and models
+* Apply models to your own data using R programming language  
+
+
+* Interpret model fits and results  
+* Introduce principal component analyses and linear and logistic regressions
+* Present codes and functions to conduct these analyses
+* Identify simple and multivariate analyses and assumptions  
