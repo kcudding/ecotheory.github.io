@@ -15,24 +15,28 @@ output:
 
 This is an introduction to basic stats in R with a focus on regression. We will assume a familiarity with R to the extent of the participant having tried to do something with the programming environment in the past (e.g., a t-test), but no more than this. 
 
-### R from zero warmup
+## R from zero warmup
 
 If you have never used R in any way at a all, it may be helpful to take a quick look at this interactive tutorial for undergraduates at the University of Waterloo. Just complete the tutorial entirely online rather than downloading, starting from "R as a calculator".
 
 [https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/](https://shiny.math.uwaterloo.ca/biology/QBshiny/IntroR/)
 
+## Install R
+
 Then, when you are ready, get some help installing R on your laptop. You will need R installed to participate in workshop. 
 
+Some resources to help are here: [https://rstudio-education.github.io/hopr/starting.html](https://rstudio-education.github.io/hopr/starting.html)
 
-### Download needed files and packages
+## Download needed files and packages
 
 We will be using a flat .xlsx file of Hamilton Harbour data for our workshop exercise today. Our first job at the workshop will be to import that data. 
 
-Please download the .xlxs to your personal computer prior to the workshop. 
+Please download the .xlxs to your personal computer prior to the workshop [https://ecotheory.ca/teach/RIntro/ind dates flat all parameters Hamilton only FOR Kim.xlsx](https://ecotheory.ca/teach/RIntro/ind dates flat all parameters Hamilton only FOR Kim.xlsx) 
+
+
+### Package to read .xlsx file
 
 In addition, we encourage you to download and install the packages we will be using for the workshop.
-
-### Package to read .xlsx files
 
 R is an open source platform, which means that anyone can contribute code for everyone to use. There are thousands of functions in R written by scientists, statisticians and mathematicians all over the world. Sometimes a group of functions related to a particular task are grouped together in what is called a “library” or "package". We are going to use one such library that has been created to import .xlsx files, "readxl". 
 
@@ -47,11 +51,15 @@ The function **install.package()** downloads the indicated package from the inte
 
 Once you've done this once, you don't need to do it ever again, unless you update the version of R you are using, or wish to use an updated version of the package.
 
-In addition, the exercise on multivariate analysis will use the "vegan". Please install this package prior to the workshop as well.
+### Other needed packages
+
+In addition, the exercise on multivariate analysis will use the *vegan*, and *car*. Please install these package prior to the workshop as well.
+
+### Load a package into memory
 
 These packages are now part of R’s set of functions, but since it they not part of the standard environment, you will have to mention to R when you wish to use functions from this collection. The **library()** function tells R you wish to use commands from a particular package on this occasion. 
 
-Every time you restart R, or try to compile a .Rmd file, you will have to mention to R when you wish to use functions from this collection. The simplest method to do this is to always include the statement *library(readxl)* at the beginning of code that uses functions from this package.
+Every time you restart R you will have to mention to R when you wish to use functions from this collection. The simplest method to do this is to always include the statement *library(readxl)* at the beginning of code that uses functions from this package.
 
 Here R loads the package into active memory.
 

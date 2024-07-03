@@ -24,19 +24,16 @@ soln=FALSE
 
 #  Welcome to our Workshop!
 
-Please check out the Getting Ready for the  Workshop activities. We would like you to download and install some files before the Workshop
+Before the workshop, please check out [Get ready for the workshop]. We would like you to download and install some files before the Workshop
 
-During the Workshop, this document will be available for you to copy code etc.
+During the workshop, we will complete coding exercises that correspond to the [Learning objectives] below. We will focus on importing data, subsetting the data, completing various regression analysis and creating simple graphs. During the workshop this document will be available for you to copy code etc.
 
 After the workshop we will provide a more detailed version of this accompanying website.
 
 ## Learning objectives
  
+* Import, check and summarize data in R 
 * Create graphs to visualize data and models
-* Apply models to your own data using R programming language  
-
-
+* Apply linear, multiple and logistic regression models using R  
 * Interpret model fits and results  
-* Introduce principal component analyses and linear and logistic regressions
-* Present codes and functions to conduct these analyses
-* Identify simple and multivariate analyses and assumptions  
+* Use simple principal component analyses
