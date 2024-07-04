@@ -1,15 +1,3 @@
----
-output: 
-  html_document: 
-    toc: true
-    toc_float:
-      collapsed: false
-    toc_depth: 4
-    theme: lumen
-    keep_md: true
----
-
-
 # Multiple Linear Regression Model
 
 ## Introduction 
@@ -34,8 +22,7 @@ To build and interpret a multiple linear regression model:
 
 #### Try it now: {-}
 
-*Before starting the coding process: *
-*There are two necessary packages readxl and car for this section. If you haven't loaded these packages, please load them now so they won't cause errors in the following sections*
+*Before starting the coding process: There are two necessary packages readxl and car for this section. If you haven't loaded these packages, please load them now so they won't cause errors in the following sections*
 
 
 ```r
