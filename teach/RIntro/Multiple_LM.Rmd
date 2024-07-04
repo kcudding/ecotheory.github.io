@@ -17,7 +17,7 @@ To build and interpret a multiple linear regression model:
 
 - First, we will start from **preparing data for building model**. We will select and check our variables of interests in [Data preparation]. The characteristics of our data might affect the subsequent model building and evaluation process.  
 
-- **Once we prepared the data, we can start to build the actual model**. The standard R package **stats** provides the simplest way to do single and multiple linear regression model through the function `lm()`. We will introduce the detailed usage of this function for multiple linear regression model in [Model building]. 
+- **Once we prepared the data, we can start to build the actual model**. The standard R package *stats* provides the simplest way to do single and multiple linear regression model through the function **lm()**. We will introduce the detailed usage of this function for multiple linear regression model in [Model building]. 
 
 - At the end, **we examine our model and analyze the presented relationships** between the predictors and the response. An entire section ([Model output]) will be dedicated in introducing ways to interpret the model output and to evaluate the model based on all the assumptions multiple linear regression model made. 
 
@@ -92,13 +92,13 @@ class(multi_data$DIC)
 class(multi_data$totalzoop)
 class(multi_data$bottomhypoxia)
 ```
-The numeric variables are in their correct data type. If we ever want to reset them, we can set the data type to numeric using `as.numeric()`. For our categorical variables, we can transform them into groups/factors using `as.factor()`. 
+The numeric variables are in their correct data type. If we ever want to reset them, we can set the data type to numeric using **as.numeric()**. For our categorical variables, we can transform them into groups/factors using **as.factor()**. 
 
 ```{r mlrm set data type, echo=TRUE}
 #Set bottom hypoxia column as "factor" data type using as.factor(model_name$variable_name)
 multi_data$bottomhypoxia<-as.factor(multi_data$bottomhypoxia)
 ```
-*Note: As you noticed, the `as.xxx()` format is used to transform data type directly in R. You can explore some other options on your own, such as as.character(), as.integer()....*
+*Note: As you noticed, the as.xxx() format is used to transform data type directly in R. You can explore some other options on your own, such as as.character(), as.integer()....*
 
 ## Model building
 
@@ -135,7 +135,7 @@ And the multiple predictors aspect in this model brings in one more assumption:
 
 ### Evaluate model assumptions
 
-I found it much easier to build the model first then check the assumptions as we can utilize these auto-generated model diagnosis plots from the `lm()` function. Just like in the simple linear regression model, these plots can be called by simply run `plot(model_name)`. Let's try to do this: 
+I found it much easier to build the model first then check the assumptions as we can utilize these auto-generated model diagnosis plots from the **lm()** function. Just like in the simple linear regression model, these plots can be called by simply run `plot(model_name)`. Let's try to do this: 
 
 #### Try it now: {-}  
 
@@ -154,9 +154,9 @@ You should see four diagnosis plots generated:  *Residuals vs Fitted plot*, *Nor
 
 The last assumption, **Multicollinearity**, can be checked by the following several ways depending on the data characteristics: 
 
-- If we only have continuous variables in our dataset, we can check this using correlation matrix through `cor()` or/and `corrplot()`, or variance inflation factor using `vif()` from the *car* package, or`vifcor()` and `vifstep()` from the *usdm* package.  
+- If we only have continuous variables in our dataset, we can check this using correlation matrix through **cor()** or/and **corrplot()**, or variance inflation factor using **vif()** from the *car* package, or **vifcor()** and **vifstep()** from the *usdm* package.  
 
-- If we have both continuous and categorical variables in our dataset, the `vif()` function will automatically detect our categorical variables and compute us the generalized vifs.
+- If we have both continuous and categorical variables in our dataset, the **vif()** function will automatically detect our categorical variables and compute us the generalized vifs.
 
 #### Try it now: {-}  
 ```{r mlrm vif practice, echo=!soln,eval=FALSE}
@@ -178,12 +178,14 @@ Our variables look good. If multicollinearity is found (vif > 5 is a common thre
 
 ### Output interpretation
 
-To access model output, the easiest way is to call the `summary()` method just like the simple linear regression model:
+To access model output, the easiest way is to call the **summary()** method just like the simple linear regression model:
 ```{r mlrm output, echo=TRUE}
 summary(multi_model)
 ```
 
-The interpretation of the model result is the same as in the simple linear regression model. For categorical variables, the significance level is calculated against a chosen *baseline* category. In this case, the *n* category in bottom hypoxia variable is the baseline category.  
+The interpretation of the model result is the same as in the simple linear regression model. 
+
+For categorical variables, the significance level is calculated against a chosen *baseline* category. In this case, the *n* category in bottom hypoxia variable is the baseline category.  
 
 Unlike the single variate model, you can compare the coefficients and significance of multiple predictors and decide on whether you want to exclude some of the variables in your final model. In this case, DIC seems to be the most significant variable and we might be able to get a similarly accurate model from this single predictor.
 
