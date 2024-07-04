@@ -20,7 +20,7 @@ To build and interpret a multiple linear regression model:
 
 - At the end, **we examine our model and analyze the presented relationships** between the predictors and the response. An entire section ([Model output]) will be dedicated in introducing ways to interpret the model output and to evaluate the model based on all the assumptions multiple linear regression model made. 
 
-#### Try it now: {-}
+#### Try it now: {-} 
 
 *Before starting the coding process: There are two necessary packages readxl and car for this section. If you haven't loaded these packages, please load them now so they won't cause errors in the following sections*
 
@@ -30,6 +30,7 @@ To build and interpret a multiple linear regression model:
 library("readxl")
 library("car")
 ```
+
 
 *Note: I hide the warnings from this code chunk because loading packages give out a lot of warnings. If you want to see those warnings, delete `warning=FALSE`. *
 
@@ -99,7 +100,7 @@ class(multi_data$waterlevel)
 ## [1] "numeric"
 ```
 
-#### Try it now: {-}
+#### Try it now: {-}  
 
 Let's continue to check the other three columns of our data frame using the same code:
 
@@ -122,7 +123,7 @@ multi_data$bottomhypoxia<-as.factor(multi_data$bottomhypoxia)
 
 Generating the multiple linear regression model itself is similar to the single variable model and is very simple once we prepared our data. Simply adding a + sign between predictor variables to include more than one variable in your model. So, instead of `lm(response ~ predictor, data = dataframe)`, we are now using `lm(response ~ predictor 1 + predictor 2 ..., data = dataframe)`
 
-#### Try it now: {-} 
+#### Try it now: {-}  
 
 Let's try to include the two additional predictor variables `DIC` and `bottomhypoxia` in our model based on the previous single variate model: 
 
@@ -154,7 +155,7 @@ And the multiple predictors aspect in this model brings in one more assumption:
 
 I found it much easier to build the model first then check the assumptions as we can utilize these auto-generated model diagnosis plots from the `lm()` function. Just like in the simple linear regression model, these plots can be called by simply run `plot(model_name)`. Let's try to do this: 
 
-#### Try it now: {-}
+#### Try it now: {-}  
 
 
 ```r
@@ -172,7 +173,7 @@ The last assumption, **Multicollinearity**, can be checked by the following seve
 
 - If we have both continuous and categorical variables in our dataset, the `vif()` function will automatically detect our categorical variables and compute us the generalized vifs.
 
-#### Try it now: {-}
+#### Try it now: {-}  
 
 ```r
 # Let's use vif(model_name) to calculate vif for our variables
