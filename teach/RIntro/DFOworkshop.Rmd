@@ -12,7 +12,9 @@ output:
 
 # Basic R
 
-
+```{r}
+soln=FALSE
+```
 
 ## Data import
 Our first job today is to use a package to import the data we will be using throughout the workshop. If you have sucessfully installed the library *readxl*, we can use it to read in the .xlsx file. 
@@ -27,8 +29,8 @@ The help file indicates the inputs that the function takes. We see that we need 
 
 To do the import we need the *path* where the file is located. There are at least three ways to find and import a file in R:
 
-1. use **file.choose()**, 
-2. use the actual path to the file, 
+1. use **file.choose()** to get an interactive menu, 
+2. use the actual path to the file (e.g., "/Users/Kim/Documents/mydata.xlsx"), 
 3. use **setwd()** to change the current directory to the location of the file
 
 ```{asis, echo=soln}
@@ -40,7 +42,7 @@ To do the import we need the *path* where the file is located. There are at leas
 ```
 
 #### Try it  now: {-} 
-Import the data file using the function  **read_excel()** from the *readxl* library, and indicate the path using one of the methods above.
+Import the data file using the function  **read_excel()** from the *readxl* library, and handle the path location of the file using one of the methods above.
 
 ```{r, echo=TRUE}
 # load the library
@@ -52,11 +54,11 @@ ham <- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
 
 ### Did the import work??
 
-Once you have read in the data, it is critically import to check that th import worked properly. Problems that can arise from incorrectly formatted files can then be resolved. Problems can include: numeric data being read in as character data, column names being read in as the the first row of data, missing values being coded as something other than NA.
+Once you have read in the data, it is critically import to check that the import worked properly. Difficulties that can arise from incorrectly formatted files can then be resolved. Problems can include: numeric data being read in as character data, column names being read in as the the first row of data, missing values being coded as something other than NA.
 
-There are a number of commands to look at a portion of the dataset. Four quick methods to check data import: 
+There are a number of commands to look at the dataset or a portion of it. Four quick methods to check data import: 
 
-1. print or **view()**, 
+1. print the imported dataframe or use **view()**, 
 2. **colnames()**, 
 3. **head()** or **tail()**, 
 4. **str()**
@@ -78,7 +80,7 @@ Use **colnames()** to see the names of the columns in ham, **tail()** to see the
 #View(ham)
 
 # Look at the first 5 column names of the dataframe ham
-colnames(ham[,1:5])
+colnames(ham)[1:5]
 
 # Looks at the last 5 rows
 tail(ham, n=5)
@@ -96,8 +98,8 @@ The **str()** function above gave us information regarding the *type* of data in
 
 - ***numeric*** data are numbers (e.g., 3, 10.5, 1E8)
 - ***character*** data sometimes called "strings" are words or alphanumeric codes, indicated with double quotation marks (e.g. "k", "R is exciting", "FALSE", "11.5")
-- ***factor*** data are a special case of character variables, are used when there are a limited number of unique character strings. this data type is used to represents  categorical data (e.g., "male" and "female")
-- ***logical*** data sometimes called "boolean", this is data with only two values: TRUE or FALSE
+- ***factor*** data are a special case of character variables, and are used when there are a limited number of unique character strings. This data type is used to represent categorical data (e.g., "male" and "female")
+- ***logical*** data are sometimes called "boolean". This is data with only two values: TRUE or FALSE.
 
 Sometimes after data import we will need to convert the data from one type to another. For example, if we wanted to do an analysis that compared data from different stations we would want to convert the column *Station_Acronym* from data type character to data type factor. This is easy to do using the function **as.factor()**, and accessing just that column (see below)
 
@@ -106,18 +108,22 @@ Sometimes after data import we will need to convert the data from one type to an
 
 You’ll notice that the data are structured in columns. This is a *dataframe*, one of the most used data structures in R. Data structures are sets of variables organized in a particular way. In R there are 4 primary data structures we will use repeatedly: vectors, matrices, dataframes and lists. 
 
-***Vectors*** are one-dimensional ordered sets composed of a single data type. Data types include integers, real numbers, and strings (character variables). for example, a single column of the imported data is a vector.
+***Vectors*** are one-dimensional ordered sets composed of a single data type. Data types include integers, real numbers, and strings (character variables). For example, a single column of the imported data is a vector.
 
 ***Matrices*** are two-dimensional ordered sets composed of a single data type (e.g., all numeric) equivalent to the concept of matrix in linear algebra. For example, a set of correlation coefficients for different parameters is a matrix.
 
-***Dataframes*** are one to multi-dimensional sets with a row-column structure, and can be composed of different data types (although all data in a single column must be of the same type). In addition, each column in a data frame may be given a label or name to identify it. Data frames are equivalent to a flat file database, similar to spreadsheets (e.g., like a single excel spreadsheet). For example, our inputted dataset is a dataframe.
+***Dataframes*** are one to multi-dimensional sets with a row-column structure, and can be composed of different data types (although all data in a single column must be of the same type). In addition, each column in a data frame may be given a label or name to identify it. Dataframes are equivalent to a flat file database, similar to spreadsheets (e.g., like a single excel spreadsheet). For example, our inputted dataset is a dataframe.
 
-***Lists*** are compound objects of associated data. Like data frames, they need not contain only a single data type, but can include strings (character variables), numeric variables, and even such things as matrices and data frames. In contrast to data frames, list items do not have a row-column structure, and items need not be the same length; some can be a single value, and others a matrix. You can think of a list as a named box to put related objects into. For example, the R output of a linear regression is a list.
+***Lists*** are compound objects of associated data. Like dataframes, they need not contain only a single data type, but can include strings (character variables), numeric variables, and even such things as matrices and data frames. In contrast to dataframes, list items do not have a row-column structure, and items need not be the same length; some can be a single value, and others a matrix. You can think of a list as a named box to put related objects into. For example, the R output of a linear regression is a list.
 
 
 ### Selecting portions of a dataframe
 
-To start our examination and analysis of this data, we need to be able to select items of interest. Dataframes are indexed by rows and columns. If you want the item from the 5th row and 2nd column type *mydata[5,2]*. If you need just one column you can type either *mydata[,2]*, which grabs everything in column 2, or if you know the name of the column *mydata\$Population*. To get rows 2 to 5 you can enter *mydata[2:5,2]*. You can also combine this with the column name which may be easier to read, as *mydata$Population[2:5]*.
+To start our examination and analysis of this data, we need to be able to select items of interest. Dataframes are indexed by rows and columns. To grab
+
+- the item from the 5th row and 2nd column: type *mydata[5,2]*
+- one column you can type either: *mydata[,2]*, which grabs everything in column 2, or if you know the name of the column you can use that as: *mydata\$Population* or *mydata[,"Population"]*
+- to get rows 2 to 5 you can enter: *mydata[2:5,2]*. You can also combine this with the column name which may be easier to read, as *mydata$Population[2:5]*.
 
 #### Try it now: {-}
 Select just the first 5 rows and first 3 columns of the dataframe you read into R.
@@ -149,7 +155,7 @@ levels(fac_Station_Acronym)
 We can also create new data subsets by using the **c()** or **c**ombine function. 
 
 #### Try it now: {-}
-Let's access the first 5 rows, the first 3 columns and column 9-10, and save the result to a new variable ' ham_sub'
+Let's access the first 5 rows, the first 3 columns and columns 9-10, and save the result to a new variable ' ham_sub'
 
 ```{r, echo=TRUE}
 # save a subsection of a dataframe
@@ -199,7 +205,7 @@ Of course, this gives us all of the sampling dates for this station. Let's assum
 
 Use an "&" symbol to indicate that we want the selected data to be from station "HH6" and to be from the 2016. 
 
-```{r, echo=soln}
+```{r, echo=TRUE}
 ham$calanoid[ham$Station_Acronym=="HH6" & ham$year==2016]
 ```
 
@@ -252,7 +258,11 @@ If you are trying to find a function that does something you need to do, you can
 #### Try it now:{-}
 For example if you wanted to find a function that calculated means you might: type 'apropos("mean")'. What happens?
 
-One of the listed functions “mean” looks promising. Your next step might be to get more information by typing 'help(mean)' or 'example(mean)'. 
+```{r, echo=TRUE}
+apropos("mean")
+```
+
+One of the listed functions “mean” looks promising. Your next step might be to get more information by typing *help(mean)* or *?mean* or *example(mean)*. 
 
 #### Try it now:{-}
 You should see that the function **mean()** works on a vector of numeric data.
@@ -300,7 +310,7 @@ summary(ham$Chl_a_uncorrected[ham$Station_Acronym=="HH258"])
 
 ## Plotting data
 
-A quick check of data can also be done with simple plots. for example, let's see what the Chl_a_uncorrected data from 2016 looks like using the **plot()** function. 
+A quick check of data can also be done with simple plots. for example, let's see what the Chl_a_uncorrected data by julian day looks like using the **plot()** function. 
 
 ```{r, echo=TRUE}
 plot(y=ham$Chl_a_uncorrected, x=ham$Julian_Day)
@@ -324,14 +334,16 @@ Kind of hard to read... I think I want to group the data by decade, and let's pi
 Wow! That's a lot of things to do. Time to start saving our code using the Editor window.
 
 
-## The Editor window
+## The Editor(Source) window
 
-Previously you could have completed all of these commands in the Console window where R would execute them immediately. Now we're going to have a bunch of commands, some of which we may want to tweek (e.g., colours). This time, let's save our code in the Editor window so that it is easy to change and rerun.
+Previously you could have completed all of these commands in the Console window where R would execute them immediately. Now we're going to have a bunch of commands, some of which we may want to tweek (e.g., colours). This time, let's save our code in the Editor or Source window so that it is easy to change and rerun.
+
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/rstudio-panes-labeled.jpeg)
 
 We'll create a new file using the drop down menus. Click *File* then *New File*, and then *R Script*. A blank document will appear in the Editor window is found in the top left of the default R Studio. 
 
 #### Try it now: {-}
-Create a new file, enter the following code, and then save it using the drop down menu or cntrl-s or command-s. Then run the code
+Create a new file, enter the following code, and then save it using the drop down menu or cntrl-s or command-s. Then run the code by selecting it and hitting *Run* in the menu or command-enter.
 
 ```{r, echo=TRUE}
 
@@ -344,9 +356,11 @@ bty="l", cex.lab=1.6, las=1
 legend("topright", legend=levels(sub2_ham$decade), pch=16, col=1:3, bty="n")
 ```
 
-Notice that I've created and used a *factor* variable to control the colour of the data from each decade.
+Notice that I've created and used a *factor* variable by using the **cut()** function. I'll use this to control the colour of the data from each decade.
 
-Let's try one more. Let's quickly visualize the number of calanoid samples from each area by date. Again we will use a factor variable to control appearance
+I'm also using some of the formatting possibilities in the **plot()** function. There's LOTS of options: take a look at *?plot.default* and *?par* to get some ideas. For example, symbol shape is controlled by the *pch* option in the plot command.
+
+Let's try one more. Let's quickly visualize the number of calanoid samples from each area_group by date. Again we will use a factor variable to control appearance.
 
 ```{r, echo=TRUE}
 ham$area_group=as.factor(ham$area_group)
@@ -382,7 +396,7 @@ legend("topleft", legend=levels(ham$area_group), lty=1,bty="n",
 #### Try it now: {-}
 Create this plot
 
-At this point, the plotting is getting a bit  more complex, so you may want to use another library called *ggplot2** to do some of your plotting. This library of functions has a non-intuitive command structure, but is quick for plotting multiple sets of data on the same plot with a legend.
+At this point, the plotting is getting a bit  more complex, so you may want to use another library called *ggplot2* to do some of your plotting. We won't use this today, since this library of functions has a non-intuitive command structure, but is quick for plotting multiple sets of data on the same plot with a legend.
 
 
 
@@ -397,16 +411,23 @@ ggplot(samps, aes(x = year, y = Freq,
 
 ## T-test and boxplot
 
-Finally, let's complete a t-test and create a box plot.
+Finally, let's create a box plot.
 
 ```{r, echo=TRUE}
 year_sub=ham[(ham$year==2019),]
-              
-t.test(calanoid~area_group, 
-   data=year_sub[(year_sub$area_group=="deep"| year_sub$area_group=="NE"),])
+
 
 boxplot(calanoid~area_group, data=year_sub)
 
+```
+
+
+Also note, that we can easily complete statistical tests other than regression in R. For example, here's a t-test comparing calanoid data at "deep" and "NE" sites.
+
+```{r, echo=TRUE}
+              
+t.test(calanoid~area_group, 
+   data=year_sub[(year_sub$area_group=="deep"| year_sub$area_group=="NE"),])
 ```
 
 Fanastic! You now have the basics of importing, manipulating, and plotting in R.

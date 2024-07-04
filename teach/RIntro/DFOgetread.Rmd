@@ -53,7 +53,7 @@ Once you've done this once, you don't need to do it ever again, unless you updat
 
 ### Other needed packages
 
-In addition, the exercise on multivariate analysis will use the *vegan*, and *car*. Please install these package prior to the workshop as well.
+In addition, other exercises will use the *vegan*, and *car* libraries. Please install these packages prior to the workshop as well.
 
 ### Load a package into memory
 

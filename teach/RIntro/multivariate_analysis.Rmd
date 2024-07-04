@@ -1,31 +1,13 @@
----
-title: "Multivariate analysis"
-author: "Eddie Wu"
-date: "`r Sys.Date()`"
-output:
-  html_document: 
-    toc: yes
-    number_sections: no
-    toc_float:
-      collapsed: no
-      smooth_scroll: no
-    keep_md: yes
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(message = FALSE, dev = "jpeg", dpi = 300)
-soln = FALSE
-```
 
 # Libraries and imports
 
 ```{r import, echo = FALSE}
 library(readxl)
-library(ggplot2)
-library(tidyverse)
-library(knitr)
+#library(ggplot2)
+#library(tidyverse)
+#library(knitr)
 library(vegan)
-
+soln=FALSE
 # xlsx files
 ham <- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
 
@@ -89,7 +71,7 @@ First of all, we need to examine the correlation between our variables. We can a
 ```{r, echo = TRUE}
 ## Correlation table
 cor.df <- cor(ham.multi[4:9])
-kable(cor.df)
+knitr::kable(cor.df)
 
 ## Correlation plot
 pairs(ham.multi[4:8], main = "Ham Data",
@@ -171,8 +153,8 @@ we can visualize the positions of our samples on the new axes (PC1 and PC2). Thi
 ```{r, echo = TRUE}
 # Create a blank plot
 ordiplot(pca.ham, type = "n", main = "Individuals ('sites')",
-         xlab = paste0("PC1 (",pvar[1], "%)"), # x-axis label
-         ylab = paste0("PC2 (", pvar[2],"%)"), # y-axis label
+         xlab = paste0("PC1 (",pvar[1], "%)"), 
+         ylab = paste0("PC2 (", pvar[2],"%)"), 
          ylim = c(-1.2,1.2))
 
 # Use points() to add points
@@ -190,8 +172,8 @@ ordiplot(pca.ham, type = "n", main = "Individuals ('sites') by season",
 
 ## Use points() to add points
 points(pca.ham, display = "sites",
-       pch = as.numeric(ham.multi$season) + 14, # different symbols for season
-       col = c(2, 3, 4, 5) [as.numeric(ham.multi$season)], # different color for season
+       pch = as.numeric(ham.multi$season) + 14, 
+       col = c(2, 3, 4, 5) [as.numeric(ham.multi$season)], 
        cex = 1) # add sites
 
 ## Add legends
@@ -244,7 +226,7 @@ Finally, we can visualize both "sites" (individual observations) and "species" (
 ```{r, echo = TRUE}
 ## Biplot for PCA
 biplot(pca.ham,
-       display = c("sites","species"), # display both elements
+       display = c("sites","species"), 
        type = c("text", "points"),
        main = "Biplot",
        xlab = paste0("PC1 (",pvar[1], "%)"),

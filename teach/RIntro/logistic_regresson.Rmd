@@ -1,29 +1,6 @@
----
-title: "DFO training: Logistic Regression"
-date: "2024-06-28"
-output:
-  html_document:
-    toc: true
-    toc_depth: 3
-    number_sections: true
-    keep_md: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: false
-  pdf_document:
-    toc: true
-    toc_depth: '3'
-  word_document:
-    toc: true
-    toc_depth: '3'
----
 
-```{r setup, include=FALSE}
-soln=FALSE
-knitr::opts_chunk$set(echo = TRUE,always_allow_html = TRUE, tidy.opts=list(width.cutoff=60), message=FALSE)
-```
 
-# **Logistic regression**
+# Logistic regression
 
 ## What is a logistic regression?
 
@@ -91,9 +68,9 @@ plot(example$NO2_NO3_ECCC1m, presence_numeric_example,
      ylab = "",
      xlim = range(example$NO2_NO3_ECCC1m),
      ylim = c(-0.1, 1.1),
-     pch = 19,  # Solid circle
-     col = "blue",  # Color of the points
-     cex = 1.5,  # Size of the points
+     pch = 19, 
+     col = "blue", 
+     cex = 1.5,  
      yaxt = "n")  # Remove y-axis
 
 # Add custom y-axis
@@ -135,9 +112,9 @@ plot(example$NO2_NO3_ECCC1m, presence_numeric_example,
      ylab = "Predicted probability",
      xlim = range(example$NO2_NO3_ECCC1m),
      ylim = c(0, 1),
-     pch = 19,  # Solid circle
-     col = "blue",  # Color of the points
-     cex = 1.5,  # Size of the points
+     pch = 19, 
+     col = "blue",  
+     cex = 1.5,  
 )
 
 # Add the logistic regression curve
