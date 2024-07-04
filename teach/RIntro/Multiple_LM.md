@@ -31,9 +31,6 @@ library("readxl")
 library("car")
 ```
 
-
-*Note: I hide the warnings from this code chunk because loading packages give out a lot of warnings. If you want to see those warnings, delete `warning=FALSE`. *
-
 For this and following sections, we will be using 3 predictor variables (water level, dissolved inorganic carbon amount and bottom hypoxia) and 1 response variable (total zooplankton) from the Hamilton Harbour AOC project dataset. 
 
 So, we need to separate our selected variables from the complete dataset: 
