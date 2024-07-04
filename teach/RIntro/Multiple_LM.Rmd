@@ -37,7 +37,8 @@ To build and interpret a multiple linear regression model:
 
 #### Try it now: {-}
 
-There are only two necessary packages *readxl* and *car* for this section. If you have not installed these package before, please install it using `install.package()`. For example: `install.package(readxl)`
+*Before starting the coding process: *
+*There are two necessary packages readxl and car for this section. If you haven't loaded these packages, please load them now so they won't cause errors in the following sections*
 
 ```{r load package, warning=FALSE, message=FALSE}
 #Loading Packages
