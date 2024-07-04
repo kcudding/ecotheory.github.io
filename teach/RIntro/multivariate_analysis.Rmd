@@ -1,6 +1,4 @@
 
-# Libraries and imports
-
 ```{r import, echo = FALSE}
 library(readxl)
 #library(ggplot2)
