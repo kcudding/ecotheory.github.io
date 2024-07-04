@@ -1,5 +1,15 @@
 ---
 title: "Multivariate analysis"
+author: "Eddie Wu"
+date: "2024-07-04"
+output:
+  html_document: 
+    toc: yes
+    number_sections: no
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+    keep_md: yes
 ---
 
 
@@ -7,19 +17,6 @@ title: "Multivariate analysis"
 # Libraries and imports
 
 
-``` r
-library(readxl)
-library(ggplot2)
-library(tidyverse)
-library(factoextra)
-library(knitr)
-library(vegan)
-
-# xlsx files
-ham <- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
-
-ham$area_group <- as.factor(ham$area_group)
-```
 
 
 # Multivariate analysis
@@ -36,15 +33,18 @@ These methods allow us to represent the variables or observations in a lower-dim
 
 *Variables*: Daphnia biomass (mg/m3), water column temperature (°C), epilimnion temperature(°C), particulate organic nitrogen (mg/L), dissolved inorganic carbon (mg/L), particulate organic carbon (mg/L)
 
+A good practice before running any analysis is to subset a new dataframe which contains the variables we are interested in. 
 
 
 ``` r
 ## Select the variables interested
-ham.multi <- ham %>% 
-  select(area_group, season, Station_Acronym,Daphnia,
-         watercolumn_temp,mean_mixing_depth_temp,
-         PON_ECCC1m,DIC_ECCC1m,POC_ECCC1m) %>% 
-  na.omit()
+ham.multi <- ham[,c("area_group","season","Station_Acronym","Daphnia",
+                    "watercolumn_temp","mean_mixing_depth_temp",
+                    "PON_ECCC1m", "DIC_ECCC1m", "POC_ECCC1m")]
+
+
+## Remove all rows containing NAs
+ham.multi <- na.omit(ham.multi)
 
 
 ## Rename the columns
@@ -104,10 +104,14 @@ kable(cor.df)
 ``` r
 ## Correlation plot
 pairs(ham.multi[4:8], main = "Ham Data",
-      pch = as.numeric(ham$season), col = (ham$season))
+      pch = as.numeric(ham.multi$season), col = (ham.multi$season))
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_correlation.jpeg)
+![](multivariate_analysis_files/figure-html/unnamed-chunk-3-1.jpeg)<!-- -->
+
+``` r
+      # colored depending on season
+```
 
 Dimension reduction techniques such PCA works the best when variables are strongly correlated with each other. From the above correlation test output and plot, we can see that some variables clearly have a linear relationship, such as water column temperature and epilimnion temperature, or water column temperature and dissolved inorganic carbon.
 
@@ -115,7 +119,9 @@ Dimension reduction techniques such PCA works the best when variables are strong
 
 Now we can start with running our principle component analyses. PCA can be computed using various functions in R, such as prcomp() in *stats* package, princomp() in *stats* package, rda() in *vegan* package.
 
-Here we demonstrate using the *vegan* package, since it also allows easy visualization of our results. Keep in mind that we need to run the PCA on all columns containing continuous variables, which is column 4 - 9 in the ham.multi dataset.
+*Important Note: The rda() function in vegan allows users to conduct both PCA and RDA, depending on whether the data is constrained or not. When it is unconstrained (like in our example), it is running a PCA!*
+
+Here we demonstrate using the *vegan* package, since it also allows easy visualization of our results. Keep in mind that we need to run the PCA on all columns containing continuous variables, which is column 4 - 9 in the ham.multi dataframe.
 
 
 ``` r
@@ -143,7 +149,7 @@ summary(pca.ham)
 ## Cumulative Proportion 0.5022 0.7165 0.8668 0.96266 0.9922 1.000000
 ```
 
-After completing the dimension reduction, each sample now appears as a point in space specified by its new position along the principle component axes. There coordinates are referred to as "site scores" in rda() results, and we can assess such information with the `scores()` function.
+After completing the dimension reduction process, each sample now appears as a point in space specified by its new position along the principle component axes. There coordinates are referred to as "site scores" in rda() results, and we can access such information with the `scores()` function.
 
 
 ``` r
@@ -175,7 +181,7 @@ Now, let's determine how many principle components to retain for further analysi
 screeplot(pca.ham, type = ("lines"), main = "Screeplot", pch = 16, cex = 1)
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_screeplot.jpeg)
+![](multivariate_analysis_files/figure-html/unnamed-chunk-7-1.jpeg)<!-- -->
 
 Meanwhile, we can also look at the proportional variance explained by each principle component. Such information is available in the `summary()` of our PCA results. We see the first two PCs together explain roughly 72% of the total variance in this dataset. Along with the screeplot, we are confident that the first two PC are sufficient enough to represent our data.
 
@@ -220,57 +226,54 @@ ordiplot(pca.ham, type = "n", main = "Individuals ('sites')",
 points(pca.ham, display = "sites", cex = 1) # add sites
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_ordination1.jpeg)
+![](multivariate_analysis_files/figure-html/unnamed-chunk-9-1.jpeg)<!-- -->
 
 What if we are interested in the seasonal patterns of our samples on the reduced dimensions? We can use the same graphing techniques, but group our dataset using different seasons. Make sure to label your seasons in the "legend".
 
 
 ``` r
-## Plot the individuals
+## Create an empty canvas
 ordiplot(pca.ham, type = "n", main = "Individuals ('sites') by season",
          xlab = paste0("PC1 (",pvar[1], "%)"),
          ylab = paste0("PC2 (", pvar[2],"%)"),
-         ylim = c(-1.2,1.2)) # specify the -axis limits
+         ylim = c(-1.2,1.2)) # specify the y-axis limits
 
 ## Use points() to add points
 points(pca.ham, display = "sites",
-       pch = as.numeric(ham.multi$season) + 14,
-       col = c(2, 3, 4, 5) [as.numeric(ham.multi$season)],
+       pch = as.numeric(ham.multi$season) + 14, # different symbols for season
+       col = c(2, 3, 4, 5) [as.numeric(ham.multi$season)], # different color for season
        cex = 1) # add sites
 
 ## Add legends
 legend("bottomright", legend = unique(ham.multi$season),
        pch = as.numeric(ham.multi$season) +14,
-       col = c(2, 3, 4,5), bty = "n") # bty specifys legend box boarder
+       col = c(2, 3, 4, 5), bty = "n") # bty specifys legend box boarder
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_ordination2.jpeg)
+![](multivariate_analysis_files/figure-html/unnamed-chunk-10-1.jpeg)<!-- -->
 
 There are many other functions in the vegan package that allows customization of your ordination plots. For example, `ordiellipse(pca.ham, display="sites", conf=0.95, kind="sd", groups=ham.multi$season)` function allows us to add 95% confidence intervals to each group of samples.
 
-**Plot 2 - Species Plot (variables)**
+#### Try it now: {-}
 
-We can also plot how much influence each variable has on each of the two principle components. This is the "species plot". The steps are very similar. Instead of `display = "sites"`, we specify `display = "species"` in `points()`.
+Let's try creating a sites plot for the same multivariate dataset, but color samples based on different "area_group". Use colors of your own choice!
 
 
 ``` r
-## Plot the individuals
-ordiplot(pca.ham, type = "n", main = "Variables ('species')",
-         xlab = paste0("PC1 (",pvar[1], "%)"),
-         ylab = paste0("PC2 (", pvar[2],"%)")) # specify the -axis limits
+## Create an empty canvas
+ordiplot()
 
-## Use points() to add points
-points(pca.ham, display = "species",cex = 1) # add species
-text(pca.ham, display = "species") # add species labels
+## Use points() to add points and add legends
+points()
+legend()
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_ordination3.jpeg)
 
-Remember that positively correlated variables are grouped close together (formed angle around 0 degree); variables with about a 90 degree angle are not correlated; negatively correlated variables are positioned on opposite sides of the plot origin (~180 degree angle). The distance between the variables and the origin measure the contribution of that variable to the ordination. A shorter arrow indicates its less importance for the ordination. A longer arrow means the variable is better represented.
 
-**Plot 3 - BiPlot (samples and variables)**
 
-Finally, we can visualize all above information (sites and species) on one graph with a biplot. This time, we use the `biplot()` function in base R to do this.
+**Plot 2 - BiPlot (samples and variables)**
+
+Finally, we can visualize both "sites" (individual observations) and "species" (variables) on one graph with a biplot. This time, we use the `biplot()` function in base R to do this.
 
 
 ``` r
@@ -283,7 +286,7 @@ biplot(pca.ham,
        ylab = paste0("PC2 (", pvar[2],"%)"))
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_biplot1.jpeg)
+![](multivariate_analysis_files/figure-html/unnamed-chunk-13-1.jpeg)<!-- -->
 
 **Some important points for the `biplot()` function**:
 
@@ -302,6 +305,7 @@ We can use the `metaMDS()` function in the vegan package to conduct non-metric m
 
 
 ``` r
+## Run nMDS
 nmds.ham <- metaMDS(ham.multi[,4:9], distance = "bray", k = 2, trace = FALSE)
 
 ## Stress
@@ -331,26 +335,26 @@ We can use a Shepard plot to learn about the distortion of representation. On th
 ``` r
 ## Shepard plot
 stressplot(nmds.ham, pch = 16, las = 1,
-           main = "Shrepad plot")
+           main = "Shepard plot")
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_streeplot.jpeg)
+![](multivariate_analysis_files/figure-html/unnamed-chunk-15-1.jpeg)<!-- -->
 
 
 ### Plot ordination for nMDS
 
-No we can plot the ordination for nMDS, just like for PCA in the previous sections. The steps exactly the same. We use `ordiplot()` to create an empty canvas first, then use `points()` to add samples/variables. Additionally, we would like to represent species scores with arrows.
+No we can plot the ordination for nMDS, just like for PCA in the previous sections. The steps exactly the same. We use `ordiplot()` to create an empty canvas first, then use `points()` to add samples/variables. Additionally, we would like to represent species scores with arrows. This step can only be done manually by extracted the species scores using `scores(display = "species")`, and draw arrows using `arrows()` function.
 
 
 ``` r
-## Empty canvas
+## Create empty canvas
 ordiplot(nmds.ham, type = "n", main = "nMDS Ordination")
 
 ## Add points and legends
 points(nmds.ham, display = "sites",
-         pch = as.numeric(ham.multi$season) + 14,
-         col = c(2, 3, 4, 5) [as.numeric(ham.multi$season)],
-         cex = 1) # add sites
+       pch = as.numeric(ham.multi$season) + 14,
+       col = c(2, 3, 4, 5) [as.numeric(ham.multi$season)],
+       cex = 1) # add sites
 legend("bottomright", legend = unique(ham.multi$season),
        pch = as.numeric(unique(ham.multi$season)) + 14,
        col = c(2,3,4,5), bty = "n", cex = 1) # add legend
@@ -358,13 +362,13 @@ legend("bottomright", legend = unique(ham.multi$season),
 ## Add species scores manually
 species_scores <- scores(nmds.ham, display = "species")
 arrows(0, 0, species_scores[,1], species_scores[,2],
-       col = "black", length = 0.1)
+       col = "black", length = 0.1) # draw arrow from (0,0)
 text(species_scores[,1], species_scores[,2],
      labels = rownames(species_scores), col = "black",
      pos = c(2,2,3,4,2,3))
 ```
 
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_biplot2.jpeg)
+![](multivariate_analysis_files/figure-html/unnamed-chunk-16-1.jpeg)<!-- -->
 
 
 ## Other resources
@@ -378,11 +382,9 @@ text(species_scores[,1], species_scores[,2],
 
 *Useful R packages*
 
-* factoextra (for visualizing PCA results)
+* [factoextra (for visualizing PCA results)](!https://www.rdocumentation.org/packages/factoextra/versions/1.0.3)
 * [learnPCA (an R package for PCA learning)](!https://bryanhanson.github.io/LearnPCA/)
-* ggbiplot
-
-
+* [ggbiplot](!https://www.rdocumentation.org/packages/ggbiplot/versions/0.55)
 
 
 
