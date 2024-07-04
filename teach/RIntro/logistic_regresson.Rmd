@@ -1,5 +1,29 @@
+---
+title: "DFO training: Logistic Regression"
+date: "2024-06-28"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    keep_md: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+  pdf_document:
+    toc: true
+    toc_depth: '3'
+  word_document:
+    toc: true
+    toc_depth: '3'
+---
 
-# Logistic regression
+```{r setup, include=FALSE}
+soln=FALSE
+knitr::opts_chunk$set(echo = TRUE,always_allow_html = TRUE, tidy.opts=list(width.cutoff=60), message=FALSE)
+```
+
+# **Logistic regression**
 
 ## What is a logistic regression?
 
@@ -28,21 +52,19 @@
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Load the packages
 library(readxl)
-library(httr)
 
 # Define the URL of the raw file on GitHub
 url <- "https://github.com/kcudding/kcudding.github.io/raw/main/teach/RIntro/ind%20dates%20flat%20all%20parameters%20Hamilton%20only%20FOR%20Kim.xlsx"
 
-# Download the file
-invisible(suppressMessages({
-  temp_file <- tempfile(fileext = ".xlsx")
-  GET(url, write_disk(temp_file, overwrite = TRUE))
-}))
+# Download the file using download.file
+temp_file <- tempfile(fileext = ".xlsx")
+download.file(url, destfile = temp_file, mode = "wb")
 
-# Read the Excel file
+# Read the Excel file using readxl package
 ham <- read_excel(temp_file)
 
 example <- ham
+
 example$easy_to_eat <- example$edible/example$less_edible
 example$easy_to_eat_log <- ifelse(example$easy_to_eat < 1, "no", "yes")
 example <- example[!is.na(example$easy_to_eat_log), ]
@@ -141,23 +163,7 @@ polygon(c(predictor_values, rev(predictor_values)),
 
 ![[Amphipod Gammaridae](https://commons.wikimedia.org/wiki/File:Amphipod_Gammaridae_%288741971996%29.jpg); [Brown Trout, USFWS Mountain-Prairie](https://www.flickr.com/photos/usfwsmtnprairie/49860328703)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic_studies_example.jpg)
 
-## Mathematical representation
 
-* Logistic regression: transformation of response variable to get linear relationship  
-* logit (log of probability of success/probability of failure)
-* Explanatory variable is in log(odds)  
-
-Equation for logistic regression:
-
-$$ Log (p/1-p) = b0+b1*x1+e $$
-*Log (p/1-p)*: response variable  
-*b0*: y intercept  
-*x*: predictor variable  
-*b1*: slope for explanatory variable 1  
-*e*: error  
-
-If we had more explanatory variables, we could keep adding them to the equation above as b2*x2 and so forth.
- 
 ## What kind of predictors can we have in a logistic regression?
 
 Just like in a linear regression, we can use continuous and/or discrete variables to make predictions. Here are some examples:
@@ -180,6 +186,25 @@ Just like in a linear regression, we can use continuous and/or discrete variable
 
 + Water body type  
 
+
+## Mathematical representation
+
+* Logistic regression: transformation of response variable to get linear relationship  
+* logit (log of probability of success/probability of failure)
+* Explanatory variable is in log(odds)  
+
+Equation for logistic regression:
+
+$$ Log (p/1-p) = b0+b1*x1+e $$
+*Log (p/1-p)*: response variable  
+*b0*: y intercept  
+*x*: predictor variable  
+*b1*: slope for explanatory variable 1  
+*e*: error  
+
+If we had more explanatory variables, we could keep adding them to the equation above as b2*x2 and so forth.
+ 
+
 ## Key binomial logistic model assumptions  
 
 - Dependent variable has 2 levels or is a proportion of successes  
@@ -201,7 +226,7 @@ Just like in a linear regression, we can use continuous and/or discrete variable
 
 ### Let's create this first model together
 
-First, we are going to create a new dataset including some potentially interesting variables:
+First, we are going to create a new dataset called "filam_diatom" including some potentially interesting variables:
 
 ```{r echo=TRUE}
 filam_diatom <- ham[, c("area_group", "season", "TP dissolved_ECCC1m",
@@ -213,9 +238,6 @@ knitr::kable(filam_diatom[c(25:30),],row.names = FALSE, digits=2, align=rep('c',
 ```
 
 Let's consider that filamentous diatom is our response variable of interest, as this food source is hard for zooplankton to consume. We will look at epilimnion temperature as a potential explanatory variable.
-
-First, let's create a copy of the original dataset so that we can introduce modifications but keep the original data in case we need it.
-
 
 Before we can get started with the analysis, we need to remove NA data. We will now do that for the potential response variable filamentous diatom column, and for the potential explanatory variable epilimnion temperature:
 
@@ -402,6 +424,10 @@ Check model results using the summary function
 ```{r eval=F, echo=T}
 summary(your_model_name)
 ```  
+
+```{r echo=soln}
+summary(model)
+```
 
 How well did this predictor do? 
 

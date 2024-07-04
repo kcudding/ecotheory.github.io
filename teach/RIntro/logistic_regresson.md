@@ -66,23 +66,7 @@ This type of data is best fit by an s-shaped curve instead of a line. And this i
 
 ![[Amphipod Gammaridae](https://commons.wikimedia.org/wiki/File:Amphipod_Gammaridae_%288741971996%29.jpg); [Brown Trout, USFWS Mountain-Prairie](https://www.flickr.com/photos/usfwsmtnprairie/49860328703)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic_studies_example.jpg)
 
-## Mathematical representation
 
-* Logistic regression: transformation of response variable to get linear relationship  
-* logit (log of probability of success/probability of failure)
-* Explanatory variable is in log(odds)  
-
-Equation for logistic regression:
-
-$$ Log (p/1-p) = b0+b1*x1+e $$
-*Log (p/1-p)*: response variable  
-*b0*: y intercept  
-*x*: predictor variable  
-*b1*: slope for explanatory variable 1  
-*e*: error  
-
-If we had more explanatory variables, we could keep adding them to the equation above as b2*x2 and so forth.
- 
 ## What kind of predictors can we have in a logistic regression?
 
 Just like in a linear regression, we can use continuous and/or discrete variables to make predictions. Here are some examples:
@@ -105,6 +89,25 @@ Just like in a linear regression, we can use continuous and/or discrete variable
 
 + Water body type  
 
+
+## Mathematical representation
+
+* Logistic regression: transformation of response variable to get linear relationship  
+* logit (log of probability of success/probability of failure)
+* Explanatory variable is in log(odds)  
+
+Equation for logistic regression:
+
+$$ Log (p/1-p) = b0+b1*x1+e $$
+*Log (p/1-p)*: response variable  
+*b0*: y intercept  
+*x*: predictor variable  
+*b1*: slope for explanatory variable 1  
+*e*: error  
+
+If we had more explanatory variables, we could keep adding them to the equation above as b2*x2 and so forth.
+ 
+
 ## Key binomial logistic model assumptions  
 
 - Dependent variable has 2 levels or is a proportion of successes  
@@ -126,7 +129,7 @@ Just like in a linear regression, we can use continuous and/or discrete variable
 
 ### Let's create this first model together
 
-First, we are going to create a new dataset including some potentially interesting variables:
+First, we are going to create a new dataset called "filam_diatom" including some potentially interesting variables:
 
 
 ```r
@@ -145,9 +148,6 @@ filam_diatom <- ham[, c("area_group", "season", "TP dissolved_ECCC1m",
 |   deep   |   1    |        NA        |           287.18           |        16.05         |
 
 Let's consider that filamentous diatom is our response variable of interest, as this food source is hard for zooplankton to consume. We will look at epilimnion temperature as a potential explanatory variable.
-
-First, let's create a copy of the original dataset so that we can introduce modifications but keep the original data in case we need it.
-
 
 Before we can get started with the analysis, we need to remove NA data. We will now do that for the potential response variable filamentous diatom column, and for the potential explanatory variable epilimnion temperature:
 
@@ -365,6 +365,27 @@ Check model results using the summary function
 summary(your_model_name)
 ```
 
+
+```
+## 
+## Call:
+## glm(formula = filam_presence ~ Total_phosphorus, family = binomial, 
+##     data = filam_diatom_P)
+## 
+## Coefficients:
+##                  Estimate Std. Error z value Pr(>|z|)
+## (Intercept)      -0.08552    1.12537  -0.076    0.939
+## Total_phosphorus 87.10650   87.72845   0.993    0.321
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 74.094  on 63  degrees of freedom
+## Residual deviance: 73.050  on 62  degrees of freedom
+## AIC: 77.05
+## 
+## Number of Fisher Scoring iterations: 4
+```
+
 How well did this predictor do? 
 
 *Plot model predictions*
@@ -432,9 +453,9 @@ Imagine you have counts of living and dead organisms in this imaginary dataset:
 
 |date       |location  | living_daphnia| dead_daphnia|
 |:----------|:---------|--------------:|------------:|
-|Jan-1-2024 |station-1 |             97|           89|
-|Jan-1-2024 |station-2 |             95|           61|
-|Jan-1-2024 |station-3 |             63|           86|
+|Jan-1-2024 |station-1 |             32|           19|
+|Jan-1-2024 |station-2 |             19|           55|
+|Jan-1-2024 |station-3 |             83|           89|
 
 In this case, instead of considering each individual as "living" or "dead", you should calculate the proportion of living organisms *per replicate* like this:
     
@@ -447,9 +468,9 @@ example_independence$proportion <- round(example_independence$living_daphnia/(ex
 
 |date       |location  | living_daphnia| dead_daphnia| proportion|
 |:----------|:---------|--------------:|------------:|----------:|
-|Jan-1-2024 |station-1 |             97|           89|       0.52|
-|Jan-1-2024 |station-2 |             95|           61|       0.61|
-|Jan-1-2024 |station-3 |             63|           86|       0.42|
+|Jan-1-2024 |station-1 |             32|           19|       0.63|
+|Jan-1-2024 |station-2 |             19|           55|       0.26|
+|Jan-1-2024 |station-3 |             83|           89|       0.48|
 
 This proportion will be your response variable for the logistic model. When using proportions, you should also provide the "weights" information in the glm formula (i.e., a dataset with total number of trials per replicate, or the sum of events where we got success + events where we got failure).
 

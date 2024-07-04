@@ -1624,8 +1624,27 @@ Gammaridae</a>; <a href="https://www.flickr.com/photos/usfwsmtnprairie/498603287
 Trout, USFWS Mountain-Prairie</a></div>
 </div>
 </div>
-<div id="mathematical-representation" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Mathematical
+<div id="what-kind-of-predictors-can-we-have-in-a-logistic-regression" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> What kind of
+predictors can we have in a logistic regression?</h2>
+<p>Just like in a linear regression, we can use continuous and/or
+discrete variables to make predictions. Here are some examples:</p>
+<p><strong>Continuous variables</strong></p>
+<ul>
+<li><p>Temperature</p></li>
+<li><p>Precipitation</p></li>
+<li><p>Water depth</p></li>
+<li><p>Nitrogen concentration</p></li>
+</ul>
+<p><strong>Discrete variables</strong></p>
+<ul>
+<li><p>Levels of aquatic vegetation</p></li>
+<li><p>Soil type</p></li>
+<li><p>Water body type</p></li>
+</ul>
+</div>
+<div id="mathematical-representation" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Mathematical
 representation</h2>
 <ul>
 <li>Logistic regression: transformation of response variable to get
@@ -1643,25 +1662,6 @@ linear relationship<br />
 <em>e</em>: error</p>
 <p>If we had more explanatory variables, we could keep adding them to
 the equation above as b2*x2 and so forth.</p>
-</div>
-<div id="what-kind-of-predictors-can-we-have-in-a-logistic-regression" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> What kind of
-predictors can we have in a logistic regression?</h2>
-<p>Just like in a linear regression, we can use continuous and/or
-discrete variables to make predictions. Here are some examples:</p>
-<p><strong>Continuous variables</strong></p>
-<ul>
-<li><p>Temperature</p></li>
-<li><p>Precipitation</p></li>
-<li><p>Water depth</p></li>
-<li><p>Nitrogen concentration</p></li>
-</ul>
-<p><strong>Discrete variables</strong></p>
-<ul>
-<li><p>Levels of aquatic vegetation</p></li>
-<li><p>Soil type</p></li>
-<li><p>Water body type</p></li>
-</ul>
 </div>
 <div id="key-binomial-logistic-model-assumptions" class="section level2" number="1.8">
 <h2><span class="header-section-number">1.8</span> Key binomial logistic
@@ -1691,8 +1691,8 @@ logistic model in R</h3>
 <div id="lets-create-this-first-model-together" class="section level3" number="1.9.2">
 <h3><span class="header-section-number">1.9.2</span> Let’s create this
 first model together</h3>
-<p>First, we are going to create a new dataset including some
-potentially interesting variables:</p>
+<p>First, we are going to create a new dataset called “filam_diatom”
+including some potentially interesting variables:</p>
 <pre class="r"><code>filam_diatom &lt;- ham[, c(&quot;area_group&quot;, &quot;season&quot;, &quot;TP dissolved_ECCC1m&quot;,
                         &quot;filamentous_Diatom&quot;, &quot;mean_mixing_depth_temp&quot;)]</code></pre>
 <table>
@@ -1761,9 +1761,6 @@ potentially interesting variables:</p>
 interest, as this food source is hard for zooplankton to consume. We
 will look at epilimnion temperature as a potential explanatory
 variable.</p>
-<p>First, let’s create a copy of the original dataset so that we can
-introduce modifications but keep the original data in case we need
-it.</p>
 <p>Before we can get started with the analysis, we need to remove NA
 data. We will now do that for the potential response variable
 filamentous diatom column, and for the potential explanatory variable
@@ -1902,6 +1899,23 @@ your_model_name &lt;- glm(&quot;response variable&quot; ~ &quot;explanatory vari
              data = your_dataset_name, family = binomial)</code></pre>
 <p>Check model results using the summary function</p>
 <pre class="r"><code>summary(your_model_name)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = filam_presence ~ Total_phosphorus, family = binomial, 
+##     data = filam_diatom_P)
+## 
+## Coefficients:
+##                  Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)      -0.08552    1.12537  -0.076    0.939
+## Total_phosphorus 87.10650   87.72845   0.993    0.321
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 74.094  on 63  degrees of freedom
+## Residual deviance: 73.050  on 62  degrees of freedom
+## AIC: 77.05
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
 <p>How well did this predictor do?</p>
 <p><em>Plot model predictions</em></p>
 <p>Start with obtaining model predictions and errors:</p>
@@ -1974,20 +1988,20 @@ imaginary dataset:</p>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-1</td>
-<td align="right">97</td>
-<td align="right">89</td>
+<td align="right">32</td>
+<td align="right">19</td>
 </tr>
 <tr class="even">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-2</td>
-<td align="right">95</td>
-<td align="right">61</td>
+<td align="right">19</td>
+<td align="right">55</td>
 </tr>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-3</td>
-<td align="right">63</td>
-<td align="right">86</td>
+<td align="right">83</td>
+<td align="right">89</td>
 </tr>
 </tbody>
 </table>
@@ -2010,23 +2024,23 @@ replicate</em> like this:</p>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-1</td>
-<td align="right">97</td>
-<td align="right">89</td>
-<td align="right">0.52</td>
+<td align="right">32</td>
+<td align="right">19</td>
+<td align="right">0.63</td>
 </tr>
 <tr class="even">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-2</td>
-<td align="right">95</td>
-<td align="right">61</td>
-<td align="right">0.61</td>
+<td align="right">19</td>
+<td align="right">55</td>
+<td align="right">0.26</td>
 </tr>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-3</td>
-<td align="right">63</td>
-<td align="right">86</td>
-<td align="right">0.42</td>
+<td align="right">83</td>
+<td align="right">89</td>
+<td align="right">0.48</td>
 </tr>
 </tbody>
 </table>
