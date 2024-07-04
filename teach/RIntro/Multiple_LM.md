@@ -1,7 +1,4 @@
 ---
-title: "Multiple Linear Regression Model"
-author: "Xuewen Geng"
-date: "2024-06-20"
 output: 
   html_document: 
     toc: true
@@ -200,7 +197,7 @@ The result for our variables should look like this:
 ##      1.577214      1.780762      1.165722
 ```
 
-Our variables look good. If multicollinearity is found (vif > 5 indicates problematic amount of multicollinearity), we can try to remove it by identify and remove the predictor variable that is causing troubles. 
+Our variables look good. If multicollinearity is found (vif > 5 is a common threshold to use for indicating a problematic amount of multicollinearity), we can try to remove it by identify and remove the predictor variable that is causing troubles. 
 
 ### Output interpretation
 
