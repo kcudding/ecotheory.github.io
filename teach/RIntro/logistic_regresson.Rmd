@@ -1,4 +1,27 @@
+---
+title: "DFO training: Logistic Regression"
 
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    keep_md: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+  pdf_document:
+    toc: true
+    toc_depth: '3'
+  word_document:
+    toc: true
+    toc_depth: '3'
+---
+
+```{r setup, include=FALSE}
+soln=FALSE
+knitr::opts_chunk$set(echo = TRUE,always_allow_html = TRUE, tidy.opts=list(width.cutoff=60), message=FALSE)
+```
 
 # Logistic regression
 
@@ -226,13 +249,13 @@ filam_diatom <- na.omit(filam_diatom)
 
 Now we will create a new column to describe presence or absence of filamentous diatoms.
 
-We can do that with a function called "ifelse" to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
+We can do that with a function called **ifelse** to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
 
 ```{r echo=TRUE}
 filam_diatom$filam_presence <- ifelse(filam_diatom$filamentous_Diatom > 0, "present", "absent")
 ```
 
-Now we format this column as "factor" and ensure the reference group ("absent") is the first to be shown:
+Now we format this column as **factor** and ensure the reference group ("absent") is the first to be shown:
 
 ```{r echo=TRUE}
 filam_diatom$filam_presence <- factor(filam_diatom$filam_presence)
@@ -247,7 +270,7 @@ Here we select summer conditions and remove deep locations:
 filam_diatom <- filam_diatom[(filam_diatom$season == 2 | filam_diatom$season == 3) & filam_diatom$area_group != "deep", ]
 ```
 
-Run model using glm function and family binomial
+Run model using **glm** function and family **binomial**
 
 ```{r echo=TRUE}
 model <- glm(filam_presence ~ mean_mixing_depth_temp,
@@ -334,15 +357,15 @@ your_dataset <- na.omit(your_dataset)
 filam_diatom_P <- na.omit(filam_diatom_P)
 ```
 
-Now you can create a new column that describes the presence or the absence of filamentous diatoms across the dataset:
+Now you can create a new column that describes the presence or the absence of filamentous diatoms across the dataset.
+
+Use the function **ifelse** to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
 
 ```{r, eval=F, echo=T}
-# Create a column name and use the function "ifelse" to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
-
 your_dataset$new_column_name <- ifelse(your_dataset$filamentous_Diatom > 0, "present", "absent")
 ```
 
-Format this new column as a factor
+Format this new column as a **factor**
 
 ```{r, eval=F, echo=T}
 your_dataset$filamentous_Diatom <- factor(your_dataset$filamentous_Diatom)
@@ -360,8 +383,8 @@ levels(filam_diatom_P$filam_presence)
 
 *Run model*
 
+Use **glm** function and family **binomial**
 ```{r, eval=F, echo=T}
-# Use glm function and family binomial
 your_model_name <- glm("response variable" ~ "explanatory variable",
              data = your_dataset, family = binomial)
 ```
@@ -372,7 +395,7 @@ model <- glm(filam_presence ~ NO2_NO3_ECCC1m,
              data = filam_diatom_P, family = binomial)
 ```
 
-Check model results using the summary function
+Check model results using the **summary** function
 
 ```{r eval=F, echo=T}
 summary(your_model_name)
@@ -441,7 +464,7 @@ Imagine you have counts of living and dead organisms in this imaginary dataset:
 
 ```{r echo=FALSE}
 example_independence <- data.frame(date=rep("Jan-1-2024", times=3), location=c("station-1","station-2", "station-3"), living_daphnia=floor(runif(3, min=0, max=101)),dead_daphnia=floor(runif(3, min=0, max=101)))
-# runif function generates random numbers within the range established by "min" and "max" values
+# "runif" function generates random numbers within the range established by "min" and "max" values
 knitr::kable(head(example_independence))
 ```
 
@@ -449,7 +472,7 @@ In this case, instead of considering each individual as "living" or "dead", you 
     
 ```{r echo=TRUE}
 example_independence$proportion <- round(example_independence$living_daphnia/(example_independence$living_daphnia+example_independence$dead_daphnia),2)
-# the round function ensures we have 2 decimals in our proportion values
+# the "round" function ensures we have 2 decimals in our proportion values
 ```
 
 ```{r echo=FALSE}

@@ -10,7 +10,6 @@
 
 
 
-<meta name="date" content="2024-06-28" />
 
 <title>DFO training: Logistic Regression</title>
 
@@ -1485,14 +1484,13 @@ font-size: 0.95em;
 
 
 <h1 class="title toc-ignore">DFO training: Logistic Regression</h1>
-<h4 class="date">2024-06-28</h4>
 
 </div>
 
 
 <div id="logistic-regression" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> <strong>Logistic
-regression</strong></h1>
+<h1><span class="header-section-number">1</span> Logistic
+regression</h1>
 <div id="what-is-a-logistic-regression" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> What is a logistic
 regression?</h2>
@@ -1758,12 +1756,13 @@ data:</p>
 <pre class="r"><code>filam_diatom &lt;- na.omit(filam_diatom)</code></pre>
 <p>Now we will create a new column to describe presence or absence of
 filamentous diatoms.</p>
-<p>We can do that with a function called “ifelse” to label all
-observations where measurements were greater than zero as “present”, and
-all observations where measurements were equal to zero as “absent”:</p>
+<p>We can do that with a function called <strong>ifelse</strong> to
+label all observations where measurements were greater than zero as
+“present”, and all observations where measurements were equal to zero as
+“absent”:</p>
 <pre class="r"><code>filam_diatom$filam_presence &lt;- ifelse(filam_diatom$filamentous_Diatom &gt; 0, &quot;present&quot;, &quot;absent&quot;)</code></pre>
-<p>Now we format this column as “factor” and ensure the reference group
-(“absent”) is the first to be shown:</p>
+<p>Now we format this column as <strong>factor</strong> and ensure the
+reference group (“absent”) is the first to be shown:</p>
 <pre class="r"><code>filam_diatom$filam_presence &lt;- factor(filam_diatom$filam_presence)
 levels(filam_diatom$filam_presence)</code></pre>
 <pre><code>## [1] &quot;absent&quot;  &quot;present&quot;</code></pre>
@@ -1773,7 +1772,8 @@ locations</li>
 </ul>
 <p>Here we select summer conditions and remove deep locations:</p>
 <pre class="r"><code>filam_diatom &lt;- filam_diatom[(filam_diatom$season == 2 | filam_diatom$season == 3) &amp; filam_diatom$area_group != &quot;deep&quot;, ]</code></pre>
-<p>Run model using glm function and family binomial</p>
+<p>Run model using <strong>glm</strong> function and family
+<strong>binomial</strong></p>
 <pre class="r"><code>model &lt;- glm(filam_presence ~ mean_mixing_depth_temp,
              data = filam_diatom, family = binomial)</code></pre>
 <p>Now we can check the model results</p>
@@ -1853,21 +1853,23 @@ new dataset:</p>
 <p>Remove NA data</p>
 <pre class="r"><code>your_dataset &lt;- na.omit(your_dataset)</code></pre>
 <p>Now you can create a new column that describes the presence or the
-absence of filamentous diatoms across the dataset:</p>
-<pre class="r"><code># Create a column name and use the function &quot;ifelse&quot; to label all observations where measurements were greater than zero as &quot;present&quot;, and all observations where measurements were equal to zero as &quot;absent&quot;:
-
-your_dataset$new_column_name &lt;- ifelse(your_dataset$filamentous_Diatom &gt; 0, &quot;present&quot;, &quot;absent&quot;)</code></pre>
-<p>Format this new column as a factor</p>
+absence of filamentous diatoms across the dataset.</p>
+<p>Use the function <strong>ifelse</strong> to label all observations
+where measurements were greater than zero as “present”, and all
+observations where measurements were equal to zero as “absent”:</p>
+<pre class="r"><code>your_dataset$new_column_name &lt;- ifelse(your_dataset$filamentous_Diatom &gt; 0, &quot;present&quot;, &quot;absent&quot;)</code></pre>
+<p>Format this new column as a <strong>factor</strong></p>
 <pre class="r"><code>your_dataset$filamentous_Diatom &lt;- factor(your_dataset$filamentous_Diatom)
 
 # and check how it looks:
 levels(your_dataset$filamentous_Diatom)</code></pre>
 <pre><code>## [1] &quot;absent&quot;  &quot;present&quot;</code></pre>
 <p><em>Run model</em></p>
-<pre class="r"><code># Use glm function and family binomial
-your_model_name &lt;- glm(&quot;response variable&quot; ~ &quot;explanatory variable&quot;,
+<p>Use <strong>glm</strong> function and family
+<strong>binomial</strong></p>
+<pre class="r"><code>your_model_name &lt;- glm(&quot;response variable&quot; ~ &quot;explanatory variable&quot;,
              data = your_dataset, family = binomial)</code></pre>
-<p>Check model results using the summary function</p>
+<p>Check model results using the <strong>summary</strong> function</p>
 <pre class="r"><code>summary(your_model_name)</code></pre>
 <p>How well did this predictor do?</p>
 <p><em>Plot model predictions</em></p>
@@ -1942,20 +1944,20 @@ imaginary dataset:</p>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-1</td>
-<td align="right">29</td>
-<td align="right">14</td>
+<td align="right">53</td>
+<td align="right">70</td>
 </tr>
 <tr class="even">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-2</td>
-<td align="right">64</td>
-<td align="right">95</td>
+<td align="right">82</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-3</td>
-<td align="right">65</td>
-<td align="right">54</td>
+<td align="right">30</td>
+<td align="right">58</td>
 </tr>
 </tbody>
 </table>
@@ -1963,7 +1965,7 @@ imaginary dataset:</p>
 “dead”, you should calculate the proportion of living organisms <em>per
 replicate</em> like this:</p>
 <pre class="r"><code>example_independence$proportion &lt;- round(example_independence$living_daphnia/(example_independence$living_daphnia+example_independence$dead_daphnia),2)
-# the round function ensures we have 2 decimals in our proportion values</code></pre>
+# the &quot;round&quot; function ensures we have 2 decimals in our proportion values</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -1978,23 +1980,23 @@ replicate</em> like this:</p>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-1</td>
-<td align="right">29</td>
-<td align="right">14</td>
-<td align="right">0.67</td>
+<td align="right">53</td>
+<td align="right">70</td>
+<td align="right">0.43</td>
 </tr>
 <tr class="even">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-2</td>
-<td align="right">64</td>
-<td align="right">95</td>
-<td align="right">0.40</td>
+<td align="right">82</td>
+<td align="right">1</td>
+<td align="right">0.99</td>
 </tr>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-3</td>
-<td align="right">65</td>
-<td align="right">54</td>
-<td align="right">0.55</td>
+<td align="right">30</td>
+<td align="right">58</td>
+<td align="right">0.34</td>
 </tr>
 </tbody>
 </table>

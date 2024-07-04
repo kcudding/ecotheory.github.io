@@ -4,7 +4,7 @@
 
 
 
-# **Logistic regression**
+# Logistic regression
 
 ## What is a logistic regression?
 
@@ -158,14 +158,14 @@ filam_diatom <- na.omit(filam_diatom)
 
 Now we will create a new column to describe presence or absence of filamentous diatoms.
 
-We can do that with a function called "ifelse" to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
+We can do that with a function called **ifelse** to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
 
 
 ```r
 filam_diatom$filam_presence <- ifelse(filam_diatom$filamentous_Diatom > 0, "present", "absent")
 ```
 
-Now we format this column as "factor" and ensure the reference group ("absent") is the first to be shown:
+Now we format this column as **factor** and ensure the reference group ("absent") is the first to be shown:
 
 
 ```r
@@ -186,7 +186,7 @@ Here we select summer conditions and remove deep locations:
 filam_diatom <- filam_diatom[(filam_diatom$season == 2 | filam_diatom$season == 3) & filam_diatom$area_group != "deep", ]
 ```
 
-Run model using glm function and family binomial
+Run model using **glm** function and family **binomial**
 
 
 ```r
@@ -296,16 +296,16 @@ your_dataset <- na.omit(your_dataset)
 
 
 
-Now you can create a new column that describes the presence or the absence of filamentous diatoms across the dataset:
+Now you can create a new column that describes the presence or the absence of filamentous diatoms across the dataset.
+
+Use the function **ifelse** to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
 
 
 ```r
-# Create a column name and use the function "ifelse" to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
-
 your_dataset$new_column_name <- ifelse(your_dataset$filamentous_Diatom > 0, "present", "absent")
 ```
 
-Format this new column as a factor
+Format this new column as a **factor**
 
 
 ```r
@@ -323,9 +323,9 @@ levels(your_dataset$filamentous_Diatom)
 
 *Run model*
 
+Use **glm** function and family **binomial**
 
 ```r
-# Use glm function and family binomial
 your_model_name <- glm("response variable" ~ "explanatory variable",
              data = your_dataset, family = binomial)
 ```
@@ -333,7 +333,7 @@ your_model_name <- glm("response variable" ~ "explanatory variable",
 
 
 
-Check model results using the summary function
+Check model results using the **summary** function
 
 
 ```r
@@ -409,24 +409,24 @@ Imagine you have counts of living and dead organisms in this imaginary dataset:
 
 |date       |location  | living_daphnia| dead_daphnia|
 |:----------|:---------|--------------:|------------:|
-|Jan-1-2024 |station-1 |             29|           14|
-|Jan-1-2024 |station-2 |             64|           95|
-|Jan-1-2024 |station-3 |             65|           54|
+|Jan-1-2024 |station-1 |             53|           70|
+|Jan-1-2024 |station-2 |             82|            1|
+|Jan-1-2024 |station-3 |             30|           58|
 
 In this case, instead of considering each individual as "living" or "dead", you should calculate the proportion of living organisms *per replicate* like this:
     
 
 ```r
 example_independence$proportion <- round(example_independence$living_daphnia/(example_independence$living_daphnia+example_independence$dead_daphnia),2)
-# the round function ensures we have 2 decimals in our proportion values
+# the "round" function ensures we have 2 decimals in our proportion values
 ```
 
 
 |date       |location  | living_daphnia| dead_daphnia| proportion|
 |:----------|:---------|--------------:|------------:|----------:|
-|Jan-1-2024 |station-1 |             29|           14|       0.67|
-|Jan-1-2024 |station-2 |             64|           95|       0.40|
-|Jan-1-2024 |station-3 |             65|           54|       0.55|
+|Jan-1-2024 |station-1 |             53|           70|       0.43|
+|Jan-1-2024 |station-2 |             82|            1|       0.99|
+|Jan-1-2024 |station-3 |             30|           58|       0.34|
 
 This proportion will be your response variable for the logistic model. When using proportions, you should also provide the "weights" information in the glm formula (i.e., a dataset with total number of trials per replicate, or the sum of events where we got success + events where we got failure).
 
