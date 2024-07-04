@@ -1693,21 +1693,19 @@ logistic model in R</h3>
 first model together</h3>
 <p>First, we are going to create a new dataset called “filam_diatom”
 including some potentially interesting variables:</p>
-<pre class="r"><code>filam_diatom &lt;- ham[, c(&quot;area_group&quot;, &quot;season&quot;, &quot;TP dissolved_ECCC1m&quot;,
+<pre class="r"><code>filam_diatom &lt;- ham[, c(&quot;area_group&quot;, &quot;season&quot;, 
                         &quot;filamentous_Diatom&quot;, &quot;mean_mixing_depth_temp&quot;)]</code></pre>
 <table>
 <colgroup>
+<col width="14%" />
 <col width="11%" />
-<col width="9%" />
-<col width="20%" />
+<col width="41%" />
 <col width="32%" />
-<col width="25%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center">Location</th>
 <th align="center">Season</th>
-<th align="center">Total phosphorus</th>
 <th align="center">Filamentous diatom biomass</th>
 <th align="center">Epilimnion temperat.</th>
 </tr>
@@ -1716,28 +1714,24 @@ including some potentially interesting variables:</p>
 <tr class="odd">
 <td align="center">deep</td>
 <td align="center">2</td>
-<td align="center">0.01</td>
 <td align="center">0.00</td>
 <td align="center">21.79</td>
 </tr>
 <tr class="even">
 <td align="center">deep</td>
 <td align="center">2</td>
-<td align="center">0.01</td>
 <td align="center">3.10</td>
 <td align="center">21.83</td>
 </tr>
 <tr class="odd">
 <td align="center">NE</td>
 <td align="center">1</td>
-<td align="center">0.02</td>
 <td align="center">NA</td>
 <td align="center">19.89</td>
 </tr>
 <tr class="even">
 <td align="center">deep</td>
 <td align="center">1</td>
-<td align="center">0.02</td>
 <td align="center">NA</td>
 <td align="center">19.71</td>
 </tr>
@@ -1745,13 +1739,11 @@ including some potentially interesting variables:</p>
 <td align="center">NE</td>
 <td align="center">1</td>
 <td align="center">NA</td>
-<td align="center">NA</td>
 <td align="center">13.90</td>
 </tr>
 <tr class="even">
 <td align="center">deep</td>
 <td align="center">1</td>
-<td align="center">NA</td>
 <td align="center">287.18</td>
 <td align="center">16.05</td>
 </tr>
@@ -1762,27 +1754,10 @@ interest, as this food source is hard for zooplankton to consume. We
 will look at epilimnion temperature as a potential explanatory
 variable.</p>
 <p>Before we can get started with the analysis, we need to remove NA
-data. We will now do that for the potential response variable
-filamentous diatom column, and for the potential explanatory variable
-epilimnion temperature:</p>
-<pre class="r"><code>filam_diatom &lt;- filam_diatom[!is.na(filam_diatom$filamentous_Diatom), ]
-filam_diatom &lt;- filam_diatom[!is.na(filam_diatom$mean_mixing_depth_temp), ]</code></pre>
-<div id="try-it-now" class="section level4 unnumbered">
-<h4 class="unnumbered">Try it now</h4>
-<p>Now you can do this last step (removing NA data) for total phosphorus
-(“TP dissolved_ECCC1m”), as we will consider this as another potential
-explanatory variable later on.</p>
-<p>First we remove NA data based on the response variable:</p>
-<pre class="r"><code># Use the original dataset &quot;ham&quot; to subset this data, and give this new  dataset a name, like &quot;filam_diatom_P&quot;
-your_dataset_phosphorus &lt;- original_dataset[!is.na(original_dataset$filamentous_Diatom), ]</code></pre>
-<p>Before you remove NA data based on the explanatory variable, let’s
-relabel it to remove empty spaces, which may cause errors going
-forward:</p>
-<pre class="r"><code>colnames(your_dataset_phosphorus)[colnames(your_dataset_phosphorus) == &quot;TP dissolved_ECCC1m&quot;] &lt;- &quot;Total_phosphorus&quot;</code></pre>
-<p>Now you can remove NA data based on the explanatory variable:</p>
-<pre class="r"><code>your_dataset_phosphorus &lt;- your_dataset_phosphorus[!is.na(your_dataset_phosphorus$Total_phosphorus), ]</code></pre>
-<p>Let’s go back to our “filam_diatom” dataset. Now we will create a new
-column to describe presence or absence of filamentous diatoms.</p>
+data:</p>
+<pre class="r"><code>filam_diatom &lt;- na.omit(filam_diatom)</code></pre>
+<p>Now we will create a new column to describe presence or absence of
+filamentous diatoms.</p>
 <p>We can do that with a function called “ifelse” to label all
 observations where measurements were greater than zero as “present”, and
 all observations where measurements were equal to zero as “absent”:</p>
@@ -1862,75 +1837,53 @@ points(filam_diatom$mean_mixing_depth_temp, presence_numeric_filam)</code></pre>
 in which we are 95% sure about the location of true values, based on our
 data</p>
 </div>
-<div id="try-it-now-1" class="section level4 unnumbered">
-<h4 class="unnumbered">Try it now</h4>
-</div>
-</div>
 <div id="creating-your-logistic-model" class="section level3" number="1.9.3">
 <h3><span class="header-section-number">1.9.3</span> Creating your
 logistic model</h3>
 <p>Now it’s your turn! Run this next logistic model using total
 phosphorus as a predictor, and filamentous diatoms as the response
 variable again.</p>
+<div id="try-it-now" class="section level4 unnumbered">
+<h4 class="unnumbered">Try it now</h4>
+<p>Start by creating a dataset for your analysis. Select a name for your
+new dataset:</p>
+<pre class="r"><code>your_dataset &lt;- ham[, c(&quot;area_group&quot;, &quot;season&quot;, 
+                        &quot;filamentous_Diatom&quot;, &quot;NO2_NO3_ECCC1m&quot;)]</code></pre>
 <p><em>Formatting</em></p>
-<p>Do you remember how you previously labeled your dataset for the
-phosphorus analysis? You can use that for this exercise. You have
-already removed NA data. Now you can create a new column that describes
-the presence or the absence of filamentous diatoms across the
-dataset:</p>
+<p>Remove NA data</p>
+<pre class="r"><code>your_dataset &lt;- na.omit(your_dataset)</code></pre>
+<p>Now you can create a new column that describes the presence or the
+absence of filamentous diatoms across the dataset:</p>
 <pre class="r"><code># To create a new column, first type the label you chose previously for the dataframe related to the phosphorus analysis (something like &quot;filam_diatom_P&quot;), then create a column name, and use the function &quot;ifelse&quot; to label all observations where measurements were greater than zero as &quot;present&quot;, and all observations where measurements were equal to zero as &quot;absent&quot;:
 
-your_dataset_name$new_column_name &lt;- ifelse(your_dataset_name$filamentous_Diatom &gt; 0, &quot;present&quot;, &quot;absent&quot;)</code></pre>
+your_dataset$new_column_name &lt;- ifelse(your_dataset$filamentous_Diatom &gt; 0, &quot;present&quot;, &quot;absent&quot;)</code></pre>
 <p>Format this new column as a factor</p>
-<pre class="r"><code># use the factor function here
+<pre class="r"><code>your_dataset$filamentous_Diatom &lt;- factor(your_dataset$filamentous_Diatom)
 
-# and check how it looks by calling:
-levels(your_dataset_name$filamentous_Diatom)</code></pre>
+# and check how it looks:
+levels(your_dataset$filamentous_Diatom)</code></pre>
 <pre><code>## [1] &quot;absent&quot;  &quot;present&quot;</code></pre>
-<p><em>Select time periods and locations</em></p>
-<p>You can choose to select summer, or another time period. We are
-excluding deep locations once again:</p>
-<pre class="r"><code># Select desired periods of time and locations. You can use &quot;&amp;&quot; for more than one selection at the same time, and &quot;|&quot; for selecting either one or other option:
-
-your_dataset_name &lt;- your_dataset_name[(your_dataset_name$season == &quot;your selection&quot; | your_dataset_name$season == &quot;your selection&quot;) &amp; your_dataset_name$area_group != &quot;deep&quot;, ]</code></pre>
 <p><em>Run model</em></p>
 <pre class="r"><code># Use glm function and family binomial
 your_model_name &lt;- glm(&quot;response variable&quot; ~ &quot;explanatory variable&quot;,
-             data = your_dataset_name, family = binomial)</code></pre>
+             data = your_dataset, family = binomial)</code></pre>
 <p>Check model results using the summary function</p>
 <pre class="r"><code>summary(your_model_name)</code></pre>
-<pre><code>## 
-## Call:
-## glm(formula = filam_presence ~ Total_phosphorus, family = binomial, 
-##     data = filam_diatom_P)
-## 
-## Coefficients:
-##                  Estimate Std. Error z value Pr(&gt;|z|)
-## (Intercept)      -0.08552    1.12537  -0.076    0.939
-## Total_phosphorus 87.10650   87.72845   0.993    0.321
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 74.094  on 63  degrees of freedom
-## Residual deviance: 73.050  on 62  degrees of freedom
-## AIC: 77.05
-## 
-## Number of Fisher Scoring iterations: 4</code></pre>
 <p>How well did this predictor do?</p>
 <p><em>Plot model predictions</em></p>
 <p>Start with obtaining model predictions and errors:</p>
-<pre class="r"><code># Create a sequence of values for Total_phosphorus
-Total_phosphorus_values &lt;- seq(min(filam_diatom_P$Total_phosphorus), max(filam_diatom_P$Total_phosphorus), length.out = length(filam_diatom_P$Total_phosphorus))
+<pre class="r"><code># Create a sequence of values for nitrite/nitrate
+Total_phosphorus_values &lt;- seq(min(filam_diatom_P$NO2_NO3_ECCC1m), max(filam_diatom_P$NO2_NO3_ECCC1m), length.out = length(filam_diatom_P$NO2_NO3_ECCC1m))
 
-# Create a data frame with Total_phosphorus values
-newdata &lt;- data.frame(Total_phosphorus = Total_phosphorus_values)
+# Create a data frame with nitrite/nitrate values
+newdata &lt;- data.frame(NO2_NO3_ECCC1m = Total_phosphorus_values)
 
-# Predict probabilities for each value of Total_phosphorus
+# Predict probabilities for each value of nitrite/nitrate
 predicted_probabilities_P &lt;- predict(model, newdata = newdata, type = &quot;response&quot;)
 
 # Calculate confidence intervals
 z &lt;- qnorm(1 - (1 - 0.95) / 2)  # 95% confidence level
-se &lt;- sqrt(predicted_probabilities_P * (1 - predicted_probabilities_P) / nrow(filam_diatom))
+se &lt;- sqrt(predicted_probabilities_P * (1 - predicted_probabilities_P) / nrow(filam_diatom_P))
 lower_bound &lt;- predicted_probabilities_P - z * se
 upper_bound &lt;- predicted_probabilities_P + z * se</code></pre>
 <p>Now you are ready to plot the data and the predictions:</p>
@@ -1943,8 +1896,9 @@ plot(Total_phosphorus_values, predicted_probabilities_P, type = &quot;l&quot;,
      xlab = &quot;Total phosphorous (dissolved fraction) (mg/L)&quot;, ylab = &quot;Predicted probability&quot;, cex.axis = 1.5, ylim = c(0, 1), lwd = 2)
 lines(Total_phosphorus_values, lower_bound, col = &quot;blue&quot;, lty = 2)
 lines(Total_phosphorus_values, upper_bound, col = &quot;blue&quot;, lty = 2)
-points(filam_diatom_P$Total_phosphorus, presence_numeric_P)</code></pre>
+points(filam_diatom_P$NO2_NO3_ECCC1m, presence_numeric_P)</code></pre>
 <p><img src="data:image/png;base64,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" /></p>
+</div>
 </div>
 </div>
 <div id="additional-resources" class="section level2" number="1.10">
@@ -1957,19 +1911,19 @@ wrong?</h3>
 <li><em>Mixing up predictors and response variables in the logistic
 model equation</em>
 <ul>
-<li>If you get a warning when running your logistic model, you may have
-mixed up the predictors and the response variables. The response
-variable should be the first one to appear after the opening
+<li>If you get a warning or error when running your logistic model, you
+may have mixed up the predictors and the response variables. The
+response variable should be the first one to appear after the opening
 parenthesis</li>
-<li>In addition to the variable mix-up, this warning tells us that we
-may be using quantitative measures as our response variable, which is
-not appropriate for a logistic regression. See how this error looks
-like:</li>
+<li>In addition to the variable mix-up, such warning or errors tell us
+that we may be using quantitative measures as our response variable,
+which is not appropriate for a logistic regression. See how this error
+looks like:</li>
 </ul></li>
 </ul>
-<pre class="r"><code>model &lt;- glm(Total_phosphorus ~ filam_presence,
-             data = filam_diatom_P, family = binomial)</code></pre>
-<pre><code>## Warning in eval(family$initialize): non-integer #successes in a binomial glm!</code></pre>
+<pre class="r"><code>model &lt;- glm(mean_mixing_depth_temp ~ filam_presence,
+             data = filam_diatom, family = binomial)</code></pre>
+<pre><code>## Error in eval(family$initialize): y values must be 0 &lt;= y &lt;= 1</code></pre>
 <ul>
 <li><em>Incorrectly coding data so that it is not independent</em></li>
 </ul>
@@ -1988,20 +1942,20 @@ imaginary dataset:</p>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-1</td>
-<td align="right">32</td>
-<td align="right">19</td>
+<td align="right">45</td>
+<td align="right">70</td>
 </tr>
 <tr class="even">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-2</td>
-<td align="right">19</td>
-<td align="right">55</td>
+<td align="right">87</td>
+<td align="right">62</td>
 </tr>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-3</td>
-<td align="right">83</td>
-<td align="right">89</td>
+<td align="right">4</td>
+<td align="right">94</td>
 </tr>
 </tbody>
 </table>
@@ -2024,23 +1978,23 @@ replicate</em> like this:</p>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-1</td>
-<td align="right">32</td>
-<td align="right">19</td>
-<td align="right">0.63</td>
+<td align="right">45</td>
+<td align="right">70</td>
+<td align="right">0.39</td>
 </tr>
 <tr class="even">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-2</td>
-<td align="right">19</td>
-<td align="right">55</td>
-<td align="right">0.26</td>
+<td align="right">87</td>
+<td align="right">62</td>
+<td align="right">0.58</td>
 </tr>
 <tr class="odd">
 <td align="left">Jan-1-2024</td>
 <td align="left">station-3</td>
-<td align="right">83</td>
-<td align="right">89</td>
-<td align="right">0.48</td>
+<td align="right">4</td>
+<td align="right">94</td>
+<td align="right">0.04</td>
 </tr>
 </tbody>
 </table>

@@ -229,55 +229,25 @@ If we had more explanatory variables, we could keep adding them to the equation 
 First, we are going to create a new dataset called "filam_diatom" including some potentially interesting variables:
 
 ```{r echo=TRUE}
-filam_diatom <- ham[, c("area_group", "season", "TP dissolved_ECCC1m",
+filam_diatom <- ham[, c("area_group", "season", 
                         "filamentous_Diatom", "mean_mixing_depth_temp")]
 ```
 
 ```{r echo=FALSE}
-knitr::kable(filam_diatom[c(25:30),],row.names = FALSE, digits=2, align=rep('c', 3), col.names = c("Location", "Season", "Total phosphorus", "Filamentous diatom biomass", "Epilimnion temperat."))
+filam_diatom <- ham[, c("area_group", "season", 
+                        "filamentous_Diatom", "mean_mixing_depth_temp")]
+knitr::kable(filam_diatom[c(25:30),],row.names = FALSE, digits=2, align=rep('c', 3), col.names = c("Location", "Season", "Filamentous diatom biomass", "Epilimnion temperat."))
 ```
 
 Let's consider that filamentous diatom is our response variable of interest, as this food source is hard for zooplankton to consume. We will look at epilimnion temperature as a potential explanatory variable.
 
-Before we can get started with the analysis, we need to remove NA data. We will now do that for the potential response variable filamentous diatom column, and for the potential explanatory variable epilimnion temperature:
+Before we can get started with the analysis, we need to remove NA data:
 
 ```{r echo=TRUE}
-filam_diatom <- filam_diatom[!is.na(filam_diatom$filamentous_Diatom), ]
-filam_diatom <- filam_diatom[!is.na(filam_diatom$mean_mixing_depth_temp), ]
+filam_diatom <- na.omit(filam_diatom)
 ```
 
-
-#### Try it now {-}
-
-Now you can do this last step (removing NA data) for total phosphorus ("TP dissolved_ECCC1m"), as we will consider this as another potential explanatory variable later on.
-
-First we remove NA data based on the response variable:
-```{r eval=F, echo=T}
-# Use the original dataset "ham" to subset this data, and give this new  dataset a name, like "filam_diatom_P"
-your_dataset_phosphorus <- original_dataset[!is.na(original_dataset$filamentous_Diatom), ]
-```
-
-Before you remove NA data based on the explanatory variable, let's relabel it to remove empty spaces, which may cause errors going forward:
-
-```{r eval=F, echo=T}
-colnames(your_dataset_phosphorus)[colnames(your_dataset_phosphorus) == "TP dissolved_ECCC1m"] <- "Total_phosphorus"
-```
-
-Now you can remove NA data based on the explanatory variable:
-
-```{r eval=F, echo=T}
-your_dataset_phosphorus <- your_dataset_phosphorus[!is.na(your_dataset_phosphorus$Total_phosphorus), ]
-```
-
-```{r echo=soln}
-filam_diatom_P <- ham[!is.na(ham$filamentous_Diatom), ]
-
-colnames(filam_diatom_P)[colnames(filam_diatom_P) == "TP dissolved_ECCC1m"] <- "Total_phosphorus"
-
-filam_diatom_P <- filam_diatom_P[!is.na(filam_diatom_P$Total_phosphorus), ]
-```
-
-Let's go back to our "filam_diatom" dataset. Now we will create a new column to describe presence or absence of filamentous diatoms.
+Now we will create a new column to describe presence or absence of filamentous diatoms.
 
 We can do that with a function called "ifelse" to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
 
@@ -358,29 +328,50 @@ points(filam_diatom$mean_mixing_depth_temp, presence_numeric_filam)
 
 The dotted curves are confidence intervals, which show us the range in which we are 95% sure about the location of true values, based on our data
 
-#### Try it now {-}
 
 ### Creating your logistic model 
 
 Now it's your turn! Run this next logistic model using total phosphorus as a predictor, and filamentous diatoms as the response variable again.
 
+#### Try it now {-}
+
+Start by creating a dataset for your analysis. Select a name for your new dataset:
+```{r, eval=F, echo=T}
+your_dataset <- ham[, c("area_group", "season", 
+                        "filamentous_Diatom", "NO2_NO3_ECCC1m")]
+```
+
+```{r echo=soln}
+filam_diatom_P <- ham[, c("area_group", "season", 
+                        "filamentous_Diatom", "NO2_NO3_ECCC1m")]
+```
+
 *Formatting* 
 
-Do you remember how you previously labeled your dataset for the phosphorus analysis? You can use that for this exercise. You have already removed NA data. Now you can create a new column that describes the presence or the absence of filamentous diatoms across the dataset:
+Remove NA data
+```{r, eval=F, echo=T}
+your_dataset <- na.omit(your_dataset)
+```
+
+```{r echo=soln}
+filam_diatom_P <- na.omit(filam_diatom_P)
+```
+
+Now you can create a new column that describes the presence or the absence of filamentous diatoms across the dataset:
 
 ```{r, eval=F, echo=T}
 # To create a new column, first type the label you chose previously for the dataframe related to the phosphorus analysis (something like "filam_diatom_P"), then create a column name, and use the function "ifelse" to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
 
-your_dataset_name$new_column_name <- ifelse(your_dataset_name$filamentous_Diatom > 0, "present", "absent")
+your_dataset$new_column_name <- ifelse(your_dataset$filamentous_Diatom > 0, "present", "absent")
 ```
 
 Format this new column as a factor
 
 ```{r, eval=F, echo=T}
-# use the factor function here
+your_dataset$filamentous_Diatom <- factor(your_dataset$filamentous_Diatom)
 
-# and check how it looks by calling:
-levels(your_dataset_name$filamentous_Diatom)
+# and check how it looks:
+levels(your_dataset$filamentous_Diatom)
 ```
 
 
@@ -390,32 +381,17 @@ filam_diatom_P$filam_presence <- factor(filam_diatom_P$filam_presence)
 levels(filam_diatom_P$filam_presence)
 ```
 
-*Select time periods and locations*
-
-You can choose to select summer, or another time period. We are excluding deep locations once again:
-
-```{r, eval=F, echo=T}
-# Select desired periods of time and locations. You can use "&" for more than one selection at the same time, and "|" for selecting either one or other option:
-
-your_dataset_name <- your_dataset_name[(your_dataset_name$season == "your selection" | your_dataset_name$season == "your selection") & your_dataset_name$area_group != "deep", ]
-```
-
-
-```{r echo=soln}
-filam_diatom_P <- filam_diatom_P[(filam_diatom_P$season == 2 | filam_diatom_P$season == 3) & filam_diatom_P$area_group != "deep", ]
-```
-
 *Run model*
 
 ```{r, eval=F, echo=T}
 # Use glm function and family binomial
 your_model_name <- glm("response variable" ~ "explanatory variable",
-             data = your_dataset_name, family = binomial)
+             data = your_dataset, family = binomial)
 ```
 
 
 ```{r echo=soln}
-model <- glm(filam_presence ~ Total_phosphorus,
+model <- glm(filam_presence ~ NO2_NO3_ECCC1m,
              data = filam_diatom_P, family = binomial)
 ```
 
@@ -425,7 +401,7 @@ Check model results using the summary function
 summary(your_model_name)
 ```  
 
-```{r echo=soln}
+```{r, eval=soln, echo=soln}
 summary(model)
 ```
 
@@ -435,18 +411,18 @@ How well did this predictor do?
 
 Start with obtaining model predictions and errors:
 ```{r echo=TRUE}
-# Create a sequence of values for Total_phosphorus
-Total_phosphorus_values <- seq(min(filam_diatom_P$Total_phosphorus), max(filam_diatom_P$Total_phosphorus), length.out = length(filam_diatom_P$Total_phosphorus))
+# Create a sequence of values for nitrite/nitrate
+Total_phosphorus_values <- seq(min(filam_diatom_P$NO2_NO3_ECCC1m), max(filam_diatom_P$NO2_NO3_ECCC1m), length.out = length(filam_diatom_P$NO2_NO3_ECCC1m))
 
-# Create a data frame with Total_phosphorus values
-newdata <- data.frame(Total_phosphorus = Total_phosphorus_values)
+# Create a data frame with nitrite/nitrate values
+newdata <- data.frame(NO2_NO3_ECCC1m = Total_phosphorus_values)
 
-# Predict probabilities for each value of Total_phosphorus
+# Predict probabilities for each value of nitrite/nitrate
 predicted_probabilities_P <- predict(model, newdata = newdata, type = "response")
 
 # Calculate confidence intervals
 z <- qnorm(1 - (1 - 0.95) / 2)  # 95% confidence level
-se <- sqrt(predicted_probabilities_P * (1 - predicted_probabilities_P) / nrow(filam_diatom))
+se <- sqrt(predicted_probabilities_P * (1 - predicted_probabilities_P) / nrow(filam_diatom_P))
 lower_bound <- predicted_probabilities_P - z * se
 upper_bound <- predicted_probabilities_P + z * se
 ```
@@ -462,7 +438,7 @@ plot(Total_phosphorus_values, predicted_probabilities_P, type = "l",
      xlab = "Total phosphorous (dissolved fraction) (mg/L)", ylab = "Predicted probability", cex.axis = 1.5, ylim = c(0, 1), lwd = 2)
 lines(Total_phosphorus_values, lower_bound, col = "blue", lty = 2)
 lines(Total_phosphorus_values, upper_bound, col = "blue", lty = 2)
-points(filam_diatom_P$Total_phosphorus, presence_numeric_P)
+points(filam_diatom_P$NO2_NO3_ECCC1m, presence_numeric_P)
 ```
 
 
@@ -474,12 +450,12 @@ points(filam_diatom_P$Total_phosphorus, presence_numeric_P)
 ### What could go wrong?
 
 - *Mixing up predictors and response variables in the logistic model equation*
-    + If you get a warning when running your logistic model, you may have mixed up the predictors and the response variables. The response variable should be the first one to appear after the opening parenthesis 
-    + In addition to the variable mix-up, this warning tells us that we may be using quantitative measures as our response variable, which is not appropriate for a logistic regression. See how this error looks like:
+    + If you get a warning or error when running your logistic model, you may have mixed up the predictors and the response variables. The response variable should be the first one to appear after the opening parenthesis 
+    + In addition to the variable mix-up, such warning or errors tell us that we may be using quantitative measures as our response variable, which is not appropriate for a logistic regression. See how this error looks like:
 
-```{r echo=TRUE}
-model <- glm(Total_phosphorus ~ filam_presence,
-             data = filam_diatom_P, family = binomial)
+```{r, echo=TRUE, error=TRUE}
+model <- glm(mean_mixing_depth_temp ~ filam_presence,
+             data = filam_diatom, family = binomial)
 ```
 
 - *Incorrectly coding data so that it is not independent*
