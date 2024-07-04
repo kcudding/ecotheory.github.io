@@ -1,22 +1,6 @@
 ---
-title: "Multivariate analysis"
-author: "Eddie Wu"
-date: "2024-07-04"
-output:
-  html_document: 
-    toc: yes
-    number_sections: no
-    toc_float:
-      collapsed: no
-      smooth_scroll: no
-    keep_md: yes
+
 ---
-
-
-
-# Libraries and imports
-
-
 
 
 # Multivariate analysis
@@ -107,7 +91,7 @@ pairs(ham.multi[4:8], main = "Ham Data",
       pch = as.numeric(ham.multi$season), col = (ham.multi$season))
 ```
 
-![](multivariate_analysis_files/figure-html/unnamed-chunk-3-1.jpeg)<!-- -->
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_correlation.jpeg)
 
 ``` r
       # colored depending on season
@@ -181,7 +165,7 @@ Now, let's determine how many principle components to retain for further analysi
 screeplot(pca.ham, type = ("lines"), main = "Screeplot", pch = 16, cex = 1)
 ```
 
-![](multivariate_analysis_files/figure-html/unnamed-chunk-7-1.jpeg)<!-- -->
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_screeplot.jpeg)
 
 Meanwhile, we can also look at the proportional variance explained by each principle component. Such information is available in the `summary()` of our PCA results. We see the first two PCs together explain roughly 72% of the total variance in this dataset. Along with the screeplot, we are confident that the first two PC are sufficient enough to represent our data.
 
@@ -216,7 +200,7 @@ we can visualize the positions of our samples on the new axes (PC1 and PC2). Thi
 
 
 ``` r
-# Create a blank plot
+# Create an empty canvas
 ordiplot(pca.ham, type = "n", main = "Individuals ('sites')",
          xlab = paste0("PC1 (",pvar[1], "%)"), # x-axis label
          ylab = paste0("PC2 (", pvar[2],"%)"), # y-axis label
@@ -226,7 +210,7 @@ ordiplot(pca.ham, type = "n", main = "Individuals ('sites')",
 points(pca.ham, display = "sites", cex = 1) # add sites
 ```
 
-![](multivariate_analysis_files/figure-html/unnamed-chunk-9-1.jpeg)<!-- -->
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_ordination1.jpeg)
 
 What if we are interested in the seasonal patterns of our samples on the reduced dimensions? We can use the same graphing techniques, but group our dataset using different seasons. Make sure to label your seasons in the "legend".
 
@@ -250,7 +234,7 @@ legend("bottomright", legend = unique(ham.multi$season),
        col = c(2, 3, 4, 5), bty = "n") # bty specifys legend box boarder
 ```
 
-![](multivariate_analysis_files/figure-html/unnamed-chunk-10-1.jpeg)<!-- -->
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_ordination2.jpeg)
 
 There are many other functions in the vegan package that allows customization of your ordination plots. For example, `ordiellipse(pca.ham, display="sites", conf=0.95, kind="sd", groups=ham.multi$season)` function allows us to add 95% confidence intervals to each group of samples.
 
@@ -286,7 +270,7 @@ biplot(pca.ham,
        ylab = paste0("PC2 (", pvar[2],"%)"))
 ```
 
-![](multivariate_analysis_files/figure-html/unnamed-chunk-13-1.jpeg)<!-- -->
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_biplot1.jpeg)
 
 **Some important points for the `biplot()` function**:
 
@@ -338,8 +322,7 @@ stressplot(nmds.ham, pch = 16, las = 1,
            main = "Shepard plot")
 ```
 
-![](multivariate_analysis_files/figure-html/unnamed-chunk-15-1.jpeg)<!-- -->
-
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_streeplot.jpeg)
 
 ### Plot ordination for nMDS
 
@@ -368,8 +351,7 @@ text(species_scores[,1], species_scores[,2],
      pos = c(2,2,3,4,2,3))
 ```
 
-![](multivariate_analysis_files/figure-html/unnamed-chunk-16-1.jpeg)<!-- -->
-
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/multi_ordination2.jpeg)
 
 ## Other resources
 
