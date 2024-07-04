@@ -1,9 +1,6 @@
 
 ```{r import, echo = FALSE}
 library(readxl)
-#library(ggplot2)
-#library(tidyverse)
-#library(knitr)
 library(vegan)
 soln=FALSE
 # xlsx files
@@ -45,7 +42,7 @@ colnames(ham.multi) <- c("area","season","station","daphnia","column.temp",
                          "epili.temp","pon","dic","poc")
 ```
 
-In our new dataframe, different seasons are represented by numeric numbers from 1 to 5. We would like to re-code them into string factors, for easier visualization in later graphics. There are many ways to do this, here we introduce using the `factor()` function.
+In our new dataframe, different seasons are represented by numeric numbers from 1 to 5. We would like to re-code them into string factors, for easier visualization in later graphics. There are many ways to do this, here we introduce using the **`factor()`** function.
 
 ```{r, echo = TRUE}
 ## Recode the season numeric code into factors
@@ -64,7 +61,7 @@ Principle component analysis is a linear transformation method that converts the
 
 ### Correlation examination
 
-First of all, we need to examine the correlation between our variables. We can achieve this by running a correlation test using `cor()` function, or creating a correlation plot using `pairs()` function.
+First of all, we need to examine the correlation between our variables. We can achieve this by running a correlation test using **`cor()`** function, or creating a correlation plot using **`pairs()`** function.
 
 ```{r, echo = TRUE}
 ## Correlation table
@@ -81,7 +78,7 @@ Dimension reduction techniques such PCA works the best when variables are strong
 
 ### PCA with standardized data
 
-Now we can start with running our principle component analyses. PCA can be computed using various functions in R, such as prcomp() in *stats* package, princomp() in *stats* package, rda() in *vegan* package.
+Now we can start with running our principle component analyses. PCA can be computed using various functions in R, such as **`prcomp()`** in *stats* package, **`princomp()`** in *stats* package, **`rda()`** in *vegan* package.
 
 *Important Note: The rda() function in vegan allows users to conduct both PCA and RDA, depending on whether the data is constrained or not. When it is unconstrained (like in our example), it is running a PCA!*
 
@@ -90,16 +87,15 @@ Here we demonstrate using the *vegan* package, since it also allows easy visuali
 ```{r, echo = TRUE}
 ## Run PCA analysis
 pca.ham <- rda(ham.multi[,4:9], scale = TRUE) #subset for all continuous variables
-summary(pca.ham)
 ```
 
-After completing the dimension reduction process, each sample now appears as a point in space specified by its new position along the principle component axes. There coordinates are referred to as "site scores" in rda() results, and we can access such information with the `scores()` function.
+After completing the dimension reduction process, each sample now appears as a point in space specified by its new position along the principle component axes. There coordinates are referred to as "site scores" in rda() results, and we can access such information with the **`scores()`** function.
 
 ```{r, echo = TRUE, eval = FALSE}
 scores(pca.ham, display = "sites")
 ```
 
-Meanwhile, our original variables are projected on the the new principle components. They are defined as "Loadings" and are referred to as "species scores" in rda() results. This information can be obtained with the `scores()` function too.
+Meanwhile, our original variables are projected on the the new principle components. They are defined as "Loadings" and are referred to as "species scores" in rda() results. This information can be obtained with the **`scores()`** function too.
 
 ```{r, echo = TRUE, eval = FALSE}
 scores(pca.ham, display = "species")
@@ -115,14 +111,14 @@ scores(pca.ham, display = "species")
 
 ### Screeplot
 
-Now, let's determine how many principle components to retain for further analysis. The `screeplot()` function allows us to visualize the variance explained by each of the principle components. Ideally, a curve should be steep, and then bend at an "elbow", after which the curve flattens out. The first few principle components usually account for a large portion of the variance in the data, and should be retained.
+Now, let's determine how many principle components to retain for further analysis. The **`screeplot()`** function allows us to visualize the variance explained by each of the principle components. Ideally, a curve should be steep, and then bend at an "elbow", after which the curve flattens out. The first few principle components usually account for a large portion of the variance in the data, and should be retained.
 
 ```{r, echo = TRUE}
 ## Screeplot
 screeplot(pca.ham, type = ("lines"), main = "Screeplot", pch = 16, cex = 1)
 ```
 
-Meanwhile, we can also look at the proportional variance explained by each principle component. Such information is available in the `summary()` of our PCA results. We see the first two PCs together explain roughly 72% of the total variance in this dataset. Along with the screeplot, we are confident that the first two PC are sufficient enough to represent our data.
+Meanwhile, we can also look at the proportional variance explained by each principle component. Such information is available in the **`summary()`** of our PCA results. We see the first two PCs together explain roughly 72% of the total variance in this dataset. Along with the screeplot, we are confident that the first two PC are sufficient enough to represent our data.
 
 For easier usage in future, let's store them in a list:
 
@@ -139,9 +135,9 @@ As we have seen in previous materials, there are many different methods/packages
 
 In general, plotting ordination with vegan follows two steps:
 
-1. Use `ordiplot()` to create an empty canvas (You can specify the title, axes, limits, and many other features during this step).
+1. Use **`ordiplot()`** to create an empty canvas (You can specify the title, axes, limits, and many other features during this step).
 
-2. Use `points()` to add points representing samples or variables in the new dimensions. Use `text()` to add labels.
+2. Use **`points()`** to add points representing samples or variables in the new dimensions. Use **`text()`** to add labels.
 
 
 **Plot 1 - Site Plot (samples)**
@@ -217,9 +213,9 @@ legend("bottomright", legend = unique(ham.multi$area),
 ```
 
 
-**Plot 2 - BiPlot (samples and variables)**
+**Plot 2 - Biplot (samples and variables)**
 
-Finally, we can visualize both "sites" (individual observations) and "species" (variables) on one graph with a biplot. This time, we use the `biplot()` function in base R to do this.
+Finally, we can visualize both "sites" (individual observations) and "species" (variables) on one graph with a biplot. This time, we use the **`biplot()`** function in base R to do this.
 
 ```{r, echo = TRUE}
 ## Biplot for PCA
@@ -233,9 +229,9 @@ biplot(pca.ham,
 
 **Some important points for the `biplot()` function**:
 
-1. `biplot()` allows different scaling options to preserve either the Euclidean distance (in multidimensional space) among objects (sites), or the correlations/covariances between variables (species). To learn more, please refer to the [function description](!https://rdrr.io/rforge/vegan/man/biplot.rda.html) or these online tutorials: [QCBS workshop - Unconstrained Ordination Scaling](!https://r.qcbs.ca/workshop09/book-en/principal-component-analysis.html#condensing-data-with-principal-component-analysis); [Tutorial 14.2 - Principle Component Analysis (PCA)](!https://www.flutterbys.com.au/stats/tut/tut14.2.html).
+1. **`biplot()`** allows different scaling options to preserve either the Euclidean distance (in multidimensional space) among objects (sites), or the correlations/covariances between variables (species). To learn more, please refer to the [function description](!https://rdrr.io/rforge/vegan/man/biplot.rda.html) or these online tutorials: [QCBS workshop - Unconstrained Ordination Scaling](!https://r.qcbs.ca/workshop09/book-en/principal-component-analysis.html#condensing-data-with-principal-component-analysis); [Tutorial 14.2 - Principle Component Analysis (PCA)](!https://www.flutterbys.com.au/stats/tut/tut14.2.html).
 
-2. `biplot()` can also be used to show only the samples or variables, by setting `display = "sites"` or `display = "species"`. However, it does not allow us to visualize samples in different groups. This is why we introduce the slightly more complicated `ordiplot()` method in the previous sections.
+2. **`biplot()`** can also be used to show only the samples or variables, by setting `display = "sites"` or `display = "species"`. However, it does not allow us to visualize samples in different groups. This is why we introduce the slightly more complicated **`ordiplot()`** method in the previous sections.
 
 
 ## Non-metric multidimensional scaling (nMDS)
@@ -244,7 +240,7 @@ The produced biplot in PCA represents well the distance among objects, but fails
 
 In other words, the goal of nMDS is to represent the original position of samples in multidimensional space as accurately as possible using a reduced number of dimensions.
 
-We can use the `metaMDS()` function in the vegan package to conduct non-metric multidimensional scaling in R. In addition to the input dataframe, this function also requires us to specify the distance measure `distance = ?` and number of reduced dimensions `k = ?`.
+We can use the **`metaMDS()`** function in the vegan package to conduct non-metric multidimensional scaling in R. In addition to the input dataframe, this function also requires us to specify the distance measure `distance = ?` and number of reduced dimensions `k = ?`.
 
 ```{r, echo = TRUE}
 ## Run nMDS
@@ -278,7 +274,7 @@ stressplot(nmds.ham, pch = 16, las = 1,
 
 ### Plot ordination for nMDS
 
-No we can plot the ordination for nMDS, just like for PCA in the previous sections. The steps exactly the same. We use `ordiplot()` to create an empty canvas first, then use `points()` to add samples/variables. Additionally, we would like to represent species scores with arrows. This step can only be done manually by extracted the species scores using `scores(display = "species")`, and draw arrows using `arrows()` function.
+No we can plot the ordination for nMDS, just like for PCA in the previous sections. The steps exactly the same. We use **`ordiplot()`** to create an empty canvas first, then use **`points()`** to add samples/variables. Additionally, we would like to represent species scores with arrows. This step can only be done manually by extracted the species scores using **`scores(display = "species")`**, and draw arrows using **`arrows()`** function.
 
 ```{r, echo = TRUE}
 ## Create empty canvas
