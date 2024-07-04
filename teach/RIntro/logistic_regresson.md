@@ -273,7 +273,7 @@ The dotted curves are confidence intervals, which show us the range in which we 
 
 ### Creating your logistic model 
 
-Now it's your turn! Run this next logistic model using total phosphorus as a predictor, and filamentous diatoms as the response variable again.
+Now it's your turn! Run this next logistic model using nitrite/nitrate as a potential predictor, and filamentous diatoms as the response variable again.
 
 #### Try it now {-}
 
@@ -300,7 +300,7 @@ Now you can create a new column that describes the presence or the absence of fi
 
 
 ```r
-# To create a new column, first type the label you chose previously for the dataframe related to the phosphorus analysis (something like "filam_diatom_P"), then create a column name, and use the function "ifelse" to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
+# Create a column name and use the function "ifelse" to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
 
 your_dataset$new_column_name <- ifelse(your_dataset$filamentous_Diatom > 0, "present", "absent")
 ```
@@ -350,10 +350,10 @@ Start with obtaining model predictions and errors:
 
 ```r
 # Create a sequence of values for nitrite/nitrate
-Total_phosphorus_values <- seq(min(filam_diatom_P$NO2_NO3_ECCC1m), max(filam_diatom_P$NO2_NO3_ECCC1m), length.out = length(filam_diatom_P$NO2_NO3_ECCC1m))
+N_values <- seq(min(filam_diatom_P$NO2_NO3_ECCC1m), max(filam_diatom_P$NO2_NO3_ECCC1m), length.out = length(filam_diatom_P$NO2_NO3_ECCC1m))
 
 # Create a data frame with nitrite/nitrate values
-newdata <- data.frame(NO2_NO3_ECCC1m = Total_phosphorus_values)
+newdata <- data.frame(NO2_NO3_ECCC1m = N_values)
 
 # Predict probabilities for each value of nitrite/nitrate
 predicted_probabilities_P <- predict(model, newdata = newdata, type = "response")
@@ -372,11 +372,11 @@ Now you are ready to plot the data and the predictions:
 presence_numeric_P <- ifelse(filam_diatom_P$filam_presence == "present", 1, 0)
 
 # Plot the predicted probabilities with confidence intervals
-plot(Total_phosphorus_values, predicted_probabilities_P, type = "l", 
+plot(N_values, predicted_probabilities_P, type = "l", 
      main = "Filamentous diatom presence",
-     xlab = "Total phosphorous (dissolved fraction) (mg/L)", ylab = "Predicted probability", cex.axis = 1.5, ylim = c(0, 1), lwd = 2)
-lines(Total_phosphorus_values, lower_bound, col = "blue", lty = 2)
-lines(Total_phosphorus_values, upper_bound, col = "blue", lty = 2)
+     xlab = "Nitrate/nitrite (mg/L)", ylab = "Predicted probability", cex.axis = 1.5, ylim = c(0, 1), lwd = 2)
+lines(N_values, lower_bound, col = "blue", lty = 2)
+lines(N_values, upper_bound, col = "blue", lty = 2)
 points(filam_diatom_P$NO2_NO3_ECCC1m, presence_numeric_P)
 ```
 
@@ -409,9 +409,9 @@ Imagine you have counts of living and dead organisms in this imaginary dataset:
 
 |date       |location  | living_daphnia| dead_daphnia|
 |:----------|:---------|--------------:|------------:|
-|Jan-1-2024 |station-1 |             45|           70|
-|Jan-1-2024 |station-2 |             87|           62|
-|Jan-1-2024 |station-3 |              4|           94|
+|Jan-1-2024 |station-1 |             29|           14|
+|Jan-1-2024 |station-2 |             64|           95|
+|Jan-1-2024 |station-3 |             65|           54|
 
 In this case, instead of considering each individual as "living" or "dead", you should calculate the proportion of living organisms *per replicate* like this:
     
@@ -424,9 +424,9 @@ example_independence$proportion <- round(example_independence$living_daphnia/(ex
 
 |date       |location  | living_daphnia| dead_daphnia| proportion|
 |:----------|:---------|--------------:|------------:|----------:|
-|Jan-1-2024 |station-1 |             45|           70|       0.39|
-|Jan-1-2024 |station-2 |             87|           62|       0.58|
-|Jan-1-2024 |station-3 |              4|           94|       0.04|
+|Jan-1-2024 |station-1 |             29|           14|       0.67|
+|Jan-1-2024 |station-2 |             64|           95|       0.40|
+|Jan-1-2024 |station-3 |             65|           54|       0.55|
 
 This proportion will be your response variable for the logistic model. When using proportions, you should also provide the "weights" information in the glm formula (i.e., a dataset with total number of trials per replicate, or the sum of events where we got success + events where we got failure).
 
