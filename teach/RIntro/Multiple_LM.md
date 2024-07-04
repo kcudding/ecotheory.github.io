@@ -141,6 +141,8 @@ Let's try to include the two additional predictor variables `DIC` and `bottomhyp
 
 
 ```r
+#Modify the below single variate linear regression model and make it a multiple linear regression model: 
+#Hint: start by adding a plus sign and another predictor after water level 
 multi_model<-lm(totalzoop~waterlevel, data=multi_data)
 ```
 
@@ -189,6 +191,7 @@ The last assumption, **Multicollinearity**, can be checked by the following seve
 # Let's use vif(model_name) to calculate vif for our variables
 vif()
 ```
+
 
 The result for our variables should look like this: 
 

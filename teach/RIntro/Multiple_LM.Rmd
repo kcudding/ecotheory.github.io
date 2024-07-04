@@ -40,7 +40,7 @@ To build and interpret a multiple linear regression model:
 *Before starting the coding process: *
 *There are two necessary packages readxl and car for this section. If you haven't loaded these packages, please load them now so they won't cause errors in the following sections*
 
-```{r load package, warning=FALSE, message=FALSE}
+```{r mlrm load package, warning=FALSE, message=FALSE}
 #Loading Packages
 library("readxl")
 library("car")
@@ -55,7 +55,7 @@ For this and following sections, we will be using 3 predictor variables (water l
 
 So, we need to separate our selected variables from the complete dataset: 
 
-```{r load data, echo=TRUE}
+```{r mlrm load data, echo=TRUE}
 #Select and combine variables of interests 
 multi_data<-ham[,c(14,16,108,93)]
 #Label each column of our new dataset
@@ -87,7 +87,7 @@ table(multi_data$bottomhypoxia)
 
 Because of the intrinsic differences between continuous and categorical variables, we always want to check whether our data is in the correct data type before proceeding to the next step. Sometimes the data is not read in as the correct data type, and other times data types got altered during previous data modification procedures. We can check data type easily using the `class()` function, for example: 
 
-```{r data type check, echo=TRUE}
+```{r mlrm data type check, echo=TRUE}
 class(multi_data$waterlevel)  
 ```
 
@@ -95,11 +95,11 @@ class(multi_data$waterlevel)
 
 Let's continue to check the other three columns of our data frame using the same code:
 
-```{r data type check practice, eval=FALSE}
+```{r mlrm data type check practice, echo=!soln, eval=FALSE}
 #Use the class() function to check for the other columns: 
 class()
 ```
-```{r data type check answer, echo=soln, eval=FALSE}
+```{r data type check answer, echo=soln, eval=soln}
 #Use the class() function to check for the other columns: 
 class(multi_data$DIC)
 class(multi_data$totalzoop)
@@ -107,7 +107,7 @@ class(multi_data$bottomhypoxia)
 ```
 The numeric variables are in their correct data type. If we ever want to reset them, we can set the data type to numeric using `as.numeric()`. For our categorical variables, we can transform them into groups/factors using `as.factor()`. 
 
-```{r set data type, echo=TRUE, eval=FALSE}
+```{r mlrm set data type, echo=TRUE}
 #Set bottom hypoxia column as "factor" data type using as.factor(model_name$variable_name)
 multi_data$bottomhypoxia<-as.factor(multi_data$bottomhypoxia)
 ```
@@ -121,10 +121,12 @@ Generating the multiple linear regression model itself is similar to the single 
 
 Let's try to include the two additional predictor variables `DIC` and `bottomhypoxia` in our model based on the previous single variate model: 
 
-```{r multi-variate model practice, echo=TRUE, eval=FALSE}
+```{r mlrm model practice, echo=TRUE, eval=FALSE}
+#Modify the below single variate linear regression model and make it a multiple linear regression model: 
+#Hint: start by adding a plus sign and another predictor after water level 
 multi_model<-lm(totalzoop~waterlevel, data=multi_data)
 ```
-```{r echo=soln, results="hide"}
+```{r mlrm model answer, echo=soln, results="hide"}
 multi_model<-lm(totalzoop~waterlevel+DIC+bottomhypoxia, data=multi_data)
 ```
 
@@ -150,12 +152,14 @@ I found it much easier to build the model first then check the assumptions as we
 
 #### Try it now: {-}
 
-```{r model plot, echo=TRUE, eval=FALSE}
+```{r mlrm plot practice, echo=!soln, eval=FALSE}
 #Access the diagnosis plots that are auto-generated from the lm() function
 #Using plot(model_name): 
 plot()
 ```
-```{r echo=soln, eval=soln}
+```{r mlrm plot answer, echo=soln, eval=soln}
+#Access the diagnosis plots that are auto-generated from the lm() function
+#Using plot(model_name): 
 plot(multi_model)
 ```
 
@@ -168,14 +172,18 @@ The last assumption, **Multicollinearity**, can be checked by the following seve
 - If we have both continuous and categorical variables in our dataset, the `vif()` function will automatically detect our categorical variables and compute us the generalized vifs.
 
 #### Try it now: {-}
-```{r, echo=TRUE,eval=FALSE}
+```{r mlrm vif practice, echo=!soln,eval=FALSE}
 # Let's use vif(model_name) to calculate vif for our variables
 vif()
+```
+```{r mlrm vif answer, echo=soln,eval=FALSE}
+# Let's use vif(model_name) to calculate vif for our variables
+vif(multi_model)
 ```
 
 The result for our variables should look like this: 
 
-```{r, echo=soln}
+```{r, echo=FALSE}
 vif(multi_model)
 ```
 
@@ -184,7 +192,7 @@ Our variables look good. If multicollinearity is found (vif > 5 is a common thre
 ### Output interpretation
 
 To access model output, the easiest way is to call the `summary()` method just like the simple linear regression model:
-```{r, echo=TRUE}
+```{r mlrm output, echo=TRUE}
 summary(multi_model)
 ```
 
