@@ -69,7 +69,6 @@ creating-your-logistic-model
 additional-resources
 what-could-go-wrong-1
 r-resources
-libraries-and-imports
 multivariate-analysis
 introduction-to-multivariate-analysis
 principle-component-analysis-pca
