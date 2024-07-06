@@ -108,9 +108,9 @@ To see these plots we can just use the following **plot()** command, and hit ret
 plot(waterlzoo.lm)
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.height=6}
 # divide the window into a 2 by 2 grid
-par(mfrow=c(2,2),mai = c(.5, .75, .5, 0.5))
+par(mfrow=c(2,2),mai = c(.75, .75, .5, 0.5))
 
 # plotting diagnostic plots with log transformed data
 lab=c("a", "b", "c", "d")
@@ -177,9 +177,9 @@ Let's check the diagnostic plots quickly
 plot(log_waterlzoo.lm) 
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.height=6}
 # divide the window into a 2 by 2 grid
-par(mfrow=c(2,2),mai = c(.5, .75, .5, 0.5))
+par(mfrow=c(2,2),mai = c(.75, .75, .5, 0.5))
 
 # plotting diagnostic plots with log transformed data
 
