@@ -16,11 +16,18 @@ ham$area_group <- as.factor(ham$area_group)
 
 In previous sections, we have discussed scenarios where there is one response variable. If we have multiple responses, $y_1$...$y_n$, and multiple predictors, $x_1$...$x_n$, then we need multivariate approaches.
 
+Why multivariate analysis?
+
+1. Understand the interactions and relationships among multiple variables. Visualize the results in a lower-dimensional space, such as a two-dimensional or three-dimensional plot, while preserving the overall structure of the data.
+
+2. ...
+
+
 These methods allow us to represent the variables or observations in a lower-dimensional space, such as a two-dimensional or three-dimensional plot, while preserving the overall structure of the data.
 
-**OUTLINE: "Large zooplankton such as Daphnia, large copepods or predatory Cladocera (Bythotrephes, Cercopagis, Leptodora) are much better prey for forage fishes, so changes in their populations (or shifting drivers) are of particular interest."**
+*OUTLINE: "Large zooplankton such as Daphnia, large copepods or predatory Cladocera (Bythotrephes, Cercopagis, Leptodora) are much better prey for forage fishes, so changes in their populations (or shifting drivers) are of particular interest."*
 
-*Question: What are the major drivers of Diaphnia biomass?*
+**Question: What is the relationship between Daphnia and some other important environmental variables at station HH258?**
 
 *Variables*: Daphnia biomass (mg/m3), water column temperature (°C), epilimnion temperature(°C), particulate organic nitrogen (mg/L), dissolved inorganic carbon (mg/L), particulate organic carbon (mg/L)
 
@@ -28,7 +35,8 @@ A good practice before running any analysis is to subset a new dataframe which c
 
 ```{r, echo = TRUE}
 ## Select the variables interested
-ham.multi <- ham[,c("area_group","season","Station_Acronym","Daphnia",
+ham.multi <- ham[ham$Station_Acronym == "HH258",
+                 c("area_group","season","Station_Acronym","Daphnia",
                     "watercolumn_temp","mean_mixing_depth_temp",
                     "PON_ECCC1m", "DIC_ECCC1m", "POC_ECCC1m")]
 
@@ -42,7 +50,7 @@ colnames(ham.multi) <- c("area","season","station","daphnia","column.temp",
                          "epili.temp","pon","dic","poc")
 ```
 
-In our new dataframe, different seasons are represented by numeric numbers from 1 to 5. We would like to re-code them into string factors, for easier visualization in later graphics. There are many ways to do this, here we introduce using the **`factor()`** function.
+Now we have a dataframe containing 103 observations, all from station HH258. In this new dataframe, different seasons are represented by numeric numbers from 1 to 5. We would like to re-code them into string factors, for easier visualization in later graphics. There are many ways to do this, here we introduce using the **`factor()`** function.
 
 ```{r, echo = TRUE}
 ## Recode the season numeric code into factors
@@ -58,23 +66,33 @@ ham.multi$season <- factor(ham.multi$season,
 
 Principle component analysis is a linear transformation method that converts the original set of variables into a new set of linearly uncorrelated variables, called principal components (PCs), which are sorted in decreasing order of variance.
 
+... (introduce pca more)
 
 ### Correlation examination
 
 First of all, we need to examine the correlation between our variables. We can achieve this by running a correlation test using **`cor()`** function, or creating a correlation plot using **`pairs()`** function.
 
-```{r, echo = TRUE}
+```{r, echo = FALSE}
 ## Correlation table
-cor.df <- cor(ham.multi[4:9])
+cor.df <- cor(ham.multi[,4:9])
 knitr::kable(cor.df)
 
 ## Correlation plot
-pairs(ham.multi[4:8], main = "Ham Data",
+pairs(ham.multi[,4:9], main = "Ham Data",
       pch = as.numeric(ham.multi$season), col = (ham.multi$season))
-      # colored depending on season
+```
+
+```{r, echo = TRUE, eval = FALSE}
+## Correlation table
+cor.df <- cor(ham.multi[,4:9])
+
+## Correlation plot
+pairs(ham.multi[,4:9], main = "Ham Data",
+      pch = as.numeric(ham.multi$season), col = (ham.multi$season))
 ```
 
 Dimension reduction techniques such PCA works the best when variables are strongly correlated with each other. From the above correlation test output and plot, we can see that some variables clearly have a linear relationship, such as water column temperature and epilimnion temperature, or water column temperature and dissolved inorganic carbon.
+
 
 ### PCA with standardized data
 
@@ -89,13 +107,51 @@ Here we demonstrate using the *vegan* package, since it also allows easy visuali
 pca.ham <- rda(ham.multi[,4:9], scale = TRUE) #subset for all continuous variables
 ```
 
+
+#### Try it now: {-}
+
+Subset a new dataframe containing the same set of variables from station HH6, and run a PCA with this data.
+
+1. How many samples (rows) do we have in this new dataframe?
+2. What is the cumulative variance explained by the first two PCs?
+
+```{r, echo=soln, eval=TRUE}
+## Select the variables interested
+ham.yourmulti <- ham[ham$Station_Acronym == "HH6",
+                 c("area_group","season","Station_Acronym","Daphnia",
+                    "watercolumn_temp","mean_mixing_depth_temp",
+                    "PON_ECCC1m", "DIC_ECCC1m", "POC_ECCC1m")]
+
+## Remove all rows containing NAs
+ham.yourmulti <- na.omit(ham.yourmulti)
+
+## Rename the columns
+colnames(ham.yourmulti) <- c("area","season","station","daphnia","column.temp",
+                         "epili.temp","pon","dic","poc")
+
+## PCA
+newpca.ham <- rda(ham.yourmulti[,4:9], scale = TRUE)
+```
+
+Answers:
+```{r, echo=soln, eval=TRUE}
+# How many samples in the new dataframe
+length(ham.yourmulti$area)
+
+# Cumulative variance explained by PC1 and PC2
+77.11
+```
+
+
+### Extract samples and variables in new ordination system
+
 After completing the dimension reduction process, each sample now appears as a point in space specified by its new position along the principle component axes. There coordinates are referred to as "site scores" in rda() results, and we can access such information with the **`scores()`** function.
 
 ```{r, echo = TRUE, eval = FALSE}
 scores(pca.ham, display = "sites")
 ```
 
-Meanwhile, our original variables are projected on the the new principle components. They are defined as "Loadings" and are referred to as "species scores" in rda() results. This information can be obtained with the **`scores()`** function too.
+Meanwhile, our six original variables are projected on the new principle components. They are defined as "Loadings" and are referred to as "species scores" in rda() results. This information can be obtained with the **`scores()`** function too.
 
 ```{r, echo = TRUE, eval = FALSE}
 scores(pca.ham, display = "species")
@@ -123,7 +179,7 @@ Meanwhile, we can also look at the proportional variance explained by each princ
 For easier usage in future, let's store them in a list:
 
 ```{r, echo = TRUE}
-pvar <- c(50.22, 21.43)
+pvar <- c(50.92, 25.60)
 pvar
 ```
 
@@ -147,9 +203,9 @@ we can visualize the positions of our samples on the new axes (PC1 and PC2). Thi
 ```{r, echo = TRUE}
 # Create a blank plot
 ordiplot(pca.ham, type = "n", main = "Individuals ('sites')",
-         xlab = paste0("PC1 (",pvar[1], "%)"), 
-         ylab = paste0("PC2 (", pvar[2],"%)"), 
-         ylim = c(-1.2,1.2))
+         xlab = paste0("PC1 (50.92%)"), 
+         ylab = paste0("PC2 (20.60%)"), 
+         ylim = c(-1.5,1.5))
 
 # Use points() to add points
 points(pca.ham, display = "sites", cex = 1) # add sites
@@ -160,57 +216,24 @@ What if we are interested in the seasonal patterns of our samples on the reduced
 ```{r, echo = TRUE}
 ## Create an empty canvas
 ordiplot(pca.ham, type = "n", main = "Individuals ('sites') by season",
-         xlab = paste0("PC1 (",pvar[1], "%)"),
-         ylab = paste0("PC2 (", pvar[2],"%)"),
-         ylim = c(-1.2,1.2)) # specify the y-axis limits
+         xlab = paste0("PC1 (50.92%)"), 
+         ylab = paste0("PC2 (20.60%)"),
+         ylim = c(-1.5,1.5)) # specify the y-axis limits
 
 ## Use points() to add points
 points(pca.ham, display = "sites",
        pch = as.numeric(ham.multi$season) + 14, 
-       col = c(2, 3, 4, 5) [as.numeric(ham.multi$season)], 
+       col = c(2, 3, 4, 5)[as.numeric(ham.multi$season)], 
        cex = 1) # add sites
 
-## Add legends
+## Legend
 legend("bottomright", legend = unique(ham.multi$season),
-       pch = as.numeric(ham.multi$season) +14,
-       col = c(2, 3, 4, 5), bty = "n") # bty specifys legend box boarder
-
+       pch = as.numeric(unique(ham.multi$season)) + 14,
+       col = c(2,3,4,5), bty = "n", cex = 1) # add legend
 
 ```
 
 There are many other functions in the vegan package that allows customization of your ordination plots. For example, `ordiellipse(pca.ham, display="sites", conf=0.95, kind="sd", groups=ham.multi$season)` function allows us to add 95% confidence intervals to each group of samples.
-
-#### Try it now: {-}
-
-Let's try creating a sites plot for the same multivariate dataset, but color samples based on different "area_group". Use colors of your own choice!
-
-```{r, echo = !soln, eval = FALSE}
-## Create an empty canvas
-ordiplot()
-
-## Use points() to add points and add legends
-points()
-legend()
-```
-
-```{r, echo = soln, eval = soln}
-## Plot the individuals
-ordiplot(pca.ham, type = "n", main = "Individuals ('sites') by area group",
-         xlab = paste0("PC1 (",pvar[1], "%)"),
-         ylab = paste0("PC2 (", pvar[2],"%)"),
-         ylim = c(-1.2,1.2)) # specify the -axis limits
-
-## Use points() to add points
-points(pca.ham, display = "sites",
-       pch = as.numeric(ham.multi$area) + 14,
-       col = c(2, 3, 4, 5) [as.numeric(ham.multi$area)],
-       cex = 1) # add sites
-
-## Add legends
-legend("bottomright", legend = unique(ham.multi$area),
-       pch = as.numeric(ham.multi$area) +14,
-       col = c(2, 3, 4, 5), bty = "n") # bty specifys legend box boarder
-```
 
 
 **Plot 2 - Biplot (samples and variables)**
@@ -223,8 +246,8 @@ biplot(pca.ham,
        display = c("sites","species"), 
        type = c("text", "points"),
        main = "Biplot",
-       xlab = paste0("PC1 (",pvar[1], "%)"),
-       ylab = paste0("PC2 (", pvar[2],"%)"))
+       xlab = paste0("PC1 (50.92%)"), 
+       ylab = paste0("PC2 (20.60%)"))
 ```
 
 **Some important points for the `biplot()` function**:
