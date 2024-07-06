@@ -154,14 +154,17 @@ code span.wa { font-style: italic; } /* Warning */
 <ul>
 <li class="chapter" data-level="4.0.1" data-path="linear-regression.html"><a href="linear-regression.html#introduction"><i class="fa fa-check"></i><b>4.0.1</b> Introduction</a></li>
 <li class="chapter" data-level="4.0.2" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-using-water-level-and-total-zooplankton"><i class="fa fa-check"></i><b>4.0.2</b> Linear regression using water level and total zooplankton</a></li>
-<li class="chapter" data-level="4.0.3" data-path="linear-regression.html"><a href="linear-regression.html#what-does-the-summary-output-tell-us-about-the-relationship-between-water-level-and-total-zooplankton"><i class="fa fa-check"></i><b>4.0.3</b> What does the summary output tell us about the relationship between water level and total zooplankton?</a></li>
-<li class="chapter" data-level="4.0.4" data-path="linear-regression.html"><a href="linear-regression.html#what-are-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.0.4</b> What are the assumptions of a linear regression?</a></li>
-<li class="chapter" data-level="4.0.5" data-path="linear-regression.html"><a href="linear-regression.html#how-do-you-evaluate-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.0.5</b> How do you evaluate the assumptions of a linear regression?</a></li>
-<li class="chapter" data-level="4.0.6" data-path="linear-regression.html"><a href="linear-regression.html#in-the-case-of-this-linear-regression-between-water-level-and-total-zooplankton-what-do-the-diagnostic-plots-tell-us"><i class="fa fa-check"></i><b>4.0.6</b> In the case of this linear regression between water level and total zooplankton, what do the diagnostic plots tell us?</a></li>
-<li class="chapter" data-level="4.0.7" data-path="linear-regression.html"><a href="linear-regression.html#how-can-we-plot-this-linear-regression"><i class="fa fa-check"></i><b>4.0.7</b> How can we plot this linear regression?</a></li>
-<li class="chapter" data-level="4.0.8" data-path="linear-regression.html"><a href="linear-regression.html#common-mistakes"><i class="fa fa-check"></i><b>4.0.8</b> Common mistakes</a></li>
-<li class="chapter" data-level="4.0.9" data-path="linear-regression.html"><a href="linear-regression.html#references-and-resources"><i class="fa fa-check"></i><b>4.0.9</b> References and resources</a></li>
-<li class="chapter" data-level="4.0.10" data-path="linear-regression.html"><a href="linear-regression.html#alternative-resource"><i class="fa fa-check"></i><b>4.0.10</b> Alternative resource:</a></li>
+<li class="chapter" data-level="4.0.3" data-path="linear-regression.html"><a href="linear-regression.html#what-are-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.0.3</b> What are the assumptions of a linear regression?</a></li>
+<li class="chapter" data-level="4.0.4" data-path="linear-regression.html"><a href="linear-regression.html#how-do-you-evaluate-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.0.4</b> How do you evaluate the assumptions of a linear regression?</a></li>
+<li class="chapter" data-level="4.1" data-path="linear-regression.html"><a href="linear-regression.html#plot-the-data-and-predictions"><i class="fa fa-check"></i><b>4.1</b> Plot the data and predictions</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="linear-regression.html"><a href="linear-regression.html#get-model-predictions-and-confidence-intervals"><i class="fa fa-check"></i><b>4.1.1</b> Get model predictions and confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression.html"><a href="linear-regression.html#plot-the-data-and-predictions-1"><i class="fa fa-check"></i><b>4.2</b> Plot the data and predictions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="linear-regression.html"><a href="linear-regression.html#common-mistakes"><i class="fa fa-check"></i><b>4.2.1</b> Common mistakes</a></li>
+<li class="chapter" data-level="4.2.2" data-path="linear-regression.html"><a href="linear-regression.html#references-and-resources"><i class="fa fa-check"></i><b>4.2.2</b> References and resources</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html"><i class="fa fa-check"></i><b>5</b> Multiple Linear Regression Model</a>
 <ul>
@@ -244,148 +247,227 @@ code span.wa { font-style: italic; } /* Warning */
 <h1><span class="header-section-number">4</span> Linear regression<a href="linear-regression.html#linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introduction" class="section level3 hasAnchor" number="4.0.1">
 <h3><span class="header-section-number">4.0.1</span> Introduction<a href="linear-regression.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A linear model is used when you want to test a prediction of correlation between an independent (or predictor) variable and a dependent (or response) variable (Phillips, 2018). For example, for our Hamilton Harbour data, we will be testing for a correlation between water level (our independent variable) and total zooplankton (our dependent variable) counted in the net grab.</p>
+<p>A linear regression estimates the parameters of a linear relationship between a response (y, the depdendent variable) and an explanatory factor (x, an independent variable) as:</p>
+<p><span class="math display">\[y=\beta_0+\beta_1x+\epsilon\]</span></p>
+<p>Significance testing is used to determine if the slope of this relationship is significantly different than zero. For example, for our Hamilton Harbour data, we will be testing for a relationship between water level (our predictor) and total zooplankton counted in a net grab (our response).</p>
 </div>
 <div id="linear-regression-using-water-level-and-total-zooplankton" class="section level3 hasAnchor" number="4.0.2">
 <h3><span class="header-section-number">4.0.2</span> Linear regression using water level and total zooplankton<a href="linear-regression.html#linear-regression-using-water-level-and-total-zooplankton" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In R, you can run a linear regression by using the lm() function. Your variables are entered in using the following formula..</p>
-<p>nameoflinearreg&lt;-lm(dependent variable~independent variable, yourdata)</p>
-<div id="try-it-now-20" class="section level4 hasAnchor" number="4.0.2.1">
-<h4><span class="header-section-number">4.0.2.1</span> Try it now<a href="linear-regression.html#try-it-now-20" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<pre><code># A tibble: 0 × 109
-# … with 109 variables: waterbody &lt;chr&gt;, area_group &lt;chr&gt;, Latitude &lt;dbl&gt;,
-#   Longtitude &lt;dbl&gt;, Station_Acronym &lt;chr&gt;, report_Stn &lt;chr&gt;,
-#   SamplingDate &lt;dttm&gt;, season &lt;dbl&gt;, year &lt;dbl&gt;, Julian_Day &lt;dbl&gt;,
-#   Julian_Week &lt;dbl&gt;, Month &lt;dbl&gt;, Station_depth &lt;dbl&gt;, water level &lt;dbl&gt;,
-#   Ammonia_ECCC1m &lt;dbl&gt;, DIC_ECCC1m &lt;dbl&gt;, DOC_ECCC1m &lt;dbl&gt;, POC_ECCC1m &lt;dbl&gt;,
-#   Chl_ECCC1m &lt;dbl&gt;, Chl Cor_ECCC1m &lt;dbl&gt;, NO2_NO3_ECCC1m &lt;dbl&gt;,
-#   PON_ECCC1m &lt;dbl&gt;, TKN dissolved_ECCC1m &lt;dbl&gt;, SRP_ECCC1m &lt;dbl&gt;, …</code></pre>
+<p>The <strong>lm()</strong> (or <strong>l</strong>inear <strong>m</strong>odel) function runs a linear regression where we indicate the response and predictor variable using the “~” symbol.</p>
+<div id="try-it-now-20" class="section level4 unnumbered hasAnchor">
+<h4>Try it now<a href="linear-regression.html#try-it-now-20" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use the code below to regress total zooplankton on water level. Notice we will change the column names with the spaces first using the <strong>sub()</strong> function (i.e., replace “water level” with “water.level”), since spaces are always a pain when using code.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="linear-regression.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names to replace space with &#39;.&#39;</span></span>
+<span id="cb41-2"><a href="linear-regression.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ham) <span class="ot">=</span> <span class="fu">sub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="fu">colnames</span>(ham))</span>
+<span id="cb41-3"><a href="linear-regression.html#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="linear-regression.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># save linear regression results</span></span>
+<span id="cb41-5"><a href="linear-regression.html#cb41-5" aria-hidden="true" tabindex="-1"></a>waterlzoo.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(total.zoop <span class="sc">~</span> water.level, <span class="at">data =</span> ham)</span>
+<span id="cb41-6"><a href="linear-regression.html#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="linear-regression.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print regression results</span></span>
+<span id="cb41-8"><a href="linear-regression.html#cb41-8" aria-hidden="true" tabindex="-1"></a>waterlzoo.lm</span></code></pre></div>
 <pre><code>
 Call:
-lm(formula = (log(total.zoop)) ~ (waterlevel), data = ham)
+lm(formula = total.zoop ~ water.level, data = ham)
+
+Coefficients:
+(Intercept)  water.level  
+     -30814          415  </code></pre>
+<p>Notice that when we simply try to print the regression object, the output is <em>very</em> brief: just the intercept and slope estimate. The regression object is a <em>list</em> data structure and actually does contain a lot of information. We can access a nicely formatted summary of all this information using the <strong>summary()</strong> function.</p>
+</div>
+<div id="try-it-now-21" class="section level4 unnumbered hasAnchor">
+<h4>Try it now<a href="linear-regression.html#try-it-now-21" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Use the <strong>summary()</strong> function on the <em>list</em> data structure of your regression output</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="linear-regression.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print a summary of the regression results</span></span>
+<span id="cb43-2"><a href="linear-regression.html#cb43-2" aria-hidden="true" tabindex="-1"></a>sum_lm <span class="ot">=</span> <span class="fu">summary</span>(waterlzoo.lm)</span>
+<span id="cb43-3"><a href="linear-regression.html#cb43-3" aria-hidden="true" tabindex="-1"></a>sum_lm</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = total.zoop ~ water.level, data = ham)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--3.2956 -0.5544  0.0734  0.6626  2.7438 
+   Min     1Q Median     3Q    Max 
+  -618   -184    -85     76   3515 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -3.08e+04   3.92e+03   -7.87  2.0e-14 ***
+water.level  4.16e+02   5.22e+01    7.95  1.1e-14 ***
+---
+Signif. codes:  0 &#39;***&#39; 1e-03 &#39;**&#39; 1e-02 &#39;*&#39; 5e-02 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 382 on 537 degrees of freedom
+  (203 observations deleted due to missingness)
+Multiple R-squared:  0.105, Adjusted R-squared:  0.104 
+F-statistic: 63.3 on 1 and 537 DF,  p-value: 1.08e-14</code></pre>
+<p>Let’s go through this output. We can:</p>
+<ol style="list-style-type: decimal">
+<li>check for the significance of the relationship,</li>
+<li>determine whether the relationship between the predictor and response is positive or negative, and</li>
+<li>determine how much of the variance in the data is explained by this model.</li>
+</ol>
+<p>This first thing to notice is whether or not we have a signficant relationship. The output provides a t-value and probability for the null hypothesis that the intercept and slope have values of zero. We can see the p-value for the slope test is 1.078^{-14} and indicates a significant relationship.</p>
+<p>Notice that if we just wanted to grab some of this information (e.g., to create a table in a publication) we can just subset the list object</p>
+</div>
+<div id="try-it-now-22" class="section level4 unnumbered hasAnchor">
+<h4>Try it now<a href="linear-regression.html#try-it-now-22" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Subset the list object to get the information about the slope, and the R2 value.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="linear-regression.html#cb45-1" aria-hidden="true" tabindex="-1"></a>sum_lm<span class="sc">$</span>coefficients[<span class="dv">2</span>, ]</span></code></pre></div>
+<pre><code>  Estimate Std. Error    t value   Pr(&gt;|t|) 
+  4.15e+02   5.22e+01   7.95e+00   1.08e-14 </code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="linear-regression.html#cb47-1" aria-hidden="true" tabindex="-1"></a>sum_lm<span class="sc">$</span>adj.r.squared</span></code></pre></div>
+<pre><code>[1] 0.104</code></pre>
+<p>The estimate of the slope is positive, although the model does not explain much of the variance in the data.</p>
+<p>This could be because we have violated one or more of the assumptions of the regression. And of course whenever we use a regression we should test to see if we have met these asumptions.</p>
+</div>
+</div>
+<div id="what-are-the-assumptions-of-a-linear-regression" class="section level3 hasAnchor" number="4.0.3">
+<h3><span class="header-section-number">4.0.3</span> What are the assumptions of a linear regression?<a href="linear-regression.html#what-are-the-assumptions-of-a-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The most basic assumptions we make when we use linear regression is that</p>
+<ol style="list-style-type: decimal">
+<li>there is indeed a linear relationship (rather than a non-linear relationship) between the predictor and the response.</li>
+</ol>
+<p>However, there are also assumptions about the variance in the data. We also assume:</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Variance in the data about this linear relationship is normally distributed</li>
+<li>Variance is consistent across all the values of the independent variable (e.g., there is not greater variance for larger values of the predictor).</li>
+<li>Each observation is independent of one another (there is no significant correlation between the independent variable values)</li>
+</ol>
+</div>
+<div id="how-do-you-evaluate-the-assumptions-of-a-linear-regression" class="section level3 hasAnchor" number="4.0.4">
+<h3><span class="header-section-number">4.0.4</span> How do you evaluate the assumptions of a linear regression?<a href="linear-regression.html#how-do-you-evaluate-the-assumptions-of-a-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can get a quick assessment of whether we have violated some of these assumptions by creating diagnostic plots. These plots display the residuals of the linear regression in various ways.</p>
+<p>To see these plots we can just use the following <strong>plot()</strong> command, and hit return to display each of the four plots in turn.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="linear-regression.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(waterlzoo.lm)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672"  /></p>
+<div id="a." class="section level4 unnumbered hasAnchor">
+<h4>a.<a href="linear-regression.html#a." class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The first plot, <em>Residuals vs Fitted</em>, shows the regression residuals vs the fitted values.The residuals should be randomly distributed around the horizontal line representing a residual error of zero. There should not be a distinct trend in the distribution of points that might indicate non-linearity. The red line provides a summary of the distribution of points. On our plot this line slopes downwards.</p>
+</div>
+<div id="b." class="section level4 unnumbered hasAnchor">
+<h4>b.<a href="linear-regression.html#b." class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <em>Q-Q plot</em> evaluates our second assumption: that the data variance about the fitted line is normally distributed. If the points on the plot follow the diagonal line, then the residuals are normally distributed. We can see here that we are not doing well, there is a big departure from the expected distribution.</p>
+</div>
+<div id="c." class="section level4 unnumbered hasAnchor">
+<h4>c. <a href="linear-regression.html#c." class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <em>Scale-Location</em> plot is used to determine if our third assumption that the variance of the residuals is be consistent across all the values is being met (i.e., the variance in the data is homoscedastic). Again, there should be no obvious trend in this plot, but we are seeing an upward tilt indicating more variance at larger values of our predictor variable.</p>
+</div>
+<div id="d." class="section level4 unnumbered hasAnchor">
+<h4>d. <a href="linear-regression.html#d." class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <em>Residuals versus Leverage</em> plot in the lower right shows each points leverage, which is a measure of its importance in determining the regression result. This plot can be used to determine if there are any highly influential points in the dataset (i.e. outliers), and is also an evaluation of our third assumption.</p>
+<p>Superimposed are the contour lines for the Cook’s distance, which is another measure of the importance of each observation to the regression. Smaller distances means that removing the observation has little effect on the regression results. Distances larger than 1 are suspicious and suggest the presence of a possible outlier or a poor model. We have one or two influenctial points.</p>
+<p>Here’s another example from a regression of Chl a vs TP at station HH6, which shows very clearly that one point in particular is having a big influence on the regression.<br />
+<img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672"  /></p>
+<p>Actually, we probably should have plotted the data first to get some idea of what the data were like. Let’s do that now.</p>
+</div>
+<div id="try-it-now-23" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="linear-regression.html#try-it-now-23" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Plot our data</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="linear-regression.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> ham<span class="sc">$</span>water.level, <span class="at">y =</span> (ham<span class="sc">$</span>total.zoop), <span class="at">xlab =</span> <span class="st">&quot;Water level (m)&quot;</span>, </span>
+<span id="cb50-2"><a href="linear-regression.html#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Total zooplankton&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672"  /></p>
+<p>The plot explains a lot of our problems with the model assumptions. There are some very large values relative to most observations. In general, count and biomass data has this kind of distribution: a lot of small values and a few very large ones so that the data variance about the fitted line is non-normal.</p>
+<p>We can transform the population data using a natural logarithm to try and improve the normality. This is easy to do with the <strong>log()</strong> function. So we will run the regression on this transformed data and see if we are doing a better job meeting the model assumptions.</p>
+</div>
+<div id="try-it-now-24" class="section level4 unnumbered hasAnchor">
+<h4>Try it now<a href="linear-regression.html#try-it-now-24" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Run a regression on log-transformed data</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="linear-regression.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save linear regression results</span></span>
+<span id="cb51-2"><a href="linear-regression.html#cb51-2" aria-hidden="true" tabindex="-1"></a>log_waterlzoo.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(total.zoop) <span class="sc">~</span> water.level, <span class="at">data =</span> ham)</span>
+<span id="cb51-3"><a href="linear-regression.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(log_waterlzoo.lm)</span></code></pre></div>
+<pre><code>
+Call:
+lm(formula = log(total.zoop) ~ water.level, data = ham)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-3.296 -0.554  0.073  0.663  2.744 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -73.9205    10.0626  -7.346 7.63e-13 ***
-waterlevel    1.0570     0.1342   7.873 1.92e-14 ***
+(Intercept)  -73.921     10.063   -7.35  7.6e-13 ***
+water.level    1.057      0.134    7.87  1.9e-14 ***
 ---
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+Signif. codes:  0 &#39;***&#39; 1e-03 &#39;**&#39; 1e-02 &#39;*&#39; 5e-02 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 0.9822 on 537 degrees of freedom
+Residual standard error: 0.982 on 537 degrees of freedom
   (203 observations deleted due to missingness)
-Multiple R-squared:  0.1035,    Adjusted R-squared:  0.1018 
-F-statistic: 61.99 on 1 and 537 DF,  p-value: 1.92e-14</code></pre>
+Multiple R-squared:  0.103, Adjusted R-squared:  0.102 
+F-statistic:   62 on 1 and 537 DF,  p-value: 1.92e-14</code></pre>
+<p>We see that our relationship is still signficant and positive under the transform.</p>
+<p>Let’s check the diagnostic plots quickly</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="linear-regression.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save linear regression results</span></span>
+<span id="cb53-2"><a href="linear-regression.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(log_waterlzoo.lm)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672"  /></p>
+<p>Our diagnostic plots look <em>much</em> better, particularly with respect to the normality of the resiudals.</p>
 </div>
 </div>
-<div id="what-does-the-summary-output-tell-us-about-the-relationship-between-water-level-and-total-zooplankton" class="section level3 hasAnchor" number="4.0.3">
-<h3><span class="header-section-number">4.0.3</span> What does the summary output tell us about the relationship between water level and total zooplankton?<a href="linear-regression.html#what-does-the-summary-output-tell-us-about-the-relationship-between-water-level-and-total-zooplankton" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Talk amongst yourselves…</p>
+<div id="plot-the-data-and-predictions" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Plot the data and predictions<a href="linear-regression.html#plot-the-data-and-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s create a plot with our fitted model shown together with the data. the data, and superimpose our fitted model</p>
+<div id="get-model-predictions-and-confidence-intervals" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Get model predictions and confidence intervals<a href="linear-regression.html#get-model-predictions-and-confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will use the <strong>predict()</strong> function to calculate confidence intervals about our regression, and superimpose the model on the data plot using the <strong>lines()</strong> function.</p>
+<p>First let’s just get the predicted regression line and the confidence intervals about this line. We do this by creating a continuous sequence of x values, and applying our model to these values.</p>
+<div id="try-it-now-25" class="section level4 unnumbered hasAnchor">
+<h4>Try it now<a href="linear-regression.html#try-it-now-25" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="linear-regression.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a vector &#39;x&#39; to predict total.zoop from waterlevel</span></span>
+<span id="cb54-2"><a href="linear-regression.html#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="linear-regression.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># get min water level</span></span>
+<span id="cb54-4"><a href="linear-regression.html#cb54-4" aria-hidden="true" tabindex="-1"></a>min_water <span class="ot">=</span> <span class="fu">min</span>(ham<span class="sc">$</span>water.level, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-5"><a href="linear-regression.html#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-6"><a href="linear-regression.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co"># get max water level</span></span>
+<span id="cb54-7"><a href="linear-regression.html#cb54-7" aria-hidden="true" tabindex="-1"></a>max_water <span class="ot">=</span> <span class="fu">max</span>(ham<span class="sc">$</span>water.level, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb54-8"><a href="linear-regression.html#cb54-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-9"><a href="linear-regression.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co"># build a new data frame that has vector of xvalues from min</span></span>
+<span id="cb54-10"><a href="linear-regression.html#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co"># to max in increments of 0.05</span></span>
+<span id="cb54-11"><a href="linear-regression.html#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="linear-regression.html#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create the sequence</span></span>
+<span id="cb54-13"><a href="linear-regression.html#cb54-13" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(min_water, max_water, <span class="at">by =</span> <span class="fl">5e-02</span>)</span>
+<span id="cb54-14"><a href="linear-regression.html#cb54-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-15"><a href="linear-regression.html#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new dataframe with this predictor</span></span>
+<span id="cb54-16"><a href="linear-regression.html#cb54-16" aria-hidden="true" tabindex="-1"></a>ndata <span class="ot">=</span> <span class="fu">data.frame</span>(water.level <span class="ot">&lt;-</span> x)</span>
+<span id="cb54-17"><a href="linear-regression.html#cb54-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-18"><a href="linear-regression.html#cb54-18" aria-hidden="true" tabindex="-1"></a><span class="co"># use this dataframe and the predict function to calculate</span></span>
+<span id="cb54-19"><a href="linear-regression.html#cb54-19" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence intervals</span></span>
+<span id="cb54-20"><a href="linear-regression.html#cb54-20" aria-hidden="true" tabindex="-1"></a>confidenceint <span class="ot">&lt;-</span> <span class="fu">predict</span>(log_waterlzoo.lm, <span class="at">newdata =</span> ndata, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, </span>
+<span id="cb54-21"><a href="linear-regression.html#cb54-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb54-22"><a href="linear-regression.html#cb54-22" aria-hidden="true" tabindex="-1"></a>cf <span class="ot">=</span> <span class="fu">as.data.frame</span>(confidenceint)</span></code></pre></div>
 </div>
-<div id="what-are-the-assumptions-of-a-linear-regression" class="section level3 hasAnchor" number="4.0.4">
-<h3><span class="header-section-number">4.0.4</span> What are the assumptions of a linear regression?<a href="linear-regression.html#what-are-the-assumptions-of-a-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="plot-the-data-and-predictions-1" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Plot the data and predictions<a href="linear-regression.html#plot-the-data-and-predictions-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can then create a plot with these model predictions.</p>
+<div id="try-it-now-26" class="section level4 unnumbered hasAnchor">
+<h4>Try it now<a href="linear-regression.html#try-it-now-26" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Plot!</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="linear-regression.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot with water level and total zooplankton use</span></span>
+<span id="cb55-2"><a href="linear-regression.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># xlab(), ylab() and main() to put titles on the plot</span></span>
+<span id="cb55-3"><a href="linear-regression.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> ham<span class="sc">$</span>water.level, <span class="at">y =</span> <span class="fu">log</span>(ham<span class="sc">$</span>total.zoop), <span class="at">xlab =</span> <span class="st">&quot;Water level (m)&quot;</span>, </span>
+<span id="cb55-4"><a href="linear-regression.html#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;(log) Total zooplankton&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Relationship between water level and total zooplankton&quot;</span>)</span>
+<span id="cb55-5"><a href="linear-regression.html#cb55-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-6"><a href="linear-regression.html#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add regression line to the plot</span></span>
+<span id="cb55-7"><a href="linear-regression.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cf<span class="sc">$</span>fit <span class="sc">~</span> x, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span>
+<span id="cb55-8"><a href="linear-regression.html#cb55-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-9"><a href="linear-regression.html#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="co"># lower bound confidence interval</span></span>
+<span id="cb55-10"><a href="linear-regression.html#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cf<span class="sc">$</span>lwr <span class="sc">~</span> x, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb55-11"><a href="linear-regression.html#cb55-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-12"><a href="linear-regression.html#cb55-12" aria-hidden="true" tabindex="-1"></a><span class="co"># upper bound confidence interval</span></span>
+<span id="cb55-13"><a href="linear-regression.html#cb55-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cf<span class="sc">$</span>upr <span class="sc">~</span> x, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672"  /></p>
+</div>
+<div id="common-mistakes" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Common mistakes<a href="linear-regression.html#common-mistakes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>There is a linear relationship between the independent and dependent variable (Statistics solutions, 2024).</li>
-<li>The residuals are normally distributed (Statistics solutions, 2024).</li>
-<li>The variance of the residuals should be consistent across all the values of the independent variable (Statistics solutions, 2024).</li>
-<li>Each observation is independent of one another (there is no significant correlation between the independent variable values) (Statistics solutions, 2024).</li>
+<li>Be careful when coding a linear regression using the <strong>lm()</strong> function that the independent and dependent variables are coded in the right order. i.e. <em>lm(dependent variable~independent variable, data = yourdata)</em>.</li>
 </ul>
 </div>
-<div id="how-do-you-evaluate-the-assumptions-of-a-linear-regression" class="section level3 hasAnchor" number="4.0.5">
-<h3><span class="header-section-number">4.0.5</span> How do you evaluate the assumptions of a linear regression?<a href="linear-regression.html#how-do-you-evaluate-the-assumptions-of-a-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You can evaluate the assumptions of a linear regression by creating diagnostic plots. These look at the residuals of the linear regression, that were shown using the summary() function above, to determine if the linear model is appropriate for the data (the data does not violate any assumptions) (Statistics solutions, 2024). This will create 4 diagnostic plots: residuals versus leverage, scale-location, Q-Q residuals and residuals versus fitted values.</p>
-<div id="try-it-now-21" class="section level4 hasAnchor" number="4.0.5.1">
-<h4><span class="header-section-number">4.0.5.1</span> Try it now<a href="linear-regression.html#try-it-now-21" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="linear-regression.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># divide the window into a 2 by 2 grid</span></span>
-<span id="cb43-2"><a href="linear-regression.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb43-3"><a href="linear-regression.html#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="linear-regression.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting diagnostic plots with log transformed data</span></span>
-<span id="cb43-5"><a href="linear-regression.html#cb43-5" aria-hidden="true" tabindex="-1"></a>lab <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</span>
-<span id="cb43-6"><a href="linear-regression.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb43-7"><a href="linear-regression.html#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(logwaterlzoo.lm, <span class="at">which =</span> i)</span>
-<span id="cb43-8"><a href="linear-regression.html#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mtext</span>(<span class="at">text =</span> lab[i], <span class="at">side =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">adj =</span> <span class="dv">1</span>)</span>
-<span id="cb43-9"><a href="linear-regression.html#cb43-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672"  /></p>
-</div>
-<div id="a." class="section level4 hasAnchor" number="4.0.5.2">
-<h4><span class="header-section-number">4.0.5.2</span> a.<a href="linear-regression.html#a." class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The <em>residuals versus fitted plot</em> determines if the residuals exhibit non-linear behaviour (Statistics solutions, 2024). If the red line roughly follows the horizontal line on the plot, the residuals are showing linear behaviour (Statistics solutions, 2024).</p>
-</div>
-<div id="b." class="section level4 hasAnchor" number="4.0.5.3">
-<h4><span class="header-section-number">4.0.5.3</span> b.<a href="linear-regression.html#b." class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The <em>Q-Q plot</em> evaluates our second assumption; the residuals are normally distributed (Statistics solutions, 2024). If the points on the plot follow the diagonal line, then the residuals are normally distributed (Statistics solutions, 2024).</p>
-</div>
-<div id="c." class="section level4 hasAnchor" number="4.0.5.4">
-<h4><span class="header-section-number">4.0.5.4</span> c.<a href="linear-regression.html#c." class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The <em>Scale-Location</em> plot is used to determine our third assumption; the variance of the residuals should be consistent across all the values The the independent variable (Statistics solutions, 2024). This is also called homoscedasticity (Bobbitt, 2021).</p>
-</div>
-<div id="d." class="section level4 hasAnchor" number="4.0.5.5">
-<h4><span class="header-section-number">4.0.5.5</span> d.<a href="linear-regression.html#d." class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The <em>Residuals versus Leverage</em> plot displays any influential points in the dataset compared to Cook’s distance (Bobbitt, 2021). Ideally, the points should fall close to the ‘0’ line on the plot with little variation. Any points that fall past the line indicating Cook’s distance are considered strongly influential points (Bobbitt, 2021).</p>
-</div>
-</div>
-<div id="in-the-case-of-this-linear-regression-between-water-level-and-total-zooplankton-what-do-the-diagnostic-plots-tell-us" class="section level3 hasAnchor" number="4.0.6">
-<h3><span class="header-section-number">4.0.6</span> In the case of this linear regression between water level and total zooplankton, what do the diagnostic plots tell us?<a href="linear-regression.html#in-the-case-of-this-linear-regression-between-water-level-and-total-zooplankton-what-do-the-diagnostic-plots-tell-us" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Talk amongst yourselves…</p>
-</div>
-<div id="how-can-we-plot-this-linear-regression" class="section level3 hasAnchor" number="4.0.7">
-<h3><span class="header-section-number">4.0.7</span> How can we plot this linear regression?<a href="linear-regression.html#how-can-we-plot-this-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You can plot the data using the plot() function, superimpose the regression line using the abline() function, calculate confidence intervals using the predict() function and add them to the plot using the lines() function.</p>
-<div id="try-it-now-22" class="section level4 hasAnchor" number="4.0.7.1">
-<h4><span class="header-section-number">4.0.7.1</span> Try it now<a href="linear-regression.html#try-it-now-22" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="linear-regression.html#cb44-1" aria-hidden="true" tabindex="-1"></a>hogwaterl <span class="ot">&lt;-</span> (ham<span class="sc">$</span>waterlevel)</span>
-<span id="cb44-2"><a href="linear-regression.html#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="linear-regression.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># taking the natural log of the response variable</span></span>
-<span id="cb44-4"><a href="linear-regression.html#cb44-4" aria-hidden="true" tabindex="-1"></a>logtotal.zoop <span class="ot">&lt;-</span> <span class="fu">log</span>(ham<span class="sc">$</span>total.zoop)</span>
-<span id="cb44-5"><a href="linear-regression.html#cb44-5" aria-hidden="true" tabindex="-1"></a>logwaterlzoo.lm <span class="ot">=</span> <span class="fu">lm</span>(logtotal.zoop <span class="sc">~</span> hogwaterl)</span>
-<span id="cb44-6"><a href="linear-regression.html#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="linear-regression.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a vector &#39;x&#39; to predict total.zoop from waterlevel</span></span>
-<span id="cb44-8"><a href="linear-regression.html#cb44-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(hogwaterl, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="fu">max</span>(hogwaterl, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb44-9"><a href="linear-regression.html#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="fl">0.05</span>)</span>
-<span id="cb44-10"><a href="linear-regression.html#cb44-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-11"><a href="linear-regression.html#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate confidence intervals (confidence level 95%) for</span></span>
-<span id="cb44-12"><a href="linear-regression.html#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="co"># predicted total.zoop values</span></span>
-<span id="cb44-13"><a href="linear-regression.html#cb44-13" aria-hidden="true" tabindex="-1"></a>confidenceint <span class="ot">&lt;-</span> <span class="fu">predict</span>(logwaterlzoo.lm, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">hogwaterl =</span> x), </span>
-<span id="cb44-14"><a href="linear-regression.html#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb44-15"><a href="linear-regression.html#cb44-15" aria-hidden="true" tabindex="-1"></a>cf <span class="ot">=</span> <span class="fu">as.data.frame</span>(confidenceint)</span>
-<span id="cb44-16"><a href="linear-regression.html#cb44-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-17"><a href="linear-regression.html#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot with water level and total zooplankton use</span></span>
-<span id="cb44-18"><a href="linear-regression.html#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="co"># xlab(), ylab() and main() to put titles on the plot</span></span>
-<span id="cb44-19"><a href="linear-regression.html#cb44-19" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> ham<span class="sc">$</span>waterlevel, <span class="at">y =</span> logtotal.zoop, <span class="at">xlab =</span> <span class="st">&quot;Water level (m)&quot;</span>, </span>
-<span id="cb44-20"><a href="linear-regression.html#cb44-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;(log) Total zooplankton&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Relationship between water level and total zooplankton&quot;</span>)</span>
-<span id="cb44-21"><a href="linear-regression.html#cb44-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-22"><a href="linear-regression.html#cb44-22" aria-hidden="true" tabindex="-1"></a><span class="co"># add regression line to the plot using the abline() function</span></span>
-<span id="cb44-23"><a href="linear-regression.html#cb44-23" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(logwaterlzoo.lm, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb44-24"><a href="linear-regression.html#cb44-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-25"><a href="linear-regression.html#cb44-25" aria-hidden="true" tabindex="-1"></a><span class="co"># lower bound confidence interval</span></span>
-<span id="cb44-26"><a href="linear-regression.html#cb44-26" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> x, cf<span class="sc">$</span>lwr, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
-<span id="cb44-27"><a href="linear-regression.html#cb44-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-28"><a href="linear-regression.html#cb44-28" aria-hidden="true" tabindex="-1"></a><span class="co"># upper bound confidence interval</span></span>
-<span id="cb44-29"><a href="linear-regression.html#cb44-29" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> x, cf<span class="sc">$</span>upr, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672"  /></p>
-<p>In this case, water level appears to have a positive correlation with total zooplankton. As the water level increases, the number of total zooplankton also increases.</p>
-</div>
-</div>
-<div id="common-mistakes" class="section level3 hasAnchor" number="4.0.8">
-<h3><span class="header-section-number">4.0.8</span> Common mistakes<a href="linear-regression.html#common-mistakes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Be careful when coding a linear regression using the lm() function that the independent and dependent variables are coded in the right order. i.e. lm(dependent variable~independent variable, data = yourdata).</li>
-</ul>
-</div>
-<div id="references-and-resources" class="section level3 hasAnchor" number="4.0.9">
-<h3><span class="header-section-number">4.0.9</span> References and resources<a href="linear-regression.html#references-and-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Assumptions of multiple linear regression analysis. Statistics Solutions. (2024, April 17). <a href="https://www.statisticssolutions.com/free-resources/directory-of-statistical-analyses/assumptions-of-linear-regression/" class="uri">https://www.statisticssolutions.com/free-resources/directory-of-statistical-analyses/assumptions-of-linear-regression/</a></p>
-<p>Bobbitt, Z. (2021, July 23). How to interpret diagnostic plots in R. Statology. <a href="https://www.statology.org/diagnostic-plots-in-r/" class="uri">https://www.statology.org/diagnostic-plots-in-r/</a></p>
+<div id="references-and-resources" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> References and resources<a href="linear-regression.html#references-and-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Phillips, N. D. (2018, January 22). Yarrr! The Pirate’s Guide to R. YaRrr! The Pirate’s Guide to R. <a href="https://bookdown.org/ndphillips/YaRrr/" class="uri">https://bookdown.org/ndphillips/YaRrr/</a>
 * Check out chapter 15 on linear regression analysis</p>
-</div>
-<div id="alternative-resource" class="section level3 hasAnchor" number="4.0.10">
-<h3><span class="header-section-number">4.0.10</span> Alternative resource:<a href="linear-regression.html#alternative-resource" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Another way to evaluate the assumptions of a linear regression is to compare fitted values (theoretical values of the dependent variable that are predicted by the model, assuming linearity) and the observed values of the dependent variable in a plot (Phillips, 2018). If the model fitted values forms a diagonal line with the observed values of the dependent variable, then the linear model fits the data well, and the assumptions of the linear model are met (Phillips, 2018). See Phillips resource for more details and sample coding.</p>
 
+</div>
 </div>
 </div>
             </section>

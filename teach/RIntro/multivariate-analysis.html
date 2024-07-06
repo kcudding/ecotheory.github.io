@@ -154,14 +154,17 @@ code span.wa { font-style: italic; } /* Warning */
 <ul>
 <li class="chapter" data-level="4.0.1" data-path="linear-regression.html"><a href="linear-regression.html#introduction"><i class="fa fa-check"></i><b>4.0.1</b> Introduction</a></li>
 <li class="chapter" data-level="4.0.2" data-path="linear-regression.html"><a href="linear-regression.html#linear-regression-using-water-level-and-total-zooplankton"><i class="fa fa-check"></i><b>4.0.2</b> Linear regression using water level and total zooplankton</a></li>
-<li class="chapter" data-level="4.0.3" data-path="linear-regression.html"><a href="linear-regression.html#what-does-the-summary-output-tell-us-about-the-relationship-between-water-level-and-total-zooplankton"><i class="fa fa-check"></i><b>4.0.3</b> What does the summary output tell us about the relationship between water level and total zooplankton?</a></li>
-<li class="chapter" data-level="4.0.4" data-path="linear-regression.html"><a href="linear-regression.html#what-are-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.0.4</b> What are the assumptions of a linear regression?</a></li>
-<li class="chapter" data-level="4.0.5" data-path="linear-regression.html"><a href="linear-regression.html#how-do-you-evaluate-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.0.5</b> How do you evaluate the assumptions of a linear regression?</a></li>
-<li class="chapter" data-level="4.0.6" data-path="linear-regression.html"><a href="linear-regression.html#in-the-case-of-this-linear-regression-between-water-level-and-total-zooplankton-what-do-the-diagnostic-plots-tell-us"><i class="fa fa-check"></i><b>4.0.6</b> In the case of this linear regression between water level and total zooplankton, what do the diagnostic plots tell us?</a></li>
-<li class="chapter" data-level="4.0.7" data-path="linear-regression.html"><a href="linear-regression.html#how-can-we-plot-this-linear-regression"><i class="fa fa-check"></i><b>4.0.7</b> How can we plot this linear regression?</a></li>
-<li class="chapter" data-level="4.0.8" data-path="linear-regression.html"><a href="linear-regression.html#common-mistakes"><i class="fa fa-check"></i><b>4.0.8</b> Common mistakes</a></li>
-<li class="chapter" data-level="4.0.9" data-path="linear-regression.html"><a href="linear-regression.html#references-and-resources"><i class="fa fa-check"></i><b>4.0.9</b> References and resources</a></li>
-<li class="chapter" data-level="4.0.10" data-path="linear-regression.html"><a href="linear-regression.html#alternative-resource"><i class="fa fa-check"></i><b>4.0.10</b> Alternative resource:</a></li>
+<li class="chapter" data-level="4.0.3" data-path="linear-regression.html"><a href="linear-regression.html#what-are-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.0.3</b> What are the assumptions of a linear regression?</a></li>
+<li class="chapter" data-level="4.0.4" data-path="linear-regression.html"><a href="linear-regression.html#how-do-you-evaluate-the-assumptions-of-a-linear-regression"><i class="fa fa-check"></i><b>4.0.4</b> How do you evaluate the assumptions of a linear regression?</a></li>
+<li class="chapter" data-level="4.1" data-path="linear-regression.html"><a href="linear-regression.html#plot-the-data-and-predictions"><i class="fa fa-check"></i><b>4.1</b> Plot the data and predictions</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="linear-regression.html"><a href="linear-regression.html#get-model-predictions-and-confidence-intervals"><i class="fa fa-check"></i><b>4.1.1</b> Get model predictions and confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression.html"><a href="linear-regression.html#plot-the-data-and-predictions-1"><i class="fa fa-check"></i><b>4.2</b> Plot the data and predictions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="linear-regression.html"><a href="linear-regression.html#common-mistakes"><i class="fa fa-check"></i><b>4.2.1</b> Common mistakes</a></li>
+<li class="chapter" data-level="4.2.2" data-path="linear-regression.html"><a href="linear-regression.html#references-and-resources"><i class="fa fa-check"></i><b>4.2.2</b> References and resources</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="multiple-linear-regression-model.html"><a href="multiple-linear-regression-model.html"><i class="fa fa-check"></i><b>5</b> Multiple Linear Regression Model</a>
 <ul>
@@ -250,28 +253,28 @@ code span.wa { font-style: italic; } /* Warning */
 <p><em>Question: What are the major drivers of Diaphnia biomass?</em></p>
 <p><em>Variables</em>: Daphnia biomass (mg/m3), water column temperature (°C), epilimnion temperature(°C), particulate organic nitrogen (mg/L), dissolved inorganic carbon (mg/L), particulate organic carbon (mg/L)</p>
 <p>A good practice before running any analysis is to subset a new dataframe which contains the variables we are interested in.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="multivariate-analysis.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Select the variables interested</span></span>
-<span id="cb91-2"><a href="multivariate-analysis.html#cb91-2" aria-hidden="true" tabindex="-1"></a>ham.multi <span class="ot">&lt;-</span> ham[, <span class="fu">c</span>(<span class="st">&quot;area_group&quot;</span>, <span class="st">&quot;season&quot;</span>, <span class="st">&quot;Station_Acronym&quot;</span>, </span>
-<span id="cb91-3"><a href="multivariate-analysis.html#cb91-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Daphnia&quot;</span>, <span class="st">&quot;watercolumn_temp&quot;</span>, <span class="st">&quot;mean_mixing_depth_temp&quot;</span>, </span>
-<span id="cb91-4"><a href="multivariate-analysis.html#cb91-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;PON_ECCC1m&quot;</span>, <span class="st">&quot;DIC_ECCC1m&quot;</span>, <span class="st">&quot;POC_ECCC1m&quot;</span>)]</span>
-<span id="cb91-5"><a href="multivariate-analysis.html#cb91-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-6"><a href="multivariate-analysis.html#cb91-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-7"><a href="multivariate-analysis.html#cb91-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove all rows containing NAs</span></span>
-<span id="cb91-8"><a href="multivariate-analysis.html#cb91-8" aria-hidden="true" tabindex="-1"></a>ham.multi <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(ham.multi)</span>
-<span id="cb91-9"><a href="multivariate-analysis.html#cb91-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-10"><a href="multivariate-analysis.html#cb91-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb91-11"><a href="multivariate-analysis.html#cb91-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Rename the columns</span></span>
-<span id="cb91-12"><a href="multivariate-analysis.html#cb91-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ham.multi) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>, <span class="st">&quot;season&quot;</span>, <span class="st">&quot;station&quot;</span>, <span class="st">&quot;daphnia&quot;</span>, </span>
-<span id="cb91-13"><a href="multivariate-analysis.html#cb91-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;column.temp&quot;</span>, <span class="st">&quot;epili.temp&quot;</span>, <span class="st">&quot;pon&quot;</span>, <span class="st">&quot;dic&quot;</span>, <span class="st">&quot;poc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="multivariate-analysis.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Select the variables interested</span></span>
+<span id="cb101-2"><a href="multivariate-analysis.html#cb101-2" aria-hidden="true" tabindex="-1"></a>ham.multi <span class="ot">&lt;-</span> ham[, <span class="fu">c</span>(<span class="st">&quot;area_group&quot;</span>, <span class="st">&quot;season&quot;</span>, <span class="st">&quot;Station_Acronym&quot;</span>, </span>
+<span id="cb101-3"><a href="multivariate-analysis.html#cb101-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Daphnia&quot;</span>, <span class="st">&quot;watercolumn_temp&quot;</span>, <span class="st">&quot;mean_mixing_depth_temp&quot;</span>, </span>
+<span id="cb101-4"><a href="multivariate-analysis.html#cb101-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;PON_ECCC1m&quot;</span>, <span class="st">&quot;DIC_ECCC1m&quot;</span>, <span class="st">&quot;POC_ECCC1m&quot;</span>)]</span>
+<span id="cb101-5"><a href="multivariate-analysis.html#cb101-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-6"><a href="multivariate-analysis.html#cb101-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-7"><a href="multivariate-analysis.html#cb101-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove all rows containing NAs</span></span>
+<span id="cb101-8"><a href="multivariate-analysis.html#cb101-8" aria-hidden="true" tabindex="-1"></a>ham.multi <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(ham.multi)</span>
+<span id="cb101-9"><a href="multivariate-analysis.html#cb101-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-10"><a href="multivariate-analysis.html#cb101-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-11"><a href="multivariate-analysis.html#cb101-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Rename the columns</span></span>
+<span id="cb101-12"><a href="multivariate-analysis.html#cb101-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ham.multi) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;area&quot;</span>, <span class="st">&quot;season&quot;</span>, <span class="st">&quot;station&quot;</span>, <span class="st">&quot;daphnia&quot;</span>, </span>
+<span id="cb101-13"><a href="multivariate-analysis.html#cb101-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;column.temp&quot;</span>, <span class="st">&quot;epili.temp&quot;</span>, <span class="st">&quot;pon&quot;</span>, <span class="st">&quot;dic&quot;</span>, <span class="st">&quot;poc&quot;</span>)</span></code></pre></div>
 <p>In our new dataframe, different seasons are represented by numeric numbers from 1 to 5. We would like to re-code them into string factors, for easier visualization in later graphics. There are many ways to do this, here we introduce using the <strong><code>factor()</code></strong> function.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="multivariate-analysis.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Recode the season numeric code into factors</span></span>
-<span id="cb92-2"><a href="multivariate-analysis.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ham.multi<span class="sc">$</span>season)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="multivariate-analysis.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Recode the season numeric code into factors</span></span>
+<span id="cb102-2"><a href="multivariate-analysis.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ham.multi<span class="sc">$</span>season)</span></code></pre></div>
 <pre><code>
   1   2   3   4 
  57 113 118  40 </code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="multivariate-analysis.html#cb94-1" aria-hidden="true" tabindex="-1"></a>ham.multi<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">factor</span>(ham.multi<span class="sc">$</span>season, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, </span>
-<span id="cb94-2"><a href="multivariate-analysis.html#cb94-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;spring&quot;</span>, <span class="st">&quot;early summer&quot;</span>, <span class="st">&quot;late summer&quot;</span>, </span>
-<span id="cb94-3"><a href="multivariate-analysis.html#cb94-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;early fall&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="multivariate-analysis.html#cb104-1" aria-hidden="true" tabindex="-1"></a>ham.multi<span class="sc">$</span>season <span class="ot">&lt;-</span> <span class="fu">factor</span>(ham.multi<span class="sc">$</span>season, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, </span>
+<span id="cb104-2"><a href="multivariate-analysis.html#cb104-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>, <span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;spring&quot;</span>, <span class="st">&quot;early summer&quot;</span>, <span class="st">&quot;late summer&quot;</span>, </span>
+<span id="cb104-3"><a href="multivariate-analysis.html#cb104-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;early fall&quot;</span>))</span></code></pre></div>
 </div>
 <div id="principle-component-analysis-pca" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Principle Component Analysis (PCA)<a href="multivariate-analysis.html#principle-component-analysis-pca" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -279,19 +282,10 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="correlation-examination" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> Correlation examination<a href="multivariate-analysis.html#correlation-examination" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First of all, we need to examine the correlation between our variables. We can achieve this by running a correlation test using <strong><code>cor()</code></strong> function, or creating a correlation plot using <strong><code>pairs()</code></strong> function.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="multivariate-analysis.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation table</span></span>
-<span id="cb95-2"><a href="multivariate-analysis.html#cb95-2" aria-hidden="true" tabindex="-1"></a>cor.df <span class="ot">&lt;-</span> <span class="fu">cor</span>(ham.multi[<span class="dv">4</span><span class="sc">:</span><span class="dv">9</span>])</span>
-<span id="cb95-3"><a href="multivariate-analysis.html#cb95-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(cor.df)</span></code></pre></div>
-<table style="width:100%;">
-<colgroup>
-<col width="15%" />
-<col width="13%" />
-<col width="15%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-</colgroup>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="multivariate-analysis.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation table</span></span>
+<span id="cb105-2"><a href="multivariate-analysis.html#cb105-2" aria-hidden="true" tabindex="-1"></a>cor.df <span class="ot">&lt;-</span> <span class="fu">cor</span>(ham.multi[<span class="dv">4</span><span class="sc">:</span><span class="dv">9</span>])</span>
+<span id="cb105-3"><a href="multivariate-analysis.html#cb105-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(cor.df)</span></code></pre></div>
+<table>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -306,65 +300,65 @@ code span.wa { font-style: italic; } /* Warning */
 <tbody>
 <tr class="odd">
 <td align="left">daphnia</td>
-<td align="right">1.0000000</td>
-<td align="right">0.2293285</td>
-<td align="right">0.3230253</td>
-<td align="right">0.1233690</td>
-<td align="right">-0.1169047</td>
-<td align="right">0.1437126</td>
+<td align="right">1.000</td>
+<td align="right">0.229</td>
+<td align="right">0.323</td>
+<td align="right">0.123</td>
+<td align="right">-0.117</td>
+<td align="right">0.144</td>
 </tr>
 <tr class="even">
 <td align="left">column.temp</td>
-<td align="right">0.2293285</td>
-<td align="right">1.0000000</td>
-<td align="right">0.8167008</td>
-<td align="right">0.3083830</td>
-<td align="right">-0.4815168</td>
-<td align="right">0.3670961</td>
+<td align="right">0.229</td>
+<td align="right">1.000</td>
+<td align="right">0.817</td>
+<td align="right">0.308</td>
+<td align="right">-0.482</td>
+<td align="right">0.367</td>
 </tr>
 <tr class="odd">
 <td align="left">epili.temp</td>
-<td align="right">0.3230253</td>
-<td align="right">0.8167008</td>
-<td align="right">1.0000000</td>
-<td align="right">0.3098929</td>
-<td align="right">-0.5021353</td>
-<td align="right">0.3857810</td>
+<td align="right">0.323</td>
+<td align="right">0.817</td>
+<td align="right">1.000</td>
+<td align="right">0.310</td>
+<td align="right">-0.502</td>
+<td align="right">0.386</td>
 </tr>
 <tr class="even">
 <td align="left">pon</td>
-<td align="right">0.1233690</td>
-<td align="right">0.3083830</td>
-<td align="right">0.3098929</td>
-<td align="right">1.0000000</td>
-<td align="right">-0.2834075</td>
-<td align="right">0.9459712</td>
+<td align="right">0.123</td>
+<td align="right">0.308</td>
+<td align="right">0.310</td>
+<td align="right">1.000</td>
+<td align="right">-0.283</td>
+<td align="right">0.946</td>
 </tr>
 <tr class="odd">
 <td align="left">dic</td>
-<td align="right">-0.1169047</td>
-<td align="right">-0.4815168</td>
-<td align="right">-0.5021353</td>
-<td align="right">-0.2834075</td>
-<td align="right">1.0000000</td>
-<td align="right">-0.3846432</td>
+<td align="right">-0.117</td>
+<td align="right">-0.482</td>
+<td align="right">-0.502</td>
+<td align="right">-0.283</td>
+<td align="right">1.000</td>
+<td align="right">-0.385</td>
 </tr>
 <tr class="even">
 <td align="left">poc</td>
-<td align="right">0.1437126</td>
-<td align="right">0.3670961</td>
-<td align="right">0.3857810</td>
-<td align="right">0.9459712</td>
-<td align="right">-0.3846432</td>
-<td align="right">1.0000000</td>
+<td align="right">0.144</td>
+<td align="right">0.367</td>
+<td align="right">0.386</td>
+<td align="right">0.946</td>
+<td align="right">-0.385</td>
+<td align="right">1.000</td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="multivariate-analysis.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation plot</span></span>
-<span id="cb96-2"><a href="multivariate-analysis.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(ham.multi[<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>], <span class="at">main =</span> <span class="st">&quot;Ham Data&quot;</span>, <span class="at">pch =</span> <span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season), </span>
-<span id="cb96-3"><a href="multivariate-analysis.html#cb96-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> (ham.multi<span class="sc">$</span>season))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-80-1.png" width="672"  /></p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="multivariate-analysis.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># colored depending on season</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="multivariate-analysis.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation plot</span></span>
+<span id="cb106-2"><a href="multivariate-analysis.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(ham.multi[<span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>], <span class="at">main =</span> <span class="st">&quot;Ham Data&quot;</span>, <span class="at">pch =</span> <span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season), </span>
+<span id="cb106-3"><a href="multivariate-analysis.html#cb106-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> (ham.multi<span class="sc">$</span>season))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672"  /></p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="multivariate-analysis.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># colored depending on season</span></span></code></pre></div>
 <p>Dimension reduction techniques such PCA works the best when variables are strongly correlated with each other. From the above correlation test output and plot, we can see that some variables clearly have a linear relationship, such as water column temperature and epilimnion temperature, or water column temperature and dissolved inorganic carbon.</p>
 </div>
 <div id="pca-with-standardized-data" class="section level3 hasAnchor" number="7.2.2">
@@ -372,12 +366,12 @@ code span.wa { font-style: italic; } /* Warning */
 <p>Now we can start with running our principle component analyses. PCA can be computed using various functions in R, such as <strong><code>prcomp()</code></strong> in <em>stats</em> package, <strong><code>princomp()</code></strong> in <em>stats</em> package, <strong><code>rda()</code></strong> in <em>vegan</em> package.</p>
 <p><em>Important Note: The rda() function in vegan allows users to conduct both PCA and RDA, depending on whether the data is constrained or not. When it is unconstrained (like in our example), it is running a PCA!</em></p>
 <p>Here we demonstrate using the <em>vegan</em> package, since it also allows easy visualization of our results. Keep in mind that we need to run the PCA on all columns containing continuous variables, which is column 4 - 9 in the ham.multi dataframe.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="multivariate-analysis.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Run PCA analysis</span></span>
-<span id="cb98-2"><a href="multivariate-analysis.html#cb98-2" aria-hidden="true" tabindex="-1"></a>pca.ham <span class="ot">&lt;-</span> <span class="fu">rda</span>(ham.multi[, <span class="dv">4</span><span class="sc">:</span><span class="dv">9</span>], <span class="at">scale =</span> <span class="cn">TRUE</span>)  <span class="co">#subset for all continuous variables</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="multivariate-analysis.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Run PCA analysis</span></span>
+<span id="cb108-2"><a href="multivariate-analysis.html#cb108-2" aria-hidden="true" tabindex="-1"></a>pca.ham <span class="ot">&lt;-</span> <span class="fu">rda</span>(ham.multi[, <span class="dv">4</span><span class="sc">:</span><span class="dv">9</span>], <span class="at">scale =</span> <span class="cn">TRUE</span>)  <span class="co">#subset for all continuous variables</span></span></code></pre></div>
 <p>After completing the dimension reduction process, each sample now appears as a point in space specified by its new position along the principle component axes. There coordinates are referred to as “site scores” in rda() results, and we can access such information with the <strong><code>scores()</code></strong> function.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="multivariate-analysis.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scores</span>(pca.ham, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="multivariate-analysis.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scores</span>(pca.ham, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>)</span></code></pre></div>
 <p>Meanwhile, our original variables are projected on the the new principle components. They are defined as “Loadings” and are referred to as “species scores” in rda() results. This information can be obtained with the <strong><code>scores()</code></strong> function too.</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="multivariate-analysis.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scores</span>(pca.ham, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="multivariate-analysis.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scores</span>(pca.ham, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>)</span></code></pre></div>
 <p><strong>Remember</strong>:</p>
 <ul>
 <li><p>“Sites” refer to your observations (the rows in your dataset).</p></li>
@@ -387,15 +381,15 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="screeplot" class="section level3 hasAnchor" number="7.2.3">
 <h3><span class="header-section-number">7.2.3</span> Screeplot<a href="multivariate-analysis.html#screeplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now, let’s determine how many principle components to retain for further analysis. The <strong><code>screeplot()</code></strong> function allows us to visualize the variance explained by each of the principle components. Ideally, a curve should be steep, and then bend at an “elbow”, after which the curve flattens out. The first few principle components usually account for a large portion of the variance in the data, and should be retained.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="multivariate-analysis.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Screeplot</span></span>
-<span id="cb101-2"><a href="multivariate-analysis.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">screeplot</span>(pca.ham, <span class="at">type =</span> (<span class="st">&quot;lines&quot;</span>), <span class="at">main =</span> <span class="st">&quot;Screeplot&quot;</span>, <span class="at">pch =</span> <span class="dv">16</span>, </span>
-<span id="cb101-3"><a href="multivariate-analysis.html#cb101-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="672"  /></p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="multivariate-analysis.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Screeplot</span></span>
+<span id="cb111-2"><a href="multivariate-analysis.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">screeplot</span>(pca.ham, <span class="at">type =</span> (<span class="st">&quot;lines&quot;</span>), <span class="at">main =</span> <span class="st">&quot;Screeplot&quot;</span>, <span class="at">pch =</span> <span class="dv">16</span>, </span>
+<span id="cb111-3"><a href="multivariate-analysis.html#cb111-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-91-1.png" width="672"  /></p>
 <p>Meanwhile, we can also look at the proportional variance explained by each principle component. Such information is available in the <strong><code>summary()</code></strong> of our PCA results. We see the first two PCs together explain roughly 72% of the total variance in this dataset. Along with the screeplot, we are confident that the first two PC are sufficient enough to represent our data.</p>
 <p>For easier usage in future, let’s store them in a list:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="multivariate-analysis.html#cb102-1" aria-hidden="true" tabindex="-1"></a>pvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">50.22</span>, <span class="fl">21.43</span>)</span>
-<span id="cb102-2"><a href="multivariate-analysis.html#cb102-2" aria-hidden="true" tabindex="-1"></a>pvar</span></code></pre></div>
-<pre><code>[1] 50.22 21.43</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="multivariate-analysis.html#cb112-1" aria-hidden="true" tabindex="-1"></a>pvar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">50.22</span>, <span class="fl">21.43</span>)</span>
+<span id="cb112-2"><a href="multivariate-analysis.html#cb112-2" aria-hidden="true" tabindex="-1"></a>pvar</span></code></pre></div>
+<pre><code>[1] 50.2 21.4</code></pre>
 </div>
 <div id="plot-ordination-for-pca" class="section level3 hasAnchor" number="7.2.4">
 <h3><span class="header-section-number">7.2.4</span> Plot ordination for PCA<a href="multivariate-analysis.html#plot-ordination-for-pca" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -408,45 +402,45 @@ code span.wa { font-style: italic; } /* Warning */
 </ol>
 <p><strong>Plot 1 - Site Plot (samples)</strong></p>
 <p>we can visualize the positions of our samples on the new axes (PC1 and PC2). This is the “site plot”.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="multivariate-analysis.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a blank plot</span></span>
-<span id="cb104-2"><a href="multivariate-analysis.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordiplot</span>(pca.ham, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Individuals (&#39;sites&#39;)&quot;</span>, </span>
-<span id="cb104-3"><a href="multivariate-analysis.html#cb104-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC1 (&quot;</span>, pvar[<span class="dv">1</span>], <span class="st">&quot;%)&quot;</span>), <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC2 (&quot;</span>, </span>
-<span id="cb104-4"><a href="multivariate-analysis.html#cb104-4" aria-hidden="true" tabindex="-1"></a>        pvar[<span class="dv">2</span>], <span class="st">&quot;%)&quot;</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>))</span>
-<span id="cb104-5"><a href="multivariate-analysis.html#cb104-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-6"><a href="multivariate-analysis.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use points() to add points</span></span>
-<span id="cb104-7"><a href="multivariate-analysis.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(pca.ham, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">cex =</span> <span class="dv">1</span>)  <span class="co"># add sites</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-86-1.png" width="672"  /></p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="multivariate-analysis.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a blank plot</span></span>
+<span id="cb114-2"><a href="multivariate-analysis.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordiplot</span>(pca.ham, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Individuals (&#39;sites&#39;)&quot;</span>, </span>
+<span id="cb114-3"><a href="multivariate-analysis.html#cb114-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC1 (&quot;</span>, pvar[<span class="dv">1</span>], <span class="st">&quot;%)&quot;</span>), <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC2 (&quot;</span>, </span>
+<span id="cb114-4"><a href="multivariate-analysis.html#cb114-4" aria-hidden="true" tabindex="-1"></a>        pvar[<span class="dv">2</span>], <span class="st">&quot;%)&quot;</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>))</span>
+<span id="cb114-5"><a href="multivariate-analysis.html#cb114-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-6"><a href="multivariate-analysis.html#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use points() to add points</span></span>
+<span id="cb114-7"><a href="multivariate-analysis.html#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(pca.ham, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">cex =</span> <span class="dv">1</span>)  <span class="co"># add sites</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-93-1.png" width="672"  /></p>
 <p>What if we are interested in the seasonal patterns of our samples on the reduced dimensions? We can use the same graphing techniques, but group our dataset using different seasons. Make sure to label your seasons in the “legend”.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="multivariate-analysis.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Create an empty canvas</span></span>
-<span id="cb105-2"><a href="multivariate-analysis.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordiplot</span>(pca.ham, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Individuals (&#39;sites&#39;) by season&quot;</span>, </span>
-<span id="cb105-3"><a href="multivariate-analysis.html#cb105-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC1 (&quot;</span>, pvar[<span class="dv">1</span>], <span class="st">&quot;%)&quot;</span>), <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC2 (&quot;</span>, </span>
-<span id="cb105-4"><a href="multivariate-analysis.html#cb105-4" aria-hidden="true" tabindex="-1"></a>        pvar[<span class="dv">2</span>], <span class="st">&quot;%)&quot;</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>))  <span class="co"># specify the y-axis limits</span></span>
-<span id="cb105-5"><a href="multivariate-analysis.html#cb105-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-6"><a href="multivariate-analysis.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Use points() to add points</span></span>
-<span id="cb105-7"><a href="multivariate-analysis.html#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(pca.ham, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">pch =</span> <span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season) <span class="sc">+</span> </span>
-<span id="cb105-8"><a href="multivariate-analysis.html#cb105-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">14</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)[<span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season)], <span class="at">cex =</span> <span class="dv">1</span>)  <span class="co"># add sites</span></span>
-<span id="cb105-9"><a href="multivariate-analysis.html#cb105-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb105-10"><a href="multivariate-analysis.html#cb105-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Add legends</span></span>
-<span id="cb105-11"><a href="multivariate-analysis.html#cb105-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="at">legend =</span> <span class="fu">unique</span>(ham.multi<span class="sc">$</span>season), <span class="at">pch =</span> <span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season) <span class="sc">+</span> </span>
-<span id="cb105-12"><a href="multivariate-analysis.html#cb105-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">14</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)  <span class="co"># bty specifys legend box boarder</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-87-1.png" width="672"  /></p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="multivariate-analysis.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Create an empty canvas</span></span>
+<span id="cb115-2"><a href="multivariate-analysis.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordiplot</span>(pca.ham, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Individuals (&#39;sites&#39;) by season&quot;</span>, </span>
+<span id="cb115-3"><a href="multivariate-analysis.html#cb115-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC1 (&quot;</span>, pvar[<span class="dv">1</span>], <span class="st">&quot;%)&quot;</span>), <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC2 (&quot;</span>, </span>
+<span id="cb115-4"><a href="multivariate-analysis.html#cb115-4" aria-hidden="true" tabindex="-1"></a>        pvar[<span class="dv">2</span>], <span class="st">&quot;%)&quot;</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>))  <span class="co"># specify the y-axis limits</span></span>
+<span id="cb115-5"><a href="multivariate-analysis.html#cb115-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-6"><a href="multivariate-analysis.html#cb115-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Use points() to add points</span></span>
+<span id="cb115-7"><a href="multivariate-analysis.html#cb115-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(pca.ham, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">pch =</span> <span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season) <span class="sc">+</span> </span>
+<span id="cb115-8"><a href="multivariate-analysis.html#cb115-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">14</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)[<span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season)], <span class="at">cex =</span> <span class="dv">1</span>)  <span class="co"># add sites</span></span>
+<span id="cb115-9"><a href="multivariate-analysis.html#cb115-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-10"><a href="multivariate-analysis.html#cb115-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Add legends</span></span>
+<span id="cb115-11"><a href="multivariate-analysis.html#cb115-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="at">legend =</span> <span class="fu">unique</span>(ham.multi<span class="sc">$</span>season), <span class="at">pch =</span> <span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season) <span class="sc">+</span> </span>
+<span id="cb115-12"><a href="multivariate-analysis.html#cb115-12" aria-hidden="true" tabindex="-1"></a>    <span class="dv">14</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)  <span class="co"># bty specifys legend box boarder</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-94-1.png" width="672"  /></p>
 <p>There are many other functions in the vegan package that allows customization of your ordination plots. For example, <code>ordiellipse(pca.ham, display="sites", conf=0.95, kind="sd", groups=ham.multi$season)</code> function allows us to add 95% confidence intervals to each group of samples.</p>
-<div id="try-it-now-29" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="multivariate-analysis.html#try-it-now-29" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-33" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="multivariate-analysis.html#try-it-now-33" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s try creating a sites plot for the same multivariate dataset, but color samples based on different “area_group”. Use colors of your own choice!</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="multivariate-analysis.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Create an empty canvas</span></span>
-<span id="cb106-2"><a href="multivariate-analysis.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordiplot</span>()</span>
-<span id="cb106-3"><a href="multivariate-analysis.html#cb106-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-4"><a href="multivariate-analysis.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Use points() to add points and add legends</span></span>
-<span id="cb106-5"><a href="multivariate-analysis.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>()</span>
-<span id="cb106-6"><a href="multivariate-analysis.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="multivariate-analysis.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Create an empty canvas</span></span>
+<span id="cb116-2"><a href="multivariate-analysis.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordiplot</span>()</span>
+<span id="cb116-3"><a href="multivariate-analysis.html#cb116-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-4"><a href="multivariate-analysis.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Use points() to add points and add legends</span></span>
+<span id="cb116-5"><a href="multivariate-analysis.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>()</span>
+<span id="cb116-6"><a href="multivariate-analysis.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>()</span></code></pre></div>
 <p><strong>Plot 2 - Biplot (samples and variables)</strong></p>
 <p>Finally, we can visualize both “sites” (individual observations) and “species” (variables) on one graph with a biplot. This time, we use the <strong><code>biplot()</code></strong> function in base R to do this.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="multivariate-analysis.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Biplot for PCA</span></span>
-<span id="cb107-2"><a href="multivariate-analysis.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(pca.ham, <span class="at">display =</span> <span class="fu">c</span>(<span class="st">&quot;sites&quot;</span>, <span class="st">&quot;species&quot;</span>), <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;text&quot;</span>, </span>
-<span id="cb107-3"><a href="multivariate-analysis.html#cb107-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;points&quot;</span>), <span class="at">main =</span> <span class="st">&quot;Biplot&quot;</span>, <span class="at">xlab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC1 (&quot;</span>, pvar[<span class="dv">1</span>], </span>
-<span id="cb107-4"><a href="multivariate-analysis.html#cb107-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;%)&quot;</span>), <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC2 (&quot;</span>, pvar[<span class="dv">2</span>], <span class="st">&quot;%)&quot;</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-90-1.png" width="672"  /></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="multivariate-analysis.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Biplot for PCA</span></span>
+<span id="cb117-2"><a href="multivariate-analysis.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">biplot</span>(pca.ham, <span class="at">display =</span> <span class="fu">c</span>(<span class="st">&quot;sites&quot;</span>, <span class="st">&quot;species&quot;</span>), <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;text&quot;</span>, </span>
+<span id="cb117-3"><a href="multivariate-analysis.html#cb117-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;points&quot;</span>), <span class="at">main =</span> <span class="st">&quot;Biplot&quot;</span>, <span class="at">xlab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC1 (&quot;</span>, pvar[<span class="dv">1</span>], </span>
+<span id="cb117-4"><a href="multivariate-analysis.html#cb117-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;%)&quot;</span>), <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">&quot;PC2 (&quot;</span>, pvar[<span class="dv">2</span>], <span class="st">&quot;%)&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-97-1.png" width="672"  /></p>
 <p><strong>Some important points for the <code>biplot()</code> function</strong>:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong><code>biplot()</code></strong> allows different scaling options to preserve either the Euclidean distance (in multidimensional space) among objects (sites), or the correlations/covariances between variables (species). To learn more, please refer to the <a href="!https://rdrr.io/rforge/vegan/man/biplot.rda.html">function description</a> or these online tutorials: <a href="!https://r.qcbs.ca/workshop09/book-en/principal-component-analysis.html#condensing-data-with-principal-component-analysis">QCBS workshop - Unconstrained Ordination Scaling</a>; <a href="!https://www.flutterbys.com.au/stats/tut/tut14.2.html">Tutorial 14.2 - Principle Component Analysis (PCA)</a>.</p></li>
@@ -460,13 +454,13 @@ code span.wa { font-style: italic; } /* Warning */
 <p>The produced biplot in PCA represents well the distance among objects, but fails to represent the whole variation dimensions of the ordination space. Unlike PCA, non-metric multidimensional scaling (nMDS) does not to preserve the exact dissimilarities (distance) among objects in an ordination plot, instead it represents as well as possible the ordering relationships among objects in a small and specified number of axes.</p>
 <p>In other words, the goal of nMDS is to represent the original position of samples in multidimensional space as accurately as possible using a reduced number of dimensions.</p>
 <p>We can use the <strong><code>metaMDS()</code></strong> function in the vegan package to conduct non-metric multidimensional scaling in R. In addition to the input dataframe, this function also requires us to specify the distance measure <code>distance = ?</code> and number of reduced dimensions <code>k = ?</code>.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="multivariate-analysis.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Run nMDS</span></span>
-<span id="cb108-2"><a href="multivariate-analysis.html#cb108-2" aria-hidden="true" tabindex="-1"></a>nmds.ham <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(ham.multi[, <span class="dv">4</span><span class="sc">:</span><span class="dv">9</span>], <span class="at">distance =</span> <span class="st">&quot;bray&quot;</span>, <span class="at">k =</span> <span class="dv">2</span>, </span>
-<span id="cb108-3"><a href="multivariate-analysis.html#cb108-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">trace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb108-4"><a href="multivariate-analysis.html#cb108-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb108-5"><a href="multivariate-analysis.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Stress</span></span>
-<span id="cb108-6"><a href="multivariate-analysis.html#cb108-6" aria-hidden="true" tabindex="-1"></a>nmds.ham<span class="sc">$</span>stress</span></code></pre></div>
-<pre><code>[1] 0.136086</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="multivariate-analysis.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Run nMDS</span></span>
+<span id="cb118-2"><a href="multivariate-analysis.html#cb118-2" aria-hidden="true" tabindex="-1"></a>nmds.ham <span class="ot">&lt;-</span> <span class="fu">metaMDS</span>(ham.multi[, <span class="dv">4</span><span class="sc">:</span><span class="dv">9</span>], <span class="at">distance =</span> <span class="st">&quot;bray&quot;</span>, <span class="at">k =</span> <span class="dv">2</span>, </span>
+<span id="cb118-3"><a href="multivariate-analysis.html#cb118-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">trace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb118-4"><a href="multivariate-analysis.html#cb118-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-5"><a href="multivariate-analysis.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Stress</span></span>
+<span id="cb118-6"><a href="multivariate-analysis.html#cb118-6" aria-hidden="true" tabindex="-1"></a>nmds.ham<span class="sc">$</span>stress</span></code></pre></div>
+<pre><code>[1] 0.136</code></pre>
 <p>From the nMDS results, we can extract the <strong>stress</strong> parameter. Stress identifies how well points fit within the specified number of dimensions.</p>
 <p><em>A good rule of thumb for stress:</em></p>
 <ul>
@@ -478,29 +472,29 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="shepard-plot" class="section level3 hasAnchor" number="7.3.1">
 <h3><span class="header-section-number">7.3.1</span> Shepard Plot<a href="multivariate-analysis.html#shepard-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can use a Shepard plot to learn about the distortion of representation. On the x-axis, it plots the original dissimilarity (original distances in full dimensions). On the y-axis, it plots the distances in the reduced dimensional space. Ideally, a really accurate dimension reduction will produce a straight line.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="multivariate-analysis.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Shepard plot</span></span>
-<span id="cb110-2"><a href="multivariate-analysis.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stressplot</span>(nmds.ham, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;Shepard plot&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-92-1.png" width="672"  /></p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="multivariate-analysis.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Shepard plot</span></span>
+<span id="cb120-2"><a href="multivariate-analysis.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stressplot</span>(nmds.ham, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;Shepard plot&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="672"  /></p>
 </div>
 <div id="plot-ordination-for-nmds" class="section level3 hasAnchor" number="7.3.2">
 <h3><span class="header-section-number">7.3.2</span> Plot ordination for nMDS<a href="multivariate-analysis.html#plot-ordination-for-nmds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>No we can plot the ordination for nMDS, just like for PCA in the previous sections. The steps exactly the same. We use <strong><code>ordiplot()</code></strong> to create an empty canvas first, then use <strong><code>points()</code></strong> to add samples/variables. Additionally, we would like to represent species scores with arrows. This step can only be done manually by extracted the species scores using <strong><code>scores(display = "species")</code></strong>, and draw arrows using <strong><code>arrows()</code></strong> function.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="multivariate-analysis.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Create empty canvas</span></span>
-<span id="cb111-2"><a href="multivariate-analysis.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordiplot</span>(nmds.ham, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;nMDS Ordination&quot;</span>)</span>
-<span id="cb111-3"><a href="multivariate-analysis.html#cb111-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-4"><a href="multivariate-analysis.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Add points and legends</span></span>
-<span id="cb111-5"><a href="multivariate-analysis.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(nmds.ham, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">pch =</span> <span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season) <span class="sc">+</span> </span>
-<span id="cb111-6"><a href="multivariate-analysis.html#cb111-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">14</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)[<span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season)], <span class="at">cex =</span> <span class="dv">1</span>)  <span class="co"># add sites</span></span>
-<span id="cb111-7"><a href="multivariate-analysis.html#cb111-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="at">legend =</span> <span class="fu">unique</span>(ham.multi<span class="sc">$</span>season), <span class="at">pch =</span> <span class="fu">as.numeric</span>(<span class="fu">unique</span>(ham.multi<span class="sc">$</span>season)) <span class="sc">+</span> </span>
-<span id="cb111-8"><a href="multivariate-analysis.html#cb111-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">14</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">cex =</span> <span class="dv">1</span>)  <span class="co"># add legend</span></span>
-<span id="cb111-9"><a href="multivariate-analysis.html#cb111-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-10"><a href="multivariate-analysis.html#cb111-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Add species scores manually</span></span>
-<span id="cb111-11"><a href="multivariate-analysis.html#cb111-11" aria-hidden="true" tabindex="-1"></a>species_scores <span class="ot">&lt;-</span> <span class="fu">scores</span>(nmds.ham, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>)</span>
-<span id="cb111-12"><a href="multivariate-analysis.html#cb111-12" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">0</span>, <span class="dv">0</span>, species_scores[, <span class="dv">1</span>], species_scores[, <span class="dv">2</span>], <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, </span>
-<span id="cb111-13"><a href="multivariate-analysis.html#cb111-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">length =</span> <span class="fl">0.1</span>)  <span class="co"># draw arrow from (0,0)</span></span>
-<span id="cb111-14"><a href="multivariate-analysis.html#cb111-14" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(species_scores[, <span class="dv">1</span>], species_scores[, <span class="dv">2</span>], <span class="at">labels =</span> <span class="fu">rownames</span>(species_scores), </span>
-<span id="cb111-15"><a href="multivariate-analysis.html#cb111-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">pos =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-93-1.png" width="672"  /></p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="multivariate-analysis.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Create empty canvas</span></span>
+<span id="cb121-2"><a href="multivariate-analysis.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ordiplot</span>(nmds.ham, <span class="at">type =</span> <span class="st">&quot;n&quot;</span>, <span class="at">main =</span> <span class="st">&quot;nMDS Ordination&quot;</span>)</span>
+<span id="cb121-3"><a href="multivariate-analysis.html#cb121-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-4"><a href="multivariate-analysis.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Add points and legends</span></span>
+<span id="cb121-5"><a href="multivariate-analysis.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(nmds.ham, <span class="at">display =</span> <span class="st">&quot;sites&quot;</span>, <span class="at">pch =</span> <span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season) <span class="sc">+</span> </span>
+<span id="cb121-6"><a href="multivariate-analysis.html#cb121-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">14</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)[<span class="fu">as.numeric</span>(ham.multi<span class="sc">$</span>season)], <span class="at">cex =</span> <span class="dv">1</span>)  <span class="co"># add sites</span></span>
+<span id="cb121-7"><a href="multivariate-analysis.html#cb121-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="at">legend =</span> <span class="fu">unique</span>(ham.multi<span class="sc">$</span>season), <span class="at">pch =</span> <span class="fu">as.numeric</span>(<span class="fu">unique</span>(ham.multi<span class="sc">$</span>season)) <span class="sc">+</span> </span>
+<span id="cb121-8"><a href="multivariate-analysis.html#cb121-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">14</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">cex =</span> <span class="dv">1</span>)  <span class="co"># add legend</span></span>
+<span id="cb121-9"><a href="multivariate-analysis.html#cb121-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-10"><a href="multivariate-analysis.html#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Add species scores manually</span></span>
+<span id="cb121-11"><a href="multivariate-analysis.html#cb121-11" aria-hidden="true" tabindex="-1"></a>species_scores <span class="ot">&lt;-</span> <span class="fu">scores</span>(nmds.ham, <span class="at">display =</span> <span class="st">&quot;species&quot;</span>)</span>
+<span id="cb121-12"><a href="multivariate-analysis.html#cb121-12" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">0</span>, <span class="dv">0</span>, species_scores[, <span class="dv">1</span>], species_scores[, <span class="dv">2</span>], <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, </span>
+<span id="cb121-13"><a href="multivariate-analysis.html#cb121-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">length =</span> <span class="fl">0.1</span>)  <span class="co"># draw arrow from (0,0)</span></span>
+<span id="cb121-14"><a href="multivariate-analysis.html#cb121-14" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(species_scores[, <span class="dv">1</span>], species_scores[, <span class="dv">2</span>], <span class="at">labels =</span> <span class="fu">rownames</span>(species_scores), </span>
+<span id="cb121-15"><a href="multivariate-analysis.html#cb121-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">pos =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-100-1.png" width="672"  /></p>
 </div>
 </div>
 <div id="other-resources" class="section level2 hasAnchor" number="7.4">

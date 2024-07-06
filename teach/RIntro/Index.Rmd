@@ -19,6 +19,7 @@ description: "Building Skills in Quantitative Biology"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE, echo=FALSE, comment="",fig.pos = "H", out.extra = "")
 soln=FALSE
+options(width = 500)
 ```
 
 
