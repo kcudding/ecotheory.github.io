@@ -110,10 +110,7 @@ pca.ham <- rda(ham.multi[,4:9], scale = TRUE) #subset for all continuous variabl
 
 #### Try it now: {-}
 
-Subset a new dataframe containing the same set of variables from station HH6, and run a PCA with this data.
-
-1. How many samples (rows) do we have in this new dataframe?
-2. What is the cumulative variance explained by the first two PCs?
+Subset a new dataset containing the same set of variables from station HH6, and run a standardized PCA with this data.
 
 ```{r, echo=soln, eval=TRUE}
 ## Select the variables interested
@@ -133,8 +130,11 @@ colnames(ham.yourmulti) <- c("area","season","station","daphnia","column.temp",
 newpca.ham <- rda(ham.yourmulti[,4:9], scale = TRUE)
 ```
 
+1. How many samples (rows) do we have in this new dataframe?
+2. What is the cumulative variance explained by the first two PCs?
+
 Answers:
-```{r, echo=soln, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE}
 # How many samples in the new dataframe
 length(ham.yourmulti$area)
 
@@ -174,7 +174,7 @@ Now, let's determine how many principle components to retain for further analysi
 screeplot(pca.ham, type = ("lines"), main = "Screeplot", pch = 16, cex = 1)
 ```
 
-Meanwhile, we can also look at the proportional variance explained by each principle component. Recall that such information is available in the **`summary()`** of our PCA results. We see the first two PCs together explain roughly 77% of the total variance in this dataset. Along with the screeplot, we are confident that the first two PC are sufficient enough to represent our data.
+Meanwhile, we can also look at the proportional variance explained by each principle component. Recall that such information is available in the **`summary()`** of our PCA results. We see the first two PCs together explain roughly 76.5% of the total variance in this dataset. Along with the screeplot, we are confident that the first two PC are sufficient enough to represent our data.
 
 
 ### Plot ordination for PCA
@@ -244,7 +244,7 @@ biplot(pca.ham,
 
 **Some important points for the `biplot()` function**:
 
-1. **`biplot()`** allows different scaling options to preserve either the Euclidean distance (in multidimensional space) among objects (sites), or the correlations/covariances between variables (species). To learn more, please refer to the [function description](!https://rdrr.io/rforge/vegan/man/biplot.rda.html) or these online tutorials: [QCBS workshop - Unconstrained Ordination Scaling](!https://r.qcbs.ca/workshop09/book-en/principal-component-analysis.html#condensing-data-with-principal-component-analysis); [Tutorial 14.2 - Principle Component Analysis (PCA)](!https://www.flutterbys.com.au/stats/tut/tut14.2.html).
+1. **`biplot()`** allows different scaling options to preserve either the Euclidean distance (in multidimensional space) among objects (sites), or the correlations/covariances between variables (species). To learn more, please refer to the [function description](https://rdrr.io/rforge/vegan/man/biplot.rda.html) or these online tutorials: [QCBS workshop - Unconstrained Ordination Scaling](https://r.qcbs.ca/workshop09/book-en/principal-component-analysis.html#condensing-data-with-principal-component-analysis); [Tutorial 14.2 - Principle Component Analysis (PCA)](https://www.flutterbys.com.au/stats/tut/tut14.2.html).
 
 2. **`biplot()`** can also be used to show only the samples or variables, by setting `display = "sites"` or `display = "species"`. However, it does not allow further customization (such as color samples depending on a grouping factor). This is why we introduce the slightly more complicated **`plot()`** method in the previous sections.
 
@@ -256,7 +256,7 @@ As we discussed earlier, PCA is a linear transformation method. It relies on the
 
 Unlike PCA, nMDS does not rely on the Euclidean distance. Instead, you can choose what distance measure to use. A few common measures include Jaccard for biography data or Bray-Curtis for abundance data. Dissimilarity is calculated using the distance measure for each pair of observations. These observations/points are then placed in ordination space and arranged so that the rank order of dissimilarities is reproduced as best as possible in the reduced space.
 
-In other words, the goal of nMDS is to represent the original position of samples in multidimensional space as accurately as possible using a reduced number of dimensions.
+**In other words, the goal of nMDS is to represent the original position of samples in multidimensional space as accurately as possible using a reduced number of dimensions.**
 
 We can use the **`metaMDS()`** function in the vegan package to conduct non-metric multidimensional scaling in R. In addition to the input dataframe, this function also requires us to specify the distance measure `distance = ?` and number of reduced dimensions `k = ?`.
 
