@@ -23,20 +23,17 @@ To build and interpret a multiple linear regression model:
 
 #### Try it now: {-} 
 
-*Before starting the coding process: There are two necessary packages readxl and car for this section. If you haven't loaded these packages, please load them now so they won't cause errors in the following sections*
+*Before starting the coding process: There are one necessary package car for this section. If you haven't loaded this package, please load it now so it won't cause errors in the following sections*
 
-```{r mlrm load package, warning=FALSE, message=FALSE}
-
-#Loading Packages
-library("readxl")
+```{r mlrm load package, echo=TRUE, warning=FALSE, message=FALSE}
+#Loading Package
 library("car")
 ```
 ```{r include=FALSE}
+library("readxl")
 ham <- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
 
 ```
-
-*Note: I hide the warnings from this code chunk because loading packages give out a lot of warnings. If you want to see those warnings, delete `warning=FALSE`. *
 
 For this and following sections, we will be using 3 predictor variables (water level, dissolved inorganic carbon amount and bottom hypoxia) and 1 response variable (total zooplankton) from the Hamilton Harbour AOC project dataset. 
 
@@ -47,9 +44,6 @@ So, we need to separate our selected variables from the complete dataset:
 multi_data<-ham[,c(14,16,108,93)]
 #Label each column of our new dataset
 colnames(multi_data)<-c("waterlevel","DIC","bottomhypoxia","totalzoop")
-
-#remove NAs
-multi_data<-na.omit(multi_data)
 ```
 
 ## Data preparation
