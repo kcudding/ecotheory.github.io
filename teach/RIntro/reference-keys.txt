@@ -35,9 +35,9 @@ get-model-predictions-and-confidence-intervals
 plot-the-data-and-predictions-1
 common-mistakes
 references-and-resources
-multiple-linear-regression-model
+multiple-linear-regression
 introduction-1
-what-is-multiple-linear-regression-model
+what-is-multiple-linear-regression
 recipe-for-multiple-linear-regression-model-in-r
 data-preparation
 check-data-type
@@ -67,9 +67,10 @@ r-resources
 multivariate-analysis
 introduction-to-multivariate-analysis
 principle-component-analysis-pca
+why-should-we-use-pca
 correlation-examination
 pca-with-standardized-data
-extract-samples-and-variables-in-new-ordination-system
+extract-samples-and-variables-scores-in-new-ordination-system
 screeplot
 plot-ordination-for-pca
 non-metric-multidimensional-scaling-nmds
