@@ -127,7 +127,7 @@ And the multiple predictors aspect brings in one more assumption:
 
 4. **No multicollinearity**. The independent variables should be independent of each other. 
 
-### Evaluate assumptions
+### Evaluate model assumptions
 
 I found it much easier to build the model first then check the assumptions as we can utilize these auto-generated model diagnosis plots from the **lm()** function. Just like in the simple linear regression model, these plots can be called by simply run `plot(model_name)`. Let's try to do this: 
 
