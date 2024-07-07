@@ -11,13 +11,13 @@ $$\hat{y}=\hat{\beta_0}+\hat{\beta_1}x_1+\hat{\beta_2}x_2+\hat{\beta_3}x_3...+\h
 
 This model is an extension of the previously introduced single-variate linear regression model, both mathematically speaking and in the sense of building it in R.  
 
-### Recipe for multiple linear regression model in R
+### Recipe for multiple linear regression in R
 
 To build and interpret a multiple linear regression model:
 
 - First, we will start from **preparing data for building model**. We will select and check our variables of interest in [Data preparation]. The characteristics of our data might affect the subsequent model building and evaluation process.  
 
-- **Once we prepared the data, we can start to build the actual model**. The standard R package *stats* provides the simplest way to do single and multiple linear regression through the function **lm()**. We will introduce the detailed usage of this function for a multiple linear regression in [Model building]. 
+- **Once we prepared the data, we can start to build the actual model**. The standard R package *stats* provides the simplest way to do simple and multiple linear regression through the function **lm()**. We will introduce the detailed usage of this function for multiple linear regression in [Model building]. 
 
 - At the end, **we examine our model and analyze the presented relationships** between the predictors and the response. An entire section ([Model output]) will be dedicated to introducing ways to interpret the model output and to evaluate the model based on all the assumptions.
 
@@ -96,7 +96,7 @@ multi_data$bottomhypoxia<-as.factor(multi_data$bottomhypoxia)
 
 ## Model building
 
-Generating the multiple linear regression model itself is similar to the single variable model and is very simple once we prepared our data. Simply adding a + sign between predictor variables to include more than one variable in your model. So, instead of `lm(response ~ predictor, data = dataframe)`, we are now using `lm(response ~ predictor 1 + predictor 2 ..., data = dataframe)`
+Generating a multiple linear regression model itself is similar to the previously introduced single variable model and is very simple once we prepared our data. Simply adding a + sign between predictor variables to include more than one variable in your model. So, instead of `lm(response ~ predictor, data = dataframe)`, we are now using `lm(response ~ predictor 1 + predictor 2 ..., data = dataframe)`
 
 #### Try it now: {-}  
 
@@ -115,7 +115,7 @@ multi_model<-lm(totalzoop~waterlevel+DIC+bottomhypoxia, data=multi_data)
 
 ### Model assumptions
 
-Just like the simple linear regression model, the multiple linear regression models come with similar assumptions:
+Just like simple linear regression, multiple linear regression comes with similar assumptions:
 
 1. The predictor variables and the response variable have a **linear relationship** since we are doing a linear regression model.
 
@@ -123,11 +123,11 @@ Just like the simple linear regression model, the multiple linear regression mod
     
 3. **Homoscedasticity** that there exists equal variance in residuals. 
 
-And the multiple predictors aspect in this model brings in one more assumption: 
+And the multiple predictors aspect brings in one more assumption: 
 
 4. **No multicollinearity**. The independent variables should be independent of each other. 
 
-### Evaluate model assumptions
+### Evaluate assumptions
 
 I found it much easier to build the model first then check the assumptions as we can utilize these auto-generated model diagnosis plots from the **lm()** function. Just like in the simple linear regression model, these plots can be called by simply run `plot(model_name)`. Let's try to do this: 
 
@@ -144,7 +144,7 @@ plot()
 plot(multi_model)
 ```
 
-You should see four diagnosis plots generated:  *Residuals vs Fitted plot*, *Normal Q-Q plot*, *Scale-Location plot*, and *The Residuals vs Leverage plot*. As in the simple linear regression model, these plots can help us determine whether the first three of the four assumptions are met for our model. 
+You should see four diagnosis plots generated:  *Residuals vs Fitted plot*, *Normal Q-Q plot*, *Scale-Location plot*, and *The Residuals vs Leverage plot*. These plots can help us evaluate whether the first three of the four assumptions are met for our model. 
 
 The last assumption, **Multicollinearity**, can be checked by the following several ways depending on the data characteristics: 
 
