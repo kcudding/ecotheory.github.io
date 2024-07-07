@@ -1,25 +1,25 @@
 
-# Multiple Linear Regression Model
+# Multiple Linear Regression
 
 ## Introduction 
 
-### What is multiple linear regression model
+### What is multiple linear regression 
 
-Multiple linear regression model allows using multiple predictor variables to predict a single response variable, as in this equation:  
+A multiple linear regression model uses multiple predictor variables to predict a single response variable, as in this equation:  
 
-$$\hat{y}=\hat{a}x_1+\hat{b}x_2+\hat{c}x_3...+\hat{z}$$
+$$\hat{y}=\hat{\beta_0}+\hat{\beta_1}x_1+\hat{\beta_2}x_2+\hat{\beta_3}x_3...+\hat{\epsilon}$$
 
-It's basically an extension of the previously introduced single-variate linear regression model, both mathematically speaking and in the sense of building them in R.  
+This model is an extension of the previously introduced single-variate linear regression model, both mathematically speaking and in the sense of building it in R.  
 
 ### Recipe for multiple linear regression model in R
 
 To build and interpret a multiple linear regression model:
 
-- First, we will start from **preparing data for building model**. We will select and check our variables of interests in [Data preparation]. The characteristics of our data might affect the subsequent model building and evaluation process.  
+- First, we will start from **preparing data for building model**. We will select and check our variables of interest in [Data preparation]. The characteristics of our data might affect the subsequent model building and evaluation process.  
 
-- **Once we prepared the data, we can start to build the actual model**. The standard R package *stats* provides the simplest way to do single and multiple linear regression model through the function **lm()**. We will introduce the detailed usage of this function for multiple linear regression model in [Model building]. 
+- **Once we prepared the data, we can start to build the actual model**. The standard R package *stats* provides the simplest way to do single and multiple linear regression through the function **lm()**. We will introduce the detailed usage of this function for a multiple linear regression in [Model building]. 
 
-- At the end, **we examine our model and analyze the presented relationships** between the predictors and the response. An entire section ([Model output]) will be dedicated in introducing ways to interpret the model output and to evaluate the model based on all the assumptions multiple linear regression model made. 
+- At the end, **we examine our model and analyze the presented relationships** between the predictors and the response. An entire section ([Model output]) will be dedicated to introducing ways to interpret the model output and to evaluate the model based on all the assumptions.
 
 #### Try it now: {-} 
 

@@ -349,7 +349,7 @@ Run the code by selecting it and hitting *Run* in the menu or command-enter (Mac
 
 ```{r, echo=TRUE}
 # create a new "decade" factor variable
-sub2_ham$decade <- cut(sub2_ham$year, breaks=c(2000,2010,2020,2030), labels=c(2000, 2010, 2020))
+sub2_ham$decade <- cut(sub2_ham$year, breaks=c(2000,2010,2020,2030), labels=c("2000", "2010", "2020"))
 
 # plot the data using the formula notation and data= option
 # plot the data with colour by decade and indicate symbol type
