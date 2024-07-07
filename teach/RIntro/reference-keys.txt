@@ -1,4 +1,4 @@
-tab:unnamed-chunk-17
+tab:unnamed-chunk-18
 welcome-to-our-workshop
 learning-objectives
 get-ready-for-the-workshop
@@ -21,7 +21,10 @@ functions-in-r
 summarizing-data
 plotting-data
 the-editorsource-window
+other-ways-of-plotting
 t-test-and-boxplot
+a-note-about-base-r-vs-tidyverse
+other-resources
 linear-regression
 introduction
 linear-regression-using-water-level-and-total-zooplankton
@@ -66,9 +69,10 @@ introduction-to-multivariate-analysis
 principle-component-analysis-pca
 correlation-examination
 pca-with-standardized-data
+extract-samples-and-variables-in-new-ordination-system
 screeplot
 plot-ordination-for-pca
 non-metric-multidimensional-scaling-nmds
 shepard-plot
 plot-ordination-for-nmds
-other-resources
+other-resources-1

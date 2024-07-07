@@ -1,0 +1,11 @@
+rmd_files: [
+  "index.Rmd",
+  "DFOgetread.Rmd",
+  "DFOworkshop.Rmd",
+  "HHworkshop.Rmd",
+  "Multiple_LM.Rmd",
+  "logistic_regresson.Rmd",
+  "multivariate_analysis.Rmd"
+  ]
+delete_merged_file: true
+output_dir: "docs"

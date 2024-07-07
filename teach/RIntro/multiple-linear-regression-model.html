@@ -148,7 +148,12 @@ code span.wa { font-style: italic; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="basic-r.html"><a href="basic-r.html#plotting-data"><i class="fa fa-check"></i><b>3.4</b> Plotting data</a></li>
 <li class="chapter" data-level="3.5" data-path="basic-r.html"><a href="basic-r.html#the-editorsource-window"><i class="fa fa-check"></i><b>3.5</b> The Editor(Source) window</a></li>
-<li class="chapter" data-level="3.6" data-path="basic-r.html"><a href="basic-r.html#t-test-and-boxplot"><i class="fa fa-check"></i><b>3.6</b> T-test and boxplot</a></li>
+<li class="chapter" data-level="3.6" data-path="basic-r.html"><a href="basic-r.html#other-ways-of-plotting"><i class="fa fa-check"></i><b>3.6</b> Other ways of plotting</a></li>
+<li class="chapter" data-level="3.7" data-path="basic-r.html"><a href="basic-r.html#t-test-and-boxplot"><i class="fa fa-check"></i><b>3.7</b> T-test and boxplot</a></li>
+<li class="chapter" data-level="3.8" data-path="basic-r.html"><a href="basic-r.html#a-note-about-base-r-vs-tidyverse"><i class="fa fa-check"></i><b>3.8</b> A note about base R vs Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="basic-r.html"><a href="basic-r.html#other-resources"><i class="fa fa-check"></i><b>3.8.1</b> Other resources</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear regression</a>
 <ul>
@@ -216,15 +221,16 @@ code span.wa { font-style: italic; } /* Warning */
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#correlation-examination"><i class="fa fa-check"></i><b>7.2.1</b> Correlation examination</a></li>
 <li class="chapter" data-level="7.2.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#pca-with-standardized-data"><i class="fa fa-check"></i><b>7.2.2</b> PCA with standardized data</a></li>
-<li class="chapter" data-level="7.2.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#screeplot"><i class="fa fa-check"></i><b>7.2.3</b> Screeplot</a></li>
-<li class="chapter" data-level="7.2.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#plot-ordination-for-pca"><i class="fa fa-check"></i><b>7.2.4</b> Plot ordination for PCA</a></li>
+<li class="chapter" data-level="7.2.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#extract-samples-and-variables-in-new-ordination-system"><i class="fa fa-check"></i><b>7.2.3</b> Extract samples and variables in new ordination system</a></li>
+<li class="chapter" data-level="7.2.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#screeplot"><i class="fa fa-check"></i><b>7.2.4</b> Screeplot</a></li>
+<li class="chapter" data-level="7.2.5" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#plot-ordination-for-pca"><i class="fa fa-check"></i><b>7.2.5</b> Plot ordination for PCA</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#non-metric-multidimensional-scaling-nmds"><i class="fa fa-check"></i><b>7.3</b> Non-metric multidimensional scaling (nMDS)</a>
 <ul>
 <li class="chapter" data-level="7.3.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#shepard-plot"><i class="fa fa-check"></i><b>7.3.1</b> Shepard Plot</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#plot-ordination-for-nmds"><i class="fa fa-check"></i><b>7.3.2</b> Plot ordination for nMDS</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#other-resources"><i class="fa fa-check"></i><b>7.4</b> Other resources</a></li>
+<li class="chapter" data-level="7.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#other-resources-1"><i class="fa fa-check"></i><b>7.4</b> Other resources</a></li>
 </ul></li>
 </ul>
 
@@ -261,20 +267,20 @@ code span.wa { font-style: italic; } /* Warning */
 <li><p><strong>Once we prepared the data, we can start to build the actual model</strong>. The standard R package <em>stats</em> provides the simplest way to do single and multiple linear regression model through the function <strong>lm()</strong>. We will introduce the detailed usage of this function for multiple linear regression model in <a href="multiple-linear-regression-model.html#model-building">Model building</a>.</p></li>
 <li><p>At the end, <strong>we examine our model and analyze the presented relationships</strong> between the predictors and the response. An entire section (<a href="multiple-linear-regression-model.html#model-output">Model output</a>) will be dedicated in introducing ways to interpret the model output and to evaluate the model based on all the assumptions multiple linear regression model made.</p></li>
 </ul>
-<div id="try-it-now-27" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="multiple-linear-regression-model.html#try-it-now-27" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-26" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="multiple-linear-regression-model.html#try-it-now-26" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><em>Before starting the coding process: There are two necessary packages readxl and car for this section. If you haven’t loaded these packages, please load them now so they won’t cause errors in the following sections</em></p>
 <p><em>Note: I hide the warnings from this code chunk because loading packages give out a lot of warnings. If you want to see those warnings, delete <code>warning=FALSE</code>. </em></p>
 <p>For this and following sections, we will be using 3 predictor variables (water level, dissolved inorganic carbon amount and bottom hypoxia) and 1 response variable (total zooplankton) from the Hamilton Harbour AOC project dataset.</p>
 <p>So, we need to separate our selected variables from the complete dataset:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="multiple-linear-regression-model.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select and combine variables of interests</span></span>
-<span id="cb56-2"><a href="multiple-linear-regression-model.html#cb56-2" aria-hidden="true" tabindex="-1"></a>multi_data <span class="ot">&lt;-</span> ham[, <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">108</span>, <span class="dv">93</span>)]</span>
-<span id="cb56-3"><a href="multiple-linear-regression-model.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Label each column of our new dataset</span></span>
-<span id="cb56-4"><a href="multiple-linear-regression-model.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(multi_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;waterlevel&quot;</span>, <span class="st">&quot;DIC&quot;</span>, <span class="st">&quot;bottomhypoxia&quot;</span>, </span>
-<span id="cb56-5"><a href="multiple-linear-regression-model.html#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;totalzoop&quot;</span>)</span>
-<span id="cb56-6"><a href="multiple-linear-regression-model.html#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-7"><a href="multiple-linear-regression-model.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># remove NAs</span></span>
-<span id="cb56-8"><a href="multiple-linear-regression-model.html#cb56-8" aria-hidden="true" tabindex="-1"></a>multi_data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(multi_data)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="multiple-linear-regression-model.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select and combine variables of interests</span></span>
+<span id="cb53-2"><a href="multiple-linear-regression-model.html#cb53-2" aria-hidden="true" tabindex="-1"></a>multi_data <span class="ot">&lt;-</span> ham[, <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">108</span>, <span class="dv">93</span>)]</span>
+<span id="cb53-3"><a href="multiple-linear-regression-model.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Label each column of our new dataset</span></span>
+<span id="cb53-4"><a href="multiple-linear-regression-model.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(multi_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;waterlevel&quot;</span>, <span class="st">&quot;DIC&quot;</span>, <span class="st">&quot;bottomhypoxia&quot;</span>, </span>
+<span id="cb53-5"><a href="multiple-linear-regression-model.html#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;totalzoop&quot;</span>)</span>
+<span id="cb53-6"><a href="multiple-linear-regression-model.html#cb53-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="multiple-linear-regression-model.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co"># remove NAs</span></span>
+<span id="cb53-8"><a href="multiple-linear-regression-model.html#cb53-8" aria-hidden="true" tabindex="-1"></a>multi_data <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(multi_data)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -285,7 +291,7 @@ code span.wa { font-style: italic; } /* Warning */
 <p><strong>Continuous variable</strong>: data that are measured and ordered. It can be any specific value within a certain numerical range.</p>
 </blockquote>
 <p>For example:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="multiple-linear-regression-model.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(multi_data<span class="sc">$</span>waterlevel)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="multiple-linear-regression-model.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(multi_data<span class="sc">$</span>waterlevel)</span></code></pre></div>
 <pre><code>
 74.34 74.42  74.5 74.54 74.55 74.56 74.59  74.6 74.65  74.7 74.71 74.74 74.78 74.79 74.81 74.84 74.85 74.86 74.88  74.9 74.91 74.92 74.95 74.96 74.98 75.02 75.03 75.05 75.06 75.08 75.09  75.1 75.12 75.14 75.16 75.17 75.18 75.19 75.24  75.3 75.43 75.53 75.69  75.8 
     2     2     4     6     3     4     3     6     4     8     4     4    10    10     7    11     5     6     4     4     6     2    12     4     4     8     4     4     4     1    12     2     7     5     6     4     2     8     2     4     1     2     2     4 </code></pre>
@@ -293,24 +299,24 @@ code span.wa { font-style: italic; } /* Warning */
 <p><strong>Categorical variable</strong>: data that is divided into categories with distinct label. These data can’t be ordered or measured as continuous variables.</p>
 </blockquote>
 <p>For example:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="multiple-linear-regression-model.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(multi_data<span class="sc">$</span>bottomhypoxia)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="multiple-linear-regression-model.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(multi_data<span class="sc">$</span>bottomhypoxia)</span></code></pre></div>
 <pre><code>
   n   y 
 116 101 </code></pre>
 <div id="check-data-type" class="section level3 hasAnchor" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Check data type<a href="multiple-linear-regression-model.html#check-data-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Because of the intrinsic differences between continuous and categorical variables, we always want to check whether our data is in the correct data type before proceeding to the next step. Sometimes the data is not read in as the correct data type, and other times data types got altered during previous data modification procedures. We can check data type easily using the <code>class()</code> function, for example:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="multiple-linear-regression-model.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(multi_data<span class="sc">$</span>waterlevel)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="multiple-linear-regression-model.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(multi_data<span class="sc">$</span>waterlevel)</span></code></pre></div>
 <pre><code>[1] &quot;numeric&quot;</code></pre>
-<div id="try-it-now-28" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="multiple-linear-regression-model.html#try-it-now-28" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-27" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="multiple-linear-regression-model.html#try-it-now-27" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s continue to check the other three columns of our data frame using the same code:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="multiple-linear-regression-model.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the class() function to check for the other columns:</span></span>
-<span id="cb63-2"><a href="multiple-linear-regression-model.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="multiple-linear-regression-model.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the class() function to check for the other columns:</span></span>
+<span id="cb60-2"><a href="multiple-linear-regression-model.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>()</span></code></pre></div>
 <p>The numeric variables are in their correct data type. If we ever want to reset them, we can set the data type to numeric using <strong>as.numeric()</strong>. For our categorical variables, we can transform them into groups/factors using <strong>as.factor()</strong>.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="multiple-linear-regression-model.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set bottom hypoxia column as &#39;factor&#39; data type using</span></span>
-<span id="cb64-2"><a href="multiple-linear-regression-model.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># as.factor(model_name$variable_name)</span></span>
-<span id="cb64-3"><a href="multiple-linear-regression-model.html#cb64-3" aria-hidden="true" tabindex="-1"></a>multi_data<span class="sc">$</span>bottomhypoxia <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(multi_data<span class="sc">$</span>bottomhypoxia)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="multiple-linear-regression-model.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set bottom hypoxia column as &#39;factor&#39; data type using</span></span>
+<span id="cb61-2"><a href="multiple-linear-regression-model.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co"># as.factor(model_name$variable_name)</span></span>
+<span id="cb61-3"><a href="multiple-linear-regression-model.html#cb61-3" aria-hidden="true" tabindex="-1"></a>multi_data<span class="sc">$</span>bottomhypoxia <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(multi_data<span class="sc">$</span>bottomhypoxia)</span></code></pre></div>
 <p><em>Note: As you noticed, the as.xxx() format is used to transform data type directly in R. You can explore some other options on your own, such as as.character(), as.integer()….</em></p>
 </div>
 </div>
@@ -318,13 +324,13 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="model-building" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Model building<a href="multiple-linear-regression-model.html#model-building" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Generating the multiple linear regression model itself is similar to the single variable model and is very simple once we prepared our data. Simply adding a + sign between predictor variables to include more than one variable in your model. So, instead of <code>lm(response ~ predictor, data = dataframe)</code>, we are now using <code>lm(response ~ predictor 1 + predictor 2 ..., data = dataframe)</code></p>
-<div id="try-it-now-29" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="multiple-linear-regression-model.html#try-it-now-29" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-28" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="multiple-linear-regression-model.html#try-it-now-28" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s try to include the two additional predictor variables <code>DIC</code> and <code>bottomhypoxia</code> in our model based on the previous single variate model:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="multiple-linear-regression-model.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the below single variate linear regression model and</span></span>
-<span id="cb65-2"><a href="multiple-linear-regression-model.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># make it a multiple linear regression model: Hint: start by</span></span>
-<span id="cb65-3"><a href="multiple-linear-regression-model.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adding a plus sign and another predictor after water level</span></span>
-<span id="cb65-4"><a href="multiple-linear-regression-model.html#cb65-4" aria-hidden="true" tabindex="-1"></a>multi_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(totalzoop <span class="sc">~</span> waterlevel, <span class="at">data =</span> multi_data)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="multiple-linear-regression-model.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the below single variate linear regression model and</span></span>
+<span id="cb62-2"><a href="multiple-linear-regression-model.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># make it a multiple linear regression model: Hint: start by</span></span>
+<span id="cb62-3"><a href="multiple-linear-regression-model.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="co"># adding a plus sign and another predictor after water level</span></span>
+<span id="cb62-4"><a href="multiple-linear-regression-model.html#cb62-4" aria-hidden="true" tabindex="-1"></a>multi_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(totalzoop <span class="sc">~</span> waterlevel, <span class="at">data =</span> multi_data)</span></code></pre></div>
 </div>
 </div>
 <div id="model-output" class="section level2 hasAnchor" number="5.4">
@@ -345,11 +351,11 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="evaluate-model-assumptions" class="section level3 hasAnchor" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> Evaluate model assumptions<a href="multiple-linear-regression-model.html#evaluate-model-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I found it much easier to build the model first then check the assumptions as we can utilize these auto-generated model diagnosis plots from the <strong>lm()</strong> function. Just like in the simple linear regression model, these plots can be called by simply run <code>plot(model_name)</code>. Let’s try to do this:</p>
-<div id="try-it-now-30" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="multiple-linear-regression-model.html#try-it-now-30" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="multiple-linear-regression-model.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the diagnosis plots that are auto-generated from the</span></span>
-<span id="cb66-2"><a href="multiple-linear-regression-model.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lm() function Using plot(model_name):</span></span>
-<span id="cb66-3"><a href="multiple-linear-regression-model.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>()</span></code></pre></div>
+<div id="try-it-now-29" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="multiple-linear-regression-model.html#try-it-now-29" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="multiple-linear-regression-model.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the diagnosis plots that are auto-generated from the</span></span>
+<span id="cb63-2"><a href="multiple-linear-regression-model.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># lm() function Using plot(model_name):</span></span>
+<span id="cb63-3"><a href="multiple-linear-regression-model.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>()</span></code></pre></div>
 <p>You should see four diagnosis plots generated: <em>Residuals vs Fitted plot</em>, <em>Normal Q-Q plot</em>, <em>Scale-Location plot</em>, and <em>The Residuals vs Leverage plot</em>. As in the simple linear regression model, these plots can help us determine whether the first three of the four assumptions are met for our model.</p>
 <p>The last assumption, <strong>Multicollinearity</strong>, can be checked by the following several ways depending on the data characteristics:</p>
 <ul>
@@ -357,11 +363,11 @@ code span.wa { font-style: italic; } /* Warning */
 <li><p>If we have both continuous and categorical variables in our dataset, the <strong>vif()</strong> function will automatically detect our categorical variables and compute us the generalized vifs.</p></li>
 </ul>
 </div>
-<div id="try-it-now-31" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="multiple-linear-regression-model.html#try-it-now-31" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="multiple-linear-regression-model.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s use vif(model_name) to calculate vif for our</span></span>
-<span id="cb67-2"><a href="multiple-linear-regression-model.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variables</span></span>
-<span id="cb67-3"><a href="multiple-linear-regression-model.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>()</span></code></pre></div>
+<div id="try-it-now-30" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="multiple-linear-regression-model.html#try-it-now-30" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="multiple-linear-regression-model.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s use vif(model_name) to calculate vif for our</span></span>
+<span id="cb64-2"><a href="multiple-linear-regression-model.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variables</span></span>
+<span id="cb64-3"><a href="multiple-linear-regression-model.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>()</span></code></pre></div>
 <p>The result for our variables should look like this:</p>
 <pre><code>   waterlevel           DIC bottomhypoxia 
          1.58          1.78          1.17 </code></pre>
@@ -371,7 +377,7 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="output-interpretation" class="section level3 hasAnchor" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> Output interpretation<a href="multiple-linear-regression-model.html#output-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To access model output, the easiest way is to call the <strong>summary()</strong> method just like the simple linear regression model:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="multiple-linear-regression-model.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(multi_model)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="multiple-linear-regression-model.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(multi_model)</span></code></pre></div>
 <pre><code>
 Call:
 lm(formula = totalzoop ~ waterlevel + DIC + bottomhypoxia, data = multi_data)

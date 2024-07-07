@@ -148,7 +148,12 @@ code span.wa { font-style: italic; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="basic-r.html"><a href="basic-r.html#plotting-data"><i class="fa fa-check"></i><b>3.4</b> Plotting data</a></li>
 <li class="chapter" data-level="3.5" data-path="basic-r.html"><a href="basic-r.html#the-editorsource-window"><i class="fa fa-check"></i><b>3.5</b> The Editor(Source) window</a></li>
-<li class="chapter" data-level="3.6" data-path="basic-r.html"><a href="basic-r.html#t-test-and-boxplot"><i class="fa fa-check"></i><b>3.6</b> T-test and boxplot</a></li>
+<li class="chapter" data-level="3.6" data-path="basic-r.html"><a href="basic-r.html#other-ways-of-plotting"><i class="fa fa-check"></i><b>3.6</b> Other ways of plotting</a></li>
+<li class="chapter" data-level="3.7" data-path="basic-r.html"><a href="basic-r.html#t-test-and-boxplot"><i class="fa fa-check"></i><b>3.7</b> T-test and boxplot</a></li>
+<li class="chapter" data-level="3.8" data-path="basic-r.html"><a href="basic-r.html#a-note-about-base-r-vs-tidyverse"><i class="fa fa-check"></i><b>3.8</b> A note about base R vs Tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="basic-r.html"><a href="basic-r.html#other-resources"><i class="fa fa-check"></i><b>3.8.1</b> Other resources</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>4</b> Linear regression</a>
 <ul>
@@ -216,15 +221,16 @@ code span.wa { font-style: italic; } /* Warning */
 <ul>
 <li class="chapter" data-level="7.2.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#correlation-examination"><i class="fa fa-check"></i><b>7.2.1</b> Correlation examination</a></li>
 <li class="chapter" data-level="7.2.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#pca-with-standardized-data"><i class="fa fa-check"></i><b>7.2.2</b> PCA with standardized data</a></li>
-<li class="chapter" data-level="7.2.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#screeplot"><i class="fa fa-check"></i><b>7.2.3</b> Screeplot</a></li>
-<li class="chapter" data-level="7.2.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#plot-ordination-for-pca"><i class="fa fa-check"></i><b>7.2.4</b> Plot ordination for PCA</a></li>
+<li class="chapter" data-level="7.2.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#extract-samples-and-variables-in-new-ordination-system"><i class="fa fa-check"></i><b>7.2.3</b> Extract samples and variables in new ordination system</a></li>
+<li class="chapter" data-level="7.2.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#screeplot"><i class="fa fa-check"></i><b>7.2.4</b> Screeplot</a></li>
+<li class="chapter" data-level="7.2.5" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#plot-ordination-for-pca"><i class="fa fa-check"></i><b>7.2.5</b> Plot ordination for PCA</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#non-metric-multidimensional-scaling-nmds"><i class="fa fa-check"></i><b>7.3</b> Non-metric multidimensional scaling (nMDS)</a>
 <ul>
 <li class="chapter" data-level="7.3.1" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#shepard-plot"><i class="fa fa-check"></i><b>7.3.1</b> Shepard Plot</a></li>
 <li class="chapter" data-level="7.3.2" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#plot-ordination-for-nmds"><i class="fa fa-check"></i><b>7.3.2</b> Plot ordination for nMDS</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#other-resources"><i class="fa fa-check"></i><b>7.4</b> Other resources</a></li>
+<li class="chapter" data-level="7.4" data-path="multivariate-analysis.html"><a href="multivariate-analysis.html#other-resources-1"><i class="fa fa-check"></i><b>7.4</b> Other resources</a></li>
 </ul></li>
 </ul>
 
@@ -250,10 +256,10 @@ code span.wa { font-style: italic; } /* Warning */
 <p>Our first job today is to use a package to import the data we will be using throughout the workshop. If you have sucessfully installed the library <em>readxl</em>, we can use it to read in the .xlsx file.</p>
 <div id="wheres-my-file" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Where’s my file??<a href="basic-r.html#wheres-my-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To do the import we need the <em>path</em> where the file is located. There are at least three ways to find and import a file in R:</p>
+<p>To do the import we need the <em>path</em> where the file is located. There are at least three ways to find a file in R:</p>
 <ol style="list-style-type: decimal">
 <li>use <strong>file.choose()</strong> to get an interactive menu,</li>
-<li>use the actual path to the file (e.g., “/Users/Kim/Documents/mydata.xlsx”),</li>
+<li>type the actual path to the file (e.g., “/Users/Kim/Documents/mydata.xlsx”) if you know it,</li>
 <li>use <strong>setwd()</strong> to change the current directory to the location of the file</li>
 </ol>
 <div id="try-it-now" class="section level4 unnumbered hasAnchor">
@@ -269,9 +275,9 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="did-the-import-work" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Did the import work??<a href="basic-r.html#did-the-import-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once you have read in the data, it is critically import to check that the import worked properly. Difficulties that can arise from incorrectly formatted files can then be resolved. Problems can include: numeric data being read in as character data, column names being read in as the the first row of data, missing values being coded as something other than NA.</p>
-<p>There are a number of commands to look at the dataset or a portion of it. Four quick methods to check data import:</p>
+<p>There are a number of commands to look at the dataset or a portion of it. Here are four quick methods to check data import:</p>
 <ol style="list-style-type: decimal">
-<li>print the imported dataframe or use <strong>view()</strong>,</li>
+<li>type the name of the variable or use <strong>View()</strong>,</li>
 <li><strong>colnames()</strong>,</li>
 <li><strong>head()</strong> or <strong>tail()</strong>,</li>
 <li><strong>str()</strong></li>
@@ -355,7 +361,7 @@ code span.wa { font-style: italic; } /* Warning */
 </div>
 <div id="try-it-now-3" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Access the Station_Acronym column of the data. Remember, we can also just grab a single column, using the column name to identify it as <strong>mydata$thiscolumn</strong> or <em>mydata[,“thiscolumn”]</em>.</p>
+<p>Access the Station_Acronym column of the data. Remember, we can also just grab a single column, using the column name to identify it as <em>mydata$thiscolumn</em> or <em>mydata[,“thiscolumn”]</em>.</p>
 <p>Next use the as.factor() function to convert this data to factor instead of character. We’ll also use the <strong>levels()</strong> function to see how that worked</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select by column and print the first 6 rows</span></span>
 <span id="cb11-2"><a href="basic-r.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ham<span class="sc">$</span>Station_Acronym)</span></code></pre></div>
@@ -406,7 +412,8 @@ code span.wa { font-style: italic; } /* Warning */
 <p>We can also use conditional statements to access portions of the data. Conditional statements evaluate to TRUE or FALSE. The “==” symbol is used to determine if a variable is equal to some value, while “!=” evaluates is something is not equal. As you might expect we can also use greater than (“&gt;”) or less than (“&lt;”) conditionals.</p>
 <div id="try-it-now-6" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>First check out how the conditional statement produces a logic vector of TRUE and FALSE by entering <em>ham$Station_Acronym==“HH6”</em>. Then use this logical vector to subset the calanoid vector to choose only rows where the Station_Acronym is “HH6” (i.e., only the TRUE items will be included)</p>
+<p>First check out how the conditional statement produces a logic vector of TRUE and FALSE by entering <em>ham$Station_Acronym==“HH6”</em>.</p>
+<p>Then we can use this logical vector to subset the calanoid vector to choose only rows where the Station_Acronym is “HH6” (i.e., only the TRUE items will be included)</p>
 <p>Enter <em>ham$calanoid[ham$Station_Acronym==“HH6”]</em> and examine the data.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-r.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a logical vector using a conditional, and look at</span></span>
 <span id="cb19-2"><a href="basic-r.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the first 6 items</span></span>
@@ -422,13 +429,8 @@ code span.wa { font-style: italic; } /* Warning */
 <p>Use an “&amp;” symbol to indicate that we want the selected data to be from station “HH6” and to be from the 2016.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="basic-r.html#cb23-1" aria-hidden="true" tabindex="-1"></a>ham<span class="sc">$</span>calanoid[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> ham<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>]</span></code></pre></div>
 <pre><code> [1]  64.15  25.26  70.72 142.45  89.27  70.07  32.33  78.56   7.97 120.23  91.17  19.29 104.39</code></pre>
-<p>If we wanted we could use the same conditionals to grab the julian sampling day for these observations, and save the result to new vectors</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="basic-r.html#cb25-1" aria-hidden="true" tabindex="-1"></a>cal_HH6_2016 <span class="ot">=</span> ham<span class="sc">$</span>calanoid[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> ham<span class="sc">$</span>year <span class="sc">==</span> </span>
-<span id="cb25-2"><a href="basic-r.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2016</span>]</span>
-<span id="cb25-3"><a href="basic-r.html#cb25-3" aria-hidden="true" tabindex="-1"></a>jul_cal_HH6_2016 <span class="ot">=</span> ham<span class="sc">$</span>Julian_Day[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb25-4"><a href="basic-r.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    ham<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>]</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-17">Table 3.1: </span>Calanoid data for 2016 at station HH6</caption>
+<caption><span id="tab:unnamed-chunk-18">Table 3.1: </span>Calanoid data for 2016 at station HH6</caption>
 <thead>
 <tr class="header">
 <th align="right">calanoid</th>
@@ -493,7 +495,7 @@ code span.wa { font-style: italic; } /* Warning */
 </div>
 <div id="try-it-now-8" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Access the calanoid data at station “HH6” for 2014</p>
+<p>Now, can you do this on your own? Access the calanoid data at station “HH6” for 2014</p>
 <pre><code> [1]  3.753  4.420  4.472 49.364  7.176  0.838  3.705  6.729  4.091  5.796  1.015  5.420</code></pre>
 </div>
 </div>
@@ -502,37 +504,30 @@ code span.wa { font-style: italic; } /* Warning */
 <h2><span class="header-section-number">3.3</span> Functions in R<a href="basic-r.html#functions-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Next, let’s figure out how to complete some simple calculations with these values, like finding the mean and standard deviation.</p>
 <p>We have already used some functions in R. R contains thousands of functions, and more are being added everyday.</p>
-<p>If you are trying to find a function that does something you need to do, you can use the command apropos(“keyword”) to see if there is a function that contains the keyword in its name.</p>
+<p>If you are trying to find a function that does something you need to do, you can search the help mean either by using ??”keyword phrase” to get R to search function descriptions, our just by using the find function in the help menu.</p>
 <div id="try-it-now-9" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>For example if you wanted to find a function that calculated means you might: type ‘apropos(“mean”)’. What happens?</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="basic-r.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apropos</span>(<span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
-<pre><code> [1] &quot;.colMeans&quot;                     &quot;.rowMeans&quot;                     &quot;colMeans&quot;                      &quot;kmeans&quot;                        &quot;mean&quot;                          &quot;mean_cl_boot&quot;                  &quot;mean_cl_normal&quot;                &quot;mean_mixing_depth_temp_values&quot; &quot;mean_sdl&quot;                      &quot;mean_se&quot;                       &quot;mean.Date&quot;                     &quot;mean.default&quot;                  &quot;mean.difftime&quot;                 &quot;mean.POSIXct&quot;                  &quot;mean.POSIXlt&quot;                 
-[16] &quot;meandist&quot;                      &quot;rowMeans&quot;                      &quot;weighted.mean&quot;                </code></pre>
-<p>One of the listed functions “mean” looks promising. Your next step might be to get more information by typing <em>help(mean)</em> or <em>?mean</em> or <em>example(mean)</em>.</p>
+<p>Got to the help menu and search for “mean”. Read through some of the information. How do we use this function?</p>
+<p>You should see that the function <strong>mean()</strong> works on a vector of numeric data.</p>
 </div>
 <div id="try-it-now-10" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>You should see that the function <strong>mean()</strong> works on a vector of numeric data.</p>
+<p>Use these tools to find a function that calculates standard deviation.</p>
+<p>If the internal help menu lets you down you can also try a search at <a href="http://www.rseek.org/" class="uri">http://www.rseek.org/</a></p>
 </div>
 <div id="try-it-now-11" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Use these tools to find a function that calculates standard deviation. Oh no! What happens?</p>
-<p>Perhaps the function does not contain the keyword in its name, in this case try ??”keyword phrase” to get R to search function descriptions</p>
-<p>If the internal help menu lets you down you can also try a search at <a href="http://www.rseek.org/" class="uri">http://www.rseek.org/</a></p>
-</div>
-<div id="try-it-now-12" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="basic-r.html#try-it-now-12" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Once you have found the function name, use it and the <strong>mean()</strong> to get the mean and standard deviation of calanoid density in 2014.</p>
+<p>Once you have found the function name, use it and the <strong>mean()</strong> to get the mean and standard deviation of calanoid density at station HH6 in 2014.</p>
 <pre><code>[1] 8.06</code></pre>
 <pre><code>[1] 13.1</code></pre>
 </div>
 <div id="summarizing-data" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Summarizing data<a href="basic-r.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Other functions can help with quick data summaries. for example, the <strong>table()</strong> function can be used to take a quick look at the number of sampling dates for each station.</p>
-<div id="try-it-now-13" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="basic-r.html#try-it-now-13" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Other functions can help with quick data summaries. for example, the <strong>table()</strong> function can be used to take a quick look at the number of samples for each station.</p>
+<div id="try-it-now-12" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-12" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use this function on the Station_Acronym column of the data</p>
+<p>I’ve formatted the output, but you should see something roughly like this:</p>
 <table>
 <thead>
 <tr class="header">
@@ -653,8 +648,8 @@ code span.wa { font-style: italic; } /* Warning */
 </table>
 <p>The <strong>summary()</strong> function can also give information about a vector.</p>
 </div>
-<div id="try-it-now-14" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="basic-r.html#try-it-now-14" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="try-it-now-13" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-13" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use the summary function on the “Chl_a_uncorrected” data for site HH258</p>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
     3.1     9.5    12.6    15.0    19.3    70.0      25 </code></pre>
@@ -664,22 +659,24 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="plotting-data" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Plotting data<a href="basic-r.html#plotting-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A quick check of data can also be done with simple plots. for example, let’s see what the Chl_a_uncorrected data by julian day looks like using the <strong>plot()</strong> function.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="basic-r.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x =</span> ham<span class="sc">$</span>Julian_Day)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="basic-r.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x =</span> ham<span class="sc">$</span>Julian_Day)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672"  /></p>
+<div id="try-it-now-14" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-14" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Create this plot</p>
+<p>Of course, this is the data from every station. Let’s just plot data from station HH258, and colour code by sampling year</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="basic-r.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a data subset</span></span>
+<span id="cb30-2"><a href="basic-r.html#cb30-2" aria-hidden="true" tabindex="-1"></a>sub2_ham <span class="ot">=</span> ham[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH258&quot;</span>, ]</span>
+<span id="cb30-3"><a href="basic-r.html#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="basic-r.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the data using the formula notation</span></span>
+<span id="cb30-5"><a href="basic-r.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sub2_ham<span class="sc">$</span>Chl_a_uncorrected <span class="sc">~</span> sub2_ham<span class="sc">$</span>Julian_Day, <span class="at">col =</span> sub2_ham<span class="sc">$</span>year)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672"  /></p>
+</div>
 <div id="try-it-now-15" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-15" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Create this plot</p>
-<p>Of course, this is the data from every station. Let’s just plot station HH258, and colour code by sampling year</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="basic-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a>sub2_ham <span class="ot">=</span> ham[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH258&quot;</span>, ]</span>
-<span id="cb33-2"><a href="basic-r.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> sub2_ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x =</span> sub2_ham<span class="sc">$</span>Julian_Day, </span>
-<span id="cb33-3"><a href="basic-r.html#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> sub2_ham<span class="sc">$</span>year)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672"  /></p>
-</div>
-<div id="try-it-now-16" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="basic-r.html#try-it-now-16" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Create this plot</p>
 <p>Kind of hard to read… I think I want to group the data by decade, and let’s pimp the plot a little. We also need axis labels, a nicer symbol and a legend.</p>
-<p>Wow! That’s a lot of things to do. Time to start saving our code using the Editor window.</p>
+<p>Wow! That’s a lot of things to do. Time to start saving our code using the Editor (or Source) window.</p>
 </div>
 </div>
 <div id="the-editorsource-window" class="section level2 hasAnchor" number="3.5">
@@ -687,69 +684,92 @@ code span.wa { font-style: italic; } /* Warning */
 <p>Previously you could have completed all of these commands in the Console window where R would execute them immediately. Now we’re going to have a bunch of commands, some of which we may want to tweek (e.g., colours). This time, let’s save our code in the Editor or Source window so that it is easy to change and rerun.</p>
 <p><img src="https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/rstudio-panes-labeled.jpeg" /></p>
 <p>We’ll create a new file using the drop down menus. Click <em>File</em> then <em>New File</em>, and then <em>R Script</em>. A blank document will appear in the Editor window is found in the top left of the default R Studio.</p>
-<div id="try-it-now-17" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="basic-r.html#try-it-now-17" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Create a new file, enter the following code, and then save it using the drop down menu or cntrl-s or command-s. Then run the code by selecting it and hitting <em>Run</em> in the menu or command-enter.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="basic-r.html#cb34-1" aria-hidden="true" tabindex="-1"></a>sub2_ham<span class="sc">$</span>decade <span class="ot">&lt;-</span> <span class="fu">cut</span>(sub2_ham<span class="sc">$</span>year, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">2e+03</span>, <span class="dv">2010</span>, </span>
-<span id="cb34-2"><a href="basic-r.html#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2020</span>, <span class="dv">2030</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="fl">2e+03</span>, <span class="dv">2010</span>, <span class="dv">2020</span>))</span>
-<span id="cb34-3"><a href="basic-r.html#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="basic-r.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y =</span> sub2_ham<span class="sc">$</span>Chl_a_uncorrected, <span class="at">x =</span> sub2_ham<span class="sc">$</span>Julian_Day, </span>
-<span id="cb34-5"><a href="basic-r.html#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> sub2_ham<span class="sc">$</span>decade, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">xlab =</span> <span class="st">&quot;Chla&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Julian Day&quot;</span>, </span>
-<span id="cb34-6"><a href="basic-r.html#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">bty =</span> <span class="st">&quot;l&quot;</span>, <span class="at">cex.lab =</span> <span class="fl">1.6</span>, <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb34-7"><a href="basic-r.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">levels</span>(sub2_ham<span class="sc">$</span>decade), <span class="at">pch =</span> <span class="dv">16</span>, </span>
-<span id="cb34-8"><a href="basic-r.html#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<div id="try-it-now-16" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-16" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Create a new file, copy the following code, paste it into the new file and then save it using the drop down menu or cntrl-s or command-s. Now, this code is available to run now or in the future!</p>
+<p>Run the code by selecting it and hitting <em>Run</em> in the menu or command-enter (Mac) or cntrl-R (Windows)</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="basic-r.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new &#39;decade&#39; factor variable</span></span>
+<span id="cb31-2"><a href="basic-r.html#cb31-2" aria-hidden="true" tabindex="-1"></a>sub2_ham<span class="sc">$</span>decade <span class="ot">&lt;-</span> <span class="fu">cut</span>(sub2_ham<span class="sc">$</span>year, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">2e+03</span>, <span class="dv">2010</span>, </span>
+<span id="cb31-3"><a href="basic-r.html#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2020</span>, <span class="dv">2030</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="fl">2e+03</span>, <span class="dv">2010</span>, <span class="dv">2020</span>))</span>
+<span id="cb31-4"><a href="basic-r.html#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="basic-r.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the data using the formula notation and data= option</span></span>
+<span id="cb31-6"><a href="basic-r.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the data with colour by decade and indicate symbol</span></span>
+<span id="cb31-7"><a href="basic-r.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># type set the axis labels and text size create plot with</span></span>
+<span id="cb31-8"><a href="basic-r.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># only two axis lines &#39;l&#39; option, and vertical tick labels</span></span>
+<span id="cb31-9"><a href="basic-r.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Chl_a_uncorrected <span class="sc">~</span> Julian_Day, <span class="at">data =</span> sub2_ham, <span class="at">col =</span> sub2_ham<span class="sc">$</span>decade, </span>
+<span id="cb31-10"><a href="basic-r.html#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">ylab =</span> <span class="st">&quot;Chla&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Julian Day&quot;</span>, <span class="at">cex.lab =</span> <span class="fl">1.6</span>, </span>
+<span id="cb31-11"><a href="basic-r.html#cb31-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">bty =</span> <span class="st">&quot;l&quot;</span>, <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb31-12"><a href="basic-r.html#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="basic-r.html#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co"># add an informative legend</span></span>
+<span id="cb31-14"><a href="basic-r.html#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">levels</span>(sub2_ham<span class="sc">$</span>decade), <span class="at">pch =</span> <span class="dv">16</span>, </span>
+<span id="cb31-15"><a href="basic-r.html#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672"  /></p>
 <p>Notice that I’ve created and used a <em>factor</em> variable by using the <strong>cut()</strong> function. I’ll use this to control the colour of the data from each decade.</p>
 <p>I’m also using some of the formatting possibilities in the <strong>plot()</strong> function. There’s LOTS of options: take a look at <em>?plot.default</em> and <em>?par</em> to get some ideas. For example, symbol shape is controlled by the <em>pch</em> option in the plot command.</p>
 <p>Let’s try one more. Let’s quickly visualize the number of calanoid samples from each area_group by date. Again we will use a factor variable to control appearance.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="basic-r.html#cb35-1" aria-hidden="true" tabindex="-1"></a>ham<span class="sc">$</span>area_group <span class="ot">=</span> <span class="fu">as.factor</span>(ham<span class="sc">$</span>area_group)</span>
-<span id="cb35-2"><a href="basic-r.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(calanoid <span class="sc">~</span> SamplingDate, <span class="at">data =</span> ham, <span class="at">col =</span> area_group)</span>
-<span id="cb35-3"><a href="basic-r.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">levels</span>(ham<span class="sc">$</span>area_group), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
-<span id="cb35-4"><a href="basic-r.html#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">levels</span>(ham<span class="sc">$</span>area_group))))</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="basic-r.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change area_group to factor</span></span>
+<span id="cb32-2"><a href="basic-r.html#cb32-2" aria-hidden="true" tabindex="-1"></a>ham<span class="sc">$</span>area_group <span class="ot">=</span> <span class="fu">as.factor</span>(ham<span class="sc">$</span>area_group)</span>
+<span id="cb32-3"><a href="basic-r.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="basic-r.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot calanoid data by date</span></span>
+<span id="cb32-5"><a href="basic-r.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(calanoid <span class="sc">~</span> SamplingDate, <span class="at">data =</span> ham, <span class="at">col =</span> area_group)</span>
+<span id="cb32-6"><a href="basic-r.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">levels</span>(ham<span class="sc">$</span>area_group), <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb32-7"><a href="basic-r.html#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">levels</span>(ham<span class="sc">$</span>area_group))))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672"  /></p>
+</div>
+<div id="try-it-now-17" class="section level4 unnumbered hasAnchor">
+<h4>Try it now:<a href="basic-r.html#try-it-now-17" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Create this plot</p>
+<p>This is too cluttered, so I am going to summarize the data by year and area, and then plot that. I’m going to plot the data from each area individually starting with the first one, and then adding subsequent areas to the same plot using the <strong>lines()</strong> function.</p>
+<p>Copy the code below to your editor window, and run it.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="basic-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize data by year</span></span>
+<span id="cb33-2"><a href="basic-r.html#cb33-2" aria-hidden="true" tabindex="-1"></a>samps <span class="ot">=</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(ham[, <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;area_group&quot;</span>)]))</span>
+<span id="cb33-3"><a href="basic-r.html#cb33-3" aria-hidden="true" tabindex="-1"></a>samps<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(samps<span class="sc">$</span>year))</span>
+<span id="cb33-4"><a href="basic-r.html#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="basic-r.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the &#39;deep&#39; data only set axis limits plot both lines</span></span>
+<span id="cb33-6"><a href="basic-r.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and points in black add a plot title</span></span>
+<span id="cb33-7"><a href="basic-r.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;deep&quot;</span>, ], </span>
+<span id="cb33-8"><a href="basic-r.html#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">bty =</span> <span class="st">&quot;L&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fu">min</span>(samps<span class="sc">$</span>year), <span class="fu">max</span>(samps<span class="sc">$</span>year)), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(samps<span class="sc">$</span>Freq), </span>
+<span id="cb33-9"><a href="basic-r.html#cb33-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">max</span>(samps<span class="sc">$</span>Freq)), <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Calanoid samples per year by area group&quot;</span>)</span>
+<span id="cb33-10"><a href="basic-r.html#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="basic-r.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co"># add each of the other area groups</span></span>
+<span id="cb33-12"><a href="basic-r.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;NE&quot;</span>, ], </span>
+<span id="cb33-13"><a href="basic-r.html#cb33-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb33-14"><a href="basic-r.html#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;west&quot;</span>, ], </span>
+<span id="cb33-15"><a href="basic-r.html#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb33-16"><a href="basic-r.html#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;wind&quot;</span>, ], </span>
+<span id="cb33-17"><a href="basic-r.html#cb33-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb33-18"><a href="basic-r.html#cb33-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-19"><a href="basic-r.html#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">levels</span>(ham<span class="sc">$</span>area_group), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
+<span id="cb33-20"><a href="basic-r.html#cb33-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672"  /></p>
 </div>
 <div id="try-it-now-18" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-18" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Create this plot</p>
-<p>This is too cluttered, so I am going to summarize the data by year and area, and then plot that. I’m going to plot the data from each area individually starting with the first one, and then adding subsequent areas to the same plot using the <strong>lines()</strong> function.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="basic-r.html#cb36-1" aria-hidden="true" tabindex="-1"></a>samps <span class="ot">=</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(ham[, <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;area_group&quot;</span>)]))</span>
-<span id="cb36-2"><a href="basic-r.html#cb36-2" aria-hidden="true" tabindex="-1"></a>samps<span class="sc">$</span>year <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(samps<span class="sc">$</span>year))</span>
-<span id="cb36-3"><a href="basic-r.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;deep&quot;</span>, ], </span>
-<span id="cb36-4"><a href="basic-r.html#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bty =</span> <span class="st">&quot;L&quot;</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fu">min</span>(samps<span class="sc">$</span>year), <span class="fu">max</span>(samps<span class="sc">$</span>year)), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fu">min</span>(samps<span class="sc">$</span>Freq), </span>
-<span id="cb36-5"><a href="basic-r.html#cb36-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">max</span>(samps<span class="sc">$</span>Freq)), <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Calanoid samples per year by area group&quot;</span>)</span>
-<span id="cb36-6"><a href="basic-r.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;NE&quot;</span>, ], </span>
-<span id="cb36-7"><a href="basic-r.html#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
-<span id="cb36-8"><a href="basic-r.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;west&quot;</span>, ], </span>
-<span id="cb36-9"><a href="basic-r.html#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
-<span id="cb36-10"><a href="basic-r.html#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Freq <span class="sc">~</span> year, <span class="at">data =</span> samps[samps<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;wind&quot;</span>, ], </span>
-<span id="cb36-11"><a href="basic-r.html#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
-<span id="cb36-12"><a href="basic-r.html#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-13"><a href="basic-r.html#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">levels</span>(ham<span class="sc">$</span>area_group), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, </span>
-<span id="cb36-14"><a href="basic-r.html#cb36-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672"  /></p>
+<p>Can you modify you code so that the colours used are different? Here’s a list of colours in R <a href="https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/">https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/</a></p>
 </div>
-<div id="try-it-now-19" class="section level4 unnumbered hasAnchor">
-<h4>Try it now:<a href="basic-r.html#try-it-now-19" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Create this plot</p>
-<p>At this point, the plotting is getting a bit more complex, so you may want to use another library called <em>ggplot2</em> to do some of your plotting. We won’t use this today, since this library of functions has a non-intuitive command structure, but is quick for plotting multiple sets of data on the same plot with a legend.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="basic-r.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># similar plot using ggplot</span></span>
-<span id="cb37-2"><a href="basic-r.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb37-3"><a href="basic-r.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(samps, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> Freq, <span class="at">group =</span> area_group, <span class="at">colour =</span> area_group)) <span class="sc">+</span> </span>
-<span id="cb37-4"><a href="basic-r.html#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+</div>
+<div id="other-ways-of-plotting" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Other ways of plotting<a href="basic-r.html#other-ways-of-plotting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>At this point, the plotting is getting a bit more complex, so you may want to use another library called <em>ggplot2</em> to do some of your plotting.</p>
+<p>We won’t use this today, since this library of functions has a non-intuitive command structure, but is quick for plotting multiple sets of data on the same plot with a legend.</p>
+<p>In addition there are other plotting packages available such as <em>lattice</em> and <em>plotly</em>.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="basic-r.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># similar plot using ggplot</span></span>
+<span id="cb34-2"><a href="basic-r.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb34-3"><a href="basic-r.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(samps, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> Freq, <span class="at">group =</span> area_group, <span class="at">colour =</span> area_group)) <span class="sc">+</span> </span>
+<span id="cb34-4"><a href="basic-r.html#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672"  /></p>
 </div>
-</div>
-<div id="t-test-and-boxplot" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> T-test and boxplot<a href="basic-r.html#t-test-and-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="t-test-and-boxplot" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> T-test and boxplot<a href="basic-r.html#t-test-and-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Finally, let’s create a box plot.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="basic-r.html#cb38-1" aria-hidden="true" tabindex="-1"></a>year_sub <span class="ot">=</span> ham[(ham<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2019</span>), ]</span>
-<span id="cb38-2"><a href="basic-r.html#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="basic-r.html#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="basic-r.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(calanoid <span class="sc">~</span> area_group, <span class="at">data =</span> year_sub)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="basic-r.html#cb35-1" aria-hidden="true" tabindex="-1"></a>year_sub <span class="ot">=</span> ham[(ham<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2019</span>), ]</span>
+<span id="cb35-2"><a href="basic-r.html#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="basic-r.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="basic-r.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(calanoid <span class="sc">~</span> area_group, <span class="at">data =</span> year_sub)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672"  /></p>
 <p>Also note, that we can easily complete statistical tests other than regression in R. For example, here’s a t-test comparing calanoid data at “deep” and “NE” sites.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="basic-r.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(calanoid <span class="sc">~</span> area_group, <span class="at">data =</span> year_sub[(year_sub<span class="sc">$</span>area_group <span class="sc">==</span> </span>
-<span id="cb39-2"><a href="basic-r.html#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;deep&quot;</span> <span class="sc">|</span> year_sub<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;NE&quot;</span>), ])</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="basic-r.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(calanoid <span class="sc">~</span> area_group, <span class="at">data =</span> year_sub[(year_sub<span class="sc">$</span>area_group <span class="sc">==</span> </span>
+<span id="cb36-2"><a href="basic-r.html#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;deep&quot;</span> <span class="sc">|</span> year_sub<span class="sc">$</span>area_group <span class="sc">==</span> <span class="st">&quot;NE&quot;</span>), ])</span></code></pre></div>
 <pre><code>
     Welch Two Sample t-test
 
@@ -762,7 +782,19 @@ sample estimates:
 mean in group deep   mean in group NE 
               8.47              16.45 </code></pre>
 <p>Fanastic! You now have the basics of importing, manipulating, and plotting in R.</p>
+</div>
+<div id="a-note-about-base-r-vs-tidyverse" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> A note about base R vs Tidyverse<a href="basic-r.html#a-note-about-base-r-vs-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This tutorial has been written entirely in base R. These functions and code require no additional packages (other than <em>readxl</em>).</p>
+<p>Most learning materials for biologists currently will not focus on base R and will instead start by teaching users how to use functions from the <em>Tidyverse</em> package. This package duplicates many of the base R functions with a slightly different names and syntax, uses a far more verbose coding style, compiles more slowly, is sometimes not backwards compaitble when new versions are released, and critically, does not actually replace the need to learn base R. That said, it is incredibly popular! Make your own choices.</p>
+<div id="other-resources" class="section level3 hasAnchor" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> Other resources<a href="basic-r.html#other-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Beckerman, A. P., Childs, D. Z., &amp; Petchey, O. L. (2017). Getting started with R: an introduction for biologists. Oxford University Press.</p>
+<p>“Advanced R”, a book in Chapman &amp; Hall’s R Series. <a href="https://adv-r.hadley.nz/index.html" class="uri">https://adv-r.hadley.nz/index.html</a></p>
+<p>John Hopkins course: <a href="https://www.coursera.org/learn/r-programming" class="uri">https://www.coursera.org/learn/r-programming</a></p>
+<p>Duke University course: <a href="https://www.coursera.org/specializations/statistics" class="uri">https://www.coursera.org/specializations/statistics</a></p>
 
+</div>
 </div>
 </div>
             </section>
