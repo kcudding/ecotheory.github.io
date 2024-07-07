@@ -323,17 +323,17 @@ Now we can visualize the relationship between our variables and samples for each
 
 *Multivariate analyses tutorials*
 
-* [Building Skills in Quantitative Biology](!https://www.quantitative-biology.ca/multi.html)
-* [QCBS R Workshop Series - Multivariate Analyses in R](!https://r.qcbs.ca/workshop09/book-en/index.html)
-* [Running NMDS using 'metaMDS'(nMDS tutorial with vegan package)](!https://rpubs.com/CPEL/NMDS)
-* [Introduction to Ordination](!https://ourcodingclub.github.io/tutorials/ordination/)
-* [Starting with Non-Metric Multidimensional Scaling (NMDS)](!https://www.lib.virginia.edu/data/articles/starting-non-metric-multidimensional-scaling-nmds)
+* [Building Skills in Quantitative Biology](https://www.quantitative-biology.ca/multi.html)
+* [QCBS R Workshop Series - Multivariate Analyses in R](https://r.qcbs.ca/workshop09/book-en/index.html)
+* [Running NMDS using 'metaMDS'(nMDS tutorial with vegan package)](https://rpubs.com/CPEL/NMDS)
+* [Introduction to Ordination](https://ourcodingclub.github.io/tutorials/ordination/)
+* [Starting with Non-Metric Multidimensional Scaling (NMDS)](https://www.lib.virginia.edu/data/articles/starting-non-metric-multidimensional-scaling-nmds)
 
 *Useful R packages*
 
-* [factoextra (for visualizing PCA results)](!https://www.rdocumentation.org/packages/factoextra/versions/1.0.3)
-* [learnPCA (an R package for PCA learning)](!https://bryanhanson.github.io/LearnPCA/)
-* [ggbiplot](!https://www.rdocumentation.org/packages/ggbiplot/versions/0.55)
+* [factoextra (for visualizing PCA results)](https://www.rdocumentation.org/packages/factoextra/versions/1.0.3)
+* [learnPCA (an R package for PCA learning)](https://bryanhanson.github.io/LearnPCA/)
+* [ggbiplot](https://www.rdocumentation.org/packages/ggbiplot/versions/0.55)
 
 
 
