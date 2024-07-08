@@ -1,0 +1,264 @@
+
+# Linear regression
+
+### Introduction 
+
+  A linear regression estimates the parameters of a linear relationship between a response (y, the dependent variable) and an explanatory factor (x, an independent variable) as:
+  
+  $$y=\beta_0+\beta_1x+\epsilon$$
+  
+  Significance testing is used to determine if the slope of this relationship is significantly different than zero.  For example, for our Hamilton Harbour data, we will be testing for a relationship between water level (our predictor) and total zooplankton counted in a net grab (our response). 
+
+```{r include=FALSE, warning=FALSE}
+soln=FALSE
+#install.packages("readxl")
+library("readxl")
+
+# xlsx files
+ham<- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
+```
+
+### Linear regression  using water level and total zooplankton
+
+The **lm()** (or **l**inear **m**odel) function runs a linear regression where we indicate the response and predictor variable using the "~" symbol. response~predictor. 
+
+#### Try it now {-}
+Use the code below to regress total zooplankton on water level. Notice we will change the column names with the spaces first using the **sub()** function (i.e., replace "water level" with "water.level"), since spaces are always a pain when using code.
+
+```{r, echo=TRUE}
+#change column names to replace space with "."
+colnames(ham)=sub(" ", ".", colnames(ham))
+
+# save linear regression results 
+waterlzoo.lm<-lm(total.zoop~water.level, data=ham)
+
+#print regression results
+waterlzoo.lm
+```
+
+Notice that when we simply try to print the regression object, the output is *very* brief: just the intercept and slope estimate. The regression object is a *list* data structure and actually does contain a lot of information. We can access a nicely formatted summary of all this information using the **summary()** function.
+
+#### Try it now {-}
+Use the **summary()** function on the *list* data structure of your regression output 
+
+
+```{r, echo=FALSE}
+options(digits = 3, scipen = -2)
+#knitr::include_graphics("https://github.com/kcudding/kcudding.github.io/blob/main/teach/RIntro/Rseminarlinearreg.png")
+```
+
+```{r, echo=TRUE}
+# print a summary of the regression results
+sum_lm=summary(waterlzoo.lm)
+sum_lm
+```
+  
+
+Let's go through this output. We can:
+
+1. check for the significance of the relationship, 
+2. determine whether the relationship between the predictor and response is positive or negative, and
+3. determine how much of the variance in the data is explained by this model.
+
+This first thing to notice is whether or not we have a significant relationship. The output provides a t-value and probability for the null hypothesis that the intercept and slope have values of zero. We can see the p-value for the slope test is `r sum_lm$coefficients[2,4]` and indicates a significant relationship. 
+
+
+```{asis, echo=soln}
+
+At the bottom of the table there is also an F-test result on the null hypothesis that the MSreg/MSres is 1 (i.e., does the model fit the data), which since our model is so simple, will have the same probability as that for the t-test that the slope is significantly different from zero. 
+
+We also find the standard deviation about the regression (sr or residual standard error), and the correlation coefficient, which indicates how much of the variance is explained by the model at the bottom of the table. The adjusted R2 value is `r sum_lm$adj.r.squared` and indicates we are not explaining much of the variance in this data.
+
+```
+
+
+Notice that if we just wanted to grab some of this information (e.g., to create a table in a publication) we can just subset the list object 
+
+#### Try it now {-}
+Subset the list object to get the information about the slope, and the R2 value.
+
+```{r, echo=TRUE}
+sum_lm$coefficients[2,]
+sum_lm$adj.r.squared
+```
+
+The estimate of the slope is positive, although the model does not explain much of the variance in the data.
+
+This could be because we have violated one or more of the assumptions of the regression. And of course whenever we use a regression we should test to see if we have met these assumptions.
+
+### What are the assumptions of a linear regression? 
+
+The most basic assumptions we make when we use linear regression is that 
+
+1. There is indeed a linear relationship (rather than a non-linear relationship) between the predictor and the response. 
+
+However, there are also assumptions about the variance in the data. We also assume:
+
+2. Variance in the data about this linear relationship is normally distributed
+3. Variance is consistent across all the values of the independent variable (e.g., there is not greater variance for larger values of the predictor). 
+4. Each observation is independent of one another (there is no significant correlation between the independent variable values) 
+
+### How do you evaluate the assumptions of a linear regression?
+
+We can get a quick assessment of whether we have violated some of these assumptions by creating diagnostic plots. These plots display the residuals of the linear regression in various ways.
+
+To see these plots we can just use the following **plot()** command, and hit return to display each of the four plots in turn.
+
+```{r, echo=TRUE, eval=FALSE}
+plot(waterlzoo.lm)
+```
+
+```{r, echo=FALSE, fig.height=6}
+# divide the window into a 2 by 2 grid
+par(mfrow=c(2,2),mai = c(.75, .75, .5, 0.5))
+
+# plotting diagnostic plots with log transformed data
+lab=c("a", "b", "c", "d")
+set=c(1,2,3,5)
+for (i in seq_along(set)){
+plot(waterlzoo.lm, which=set[i])
+mtext(text=lab[i], side=3, cex=2, adj=1)
+}
+```
+
+#### a. {-}
+The first plot, *Residuals vs Fitted*, shows the regression residuals vs the fitted values.The residuals should be randomly distributed around the horizontal line representing a residual error of zero. There should not be a distinct trend in the distribution of points that might indicate non-linearity. The red line provides a summary of the distribution of points. On our plot this line slopes downwards.
+
+#### b. {-}
+The *Q-Q plot* evaluates our second assumption: that the data variance about the fitted line is normally distributed. If the points on the plot follow the diagonal line, then the residuals are normally distributed. We can see here that we are not doing well, there is a big departure from the expected distribution.
+
+#### c. {-}
+The *Scale-Location* plot is used to determine if our third assumption that the variance of the residuals is be consistent across all the values is being met (i.e., the variance in the data is homoscedastic). Again, there should be no obvious trend in this plot, but we are seeing an upward tilt indicating more variance at larger values of our predictor variable.
+
+#### d. {-}
+The *Residuals versus Leverage* plot in the lower right shows each points leverage, which is a measure of its importance in determining the regression result. This plot can be used to determine if there are any highly influential points in the dataset (i.e. outliers), and is also an evaluation of our third assumption. 
+
+Superimposed are the contour lines for the Cook’s distance, which is another measure of the importance of each observation to the regression. Smaller distances means that removing the observation has little effect on the regression results. Distances larger than 1 are suspicious and suggest the presence of a possible outlier or a poor model. We have one or two influenctial points.
+
+
+
+Here's another example from a regression of Chl a vs TP at station HH6, which shows very clearly that one point in particular is having a big influence on the regression.  
+```{r, echo=FALSE}
+
+sub_ham=ham[ham$Station_Acronym=="HH6",]
+
+lmcal=lm(log(sub_ham$Chl_a_uncorrected)~sub_ham$TP.dissolved_ECCC1m)
+
+plot(lmcal, which=5)
+```
+
+
+Actually, we probably should have plotted the data first to get some idea of what the data is like.  Let's do that now.
+
+#### Try it now: {-}
+Plot our data using the **plot()** function
+```{r,echo=TRUE}
+plot(x=ham$water.level, y=(ham$total.zoop), xlab="Water level (m)", ylab="Total zooplankton")
+```
+
+The plot explains a lot of our problems with the model assumptions. There are some very large values relative to most observations. In general, count and biomass data has this kind of distribution: a lot of small values and a few very large ones so that the data variance about the fitted line is non-normal.
+
+We can transform the population data using a natural logarithm to try and improve the normality. This is easy to do with the **log()** function. So we will run the regression on this transformed data and see if we are doing a better job meeting the model assumptions.
+
+#### Try it now {-}
+Run a regression on log-transformed data
+```{r, echo=TRUE}
+# save linear regression results 
+log_waterlzoo.lm<-lm(log(total.zoop)~water.level, data=ham)
+summary(log_waterlzoo.lm)
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("https://github.com/kcudding/kcudding.github.io/blob/main/teach/RIntro/Rseminarlinearreg.png")
+```
+We see that our relationship is still significant and positive under the transform. 
+
+Let's check the diagnostic plots quickly
+
+```{r, echo=TRUE, eval=FALSE}
+# save linear regression results 
+plot(log_waterlzoo.lm) 
+```
+
+```{r, echo=FALSE, fig.height=6}
+# divide the window into a 2 by 2 grid
+par(mfrow=c(2,2),mai = c(.75, .75, .5, 0.5))
+
+# plotting diagnostic plots with log transformed data
+
+for (i in seq_along(set)){
+plot(log_waterlzoo.lm, which=set[i])
+mtext(text=lab[i], side=3, cex=2, adj=1)
+}
+```
+
+Our diagnostic plots look *much* better, particularly with respect to the normality of the resiudals.
+
+## Plot the data and predictions
+
+Let's create a plot with our fitted model shown together with the data and superimpose our fitted model.
+
+### Get model predictions and confidence intervals
+
+We will use the **predict()** function to calculate confidence intervals about our regression, and superimpose the model on the data plot using the **lines()** function. 
+
+First let's just get the predicted regression line and the confidence intervals about this line. We do this by creating a continuous sequence of x values, and applying our model to these values.
+
+#### Try it now {-}
+
+```{r,echo=TRUE}
+# creating a vector 'x' to predict total.zoop from waterlevel
+
+# get min water level
+min_water=min(ham$water.level, na.rm=TRUE)
+
+# get max water level
+max_water=max(ham$water.level, na.rm=TRUE)
+
+# build a new data frame that has vector of xvalues from min to max in increments of 0.05
+
+# create the sequence
+x <- seq(min_water, max_water, by = 0.05)
+
+#create a new dataframe with this predictor
+ndata=data.frame(water.level<-x)
+
+# use this dataframe and the predict function
+# to calculate confidence intervals 
+confidenceint<-predict(log_waterlzoo.lm, newdata=ndata, interval="confidence", level=0.95)
+cf=as.data.frame(confidenceint)
+```
+
+
+## Plot the data and predictions
+
+We can then create a plot with these model predictions.
+
+#### Try it now {-}
+Plot!
+
+```{r,echo=TRUE}
+# create a plot with water level and total zooplankton
+# use xlab(), ylab() and main() to put titles on the plot
+plot(x=ham$water.level, y=log(ham$total.zoop), xlab="Water level (m)", ylab="(log) Total zooplankton", main="Relationship between water level and total zooplankton")
+
+# add regression line to the plot 
+lines(cf$fit~x, col="blue",lty=1 )
+
+# lower bound confidence interval
+lines(cf$lwr~x, col="blue",lty=3 )
+
+# upper bound confidence interval
+lines(cf$upr~x, col="blue",lty=3 )
+```
+
+
+### Common mistakes 
+  * Be careful when coding a linear regression using the **lm()** function that the independent and dependent variables are coded in the right order. i.e. *lm(dependent variable~independent variable, data = yourdata)*.
+
+
+### References and resources
+
+  Phillips, N. D. (2018, January 22). Yarrr! The Pirate’s Guide to R. YaRrr! The Pirate’s Guide to R. https://bookdown.org/ndphillips/YaRrr/ 
+    * Check out chapter 15 on linear regression analysis 
+    
