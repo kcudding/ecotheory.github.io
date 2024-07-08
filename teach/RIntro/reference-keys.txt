@@ -38,7 +38,7 @@ references-and-resources
 multiple-linear-regression
 introduction-1
 what-is-multiple-linear-regression
-recipe-for-multiple-linear-regression-model-in-r
+recipe-for-multiple-linear-regression-in-r
 data-preparation
 check-data-type
 model-building

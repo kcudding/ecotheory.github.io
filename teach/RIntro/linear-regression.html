@@ -176,7 +176,7 @@ code span.wa { font-style: italic; } /* Warning */
 <li class="chapter" data-level="5.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#introduction-1"><i class="fa fa-check"></i><b>5.1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="5.1.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#what-is-multiple-linear-regression"><i class="fa fa-check"></i><b>5.1.1</b> What is multiple linear regression</a></li>
-<li class="chapter" data-level="5.1.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#recipe-for-multiple-linear-regression-model-in-r"><i class="fa fa-check"></i><b>5.1.2</b> Recipe for multiple linear regression model in R</a></li>
+<li class="chapter" data-level="5.1.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#recipe-for-multiple-linear-regression-in-r"><i class="fa fa-check"></i><b>5.1.2</b> Recipe for multiple linear regression in R</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#data-preparation"><i class="fa fa-check"></i><b>5.2</b> Data preparation</a>
 <ul>
@@ -254,13 +254,13 @@ code span.wa { font-style: italic; } /* Warning */
 <h1><span class="header-section-number">4</span> Linear regression<a href="linear-regression.html#linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="introduction" class="section level3 hasAnchor" number="4.0.1">
 <h3><span class="header-section-number">4.0.1</span> Introduction<a href="linear-regression.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A linear regression estimates the parameters of a linear relationship between a response (y, the depdendent variable) and an explanatory factor (x, an independent variable) as:</p>
+<p>A linear regression estimates the parameters of a linear relationship between a response (y, the dependent variable) and an explanatory factor (x, an independent variable) as:</p>
 <p><span class="math display">\[y=\beta_0+\beta_1x+\epsilon\]</span></p>
 <p>Significance testing is used to determine if the slope of this relationship is significantly different than zero. For example, for our Hamilton Harbour data, we will be testing for a relationship between water level (our predictor) and total zooplankton counted in a net grab (our response).</p>
 </div>
 <div id="linear-regression-using-water-level-and-total-zooplankton" class="section level3 hasAnchor" number="4.0.2">
 <h3><span class="header-section-number">4.0.2</span> Linear regression using water level and total zooplankton<a href="linear-regression.html#linear-regression-using-water-level-and-total-zooplankton" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <strong>lm()</strong> (or <strong>l</strong>inear <strong>m</strong>odel) function runs a linear regression where we indicate the response and predictor variable using the “~” symbol.</p>
+<p>The <strong>lm()</strong> (or <strong>l</strong>inear <strong>m</strong>odel) function runs a linear regression where we indicate the response and predictor variable using the “~” symbol. response~predictor.</p>
 <div id="try-it-now-19" class="section level4 unnumbered hasAnchor">
 <h4>Try it now<a href="linear-regression.html#try-it-now-19" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use the code below to regress total zooplankton on water level. Notice we will change the column names with the spaces first using the <strong>sub()</strong> function (i.e., replace “water level” with “water.level”), since spaces are always a pain when using code.</p>
@@ -312,7 +312,7 @@ F-statistic: 63.3 on 1 and 537 DF,  p-value: 1.08e-14</code></pre>
 <li>determine whether the relationship between the predictor and response is positive or negative, and</li>
 <li>determine how much of the variance in the data is explained by this model.</li>
 </ol>
-<p>This first thing to notice is whether or not we have a signficant relationship. The output provides a t-value and probability for the null hypothesis that the intercept and slope have values of zero. We can see the p-value for the slope test is 1.078^{-14} and indicates a significant relationship.</p>
+<p>This first thing to notice is whether or not we have a significant relationship. The output provides a t-value and probability for the null hypothesis that the intercept and slope have values of zero. We can see the p-value for the slope test is 1.078^{-14} and indicates a significant relationship.</p>
 <p>Notice that if we just wanted to grab some of this information (e.g., to create a table in a publication) we can just subset the list object</p>
 </div>
 <div id="try-it-now-21" class="section level4 unnumbered hasAnchor">
@@ -324,14 +324,14 @@ F-statistic: 63.3 on 1 and 537 DF,  p-value: 1.08e-14</code></pre>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="linear-regression.html#cb44-1" aria-hidden="true" tabindex="-1"></a>sum_lm<span class="sc">$</span>adj.r.squared</span></code></pre></div>
 <pre><code>[1] 0.104</code></pre>
 <p>The estimate of the slope is positive, although the model does not explain much of the variance in the data.</p>
-<p>This could be because we have violated one or more of the assumptions of the regression. And of course whenever we use a regression we should test to see if we have met these asumptions.</p>
+<p>This could be because we have violated one or more of the assumptions of the regression. And of course whenever we use a regression we should test to see if we have met these assumptions.</p>
 </div>
 </div>
 <div id="what-are-the-assumptions-of-a-linear-regression" class="section level3 hasAnchor" number="4.0.3">
 <h3><span class="header-section-number">4.0.3</span> What are the assumptions of a linear regression?<a href="linear-regression.html#what-are-the-assumptions-of-a-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The most basic assumptions we make when we use linear regression is that</p>
 <ol style="list-style-type: decimal">
-<li>there is indeed a linear relationship (rather than a non-linear relationship) between the predictor and the response.</li>
+<li>There is indeed a linear relationship (rather than a non-linear relationship) between the predictor and the response.</li>
 </ol>
 <p>However, there are also assumptions about the variance in the data. We also assume:</p>
 <ol start="2" style="list-style-type: decimal">
@@ -364,11 +364,11 @@ F-statistic: 63.3 on 1 and 537 DF,  p-value: 1.08e-14</code></pre>
 <p>Superimposed are the contour lines for the Cook’s distance, which is another measure of the importance of each observation to the regression. Smaller distances means that removing the observation has little effect on the regression results. Distances larger than 1 are suspicious and suggest the presence of a possible outlier or a poor model. We have one or two influenctial points.</p>
 <p>Here’s another example from a regression of Chl a vs TP at station HH6, which shows very clearly that one point in particular is having a big influence on the regression.<br />
 <img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672"  /></p>
-<p>Actually, we probably should have plotted the data first to get some idea of what the data were like. Let’s do that now.</p>
+<p>Actually, we probably should have plotted the data first to get some idea of what the data is like. Let’s do that now.</p>
 </div>
 <div id="try-it-now-22" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="linear-regression.html#try-it-now-22" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Plot our data</p>
+<p>Plot our data using the <strong>plot()</strong> function</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="linear-regression.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> ham<span class="sc">$</span>water.level, <span class="at">y =</span> (ham<span class="sc">$</span>total.zoop), <span class="at">xlab =</span> <span class="st">&quot;Water level (m)&quot;</span>, </span>
 <span id="cb47-2"><a href="linear-regression.html#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Total zooplankton&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672"  /></p>
@@ -400,17 +400,18 @@ Residual standard error: 0.982 on 537 degrees of freedom
   (203 observations deleted due to missingness)
 Multiple R-squared:  0.103, Adjusted R-squared:  0.102 
 F-statistic:   62 on 1 and 537 DF,  p-value: 1.92e-14</code></pre>
-<p>We see that our relationship is still signficant and positive under the transform.</p>
+<p><img src="https://github.com/kcudding/kcudding.github.io/blob/main/teach/RIntro/Rseminarlinearreg.png"  />
+We see that our relationship is still significant and positive under the transform.</p>
 <p>Let’s check the diagnostic plots quickly</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="linear-regression.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save linear regression results</span></span>
 <span id="cb50-2"><a href="linear-regression.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(log_waterlzoo.lm)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672"  /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672"  /></p>
 <p>Our diagnostic plots look <em>much</em> better, particularly with respect to the normality of the resiudals.</p>
 </div>
 </div>
 <div id="plot-the-data-and-predictions" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Plot the data and predictions<a href="linear-regression.html#plot-the-data-and-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Let’s create a plot with our fitted model shown together with the data. the data, and superimpose our fitted model</p>
+<p>Let’s create a plot with our fitted model shown together with the data and superimpose our fitted model.</p>
 <div id="get-model-predictions-and-confidence-intervals" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Get model predictions and confidence intervals<a href="linear-regression.html#get-model-predictions-and-confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will use the <strong>predict()</strong> function to calculate confidence intervals about our regression, and superimpose the model on the data plot using the <strong>lines()</strong> function.</p>
@@ -461,7 +462,7 @@ F-statistic:   62 on 1 and 537 DF,  p-value: 1.92e-14</code></pre>
 <span id="cb52-11"><a href="linear-regression.html#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-12"><a href="linear-regression.html#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co"># upper bound confidence interval</span></span>
 <span id="cb52-13"><a href="linear-regression.html#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cf<span class="sc">$</span>upr <span class="sc">~</span> x, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672"  /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672"  /></p>
 </div>
 <div id="common-mistakes" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Common mistakes<a href="linear-regression.html#common-mistakes" class="anchor-section" aria-label="Anchor link to header"></a></h3>

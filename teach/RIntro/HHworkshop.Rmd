@@ -3,7 +3,7 @@
 
 ### Introduction 
 
-  A linear regression estimates the parameters of a linear relationship between a response (y, the depdendent variable) and an explanatory factor (x, an independent variable) as:
+  A linear regression estimates the parameters of a linear relationship between a response (y, the dependent variable) and an explanatory factor (x, an independent variable) as:
   
   $$y=\beta_0+\beta_1x+\epsilon$$
   
@@ -20,7 +20,7 @@ ham<- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
 
 ### Linear regression  using water level and total zooplankton
 
-The **lm()** (or **l**inear **m**odel) function runs a linear regression where we indicate the response and predictor variable using the "~" symbol.
+The **lm()** (or **l**inear **m**odel) function runs a linear regression where we indicate the response and predictor variable using the "~" symbol. response~predictor. 
 
 #### Try it now {-}
 Use the code below to regress total zooplankton on water level. Notice we will change the column names with the spaces first using the **sub()** function (i.e., replace "water level" with "water.level"), since spaces are always a pain when using code.
@@ -60,7 +60,7 @@ Let's go through this output. We can:
 2. determine whether the relationship between the predictor and response is positive or negative, and
 3. determine how much of the variance in the data is explained by this model.
 
-This first thing to notice is whether or not we have a signficant relationship. The output provides a t-value and probability for the null hypothesis that the intercept and slope have values of zero. We can see the p-value for the slope test is `r sum_lm$coefficients[2,4]` and indicates a significant relationship. 
+This first thing to notice is whether or not we have a significant relationship. The output provides a t-value and probability for the null hypothesis that the intercept and slope have values of zero. We can see the p-value for the slope test is `r sum_lm$coefficients[2,4]` and indicates a significant relationship. 
 
 
 ```{asis, echo=soln}
@@ -84,13 +84,13 @@ sum_lm$adj.r.squared
 
 The estimate of the slope is positive, although the model does not explain much of the variance in the data.
 
-This could be because we have violated one or more of the assumptions of the regression. And of course whenever we use a regression we should test to see if we have met these asumptions.
+This could be because we have violated one or more of the assumptions of the regression. And of course whenever we use a regression we should test to see if we have met these assumptions.
 
 ### What are the assumptions of a linear regression? 
 
 The most basic assumptions we make when we use linear regression is that 
 
-1. there is indeed a linear relationship (rather than a non-linear relationship) between the predictor and the response. 
+1. There is indeed a linear relationship (rather than a non-linear relationship) between the predictor and the response. 
 
 However, there are also assumptions about the variance in the data. We also assume:
 
@@ -148,10 +148,10 @@ plot(lmcal, which=5)
 ```
 
 
-Actually, we probably should have plotted the data first to get some idea of what the data were like.  Let's do that now.
+Actually, we probably should have plotted the data first to get some idea of what the data is like.  Let's do that now.
 
 #### Try it now: {-}
-Plot our data
+Plot our data using the **plot()** function
 ```{r,echo=TRUE}
 plot(x=ham$water.level, y=(ham$total.zoop), xlab="Water level (m)", ylab="Total zooplankton")
 ```
@@ -168,7 +168,10 @@ log_waterlzoo.lm<-lm(log(total.zoop)~water.level, data=ham)
 summary(log_waterlzoo.lm)
 ```
 
-We see that our relationship is still signficant and positive under the transform. 
+```{r, echo=FALSE}
+knitr::include_graphics("https://github.com/kcudding/kcudding.github.io/blob/main/teach/RIntro/Rseminarlinearreg.png")
+```
+We see that our relationship is still significant and positive under the transform. 
 
 Let's check the diagnostic plots quickly
 
@@ -193,7 +196,7 @@ Our diagnostic plots look *much* better, particularly with respect to the normal
 
 ## Plot the data and predictions
 
-Let's create a plot with our fitted model shown together with the data. the data, and superimpose our fitted model
+Let's create a plot with our fitted model shown together with the data and superimpose our fitted model.
 
 ### Get model predictions and confidence intervals
 
