@@ -284,9 +284,9 @@ Imagine you have counts of living and dead organisms in this imaginary dataset:
 
 |date       |location  | living_daphnia| dead_daphnia|
 |:----------|:---------|--------------:|------------:|
-|Jan-1-2024 |station-1 |             11|           41|
-|Jan-1-2024 |station-2 |             44|            9|
-|Jan-1-2024 |station-3 |              2|           46|
+|Jan-1-2024 |station-1 |             69|           78|
+|Jan-1-2024 |station-2 |             94|           40|
+|Jan-1-2024 |station-3 |             95|           60|
 
 In this case, instead of considering each individual as "living" or "dead", you should calculate the proportion of living organisms *per replicate* like this:
     
@@ -299,9 +299,9 @@ example_independence$proportion <- round(example_independence$living_daphnia/(ex
 
 |date       |location  | living_daphnia| dead_daphnia| proportion|
 |:----------|:---------|--------------:|------------:|----------:|
-|Jan-1-2024 |station-1 |             11|           41|       0.21|
-|Jan-1-2024 |station-2 |             44|            9|       0.83|
-|Jan-1-2024 |station-3 |              2|           46|       0.04|
+|Jan-1-2024 |station-1 |             69|           78|       0.47|
+|Jan-1-2024 |station-2 |             94|           40|       0.70|
+|Jan-1-2024 |station-3 |             95|           60|       0.61|
 
 This proportion will be your response variable for the logistic model. When using proportions, you should also provide the "weights" information in the glm formula (i.e., a dataset with total number of trials per replicate, or the sum of events where we got success + events where we got failure).
 
