@@ -292,7 +292,7 @@ stressplot(nmds.ham, pch = 16, las = 1,
 
 ### Plot ordination for nMDS
 
-No we can plot the ordination for nMDS, just like for PCA in the previous sections. The steps exactly the same. We use **`plot()`** to create an empty canvas first, then use **`points()`** to add samples/variables. Additionally, we would like to represent species scores with arrows. This step can only be done manually by extracted the species scores using **`scores(display = "species")`**, and draw arrows using **`arrows()`** function.
+No we can plot the ordination for nMDS, just like for PCA in the previous sections. The steps exactly the same. We use **`plot()`** to create an empty canvas first, then use **`points()`** to add samples/variables.
 
 ```{r, echo = TRUE}
 ## Create empty canvas
