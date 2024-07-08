@@ -47,7 +47,7 @@ When we plot this type of binary data, we see that observations are either of th
 
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic1.png)
 
-This type of data is best fit by an s-shaped curve instead of a line. And this is another difference between linear and logistic regressions.
+As you can see in the plot, this type of data is best fit by an s-shaped curve instead of a line. And this is another difference between linear and logistic regressions.
  
 ## What does the logistic curve mean?
 
@@ -69,7 +69,7 @@ This type of data is best fit by an s-shaped curve instead of a line. And this i
 
 ## What kind of predictors can we have in a logistic regression?
 
-Just like in a linear regression, we can use continuous and/or discrete variables to make predictions. Here are some examples:
+Just like in a linear regression, we can use continuous and/or categorical variables to make predictions. Here are some examples:
 
 **Continuous variables**
 
@@ -81,7 +81,7 @@ Just like in a linear regression, we can use continuous and/or discrete variable
 
 + Nitrogen concentration  
 
-**Discrete variables**  
+**Categorical variables**  
 
 + Levels of aquatic vegetation  
 
@@ -134,29 +134,22 @@ First, we are going to create a new dataset called "filam_diatom" including some
 
 ```r
 filam_diatom <- ham[, c("area_group", "season", 
-                        "filamentous_Diatom", "mean_mixing_depth_temp")]
+                        "filamentous_Diatom", "mean_mixing_depth_temp", "NO2_NO3_ECCC1m")]
 ```
 
 
-| Location | Season | Filamentous diatom biomass | Epilimnion temperat. |
-|:--------:|:------:|:--------------------------:|:--------------------:|
-|   deep   |   2    |            0.00            |        21.79         |
-|   deep   |   2    |            3.10            |        21.83         |
-|    NE    |   1    |             NA             |        19.89         |
-|   deep   |   1    |             NA             |        19.71         |
-|    NE    |   1    |             NA             |        13.90         |
-|   deep   |   1    |           287.18           |        16.05         |
+| Location | Season | Filamentous diatom biomass | Epilimnion temperat. | Nitrate/nitrate |
+|:--------:|:------:|:--------------------------:|:--------------------:|:---------------:|
+|   deep   |   2    |            0.00            |        21.79         |      2.50       |
+|   deep   |   2    |            3.10            |        21.83         |      2.50       |
+|    NE    |   1    |             NA             |        19.89         |      3.20       |
+|   deep   |   1    |             NA             |        19.71         |      3.20       |
+|    NE    |   1    |             NA             |        13.90         |      2.54       |
+|   deep   |   1    |           287.18           |        16.05         |      2.54       |
 
-Let's consider that filamentous diatom is our response variable of interest, as this food source is hard for zooplankton to consume. We will look at epilimnion temperature as a potential explanatory variable.
+Let's consider that *filamentous diatom* is our response variable of interest, as this food source is hard for zooplankton to consume. We will look at *epilimnion temperature* as a potential explanatory variable.
 
-Before we can get started with the analysis, we need to remove NA data:
-
-
-```r
-filam_diatom <- na.omit(filam_diatom)
-```
-
-Now we will create a new column to describe presence or absence of filamentous diatoms.
+First, we will create a new column to describe presence or absence of filamentous diatoms.
 
 We can do that with a function called **ifelse** to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
 
@@ -218,6 +211,7 @@ summary(model)
 ## 
 ##     Null deviance: 79.807  on 69  degrees of freedom
 ## Residual deviance: 72.195  on 68  degrees of freedom
+##   (197 observations deleted due to missingness)
 ## AIC: 76.195
 ## 
 ## Number of Fisher Scoring iterations: 5
@@ -232,43 +226,27 @@ Let's see what each component of the model result summary means:
 
 We are now ready for the best part: plotting model predictions  
 
-First, we calculate predicted probabilities for different temperature values: 
+First, we save the regression coefficients:
 
 ```r
-# Create a sequence of temperature values
-mean_mixing_depth_temp_values <- seq(min(filam_diatom$mean_mixing_depth_temp), max(filam_diatom$mean_mixing_depth_temp), length.out = length(filam_diatom$mean_mixing_depth_temp))
-
-# Create a data frame with these temperature values
-newdata <- data.frame(mean_mixing_depth_temp = mean_mixing_depth_temp_values)
-
-# Predict probabilities for each temperature value
-predicted_probabilities_filam <- predict(model, newdata = newdata, type = "response")
-
-# Calculate errors around these predictions (confidence intervals)
-z <- qnorm(1 - (1 - 0.95) / 2)  # 95% confidence level
-se <- sqrt(predicted_probabilities_filam * (1 - predicted_probabilities_filam) / nrow(filam_diatom))
-lower_bound <- predicted_probabilities_filam - z * se
-upper_bound <- predicted_probabilities_filam + z * se
+logcoefs = round(as.data.frame(summary(model)$coefficients),2)
 ```
 
-Now we are ready to plot the actual data and the model predictions:
+And we plot the actual data and the model predictions:
 
 ```r
 # Convert "present" and "absent" to 1 and 0
 presence_numeric_filam <- ifelse(filam_diatom$filam_presence == "present", 1, 0)
 
-# Plot the actual data along with predicted probabilities and confidence intervals
-plot(mean_mixing_depth_temp_values, predicted_probabilities_filam, type = "l",
+plot(filam_diatom$mean_mixing_depth_temp, presence_numeric_filam, pch = 16,
      main = "Filamentous diatom presence",
-     xlab = "Epilimnion temperature (\u00B0C)", ylab = "Predicted probability", cex.axis = 1.5, ylim = c(0, 1), lwd = 2)
-lines(mean_mixing_depth_temp_values, lower_bound, col = "blue", lty = 2)
-lines(mean_mixing_depth_temp_values, upper_bound, col = "blue", lty = 2)
-points(filam_diatom$mean_mixing_depth_temp, presence_numeric_filam)
+     xlab = "Epilimnion temperature (\u00B0C)", ylab = "Predicted probability", 
+     cex.axis = 1.3, cex.lab = 1.3, ylim = c(0, 1), lwd = 2)
+curve(exp(logcoefs[1, 1] + logcoefs[2, 1] * x)/(1 + exp(logcoefs[1, 1] + logcoefs[2, 1] * x)), 
+      add = TRUE, col = 2, lwd = 3)
 ```
 
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic3.png)
-
-The dotted curves are confidence intervals, which show us the range in which we are 95% sure about the location of true values, based on our data
 
 
 ### Creating your logistic model 
@@ -277,111 +255,8 @@ Now it's your turn! Run this next logistic model using nitrite/nitrate as a pote
 
 #### Try it now {-}
 
-Start by creating a dataset for your analysis. Select a name for your new dataset:
+Use the same dataset "filam_diatom" to run a new logistic model. Copy the code above, but replace the predictor temperature ("mean_mixing_depth_temp") with nitrite/nitrate ("NO2_NO3_ECCC1m"). How well does this explanatory variable predict the probability of finding filamentous diatom?
 
-```r
-your_dataset <- ham[, c("area_group", "season", 
-                        "filamentous_Diatom", "NO2_NO3_ECCC1m")]
-```
-
-
-
-*Formatting* 
-
-Remove NA data
-
-```r
-your_dataset <- na.omit(your_dataset)
-```
-
-
-
-Now you can create a new column that describes the presence or the absence of filamentous diatoms across the dataset.
-
-Use the function **ifelse** to label all observations where measurements were greater than zero as "present", and all observations where measurements were equal to zero as "absent":
-
-
-```r
-your_dataset$new_column_name <- ifelse(your_dataset$filamentous_Diatom > 0, "present", "absent")
-```
-
-Format this new column as a **factor**
-
-
-```r
-your_dataset$filamentous_Diatom <- factor(your_dataset$filamentous_Diatom)
-
-# and check how it looks:
-levels(your_dataset$filamentous_Diatom)
-```
-
-
-
-```
-## [1] "absent"  "present"
-```
-
-*Run model*
-
-Use **glm** function and family **binomial**
-
-```r
-your_model_name <- glm("response variable" ~ "explanatory variable",
-             data = your_dataset, family = binomial)
-```
-
-
-
-
-Check model results using the **summary** function
-
-
-```r
-summary(your_model_name)
-```
-
-
-
-How well did this predictor do? 
-
-*Plot model predictions*
-
-Start with obtaining model predictions and errors:
-
-```r
-# Create a sequence of values for nitrite/nitrate
-N_values <- seq(min(filam_diatom_P$NO2_NO3_ECCC1m), max(filam_diatom_P$NO2_NO3_ECCC1m), length.out = length(filam_diatom_P$NO2_NO3_ECCC1m))
-
-# Create a data frame with nitrite/nitrate values
-newdata <- data.frame(NO2_NO3_ECCC1m = N_values)
-
-# Predict probabilities for each value of nitrite/nitrate
-predicted_probabilities_P <- predict(model, newdata = newdata, type = "response")
-
-# Calculate confidence intervals
-z <- qnorm(1 - (1 - 0.95) / 2)  # 95% confidence level
-se <- sqrt(predicted_probabilities_P * (1 - predicted_probabilities_P) / nrow(filam_diatom_P))
-lower_bound <- predicted_probabilities_P - z * se
-upper_bound <- predicted_probabilities_P + z * se
-```
-
-Now you are ready to plot the data and the predictions:
-
-```r
-# Convert "present" and "absent" to 1 and 0
-presence_numeric_P <- ifelse(filam_diatom_P$filam_presence == "present", 1, 0)
-
-# Plot the predicted probabilities with confidence intervals
-plot(N_values, predicted_probabilities_P, type = "l", 
-     main = "Filamentous diatom presence",
-     xlab = "Nitrate/nitrite (mg/L)", ylab = "Predicted probability", cex.axis = 1.5, ylim = c(0, 1), lwd = 2)
-lines(N_values, lower_bound, col = "blue", lty = 2)
-lines(N_values, upper_bound, col = "blue", lty = 2)
-points(filam_diatom_P$NO2_NO3_ECCC1m, presence_numeric_P)
-```
-
-
-![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic4.png)
 
 
 ## Additional resources
@@ -409,9 +284,9 @@ Imagine you have counts of living and dead organisms in this imaginary dataset:
 
 |date       |location  | living_daphnia| dead_daphnia|
 |:----------|:---------|--------------:|------------:|
-|Jan-1-2024 |station-1 |             53|           70|
-|Jan-1-2024 |station-2 |             82|            1|
-|Jan-1-2024 |station-3 |             30|           58|
+|Jan-1-2024 |station-1 |             11|           41|
+|Jan-1-2024 |station-2 |             44|            9|
+|Jan-1-2024 |station-3 |              2|           46|
 
 In this case, instead of considering each individual as "living" or "dead", you should calculate the proportion of living organisms *per replicate* like this:
     
@@ -424,9 +299,9 @@ example_independence$proportion <- round(example_independence$living_daphnia/(ex
 
 |date       |location  | living_daphnia| dead_daphnia| proportion|
 |:----------|:---------|--------------:|------------:|----------:|
-|Jan-1-2024 |station-1 |             53|           70|       0.43|
-|Jan-1-2024 |station-2 |             82|            1|       0.99|
-|Jan-1-2024 |station-3 |             30|           58|       0.34|
+|Jan-1-2024 |station-1 |             11|           41|       0.21|
+|Jan-1-2024 |station-2 |             44|            9|       0.83|
+|Jan-1-2024 |station-3 |              2|           46|       0.04|
 
 This proportion will be your response variable for the logistic model. When using proportions, you should also provide the "weights" information in the glm formula (i.e., a dataset with total number of trials per replicate, or the sum of events where we got success + events where we got failure).
 
@@ -459,12 +334,10 @@ str(example$filam_presence)
 ##  chr [1:742] "present" NA NA "present" NA NA NA NA NA NA NA NA "present" NA ...
 ```
 
-See how we need to remove NA data and format the column as factor for our model to run nicely:
+See how we need to format the column as factor for our model to run nicely:
 
 
 ```r
-example <- example[!is.na(example$filamentous_Diatom), ]
-
 example$filam_presence <- factor(example$filam_presence)
 
 levels(example$filam_presence)
