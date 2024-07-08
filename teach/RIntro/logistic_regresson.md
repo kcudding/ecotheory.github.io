@@ -27,19 +27,17 @@
 - Outcomes can be categorized as 1 (e.g., success) and 0 (e.g., failure)
 
 ## How does this type of data look like?
-- Hamilton Harbour dataset: let's suppose that it becomes hard for zooplankton to eat when there are more "less edible" algae than "edible" algae in the environment
-- That was the criteria for populating the column "Easy to eat":
+Here is some hypothetical data of a undesirable organism, as it is less edible for zooplankton. We record the presence or absence of this organism at each observation like this:  
 
 
-| Nitrate/nitrite|  Edible| Less edible|Easy to eat |
-|---------------:|-------:|-----------:|:-----------|
-|            2.23|  884.60|      1645.7|no          |
-|            2.50|  900.00|      1133.3|no          |
-|            2.50|  923.20|       939.9|no          |
-|            2.13| 1546.40|      1312.0|yes         |
-|            2.13|  811.90|       454.1|yes         |
-|            2.62|  339.16|       308.2|yes         |
-|            2.67| 1376.80|       552.2|yes         |
+| Nitrate/nitrite|Presence | Binary|
+|---------------:|:--------|------:|
+|            1.00|no       |      0|
+|            1.05|no       |      0|
+|            1.10|yes      |      1|
+|            1.15|no       |      0|
+|            1.20|no       |      0|
+|            1.26|no       |      0|
 
 When we plot this type of binary data, we see that observations are either of the two outcome possibilities:
 
@@ -62,7 +60,7 @@ As you can see in the plot, this type of data is best fit by an s-shaped curve i
 
 - The distribution of gammarid species was predicted using logistic regressions, where current velocity was the most important factor explaining their distribution [(Peeters & Gardeniers, 1998)](https://onlinelibrary.wiley.com/doi/epdf/10.1046/j.1365-2427.1998.00304.x)  
 
-- Foraging shift behaviour from the benthos to the water surface in brown trout (1 = surface prey consumed, 0 = no surface prey consumed) was predicted using fish length as a predictor in a logistic regression [(SC!nchez-HernC!ndez & Cobo, 2017)](https://cdnsciencepub.com/doi/full/10.1139/cjfas-2017-0021])
+- Foraging shift behaviour from the benthos to the water surface in brown trout (1 = surface prey consumed, 0 = no surface prey consumed) was predicted using fish length as a predictor in a logistic regression [(Sánchez-Hernández & Cobo, 2017)](https://cdnsciencepub.com/doi/full/10.1139/cjfas-2017-0021])
 
 ![[Amphipod Gammaridae](https://commons.wikimedia.org/wiki/File:Amphipod_Gammaridae_%288741971996%29.jpg); [Brown Trout, USFWS Mountain-Prairie](https://www.flickr.com/photos/usfwsmtnprairie/49860328703)](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic_studies_example.jpg)
 
@@ -284,9 +282,9 @@ Imagine you have counts of living and dead organisms in this imaginary dataset:
 
 |date       |location  | living_daphnia| dead_daphnia|
 |:----------|:---------|--------------:|------------:|
-|Jan-1-2024 |station-1 |             69|           78|
-|Jan-1-2024 |station-2 |             94|           40|
-|Jan-1-2024 |station-3 |             95|           60|
+|Jan-1-2024 |station-1 |             14|           69|
+|Jan-1-2024 |station-2 |             97|           80|
+|Jan-1-2024 |station-3 |             91|            2|
 
 In this case, instead of considering each individual as "living" or "dead", you should calculate the proportion of living organisms *per replicate* like this:
     
@@ -299,9 +297,9 @@ example_independence$proportion <- round(example_independence$living_daphnia/(ex
 
 |date       |location  | living_daphnia| dead_daphnia| proportion|
 |:----------|:---------|--------------:|------------:|----------:|
-|Jan-1-2024 |station-1 |             69|           78|       0.47|
-|Jan-1-2024 |station-2 |             94|           40|       0.70|
-|Jan-1-2024 |station-3 |             95|           60|       0.61|
+|Jan-1-2024 |station-1 |             14|           69|       0.17|
+|Jan-1-2024 |station-2 |             97|           80|       0.55|
+|Jan-1-2024 |station-3 |             91|            2|       0.98|
 
 This proportion will be your response variable for the logistic model. When using proportions, you should also provide the "weights" information in the glm formula (i.e., a dataset with total number of trials per replicate, or the sum of events where we got success + events where we got failure).
 
