@@ -215,6 +215,7 @@ summary(model)
 ## Number of Fisher Scoring iterations: 5
 ```
 
+
 So we can see that our p-value for the epilimnion temperature predictor is smaller than 0.05. This suggests that there is a statistically significant relationship between temperature and the presence of filamentous diatoms.
 
 Let's see what each component of the model result summary means:
@@ -227,7 +228,7 @@ We are now ready for the best part: plotting model predictions
 First, we save the regression coefficients:
 
 ```r
-logcoefs = round(as.data.frame(summary(model)$coefficients),2)
+coefficients <- round(as.data.frame(summary(model)$coefficients),2)
 ```
 
 And we plot the actual data and the model predictions:
@@ -240,7 +241,7 @@ plot(filam_diatom$mean_mixing_depth_temp, presence_numeric_filam, pch = 16,
      main = "Filamentous diatom presence",
      xlab = "Epilimnion temperature (\u00B0C)", ylab = "Predicted probability", 
      cex.axis = 1.3, cex.lab = 1.3, ylim = c(0, 1), lwd = 2)
-curve(exp(logcoefs[1, 1] + logcoefs[2, 1] * x)/(1 + exp(logcoefs[1, 1] + logcoefs[2, 1] * x)), 
+curve(exp(coefficients[1, 1] + coefficients[2, 1] * x)/(1 + exp(coefficients[1, 1] + coefficients[2, 1] * x)), 
       add = TRUE, col = 2, lwd = 3)
 ```
 
