@@ -300,6 +300,7 @@ curve(exp(coefficients[1, 1] + coefficients[2, 1] * x)/(1 + exp(coefficients[1, 
 ```
 
 ![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic4.png)
+
 ## Additional resources
 
 ### What could go wrong?
