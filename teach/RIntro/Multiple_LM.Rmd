@@ -133,12 +133,12 @@ I found it much easier to build the model first then check the assumptions as we
 
 #### Try it now: {-}  
 
-```{r mlrm plot practice, echo=!soln, eval=FALSE}
+```{r mlrm_plot_practice, echo=!soln, eval=FALSE}
 #Access the diagnosis plots that are auto-generated from the lm() function
 #Using plot(model_name): 
 plot()
 ```
-```{r mlrm plot answer, echo=soln, eval=soln}
+```{r mlrm_plot_answer, echo=soln, eval=FALSE}
 #Access the diagnosis plots that are auto-generated from the lm() function
 #Using plot(model_name): 
 plot(multi_model)
