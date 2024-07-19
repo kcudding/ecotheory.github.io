@@ -13,7 +13,8 @@ output:
 # Basic R
 
 ```{r}
-soln=FALSE
+soln=TRUE
+
 ```
 
 ## Data import
@@ -22,7 +23,7 @@ Our first job today is to use a package to import the data we will be using thro
 ```{asis, echo=soln}
 The function we need is **read_excel()**. In general, I advise users to examine the help functions in R every time they use a new function. If you type '?read_xlsx' in the console window, a help window will be called.
 
-The help file indicates the inputs that the function takes. We see that we need the *path* to the .xlsx file, the *sheet* of that file we want to read. Note that if we do not specifiy which sheet, the function will default to reading the first sheet. Most functions in R will have default settings for the inputs so that you do not necessarily have to set these. For example, to read in you Hamilton Harbour data, we are not going to using the *range* inpput that selects a cell range to read in. 
+The help file indicates the inputs that the function takes. We see that we need the *path* to the .xlsx file, and the *sheet* of that file we want to read. Note that if we do not specifiy which sheet, the function will default to reading the first sheet. Most functions in R will have default settings for the inputs so that you do not necessarily have to set these. For example, to read in you Hamilton Harbour data, we are not going to using the *range* inpput that selects a cell range to read in. 
 ```
 
 ### Where’s my file??
@@ -34,11 +35,11 @@ To do the import we need the *path* where the file is located. There are at leas
 3. use **setwd()** to change the current directory to the location of the file
 
 ```{asis, echo=soln}
-1. If you don’t know where you have saved a file (the *path*) you can combine the **file.choose()** function to get a drop down menu of your computers file system. If you enter *read_excel(file.choose())*, you can then use the menu which appears to choose the appropriate file. For example, to import the data and save it to the variable name *ham*, enter the command *ham = read_excel(file.choose())* in the Console window. 
+If you don’t know where you have saved a file (the *path*) you can combine the **file.choose()** function to get a drop down menu of your computers file system. If you enter *read_excel(file.choose())*, you can then use the menu which appears to choose the appropriate file. For example, to import the data and save it to the variable name *ham*, enter the command *ham = read_excel(file.choose())* in the Console window. 
 
-2. Alternately, if you know the location of your file, you can enter a command like *ham = read_excel("/Users/Kim/Documents/hamiltonharbour.xlsx")* to open the file immediately.
+Alternately, if you know the location of your file, you can enter a command like *ham = read_excel("/Users/Kim/Documents/hamiltonharbour.xlsx")* to open the file immediately.
 
-3. You could also simply change the directory that R is looking at. The command **getwd()** allows you to see which directory R is currently focusing on, and the command *setwd("C:/Users yourusername/workshop")* or similar should change the directory to the location you want to save to. You can check by typing getwd() again. Then you could simply enter *read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")*, since R would already be focusing on the correct directory
+You could also simply change the directory that R is looking at. The command **getwd()** allows you to see which directory R is currently focusing on, and the command *setwd("C:/Users yourusername/workshop")* or similar should change the directory to the location you want to save to. You can check by typing getwd() again. Then you could simply enter *read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")*, since R would already be focusing on the correct directory
 ```
 
 #### Try it  now: {-} 
@@ -450,7 +451,7 @@ boxplot(calanoid~area_group, data=year_sub)
 ```
 
 
-Also note, that we can easily complete statistical tests other than regression in R. For example, here's a t-test comparing calanoid data at "deep" and "NE" sites.
+Also note that we can easily complete statistical tests other than regression in R. For example, here's a t-test comparing calanoid data at "deep" and "NE" sites.
 
 ```{r, echo=TRUE}
               

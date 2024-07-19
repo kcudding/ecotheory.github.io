@@ -264,14 +264,14 @@ code span.wa { font-style: italic; } /* Warning */
 <div id="try-it-now-19" class="section level4 unnumbered hasAnchor">
 <h4>Try it now<a href="linear-regression.html#try-it-now-19" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use the code below to regress total zooplankton on water level. Notice we will change the column names with the spaces first using the <strong>sub()</strong> function (i.e., replace “water level” with “water.level”), since spaces are always a pain when using code.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="linear-regression.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names to replace space with &#39;.&#39;</span></span>
-<span id="cb38-2"><a href="linear-regression.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ham) <span class="ot">=</span> <span class="fu">sub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="fu">colnames</span>(ham))</span>
-<span id="cb38-3"><a href="linear-regression.html#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="linear-regression.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># save linear regression results</span></span>
-<span id="cb38-5"><a href="linear-regression.html#cb38-5" aria-hidden="true" tabindex="-1"></a>waterlzoo.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(total.zoop <span class="sc">~</span> water.level, <span class="at">data =</span> ham)</span>
-<span id="cb38-6"><a href="linear-regression.html#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="linear-regression.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print regression results</span></span>
-<span id="cb38-8"><a href="linear-regression.html#cb38-8" aria-hidden="true" tabindex="-1"></a>waterlzoo.lm</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="linear-regression.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># change column names to replace space with &#39;.&#39;</span></span>
+<span id="cb40-2"><a href="linear-regression.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ham) <span class="ot">=</span> <span class="fu">sub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;.&quot;</span>, <span class="fu">colnames</span>(ham))</span>
+<span id="cb40-3"><a href="linear-regression.html#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="linear-regression.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># save linear regression results</span></span>
+<span id="cb40-5"><a href="linear-regression.html#cb40-5" aria-hidden="true" tabindex="-1"></a>waterlzoo.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(total.zoop <span class="sc">~</span> water.level, <span class="at">data =</span> ham)</span>
+<span id="cb40-6"><a href="linear-regression.html#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="linear-regression.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print regression results</span></span>
+<span id="cb40-8"><a href="linear-regression.html#cb40-8" aria-hidden="true" tabindex="-1"></a>waterlzoo.lm</span></code></pre></div>
 <pre><code>
 Call:
 lm(formula = total.zoop ~ water.level, data = ham)
@@ -284,9 +284,9 @@ Coefficients:
 <div id="try-it-now-20" class="section level4 unnumbered hasAnchor">
 <h4>Try it now<a href="linear-regression.html#try-it-now-20" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use the <strong>summary()</strong> function on the <em>list</em> data structure of your regression output</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="linear-regression.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print a summary of the regression results</span></span>
-<span id="cb40-2"><a href="linear-regression.html#cb40-2" aria-hidden="true" tabindex="-1"></a>sum_lm <span class="ot">=</span> <span class="fu">summary</span>(waterlzoo.lm)</span>
-<span id="cb40-3"><a href="linear-regression.html#cb40-3" aria-hidden="true" tabindex="-1"></a>sum_lm</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="linear-regression.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print a summary of the regression results</span></span>
+<span id="cb42-2"><a href="linear-regression.html#cb42-2" aria-hidden="true" tabindex="-1"></a>sum_lm <span class="ot">=</span> <span class="fu">summary</span>(waterlzoo.lm)</span>
+<span id="cb42-3"><a href="linear-regression.html#cb42-3" aria-hidden="true" tabindex="-1"></a>sum_lm</span></code></pre></div>
 <pre><code>
 Call:
 lm(formula = total.zoop ~ water.level, data = ham)
@@ -318,10 +318,10 @@ F-statistic: 63.3 on 1 and 537 DF,  p-value: 1.08e-14</code></pre>
 <div id="try-it-now-21" class="section level4 unnumbered hasAnchor">
 <h4>Try it now<a href="linear-regression.html#try-it-now-21" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Subset the list object to get the information about the slope, and the R2 value.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="linear-regression.html#cb42-1" aria-hidden="true" tabindex="-1"></a>sum_lm<span class="sc">$</span>coefficients[<span class="dv">2</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="linear-regression.html#cb44-1" aria-hidden="true" tabindex="-1"></a>sum_lm<span class="sc">$</span>coefficients[<span class="dv">2</span>, ]</span></code></pre></div>
 <pre><code>  Estimate Std. Error    t value   Pr(&gt;|t|) 
   4.15e+02   5.22e+01   7.95e+00   1.08e-14 </code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="linear-regression.html#cb44-1" aria-hidden="true" tabindex="-1"></a>sum_lm<span class="sc">$</span>adj.r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="linear-regression.html#cb46-1" aria-hidden="true" tabindex="-1"></a>sum_lm<span class="sc">$</span>adj.r.squared</span></code></pre></div>
 <pre><code>[1] 0.104</code></pre>
 <p>The estimate of the slope is positive, although the model does not explain much of the variance in the data.</p>
 <p>This could be because we have violated one or more of the assumptions of the regression. And of course whenever we use a regression we should test to see if we have met these assumptions.</p>
@@ -344,7 +344,7 @@ F-statistic: 63.3 on 1 and 537 DF,  p-value: 1.08e-14</code></pre>
 <h3><span class="header-section-number">4.0.4</span> How do you evaluate the assumptions of a linear regression?<a href="linear-regression.html#how-do-you-evaluate-the-assumptions-of-a-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can get a quick assessment of whether we have violated some of these assumptions by creating diagnostic plots. These plots display the residuals of the linear regression in various ways.</p>
 <p>To see these plots we can just use the following <strong>plot()</strong> command, and hit return to display each of the four plots in turn.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="linear-regression.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(waterlzoo.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="linear-regression.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(waterlzoo.lm)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672"  /></p>
 <div id="a." class="section level4 unnumbered hasAnchor">
 <h4>a.<a href="linear-regression.html#a." class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -369,8 +369,8 @@ F-statistic: 63.3 on 1 and 537 DF,  p-value: 1.08e-14</code></pre>
 <div id="try-it-now-22" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="linear-regression.html#try-it-now-22" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Plot our data using the <strong>plot()</strong> function</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="linear-regression.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> ham<span class="sc">$</span>water.level, <span class="at">y =</span> (ham<span class="sc">$</span>total.zoop), <span class="at">xlab =</span> <span class="st">&quot;Water level (m)&quot;</span>, </span>
-<span id="cb47-2"><a href="linear-regression.html#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Total zooplankton&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="linear-regression.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> ham<span class="sc">$</span>water.level, <span class="at">y =</span> (ham<span class="sc">$</span>total.zoop), <span class="at">xlab =</span> <span class="st">&quot;Water level (m)&quot;</span>, </span>
+<span id="cb49-2"><a href="linear-regression.html#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Total zooplankton&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672"  /></p>
 <p>The plot explains a lot of our problems with the model assumptions. There are some very large values relative to most observations. In general, count and biomass data has this kind of distribution: a lot of small values and a few very large ones so that the data variance about the fitted line is non-normal.</p>
 <p>We can transform the population data using a natural logarithm to try and improve the normality. This is easy to do with the <strong>log()</strong> function. So we will run the regression on this transformed data and see if we are doing a better job meeting the model assumptions.</p>
@@ -378,9 +378,9 @@ F-statistic: 63.3 on 1 and 537 DF,  p-value: 1.08e-14</code></pre>
 <div id="try-it-now-23" class="section level4 unnumbered hasAnchor">
 <h4>Try it now<a href="linear-regression.html#try-it-now-23" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Run a regression on log-transformed data</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="linear-regression.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save linear regression results</span></span>
-<span id="cb48-2"><a href="linear-regression.html#cb48-2" aria-hidden="true" tabindex="-1"></a>log_waterlzoo.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(total.zoop) <span class="sc">~</span> water.level, <span class="at">data =</span> ham)</span>
-<span id="cb48-3"><a href="linear-regression.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(log_waterlzoo.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="linear-regression.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save linear regression results</span></span>
+<span id="cb50-2"><a href="linear-regression.html#cb50-2" aria-hidden="true" tabindex="-1"></a>log_waterlzoo.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(total.zoop) <span class="sc">~</span> water.level, <span class="at">data =</span> ham)</span>
+<span id="cb50-3"><a href="linear-regression.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(log_waterlzoo.lm)</span></code></pre></div>
 <pre><code>
 Call:
 lm(formula = log(total.zoop) ~ water.level, data = ham)
@@ -403,8 +403,8 @@ F-statistic:   62 on 1 and 537 DF,  p-value: 1.92e-14</code></pre>
 <p><img src="https://github.com/kcudding/kcudding.github.io/blob/main/teach/RIntro/Rseminarlinearreg.png"  />
 We see that our relationship is still significant and positive under the transform.</p>
 <p>Let’s check the diagnostic plots quickly</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="linear-regression.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save linear regression results</span></span>
-<span id="cb50-2"><a href="linear-regression.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(log_waterlzoo.lm)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="linear-regression.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save linear regression results</span></span>
+<span id="cb52-2"><a href="linear-regression.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(log_waterlzoo.lm)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672"  /></p>
 <p>Our diagnostic plots look <em>much</em> better, particularly with respect to the normality of the resiudals.</p>
 </div>
@@ -418,28 +418,28 @@ We see that our relationship is still significant and positive under the transfo
 <p>First let’s just get the predicted regression line and the confidence intervals about this line. We do this by creating a continuous sequence of x values, and applying our model to these values.</p>
 <div id="try-it-now-24" class="section level4 unnumbered hasAnchor">
 <h4>Try it now<a href="linear-regression.html#try-it-now-24" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="linear-regression.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a vector &#39;x&#39; to predict total.zoop from waterlevel</span></span>
-<span id="cb51-2"><a href="linear-regression.html#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="linear-regression.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># get min water level</span></span>
-<span id="cb51-4"><a href="linear-regression.html#cb51-4" aria-hidden="true" tabindex="-1"></a>min_water <span class="ot">=</span> <span class="fu">min</span>(ham<span class="sc">$</span>water.level, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb51-5"><a href="linear-regression.html#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-6"><a href="linear-regression.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># get max water level</span></span>
-<span id="cb51-7"><a href="linear-regression.html#cb51-7" aria-hidden="true" tabindex="-1"></a>max_water <span class="ot">=</span> <span class="fu">max</span>(ham<span class="sc">$</span>water.level, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb51-8"><a href="linear-regression.html#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-9"><a href="linear-regression.html#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co"># build a new data frame that has vector of xvalues from min</span></span>
-<span id="cb51-10"><a href="linear-regression.html#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="co"># to max in increments of 0.05</span></span>
-<span id="cb51-11"><a href="linear-regression.html#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-12"><a href="linear-regression.html#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create the sequence</span></span>
-<span id="cb51-13"><a href="linear-regression.html#cb51-13" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(min_water, max_water, <span class="at">by =</span> <span class="fl">5e-02</span>)</span>
-<span id="cb51-14"><a href="linear-regression.html#cb51-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-15"><a href="linear-regression.html#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new dataframe with this predictor</span></span>
-<span id="cb51-16"><a href="linear-regression.html#cb51-16" aria-hidden="true" tabindex="-1"></a>ndata <span class="ot">=</span> <span class="fu">data.frame</span>(water.level <span class="ot">&lt;-</span> x)</span>
-<span id="cb51-17"><a href="linear-regression.html#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-18"><a href="linear-regression.html#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="co"># use this dataframe and the predict function to calculate</span></span>
-<span id="cb51-19"><a href="linear-regression.html#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence intervals</span></span>
-<span id="cb51-20"><a href="linear-regression.html#cb51-20" aria-hidden="true" tabindex="-1"></a>confidenceint <span class="ot">&lt;-</span> <span class="fu">predict</span>(log_waterlzoo.lm, <span class="at">newdata =</span> ndata, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, </span>
-<span id="cb51-21"><a href="linear-regression.html#cb51-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">level =</span> <span class="fl">0.95</span>)</span>
-<span id="cb51-22"><a href="linear-regression.html#cb51-22" aria-hidden="true" tabindex="-1"></a>cf <span class="ot">=</span> <span class="fu">as.data.frame</span>(confidenceint)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="linear-regression.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a vector &#39;x&#39; to predict total.zoop from waterlevel</span></span>
+<span id="cb53-2"><a href="linear-regression.html#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="linear-regression.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># get min water level</span></span>
+<span id="cb53-4"><a href="linear-regression.html#cb53-4" aria-hidden="true" tabindex="-1"></a>min_water <span class="ot">=</span> <span class="fu">min</span>(ham<span class="sc">$</span>water.level, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-5"><a href="linear-regression.html#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="linear-regression.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co"># get max water level</span></span>
+<span id="cb53-7"><a href="linear-regression.html#cb53-7" aria-hidden="true" tabindex="-1"></a>max_water <span class="ot">=</span> <span class="fu">max</span>(ham<span class="sc">$</span>water.level, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb53-8"><a href="linear-regression.html#cb53-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-9"><a href="linear-regression.html#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co"># build a new data frame that has vector of xvalues from min</span></span>
+<span id="cb53-10"><a href="linear-regression.html#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="co"># to max in increments of 0.05</span></span>
+<span id="cb53-11"><a href="linear-regression.html#cb53-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-12"><a href="linear-regression.html#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="co"># create the sequence</span></span>
+<span id="cb53-13"><a href="linear-regression.html#cb53-13" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(min_water, max_water, <span class="at">by =</span> <span class="fl">5e-02</span>)</span>
+<span id="cb53-14"><a href="linear-regression.html#cb53-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-15"><a href="linear-regression.html#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new dataframe with this predictor</span></span>
+<span id="cb53-16"><a href="linear-regression.html#cb53-16" aria-hidden="true" tabindex="-1"></a>ndata <span class="ot">=</span> <span class="fu">data.frame</span>(water.level <span class="ot">&lt;-</span> x)</span>
+<span id="cb53-17"><a href="linear-regression.html#cb53-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-18"><a href="linear-regression.html#cb53-18" aria-hidden="true" tabindex="-1"></a><span class="co"># use this dataframe and the predict function to calculate</span></span>
+<span id="cb53-19"><a href="linear-regression.html#cb53-19" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence intervals</span></span>
+<span id="cb53-20"><a href="linear-regression.html#cb53-20" aria-hidden="true" tabindex="-1"></a>confidenceint <span class="ot">&lt;-</span> <span class="fu">predict</span>(log_waterlzoo.lm, <span class="at">newdata =</span> ndata, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, </span>
+<span id="cb53-21"><a href="linear-regression.html#cb53-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb53-22"><a href="linear-regression.html#cb53-22" aria-hidden="true" tabindex="-1"></a>cf <span class="ot">=</span> <span class="fu">as.data.frame</span>(confidenceint)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -449,19 +449,19 @@ We see that our relationship is still significant and positive under the transfo
 <div id="try-it-now-25" class="section level4 unnumbered hasAnchor">
 <h4>Try it now<a href="linear-regression.html#try-it-now-25" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Plot!</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="linear-regression.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot with water level and total zooplankton use</span></span>
-<span id="cb52-2"><a href="linear-regression.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># xlab(), ylab() and main() to put titles on the plot</span></span>
-<span id="cb52-3"><a href="linear-regression.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> ham<span class="sc">$</span>water.level, <span class="at">y =</span> <span class="fu">log</span>(ham<span class="sc">$</span>total.zoop), <span class="at">xlab =</span> <span class="st">&quot;Water level (m)&quot;</span>, </span>
-<span id="cb52-4"><a href="linear-regression.html#cb52-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;(log) Total zooplankton&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Relationship between water level and total zooplankton&quot;</span>)</span>
-<span id="cb52-5"><a href="linear-regression.html#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-6"><a href="linear-regression.html#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add regression line to the plot</span></span>
-<span id="cb52-7"><a href="linear-regression.html#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cf<span class="sc">$</span>fit <span class="sc">~</span> x, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span>
-<span id="cb52-8"><a href="linear-regression.html#cb52-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-9"><a href="linear-regression.html#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="co"># lower bound confidence interval</span></span>
-<span id="cb52-10"><a href="linear-regression.html#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cf<span class="sc">$</span>lwr <span class="sc">~</span> x, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
-<span id="cb52-11"><a href="linear-regression.html#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-12"><a href="linear-regression.html#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="co"># upper bound confidence interval</span></span>
-<span id="cb52-13"><a href="linear-regression.html#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cf<span class="sc">$</span>upr <span class="sc">~</span> x, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="linear-regression.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a plot with water level and total zooplankton use</span></span>
+<span id="cb54-2"><a href="linear-regression.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># xlab(), ylab() and main() to put titles on the plot</span></span>
+<span id="cb54-3"><a href="linear-regression.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> ham<span class="sc">$</span>water.level, <span class="at">y =</span> <span class="fu">log</span>(ham<span class="sc">$</span>total.zoop), <span class="at">xlab =</span> <span class="st">&quot;Water level (m)&quot;</span>, </span>
+<span id="cb54-4"><a href="linear-regression.html#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;(log) Total zooplankton&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Relationship between water level and total zooplankton&quot;</span>)</span>
+<span id="cb54-5"><a href="linear-regression.html#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-6"><a href="linear-regression.html#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co"># add regression line to the plot</span></span>
+<span id="cb54-7"><a href="linear-regression.html#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cf<span class="sc">$</span>fit <span class="sc">~</span> x, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span>
+<span id="cb54-8"><a href="linear-regression.html#cb54-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-9"><a href="linear-regression.html#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co"># lower bound confidence interval</span></span>
+<span id="cb54-10"><a href="linear-regression.html#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cf<span class="sc">$</span>lwr <span class="sc">~</span> x, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb54-11"><a href="linear-regression.html#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="linear-regression.html#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co"># upper bound confidence interval</span></span>
+<span id="cb54-13"><a href="linear-regression.html#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(cf<span class="sc">$</span>upr <span class="sc">~</span> x, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672"  /></p>
 </div>
 <div id="common-mistakes" class="section level3 hasAnchor" number="4.2.1">
