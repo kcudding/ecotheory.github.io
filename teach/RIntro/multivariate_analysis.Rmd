@@ -215,15 +215,15 @@ plot(pca.ham, type = "n", main = "Individuals ('sites') by season",
 
 ## Use points() to add points
 points(pca.ham, display = "sites",
-       pch = as.numeric(ham.multi$season) + 14, 
-       col = c(2, 3, 4, 5)[as.numeric(ham.multi$season)], 
+       pch = c(15,16,17,18)[as.numeric(ham.multi$season)], 
+       col = c(2,3,4,5)[as.numeric(ham.multi$season)], 
        cex = 1) # add sites
 
 ## Legend
-legend("bottomright", legend = unique(ham.multi$season),
-       pch = as.numeric(unique(ham.multi$season)) + 14,
-       col = c(2,3,4,5), bty = "n", cex = 1) # add legend
-
+legend("bottomright", legend = levels(ham.multi$season),
+       pch = c(15,16,17,18),
+       col = c(2,3,4,5),
+       bty = "n", cex = 1) # add legend
 ```
 
 
@@ -291,7 +291,7 @@ stressplot(nmds.ham, pch = 16, las = 1,
 
 ### Plot ordination for nMDS
 
-No we can plot the ordination for nMDS, just like for PCA in the previous sections. The steps exactly the same. We use **`plot()`** to create an empty canvas first, then use **`points()`** to add samples/variables.
+No we can plot the ordination for nMDS, just like for PCA in the previous sections. The steps exactly the same. We use **`plot()`** to create an empty canvas first, then use **`points()`** to add samples/variables. Additionally, we would like to represent species scores with arrows. This step can only be done manually by extracted the species scores using **`scores(display = "species")`**, and draw arrows using **`arrows()`** function.
 
 ```{r, echo = TRUE}
 ## Create empty canvas
@@ -299,11 +299,12 @@ plot(nmds.ham, type = "n", main = "nMDS Ordination")
 
 ## Add points and legends
 points(nmds.ham, display = "sites",
-       pch = as.numeric(ham.multi$season) + 14,
-       col = c(2, 3, 4, 5) [as.numeric(ham.multi$season)],
+       pch = c(15,16,17,18)[as.numeric(ham.multi$season)],
+       col = c(2,3,4,5)[as.numeric(ham.multi$season)],
        cex = 1) # add sites
-legend("bottomright", legend = unique(ham.multi$season),
-       pch = as.numeric(unique(ham.multi$season)) + 14,
+
+legend("bottomright", legend = levels(ham.multi$season),
+       pch = c(15,16,17,18),
        col = c(2,3,4,5), bty = "n", cex = 1) # add legend
 ```
 
