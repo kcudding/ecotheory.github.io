@@ -313,6 +313,8 @@ F-statistic: 63.3 on 1 and 537 DF,  p-value: 1.08e-14</code></pre>
 <li>determine how much of the variance in the data is explained by this model.</li>
 </ol>
 <p>This first thing to notice is whether or not we have a significant relationship. The output provides a t-value and probability for the null hypothesis that the intercept and slope have values of zero. We can see the p-value for the slope test is 1.078^{-14} and indicates a significant relationship.</p>
+<p>At the bottom of the table there is also an F-test result on the null hypothesis that the MSreg/MSres is 1 (i.e., does the model fit the data), which since our model is so simple, will have the same probability as that for the t-test that the slope is significantly different from zero.</p>
+<p>We also find the standard deviation about the regression (sr or residual standard error), and the correlation coefficient, which indicates how much of the variance is explained by the model at the bottom of the table. The adjusted R2 value is <code>r sum_lm$adj.r.squared</code> and indicates we are not explaining much of the variance in this data.</p>
 <p>Notice that if we just wanted to grab some of this information (e.g., to create a table in a publication) we can just subset the list object</p>
 </div>
 <div id="try-it-now-21" class="section level4 unnumbered hasAnchor">

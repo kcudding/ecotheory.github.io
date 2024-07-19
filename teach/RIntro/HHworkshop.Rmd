@@ -10,7 +10,7 @@
   Significance testing is used to determine if the slope of this relationship is significantly different than zero.  For example, for our Hamilton Harbour data, we will be testing for a relationship between water level (our predictor) and total zooplankton counted in a net grab (our response). 
 
 ```{r include=FALSE, warning=FALSE}
-soln=FALSE
+
 #install.packages("readxl")
 library("readxl")
 
