@@ -2,7 +2,6 @@
 ```{r import, echo = FALSE}
 library(readxl)
 library(vegan)
-soln=FALSE
 # xlsx files
 ham <- read_excel("ind dates flat all parameters Hamilton only FOR Kim.xlsx")
 
