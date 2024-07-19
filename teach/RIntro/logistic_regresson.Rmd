@@ -1,3 +1,11 @@
+---
+
+---
+
+```{r setup, include=FALSE}
+soln=FALSE
+knitr::opts_chunk$set(echo = TRUE,always_allow_html = TRUE, tidy.opts=list(width.cutoff=60), message=FALSE)
+```
 
 # Logistic regression
 
@@ -277,7 +285,7 @@ Now it's your turn! Run this next logistic model using nitrite/nitrate as a pote
 
 Use the same dataset "filam_diatom" to run a new logistic model. Copy the code above, but replace the predictor temperature ("mean_mixing_depth_temp") with nitrite/nitrate ("NO2_NO3_ECCC1m"). How well does this explanatory variable predict the probability of finding filamentous diatom?
 
-```{r, echo=soln}
+```{r echo=soln, fig.keep='none'}
 model <- glm(filam_presence ~ NO2_NO3_ECCC1m,
              data = filam_diatom, family = binomial)
 summary(model)
@@ -291,6 +299,7 @@ curve(exp(coefficients[1, 1] + coefficients[2, 1] * x)/(1 + exp(coefficients[1, 
       add = TRUE, col = 2, lwd = 3)
 ```
 
+![](https://raw.github.com/kcudding/kcudding.github.io/main/teach/RIntro/logistic4.png)
 ## Additional resources
 
 ### What could go wrong?
