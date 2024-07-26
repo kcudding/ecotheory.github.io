@@ -1,11 +1,3 @@
----
-
----
-
-```{r setup, include=FALSE}
-soln=FALSE
-knitr::opts_chunk$set(echo = TRUE,always_allow_html = TRUE, tidy.opts=list(width.cutoff=60), message=FALSE)
-```
 
 # Logistic regression
 

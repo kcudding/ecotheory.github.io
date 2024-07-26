@@ -434,137 +434,79 @@ code span.wa { font-style: italic; } /* Warning */
 <pre><code>[1] FALSE  TRUE FALSE FALSE FALSE FALSE</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="basic-r.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># by condition... using head() to show the first 6 items</span></span>
 <span id="cb21-2"><a href="basic-r.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ham<span class="sc">$</span>calanoid[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH6&quot;</span>])</span></code></pre></div>
-<pre><code>[1] 8.41e+01 1.32e+01 6.41e+01 5.84e+01 2.53e+01 6.37e-03</code></pre>
+<pre><code>[1] 84.094200542 13.196863744 64.145098250 58.389201770 25.256348256  0.006374018</code></pre>
 <p>Of course, this gives us all of the sampling dates for this station. Let’s assume we only want data from 2016. In that case we can combine our conditional statements using “&amp;” for AND and “|” for OR.</p>
 </div>
 <div id="try-it-now-7" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use an “&amp;” symbol to indicate that we want the selected data to be from station “HH6” and to be from the 2016.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="basic-r.html#cb23-1" aria-hidden="true" tabindex="-1"></a>ham<span class="sc">$</span>calanoid[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> ham<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>]</span></code></pre></div>
-<pre><code> [1]  64.15  25.26  70.72 142.45  89.27  70.07  32.33  78.56   7.97 120.23  91.17  19.29 104.39</code></pre>
+<pre><code> [1]  64.145098  25.256348  70.721192 142.447448  89.268307  70.066000  32.332505  78.560037   7.974158 120.229185  91.171246  19.286071 104.393878</code></pre>
 <p>If we wanted we could use the same conditionals to grab the julian sampling day for these observations, and save the result to new vectors</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="basic-r.html#cb25-1" aria-hidden="true" tabindex="-1"></a>cal_HH6_2016 <span class="ot">=</span> ham<span class="sc">$</span>calanoid[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> ham<span class="sc">$</span>year <span class="sc">==</span> </span>
 <span id="cb25-2"><a href="basic-r.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2016</span>]</span>
 <span id="cb25-3"><a href="basic-r.html#cb25-3" aria-hidden="true" tabindex="-1"></a>jul_cal_HH6_2016 <span class="ot">=</span> ham<span class="sc">$</span>Julian_Day[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH6&quot;</span> <span class="sc">&amp;</span> </span>
 <span id="cb25-4"><a href="basic-r.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    ham<span class="sc">$</span>year <span class="sc">==</span> <span class="dv">2016</span>]</span></code></pre></div>
 <table>
-<caption>
-<span id="tab:unnamed-chunk-18">Table 3.1: </span>Calanoid data for 2016 at station HH6
-</caption>
+<caption><span id="tab:unnamed-chunk-18">Table 3.1: </span>Calanoid data for 2016 at station HH6</caption>
 <thead>
-<tr>
-<th style="text-align:right;">
-calanoid
-</th>
-<th style="text-align:right;">
-julian
-</th>
+<tr class="header">
+<th align="right">calanoid</th>
+<th align="right">julian</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-64.14
-</td>
-<td style="text-align:right;">
-145
-</td>
+<tr class="odd">
+<td align="right">64.145098</td>
+<td align="right">145</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-25.26
-</td>
-<td style="text-align:right;">
-131
-</td>
+<tr class="even">
+<td align="right">25.256348</td>
+<td align="right">131</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-70.72
-</td>
-<td style="text-align:right;">
-160
-</td>
+<tr class="odd">
+<td align="right">70.721192</td>
+<td align="right">160</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-142.45
-</td>
-<td style="text-align:right;">
-188
-</td>
+<tr class="even">
+<td align="right">142.447448</td>
+<td align="right">188</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-89.27
-</td>
-<td style="text-align:right;">
-201
-</td>
+<tr class="odd">
+<td align="right">89.268306</td>
+<td align="right">201</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-70.07
-</td>
-<td style="text-align:right;">
-215
-</td>
+<tr class="even">
+<td align="right">70.066000</td>
+<td align="right">215</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-32.33
-</td>
-<td style="text-align:right;">
-174
-</td>
+<tr class="odd">
+<td align="right">32.332505</td>
+<td align="right">174</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-78.56
-</td>
-<td style="text-align:right;">
-258
-</td>
+<tr class="even">
+<td align="right">78.560037</td>
+<td align="right">258</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-7.97
-</td>
-<td style="text-align:right;">
-228
-</td>
+<tr class="odd">
+<td align="right">7.974158</td>
+<td align="right">228</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-120.23
-</td>
-<td style="text-align:right;">
-242
-</td>
+<tr class="even">
+<td align="right">120.229185</td>
+<td align="right">242</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-91.17
-</td>
-<td style="text-align:right;">
-270
-</td>
+<tr class="odd">
+<td align="right">91.171246</td>
+<td align="right">270</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-19.29
-</td>
-<td style="text-align:right;">
-286
-</td>
+<tr class="even">
+<td align="right">19.286071</td>
+<td align="right">286</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-104.39
-</td>
-<td style="text-align:right;">
-299
-</td>
+<tr class="odd">
+<td align="right">104.393878</td>
+<td align="right">299</td>
 </tr>
 </tbody>
 </table>
@@ -572,7 +514,7 @@ julian
 <div id="try-it-now-8" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Now, can you do this on your own? Access the calanoid data at station “HH6” for 2014</p>
-<pre><code> [1]  3.753  4.420  4.472 49.364  7.176  0.838  3.705  6.729  4.091  5.796  1.015  5.420</code></pre>
+<pre><code> [1]  3.7525745  4.4195122  4.4719882 49.3636318  7.1764905  0.8381301  3.7054878  6.7292412  4.0907797  5.7956002  1.0151220  5.4204413</code></pre>
 </div>
 </div>
 </div>
@@ -604,8 +546,8 @@ julian
 <div id="try-it-now-11" class="section level4 unnumbered hasAnchor">
 <h4>Try it now:<a href="basic-r.html#try-it-now-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Once you have found the function name, use it and the <strong>mean()</strong> to get the mean and standard deviation of calanoid density at station HH6 in 2014.</p>
-<pre><code>[1] 8.06</code></pre>
-<pre><code>[1] 13.1</code></pre>
+<pre><code>[1] 8.064917</code></pre>
+<pre><code>[1] 13.14886</code></pre>
 </div>
 <div id="summarizing-data" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Summarizing data<a href="basic-r.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -616,231 +558,119 @@ julian
 <p>I’ve formatted the output, but you should see something roughly like this:</p>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-Station Name
-</th>
-<th style="text-align:right;">
-No. of samples
-</th>
+<tr class="header">
+<th align="left">Station Name</th>
+<th align="right">No. of samples</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-CCIW dock
-</td>
-<td style="text-align:right;">
-3
-</td>
+<tr class="odd">
+<td align="left">CCIW dock</td>
+<td align="right">3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH17
-</td>
-<td style="text-align:right;">
-13
-</td>
+<tr class="even">
+<td align="left">HH17</td>
+<td align="right">13</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH1B
-</td>
-<td style="text-align:right;">
-22
-</td>
+<tr class="odd">
+<td align="left">HH1B</td>
+<td align="right">22</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH2
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">HH2</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH2000
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">HH2000</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH2001
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">HH2001</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH2002
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">HH2002</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH2003
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">HH2003</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH2004
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">HH2004</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH258
-</td>
-<td style="text-align:right;">
-172
-</td>
+<tr class="even">
+<td align="left">HH258</td>
+<td align="right">172</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH2B
-</td>
-<td style="text-align:right;">
-21
-</td>
+<tr class="odd">
+<td align="left">HH2B</td>
+<td align="right">21</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH39
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">HH39</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH4_PHYTO
-</td>
-<td style="text-align:right;">
-22
-</td>
+<tr class="odd">
+<td align="left">HH4_PHYTO</td>
+<td align="right">22</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH6
-</td>
-<td style="text-align:right;">
-136
-</td>
+<tr class="even">
+<td align="left">HH6</td>
+<td align="right">136</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH8
-</td>
-<td style="text-align:right;">
-38
-</td>
+<tr class="odd">
+<td align="left">HH8</td>
+<td align="right">38</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH9031
-</td>
-<td style="text-align:right;">
-22
-</td>
+<tr class="even">
+<td align="left">HH9031</td>
+<td align="right">22</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH9033
-</td>
-<td style="text-align:right;">
-22
-</td>
+<tr class="odd">
+<td align="left">HH9033</td>
+<td align="right">22</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH908
-</td>
-<td style="text-align:right;">
-96
-</td>
+<tr class="even">
+<td align="left">HH908</td>
+<td align="right">96</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HH917
-</td>
-<td style="text-align:right;">
-22
-</td>
+<tr class="odd">
+<td align="left">HH917</td>
+<td align="right">22</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HHBayfront
-</td>
-<td style="text-align:right;">
-22
-</td>
+<tr class="even">
+<td align="left">HHBayfront</td>
+<td align="right">22</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HHBayfront-West
-</td>
-<td style="text-align:right;">
-22
-</td>
+<tr class="odd">
+<td align="left">HHBayfront-West</td>
+<td align="right">22</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HHBFouter
-</td>
-<td style="text-align:right;">
-3
-</td>
+<tr class="even">
+<td align="left">HHBFouter</td>
+<td align="right">3</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HHBURSTP
-</td>
-<td style="text-align:right;">
-22
-</td>
+<tr class="odd">
+<td align="left">HHBURSTP</td>
+<td align="right">22</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HHCarolsP
-</td>
-<td style="text-align:right;">
-22
-</td>
+<tr class="even">
+<td align="left">HHCarolsP</td>
+<td align="right">22</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HHRHYC
-</td>
-<td style="text-align:right;">
-21
-</td>
+<tr class="odd">
+<td align="left">HHRHYC</td>
+<td align="right">21</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HHRHYC out
-</td>
-<td style="text-align:right;">
-21
-</td>
+<tr class="even">
+<td align="left">HHRHYC out</td>
+<td align="right">21</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-HHWC
-</td>
-<td style="text-align:right;">
-13
-</td>
+<tr class="odd">
+<td align="left">HHWC</td>
+<td align="right">13</td>
 </tr>
 </tbody>
 </table>
@@ -851,7 +681,7 @@ HHWC
 <p>Use the summary function on the “Chl_a_uncorrected” data for site HH258</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="basic-r.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ham<span class="sc">$</span>Chl_a_uncorrected[ham<span class="sc">$</span>Station_Acronym <span class="sc">==</span> <span class="st">&quot;HH258&quot;</span>])</span></code></pre></div>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-    3.1     9.5    12.6    15.0    19.3    70.0      25 </code></pre>
+  3.060   9.508  12.600  15.004  19.253  70.020      25 </code></pre>
 </div>
 </div>
 </div>
@@ -888,7 +718,7 @@ HHWC
 <p>Create a new file, copy the following code, paste it into the new file and then save it using the drop down menu or cntrl-s or command-s. Now, this code is available to run now or in the future!</p>
 <p>Run the code by selecting it and hitting <em>Run</em> in the menu or command-enter (Mac) or cntrl-R (Windows)</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="basic-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new &#39;decade&#39; factor variable</span></span>
-<span id="cb33-2"><a href="basic-r.html#cb33-2" aria-hidden="true" tabindex="-1"></a>sub2_ham<span class="sc">$</span>decade <span class="ot">&lt;-</span> <span class="fu">cut</span>(sub2_ham<span class="sc">$</span>year, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">2e+03</span>, <span class="dv">2010</span>, </span>
+<span id="cb33-2"><a href="basic-r.html#cb33-2" aria-hidden="true" tabindex="-1"></a>sub2_ham<span class="sc">$</span>decade <span class="ot">&lt;-</span> <span class="fu">cut</span>(sub2_ham<span class="sc">$</span>year, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2010</span>, </span>
 <span id="cb33-3"><a href="basic-r.html#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2020</span>, <span class="dv">2030</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;2000&quot;</span>, <span class="st">&quot;2010&quot;</span>, <span class="st">&quot;2020&quot;</span>))</span>
 <span id="cb33-4"><a href="basic-r.html#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-5"><a href="basic-r.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the data using the formula notation and data= option</span></span>
@@ -973,13 +803,13 @@ HHWC
     Welch Two Sample t-test
 
 data:  calanoid by area_group
-t = -2, df = 15, p-value = 0.2
+t = -1.5146, df = 15.19, p-value = 0.1504
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -19.20   3.24
+ -19.198594   3.237734
 sample estimates:
 mean in group deep   mean in group NE 
-              8.47              16.45 </code></pre>
+           8.47007           16.45050 </code></pre>
 <p>Fanastic! You now have the basics of importing, manipulating, and plotting in R.</p>
 </div>
 <div id="a-note-about-base-r-vs-tidyverse" class="section level2 hasAnchor" number="3.8">
